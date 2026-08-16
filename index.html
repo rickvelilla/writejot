@@ -8,9 +8,13 @@
     <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-    <title>Notejot | Student Notes Catalog</title>
+    <title>Writejot | Student Notes Catalog</title>
 
     <style>
+        /* =========================
+           GENERAL
+        ========================= */
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -28,6 +32,7 @@
             line-height: 1.6;
         }
 
+
         /* =========================
            NAVIGATION
         ========================= */
@@ -35,6 +40,7 @@
         .navbar {
             background: white;
             border-bottom: 1px solid #e5e7eb;
+
             padding: 16px 7%;
 
             display: flex;
@@ -43,6 +49,7 @@
 
             position: sticky;
             top: 0;
+
             z-index: 1000;
         }
 
@@ -80,12 +87,14 @@
             color: #2563eb;
         }
 
+
         /* =========================
            BUTTONS
         ========================= */
 
         .button {
             display: inline-block;
+
             padding: 12px 20px;
 
             border-radius: 8px;
@@ -113,12 +122,14 @@
         .secondary {
             background: white;
             color: #2563eb;
+
             border: 1px solid #2563eb;
         }
 
         .secondary:hover {
             background: #eff6ff;
         }
+
 
         /* =========================
            HERO
@@ -138,7 +149,9 @@
 
         .hero h1 {
             font-size: 52px;
+
             color: #111827;
+
             margin-bottom: 20px;
         }
 
@@ -148,6 +161,7 @@
 
         .hero p {
             max-width: 700px;
+
             margin: auto;
 
             color: #6b7280;
@@ -159,12 +173,14 @@
             margin-top: 30px;
 
             display: flex;
+
             justify-content: center;
 
             gap: 15px;
 
             flex-wrap: wrap;
         }
+
 
         /* =========================
            SECTIONS
@@ -197,6 +213,7 @@
 
             margin: 0 auto 45px;
         }
+
 
         /* =========================
            HOW IT WORKS
@@ -235,6 +252,7 @@
             display: flex;
 
             justify-content: center;
+
             align-items: center;
 
             margin: 0 auto 15px;
@@ -251,6 +269,7 @@
 
             font-size: 14px;
         }
+
 
         /* =========================
            SUBSCRIPTION
@@ -312,36 +331,9 @@
             margin-right: 10px;
         }
 
-        /* =========================
-           ACCESS
-        ========================= */
-
-        .access-box {
-            background: white;
-
-            border: 1px solid #e5e7eb;
-
-            border-radius: 16px;
-
-            padding: 40px;
-
-            text-align: center;
-        }
-
-        .access-box h2 {
-            margin-bottom: 10px;
-        }
-
-        .access-box p {
-            color: #6b7280;
-
-            max-width: 650px;
-
-            margin: 0 auto 25px;
-        }
 
         /* =========================
-           GOOGLE LOGIN
+           LOGIN
         ========================= */
 
         .login-card {
@@ -358,6 +350,10 @@
             padding: 40px;
 
             text-align: center;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.05);
         }
 
         .login-card h2 {
@@ -370,7 +366,11 @@
             margin-bottom: 25px;
         }
 
-        /* This centers the Google Sign-In button */
+
+        /* =========================
+           GOOGLE LOGIN BUTTON
+        ========================= */
+
         .google-login {
             display: flex;
 
@@ -383,8 +383,30 @@
             margin: 25px 0;
         }
 
+
         /* =========================
-           CATALOG
+           STATUS BOX
+        ========================= */
+
+        .status-box {
+            background: #eff6ff;
+
+            border: 1px solid #bfdbfe;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            margin-top: 25px;
+        }
+
+        .status-box strong {
+            color: #1d4ed8;
+        }
+
+
+        /* =========================
+           PRIVATE NOTES CATALOG
         ========================= */
 
         .catalog {
@@ -421,6 +443,7 @@
             background: #e5e7eb;
         }
 
+
         /* =========================
            SUBMIT NOTES
         ========================= */
@@ -455,25 +478,35 @@
             margin: 8px 0;
         }
 
+
         /* =========================
-           STATUS
+           ACCESS INFORMATION
         ========================= */
 
-        .status-box {
-            background: #eff6ff;
+        .access-box {
+            background: white;
 
-            border: 1px solid #bfdbfe;
+            border: 1px solid #e5e7eb;
 
-            border-radius: 12px;
+            border-radius: 16px;
 
-            padding: 25px;
+            padding: 40px;
 
-            margin-top: 25px;
+            text-align: center;
         }
 
-        .status-box strong {
-            color: #1d4ed8;
+        .access-box h2 {
+            margin-bottom: 10px;
         }
+
+        .access-box p {
+            color: #6b7280;
+
+            max-width: 650px;
+
+            margin: 0 auto 25px;
+        }
+
 
         /* =========================
            FOOTER
@@ -492,6 +525,7 @@
         footer strong {
             color: white;
         }
+
 
         /* =========================
            MOBILE
@@ -534,6 +568,7 @@
                 padding: 25px;
             }
         }
+
     </style>
 </head>
 
@@ -549,11 +584,13 @@
 
         <div class="brand">
 
-            <img src="W.png"
-                 alt="Notejot logo">
+            <img
+                src="W.png"
+                alt="Writejot logo"
+            >
 
             <div class="brand-name">
-                Notejot
+                Writejot
             </div>
 
         </div>
@@ -590,31 +627,31 @@
     <section class="hero">
 
         <h1>
-            Learn. Share. <span>Notejot.</span>
+            Learn. Share. <span>Writejot.</span>
         </h1>
 
         <p>
-            A student-powered notes catalog where students
-            can access useful study materials shared by
-            other students.
+            A student-powered notes catalog where
+            students can access useful study materials
+            shared by other students.
         </p>
 
 
         <div class="hero-buttons">
 
-            <a href="#login"
-               class="button primary">
-
-                Sign in / Request Access
-
+            <a
+                href="#login"
+                class="button primary"
+            >
+                Sign In / Request Access
             </a>
 
 
-            <a href="#submit"
-               class="button secondary">
-
+            <a
+                href="#submit"
+                class="button secondary"
+            >
                 Share Your Notes
-
             </a>
 
         </div>
@@ -627,8 +664,10 @@
          HOW IT WORKS
     ========================= -->
 
-    <section class="section"
-             id="how-it-works">
+    <section
+        class="section"
+        id="how-it-works"
+    >
 
         <h2 class="section-title">
             How It Works
@@ -636,7 +675,7 @@
 
         <p class="section-description">
 
-            Notejot uses manual payment verification
+            Writejot uses manual payment verification
             to control access to the private notes catalog.
 
         </p>
@@ -675,7 +714,7 @@
 
                 <p>
                     Sign in using the Google account
-                    you want to use for Notejot.
+                    you want to use for Writejot.
                 </p>
 
             </div>
@@ -693,7 +732,7 @@
 
                 <p>
                     Your payment is manually verified
-                    by the Notejot administrator.
+                    by the Writejot administrator.
                 </p>
 
             </div>
@@ -727,8 +766,10 @@
          SUBSCRIPTION
     ========================= -->
 
-    <section class="section"
-             id="subscription">
+    <section
+        class="section"
+        id="subscription"
+    >
 
         <h2 class="section-title">
             Student Subscription
@@ -782,11 +823,11 @@
             </ul>
 
 
-            <a href="#login"
-               class="button primary">
-
+            <a
+                href="#login"
+                class="button primary"
+            >
                 Request Access
-
             </a>
 
         </div>
@@ -799,8 +840,10 @@
          LOGIN
     ========================= -->
 
-    <section class="section"
-             id="login">
+    <section
+        class="section"
+        id="login"
+    >
 
         <h2 class="section-title">
             Student Login
@@ -818,33 +861,35 @@
         <div class="login-card">
 
             <h2>
-                Sign in to Notejot
+                Sign in to Writejot
             </h2>
 
             <p>
                 Use the Google account that you want
-                associated with your Notejot access.
+                associated with your Writejot access.
             </p>
 
 
-            <!-- =========================
-                 GOOGLE SIGN-IN
-            ========================= -->
+            <!-- GOOGLE SIGN-IN -->
 
             <div class="google-login">
 
-                <div id="g_id_onload"
-                     data-client_id="148780152741-7bsouicsp37po7o79ov66pofji4ksvhc.apps.googleusercontent.com"
-                     data-callback="handleCredentialResponse">
+                <div
+                    id="g_id_onload"
+                    data-client_id="148780152741-7bsouicsp37po7o79ov66pofji4ksvhc.apps.googleusercontent.com"
+                    data-callback="handleCredentialResponse"
+                >
                 </div>
 
 
-                <div class="g_id_signin"
-                     data-type="standard"
-                     data-size="large"
-                     data-theme="outline"
-                     data-text="signin_with"
-                     data-shape="rectangular">
+                <div
+                    class="g_id_signin"
+                    data-type="standard"
+                    data-size="large"
+                    data-theme="outline"
+                    data-text="signin_with"
+                    data-shape="rectangular"
+                >
                 </div>
 
             </div>
@@ -870,7 +915,7 @@
 
 
     <!-- =========================
-         PRIVATE CATALOG
+         NOTES CATALOG
     ========================= -->
 
     <section class="section">
@@ -892,13 +937,13 @@
             </p>
 
 
-            <a href="https://drive.google.com/drive/folders/1WG2yudtLWWiCdJ_6HlOrcxPB1vXrpD9y?usp=sharing"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="button catalog-button">
-
+            <a
+                href="https://drive.google.com/drive/folders/1WG2yudtLWWiCdJ_6HlOrcxPB1vXrpD9y?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button catalog-button"
+            >
                 Open Notes Catalog
-
             </a>
 
         </div>
@@ -911,8 +956,10 @@
          SUBMIT NOTES
     ========================= -->
 
-    <section class="section"
-             id="submit">
+    <section
+        class="section"
+        id="submit"
+    >
 
         <div class="submit-card">
 
@@ -925,7 +972,7 @@
 
                 Have notes that could help other students?
 
-                Submit them to Notejot and they will
+                Submit them to Writejot and they will
                 go through a review process before
                 being added to the catalog.
 
@@ -944,7 +991,7 @@
                 </li>
 
                 <li>
-                    Notejot receives your submission.
+                    Writejot receives your submission.
                 </li>
 
                 <li>
@@ -962,13 +1009,13 @@
             </ol>
 
 
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdp5M_YiW2cUsR2Sy-rPl6u2FGHeaLWzxhDl5zunMT6cq8y1w/viewform?usp=dialog"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="button primary">
-
+            <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdp5M_YiW2cUsR2Sy-rPl6u2FGHeaLWzxhDl5zunMT6cq8y1w/viewform?usp=dialog"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button primary"
+            >
                 Submit Your Notes
-
             </a>
 
         </div>
@@ -1002,11 +1049,11 @@
             </p>
 
 
-            <a href="#login"
-               class="button primary">
-
+            <a
+                href="#login"
+                class="button primary"
+            >
                 Sign In
-
             </a>
 
         </div>
@@ -1022,7 +1069,7 @@
     <footer>
 
         <p>
-            <strong>Notejot</strong>
+            <strong>Writejot</strong>
         </p>
 
         <p>
@@ -1030,7 +1077,7 @@
         </p>
 
         <p>
-            © 2026 Notejot
+            © 2026 Writejot
         </p>
 
     </footer>
