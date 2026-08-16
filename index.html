@@ -1,101 +1,1101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notejot | Student Notes Catalog</title>
+
     <style>
-        .header {
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navbar {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+
+            padding: 16px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand {
             display: flex;
             align-items: center;
-            gap: 15px;
-            border-bottom: 1px solid #999;
-            padding-bottom: 10px;
+            gap: 12px;
         }
 
-        .header img {
-            width: 70px;
+        .brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
         }
 
-        .header h1 {
-            margin: 0;
+        .brand-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
         }
 
-        .welcome {
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .button {
+            display: inline-block;
+
+            padding: 12px 20px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            border: none;
+
+            transition: 0.2s;
+        }
+
+        .primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #1d4ed8;
+        }
+
+        .secondary {
+            background: white;
+            color: #2563eb;
+            border: 1px solid #2563eb;
+        }
+
+        .secondary:hover {
+            background: #eff6ff;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef4ff,
+                    #ffffff
+                );
+
+            padding: 100px 7%;
+
             text-align: center;
         }
 
-        .welcome h1 {
+        .hero h1 {
+            font-size: 52px;
+            color: #111827;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+
+            color: #6b7280;
+
+            font-size: 19px;
+        }
+
+        .hero-buttons {
+            margin-top: 30px;
+
+            display: flex;
+            justify-content: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        .section {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 80px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+
+            font-size: 34px;
+
+            margin-bottom: 10px;
+
+            color: #111827;
+        }
+
+        .section-description {
+            text-align: center;
+
+            color: #6b7280;
+
+            max-width: 650px;
+
+            margin: 0 auto 45px;
+        }
+
+        /* =========================
+           HOW IT WORKS
+        ========================= */
+
+        .steps {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .step {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 14px;
+
+            padding: 30px 20px;
+
+            text-align: center;
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            background: #2563eb;
+
+            color: white;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            margin: 0 auto 15px;
+
+            font-weight: bold;
+        }
+
+        .step h3 {
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #6b7280;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           SUBSCRIPTION
+        ========================= */
+
+        .pricing {
+            max-width: 500px;
+
+            margin: auto;
+
+            background: white;
+
+            border: 1px solid #dbe3ef;
+
+            border-radius: 16px;
+
+            padding: 40px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.05);
+        }
+
+        .price {
+            font-size: 52px;
+
+            font-weight: bold;
+
+            color: #2563eb;
+
+            margin: 10px 0;
+        }
+
+        .price-description {
+            color: #6b7280;
+        }
+
+        .benefits {
+            text-align: left;
+
+            margin: 25px 0;
+        }
+
+        .benefits li {
+            list-style: none;
+
+            margin: 12px 0;
+        }
+
+        .benefits li::before {
+            content: "✓";
+
+            color: #16a34a;
+
+            font-weight: bold;
+
+            margin-right: 10px;
+        }
+
+        /* =========================
+           ACCESS
+        ========================= */
+
+        .access-box {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 16px;
+
+            padding: 40px;
+
+            text-align: center;
+        }
+
+        .access-box h2 {
             margin-bottom: 10px;
         }
 
-        .welcome h2 {
-            margin-top: 0;
+        .access-box p {
+            color: #6b7280;
+
+            max-width: 650px;
+
+            margin: 0 auto 25px;
         }
 
-        .drive-link {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #4285F4;
+        /* =========================
+           GOOGLE LOGIN AREA
+        ========================= */
+
+        .login-card {
+            max-width: 500px;
+
+            margin: auto;
+
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 16px;
+
+            padding: 40px;
+
+            text-align: center;
+        }
+
+        .login-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .login-card p {
+            color: #6b7280;
+
+            margin-bottom: 25px;
+        }
+
+        .google-button {
+            width: 100%;
+
+            background: white;
+
+            color: #374151;
+
+            border: 1px solid #d1d5db;
+
+            padding: 13px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .google-button:hover {
+            background: #f9fafb;
+        }
+
+        /* =========================
+           CATALOG
+        ========================= */
+
+        .catalog {
+            background: #111827;
+
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
+
+            border-radius: 18px;
+
+            padding: 50px;
+
+            text-align: center;
         }
 
-        .drive-link:hover {
-            background-color: #3367D6;
+        .catalog h2 {
+            margin-bottom: 10px;
+        }
+
+        .catalog p {
+            color: #d1d5db;
+
+            max-width: 650px;
+
+            margin: 0 auto 25px;
+        }
+
+        .catalog-button {
+            background: white;
+
+            color: #111827;
+        }
+
+        .catalog-button:hover {
+            background: #e5e7eb;
+        }
+
+        /* =========================
+           SUBMIT NOTES
+        ========================= */
+
+        .submit-card {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 16px;
+
+            padding: 40px;
+        }
+
+        .submit-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .submit-card p {
+            color: #6b7280;
+
+            margin-bottom: 20px;
+        }
+
+        .review-list {
+            margin: 20px 0 25px;
+
+            padding-left: 25px;
+        }
+
+        .review-list li {
+            margin: 8px 0;
+        }
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status-box {
+            background: #eff6ff;
+
+            border: 1px solid #bfdbfe;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            margin-top: 25px;
+        }
+
+        .status-box strong {
+            color: #1d4ed8;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: #9ca3af;
+
+            text-align: center;
+
+            padding: 35px 20px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .steps {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 70px 5%;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .pricing,
+            .login-card,
+            .submit-card,
+            .access-box,
+            .catalog {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 
+
 <body>
 
-    <div class="header">
-        <img src="W.png" alt="Writejot logo">
-        <h1>Writejot</h1>
-    </div>
 
-    <div class="welcome">
-        <h1>Welcome to my company</h1>
-        <h2>Rick Aldrei A. Velilla</h2>
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
-        <a class="drive-link"
-           href="https://drive.google.com/drive/folders/1WG2yudtLWWiCdJ_6HlOrcxPB1vXrpD9y?usp=sharing"
-           target="_blank">
-            Get notes
-        </a>
-         <a class="drive-link"
-           href="https://drive.google.com/drive/folders/1URqy6oaD9efae48E3a7nRNNbeSwm8ZC2?usp=drive_link"
-           target="_blank">
-            Share your notes
-        </a>
-    </div>
-    <hr>
-    <p>
-        <h3>About Notejot:</h3>
-        <ul>
-            <li>
-                Notejot was stablished on 2026 by Rick Aldrei A. Velilla.
-            </li>
-            <li>
-                Notes shared will be under review for 1-3 business days to determine if they are suitable to be added to the notes catalog.
-            </li>
-            <li>
-                Notes that are in the catalog will be available to every user that has paid the ₱150/month subscription.
-            </li>
-        </ul>
-    </p>
-<p>
-    <h1 style="color: blue;">₱150/week</h1>
-    <h3>Benefits:</h3>
-    <ul>
-        <li>
-            Unlimted acess to the notes catalog
-        </li>
-        <li>
-            Free consultations with subject consultants.
-        </li>
-    </ul>
-</p>
+    <nav class="navbar">
+
+        <div class="brand">
+
+            <img src="W.png"
+                 alt="Notejot logo">
+
+            <div class="brand-name">
+                Notejot
+            </div>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="#how-it-works">
+                How It Works
+            </a>
+
+            <a href="#subscription">
+                Subscription
+            </a>
+
+            <a href="#submit">
+                Submit Notes
+            </a>
+
+            <a href="#login">
+                Login
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <h1>
+            Learn. Share. <span>Notejot.</span>
+        </h1>
+
+        <p>
+            A student-powered notes catalog where students
+            can access useful study materials shared by
+            other students.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="#login"
+               class="button primary">
+
+                Sign in / Request Access
+
+            </a>
+
+
+            <a href="#submit"
+               class="button secondary">
+
+                Share Your Notes
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         HOW IT WORKS
+    ========================= -->
+
+    <section class="section"
+             id="how-it-works">
+
+        <h2 class="section-title">
+            How It Works
+        </h2>
+
+        <p class="section-description">
+
+            Notejot uses manual payment verification
+            to control access to the private notes catalog.
+
+        </p>
+
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h3>
+                    Pay ₱100
+                </h3>
+
+                <p>
+                    Pay the ₱100 subscription fee
+                    in person.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>
+                    Sign In
+                </h3>
+
+                <p>
+                    Sign in using the Google account
+                    you want to use for Notejot.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>
+                    Get Approved
+                </h3>
+
+                <p>
+                    Your payment is manually verified
+                    by the Notejot administrator.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <h3>
+                    Access Notes
+                </h3>
+
+                <p>
+                    Approved users receive access
+                    to the private notes catalog.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SUBSCRIPTION
+    ========================= -->
+
+    <section class="section"
+             id="subscription">
+
+        <h2 class="section-title">
+            Student Subscription
+        </h2>
+
+        <p class="section-description">
+            One simple subscription for access
+            to the student notes catalog.
+        </p>
+
+
+        <div class="pricing">
+
+            <h3>
+                Notes Catalog Access
+            </h3>
+
+
+            <div class="price">
+                ₱100
+            </div>
+
+
+            <div class="price-description">
+                subscription fee
+            </div>
+
+
+            <ul class="benefits">
+
+                <li>
+                    Access to the notes catalog
+                </li>
+
+                <li>
+                    Notes shared by other students
+                </li>
+
+                <li>
+                    Private Google Drive access
+                </li>
+
+                <li>
+                    Ability to submit your own notes
+                </li>
+
+                <li>
+                    Manual account verification
+                </li>
+
+            </ul>
+
+
+            <a href="#login"
+               class="button primary">
+
+                Request Access
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         LOGIN
+    ========================= -->
+
+    <section class="section"
+             id="login">
+
+        <h2 class="section-title">
+            Student Login
+        </h2>
+
+        <p class="section-description">
+
+            Sign in using your Google account.
+            Your account must be approved before
+            you can access the notes catalog.
+
+        </p>
+
+
+        <div class="login-card">
+
+            <h2>
+                Sign in to Notejot
+            </h2>
+
+            <p>
+                Use the Google account that you want
+                associated with your Notejot access.
+            </p>
+
+
+            <!--
+                THIS BUTTON WILL BE CONNECTED
+                TO GOOGLE OAUTH LATER.
+
+                Do NOT put a fake username/password
+                system here.
+            -->
+
+            <button class="google-button"
+                    onclick="googleLogin()">
+
+                Continue with Google
+
+            </button>
+
+
+            <div class="status-box">
+
+                <strong>
+                    New subscriber?
+                </strong>
+
+                <br>
+
+                Pay ₱100 in person first,
+                then sign in using your Google account.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PRIVATE CATALOG
+    ========================= -->
+
+    <section class="section">
+
+        <div class="catalog">
+
+            <h2>
+                📚 Notes Catalog
+            </h2>
+
+            <p>
+
+                The catalog is stored in a private
+                Google Drive folder.
+
+                Only approved accounts should
+                receive access.
+
+            </p>
+
+
+            <!--
+                IMPORTANT:
+
+                Do not make the Drive folder
+                "Anyone with the link".
+
+                Replace this URL with your
+                PRIVATE Google Drive folder.
+
+                The backend should eventually
+                make sure only approved users
+                can access it.
+            -->
+
+            <a href="YOUR_PRIVATE_GOOGLE_DRIVE_LINK"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="button catalog-button">
+
+                Open Notes Catalog
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SUBMIT NOTES
+    ========================= -->
+
+    <section class="section"
+             id="submit">
+
+        <div class="submit-card">
+
+            <h2>
+                📝 Share Your Notes
+            </h2>
+
+
+            <p>
+
+                Have notes that could help other students?
+
+                Submit them to Notejot and they will
+                go through a review process before
+                being added to the catalog.
+
+            </p>
+
+
+            <h3>
+                Review Process
+            </h3>
+
+
+            <ol class="review-list">
+
+                <li>
+                    Submit your notes.
+                </li>
+
+                <li>
+                    Notejot receives your submission.
+                </li>
+
+                <li>
+                    The notes are manually reviewed.
+                </li>
+
+                <li>
+                    Suitable notes are approved.
+                </li>
+
+                <li>
+                    Approved notes are added to the catalog.
+                </li>
+
+            </ol>
+
+
+            <!--
+                Replace this with your
+                Google Form URL.
+            -->
+
+            <a href="YOUR_GOOGLE_FORM_LINK"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="button primary">
+
+                Submit Your Notes
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ACCESS INFORMATION
+    ========================= -->
+
+    <section class="section">
+
+        <div class="access-box">
+
+            <h2>
+                Already Paid ₱100?
+            </h2>
+
+
+            <p>
+
+                Sign in using your Google account
+                and request access.
+
+                Your payment will be manually
+                verified before your account
+                receives catalog access.
+
+            </p>
+
+
+            <a href="#login"
+               class="button primary">
+
+                Sign In
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            <strong>Notejot</strong>
+        </p>
+
+        <p>
+            Student-powered notes sharing.
+        </p>
+
+        <p>
+            © 2026 Notejot
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function googleLogin() {
+
+            /*
+                THIS IS CURRENTLY A PLACEHOLDER.
+
+                Later this button will connect to
+                Google OAuth / Google Identity Services.
+
+                After Google signs the user in,
+                your backend will check:
+
+                    1. Who is the user?
+                    2. Is their account approved?
+                    3. Has their subscription been verified?
+
+                If approved:
+                    → show catalog
+
+                If not approved:
+                    → show access request
+            */
+
+            alert(
+                "Google Sign-In will be connected when the backend is set up."
+            );
+
+        }
+
+    </script>
+
+
 </body>
 
 </html>
