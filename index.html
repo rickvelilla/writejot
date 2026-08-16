@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+    <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
     <title>Notejot | Student Notes Catalog</title>
@@ -34,7 +35,6 @@
         .navbar {
             background: white;
             border-bottom: 1px solid #e5e7eb;
-
             padding: 16px 7%;
 
             display: flex;
@@ -86,7 +86,6 @@
 
         .button {
             display: inline-block;
-
             padding: 12px 20px;
 
             border-radius: 8px;
@@ -126,12 +125,11 @@
         ========================= */
 
         .hero {
-            background:
-                linear-gradient(
-                    135deg,
-                    #eef4ff,
-                    #ffffff
-                );
+            background: linear-gradient(
+                135deg,
+                #eef4ff,
+                #ffffff
+            );
 
             padding: 100px 7%;
 
@@ -207,8 +205,7 @@
         .steps {
             display: grid;
 
-            grid-template-columns:
-                repeat(4, 1fr);
+            grid-template-columns: repeat(4, 1fr);
 
             gap: 20px;
         }
@@ -344,7 +341,7 @@
         }
 
         /* =========================
-           GOOGLE LOGIN AREA
+           GOOGLE LOGIN
         ========================= */
 
         .login-card {
@@ -373,26 +370,17 @@
             margin-bottom: 25px;
         }
 
-        .google-button {
+        /* This centers the Google Sign-In button */
+        .google-login {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
             width: 100%;
 
-            background: white;
-
-            color: #374151;
-
-            border: 1px solid #d1d5db;
-
-            padding: 13px;
-
-            border-radius: 8px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-        }
-
-        .google-button:hover {
-            background: #f9fafb;
+            margin: 25px 0;
         }
 
         /* =========================
@@ -839,26 +827,28 @@
             </p>
 
 
-            <!--
-                THIS BUTTON WILL BE CONNECTED
-                TO GOOGLE OAUTH LATER.
+            <!-- =========================
+                 GOOGLE SIGN-IN
+            ========================= -->
 
-                Do NOT put a fake username/password
-                system here.
-            -->
+            <div class="google-login">
 
-            <div id="g_id_onload"
-     data-client_id="148780152741-7bsouicsp37po7o79ov66pofji4ksvhc.apps.googleusercontent.com"
-     data-callback="handleCredentialResponse">
-</div>
+                <div id="g_id_onload"
+                     data-client_id="148780152741-7bsouicsp37po7o79ov66pofji4ksvhc.apps.googleusercontent.com"
+                     data-callback="handleCredentialResponse">
+                </div>
 
-<div class="g_id_signin"
-     data-type="standard"
-     data-size="large"
-     data-theme="outline"
-     data-text="signin_with"
-     data-shape="rectangular">
-</div>
+
+                <div class="g_id_signin"
+                     data-type="standard"
+                     data-size="large"
+                     data-theme="outline"
+                     data-text="signin_with"
+                     data-shape="rectangular">
+                </div>
+
+            </div>
+
 
             <div class="status-box">
 
@@ -901,20 +891,6 @@
 
             </p>
 
-
-            <!--
-                IMPORTANT:
-
-                Do not make the Drive folder
-                "Anyone with the link".
-
-                Replace this URL with your
-                PRIVATE Google Drive folder.
-
-                The backend should eventually
-                make sure only approved users
-                can access it.
-            -->
 
             <a href="https://drive.google.com/drive/folders/1WG2yudtLWWiCdJ_6HlOrcxPB1vXrpD9y?usp=sharing"
                target="_blank"
@@ -985,11 +961,6 @@
 
             </ol>
 
-
-            <!--
-                Replace this with your
-                Google Form URL.
-            -->
 
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdp5M_YiW2cUsR2Sy-rPl6u2FGHeaLWzxhDl5zunMT6cq8y1w/viewform?usp=dialog"
                target="_blank"
@@ -1070,19 +1041,20 @@
          JAVASCRIPT
     ========================= -->
 
-   <script>
+    <script>
 
-    function handleCredentialResponse(response) {
+        function handleCredentialResponse(response) {
 
-        console.log("Google login successful!");
+            console.log("Google login successful!");
 
-        console.log(response.credential);
+            console.log(response.credential);
 
-        alert("Google login successful!");
+            alert("Google login successful!");
 
-    }
+        }
 
-</script>
+    </script>
+
 
 </body>
 
