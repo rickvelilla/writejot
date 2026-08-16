@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
     <title>Notejot | Student Notes Catalog</title>
 
@@ -845,13 +847,18 @@
                 system here.
             -->
 
-            <button class="google-button"
-                    onclick="googleLogin()">
+            <div id="g_id_onload"
+     data-client_id="148780152741-7bsouicsp37po7o79ov66pofji4ksvhc.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse">
+</div>
 
-                Continue with Google
-
-            </button>
-
+<div class="g_id_signin"
+     data-type="standard"
+     data-size="large"
+     data-theme="outline"
+     data-text="signin_with"
+     data-shape="rectangular">
+</div>
 
             <div class="status-box">
 
@@ -984,7 +991,7 @@
                 Google Form URL.
             -->
 
-            <a href="YOUR_GOOGLE_FORM_LINK"
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdp5M_YiW2cUsR2Sy-rPl6u2FGHeaLWzxhDl5zunMT6cq8y1w/viewform?usp=header"
                target="_blank"
                rel="noopener noreferrer"
                class="button primary">
@@ -1063,38 +1070,19 @@
          JAVASCRIPT
     ========================= -->
 
-    <script>
+   <script>
 
-        function googleLogin() {
+    function handleCredentialResponse(response) {
 
-            /*
-                THIS IS CURRENTLY A PLACEHOLDER.
+        console.log("Google login successful!");
 
-                Later this button will connect to
-                Google OAuth / Google Identity Services.
+        console.log(response.credential);
 
-                After Google signs the user in,
-                your backend will check:
+        alert("Google login successful!");
 
-                    1. Who is the user?
-                    2. Is their account approved?
-                    3. Has their subscription been verified?
+    }
 
-                If approved:
-                    → show catalog
-
-                If not approved:
-                    → show access request
-            */
-
-            alert(
-                "Google Sign-In will be connected when the backend is set up."
-            );
-
-        }
-
-    </script>
-
+</script>
 
 </body>
 
