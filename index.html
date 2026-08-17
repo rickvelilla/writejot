@@ -1467,7 +1467,60 @@
            GOOGLE LOGIN
         ===================================== */
 
-        function handleCredentialResponse(response) {
+        async function handleCredentialResponse(response) {
+
+    console.log("Google login successful!");
+
+    const data = parseJwt(response.credential);
+
+    const user = {
+        name: data.name,
+        email: data.email,
+        picture: data.picture,
+        googleId: data.sub
+    };
+
+    // Save the user locally
+    localStorage.setItem(
+        "writejotUser",
+        JSON.stringify(user)
+    );
+
+    // Show the logged-in profile
+    showLoggedInUser(user);
+
+    // Send the user to your Google Sheet
+    try {
+
+        const result = await fetch(
+            "https://script.google.com/macros/s/AKfycbxOOTHzg6qHj-_NiwxL0oDLn1zQbZ99jDV94c26oM0Ho_XeieltwyDnHdl-hNeaDO62/exec",
+            {
+                method: "POST",
+
+                body: JSON.stringify({
+                    name: user.name,
+                    email: user.email,
+                    googleId: user.googleId
+                })
+            }
+        );
+
+        const resultData = await result.json();
+
+        console.log(
+            "Writejot database response:",
+            resultData
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Could not connect to Writejot database:",
+            error
+        );
+
+    }
+}
 
             console.log(
                 "Google login successful!"
