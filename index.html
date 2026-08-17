@@ -2,18 +2,51 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Identity Services -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <meta
+        name="description"
+        content="Writejot is a student notes catalog where students can access and share study notes, reviewers, and learning materials."
+    >
 
-    <title>Writejot | Student Notes Catalog</title>
+    <meta
+        name="keywords"
+        content="student notes, study notes, notes catalog, study materials, student reviewers, Philippine students, shared notes"
+    >
+
+    <meta
+        name="author"
+        content="Writejot"
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="W.png"
+    >
+
+    <title>
+        Writejot | Student Notes & Study Materials
+    </title>
+
+
+    <!-- GOOGLE IDENTITY SERVICES -->
+
+    <script
+        src="https://accounts.google.com/gsi/client"
+        async
+        defer>
+    </script>
+
 
     <style>
-        /* =========================
+
+        /* =====================================
            GENERAL
-        ========================= */
+        ===================================== */
 
         * {
             box-sizing: border-box;
@@ -26,28 +59,41 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             background: #f5f7fb;
+
             color: #1f2937;
+
             line-height: 1.6;
         }
 
 
-        /* =========================
+        /* =====================================
            NAVIGATION
-        ========================= */
+        ===================================== */
 
         .navbar {
             background: white;
-            border-bottom: 1px solid #e5e7eb;
 
-            padding: 16px 7%;
+            border-bottom:
+                1px solid #e5e7eb;
+
+            padding:
+                15px 7%;
 
             display: flex;
-            justify-content: space-between;
+
+            justify-content:
+                space-between;
+
             align-items: center;
 
             position: sticky;
+
             top: 0;
 
             z-index: 1000;
@@ -55,31 +101,41 @@
 
         .brand {
             display: flex;
+
             align-items: center;
+
             gap: 12px;
         }
 
         .brand img {
             width: 45px;
+
             height: 45px;
+
             object-fit: contain;
         }
 
         .brand-name {
             font-size: 24px;
+
             font-weight: 700;
+
             color: #111827;
         }
 
         .nav-links {
             display: flex;
+
             gap: 25px;
+
             align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
+
             color: #4b5563;
+
             font-weight: 600;
         }
 
@@ -88,14 +144,15 @@
         }
 
 
-        /* =========================
+        /* =====================================
            BUTTONS
-        ========================= */
+        ===================================== */
 
         .button {
             display: inline-block;
 
-            padding: 12px 20px;
+            padding:
+                12px 20px;
 
             border-radius: 8px;
 
@@ -107,11 +164,13 @@
 
             border: none;
 
-            transition: 0.2s;
+            transition:
+                0.2s;
         }
 
         .primary {
             background: #2563eb;
+
             color: white;
         }
 
@@ -121,9 +180,11 @@
 
         .secondary {
             background: white;
+
             color: #2563eb;
 
-            border: 1px solid #2563eb;
+            border:
+                1px solid #2563eb;
         }
 
         .secondary:hover {
@@ -131,18 +192,20 @@
         }
 
 
-        /* =========================
+        /* =====================================
            HERO
-        ========================= */
+        ===================================== */
 
         .hero {
-            background: linear-gradient(
-                135deg,
-                #eef4ff,
-                #ffffff
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef4ff,
+                    #ffffff
+                );
 
-            padding: 100px 7%;
+            padding:
+                100px 7%;
 
             text-align: center;
         }
@@ -182,16 +245,17 @@
         }
 
 
-        /* =========================
+        /* =====================================
            SECTIONS
-        ========================= */
+        ===================================== */
 
         .section {
             max-width: 1100px;
 
             margin: auto;
 
-            padding: 80px 25px;
+            padding:
+                80px 25px;
         }
 
         .section-title {
@@ -211,18 +275,20 @@
 
             max-width: 650px;
 
-            margin: 0 auto 45px;
+            margin:
+                0 auto 45px;
         }
 
 
-        /* =========================
+        /* =====================================
            HOW IT WORKS
-        ========================= */
+        ===================================== */
 
         .steps {
             display: grid;
 
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns:
+                repeat(4, 1fr);
 
             gap: 20px;
         }
@@ -230,17 +296,20 @@
         .step {
             background: white;
 
-            border: 1px solid #e5e7eb;
+            border:
+                1px solid #e5e7eb;
 
             border-radius: 14px;
 
-            padding: 30px 20px;
+            padding:
+                30px 20px;
 
             text-align: center;
         }
 
         .step-number {
             width: 45px;
+
             height: 45px;
 
             border-radius: 50%;
@@ -255,7 +324,8 @@
 
             align-items: center;
 
-            margin: 0 auto 15px;
+            margin:
+                0 auto 15px;
 
             font-weight: bold;
         }
@@ -271,9 +341,9 @@
         }
 
 
-        /* =========================
-           SUBSCRIPTION
-        ========================= */
+        /* =====================================
+           PRICING
+        ===================================== */
 
         .pricing {
             max-width: 500px;
@@ -282,7 +352,8 @@
 
             background: white;
 
-            border: 1px solid #dbe3ef;
+            border:
+                1px solid #dbe3ef;
 
             border-radius: 16px;
 
@@ -302,7 +373,8 @@
 
             color: #2563eb;
 
-            margin: 10px 0;
+            margin:
+                10px 0;
         }
 
         .price-description {
@@ -312,13 +384,15 @@
         .benefits {
             text-align: left;
 
-            margin: 25px 0;
+            margin:
+                25px 0;
         }
 
         .benefits li {
             list-style: none;
 
-            margin: 12px 0;
+            margin:
+                12px 0;
         }
 
         .benefits li::before {
@@ -332,9 +406,9 @@
         }
 
 
-        /* =========================
-           LOGIN
-        ========================= */
+        /* =====================================
+           LOGIN CARD
+        ===================================== */
 
         .login-card {
             max-width: 500px;
@@ -343,7 +417,8 @@
 
             background: white;
 
-            border: 1px solid #e5e7eb;
+            border:
+                1px solid #e5e7eb;
 
             border-radius: 16px;
 
@@ -360,16 +435,16 @@
             margin-bottom: 10px;
         }
 
-        .login-card p {
+        .login-card > p {
             color: #6b7280;
 
             margin-bottom: 25px;
         }
 
 
-        /* =========================
-           GOOGLE LOGIN BUTTON
-        ========================= */
+        /* =====================================
+           GOOGLE LOGIN
+        ===================================== */
 
         .google-login {
             display: flex;
@@ -380,34 +455,108 @@
 
             width: 100%;
 
-            margin: 25px 0;
+            margin:
+                25px 0;
         }
 
 
-        /* =========================
-           STATUS BOX
-        ========================= */
+        /* =====================================
+           LOGGED-IN PROFILE
+        ===================================== */
 
-        .status-box {
+        .profile-picture {
+            width: 85px;
+
+            height: 85px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            margin:
+                0 auto 15px;
+
+            display: block;
+
+            border:
+                3px solid #2563eb;
+        }
+
+        #profileEmail {
+            color: #6b7280;
+
+            margin-bottom: 20px;
+        }
+
+        .account-status {
+            background: #f0fdf4;
+
+            border:
+                1px solid #bbf7d0;
+
+            border-radius: 10px;
+
+            padding: 15px;
+
+            margin:
+                20px 0;
+
+            color: #166534;
+        }
+
+        .account-status p {
+            margin-top: 5px;
+
+            color: #166534;
+        }
+
+
+        /* =====================================
+           FREE TRIAL
+        ===================================== */
+
+        .trial-box {
             background: #eff6ff;
 
-            border: 1px solid #bfdbfe;
+            border:
+                1px solid #bfdbfe;
 
             border-radius: 12px;
 
             padding: 25px;
 
-            margin-top: 25px;
+            margin:
+                20px 0;
         }
 
-        .status-box strong {
+        .trial-box h3 {
             color: #1d4ed8;
+
+            margin-bottom: 8px;
+        }
+
+        .trial-box p {
+            color: #4b5563;
+
+            margin-bottom: 15px;
+        }
+
+        .trial-box button {
+            margin-bottom: 10px;
+        }
+
+        #trialMessage {
+            color: #166534;
+
+            font-weight: 600;
+
+            margin-top: 10px;
         }
 
 
-        /* =========================
-           PRIVATE NOTES CATALOG
-        ========================= */
+        /* =====================================
+           NOTES CATALOG
+        ===================================== */
 
         .catalog {
             background: #111827;
@@ -430,7 +579,8 @@
 
             max-width: 650px;
 
-            margin: 0 auto 25px;
+            margin:
+                0 auto 25px;
         }
 
         .catalog-button {
@@ -444,14 +594,15 @@
         }
 
 
-        /* =========================
+        /* =====================================
            SUBMIT NOTES
-        ========================= */
+        ===================================== */
 
         .submit-card {
             background: white;
 
-            border: 1px solid #e5e7eb;
+            border:
+                1px solid #e5e7eb;
 
             border-radius: 16px;
 
@@ -469,24 +620,27 @@
         }
 
         .review-list {
-            margin: 20px 0 25px;
+            margin:
+                20px 0 25px;
 
             padding-left: 25px;
         }
 
         .review-list li {
-            margin: 8px 0;
+            margin:
+                8px 0;
         }
 
 
-        /* =========================
-           ACCESS INFORMATION
-        ========================= */
+        /* =====================================
+           ACCESS BOX
+        ===================================== */
 
         .access-box {
             background: white;
 
-            border: 1px solid #e5e7eb;
+            border:
+                1px solid #e5e7eb;
 
             border-radius: 16px;
 
@@ -504,13 +658,14 @@
 
             max-width: 650px;
 
-            margin: 0 auto 25px;
+            margin:
+                0 auto 25px;
         }
 
 
-        /* =========================
+        /* =====================================
            FOOTER
-        ========================= */
+        ===================================== */
 
         footer {
             background: #111827;
@@ -519,7 +674,8 @@
 
             text-align: center;
 
-            padding: 35px 20px;
+            padding:
+                35px 20px;
         }
 
         footer strong {
@@ -527,14 +683,15 @@
         }
 
 
-        /* =========================
+        /* =====================================
            MOBILE
-        ========================= */
+        ===================================== */
 
         @media (max-width: 800px) {
 
             .steps {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns:
+                    1fr 1fr;
             }
 
             .hero h1 {
@@ -544,16 +701,19 @@
             .nav-links {
                 display: none;
             }
+
         }
 
         @media (max-width: 500px) {
 
             .steps {
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
             }
 
             .hero {
-                padding: 70px 5%;
+                padding:
+                    70px 5%;
             }
 
             .hero h1 {
@@ -567,18 +727,20 @@
             .catalog {
                 padding: 25px;
             }
+
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-    <!-- =========================
+    <!-- =====================================
          NAVIGATION
-    ========================= -->
+    ===================================== -->
 
     <nav class="navbar">
 
@@ -620,20 +782,27 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================
          HERO
-    ========================= -->
+    ===================================== -->
 
     <section class="hero">
 
         <h1>
-            Learn. Share. <span>Writejot.</span>
+
+            Student Notes Catalog —
+            <span>Writejot</span>
+
         </h1>
 
+
         <p>
-            A student-powered notes catalog where
-            students can access useful study materials
-            shared by other students.
+
+            Writejot is a student-powered notes
+            catalog where students can access,
+            share, and discover study notes,
+            reviewers, and learning materials.
+
         </p>
 
 
@@ -643,7 +812,7 @@
                 href="#login"
                 class="button primary"
             >
-                Sign In / Request Access
+                Sign In
             </a>
 
 
@@ -660,9 +829,9 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================
          HOW IT WORKS
-    ========================= -->
+    ===================================== -->
 
     <section
         class="section"
@@ -670,13 +839,17 @@
     >
 
         <h2 class="section-title">
-            How It Works
+
+            How Writejot Works
+
         </h2>
+
 
         <p class="section-description">
 
-            Writejot uses manual payment verification
-            to control access to the private notes catalog.
+            Get access to student-created study
+            materials through a simple subscription
+            or 14-day free trial.
 
         </p>
 
@@ -691,12 +864,14 @@
                 </div>
 
                 <h3>
-                    Pay ₱100
+                    Sign In
                 </h3>
 
                 <p>
-                    Pay the ₱100 subscription fee
-                    in person.
+
+                    Sign in using your
+                    Google account.
+
                 </p>
 
             </div>
@@ -709,12 +884,14 @@
                 </div>
 
                 <h3>
-                    Sign In
+                    Try for Free
                 </h3>
 
                 <p>
-                    Sign in using the Google account
-                    you want to use for Writejot.
+
+                    Start your 14-day
+                    free trial.
+
                 </p>
 
             </div>
@@ -727,12 +904,14 @@
                 </div>
 
                 <h3>
-                    Get Approved
+                    Explore Notes
                 </h3>
 
                 <p>
-                    Your payment is manually verified
-                    by the Writejot administrator.
+
+                    Access notes and study
+                    materials from other students.
+
                 </p>
 
             </div>
@@ -745,12 +924,14 @@
                 </div>
 
                 <h3>
-                    Access Notes
+                    Keep Access
                 </h3>
 
                 <p>
-                    Approved users receive access
-                    to the private notes catalog.
+
+                    After the trial, pay ₱100
+                    to continue your subscription.
+
                 </p>
 
             </div>
@@ -762,9 +943,9 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================
          SUBSCRIPTION
-    ========================= -->
+    ===================================== -->
 
     <section
         class="section"
@@ -772,29 +953,41 @@
     >
 
         <h2 class="section-title">
-            Student Subscription
+
+            Writejot Subscription
+
         </h2>
 
+
         <p class="section-description">
-            One simple subscription for access
-            to the student notes catalog.
+
+            Try Writejot free for 14 days.
+            After your trial, continue your
+            access with a ₱100 subscription.
+
         </p>
 
 
         <div class="pricing">
 
             <h3>
-                Notes Catalog Access
+
+                Student Notes Access
+
             </h3>
 
 
             <div class="price">
+
                 ₱100
+
             </div>
 
 
             <div class="price-description">
-                subscription fee
+
+                after your 14-day free trial
+
             </div>
 
 
@@ -809,11 +1002,11 @@
                 </li>
 
                 <li>
-                    Private Google Drive access
+                    Google Drive notes access
                 </li>
 
                 <li>
-                    Ability to submit your own notes
+                    Submit your own notes
                 </li>
 
                 <li>
@@ -827,7 +1020,9 @@
                 href="#login"
                 class="button primary"
             >
-                Request Access
+
+                Start Free Trial
+
             </a>
 
         </div>
@@ -836,9 +1031,9 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================
          LOGIN
-    ========================= -->
+    ===================================== -->
 
     <section
         class="section"
@@ -846,67 +1041,210 @@
     >
 
         <h2 class="section-title">
+
             Student Login
+
         </h2>
+
 
         <p class="section-description">
 
-            Sign in using your Google account.
-            Your account must be approved before
-            you can access the notes catalog.
+            Sign in with Google to create
+            your Writejot account.
 
         </p>
 
 
         <div class="login-card">
 
-            <h2>
-                Sign in to Writejot
-            </h2>
 
-            <p>
-                Use the Google account that you want
-                associated with your Writejot access.
-            </p>
+            <!-- ===============================
+                 LOGGED OUT VIEW
+            ================================ -->
+
+            <div id="loggedOutView">
+
+                <h2>
+
+                    Sign in to Writejot
+
+                </h2>
 
 
-            <!-- GOOGLE SIGN-IN -->
+                <p>
 
-            <div class="google-login">
+                    Use the Google account you
+                    want associated with your
+                    Writejot account.
 
-                <div
-                    id="g_id_onload"
-                    data-client_id="148780152741-7bsouicsp37po7o79ov66pofji4ksvhc.apps.googleusercontent.com"
-                    data-callback="handleCredentialResponse"
-                >
+                </p>
+
+
+                <div class="google-login">
+
+
+                    <!-- YOUR GOOGLE CLIENT ID -->
+
+                    <div
+                        id="g_id_onload"
+
+                        data-client_id="148780152741-7bsouicsp37po7o79ov66pofji4ksvhc.apps.googleusercontent.com"
+
+                        data-callback="handleCredentialResponse"
+
+                        data-auto_prompt="false">
+                    </div>
+
+
+                    <div
+                        class="g_id_signin"
+
+                        data-type="standard"
+
+                        data-size="large"
+
+                        data-theme="outline"
+
+                        data-text="signin_with"
+
+                        data-shape="rectangular">
+                    </div>
+
+
                 </div>
 
 
-                <div
-                    class="g_id_signin"
-                    data-type="standard"
-                    data-size="large"
-                    data-theme="outline"
-                    data-text="signin_with"
-                    data-shape="rectangular"
-                >
+                <div class="account-status">
+
+                    <strong>
+
+                        New to Writejot?
+
+                    </strong>
+
+
+                    <p>
+
+                        Sign in with Google to
+                        create your account.
+
+                    </p>
+
                 </div>
 
             </div>
 
 
-            <div class="status-box">
 
-                <strong>
-                    New subscriber?
-                </strong>
+            <!-- ===============================
+                 LOGGED IN VIEW
+            ================================ -->
 
-                <br>
+            <div
+                id="loggedInView"
+                style="display: none;"
+            >
 
-                Pay ₱100 in person first,
-                then sign in using your Google account.
+
+                <img
+                    id="profilePicture"
+
+                    class="profile-picture"
+
+                    src=""
+
+                    alt="Google profile picture"
+                >
+
+
+                <h2 id="profileName">
+
+                    Welcome!
+
+                </h2>
+
+
+                <p id="profileEmail">
+
+                </p>
+
+
+
+                <div class="account-status">
+
+                    <strong>
+
+                        ✓ You're signed in
+
+                    </strong>
+
+
+                    <p id="accountStatus">
+
+                        Your Google account is
+                        connected to Writejot.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- 14-DAY FREE TRIAL -->
+
+                <div class="trial-box">
+
+                    <h3>
+
+                        🎓 14-Day Free Trial
+
+                    </h3>
+
+
+                    <p>
+
+                        Try Writejot for 14 days
+                        and explore the student
+                        notes catalog.
+
+                    </p>
+
+
+                    <button
+                        id="trialButton"
+
+                        class="button primary"
+
+                        onclick="startTrial()"
+                    >
+
+                        Start 14-Day Free Trial
+
+                    </button>
+
+
+                    <p
+                        id="trialMessage"
+                        style="display: none;"
+                    >
+                    </p>
+
+                </div>
+
+
+
+                <button
+                    class="button secondary"
+
+                    onclick="logout()"
+                >
+
+                    Log Out
+
+                </button>
 
             </div>
+
 
         </div>
 
@@ -914,36 +1252,42 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================
          NOTES CATALOG
-    ========================= -->
+    ===================================== -->
 
     <section class="section">
 
         <div class="catalog">
 
             <h2>
-                📚 Notes Catalog
+
+                📚 Writejot Notes Catalog
+
             </h2>
+
 
             <p>
 
-                The catalog is stored in a private
-                Google Drive folder.
-
-                Only approved accounts should
-                receive access.
+                The notes catalog contains
+                study materials shared by
+                other students.
 
             </p>
 
 
             <a
                 href="https://drive.google.com/drive/folders/1WG2yudtLWWiCdJ_6HlOrcxPB1vXrpD9y?usp=sharing"
+
                 target="_blank"
+
                 rel="noopener noreferrer"
+
                 class="button catalog-button"
             >
+
                 Open Notes Catalog
+
             </a>
 
         </div>
@@ -952,9 +1296,9 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================
          SUBMIT NOTES
-    ========================= -->
+    ===================================== -->
 
     <section
         class="section"
@@ -964,23 +1308,29 @@
         <div class="submit-card">
 
             <h2>
+
                 📝 Share Your Notes
+
             </h2>
 
 
             <p>
 
-                Have notes that could help other students?
+                Have notes that could help
+                other students?
 
-                Submit them to Writejot and they will
-                go through a review process before
-                being added to the catalog.
+                Submit them to Writejot.
+                Every submission is manually
+                reviewed before being added
+                to the catalog.
 
             </p>
 
 
             <h3>
+
                 Review Process
+
             </h3>
 
 
@@ -991,11 +1341,13 @@
                 </li>
 
                 <li>
-                    Writejot receives your submission.
+                    Writejot receives your
+                    submission.
                 </li>
 
                 <li>
-                    The notes are manually reviewed.
+                    The notes are manually
+                    reviewed.
                 </li>
 
                 <li>
@@ -1003,7 +1355,8 @@
                 </li>
 
                 <li>
-                    Approved notes are added to the catalog.
+                    Approved notes are added
+                    to the catalog.
                 </li>
 
             </ol>
@@ -1011,11 +1364,16 @@
 
             <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdp5M_YiW2cUsR2Sy-rPl6u2FGHeaLWzxhDl5zunMT6cq8y1w/viewform?usp=dialog"
+
                 target="_blank"
+
                 rel="noopener noreferrer"
+
                 class="button primary"
             >
+
                 Submit Your Notes
+
             </a>
 
         </div>
@@ -1024,36 +1382,40 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================
          ACCESS INFORMATION
-    ========================= -->
+    ===================================== -->
 
     <section class="section">
 
         <div class="access-box">
 
             <h2>
-                Already Paid ₱100?
+
+                Already a Writejot Member?
+
             </h2>
 
 
             <p>
 
-                Sign in using your Google account
-                and request access.
+                Sign in with your Google account
+                to access your Writejot account.
 
-                Your payment will be manually
-                verified before your account
-                receives catalog access.
+                New users can start a 14-day
+                free trial.
 
             </p>
 
 
             <a
                 href="#login"
+
                 class="button primary"
             >
+
                 Sign In
+
             </a>
 
         </div>
@@ -1062,46 +1424,528 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================
          FOOTER
-    ========================= -->
+    ===================================== -->
 
     <footer>
 
         <p>
-            <strong>Writejot</strong>
+
+            <strong>
+                Writejot
+            </strong>
+
         </p>
 
+
         <p>
+
             Student-powered notes sharing.
+
         </p>
 
+
         <p>
-           Founded by Rick Aldrei A. Velilla
-        </p>
-        <p>
-             © 2026 Writejot
+
+            © 2026 Writejot
+
         </p>
 
     </footer>
 
 
 
-    <!-- =========================
+    <!-- =====================================
          JAVASCRIPT
-    ========================= -->
+    ===================================== -->
 
     <script>
 
+
+        /* =====================================
+           GOOGLE LOGIN
+        ===================================== */
+
         function handleCredentialResponse(response) {
 
-            console.log("Google login successful!");
+            console.log(
+                "Google login successful!"
+            );
 
-            console.log(response.credential);
 
-            alert("Google login successful!");
+            const data =
+                parseJwt(
+                    response.credential
+                );
+
+
+            const user = {
+
+                name:
+                    data.name,
+
+                email:
+                    data.email,
+
+                picture:
+                    data.picture,
+
+                googleId:
+                    data.sub
+
+            };
+
+
+            localStorage.setItem(
+
+                "writejotUser",
+
+                JSON.stringify(user)
+
+            );
+
+
+            showLoggedInUser(user);
 
         }
+
+
+
+        /* =====================================
+           DECODE GOOGLE CREDENTIAL
+        ===================================== */
+
+        function parseJwt(token) {
+
+            const base64Url =
+                token.split('.')[1];
+
+
+            const base64 =
+                base64Url
+                    .replace(/-/g, '+')
+                    .replace(/_/g, '/');
+
+
+            const jsonPayload =
+                decodeURIComponent(
+
+                    window
+                        .atob(base64)
+                        .split('')
+                        .map(
+                            function(c) {
+
+                                return '%'
+                                    +
+                                    (
+                                        '00'
+                                        +
+                                        c
+                                            .charCodeAt(0)
+                                            .toString(16)
+                                    )
+                                    .slice(-2);
+
+                            }
+                        )
+                        .join('')
+
+                );
+
+
+            return JSON.parse(
+                jsonPayload
+            );
+
+        }
+
+
+
+        /* =====================================
+           SHOW LOGGED-IN USER
+        ===================================== */
+
+        function showLoggedInUser(user) {
+
+
+            document.getElementById(
+                "loggedOutView"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "loggedInView"
+            ).style.display =
+                "block";
+
+
+            document.getElementById(
+                "profileName"
+            ).textContent =
+                "Welcome, " + user.name + "!";
+
+
+            document.getElementById(
+                "profileEmail"
+            ).textContent =
+                user.email;
+
+
+            document.getElementById(
+                "profilePicture"
+            ).src =
+                user.picture;
+
+
+            document.getElementById(
+                "accountStatus"
+            ).textContent =
+                "Your Google account is connected to Writejot.";
+
+
+            checkExistingTrial();
+
+        }
+
+
+
+        /* =====================================
+           LOGOUT
+        ===================================== */
+
+        function logout() {
+
+
+            localStorage.removeItem(
+                "writejotUser"
+            );
+
+
+            localStorage.removeItem(
+                "writejotTrial"
+            );
+
+
+            document.getElementById(
+                "loggedInView"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "loggedOutView"
+            ).style.display =
+                "block";
+
+
+            document.getElementById(
+                "profilePicture"
+            ).src =
+                "";
+
+
+            document.getElementById(
+                "trialButton"
+            ).style.display =
+                "inline-block";
+
+
+            document.getElementById(
+                "trialMessage"
+            ).style.display =
+                "none";
+
+        }
+
+
+
+        /* =====================================
+           START 14-DAY TRIAL
+        ===================================== */
+
+        function startTrial() {
+
+
+            const savedUser =
+                localStorage.getItem(
+                    "writejotUser"
+                );
+
+
+            if (!savedUser) {
+
+                alert(
+                    "Please sign in first."
+                );
+
+                return;
+
+            }
+
+
+            const user =
+                JSON.parse(
+                    savedUser
+                );
+
+
+            const existingTrial =
+                localStorage.getItem(
+                    "writejotTrial"
+                );
+
+
+            if (existingTrial) {
+
+                alert(
+                    "You have already started a Writejot trial."
+                );
+
+                return;
+
+            }
+
+
+            const trialStart =
+                new Date();
+
+
+            const trialEnd =
+                new Date(
+                    trialStart
+                );
+
+
+            trialEnd.setDate(
+
+                trialEnd.getDate()
+                + 14
+
+            );
+
+
+            const trial = {
+
+                email:
+                    user.email,
+
+                startDate:
+                    trialStart.toISOString(),
+
+                endDate:
+                    trialEnd.toISOString(),
+
+                status:
+                    "trial"
+
+            };
+
+
+            localStorage.setItem(
+
+                "writejotTrial",
+
+                JSON.stringify(trial)
+
+            );
+
+
+            document.getElementById(
+                "trialButton"
+            ).style.display =
+                "none";
+
+
+            const message =
+                document.getElementById(
+                    "trialMessage"
+                );
+
+
+            message.style.display =
+                "block";
+
+
+            message.innerHTML =
+
+                "✓ Your 14-day trial has started!<br>" +
+
+                "Trial ends on " +
+
+                trialEnd.toLocaleDateString();
+
+        }
+
+
+
+        /* =====================================
+           CHECK EXISTING TRIAL
+        ===================================== */
+
+        function checkExistingTrial() {
+
+
+            const trialData =
+                localStorage.getItem(
+                    "writejotTrial"
+                );
+
+
+            if (!trialData) {
+
+                return;
+
+            }
+
+
+            const trial =
+                JSON.parse(
+                    trialData
+                );
+
+
+            const now =
+                new Date();
+
+
+            const trialEnd =
+                new Date(
+                    trial.endDate
+                );
+
+
+            const savedUser =
+                localStorage.getItem(
+                    "writejotUser"
+                );
+
+
+            if (!savedUser) {
+
+                return;
+
+            }
+
+
+            const user =
+                JSON.parse(
+                    savedUser
+                );
+
+
+            if (
+                trial.email !==
+                user.email
+            ) {
+
+                return;
+
+            }
+
+
+            if (now < trialEnd) {
+
+
+                document.getElementById(
+                    "trialButton"
+                ).style.display =
+                    "none";
+
+
+                const message =
+                    document.getElementById(
+                        "trialMessage"
+                    );
+
+
+                message.style.display =
+                    "block";
+
+
+                message.innerHTML =
+
+                    "✓ Your free trial is active.<br>" +
+
+                    "Trial ends on " +
+
+                    trialEnd.toLocaleDateString();
+
+            }
+
+
+            else {
+
+
+                document.getElementById(
+                    "trialButton"
+                ).style.display =
+                    "none";
+
+
+                const message =
+                    document.getElementById(
+                        "trialMessage"
+                    );
+
+
+                message.style.display =
+                    "block";
+
+
+                message.style.color =
+                    "#b91c1c";
+
+
+                message.innerHTML =
+
+                    "Your 14-day free trial has ended. " +
+
+                    "Please subscribe for ₱100 to continue.";
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           CHECK LOGIN WHEN PAGE LOADS
+        ===================================== */
+
+        window.addEventListener(
+
+            "DOMContentLoaded",
+
+            function() {
+
+
+                const savedUser =
+                    localStorage.getItem(
+                        "writejotUser"
+                    );
+
+
+                if (savedUser) {
+
+
+                    const user =
+                        JSON.parse(
+                            savedUser
+                        );
+
+
+                    showLoggedInUser(
+                        user
+                    );
+
+                }
+
+            }
+
+        );
 
     </script>
 
