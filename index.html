@@ -1210,6 +1210,7 @@
                  */
 
                 showLoggedInUser(user);
+                checkCatalogAccess(user.email);
 
 
                 /*
@@ -1700,9 +1701,72 @@
 
             }
         );
+async function checkCatalogAccess(email) {
 
+    try {
+
+        const response = await fetch(
+            APPS_SCRIPT_URL +
+            "?email=" +
+            encodeURIComponent(email)
+        );
+
+        const result = await response.json();
+
+        console.log("Catalog access:", result);
+
+        const catalogButton =
+            document.getElementById("catalogButton");
+
+        const accessMessage =
+            document.getElementById("catalogAccessMessage");
+
+        if (result.success && result.access) {
+
+            catalogButton.style.display = "inline-block";
+
+            accessMessage.textContent =
+                "✓ Your subscription is active. You have access to the notes catalog.";
+
+        } else {
+
+            catalogButton.style.display = "none";
+
+            accessMessage.textContent =
+                "Your account does not currently have access to the notes catalog.";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Could not check catalog access:",
+            error
+        );
+
+    }
+
+}
     </script>
+<div class="catalog">
 
+    <h2>📚 Writejot Notes Catalog</h2>
+
+    <p id="catalogAccessMessage">
+        Sign in to check your catalog access.
+    </p>
+
+    <a
+        id="catalogButton"
+        href="https://drive.google.com/drive/folders/1WG2yudtLWWiCdJ_6HlOrcxPB1vXrpD9y"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="display: none;"
+    >
+        Open Notes Catalog
+    </a>
+
+</div>
 
 </body>
 
