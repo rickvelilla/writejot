@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Writejot - Notes Catalog</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        /* HEADER */
+
+        header {
+            background: white;
+            border-bottom: 1px solid #ddd;
+            padding: 15px 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .back-button {
+            text-decoration: none;
+            color: #4285F4;
+            font-weight: bold;
+        }
+
+
+        /* MAIN */
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title h1 {
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: #666;
+        }
+
+
+        /* SEARCH */
+
+        .search-box {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* SUBJECTS */
+
+        .subject {
+            margin-bottom: 35px;
+        }
+
+        .subject h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+        }
+
+
+        /* NOTES */
+
+        .notes-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(240px, 1fr));
+
+            gap: 20px;
+        }
+
+        .note-card {
+            background: white;
+
+            border: 1px solid #ddd;
+            border-radius: 10px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .note-card h3 {
+            margin-top: 0;
+        }
+
+        .note-card p {
+            color: #666;
+        }
+
+        .note-button {
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding: 9px 15px;
+
+            background: #4285F4;
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+
+            padding: 30px;
+
+            margin-top: 50px;
+
+            color: #777;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        Writejot
+    </div>
+
+    <a
+        class="back-button"
+        href="index.html"
+    >
+        ← Back to Home
+    </a>
+
+</header>
+
+
+<main class="container">
+
+
+    <div class="title">
+
+        <h1>📚 Notes Catalog</h1>
+
+        <p>
+            Study notes shared by Writejot students.
+        </p>
+
+    </div>
+
+
+    <input
+        type="text"
+        id="search"
+        class="search-box"
+        placeholder="Search notes..."
+        onkeyup="searchNotes()"
+    >
+
+
+    <!-- MATHEMATICS -->
+
+    <section class="subject">
+
+        <h2>Mathematics</h2>
+
+        <div class="notes-grid">
+
+
+            <div
+                class="note-card"
+                data-name="algebra"
+            >
+
+                <h3>Algebra Notes</h3>
+
+                <p>
+                    Algebra study notes and formulas.
+                </p>
+
+                <a
+                    class="note-button"
+                    href="#"
+                >
+                    View Notes
+                </a>
+
+            </div>
+
+
+            <div
+                class="note-card"
+                data-name="geometry"
+            >
+
+                <h3>Geometry Notes</h3>
+
+                <p>
+                    Geometry concepts and examples.
+                </p>
+
+                <a
+                    class="note-button"
+                    href="#"
+                >
+                    View Notes
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SCIENCE -->
+
+    <section class="subject">
+
+        <h2>Science</h2>
+
+        <div class="notes-grid">
+
+
+            <div
+                class="note-card"
+                data-name="biology"
+            >
+
+                <h3>Biology Notes</h3>
+
+                <p>
+                    Biology concepts and study materials.
+                </p>
+
+                <a
+                    class="note-button"
+                    href="#"
+                >
+                    View Notes
+                </a>
+
+            </div>
+
+
+            <div
+                class="note-card"
+                data-name="chemistry"
+            >
+
+                <h3>Chemistry Notes</h3>
+
+                <p>
+                    Chemistry formulas and concepts.
+                </p>
+
+                <a
+                    class="note-button"
+                    href="#"
+                >
+                    View Notes
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    Founded by Rick Aldrei A. Velilla
+
+</footer>
+
+
+
+<script>
+
+function searchNotes() {
+
+    const search =
+        document
+            .getElementById("search")
+            .value
+            .toLowerCase();
+
+
+    const notes =
+        document
+            .querySelectorAll(".note-card");
+
+
+    notes.forEach(function(note) {
+
+        const name =
+            note
+                .getAttribute("data-name")
+                .toLowerCase();
+
+
+        if (name.includes(search)) {
+
+            note.style.display =
+                "block";
+
+        }
+
+        else {
+
+            note.style.display =
+                "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>
