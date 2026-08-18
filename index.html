@@ -8,9 +8,9 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Writejot</title>
+    <title>Writejot - Student Notes</title>
 
-    <!-- Google Identity Services -->
+    <!-- Google Sign-In -->
     <script
         src="https://accounts.google.com/gsi/client"
         async
@@ -33,74 +33,103 @@
                 Helvetica,
                 sans-serif;
 
-            background: #f5f7fb;
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5f7fb,
+                    #eef4ff
+                );
 
-            color: #1f2937;
+            color: #222;
+
+            min-height: 100vh;
         }
 
 
-        /* =========================
+        /* =================================
            HEADER
-        ========================= */
+        ================================= */
 
         header {
+
             background: white;
 
             border-bottom:
-                1px solid #ddd;
+                1px solid #e5e7eb;
 
             padding:
-                15px 7%;
+                14px 7%;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            box-shadow:
+                0 2px 8px
+                rgba(0,0,0,0.04);
+
+        }
+
+
+        .brand {
 
             display: flex;
 
             align-items: center;
 
-            justify-content: space-between;
+            gap: 12px;
 
-            gap: 20px;
         }
 
 
-        .header-left {
-            display: flex;
+        .brand img {
 
-            align-items: center;
+            width: 52px;
 
-            gap: 15px;
-        }
-
-
-        .header-left img {
-            width: 60px;
-
-            height: 60px;
+            height: 52px;
 
             object-fit: contain;
+
         }
 
 
-        .header-left h1 {
-            margin: 0;
+        .brand-name {
 
-            font-size: 26px;
+            font-size: 24px;
+
+            font-weight: 700;
+
+            letter-spacing: -0.5px;
+
         }
 
 
-        /* =========================
+        /* =================================
            PROFILE
-        ========================= */
+        ================================= */
 
         #profileArea {
+
             display: none;
 
             align-items: center;
 
             gap: 10px;
+
         }
 
 
         #profilePicture {
+
             width: 42px;
 
             height: 42px;
@@ -108,102 +137,172 @@
             border-radius: 50%;
 
             object-fit: cover;
+
+            border:
+                2px solid #4285F4;
+
         }
 
 
         #profileName {
-            font-weight: bold;
+
+            font-weight: 600;
+
         }
 
 
         #logoutButton {
+
             border: none;
 
             background: #ef4444;
 
             color: white;
 
-            padding: 8px 12px;
+            padding:
+                8px 13px;
 
-            border-radius: 6px;
+            border-radius: 7px;
 
             cursor: pointer;
+
+            font-weight: 600;
+
         }
 
 
         #logoutButton:hover {
+
             background: #dc2626;
+
         }
 
 
-        /* =========================
-           WELCOME
-        ========================= */
+        /* =================================
+           HERO
+        ================================= */
 
-        .welcome {
-            text-align: center;
+        .hero {
 
-            padding:
-                70px 20px 50px;
-        }
-
-
-        .welcome h1 {
-            font-size: 42px;
-
-            margin-bottom: 10px;
-        }
-
-
-        .welcome h2 {
-            font-weight: normal;
-
-            color: #555;
-
-            margin-top: 0;
-        }
-
-
-        .welcome p {
-            max-width: 700px;
+            max-width: 900px;
 
             margin:
-                20px auto;
+                0 auto;
+
+            padding:
+                75px 20px 60px;
+
+            text-align: center;
+
+        }
+
+
+        .hero-badge {
+
+            display: inline-block;
+
+            background: #e8f0fe;
+
+            color: #2563eb;
+
+            padding:
+                7px 14px;
+
+            border-radius: 50px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .hero h1 {
+
+            font-size:
+                clamp(36px, 7vw, 62px);
+
+            line-height: 1.05;
+
+            margin:
+                0 0 18px;
+
+            letter-spacing: -2px;
+
+        }
+
+
+        .hero h1 span {
+
+            color: #4285F4;
+
+        }
+
+
+        .hero-subtitle {
+
+            font-size: 19px;
 
             line-height: 1.6;
 
             color: #666;
+
+            max-width: 680px;
+
+            margin:
+                0 auto 30px;
+
         }
 
 
-        /* =========================
-           BUTTONS
-        ========================= */
+        .founder {
 
-        .buttons {
+            color: #777;
+
+            font-size: 14px;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        /* =================================
+           BUTTONS
+        ================================= */
+
+        .button-row {
+
             display: flex;
 
             justify-content: center;
 
             align-items: center;
 
+            gap: 14px;
+
             flex-wrap: wrap;
 
-            gap: 15px;
-
-            margin-top: 30px;
         }
 
 
         .button {
-            display: inline-block;
+
+            display: inline-flex;
+
+            justify-content: center;
+
+            align-items: center;
 
             padding:
-                12px 20px;
+                13px 21px;
 
-            border-radius: 7px;
+            border-radius: 8px;
 
             text-decoration: none;
+
+            font-weight: 600;
 
             border: none;
 
@@ -211,295 +310,509 @@
 
             font-size: 15px;
 
-            font-weight: bold;
+            transition:
+                transform 0.15s,
+                box-shadow 0.15s,
+                background 0.15s;
+
+        }
+
+
+        .button:hover {
+
+            transform:
+                translateY(-1px);
+
         }
 
 
         .primary {
-            background: #2563eb;
+
+            background: #4285F4;
 
             color: white;
+
+            box-shadow:
+                0 4px 12px
+                rgba(66,133,244,0.25);
+
         }
 
 
         .primary:hover {
-            background: #1d4ed8;
+
+            background: #3367d6;
+
         }
 
 
         .secondary {
+
             background: white;
 
-            color: #2563eb;
+            color: #4285F4;
 
             border:
-                1px solid #2563eb;
+                1px solid #4285F4;
+
         }
 
 
         .secondary:hover {
-            background: #eff6ff;
+
+            background: #f3f7ff;
+
         }
 
 
-        /* =========================
+        /* =================================
            LOGIN
-        ========================= */
+        ================================= */
 
         #loginSection {
-            text-align: center;
 
-            margin-top: 20px;
+            margin-top: 45px;
+
+            padding-top: 30px;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        #loginSection h3 {
+
+            margin:
+                0 0 8px;
+
+            font-size: 19px;
+
+        }
+
+
+        #loginSection p {
+
+            color: #777;
+
+            margin:
+                0 0 20px;
+
         }
 
 
         #googleLogin {
+
             display: flex;
 
             justify-content: center;
 
             align-items: center;
+
+            min-height: 44px;
+
         }
 
 
-        #loginMessage {
-            margin-top: 12px;
-
-            color: #777;
-        }
-
-
-        /* =========================
-           LOGGED-IN CONTENT
-        ========================= */
+        /* =================================
+           MEMBER CONTENT
+        ================================= */
 
         #memberContent {
+
             display: none;
 
-            max-width: 1000px;
+            max-width: 1050px;
 
             margin:
-                0 auto 50px;
+                0 auto 60px;
 
             padding:
                 0 20px;
+
+        }
+
+
+        .welcome-back {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .welcome-back h2 {
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .welcome-back p {
+
+            color: #666;
+
+        }
+
+
+        .cards {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 20px;
+
         }
 
 
         .card {
+
             background: white;
 
             border:
-                1px solid #ddd;
+                1px solid #e1e5eb;
 
-            border-radius: 12px;
+            border-radius: 14px;
 
-            padding: 25px;
-
-            margin-bottom: 20px;
+            padding: 28px;
 
             box-shadow:
-                0 2px 7px
-                rgba(0, 0, 0, 0.04);
+                0 4px 15px
+                rgba(0,0,0,0.04);
+
         }
 
 
-        .card h2 {
-            margin-top: 0;
+        .card-icon {
+
+            font-size: 32px;
+
+            margin-bottom: 12px;
+
         }
 
 
-        /* =========================
-           CATALOG CARD
-        ========================= */
+        .card h3 {
 
-        .catalog-card {
-            text-align: center;
+            margin:
+                0 0 10px;
+
+            font-size: 21px;
+
         }
 
 
-        .catalog-card p {
+        .card p {
+
             color: #666;
 
             line-height: 1.6;
+
         }
 
 
-        /* =========================
+        /* =================================
            TRIAL
-        ========================= */
+        ================================= */
 
-        .trial-card {
-            background: #eff6ff;
+        .trial {
+
+            margin-top: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #f8fbff
+                );
 
             border:
                 1px solid #bfdbfe;
+
+        }
+
+
+        .trial h3 {
+
+            color: #2563eb;
+
         }
 
 
         #trialMessage {
-            margin: 0;
 
-            line-height: 1.6;
+            margin-bottom: 0;
+
         }
 
 
-        /* =========================
+        /* =================================
            ABOUT
-        ========================= */
+        ================================= */
 
         .about {
-            max-width: 1000px;
+
+            max-width: 1050px;
 
             margin:
-                20px auto 50px;
+                0 auto 60px;
 
             padding:
                 0 20px;
+
         }
 
 
         .about-card {
+
             background: white;
 
             border:
-                1px solid #ddd;
+                1px solid #e1e5eb;
 
-            border-radius: 12px;
+            border-radius: 14px;
 
-            padding: 30px;
+            padding: 32px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0,0,0,0.04);
+
         }
 
 
         .about-card h2 {
+
             margin-top: 0;
+
         }
 
 
-        .about-card li {
-            margin-bottom: 12px;
+        .about-card p {
 
-            line-height: 1.5;
+            color: #666;
+
+            line-height: 1.7;
+
         }
 
 
-        /* =========================
+        .about-card ul {
+
+            padding-left: 22px;
+
+            color: #555;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =================================
            PRICING
-        ========================= */
+        ================================= */
 
         .pricing {
-            max-width: 1000px;
+
+            max-width: 650px;
 
             margin:
-                0 auto 50px;
+                0 auto 70px;
 
             padding:
                 0 20px;
+
         }
 
 
         .pricing-card {
+
             background: white;
 
             border:
-                1px solid #ddd;
+                1px solid #e1e5eb;
 
-            border-radius: 12px;
+            border-radius: 16px;
 
-            padding: 30px;
+            padding: 35px;
 
             text-align: center;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.05);
+
+        }
+
+
+        .pricing-card h2 {
+
+            margin-top: 0;
+
         }
 
 
         .price {
-            font-size: 38px;
 
-            font-weight: bold;
+            font-size: 48px;
 
-            color: #2563eb;
+            font-weight: 700;
 
-            margin: 10px 0 20px;
+            color: #4285F4;
+
+            margin:
+                12px 0;
+
+        }
+
+
+        .price-label {
+
+            color: #777;
+
+            margin-bottom: 25px;
+
         }
 
 
         .pricing-card ul {
+
             text-align: left;
 
-            max-width: 500px;
+            max-width: 450px;
 
             margin:
                 0 auto 25px;
 
-            line-height: 1.8;
+            line-height: 1.9;
+
+            color: #555;
+
         }
 
 
-        /* =========================
+        /* =================================
            FOOTER
-        ========================= */
+        ================================= */
 
         footer {
-            text-align: center;
-
-            padding: 30px;
-
-            margin-top: 50px;
 
             background: white;
 
             border-top:
-                1px solid #ddd;
+                1px solid #e5e7eb;
+
+            text-align: center;
+
+            padding:
+                30px 20px;
 
             color: #777;
+
+            line-height: 1.6;
+
         }
 
 
-        /* =========================
-           MOBILE
-        ========================= */
+        footer strong {
 
-        @media (max-width: 700px) {
+            color: #444;
+
+        }
+
+
+        /* =================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 650px) {
 
             header {
+
                 padding:
-                    12px 20px;
+                    12px 18px;
+
             }
 
 
-            .header-left h1 {
+            .brand img {
+
+                width: 43px;
+
+                height: 43px;
+
+            }
+
+
+            .brand-name {
+
                 font-size: 21px;
-            }
 
-
-            .header-left img {
-                width: 45px;
-
-                height: 45px;
             }
 
 
             #profileName {
+
                 display: none;
+
             }
 
 
-            .welcome h1 {
-                font-size: 32px;
+            .hero {
+
+                padding-top: 55px;
+
             }
 
 
-            .buttons {
-                flex-direction: column;
+            .hero h1 {
+
+                letter-spacing: -1px;
+
+            }
+
+
+            .hero-subtitle {
+
+                font-size: 17px;
+
             }
 
 
             .button {
+
                 width: 100%;
 
                 max-width: 300px;
 
-                text-align: center;
+            }
+
+
+            #loginSection {
+
+                margin-top: 35px;
+
+            }
+
+
+            .card {
+
+                padding: 23px;
+
             }
 
         }
@@ -509,42 +822,33 @@
 </head>
 
 
+
 <body>
 
 
-<!-- =========================
+<!-- =========================================
      HEADER
-========================= -->
+========================================= -->
 
 <header>
 
 
-    <div class="header-left">
+    <div class="brand">
 
         <img
             src="W.png"
             alt="Writejot logo"
         >
 
-        <h1>
+        <div class="brand-name">
             Writejot
-        </h1>
+        </div>
 
     </div>
 
 
 
-    <!-- LOGIN BUTTON -->
-
-    <div id="loginArea">
-
-        <div id="googleLogin"></div>
-
-    </div>
-
-
-
-    <!-- PROFILE -->
+    <!-- PROFILE AFTER LOGIN -->
 
     <div id="profileArea">
 
@@ -570,44 +874,86 @@
 
 
 
-<!-- =========================
-     WELCOME
-========================= -->
+<!-- =========================================
+     HERO / HOME
+========================================= -->
 
-<section class="welcome">
+<section class="hero">
+
+
+    <div class="hero-badge">
+        📚 Student Notes Platform
+    </div>
 
 
     <h1>
-        Welcome to Writejot
+        Learn more.
+        <span>Share more.</span>
     </h1>
 
 
-    <h2>
-        Founded by Rick Aldrei A. Velilla
-    </h2>
-
-
-    <p>
+    <p class="hero-subtitle">
 
         Writejot is a student-focused platform
-        where students can discover, share,
-        and access useful study notes.
+        where students can discover useful notes,
+        share their own study materials, and
+        help each other learn.
 
     </p>
 
 
-    <!-- LOGIN -->
+    <p class="founder">
+
+        Founded by Rick Aldrei A. Velilla
+
+    </p>
+
+
+
+    <!-- MAIN BUTTONS -->
+
+    <div class="button-row">
+
+
+        <a
+            href="catalog.html"
+            class="button primary"
+        >
+            📚 Open Notes Catalog
+        </a>
+
+
+        <a
+            href="#about"
+            class="button secondary"
+        >
+            Learn More
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =====================================
+         CENTERED GOOGLE LOGIN
+    ====================================== -->
 
     <div id="loginSection">
 
-        <div id="googleLoginMain"></div>
 
-        <p id="loginMessage">
+        <h3>
+            Ready to get started?
+        </h3>
 
-            Sign in with Google to access
-            your Writejot account.
 
+        <p>
+            Sign in with your Google account.
         </p>
+
+
+        <div id="googleLogin"></div>
+
 
     </div>
 
@@ -616,33 +962,54 @@
 
 
 
-<!-- =========================
-     MEMBER CONTENT
-========================= -->
+<!-- =========================================
+     LOGGED-IN MEMBER AREA
+========================================= -->
 
 <section id="memberContent">
 
 
-    <!-- CATALOG -->
-
-    <div class="card catalog-card">
+    <div class="welcome-back">
 
 
         <h2>
-            📚 Notes Catalog
+            Welcome back! 👋
         </h2>
 
 
         <p>
-
-            Access the Writejot catalog containing
-            notes and study materials shared by
-            other students.
-
+            Your Writejot account is ready.
         </p>
 
 
-        <div class="buttons">
+    </div>
+
+
+
+    <div class="cards">
+
+
+        <!-- CATALOG -->
+
+        <div class="card">
+
+
+            <div class="card-icon">
+                📚
+            </div>
+
+
+            <h3>
+                Notes Catalog
+            </h3>
+
+
+            <p>
+
+                Browse study notes shared
+                by other students.
+
+            </p>
 
 
             <a
@@ -650,7 +1017,7 @@
                 class="button primary"
             >
 
-                Open Notes Catalog
+                Open Catalog
 
             </a>
 
@@ -658,32 +1025,35 @@
         </div>
 
 
-    </div>
+
+        <!-- SHARE -->
+
+        <div class="card">
 
 
-
-    <!-- SHARE NOTES -->
-
-    <div class="card">
-
-
-        <h2>
-            📝 Share Your Notes
-        </h2>
+            <div class="card-icon">
+                📝
+            </div>
 
 
-        <p>
-
-            Have useful notes you'd like to share
-            with other students?
-
-            Submit them for review.
-
-        </p>
+            <h3>
+                Share Your Notes
+            </h3>
 
 
-        <div class="buttons">
+            <p>
 
+                Submit your own notes for
+                review. Approved notes can
+                become part of the catalog.
+
+            </p>
+
+
+            <!--
+                REPLACE THE URL BELOW
+                WITH YOUR ACTUAL GOOGLE FORM.
+            -->
 
             <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSf7mE5VxEXAMPLE/viewform"
@@ -692,20 +1062,12 @@
                 class="button secondary"
             >
 
-                Upload Your Notes
+                Submit Notes
 
             </a>
 
 
         </div>
-
-
-        <p>
-
-            Notes submitted through Writejot are
-            reviewed before being added to the catalog.
-
-        </p>
 
 
     </div>
@@ -714,20 +1076,23 @@
 
     <!-- TRIAL -->
 
-    <div class="card trial-card">
+    <div class="card trial">
 
 
-        <h2>
-            🎓 14-Day Free Trial
-        </h2>
+        <div class="card-icon">
+            🎓
+        </div>
+
+
+        <h3>
+            14-Day Free Trial
+        </h3>
 
 
         <p id="trialMessage">
 
-            Your account includes a 14-day free trial.
-
-            During the trial period, you can explore
-            Writejot and its available features.
+            Your Writejot account includes
+            a 14-day free trial.
 
         </p>
 
@@ -739,11 +1104,14 @@
 
 
 
-<!-- =========================
+<!-- =========================================
      ABOUT
-========================= -->
+========================================= -->
 
-<section class="about">
+<section
+    class="about"
+    id="about"
+>
 
 
     <div class="about-card">
@@ -754,41 +1122,41 @@
         </h2>
 
 
+        <p>
+
+            Writejot was created to make it easier
+            for students to find and share useful
+            study materials.
+
+        </p>
+
+
         <ul>
 
-
             <li>
-
-                Writejot was established in 2026
-                by Rick Aldrei A. Velilla.
-
+                Students can access a catalog
+                of study notes.
             </li>
 
-
             <li>
-
                 Students can submit their own
                 notes for review.
-
             </li>
-
 
             <li>
-
-                Submitted notes are reviewed before
-                they are added to the catalog.
-
+                Submitted notes are reviewed
+                before being added to the catalog.
             </li>
-
 
             <li>
-
-                Access to the notes catalog is
-                controlled through Writejot accounts
-                and subscription status.
-
+                Catalog access is controlled
+                through the student's account status.
             </li>
 
+            <li>
+                Subscription payment is currently
+                handled in person.
+            </li>
 
         </ul>
 
@@ -800,9 +1168,9 @@
 
 
 
-<!-- =========================
+<!-- =========================================
      PRICING
-========================= -->
+========================================= -->
 
 <section class="pricing">
 
@@ -820,43 +1188,35 @@
         </div>
 
 
-        <p>
-            Subscription fee
-        </p>
+        <div class="price-label">
+            Subscription
+        </div>
 
 
         <ul>
 
-
             <li>
-                Access to the Writejot notes catalog
+                Access to the notes catalog
             </li>
 
-
             <li>
-                Notes shared by other students
+                Study notes shared by students
             </li>
-
 
             <li>
                 Ability to submit your own notes
                 for review
             </li>
 
-
             <li>
-                Student-focused study resources
+                14-day free trial for new users
             </li>
-
 
         </ul>
 
 
         <p>
-
-            Payment is currently handled
-            in person.
-
+            Payment is currently handled in person.
         </p>
 
 
@@ -867,11 +1227,17 @@
 
 
 
-<!-- =========================
+<!-- =========================================
      FOOTER
-========================= -->
+========================================= -->
 
 <footer>
+
+    <strong>
+        Writejot
+    </strong>
+
+    <br>
 
     Founded by Rick Aldrei A. Velilla
 
@@ -879,34 +1245,34 @@
 
 
 
-<!-- =========================
-     GOOGLE LOGIN
-========================= -->
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
 
 <script>
 
 
-/* =====================================================
-   YOUR GOOGLE CLIENT ID
-===================================================== */
+/* =========================================
+   GOOGLE CLIENT ID
+========================================= */
 
 const GOOGLE_CLIENT_ID =
     "148780152741-7bsouicsp37po7o79ov66pofji4ksvhc.apps.googleusercontent.com";
 
 
 
-/* =====================================================
-   YOUR APPS SCRIPT URL
-===================================================== */
+/* =========================================
+   GOOGLE APPS SCRIPT URL
+========================================= */
 
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbwKK7HO-uWb_QmnPVqne1jhXYk5GlhfgqjiwwGGNYGqubJViyXywb8NUBIa6u2znP6F/exec";
 
 
 
-/* =====================================================
-   GOOGLE LOGIN INITIALIZATION
-===================================================== */
+/* =========================================
+   INITIALIZE GOOGLE LOGIN
+========================================= */
 
 window.onload = function() {
 
@@ -929,40 +1295,25 @@ window.onload = function() {
         ),
 
         {
+
             theme: "outline",
 
             size: "large",
 
             text: "signin_with",
 
-            shape: "rectangular"
-        }
+            shape: "rectangular",
 
-    );
+            width: 250
 
-
-    google.accounts.id.renderButton(
-
-        document.getElementById(
-            "googleLoginMain"
-        ),
-
-        {
-            theme: "outline",
-
-            size: "large",
-
-            text: "signin_with",
-
-            shape: "rectangular"
         }
 
     );
 
 
     /*
-     * Check whether the browser
-     * already has a logged-in user.
+     * Check if the user is already
+     * logged in on this browser.
      */
 
     const savedUser =
@@ -980,7 +1331,9 @@ window.onload = function() {
                     savedUser
                 );
 
-            showLoggedInUser(user);
+            showLoggedInUser(
+                user
+            );
 
         }
 
@@ -998,9 +1351,9 @@ window.onload = function() {
 
 
 
-/* =====================================================
+/* =========================================
    GOOGLE LOGIN RESPONSE
-===================================================== */
+========================================= */
 
 async function handleCredentialResponse(
     response
@@ -1009,10 +1362,6 @@ async function handleCredentialResponse(
 
     try {
 
-
-        /*
-         * Google sends a JWT credential.
-         */
 
         const data =
             parseJwt(
@@ -1038,29 +1387,33 @@ async function handleCredentialResponse(
 
 
         /*
-         * Save the logged-in user
-         * so catalog.html can recognize them.
+         * Save the user locally.
          */
 
         localStorage.setItem(
 
             "writejotUser",
 
-            JSON.stringify(user)
+            JSON.stringify(
+                user
+            )
 
         );
 
 
         /*
-         * Update the homepage.
+         * Change the page to
+         * logged-in mode.
          */
 
-        showLoggedInUser(user);
+        showLoggedInUser(
+            user
+        );
 
 
         /*
-         * Send the user information
-         * to your Google Sheet.
+         * Save the user to
+         * your Google Sheet.
          */
 
         await saveUserToDatabase(
@@ -1087,9 +1440,99 @@ async function handleCredentialResponse(
 
 
 
-/* =====================================================
-   SAVE USER TO GOOGLE SHEETS
-===================================================== */
+/* =========================================
+   SHOW LOGGED-IN USER
+========================================= */
+
+function showLoggedInUser(
+    user
+) {
+
+
+    /*
+     * Hide login section.
+     */
+
+    document
+        .getElementById(
+            "loginSection"
+        )
+        .style.display =
+        "none";
+
+
+    /*
+     * Show profile.
+     */
+
+    const profileArea =
+        document.getElementById(
+            "profileArea"
+        );
+
+
+    profileArea.style.display =
+        "flex";
+
+
+    /*
+     * Profile picture.
+     */
+
+    const profilePicture =
+        document.getElementById(
+            "profilePicture"
+        );
+
+
+    if (user.picture) {
+
+        profilePicture.src =
+            user.picture;
+
+    }
+
+
+    /*
+     * Profile name.
+     */
+
+    document
+        .getElementById(
+            "profileName"
+        )
+        .textContent =
+        user.name ||
+        user.email;
+
+
+    /*
+     * Show member area.
+     */
+
+    document
+        .getElementById(
+            "memberContent"
+        )
+        .style.display =
+        "block";
+
+
+    /*
+     * Get account/trial information.
+     */
+
+    updateTrialMessage(
+        user.email
+    );
+
+}
+
+
+
+/* =========================================
+   SAVE USER TO GOOGLE SHEET
+========================================= */
 
 async function saveUserToDatabase(
     user
@@ -1100,7 +1543,9 @@ async function saveUserToDatabase(
 
 
         await fetch(
+
             APPS_SCRIPT_URL,
+
             {
 
                 method: "POST",
@@ -1129,11 +1574,12 @@ async function saveUserToDatabase(
                     })
 
             }
+
         );
 
 
         console.log(
-            "User information sent to database."
+            "User sent to database."
         );
 
 
@@ -1152,119 +1598,13 @@ async function saveUserToDatabase(
 
 
 
-/* =====================================================
-   SHOW LOGGED-IN USER
-===================================================== */
-
-function showLoggedInUser(
-    user
-) {
-
-
-    /*
-     * Hide login buttons.
-     */
-
-    document
-        .getElementById(
-            "loginArea"
-        )
-        .style.display =
-        "none";
-
-
-    document
-        .getElementById(
-            "loginSection"
-        )
-        .style.display =
-        "none";
-
-
-    /*
-     * Show profile.
-     */
-
-    const profileArea =
-        document.getElementById(
-            "profileArea"
-        );
-
-
-    profileArea.style.display =
-        "flex";
-
-
-    /*
-     * Profile picture.
-     */
-
-    const picture =
-        document.getElementById(
-            "profilePicture"
-        );
-
-
-    if (user.picture) {
-
-        picture.src =
-            user.picture;
-
-    }
-
-
-    /*
-     * Profile name.
-     */
-
-    document
-        .getElementById(
-            "profileName"
-        )
-        .textContent =
-        user.name || user.email;
-
-
-    /*
-     * Show member content.
-     */
-
-    document
-        .getElementById(
-            "memberContent"
-        )
-        .style.display =
-        "block";
-
-
-    /*
-     * Update trial information.
-     */
-
-    updateTrialMessage(
-        user.email
-    );
-
-}
-
-
-
-/* =====================================================
-   TRIAL MESSAGE
-===================================================== */
+/* =========================================
+   GET ACCOUNT STATUS
+========================================= */
 
 async function updateTrialMessage(
     email
 ) {
-
-
-    /*
-     * The actual trial dates are stored
-     * in your Google Sheet.
-     *
-     * This function attempts to retrieve
-     * the account information.
-     */
 
 
     try {
@@ -1286,26 +1626,55 @@ async function updateTrialMessage(
             await response.json();
 
 
-        if (
-            result.success
-        ) {
+        console.log(
+            "Account information:",
+            result
+        );
 
-            const message =
-                document.getElementById(
-                    "trialMessage"
-                );
+
+        const message =
+            document.getElementById(
+                "trialMessage"
+            );
+
+
+        if (
+            result.success &&
+            result.status
+        ) {
 
 
             if (
                 result.status
+                    .toLowerCase() ===
+                "active"
             ) {
 
                 message.textContent =
-                    "Your current Writejot account status is: " +
+                    "Your Writejot account is Active. You can access the Notes Catalog.";
+
+            }
+
+            else if (
+                result.status
+                    .toLowerCase() ===
+                "trial"
+            ) {
+
+                message.textContent =
+                    "Your 14-day free trial is active.";
+
+            }
+
+            else {
+
+                message.textContent =
+                    "Your current account status is: " +
                     result.status +
                     ".";
 
             }
+
 
         }
 
@@ -1315,7 +1684,7 @@ async function updateTrialMessage(
     catch (error) {
 
         console.log(
-            "Could not retrieve trial information."
+            "Could not retrieve account status."
         );
 
     }
@@ -1324,15 +1693,15 @@ async function updateTrialMessage(
 
 
 
-/* =====================================================
+/* =========================================
    LOGOUT
-===================================================== */
+========================================= */
 
 function logout() {
 
 
     /*
-     * Remove saved login information.
+     * Remove saved user.
      */
 
     localStorage.removeItem(
@@ -1358,18 +1727,10 @@ function logout() {
 
     document
         .getElementById(
-            "loginArea"
-        )
-        .style.display =
-        "block";
-
-
-    document
-        .getElementById(
             "loginSection"
         )
         .style.display =
-        "block";
+        "flex";
 
 
     /*
@@ -1385,7 +1746,7 @@ function logout() {
 
 
     /*
-     * Clear profile information.
+     * Clear profile.
      */
 
     document
@@ -1403,14 +1764,13 @@ function logout() {
         .src =
         "";
 
-
 }
 
 
 
-/* =====================================================
-   DECODE GOOGLE JWT
-===================================================== */
+/* =========================================
+   DECODE GOOGLE LOGIN TOKEN
+========================================= */
 
 function parseJwt(
     token
@@ -1433,7 +1793,6 @@ function parseJwt(
             atob(base64)
                 .split("")
                 .map(
-
                     function(c) {
 
                         return "%" +
@@ -1445,7 +1804,6 @@ function parseJwt(
                             ).slice(-2);
 
                     }
-
                 )
                 .join("")
 
