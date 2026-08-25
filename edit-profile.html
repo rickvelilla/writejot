@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,143 +13,133 @@
 
     <title>Writejot | Edit Profile</title>
 
-
     <style>
 
         * {
-            box-sizing:
-                border-box;
+            box-sizing: border-box;
         }
 
-
         body {
-
-            margin:
-                0;
+            margin: 0;
 
             font-family:
                 Arial,
                 Helvetica,
                 sans-serif;
 
-            background:
-                #f6f8fc;
+            background: #f6f8fc;
 
-            color:
-                #1f2937;
-
+            color: #1f2937;
         }
 
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
-
-            background:
-                white;
+            background: white;
 
             border-bottom:
                 1px solid #e5e7eb;
 
             padding:
-                14px 6%;
+                12px 6%;
 
-            display:
-                flex;
+            display: flex;
+
+            align-items: center;
 
             justify-content:
                 space-between;
 
-            align-items:
-                center;
+            position: sticky;
 
+            top: 0;
+
+            z-index: 100;
         }
 
+        .brand {
+            display: flex;
 
-        .logo {
+            align-items: center;
 
-            font-size:
-                23px;
-
-            font-weight:
-                700;
-
+            gap: 10px;
         }
 
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 23px;
+            font-weight: 700;
+
+            color: #111827;
+        }
 
         .back {
+            color: #4285F4;
 
-            color:
-                #4285F4;
+            text-decoration: none;
 
-            text-decoration:
-                none;
-
-            font-weight:
-                600;
-
+            font-weight: 600;
         }
 
+        .back:hover {
+            color: #3367d6;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
 
         main {
-
-            max-width:
-                650px;
+            max-width: 650px;
 
             margin:
                 45px auto;
 
             padding:
                 0 20px;
-
         }
 
-
         .card {
-
-            background:
-                white;
+            background: white;
 
             border:
                 1px solid #e1e6ee;
 
-            border-radius:
-                16px;
+            border-radius: 16px;
 
-            padding:
-                30px;
+            padding: 30px;
 
             box-shadow:
                 0 5px 18px
                 rgba(0,0,0,0.04);
-
         }
-
 
         h1 {
-
-            margin-top:
-                0;
-
-            margin-bottom:
-                5px;
-
+            margin:
+                0 0 6px;
         }
-
 
         .intro {
-
-            color:
-                #718096;
+            color: #718096;
 
             margin-bottom:
-                25px;
-
+                28px;
         }
 
+        /* =========================
+           PROFILE PHOTO
+        ========================= */
 
         .preview {
-
-            display:
-                flex;
+            display: flex;
 
             flex-direction:
                 column;
@@ -157,24 +148,16 @@
                 center;
 
             margin-bottom:
-                25px;
-
+                28px;
         }
 
-
         #photoPreview {
+            width: 110px;
+            height: 110px;
 
-            width:
-                110px;
+            border-radius: 50%;
 
-            height:
-                110px;
-
-            border-radius:
-                50%;
-
-            object-fit:
-                cover;
+            object-fit: cover;
 
             border:
                 3px solid #4285F4;
@@ -183,26 +166,17 @@
                 #eef4ff;
 
             margin-bottom:
-                12px;
-
+                13px;
         }
-
 
         #photoInput {
-
-            display:
-                none;
-
+            display: none;
         }
 
-
         .upload-button {
+            display: inline-flex;
 
-            display:
-                inline-flex;
-
-            align-items:
-                center;
+            align-items: center;
 
             justify-content:
                 center;
@@ -227,84 +201,86 @@
 
             cursor:
                 pointer;
-
         }
 
+        .upload-button:hover {
+            background:
+                #f7faff;
+        }
+
+        .photo-hint {
+            margin-top: 8px;
+
+            color:
+                #8a94a6;
+
+            font-size:
+                12px;
+
+            text-align:
+                center;
+        }
+
+        /* =========================
+           FORM
+        ========================= */
 
         .field {
-
             margin-bottom:
                 20px;
-
         }
-
 
         label {
+            display: block;
 
-            display:
-                block;
+            font-weight: 600;
 
-            font-weight:
-                600;
-
-            margin-bottom:
-                7px;
-
+            margin-bottom: 7px;
         }
-
 
         input,
         textarea {
+            width: 100%;
 
-            width:
-                100%;
-
-            padding:
-                13px;
+            padding: 13px;
 
             border:
                 1px solid #d8dee8;
 
-            border-radius:
-                8px;
+            border-radius: 8px;
 
-            font-size:
-                15px;
+            font-size: 15px;
 
-            outline:
-                none;
+            outline: none;
 
+            font-family: inherit;
+
+            background: white;
         }
-
-
-        textarea {
-
-            min-height:
-                110px;
-
-            resize:
-                vertical;
-
-        }
-
 
         input:focus,
         textarea:focus {
-
             border-color:
                 #4285F4;
 
             box-shadow:
                 0 0 0 3px
                 rgba(66,133,244,0.08);
-
         }
 
+        textarea {
+            min-height: 110px;
+
+            resize:
+                vertical;
+        }
+
+        /* =========================
+           USERNAME
+        ========================= */
 
         .username-wrapper {
-
-            display:
-                flex;
+            display: flex;
 
             align-items:
                 center;
@@ -317,51 +293,43 @@
 
             background:
                 #f8fafc;
-
         }
 
-
         .username-prefix {
-
-            padding-left:
-                14px;
+            padding-left: 14px;
 
             color:
                 #6b7280;
 
             font-weight:
                 600;
-
         }
 
-
         #username {
-
-            border:
-                none;
+            border: none;
 
             background:
                 transparent;
 
+            outline:
+                none;
         }
 
+        /* =========================
+           BUTTONS
+        ========================= */
 
         .actions {
+            display: flex;
 
-            display:
-                flex;
+            gap: 10px;
 
-            gap:
-                10px;
+            flex-wrap: wrap;
 
-            flex-wrap:
-                wrap;
-
+            margin-top: 10px;
         }
 
-
         button {
-
             padding:
                 11px 18px;
 
@@ -379,31 +347,29 @@
 
             font-size:
                 14px;
-
         }
 
+        button:disabled {
+            opacity: 0.6;
+
+            cursor:
+                not-allowed;
+        }
 
         .save {
-
             background:
                 #4285F4;
 
             color:
                 white;
-
         }
-
 
         .save:hover {
-
             background:
                 #3367d6;
-
         }
 
-
         .cancel {
-
             background:
                 white;
 
@@ -412,12 +378,18 @@
 
             border-color:
                 #d7e3fb;
-
         }
 
+        .cancel:hover {
+            background:
+                #f7faff;
+        }
+
+        /* =========================
+           MESSAGE
+        ========================= */
 
         #message {
-
             min-height:
                 24px;
 
@@ -426,17 +398,32 @@
 
             font-size:
                 14px;
-
         }
 
+        /* =========================
+           MOBILE
+        ========================= */
 
-        @media (max-width:600px) {
+        @media (max-width: 600px) {
+
+            header {
+                padding:
+                    11px 18px;
+            }
+
+            .brand-name {
+                font-size:
+                    20px;
+            }
+
+            .brand-logo {
+                width: 38px;
+                height: 38px;
+            }
 
             .card {
-
                 padding:
                     22px;
-
             }
 
         }
@@ -449,10 +436,24 @@
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
-    <div class="logo">
-        Writejot
+    <div class="brand">
+
+        <img
+            class="brand-logo"
+            src="W.png"
+            alt="Writejot logo"
+        >
+
+        <div class="brand-name">
+            Writejot
+        </div>
+
     </div>
 
 
@@ -467,22 +468,26 @@
 
 
 
+<!-- =========================
+     EDIT PROFILE
+========================= -->
+
 <main>
 
     <div class="card">
 
-
         <h1>
             Edit Profile
         </h1>
-
 
         <p class="intro">
             Customize your Writejot profile.
         </p>
 
 
-        <!-- PHOTO -->
+        <!-- =========================
+             PHOTO
+        ========================= -->
 
         <div class="preview">
 
@@ -507,11 +512,18 @@
                 accept="image/*"
             >
 
+
+            <div class="photo-hint">
+                JPG, PNG, or other image files
+            </div>
+
         </div>
 
 
 
-        <!-- DISPLAY NAME -->
+        <!-- =========================
+             DISPLAY NAME
+        ========================= -->
 
         <div class="field">
 
@@ -531,7 +543,9 @@
 
 
 
-        <!-- USERNAME -->
+        <!-- =========================
+             USERNAME
+        ========================= -->
 
         <div class="field">
 
@@ -562,7 +576,9 @@
 
 
 
-        <!-- BIO -->
+        <!-- =========================
+             BIO
+        ========================= -->
 
         <div class="field">
 
@@ -581,11 +597,14 @@
 
 
 
-        <!-- ACTIONS -->
+        <!-- =========================
+             ACTIONS
+        ========================= -->
 
         <div class="actions">
 
             <button
+                id="saveButton"
                 class="save"
                 onclick="saveProfile()"
             >
@@ -605,7 +624,6 @@
 
         <p id="message"></p>
 
-
     </div>
 
 </main>
@@ -614,6 +632,10 @@
 
 <script>
 
+
+/* =========================================
+   APPS SCRIPT
+========================================= */
 
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
@@ -625,21 +647,25 @@ let selectedImageData = "";
 
 let selectedImageType = "image/jpeg";
 
-let selectedImageName =
-    "profile.jpg";
+let selectedImageName = "profile.jpg";
 
 
 /* =========================================
-   LOAD PROFILE
+   LOAD PROFILE IMMEDIATELY
 ========================================= */
 
-window.onload = async function() {
+window.onload = async function () {
 
     const savedUser =
         localStorage.getItem(
             "writejotUser"
         );
 
+
+    /*
+     * No local account means
+     * return to dashboard.
+     */
 
     if (!savedUser) {
 
@@ -651,11 +677,128 @@ window.onload = async function() {
     }
 
 
-    currentUser =
-        JSON.parse(
-            savedUser
+    try {
+
+        currentUser =
+            JSON.parse(
+                savedUser
+            );
+
+    }
+
+    catch (error) {
+
+        localStorage.removeItem(
+            "writejotUser"
         );
 
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    /*
+     * Populate the page immediately
+     * from the saved local account.
+     */
+
+    populateProfile(
+        currentUser
+    );
+
+
+    /*
+     * Then refresh from the database.
+     */
+
+    await refreshProfile();
+
+};
+
+
+/* =========================================
+   POPULATE PROFILE
+========================================= */
+
+function populateProfile(
+    user
+) {
+
+    document
+        .getElementById(
+            "displayName"
+        )
+        .value =
+        user.name ||
+        "";
+
+
+    document
+        .getElementById(
+            "username"
+        )
+        .value =
+        user.username ||
+        "";
+
+
+    document
+        .getElementById(
+            "bio"
+        )
+        .value =
+        user.bio ||
+        "";
+
+
+    /*
+     * Use custom picture first,
+     * then Google's picture,
+     * then the logo only as a final fallback.
+     */
+
+    const picture =
+        user.profilePicture ||
+        user.picture ||
+        "W.png";
+
+
+    document
+        .getElementById(
+            "photoPreview"
+        )
+        .src =
+        picture;
+
+
+    /*
+     * If an image fails to load,
+     * fall back to the logo.
+     */
+
+    document
+        .getElementById(
+            "photoPreview"
+        )
+        .onerror =
+        function () {
+
+            this.src =
+                "W.png";
+
+        };
+
+}
+
+
+/* =========================================
+   REFRESH PROFILE FROM DATABASE
+========================================= */
+
+async function refreshProfile() {
 
     try {
 
@@ -684,56 +827,41 @@ window.onload = async function() {
                 ...currentUser,
 
                 name:
-                    result.name || "",
+                    result.name ||
+                    currentUser.name ||
+                    "",
 
                 username:
-                    result.username || "",
+                    result.username ||
+                    currentUser.username ||
+                    "",
 
                 bio:
-                    result.bio || "",
+                    result.bio ||
+                    "",
 
                 profilePicture:
-                    result.profilePicture || ""
+                    result.profilePicture ||
+                    currentUser.profilePicture ||
+                    ""
 
             };
 
 
-            document
-                .getElementById(
-                    "displayName"
+            localStorage.setItem(
+
+                "writejotUser",
+
+                JSON.stringify(
+                    currentUser
                 )
-                .value =
-                currentUser.name;
+
+            );
 
 
-            document
-                .getElementById(
-                    "username"
-                )
-                .value =
-                currentUser.username;
-
-
-            document
-                .getElementById(
-                    "bio"
-                )
-                .value =
-                currentUser.bio;
-
-
-            const picture =
-                currentUser.profilePicture ||
-                currentUser.picture ||
-                "W.png";
-
-
-            document
-                .getElementById(
-                    "photoPreview"
-                )
-                .src =
-                picture;
+            populateProfile(
+                currentUser
+            );
 
         }
 
@@ -741,13 +869,19 @@ window.onload = async function() {
 
     catch (error) {
 
-        console.error(
+        console.log(
+            "Could not refresh profile:",
             error
         );
 
+        /*
+         * The local profile is still shown,
+         * so the page remains usable.
+         */
+
     }
 
-};
+}
 
 
 /* =========================================
@@ -760,7 +894,7 @@ document
     )
     .addEventListener(
         "change",
-        function(event) {
+        function (event) {
 
             const file =
                 event.target.files[0];
@@ -778,7 +912,7 @@ document
             ) {
 
                 alert(
-                    "Please choose an image."
+                    "Please choose an image file."
                 );
 
                 return;
@@ -794,8 +928,7 @@ document
 
 
             /*
-             * Resize/compress the image
-             * before uploading.
+             * Read selected photo.
              */
 
             const reader =
@@ -803,14 +936,14 @@ document
 
 
             reader.onload =
-                function() {
+                function () {
 
                     const image =
                         new Image();
 
 
                     image.onload =
-                        function() {
+                        function () {
 
                             const maxSize =
                                 600;
@@ -844,7 +977,6 @@ document
                                 }
 
                             }
-
                             else {
 
                                 if (
@@ -904,7 +1036,6 @@ document
                             selectedImageType =
                                 "image/jpeg";
 
-
                             selectedImageName =
                                 "profile.jpg";
 
@@ -945,6 +1076,12 @@ async function saveProfile() {
         );
 
 
+    const saveButton =
+        document.getElementById(
+            "saveButton"
+        );
+
+
     const name =
         document
             .getElementById(
@@ -976,6 +1113,10 @@ async function saveProfile() {
             .value
             .trim();
 
+
+    /*
+     * Validate username.
+     */
 
     if (
         username.length < 3 ||
@@ -1010,14 +1151,22 @@ async function saveProfile() {
     }
 
 
+    saveButton.disabled =
+        true;
+
+
     message.textContent =
-        "Saving...";
+        "Checking username...";
 
     message.style.color =
         "#667085";
 
 
     try {
+
+        /*
+         * Check username availability.
+         */
 
         const availabilityResponse =
             await fetch(
@@ -1045,18 +1194,28 @@ async function saveProfile() {
         ) {
 
             message.textContent =
-                availability.error;
+                availability.error ||
+                "That username is already taken.";
 
             message.style.color =
                 "#dc2626";
+
+            saveButton.disabled =
+                false;
 
             return;
 
         }
 
 
+        message.textContent =
+            selectedImageData
+                ? "Uploading photo and saving profile..."
+                : "Saving profile...";
+
+
         /*
-         * Create POST payload.
+         * Build request.
          */
 
         const payload = {
@@ -1080,8 +1239,8 @@ async function saveProfile() {
 
 
         /*
-         * Include the image only when
-         * the user selected a new one.
+         * Only send image data when
+         * a new image was selected.
          */
 
         if (
@@ -1099,6 +1258,10 @@ async function saveProfile() {
 
         }
 
+
+        /*
+         * Send to Apps Script.
+         */
 
         await fetch(
 
@@ -1129,17 +1292,18 @@ async function saveProfile() {
         );
 
 
-        await new Promise(
-            function(resolve) {
+        /*
+         * Give the backend a moment.
+         */
 
-                setTimeout(
-                    resolve,
-                    1000
-                );
-
-            }
+        await sleep(
+            1200
         );
 
+
+        /*
+         * Verify the saved profile.
+         */
 
         const verifyResponse =
             await fetch(
@@ -1168,19 +1332,25 @@ async function saveProfile() {
         }
 
 
-        const updatedUser = {
+        /*
+         * Update local account.
+         */
+
+        currentUser = {
 
             ...currentUser,
 
             name:
-                result.name || name,
+                result.name ||
+                name,
 
             username:
                 result.username ||
                 username,
 
             bio:
-                result.bio || "",
+                result.bio ||
+                "",
 
             profilePicture:
                 result.profilePicture ||
@@ -1195,27 +1365,31 @@ async function saveProfile() {
             "writejotUser",
 
             JSON.stringify(
-                updatedUser
+                currentUser
             )
 
         );
 
 
         message.textContent =
-            "Profile saved successfully.";
+            "Profile saved successfully!";
 
         message.style.color =
             "#15803d";
 
 
+        /*
+         * Go back to dashboard.
+         */
+
         setTimeout(
-            function() {
+            function () {
 
                 window.location.href =
                     "index.html";
 
             },
-            700
+            900
         );
 
     }
@@ -1224,6 +1398,7 @@ async function saveProfile() {
     catch (error) {
 
         console.error(
+            "Profile save error:",
             error
         );
 
@@ -1234,7 +1409,32 @@ async function saveProfile() {
         message.style.color =
             "#dc2626";
 
+        saveButton.disabled =
+            false;
+
     }
+
+}
+
+
+/* =========================================
+   HELPER
+========================================= */
+
+function sleep(
+    milliseconds
+) {
+
+    return new Promise(
+        function (resolve) {
+
+            setTimeout(
+                resolve,
+                milliseconds
+            );
+
+        }
+    );
 
 }
 
@@ -1244,3 +1444,6 @@ async function saveProfile() {
 </body>
 
 </html>
+```
+
+This fixes both visual problems: the top-left now uses the same **W logo + Writejot** branding as your dashboard, and the photo preview loads the user's saved/custom or Google profile picture instead of defaulting to `W.png` unless neither exists.
