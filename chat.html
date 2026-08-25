@@ -12,12 +12,12 @@
 
     <title>Writejot | Chat</title>
 
+
     <style>
 
         * {
             box-sizing: border-box;
         }
-
 
         html,
         body {
@@ -26,9 +26,7 @@
             height: 100%;
         }
 
-
         body {
-
             font-family:
                 Arial,
                 Helvetica,
@@ -56,35 +54,26 @@
         ================================================= */
 
         header {
+            flex: 0 0 auto;
 
-            height:
-                64px;
+            height: 64px;
 
-            flex-shrink:
-                0;
-
-            background:
-                white;
+            background: white;
 
             border-bottom:
                 1px solid #e5e7eb;
 
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
             padding:
                 0 16px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                12px;
         }
 
-
         .back {
-
             color:
                 #4285F4;
 
@@ -101,81 +90,53 @@
                 nowrap;
         }
 
-
         .recipient {
+            display: flex;
 
-            display:
-                flex;
+            align-items: center;
 
-            align-items:
-                center;
+            gap: 10px;
 
-            gap:
-                10px;
-
-            min-width:
-                0;
+            min-width: 0;
         }
 
-
         .recipient img {
+            width: 40px;
+            height: 40px;
 
-            width:
-                40px;
+            border-radius: 50%;
 
-            height:
-                40px;
-
-            border-radius:
-                50%;
-
-            object-fit:
-                cover;
+            object-fit: cover;
 
             background:
                 #e9eef5;
 
-            flex-shrink:
-                0;
+            flex: 0 0 40px;
         }
-
 
         .recipient-info {
-
-            min-width:
-                0;
+            min-width: 0;
         }
-
 
         .recipient-name {
+            font-size: 15px;
 
-            font-size:
-                15px;
+            font-weight: 700;
 
-            font-weight:
-                700;
+            white-space: nowrap;
 
-            white-space:
-                nowrap;
+            overflow: hidden;
 
-            overflow:
-                hidden;
-
-            text-overflow:
-                ellipsis;
+            text-overflow: ellipsis;
         }
 
-
         .recipient-username {
-
-            font-size:
-                12px;
+            font-size: 12px;
 
             color:
                 #6b7280;
 
-            white-space:
-                nowrap;
+            white-space: nowrap;
         }
 
 
@@ -184,148 +145,105 @@
         ================================================= */
 
         #chatArea {
+            flex: 1 1 auto;
 
-            flex:
-                1;
+            min-height: 0;
 
-            overflow-y:
-                auto;
+            overflow-y: auto;
 
             padding:
-                20px;
-
-            scroll-behavior:
-                smooth;
+                18px 18px 20px;
         }
 
-
         #messages {
+            width: 100%;
 
-            width:
-                100%;
+            max-width: 850px;
 
-            max-width:
-                850px;
-
-            margin:
-                0 auto;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap:
-                8px;
+            margin: 0 auto;
         }
 
 
         /* =================================================
-           MESSAGE ROWS
+           MESSAGE ROW
         ================================================= */
 
         .message-row {
+            display: flex;
 
-            width:
-                100%;
+            width: 100%;
 
-            display:
-                flex;
+            margin: 0 0 10px 0;
 
-            align-items:
-                flex-start;
+            padding: 0;
 
-            margin:
-                0;
+            align-items: flex-start;
         }
-
 
         .message-row.mine {
-
-            justify-content:
-                flex-end;
+            justify-content: flex-end;
         }
-
 
         .message-row.theirs {
-
-            justify-content:
-                flex-start;
-        }
-
-
-        .message-content {
-
-            width:
-                auto;
-
-            max-width:
-                70%;
-
-            min-width:
-                0;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-        }
-
-
-        .mine .message-content {
-
-            align-items:
-                flex-end;
-        }
-
-
-        .theirs .message-content {
-
-            align-items:
-                flex-start;
+            justify-content: flex-start;
         }
 
 
         /* =================================================
-           TEXT — NO BUBBLE
+           MESSAGE CONTENT
         ================================================= */
 
-        .message-text {
+        .message-content {
+            display: block;
 
-            display:
-                block;
+            width: fit-content;
 
-            width:
-                auto;
+            max-width: 70%;
 
-            max-width:
-                100%;
+            min-width: 0;
+
+            height: auto;
+
+            margin: 0;
+
+            padding: 0;
+        }
+
+
+        /* =================================================
+           TEXT BUBBLE
+
+           IMPORTANT:
+           - no flex
+           - no height: 100%
+           - no width: 100%
+           - no min-height
+        ================================================= */
+
+        .bubble {
+            display: inline-block;
+
+            width: auto;
+
+            max-width: 100%;
+
+            height: auto;
+
+            min-height: 0;
 
             padding:
-                0;
+                9px 13px;
 
-            margin:
-                0;
-
-            background:
-                transparent;
-
-            border:
-                none;
+            margin: 0;
 
             border-radius:
-                0;
-
-            color:
-                #1f2937;
+                14px;
 
             font-size:
-                15px;
+                14px;
 
             line-height:
-                1.5;
+                1.45;
 
             white-space:
                 pre-wrap;
@@ -336,18 +254,38 @@
             word-break:
                 break-word;
 
+            vertical-align:
+                top;
+
             text-align:
                 left;
         }
 
 
-        .mine .message-text {
-
-            color:
+        .mine .bubble {
+            background:
                 #4285F4;
 
-            text-align:
-                right;
+            color:
+                white;
+
+            border-bottom-right-radius:
+                4px;
+        }
+
+
+        .theirs .bubble {
+            background:
+                white;
+
+            color:
+                #1f2937;
+
+            border:
+                1px solid #dfe3e8;
+
+            border-bottom-left-radius:
+                4px;
         }
 
 
@@ -356,118 +294,69 @@
         ================================================= */
 
         .time {
+            display: block;
 
-            margin-top:
-                2px;
+            margin-top: 3px;
 
-            padding:
-                0;
+            padding: 0 3px;
 
-            font-size:
-                10px;
+            font-size: 10px;
+
+            line-height: 1.2;
 
             color:
                 #98a2b3;
-
-            line-height:
-                1.2;
         }
-
 
         .mine .time {
-
-            text-align:
-                right;
+            text-align: right;
         }
 
-
         .theirs .time {
-
-            text-align:
-                left;
+            text-align: left;
         }
 
 
         /* =================================================
-           PHOTO MESSAGE
+           IMAGE MESSAGE
         ================================================= */
 
+        .image-bubble {
+            padding: 4px;
+
+            overflow: hidden;
+        }
+
         .message-image {
+            display: block;
 
-            display:
-                block;
+            width: auto;
 
-            width:
-                auto;
+            height: auto;
 
-            height:
-                auto;
+            max-width: 100%;
 
-            max-width:
-                500px;
-
-            max-height:
-                450px;
+            max-height: 450px;
 
             border-radius:
-                12px;
+                10px;
 
             object-fit:
                 contain;
 
             cursor:
                 pointer;
-
-            margin:
-                0;
         }
-
-
-        .image-message {
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            align-items:
-                flex-start;
-
-            width:
-                auto;
-
-            max-width:
-                100%;
-
-            padding:
-                0;
-
-            margin:
-                0;
-        }
-
-
-        .mine .image-message {
-
-            align-items:
-                flex-end;
-        }
-
 
         .image-caption {
-
-            margin-top:
-                5px;
-
-            max-width:
-                100%;
+            padding:
+                6px 7px 3px;
 
             font-size:
-                15px;
+                14px;
 
             line-height:
-                1.5;
+                1.45;
 
             white-space:
                 pre-wrap;
@@ -477,61 +366,34 @@
 
             word-break:
                 break-word;
-
-            color:
-                #1f2937;
-
-            text-align:
-                left;
-        }
-
-
-        .mine .image-caption {
-
-            color:
-                #4285F4;
-
-            text-align:
-                right;
         }
 
 
         /* =================================================
-           EMPTY
+           EMPTY STATE
         ================================================= */
 
         .empty-state {
+            min-height: 250px;
 
-            min-height:
-                250px;
+            display: flex;
 
-            display:
-                flex;
+            flex-direction: column;
 
-            flex-direction:
-                column;
+            align-items: center;
 
-            align-items:
-                center;
+            justify-content: center;
 
-            justify-content:
-                center;
-
-            text-align:
-                center;
+            text-align: center;
 
             color:
                 #89919d;
         }
 
-
         .empty-icon {
+            font-size: 38px;
 
-            font-size:
-                38px;
-
-            margin-bottom:
-                8px;
+            margin-bottom: 8px;
         }
 
 
@@ -540,12 +402,9 @@
         ================================================= */
 
         #composer {
+            flex: 0 0 auto;
 
-            flex-shrink:
-                0;
-
-            width:
-                100%;
+            width: 100%;
 
             background:
                 white;
@@ -557,26 +416,18 @@
                 10px 12px 12px;
         }
 
-
         .composer-inner {
+            width: 100%;
 
-            width:
-                100%;
+            max-width: 850px;
 
-            max-width:
-                850px;
+            margin: 0 auto;
 
-            margin:
-                0 auto;
+            display: flex;
 
-            display:
-                flex;
+            align-items: flex-end;
 
-            align-items:
-                flex-end;
-
-            gap:
-                7px;
+            gap: 7px;
         }
 
 
@@ -585,53 +436,36 @@
         ================================================= */
 
         #photoButton {
+            width: 42px;
+            height: 42px;
 
-            width:
-                42px;
-
-            height:
-                42px;
-
-            flex:
-                0 0 42px;
+            flex: 0 0 42px;
 
             border:
                 1px solid #d7dce3;
 
-            border-radius:
-                10px;
+            border-radius: 10px;
 
-            background:
-                white;
+            background: white;
 
-            cursor:
-                pointer;
+            cursor: pointer;
 
-            font-size:
-                19px;
+            font-size: 19px;
 
-            display:
-                flex;
+            display: flex;
 
-            align-items:
-                center;
+            align-items: center;
 
-            justify-content:
-                center;
+            justify-content: center;
         }
 
-
         #photoButton:hover {
-
             background:
                 #f4f6f8;
         }
 
-
         #imageInput {
-
-            display:
-                none;
+            display: none;
         }
 
 
@@ -640,21 +474,15 @@
         ================================================= */
 
         #messageInput {
+            flex: 1 1 auto;
 
-            flex:
-                1 1 auto;
+            min-width: 0;
 
-            min-width:
-                0;
+            width: 100%;
 
-            width:
-                100%;
+            min-height: 42px;
 
-            min-height:
-                42px;
-
-            max-height:
-                125px;
+            max-height: 125px;
 
             padding:
                 10px 12px;
@@ -662,34 +490,24 @@
             border:
                 1px solid #d7dce3;
 
-            border-radius:
-                10px;
+            border-radius: 10px;
 
-            background:
-                white;
+            background: white;
 
-            font-family:
-                inherit;
+            font-family: inherit;
 
-            font-size:
-                14px;
+            font-size: 14px;
 
-            line-height:
-                20px;
+            line-height: 20px;
 
-            resize:
-                none;
+            resize: none;
 
-            outline:
-                none;
+            outline: none;
 
-            overflow-y:
-                auto;
+            overflow-y: auto;
         }
 
-
         #messageInput:focus {
-
             border-color:
                 #4285F4;
 
@@ -709,50 +527,36 @@
         ================================================= */
 
         #sendButton {
+            height: 42px;
 
-            height:
-                42px;
-
-            flex:
-                0 0 auto;
+            flex: 0 0 auto;
 
             padding:
                 0 16px;
 
-            border:
-                none;
+            border: none;
 
-            border-radius:
-                10px;
+            border-radius: 10px;
 
             background:
                 #4285F4;
 
-            color:
-                white;
+            color: white;
 
-            font-size:
-                14px;
+            font-size: 14px;
 
-            font-weight:
-                700;
+            font-weight: 700;
 
-            cursor:
-                pointer;
+            cursor: pointer;
         }
 
-
         #sendButton:hover {
-
             background:
                 #3367d6;
         }
 
-
         #sendButton:disabled {
-
-            opacity:
-                .6;
+            opacity: .6;
 
             cursor:
                 not-allowed;
@@ -764,96 +568,66 @@
         ================================================= */
 
         #imagePreview {
+            display: none;
 
-            width:
-                100%;
+            width: 100%;
 
-            max-width:
-                850px;
+            max-width: 850px;
 
             margin:
                 0 auto 8px;
-
-            display:
-                none;
         }
-
 
         .preview-box {
+            position: relative;
 
-            position:
-                relative;
-
-            display:
-                inline-block;
+            display: inline-block;
         }
 
-
         #previewImage {
+            display: block;
 
-            display:
-                block;
+            width: auto;
 
-            width:
-                auto;
+            max-width: 170px;
 
-            max-width:
-                170px;
+            max-height: 120px;
 
-            max-height:
-                120px;
-
-            border-radius:
-                10px;
+            border-radius: 10px;
 
             border:
                 1px solid #d7dce3;
 
-            object-fit:
-                cover;
+            object-fit: cover;
         }
 
-
         #removeImageButton {
+            position: absolute;
 
-            position:
-                absolute;
+            right: -7px;
 
-            right:
-                -7px;
+            top: -7px;
 
-            top:
-                -7px;
+            width: 23px;
 
-            width:
-                23px;
+            height: 23px;
 
-            height:
-                23px;
+            border: none;
 
-            border:
-                none;
-
-            border-radius:
-                50%;
+            border-radius: 50%;
 
             background:
                 #ef4444;
 
-            color:
-                white;
+            color: white;
 
-            cursor:
-                pointer;
+            cursor: pointer;
 
-            font-size:
-                15px;
+            font-size: 15px;
 
-            line-height:
-                23px;
+            line-height: 23px;
 
-            padding:
-                0;
+            padding: 0;
         }
 
 
@@ -861,130 +635,77 @@
            MOBILE
         ================================================= */
 
-        @media (
-            max-width: 600px
-        ) {
+        @media (max-width: 600px) {
 
             header {
-
-                height:
-                    58px;
+                height: 58px;
 
                 padding:
                     0 11px;
             }
 
-
             .back {
-
-                font-size:
-                    12px;
+                font-size: 12px;
             }
-
 
             .recipient img {
+                width: 36px;
+                height: 36px;
 
-                width:
-                    36px;
-
-                height:
-                    36px;
+                flex-basis: 36px;
             }
-
 
             .recipient-name {
-
-                font-size:
-                    14px;
+                font-size: 14px;
             }
-
 
             .recipient-username {
-
-                font-size:
-                    11px;
+                font-size: 11px;
             }
 
-
             #chatArea {
-
                 padding:
                     14px 11px 16px;
             }
 
-
-            #messages {
-
-                gap:
-                    7px;
-            }
-
-
             .message-content {
-
-                max-width:
-                    82%;
+                max-width: 82%;
             }
 
-
-            .message-text {
-
-                font-size:
-                    14px;
-            }
-
-
-            .message-image {
-
-                max-width:
-                    100%;
-
-                max-height:
-                    330px;
-            }
-
-
-            #composer {
+            .bubble {
+                font-size: 14px;
 
                 padding:
-                    8px;
+                    8px 12px;
             }
 
+            .message-image {
+                max-height: 330px;
+            }
+
+            #composer {
+                padding: 8px;
+            }
 
             .composer-inner {
-
-                gap:
-                    5px;
+                gap: 5px;
             }
-
 
             #photoButton {
+                width: 40px;
+                height: 40px;
 
-                width:
-                    40px;
-
-                height:
-                    40px;
-
-                flex-basis:
-                    40px;
+                flex-basis: 40px;
             }
-
 
             #messageInput {
+                min-height: 40px;
 
-                min-height:
-                    40px;
-
-                max-height:
-                    110px;
+                max-height: 110px;
             }
 
-
             #sendButton {
-
-                height:
-                    40px;
+                height: 40px;
 
                 padding:
                     0 12px;
@@ -1053,7 +774,7 @@
 
 
 <!-- =====================================================
-     CHAT AREA
+     CHAT
 ===================================================== -->
 
 <main
@@ -1073,7 +794,6 @@
             >
                 💬
             </div>
-
 
             Loading messages...
 
@@ -1129,9 +849,6 @@
         class="composer-inner"
     >
 
-
-        <!-- PHOTO -->
-
         <button
             id="photoButton"
             type="button"
@@ -1150,8 +867,6 @@
         >
 
 
-        <!-- TEXT -->
-
         <textarea
             id="messageInput"
             placeholder="Type a message..."
@@ -1159,8 +874,6 @@
             rows="1"
         ></textarea>
 
-
-        <!-- SEND -->
 
         <button
             id="sendButton"
@@ -1190,14 +903,11 @@ const APPS_SCRIPT_URL =
 let currentUser =
     null;
 
-
 let otherUsername =
     "";
 
-
 let refreshTimer =
     null;
-
 
 let selectedImage =
     null;
@@ -1217,15 +927,12 @@ window.addEventListener(
             );
 
 
-        if (
-            !savedUser
-        ) {
+        if (!savedUser) {
 
             window.location.href =
                 "index.html";
 
             return;
-
         }
 
 
@@ -1262,9 +969,7 @@ window.addEventListener(
             );
 
 
-        if (
-            !otherUsername
-        ) {
+        if (!otherUsername) {
 
             window.location.href =
                 "messages.html";
@@ -1319,18 +1024,6 @@ async function loadRecipient() {
             );
 
 
-        if (
-            !response.ok
-        ) {
-
-            throw new Error(
-                "Server returned " +
-                response.status
-            );
-
-        }
-
-
         const result =
             await response.json();
 
@@ -1358,7 +1051,6 @@ async function loadRecipient() {
 
 
             return;
-
         }
 
 
@@ -1423,7 +1115,7 @@ async function loadRecipient() {
 
 
 /* =========================================================
-   MARK CONVERSATION AS READ
+   MARK READ
 ========================================================= */
 
 async function markConversationRead() {
@@ -1508,18 +1200,6 @@ async function loadMessages() {
             );
 
 
-        if (
-            !response.ok
-        ) {
-
-            throw new Error(
-                "Server returned " +
-                response.status
-            );
-
-        }
-
-
         const result =
             await response.json();
 
@@ -1532,7 +1212,6 @@ async function loadMessages() {
                 result.error ||
                 "Could not load messages."
             );
-
 
             return;
 
@@ -1577,9 +1256,7 @@ function renderMessages(
         );
 
 
-    if (
-        !messages.length
-    ) {
+    if (!messages.length) {
 
         container.innerHTML =
 
@@ -1601,9 +1278,7 @@ function renderMessages(
             </div>
             `;
 
-
         return;
-
     }
 
 
@@ -1616,10 +1291,7 @@ function renderMessages(
     container.innerHTML =
         messages
             .map(
-
-                function (
-                    message
-                ) {
+                function (message) {
 
                     const mine =
                         normalizeUsername(
@@ -1634,9 +1306,7 @@ function renderMessages(
                                 message.timestamp
                               )
                               .toLocaleTimeString(
-
                                   [],
-
                                   {
                                       hour:
                                           "numeric",
@@ -1644,17 +1314,12 @@ function renderMessages(
                                       minute:
                                           "2-digit"
                                   }
-
                               )
                             : "";
 
 
-                    let content =
-                        "";
-
-
                     /*
-                     * PHOTO
+                     * IMAGE MESSAGE
                      */
 
                     if (
@@ -1663,87 +1328,107 @@ function renderMessages(
                         message.attachmentUrl
                     ) {
 
-                        content +=
+                        return `
 
-                            `
                             <div
-                                class="image-message"
+                                class="
+                                    message-row
+                                    ${
+                                        mine
+                                            ? "mine"
+                                            : "theirs"
+                                    }
+                                "
                             >
 
-                                <img
-                                    class="message-image"
-                                    src="${escapeHtml(
-                                        message.attachmentUrl
-                                    )}"
-                                    alt="Photo"
-                                    loading="lazy"
-                                    onclick="openImage(
-                                        '${escapeHtml(
-                                            message.attachmentUrl
-                                        )}'
-                                    )"
+                                <div
+                                    class="message-content"
                                 >
 
+                                    <div
+                                        class="bubble image-bubble"
+                                    >
 
-                                ${
-                                    message.message
-                                        ? `
-                                            <div
-                                                class="image-caption"
-                                            >
-                                                ${escapeHtml(
-                                                    message.message
-                                                )}
-                                            </div>
-                                          `
-                                        : ""
-                                }
+                                        <img
+                                            class="message-image"
+                                            src="${escapeHtml(
+                                                message.attachmentUrl
+                                            )}"
+                                            alt="Photo"
+                                            loading="lazy"
+                                            onclick="openImage(
+                                                '${escapeHtml(
+                                                    message.attachmentUrl
+                                                )}'
+                                            )"
+                                        >
+
+
+                                        ${
+                                            message.message
+                                                ? `
+                                                    <div
+                                                        class="image-caption"
+                                                    >
+                                                        ${escapeHtml(
+                                                            message.message
+                                                        )}
+                                                    </div>
+                                                  `
+                                                : ""
+                                        }
+
+                                    </div>
+
+
+                                    <div
+                                        class="time"
+                                    >
+                                        ${escapeHtml(
+                                            time
+                                        )}
+                                    </div>
+
+                                </div>
 
                             </div>
-                            `;
+
+                        `;
 
                     }
 
 
                     /*
-                     * TEXT-ONLY MESSAGE
+                     * NORMAL TEXT MESSAGE
                      */
-
-                    else {
-
-                        content +=
-
-                            `
-                            <div
-                                class="message-text"
-                            >
-                                ${escapeHtml(
-                                    String(
-                                        message.message ||
-                                        ""
-                                    )
-                                )}
-                            </div>
-                            `;
-
-                    }
-
 
                     return `
 
                         <div
-                            class="message-row ${
-                                mine
-                                    ? "mine"
-                                    : "theirs"
-                            }"
+                            class="
+                                message-row
+                                ${
+                                    mine
+                                        ? "mine"
+                                        : "theirs"
+                                }
+                            "
                         >
 
                             <div
                                 class="message-content"
                             >
 
-                                ${content}
+                                <div
+                                    class="bubble"
+                                >
+                                    ${escapeHtml(
+                                        String(
+                                            message.message ||
+                                            ""
+                                        )
+                                    )}
+                                </div>
 
 
                                 <div
@@ -1761,29 +1446,34 @@ function renderMessages(
                     `;
 
                 }
-
             )
             .join("");
 
 
     /*
-     * Go to the newest message.
+     * Always show the newest message.
      */
 
-    const chatArea =
-        document.getElementById(
-            "chatArea"
-        );
+    requestAnimationFrame(
+        function () {
+
+            const chatArea =
+                document.getElementById(
+                    "chatArea"
+                );
 
 
-    chatArea.scrollTop =
-        chatArea.scrollHeight;
+            chatArea.scrollTop =
+                chatArea.scrollHeight;
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   SETUP INPUT
+   TEXT INPUT
 ========================================================= */
 
 function setupMessageInput() {
@@ -1820,16 +1510,9 @@ function setupMessageInput() {
     );
 
 
-    /*
-     * Enter = send
-     * Shift + Enter = new line
-     */
-
     input.addEventListener(
         "keydown",
-        function (
-            event
-        ) {
+        function (event) {
 
             if (
                 event.key ===
@@ -1850,7 +1533,7 @@ function setupMessageInput() {
 
 
 /* =========================================================
-   PHOTO PICKER
+   IMAGE PICKER
 ========================================================= */
 
 function openImagePicker() {
@@ -1865,7 +1548,7 @@ function openImagePicker() {
 
 
 /* =========================================================
-   SELECT PHOTO
+   SELECT IMAGE
 ========================================================= */
 
 function handleImageSelection(
@@ -1877,9 +1560,7 @@ function handleImageSelection(
         event.target.files[0];
 
 
-    if (
-        !file
-    ) {
+    if (!file) {
 
         return;
 
@@ -1896,10 +1577,8 @@ function handleImageSelection(
             "Please select an image."
         );
 
-
         event.target.value =
             "";
-
 
         return;
 
@@ -1915,10 +1594,8 @@ function handleImageSelection(
             "Please select an image smaller than 10 MB."
         );
 
-
         event.target.value =
             "";
-
 
         return;
 
@@ -1962,7 +1639,7 @@ function handleImageSelection(
 
 
 /* =========================================================
-   REMOVE PHOTO
+   REMOVE IMAGE
 ========================================================= */
 
 function removeSelectedImage() {
@@ -2015,12 +1692,12 @@ async function sendMessage() {
         );
 
 
-    const message =
+    const text =
         input.value.trim();
 
 
     if (
-        !message &&
+        !text &&
         !selectedImage
     ) {
 
@@ -2032,7 +1709,6 @@ async function sendMessage() {
     button.disabled =
         true;
 
-
     button.textContent =
         "Sending...";
 
@@ -2042,7 +1718,7 @@ async function sendMessage() {
         let imageData =
             "";
 
-        let imageType =
+        let imageMime =
             "";
 
         let imageName =
@@ -2062,7 +1738,7 @@ async function sendMessage() {
             imageData =
                 compressed.dataUrl;
 
-            imageType =
+            imageMime =
                 compressed.mimeType;
 
             imageName =
@@ -2101,7 +1777,7 @@ async function sendMessage() {
                                 otherUsername,
 
                             message:
-                                message,
+                                text,
 
                             attachmentType:
                                 imageData
@@ -2112,7 +1788,7 @@ async function sendMessage() {
                                 imageData,
 
                             attachmentMime:
-                                imageType,
+                                imageMime,
 
                             attachmentName:
                                 imageName
@@ -2122,18 +1798,6 @@ async function sendMessage() {
                 }
 
             );
-
-
-        if (
-            !response.ok
-        ) {
-
-            throw new Error(
-                "Server returned " +
-                response.status
-            );
-
-        }
 
 
         const result =
@@ -2155,8 +1819,8 @@ async function sendMessage() {
         input.value =
             "";
 
-
-        resetTextareaHeight();
+        input.style.height =
+            "42px";
 
 
         removeSelectedImage();
@@ -2205,7 +1869,6 @@ function compressImage(
 ) {
 
     return new Promise(
-
         function (
             resolve,
             reject
@@ -2240,7 +1903,6 @@ function compressImage(
                             let width =
                                 image.width;
 
-
                             let height =
                                 image.height;
 
@@ -2264,12 +1926,10 @@ function compressImage(
                                             width
                                         );
 
-
                                     width =
                                         maxSize;
 
                                 }
-
                                 else {
 
                                     width =
@@ -2278,7 +1938,6 @@ function compressImage(
                                             maxSize /
                                             height
                                         );
-
 
                                     height =
                                         maxSize;
@@ -2289,37 +1948,30 @@ function compressImage(
 
 
                             const canvas =
-                                document
-                                    .createElement(
-                                        "canvas"
-                                    );
+                                document.createElement(
+                                    "canvas"
+                                );
 
 
                             canvas.width =
                                 width;
-
 
                             canvas.height =
                                 height;
 
 
                             const context =
-                                canvas
-                                    .getContext(
-                                        "2d"
-                                    );
+                                canvas.getContext(
+                                    "2d"
+                                );
 
 
                             context.drawImage(
-
                                 image,
-
                                 0,
                                 0,
-
                                 width,
                                 height
-
                             );
 
 
@@ -2327,20 +1979,13 @@ function compressImage(
                                 "image/jpeg";
 
 
-                            const dataUrl =
-                                canvas.toDataURL(
-
-                                    mimeType,
-
-                                    .82
-
-                                );
-
-
                             resolve({
 
                                 dataUrl:
-                                    dataUrl,
+                                    canvas.toDataURL(
+                                        mimeType,
+                                        0.82
+                                    ),
 
                                 mimeType:
                                     mimeType,
@@ -2366,14 +2011,13 @@ function compressImage(
             );
 
         }
-
     );
 
 }
 
 
 /* =========================================================
-   OPEN FULL IMAGE
+   OPEN IMAGE
 ========================================================= */
 
 function openImage(
@@ -2384,24 +2028,6 @@ function openImage(
         url,
         "_blank"
     );
-
-}
-
-
-/* =========================================================
-   RESET TEXTBOX
-========================================================= */
-
-function resetTextareaHeight() {
-
-    const input =
-        document.getElementById(
-            "messageInput"
-        );
-
-
-    input.style.height =
-        "42px";
 
 }
 
@@ -2425,11 +2051,9 @@ function showError(
             class="empty-state"
             style="color:#dc2626;"
         >
-
             ${escapeHtml(
                 message
             )}
-
         </div>
         `;
 
