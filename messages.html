@@ -39,8 +39,13 @@
 
             min-height:
                 100vh;
+
         }
 
+
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
 
@@ -61,6 +66,16 @@
 
             align-items:
                 center;
+
+            position:
+                sticky;
+
+            top:
+                0;
+
+            z-index:
+                100;
+
         }
 
 
@@ -74,6 +89,7 @@
 
             gap:
                 10px;
+
         }
 
 
@@ -87,6 +103,7 @@
 
             object-fit:
                 contain;
+
         }
 
 
@@ -97,6 +114,7 @@
 
             font-weight:
                 700;
+
         }
 
 
@@ -110,8 +128,13 @@
 
             font-weight:
                 600;
+
         }
 
+
+        /* =========================
+           MAIN
+        ========================= */
 
         main {
 
@@ -126,6 +149,7 @@
 
             padding:
                 0 16px;
+
         }
 
 
@@ -146,6 +170,7 @@
             box-shadow:
                 0 6px 20px
                 rgba(0,0,0,0.04);
+
         }
 
 
@@ -156,6 +181,7 @@
 
             border-bottom:
                 1px solid #edf0f4;
+
         }
 
 
@@ -166,6 +192,7 @@
 
             font-size:
                 25px;
+
         }
 
 
@@ -176,8 +203,13 @@
 
             color:
                 #718096;
+
         }
 
+
+        /* =========================
+           SEARCH
+        ========================= */
 
         .search-wrap {
 
@@ -186,6 +218,7 @@
 
             border-bottom:
                 1px solid #edf0f4;
+
         }
 
 
@@ -211,6 +244,10 @@
 
             font-size:
                 14px;
+
+            background:
+                white;
+
         }
 
 
@@ -222,8 +259,40 @@
             box-shadow:
                 0 0 0 3px
                 rgba(66,133,244,0.08);
+
         }
 
+
+        /* =========================
+           REFRESH STATUS
+        ========================= */
+
+        #refreshStatus {
+
+            display:
+                none;
+
+            padding:
+                7px 16px;
+
+            text-align:
+                center;
+
+            font-size:
+                12px;
+
+            color:
+                #98a2b3;
+
+            border-bottom:
+                1px solid #edf0f4;
+
+        }
+
+
+        /* =========================
+           CONVERSATIONS
+        ========================= */
 
         .conversation {
 
@@ -247,6 +316,10 @@
 
             color:
                 inherit;
+
+            transition:
+                background .15s ease;
+
         }
 
 
@@ -254,6 +327,7 @@
 
             background:
                 #f7faff;
+
         }
 
 
@@ -261,6 +335,15 @@
 
             background:
                 #f5f9ff;
+
+        }
+
+
+        .conversation.unread:hover {
+
+            background:
+                #eef5ff;
+
         }
 
 
@@ -283,6 +366,7 @@
 
             flex-shrink:
                 0;
+
         }
 
 
@@ -293,6 +377,7 @@
 
             flex:
                 1;
+
         }
 
 
@@ -309,6 +394,7 @@
 
             gap:
                 10px;
+
         }
 
 
@@ -325,6 +411,7 @@
 
             text-overflow:
                 ellipsis;
+
         }
 
 
@@ -333,6 +420,7 @@
 
             font-weight:
                 700;
+
         }
 
 
@@ -346,6 +434,7 @@
 
             white-space:
                 nowrap;
+
         }
 
 
@@ -362,6 +451,7 @@
 
             margin-top:
                 3px;
+
         }
 
 
@@ -381,6 +471,7 @@
 
             text-overflow:
                 ellipsis;
+
         }
 
 
@@ -392,8 +483,13 @@
 
             font-weight:
                 600;
+
         }
 
+
+        /* =========================
+           REAL UNREAD COUNTER
+        ========================= */
 
         .unread-badge {
 
@@ -429,8 +525,16 @@
 
             font-weight:
                 700;
+
+            flex-shrink:
+                0;
+
         }
 
+
+        /* =========================
+           EMPTY
+        ========================= */
 
         #empty {
 
@@ -442,6 +546,7 @@
 
             color:
                 #718096;
+
         }
 
 
@@ -452,6 +557,7 @@
 
             margin-bottom:
                 8px;
+
         }
 
 
@@ -465,17 +571,24 @@
 
             color:
                 #dc2626;
+
         }
 
 
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (
-            max-width:600px
+            max-width:
+            600px
         ) {
 
             header {
 
                 padding:
                     11px 17px;
+
             }
 
 
@@ -483,6 +596,7 @@
 
                 font-size:
                     20px;
+
             }
 
 
@@ -493,6 +607,7 @@
 
                 height:
                     38px;
+
             }
 
 
@@ -503,6 +618,7 @@
 
                 padding:
                     0 9px;
+
             }
 
 
@@ -510,6 +626,7 @@
 
                 padding:
                     13px;
+
             }
 
 
@@ -520,6 +637,7 @@
 
                 height:
                     49px;
+
             }
 
 
@@ -527,6 +645,7 @@
 
                 display:
                     none;
+
             }
 
         }
@@ -570,17 +689,20 @@
 
     <div class="messages-card">
 
+
         <div class="title">
 
             <h1>
                 💬 Messages
             </h1>
 
+
             <p>
                 Your conversations
             </p>
 
         </div>
+
 
 
         <div class="search-wrap">
@@ -595,9 +717,19 @@
         </div>
 
 
+
+        <div
+            id="refreshStatus"
+        >
+            Updating messages...
+        </div>
+
+
+
         <div
             id="conversationList"
         ></div>
+
 
 
         <div
@@ -613,10 +745,12 @@
         </div>
 
 
+
         <div
             id="error"
             style="display:none;"
         ></div>
+
 
     </div>
 
@@ -627,9 +761,9 @@
 <script>
 
 
-/* =========================================
-   SAME CURRENT URL AS CHAT.HTML
-========================================= */
+/* =========================================================
+   CURRENT APPS SCRIPT URL
+========================================================= */
 
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
@@ -638,19 +772,52 @@ const APPS_SCRIPT_URL =
 let currentUser =
     null;
 
+
 let allConversations =
     [];
 
+
 let profileCache =
     {};
+
 
 let refreshTimer =
     null;
 
 
-/* =========================================
+/* =========================================================
+   CACHE KEYS
+========================================================= */
+
+function conversationCacheKey() {
+
+    return (
+        "writejot_conversations_" +
+        (
+            currentUser
+                ? currentUser.username
+                : "unknown"
+        )
+    );
+
+}
+
+
+function profileCacheKey(
+    username
+) {
+
+    return (
+        "writejot_profile_" +
+        username
+    );
+
+}
+
+
+/* =========================================================
    START
-========================================= */
+========================================================= */
 
 window.onload =
     async function () {
@@ -661,12 +828,15 @@ window.onload =
             );
 
 
-        if (!savedUser) {
+        if (
+            !savedUser
+        ) {
 
             window.location.href =
                 "index.html";
 
             return;
+
         }
 
 
@@ -685,7 +855,15 @@ window.onload =
                 "index.html";
 
             return;
+
         }
+
+
+        loadProfileCache();
+
+
+        const hasCache =
+            loadCachedConversations();
 
 
         document
@@ -698,23 +876,223 @@ window.onload =
             );
 
 
-        await loadConversations();
+        if (
+            hasCache
+        ) {
+
+            renderFilteredConversations();
+
+        }
+
+
+        refreshConversations(
+            !hasCache
+        );
 
 
         refreshTimer =
             setInterval(
-                loadConversations,
-                3000
+                function () {
+
+                    refreshConversations(
+                        false
+                    );
+
+                },
+                5000
             );
 
     };
 
 
-/* =========================================
-   LOAD CONVERSATIONS
-========================================= */
+/* =========================================================
+   LOAD CACHED CONVERSATIONS
+========================================================= */
 
-async function loadConversations() {
+function loadCachedConversations() {
+
+    try {
+
+        const cached =
+            localStorage.getItem(
+                conversationCacheKey()
+            );
+
+
+        if (
+            !cached
+        ) {
+
+            return false;
+
+        }
+
+
+        const parsed =
+            JSON.parse(
+                cached
+            );
+
+
+        if (
+            !Array.isArray(
+                parsed
+            )
+        ) {
+
+            return false;
+
+        }
+
+
+        allConversations =
+            parsed;
+
+
+        return (
+            allConversations.length >
+            0
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Conversation cache error:",
+            error
+        );
+
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD PROFILE CACHE
+========================================================= */
+
+function loadProfileCache() {
+
+    try {
+
+        for (
+            let i = 0;
+            i < localStorage.length;
+            i++
+        ) {
+
+            const key =
+                localStorage.key(
+                    i
+                );
+
+
+            if (
+                !key ||
+                !key.startsWith(
+                    "writejot_profile_"
+                )
+            ) {
+
+                continue;
+
+            }
+
+
+            const username =
+                key.replace(
+                    "writejot_profile_",
+                    ""
+                );
+
+
+            try {
+
+                profileCache[
+                    username
+                ] =
+                    JSON.parse(
+                        localStorage.getItem(
+                            key
+                        )
+                    );
+
+            }
+
+            catch (error) {}
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Profile cache error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SAVE CACHE
+========================================================= */
+
+function saveConversationCache() {
+
+    try {
+
+        localStorage.setItem(
+
+            conversationCacheKey(),
+
+            JSON.stringify(
+                allConversations
+            )
+
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Could not save conversation cache:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   REFRESH FROM SERVER
+========================================================= */
+
+async function refreshConversations(
+    showLoading
+) {
+
+    if (
+        showLoading &&
+        allConversations.length === 0
+    ) {
+
+        showInitialLoading();
+
+    }
+
+
+    showBackgroundRefresh();
+
 
     try {
 
@@ -726,19 +1104,24 @@ async function loadConversations() {
                 encodeURIComponent(
                     currentUser.email
                 ),
+
                 {
-                    cache: "no-store"
+                    cache:
+                        "no-store"
                 }
 
             );
 
 
-        if (!response.ok) {
+        if (
+            !response.ok
+        ) {
 
             throw new Error(
                 "Server returned " +
                 response.status
             );
+
         }
 
 
@@ -746,14 +1129,15 @@ async function loadConversations() {
             await response.json();
 
 
-        if (!result.success) {
+        if (
+            !result.success
+        ) {
 
-            showError(
+            throw new Error(
                 result.error ||
                 "Could not load conversations."
             );
 
-            return;
         }
 
 
@@ -762,22 +1146,47 @@ async function loadConversations() {
             [];
 
 
-        await loadProfilesForConversations();
+        saveConversationCache();
+
+
+        await refreshProfiles();
 
 
         renderFilteredConversations();
+
+
+        hideRefreshIndicator();
+
 
     }
 
     catch (error) {
 
         console.error(
-            "Conversation error:",
+            "Conversation refresh error:",
             error
         );
 
+
+        hideRefreshIndicator();
+
+
+        /*
+         * Keep cached conversations if
+         * the server is temporarily slow.
+         */
+
+        if (
+            allConversations.length > 0
+        ) {
+
+            return;
+
+        }
+
+
         showError(
-            "Could not load conversations."
+            "Could not connect to Writejot."
         );
 
     }
@@ -785,28 +1194,38 @@ async function loadConversations() {
 }
 
 
-/* =========================================
-   LOAD PROFILE INFO
-========================================= */
+/* =========================================================
+   REFRESH PROFILES
+========================================================= */
 
-async function loadProfilesForConversations() {
+async function refreshProfiles() {
 
-    const requests =
+    const usernames =
         allConversations.map(
-
-            async function (
+            function (
                 conversation
             ) {
 
-                if (
-                    profileCache[
-                        conversation.username
-                    ]
-                ) {
+                return conversation.username;
 
-                    return;
-                }
+            }
+        );
 
+
+    const uniqueUsernames =
+        [
+            ...new Set(
+                usernames
+            )
+        ];
+
+
+    const requests =
+        uniqueUsernames.map(
+
+            async function (
+                username
+            ) {
 
                 try {
 
@@ -816,8 +1235,9 @@ async function loadProfilesForConversations() {
                             APPS_SCRIPT_URL +
                             "?action=profile&username=" +
                             encodeURIComponent(
-                                conversation.username
+                                username
                             ),
+
                             {
                                 cache:
                                     "no-store"
@@ -826,29 +1246,47 @@ async function loadProfilesForConversations() {
                         );
 
 
+                    if (
+                        !response.ok
+                    ) {
+
+                        return;
+
+                    }
+
+
                     const result =
                         await response.json();
 
 
                     if (
-                        result.success
+                        result.success &&
+                        result.profile
                     ) {
 
                         profileCache[
-                            conversation.username
+                            username
                         ] =
                             result.profile;
+
+
+                        localStorage.setItem(
+
+                            profileCacheKey(
+                                username
+                            ),
+
+                            JSON.stringify(
+                                result.profile
+                            )
+
+                        );
+
                     }
 
                 }
 
-                catch (error) {
-
-                    console.error(
-                        error
-                    );
-
-                }
+                catch (error) {}
 
             }
 
@@ -862,9 +1300,76 @@ async function loadProfilesForConversations() {
 }
 
 
-/* =========================================
+/* =========================================================
+   INITIAL LOADING
+========================================================= */
+
+function showInitialLoading() {
+
+    const list =
+        document.getElementById(
+            "conversationList"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "empty"
+        );
+
+
+    list.innerHTML =
+
+        `
+        <div
+            style="
+                padding:40px;
+                text-align:center;
+                color:#718096;
+            "
+        >
+            Loading conversations...
+        </div>
+        `;
+
+
+    empty.style.display =
+        "none";
+
+}
+
+
+/* =========================================================
+   BACKGROUND REFRESH INDICATOR
+========================================================= */
+
+function showBackgroundRefresh() {
+
+    document
+        .getElementById(
+            "refreshStatus"
+        )
+        .style.display =
+        "block";
+
+}
+
+
+function hideRefreshIndicator() {
+
+    document
+        .getElementById(
+            "refreshStatus"
+        )
+        .style.display =
+        "none";
+
+}
+
+
+/* =========================================================
    RENDER
-========================================= */
+========================================================= */
 
 function renderFilteredConversations() {
 
@@ -904,7 +1409,7 @@ function renderFilteredConversations() {
                     {};
 
 
-                const text =
+                const searchable =
                     (
                         conversation.username +
                         " " +
@@ -916,7 +1421,7 @@ function renderFilteredConversations() {
                     .toLowerCase();
 
 
-                return text.includes(
+                return searchable.includes(
                     query
                 );
 
@@ -929,32 +1434,39 @@ function renderFilteredConversations() {
         "";
 
 
-    if (!filtered.length) {
+    if (
+        filtered.length === 0
+    ) {
 
-        empty.style.display =
-            "block";
+        if (
+            allConversations.length === 0
+        ) {
+
+            showEmptyState();
+
+        }
+
+        else {
+
+            empty.style.display =
+                "block";
 
 
-        empty.innerHTML =
-            allConversations.length
+            empty.innerHTML =
 
-                ? `
-                    <div id="empty-icon">
-                        🔎
-                    </div>
+                `
+                <div id="empty-icon">
+                    🔎
+                </div>
 
-                    No conversations found.
-                  `
+                No conversations found.
+                `;
 
-                : `
-                    <div id="empty-icon">
-                        💬
-                    </div>
+        }
 
-                    You don't have any conversations yet.
-                  `;
 
         return;
+
     }
 
 
@@ -984,7 +1496,8 @@ function renderFilteredConversations() {
             link.className =
                 "conversation" +
                 (
-                    conversation.unread
+                    conversation.unreadCount >
+                    0
                         ? " unread"
                         : ""
                 );
@@ -1013,14 +1526,38 @@ function renderFilteredConversations() {
                 );
 
 
+            const unreadBadge =
+                conversation.unreadCount >
+                0
+
+                ? `
+                    <span
+                        class="unread-badge"
+                    >
+                        ${
+                            conversation.unreadCount >
+                            99
+                                ? "99+"
+                                : conversation.unreadCount
+                        }
+                    </span>
+                  `
+
+                : "";
+
+
             link.innerHTML =
 
                 `
                 <img
                     class="conversation-picture"
-                    src="${escapeHtml(picture)}"
+                    src="${escapeHtml(
+                        picture
+                    )}"
                     alt=""
-                    onerror="this.src='W.png'"
+                    onerror="
+                        this.src='W.png'
+                    "
                 >
 
 
@@ -1035,14 +1572,18 @@ function renderFilteredConversations() {
                         <div
                             class="conversation-name"
                         >
-                            ${escapeHtml(name)}
+                            ${escapeHtml(
+                                name
+                            )}
                         </div>
 
 
                         <div
                             class="conversation-time"
                         >
-                            ${escapeHtml(time)}
+                            ${escapeHtml(
+                                time
+                            )}
                         </div>
 
                     </div>
@@ -1061,19 +1602,7 @@ function renderFilteredConversations() {
                         </div>
 
 
-                        ${
-                            conversation.unread
-
-                                ? `
-                                    <span
-                                        class="unread-badge"
-                                    >
-                                        1
-                                    </span>
-                                  `
-
-                                : ""
-                        }
+                        ${unreadBadge}
 
                     </div>
 
@@ -1092,79 +1621,48 @@ function renderFilteredConversations() {
 }
 
 
-/* =========================================
-   TIME
-========================================= */
+/* =========================================================
+   EMPTY STATE
+========================================================= */
 
-function formatTime(
-    value
-) {
+function showEmptyState() {
 
-    if (!value) {
-        return "";
-    }
-
-
-    const date =
-        new Date(value);
-
-
-    if (
-        Number.isNaN(
-            date.getTime()
-        )
-    ) {
-
-        return "";
-    }
-
-
-    const now =
-        new Date();
-
-
-    if (
-        date.toDateString() ===
-        now.toDateString()
-    ) {
-
-        return date.toLocaleTimeString(
-
-            [],
-
-            {
-                hour:
-                    "numeric",
-
-                minute:
-                    "2-digit"
-            }
-
+    const list =
+        document.getElementById(
+            "conversationList"
         );
 
-    }
+
+    const empty =
+        document.getElementById(
+            "empty"
+        );
 
 
-    return date.toLocaleDateString(
+    list.innerHTML =
+        "";
 
-        [],
 
-        {
-            month:
-                "short",
+    empty.style.display =
+        "block";
 
-            day:
-                "numeric"
-        }
 
-    );
+    empty.innerHTML =
+
+        `
+        <div id="empty-icon">
+            💬
+        </div>
+
+        You don't have any conversations yet.
+        `;
 
 }
 
 
-/* =========================================
+/* =========================================================
    ERROR
-========================================= */
+========================================================= */
 
 function showError(
     message
@@ -1194,9 +1692,90 @@ function showError(
 }
 
 
-/* =========================================
+/* =========================================================
+   TIME
+========================================================= */
+
+function formatTime(
+    value
+) {
+
+    if (
+        !value
+    ) {
+
+        return "";
+
+    }
+
+
+    const date =
+        new Date(
+            value
+        );
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return "";
+
+    }
+
+
+    const now =
+        new Date();
+
+
+    if (
+        date.toDateString() ===
+        now.toDateString()
+    ) {
+
+        return date.toLocaleTimeString(
+
+            [],
+
+            {
+
+                hour:
+                    "numeric",
+
+                minute:
+                    "2-digit"
+
+            }
+
+        );
+
+    }
+
+
+    return date.toLocaleDateString(
+
+        [],
+
+        {
+
+            month:
+                "short",
+
+            day:
+                "numeric"
+
+        }
+
+    );
+
+}
+
+
+/* =========================================================
    ESCAPE HTML
-========================================= */
+========================================================= */
 
 function escapeHtml(
     value
