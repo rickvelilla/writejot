@@ -200,6 +200,8 @@
     display: flex;
     width: 100%;
     margin-bottom: 12px;
+
+    align-items: flex-start;
 }
 
 .message-row.mine {
@@ -211,21 +213,27 @@
 }
 
 .bubble-wrapper {
-    display: grid;
+    display: flex;
+    flex-direction: column;
 
-    width: 100%;
+    width: auto;
+    max-width: 70%;
 
-    max-width: 20%;
+    flex: 0 0 auto;
+
+    align-items: flex-start;
+
+    height: auto;
 }
 
 .bubble {
-    justify-self: start;
-
     display: block;
 
-    width: fit-content;
-
+    width: auto;
     max-width: 100%;
+
+    height: auto;
+    min-height: 0;
 
     padding: 10px 14px;
 
@@ -236,46 +244,30 @@
     white-space: pre-wrap;
 
     overflow-wrap: anywhere;
-
     word-break: break-word;
 
     text-align: left;
+
+    align-self: flex-start;
 }
 
 .mine .bubble {
-    justify-self: end;
+    align-self: flex-end;
 
     background: #4285F4;
-
     color: white;
 
     border-bottom-right-radius: 4px;
 }
 
 .theirs .bubble {
-    justify-self: start;
+    align-self: flex-start;
 
     background: white;
 
     border: 1px solid #e1e6ee;
 
     border-bottom-left-radius: 4px;
-}
-
-.time {
-    font-size: 11px;
-
-    opacity: 0.65;
-
-    margin-top: 4px;
-}
-
-.mine .time {
-    text-align: right;
-}
-
-.theirs .time {
-    text-align: left;
 }
         /* =========================
            IMAGE MESSAGES
