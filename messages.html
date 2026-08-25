@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Writejot | Messages</title>
+
+
+    <style>
+
+        * {
+            box-sizing:
+                border-box;
+        }
+
+
+        body {
+
+            margin:
+                0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                #f6f8fc;
+
+            color:
+                #1f2937;
+
+        }
+
+
+        header {
+
+            background:
+                white;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            padding:
+                12px 6%;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+        }
+
+
+        .brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+        }
+
+
+        .brand img {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+        }
+
+
+        .brand-name {
+
+            font-size:
+                23px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .back {
+
+            color:
+                #4285F4;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                600;
+
+        }
+
+
+        main {
+
+            max-width:
+                700px;
+
+            margin:
+                40px auto;
+
+            padding:
+                0 20px;
+
+        }
+
+
+        .card {
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                16px;
+
+            overflow:
+                hidden;
+
+        }
+
+
+        .title {
+
+            padding:
+                25px;
+
+            border-bottom:
+                1px solid #edf0f4;
+
+        }
+
+
+        .title h1 {
+
+            margin:
+                0 0 4px;
+
+        }
+
+
+        .title p {
+
+            margin:
+                0;
+
+            color:
+                #718096;
+
+        }
+
+
+        .conversation {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                14px;
+
+            padding:
+                16px 20px;
+
+            text-decoration:
+                none;
+
+            border-bottom:
+                1px solid #f0f2f5;
+
+            color:
+                inherit;
+
+        }
+
+
+        .conversation:hover {
+
+            background:
+                #f7faff;
+
+        }
+
+
+        .conversation img {
+
+            width:
+                50px;
+
+            height:
+                50px;
+
+            border-radius:
+                50%;
+
+            object-fit:
+                cover;
+
+        }
+
+
+        .conversation-name {
+
+            font-weight:
+                600;
+
+        }
+
+
+        .conversation-preview {
+
+            color:
+                #718096;
+
+            font-size:
+                14px;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
+
+            white-space:
+                nowrap;
+
+            max-width:
+                450px;
+
+        }
+
+
+        #empty {
+
+            text-align:
+                center;
+
+            padding:
+                45px 20px;
+
+            color:
+                #718096;
+
+        }
+
+
+        #error {
+
+            text-align:
+                center;
+
+            padding:
+                40px;
+
+            color:
+                #dc2626;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="W.png"
+            alt="Writejot logo"
+        >
+
+        <div class="brand-name">
+            Writejot
+        </div>
+
+    </div>
+
+
+    <a
+        class="back"
+        href="index.html"
+    >
+        ← Dashboard
+    </a>
+
+</header>
+
+
+
+<main>
+
+    <div class="card">
+
+        <div class="title">
+
+            <h1>
+                💬 Messages
+            </h1>
+
+            <p>
+                Your conversations
+            </p>
+
+        </div>
+
+
+        <div
+            id="conversationList"
+        ></div>
+
+
+        <div id="empty">
+
+            You don't have any conversations yet.
+
+        </div>
+
+
+        <div
+            id="error"
+            style="display:none;"
+        ></div>
+
+    </div>
+
+</main>
+
+
+
+<script>
+
+
+const APPS_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
+
+
+window.onload = loadConversations;
+
+
+async function loadConversations() {
+
+    const savedUser =
+        localStorage.getItem(
+            "writejotUser"
+        );
+
+
+    if (!savedUser) {
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    const user =
+        JSON.parse(
+            savedUser
+        );
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=conversations&email=" +
+                encodeURIComponent(
+                    user.email
+                )
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success
+        ) {
+
+            showError(
+                result.error
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !result.conversations ||
+            !result.conversations.length
+        ) {
+
+            return;
+
+        }
+
+
+        document
+            .getElementById(
+                "empty"
+            )
+            .style.display =
+            "none";
+
+
+        const list =
+            document
+                .getElementById(
+                    "conversationList"
+                );
+
+
+        for (
+            const conversation
+            of result.conversations
+        ) {
+
+            const profile =
+                await getProfile(
+                    conversation.username
+                );
+
+
+            const name =
+                profile
+                    ? profile.name
+                    : "Writejot User";
+
+
+            const picture =
+                profile &&
+                profile.profilePicture
+                    ? profile.profilePicture
+                    : "W.png";
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.className =
+                "conversation";
+
+
+            link.href =
+                "chat.html?username=" +
+                encodeURIComponent(
+                    conversation.username
+                );
+
+
+            link.innerHTML = `
+
+                <img
+                    src="${escapeHtml(picture)}"
+                    alt=""
+                    onerror="this.src='W.png'"
+                >
+
+                <div style="min-width:0;">
+
+                    <div
+                        class="conversation-name"
+                    >
+                        ${escapeHtml(name)}
+                    </div>
+
+                    <div
+                        class="conversation-preview"
+                    >
+                        ${escapeHtml(
+                            conversation.lastMessage
+                        )}
+                    </div>
+
+                </div>
+
+            `;
+
+
+            list.appendChild(
+                link
+            );
+
+        }
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            error
+        );
+
+        showError(
+            "Could not load your conversations."
+        );
+
+    }
+
+}
+
+
+async function getProfile(
+    username
+) {
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=profile&username=" +
+                encodeURIComponent(
+                    username
+                )
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.success
+        ) {
+
+            return result.profile;
+
+        }
+
+    }
+
+    catch (error) {}
+
+
+    return null;
+
+}
+
+
+function showError(
+    message
+) {
+
+    document
+        .getElementById(
+            "empty"
+        )
+        .style.display =
+        "none";
+
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    error.textContent =
+        message;
+
+
+    error.style.display =
+        "block";
+
+}
+
+
+function escapeHtml(
+    value
+) {
+
+    return String(
+        value || ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
