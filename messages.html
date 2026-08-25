@@ -16,13 +16,15 @@
     <style>
 
         * {
-            box-sizing: border-box;
+            box-sizing:
+                border-box;
         }
 
 
         body {
 
-            margin: 0;
+            margin:
+                0;
 
             font-family:
                 Arial,
@@ -59,15 +61,6 @@
 
             align-items:
                 center;
-
-            position:
-                sticky;
-
-            top:
-                0;
-
-            z-index:
-                100;
         }
 
 
@@ -254,9 +247,6 @@
 
             color:
                 inherit;
-
-            transition:
-                background .15s ease;
         }
 
 
@@ -271,13 +261,6 @@
 
             background:
                 #f5f9ff;
-        }
-
-
-        .conversation.unread:hover {
-
-            background:
-                #eef5ff;
         }
 
 
@@ -446,9 +429,6 @@
 
             font-weight:
                 700;
-
-            flex-shrink:
-                0;
         }
 
 
@@ -489,7 +469,7 @@
 
 
         @media (
-            max-width: 600px
+            max-width:600px
         ) {
 
             header {
@@ -590,7 +570,6 @@
 
     <div class="messages-card">
 
-
         <div class="title">
 
             <h1>
@@ -639,7 +618,6 @@
             style="display:none;"
         ></div>
 
-
     </div>
 
 </main>
@@ -648,8 +626,13 @@
 
 <script>
 
+
+/* =========================================
+   SAME CURRENT URL AS CHAT.HTML
+========================================= */
+
 const APPS_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbwKK7HO-uWb_QmnPVqne1jhXYk5GlhfgqjiwwGGNYGqubJViyXywb8NUBIa6u2znP6F/exec";
+    "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
 let currentUser =
@@ -665,8 +648,12 @@ let refreshTimer =
     null;
 
 
+/* =========================================
+   START
+========================================= */
+
 window.onload =
-    async function() {
+    async function () {
 
         const savedUser =
             localStorage.getItem(
@@ -680,7 +667,6 @@ window.onload =
                 "index.html";
 
             return;
-
         }
 
 
@@ -699,7 +685,6 @@ window.onload =
                 "index.html";
 
             return;
-
         }
 
 
@@ -719,11 +704,15 @@ window.onload =
         refreshTimer =
             setInterval(
                 loadConversations,
-                4000
+                3000
             );
 
     };
 
+
+/* =========================================
+   LOAD CONVERSATIONS
+========================================= */
 
 async function loadConversations() {
 
@@ -736,9 +725,21 @@ async function loadConversations() {
                 "?action=conversations&email=" +
                 encodeURIComponent(
                     currentUser.email
-                )
+                ),
+                {
+                    cache: "no-store"
+                }
 
             );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Server returned " +
+                response.status
+            );
+        }
 
 
         const result =
@@ -749,11 +750,10 @@ async function loadConversations() {
 
             showError(
                 result.error ||
-                "Could not load messages."
+                "Could not load conversations."
             );
 
             return;
-
         }
 
 
@@ -772,13 +772,12 @@ async function loadConversations() {
     catch (error) {
 
         console.error(
-            "Conversation loading error:",
+            "Conversation error:",
             error
         );
 
-
         showError(
-            "Could not load your conversations."
+            "Could not load conversations."
         );
 
     }
@@ -786,12 +785,18 @@ async function loadConversations() {
 }
 
 
+/* =========================================
+   LOAD PROFILE INFO
+========================================= */
+
 async function loadProfilesForConversations() {
 
     const requests =
         allConversations.map(
 
-            async function(conversation) {
+            async function (
+                conversation
+            ) {
 
                 if (
                     profileCache[
@@ -800,7 +805,6 @@ async function loadProfilesForConversations() {
                 ) {
 
                     return;
-
                 }
 
 
@@ -813,7 +817,11 @@ async function loadProfilesForConversations() {
                             "?action=profile&username=" +
                             encodeURIComponent(
                                 conversation.username
-                            )
+                            ),
+                            {
+                                cache:
+                                    "no-store"
+                            }
 
                         );
 
@@ -830,7 +838,6 @@ async function loadProfilesForConversations() {
                             conversation.username
                         ] =
                             result.profile;
-
                     }
 
                 }
@@ -854,6 +861,10 @@ async function loadProfilesForConversations() {
 
 }
 
+
+/* =========================================
+   RENDER
+========================================= */
 
 function renderFilteredConversations() {
 
@@ -882,7 +893,9 @@ function renderFilteredConversations() {
     const filtered =
         allConversations.filter(
 
-            function(conversation) {
+            function (
+                conversation
+            ) {
 
                 const profile =
                     profileCache[
@@ -922,38 +935,26 @@ function renderFilteredConversations() {
             "block";
 
 
-        if (
+        empty.innerHTML =
             allConversations.length
-        ) {
 
-            empty.innerHTML =
+                ? `
+                    <div id="empty-icon">
+                        🔎
+                    </div>
 
-                `
-                <div id="empty-icon">
-                    🔎
-                </div>
+                    No conversations found.
+                  `
 
-                No conversations found.
-                `;
+                : `
+                    <div id="empty-icon">
+                        💬
+                    </div>
 
-        }
-
-        else {
-
-            empty.innerHTML =
-
-                `
-                <div id="empty-icon">
-                    💬
-                </div>
-
-                You don't have any conversations yet.
-                `;
-
-        }
+                    You don't have any conversations yet.
+                  `;
 
         return;
-
     }
 
 
@@ -963,7 +964,9 @@ function renderFilteredConversations() {
 
     filtered.forEach(
 
-        function(conversation) {
+        function (
+            conversation
+        ) {
 
             const profile =
                 profileCache[
@@ -1060,6 +1063,7 @@ function renderFilteredConversations() {
 
                         ${
                             conversation.unread
+
                                 ? `
                                     <span
                                         class="unread-badge"
@@ -1067,6 +1071,7 @@ function renderFilteredConversations() {
                                         1
                                     </span>
                                   `
+
                                 : ""
                         }
 
@@ -1087,7 +1092,13 @@ function renderFilteredConversations() {
 }
 
 
-function formatTime(value) {
+/* =========================================
+   TIME
+========================================= */
+
+function formatTime(
+    value
+) {
 
     if (!value) {
         return "";
@@ -1105,7 +1116,6 @@ function formatTime(value) {
     ) {
 
         return "";
-
     }
 
 
@@ -1119,7 +1129,9 @@ function formatTime(value) {
     ) {
 
         return date.toLocaleTimeString(
+
             [],
+
             {
                 hour:
                     "numeric",
@@ -1127,13 +1139,16 @@ function formatTime(value) {
                 minute:
                     "2-digit"
             }
+
         );
 
     }
 
 
     return date.toLocaleDateString(
+
         [],
+
         {
             month:
                 "short",
@@ -1141,12 +1156,19 @@ function formatTime(value) {
             day:
                 "numeric"
         }
+
     );
 
 }
 
 
-function showError(message) {
+/* =========================================
+   ERROR
+========================================= */
+
+function showError(
+    message
+) {
 
     document
         .getElementById(
@@ -1172,7 +1194,13 @@ function showError(message) {
 }
 
 
-function escapeHtml(value) {
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHtml(
+    value
+) {
 
     return String(
         value || ""
