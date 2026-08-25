@@ -168,121 +168,71 @@
         }
 
         /* =========================
-           MESSAGE ROW
+           MESSAGE BUBBLES
         ========================= */
 
         .message-row {
-            display:
-                flex;
-
-            width:
-                100%;
-
-            margin-bottom:
-                12px;
+            display: flex;
+            width: 100%;
+            margin-bottom: 12px;
+            align-items: flex-start;
+            height: fit-content;
+            min-height: 0;
         }
 
         .message-row.mine {
-            justify-content:
-                flex-end;
+            justify-content: flex-end;
         }
 
         .message-row.theirs {
-            justify-content:
-                flex-start;
+            justify-content: flex-start;
         }
 
-      /* =========================
-   ADAPTIVE MESSAGE BUBBLES
-========================= */
+        .bubble-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            max-width: 70%;
+            flex: 0 0 auto;
+            align-items: flex-start;
+            height: fit-content;
+            min-height: 0;
+        }
 
-.message-row {
-    display: flex;
-    width: 100%;
-    margin-bottom: 16px;
-    align-items: flex-start;
-}
+        .bubble {
+            display: inline-block;
+            width: fit-content;
+            max-width: 100%;
+            height: fit-content !important;
+            min-height: 0 !important;
+            max-height: none !important;
+            flex: 0 0 auto;
+            padding: 10px 14px;
+            border-radius: 15px;
+            line-height: 1.45;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            text-align: left;
+            align-self: flex-start;
+            box-sizing: border-box;
+        }
 
-.message-row.mine {
-    justify-content: flex-end;
-}
+        .mine .bubble {
+            align-self: flex-end;
+            background: #4285F4;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
 
-.message-row.theirs {
-    justify-content: flex-start;
-}
+        .theirs .bubble {
+            align-self: flex-start;
+            background: white;
+            color: #1f2937;
+            border: 1px solid #e1e6ee;
+            border-bottom-left-radius: 4px;
+        }
 
-.bubble-wrapper {
-    display: flex;
-    flex-direction: column;
-
-    /* Bubble only takes as much width as it needs */
-    width: fit-content;
-
-    /* But never gets too wide */
-    max-width: 70%;
-
-    /* Prevent stretching */
-    flex: 0 1 auto;
-
-    align-items: flex-start;
-}
-
-.bubble {
-    display: inline-block;
-
-    /* Let the bubble size itself based on its text */
-    width: fit-content;
-    max-width: 100%;
-
-    padding: 5px 7px;
-
-    border-radius: 14px;
-
-    line-height: 1.45;
-
-    /* Allows normal wrapping and Shift+Enter new lines */
-    white-space: pre-wrap;
-
-    /* Break very long words/URLs */
-    overflow-wrap: anywhere;
-    word-break: break-word;
-
-    text-align: left;
-
-    /* IMPORTANT */
-    height: auto;
-    min-height: 0;
-}
-
-.mine .bubble {
-    align-self: flex-end;
-
-    background: #4285F4;
-    color: white;
-
-    border-bottom-right-radius: 4px;
-}
-
-.theirs .bubble {
-    align-self: flex-start;
-
-    background: white;
-    color: #1f2937;
-
-    border: 1px solid #e1e6ee;
-
-    border-bottom-left-radius: 4px;
-}
-
-.time {
-    font-size: 11px;
-    opacity: 0.65;
-    margin-top: 4px;
-}
-
-.mine .time {
-    text-align: right;
-}
         /* =========================
            IMAGE MESSAGES
         ========================= */
@@ -698,8 +648,9 @@
             }
 
             .bubble-wrapper {
-                max-width:
-                    82%;
+                width: fit-content;
+                max-width: 82%;
+                height: fit-content;
             }
 
             .message-image {
