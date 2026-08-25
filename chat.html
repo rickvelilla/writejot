@@ -18,15 +18,22 @@
             box-sizing: border-box;
         }
 
+        html,
         body {
             margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
             font-family:
                 Arial,
                 Helvetica,
                 sans-serif;
+
             background: #f6f8fc;
             color: #1f2937;
-            height: 100vh;
+
             display: flex;
             flex-direction: column;
         }
@@ -37,66 +44,94 @@
 
         header {
             background: white;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 11px 6%;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            padding:
+                11px 6%;
+
             display: flex;
             align-items: center;
+
             gap: 12px;
+
             flex-shrink: 0;
         }
 
         .back {
             color: #4285F4;
+
             text-decoration: none;
+
             font-weight: 600;
+
             white-space: nowrap;
         }
 
         .recipient {
             display: flex;
+
             align-items: center;
+
             gap: 10px;
+
             min-width: 0;
         }
 
         .recipient img {
             width: 42px;
             height: 42px;
+
             border-radius: 50%;
+
             object-fit: cover;
-            border: 2px solid #4285F4;
+
+            border:
+                2px solid #4285F4;
+
             flex-shrink: 0;
         }
 
         .recipient-name {
             font-weight: 700;
+
             white-space: nowrap;
+
             overflow: hidden;
+
             text-overflow: ellipsis;
         }
 
         .recipient-username {
             color: #4285F4;
+
             font-size: 13px;
         }
 
         /* =========================
-           MESSAGES
+           MESSAGE AREA
         ========================= */
 
         #messages {
             flex: 1;
+
             overflow-y: auto;
+
             width: 100%;
+
             max-width: 850px;
+
             margin: 0 auto;
+
             padding: 25px 20px;
-            scroll-behavior: smooth;
         }
 
         .message-row {
-            display: flex;
             width: 100%;
+
+            display: flex;
+
             margin-bottom: 12px;
         }
 
@@ -108,50 +143,101 @@
             justify-content: flex-start;
         }
 
-        /* ADAPTIVE MESSAGE BUBBLE */
+        /*
+         * IMPORTANT:
+         * The wrapper is shrink-to-fit.
+         */
 
         .bubble-wrapper {
-            width: fit-content;
-            max-width: min(70%, 550px);
+            display: inline-block;
+
+            width: auto;
+
+            max-width:
+                min(70vw, 550px);
+
+            flex:
+                0 1 auto;
         }
 
+        /*
+         * The bubble itself only becomes
+         * as wide as the text requires.
+         */
+
         .bubble {
-            width: fit-content;
+            display: inline-block;
+
+            width: auto;
+
             max-width: 100%;
-            padding: 10px 14px;
-            border-radius: 15px;
-            line-height: 1.45;
-            white-space: pre-wrap;
-            word-break: break-word;
-            overflow-wrap: anywhere;
+
+            padding:
+                10px 14px;
+
+            border-radius:
+                15px;
+
+            line-height:
+                1.45;
+
+            white-space:
+                pre-wrap;
+
+            overflow-wrap:
+                anywhere;
+
+            word-break:
+                break-word;
         }
 
         .mine .bubble {
-            background: #4285F4;
-            color: white;
-            border-bottom-right-radius: 4px;
+            background:
+                #4285F4;
+
+            color:
+                white;
+
+            border-bottom-right-radius:
+                4px;
         }
 
         .theirs .bubble {
-            background: white;
-            border: 1px solid #e1e6ee;
-            border-bottom-left-radius: 4px;
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-bottom-left-radius:
+                4px;
         }
 
         .time {
-            font-size: 11px;
-            opacity: .65;
-            margin-top: 4px;
+            font-size:
+                11px;
+
+            opacity:
+                0.65;
+
+            margin-top:
+                4px;
         }
 
         .mine .time {
-            text-align: right;
+            text-align:
+                right;
         }
 
         #empty {
-            text-align: center;
-            color: #718096;
-            padding: 40px;
+            text-align:
+                center;
+
+            color:
+                #718096;
+
+            padding:
+                40px;
         }
 
         /* =========================
@@ -160,65 +246,132 @@
 
         #composer {
             width: 100%;
-            background: white;
-            border-top: 1px solid #e5e7eb;
-            padding: 10px 14px;
+
+            background:
+                white;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            padding:
+                10px 14px;
+
             flex-shrink: 0;
         }
 
         .composer-inner {
             width: 100%;
+
             max-width: 850px;
-            margin: 0 auto;
+
+            margin:
+                0 auto;
+
             display: flex;
-            align-items: flex-end;
+
+            align-items:
+                flex-end;
+
             gap: 10px;
         }
 
         #messageInput {
             flex: 1;
+
             min-width: 0;
+
             width: 100%;
-            min-height: 44px;
-            max-height: 140px;
-            padding: 11px 14px;
-            border: 1px solid #d8dee8;
-            border-radius: 9px;
-            background: white;
-            font-family: inherit;
-            font-size: 14px;
-            outline: none;
-            resize: none;
-            overflow-y: auto;
+
+            min-height:
+                44px;
+
+            max-height:
+                140px;
+
+            padding:
+                11px 14px;
+
+            border:
+                1px solid #d8dee8;
+
+            border-radius:
+                9px;
+
+            background:
+                white;
+
+            font-family:
+                inherit;
+
+            font-size:
+                14px;
+
+            outline:
+                none;
+
+            resize:
+                none;
+
+            overflow-y:
+                auto;
         }
 
         #messageInput:focus {
-            border-color: #4285F4;
+            border-color:
+                #4285F4;
+
             box-shadow:
                 0 0 0 3px
-                rgba(66,133,244,0.08);
+                rgba(
+                    66,
+                    133,
+                    244,
+                    0.08
+                );
         }
 
         #sendButton {
             flex-shrink: 0;
-            min-height: 44px;
-            padding: 0 18px;
-            border: none;
-            border-radius: 9px;
-            background: #4285F4;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            white-space: nowrap;
+
+            min-height:
+                44px;
+
+            padding:
+                0 18px;
+
+            border:
+                none;
+
+            border-radius:
+                9px;
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+
+            font-weight:
+                600;
+
+            cursor:
+                pointer;
+
+            white-space:
+                nowrap;
         }
 
         #sendButton:hover {
-            background: #3367d6;
+            background:
+                #3367d6;
         }
 
         #sendButton:disabled {
-            opacity: .6;
-            cursor: not-allowed;
+            opacity:
+                0.6;
+
+            cursor:
+                not-allowed;
         }
 
         /* =========================
@@ -228,48 +381,65 @@
         @media (max-width: 600px) {
 
             header {
-                padding: 10px 12px;
+                padding:
+                    10px 12px;
             }
 
             .back {
-                font-size: 13px;
+                font-size:
+                    13px;
             }
 
             .recipient img {
-                width: 38px;
-                height: 38px;
+                width:
+                    38px;
+
+                height:
+                    38px;
             }
 
             .recipient-name {
-                max-width: 170px;
+                max-width:
+                    170px;
             }
 
             #messages {
-                padding: 18px 12px;
+                padding:
+                    18px 12px;
             }
 
             .bubble-wrapper {
-                max-width: 82%;
+                max-width:
+                    82vw;
             }
 
             #composer {
-                padding: 8px 10px;
+                padding:
+                    8px 10px;
             }
 
             .composer-inner {
-                gap: 7px;
+                gap:
+                    7px;
             }
 
             #messageInput {
-                min-height: 42px;
-                max-height: 120px;
-                padding: 10px 12px;
-                font-size: 14px;
+                min-height:
+                    42px;
+
+                max-height:
+                    120px;
+
+                padding:
+                    10px 12px;
             }
 
             #sendButton {
-                min-height: 42px;
-                padding: 0 13px;
+                min-height:
+                    42px;
+
+                padding:
+                    0 13px;
             }
         }
 
@@ -364,18 +534,21 @@
 
 
 /* =========================================
-   IMPORTANT: THIS IS YOUR CURRENT URL
+   YOUR CURRENT APPS SCRIPT URL
 ========================================= */
 
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-let currentUser = null;
+let currentUser =
+    null;
 
-let otherUsername = "";
+let otherUsername =
+    "";
 
-let refreshTimer = null;
+let refreshTimer =
+    null;
 
 
 /* =========================================
@@ -397,7 +570,6 @@ window.onload =
                 "index.html";
 
             return;
-
         }
 
 
@@ -416,7 +588,6 @@ window.onload =
                 "index.html";
 
             return;
-
         }
 
 
@@ -446,7 +617,6 @@ window.onload =
                 "messages.html";
 
             return;
-
         }
 
 
@@ -477,31 +647,26 @@ async function loadRecipient() {
 
     try {
 
-        const url =
-            APPS_SCRIPT_URL +
-            "?action=profile&username=" +
-            encodeURIComponent(
-                otherUsername
-            );
-
-
         const response =
             await fetch(
-                url,
+
+                APPS_SCRIPT_URL +
+                "?action=profile&username=" +
+                encodeURIComponent(
+                    otherUsername
+                ),
                 {
-                    cache:
-                        "no-store"
+                    cache: "no-store"
                 }
+
             );
 
 
         if (!response.ok) {
-
             throw new Error(
                 "Server returned " +
                 response.status
             );
-
         }
 
 
@@ -515,12 +680,26 @@ async function loadRecipient() {
         ) {
 
             console.error(
-                "Profile error:",
+                "Profile response:",
                 result
             );
 
-            return;
+            document
+                .getElementById(
+                    "recipientName"
+                )
+                .textContent =
+                "User not found";
 
+            document
+                .getElementById(
+                    "recipientUsername"
+                )
+                .textContent =
+                "@" +
+                otherUsername;
+
+            return;
         }
 
 
@@ -549,33 +728,16 @@ async function loadRecipient() {
             );
 
 
-        const picture =
-            profile.profilePicture ||
-            "W.png";
-
-
         document
             .getElementById(
                 "recipientPicture"
             )
             .src =
-            picture;
+            profile.profilePicture ||
+            "W.png";
 
-
-        document
-            .getElementById(
-                "recipientPicture"
-            )
-            .onerror =
-            function () {
-
-                this.src =
-                    "W.png";
-
-            };
 
     }
-
 
     catch (error) {
 
@@ -584,13 +746,28 @@ async function loadRecipient() {
             error
         );
 
+        document
+            .getElementById(
+                "recipientName"
+            )
+            .textContent =
+            "Writejot User";
+
+        document
+            .getElementById(
+                "recipientUsername"
+            )
+            .textContent =
+            "@" +
+            otherUsername;
+
     }
 
 }
 
 
 /* =========================================
-   MARK CONVERSATION AS READ
+   MARK READ
 ========================================= */
 
 async function markConversationRead() {
@@ -605,9 +782,6 @@ async function markConversationRead() {
 
                 method:
                     "POST",
-
-                mode:
-                    "no-cors",
 
                 headers: {
 
@@ -639,7 +813,7 @@ async function markConversationRead() {
     catch (error) {
 
         console.error(
-            "Could not mark conversation as read:",
+            "Read-state error:",
             error
         );
 
@@ -656,26 +830,23 @@ async function loadMessages() {
 
     try {
 
-        const url =
-            APPS_SCRIPT_URL +
-            "?action=messages" +
-            "&email=" +
-            encodeURIComponent(
-                currentUser.email
-            ) +
-            "&username=" +
-            encodeURIComponent(
-                otherUsername
-            );
-
-
         const response =
             await fetch(
-                url,
+
+                APPS_SCRIPT_URL +
+                "?action=messages" +
+                "&email=" +
+                encodeURIComponent(
+                    currentUser.email
+                ) +
+                "&username=" +
+                encodeURIComponent(
+                    otherUsername
+                ),
                 {
-                    cache:
-                        "no-store"
+                    cache: "no-store"
                 }
+
             );
 
 
@@ -693,7 +864,9 @@ async function loadMessages() {
             await response.json();
 
 
-        if (!result.success) {
+        if (
+            !result.success
+        ) {
 
             showMessageError(
                 result.error ||
@@ -701,17 +874,14 @@ async function loadMessages() {
             );
 
             return;
-
         }
 
 
         renderMessages(
-            result.messages ||
-            []
+            result.messages || []
         );
 
     }
-
 
     catch (error) {
 
@@ -721,7 +891,7 @@ async function loadMessages() {
         );
 
         showMessageError(
-            "Could not connect to Writejot."
+            "Could not load messages."
         );
 
     }
@@ -754,7 +924,6 @@ function renderMessages(
             `;
 
         return;
-
     }
 
 
@@ -859,9 +1028,7 @@ async function sendMessage() {
 
 
     if (!message) {
-
         return;
-
     }
 
 
@@ -873,13 +1040,6 @@ async function sendMessage() {
 
 
     try {
-
-        /*
-         * IMPORTANT:
-         * We do NOT use no-cors here.
-         * We need to be able to see the
-         * Apps Script response and error.
-         */
 
         const response =
             await fetch(
@@ -926,7 +1086,6 @@ async function sendMessage() {
                 "Server returned " +
                 response.status
             );
-
         }
 
 
@@ -942,7 +1101,6 @@ async function sendMessage() {
                 result.error ||
                 "Message could not be sent."
             );
-
         }
 
 
@@ -953,15 +1111,18 @@ async function sendMessage() {
         resetTextareaHeight();
 
 
+        /*
+         * Reload the conversation immediately.
+         */
+
         await loadMessages();
 
     }
 
-
     catch (error) {
 
         console.error(
-            "Send message error:",
+            "Send error:",
             error
         );
 
@@ -972,7 +1133,6 @@ async function sendMessage() {
         );
 
     }
-
 
     finally {
 
@@ -990,7 +1150,7 @@ async function sendMessage() {
 
 
 /* =========================================
-   ADAPTIVE INPUT
+   INPUT
 ========================================= */
 
 function setupMessageInput() {
@@ -1010,8 +1170,7 @@ function setupMessageInput() {
 
 
             const maxHeight =
-                window.innerWidth <=
-                    600
+                window.innerWidth <= 600
                     ? 120
                     : 140;
 
@@ -1151,4 +1310,3 @@ function escapeHtml(
 </body>
 
 </html>
-
