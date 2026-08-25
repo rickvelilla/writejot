@@ -868,7 +868,213 @@
                 15px;
 
         }
+<!-- =========================
+     PROFILE SETTINGS
+========================= -->
 
+<section
+    id="profileSettings"
+    style="
+        display:none;
+        max-width:700px;
+        margin:0 auto 60px;
+        padding:0 20px;
+    "
+>
+
+    <div
+        style="
+            background:white;
+            border:1px solid #e1e6ee;
+            border-radius:16px;
+            padding:30px;
+        "
+    >
+
+        <h2>
+            Profile Settings
+        </h2>
+
+        <p
+            style="
+                color:#718096;
+                margin:8px 0 25px;
+            "
+        >
+            Customize your Writejot profile.
+            Only your username is required.
+        </p>
+
+
+        <!-- PROFILE PICTURE -->
+
+        <label
+            style="
+                display:block;
+                font-weight:600;
+                margin-bottom:7px;
+            "
+        >
+            Profile Picture URL
+        </label>
+
+        <input
+            id="editProfilePicture"
+            type="url"
+            placeholder="https://example.com/image.jpg"
+            style="
+                width:100%;
+                padding:13px;
+                border:1px solid #d8dee8;
+                border-radius:8px;
+                margin-bottom:20px;
+            "
+        >
+
+
+        <!-- DISPLAY NAME -->
+
+        <label
+            style="
+                display:block;
+                font-weight:600;
+                margin-bottom:7px;
+            "
+        >
+            Display Name
+        </label>
+
+        <input
+            id="editDisplayName"
+            type="text"
+            maxlength="50"
+            placeholder="Your display name"
+            style="
+                width:100%;
+                padding:13px;
+                border:1px solid #d8dee8;
+                border-radius:8px;
+                margin-bottom:20px;
+            "
+        >
+
+
+        <!-- USERNAME -->
+
+        <label
+            style="
+                display:block;
+                font-weight:600;
+                margin-bottom:7px;
+            "
+        >
+            Username
+        </label>
+
+        <div
+            style="
+                display:flex;
+                align-items:center;
+                background:#f8fafc;
+                border:1px solid #d8dee8;
+                border-radius:8px;
+                margin-bottom:20px;
+            "
+        >
+
+            <span
+                style="
+                    padding-left:14px;
+                    color:#6b7280;
+                    font-weight:600;
+                "
+            >
+                @
+            </span>
+
+            <input
+                id="editUsername"
+                type="text"
+                maxlength="20"
+                style="
+                    width:100%;
+                    border:none;
+                    outline:none;
+                    background:transparent;
+                    padding:13px 14px 13px 5px;
+                    font-size:16px;
+                "
+            >
+
+        </div>
+
+
+        <!-- BIO -->
+
+        <label
+            style="
+                display:block;
+                font-weight:600;
+                margin-bottom:7px;
+            "
+        >
+            Bio
+        </label>
+
+        <textarea
+            id="editBio"
+            maxlength="160"
+            placeholder="Tell people a little about yourself..."
+            style="
+                width:100%;
+                min-height:110px;
+                padding:13px;
+                border:1px solid #d8dee8;
+                border-radius:8px;
+                resize:vertical;
+                font-family:inherit;
+                margin-bottom:20px;
+            "
+        ></textarea>
+
+
+        <div
+            style="
+                display:flex;
+                gap:10px;
+                flex-wrap:wrap;
+            "
+        >
+
+            <button
+                class="button primary"
+                onclick="saveProfile()"
+            >
+                Save Changes
+            </button>
+
+            <button
+                class="button secondary"
+                onclick="closeProfileSettings()"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+
+        <p
+            id="profileSaveMessage"
+            style="
+                margin-top:15px;
+                color:#667085;
+            "
+        ></p>
+
+
+    </div>
+
+</section>
 
         /* =========================
            TRIAL
