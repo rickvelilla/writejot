@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Writejot | Profile</title>
+
+
+    <style>
+
+        * {
+            box-sizing:
+                border-box;
+        }
+
+
+        body {
+
+            margin:
+                0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                #f6f8fc;
+
+            color:
+                #1f2937;
+
+            min-height:
+                100vh;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+
+            background:
+                white;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            padding:
+                12px 6%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            position:
+                sticky;
+
+            top:
+                0;
+
+            z-index:
+                100;
+        }
+
+
+        .brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+        }
+
+
+        .brand-logo {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            object-fit:
+                contain;
+        }
+
+
+        .brand-name {
+
+            font-size:
+                23px;
+
+            font-weight:
+                700;
+
+            color:
+                #111827;
+        }
+
+
+        .back-button {
+
+            color:
+                #4285F4;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                600;
+        }
+
+
+        .back-button:hover {
+
+            color:
+                #3367d6;
+        }
+
+
+        /* =========================
+           PROFILE
+        ========================= */
+
+        main {
+
+            max-width:
+                700px;
+
+            margin:
+                50px auto;
+
+            padding:
+                0 20px;
+        }
+
+
+        .profile-card {
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                18px;
+
+            padding:
+                40px 30px;
+
+            text-align:
+                center;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,0.05);
+        }
+
+
+        #profilePicture {
+
+            width:
+                120px;
+
+            height:
+                120px;
+
+            border-radius:
+                50%;
+
+            object-fit:
+                cover;
+
+            border:
+                3px solid #4285F4;
+
+            background:
+                #eef4ff;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        #profileName {
+
+            font-size:
+                30px;
+
+            font-weight:
+                700;
+
+            margin:
+                0 0 4px;
+        }
+
+
+        #profileUsername {
+
+            color:
+                #4285F4;
+
+            font-size:
+                17px;
+
+            font-weight:
+                600;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        #profileBio {
+
+            max-width:
+                500px;
+
+            margin:
+                0 auto 25px;
+
+            color:
+                #667085;
+
+            line-height:
+                1.7;
+
+            white-space:
+                pre-wrap;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .button {
+
+            display:
+                inline-flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            padding:
+                11px 18px;
+
+            border-radius:
+                8px;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                600;
+
+            border:
+                1px solid transparent;
+
+            cursor:
+                pointer;
+
+            font-size:
+                14px;
+        }
+
+
+        .primary {
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+        }
+
+
+        .primary:hover {
+
+            background:
+                #3367d6;
+        }
+
+
+        .secondary {
+
+            background:
+                white;
+
+            color:
+                #2563eb;
+
+            border-color:
+                #d7e3fb;
+        }
+
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        #loading {
+
+            text-align:
+                center;
+
+            padding:
+                80px 20px;
+
+            color:
+                #718096;
+        }
+
+
+        .spinner {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            border:
+                5px solid #e5e7eb;
+
+            border-top:
+                5px solid #4285F4;
+
+            border-radius:
+                50%;
+
+            animation:
+                spin .8s linear infinite;
+
+            margin:
+                0 auto 15px;
+        }
+
+
+        @keyframes spin {
+
+            from {
+                transform:
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+
+        }
+
+
+        /* =========================
+           ERROR
+        ========================= */
+
+        #error {
+
+            display:
+                none;
+
+            max-width:
+                600px;
+
+            margin:
+                70px auto;
+
+            padding:
+                0 20px;
+
+            text-align:
+                center;
+        }
+
+
+        .error-card {
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                16px;
+
+            padding:
+                35px;
+        }
+
+
+        .error-icon {
+
+            font-size:
+                48px;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .error-card h1 {
+
+            margin:
+                0 0 10px;
+        }
+
+
+        .error-card p {
+
+            color:
+                #718096;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (
+            max-width:600px
+        ) {
+
+            header {
+
+                padding:
+                    11px 18px;
+            }
+
+
+            .brand-name {
+
+                font-size:
+                    20px;
+            }
+
+
+            .brand-logo {
+
+                width:
+                    38px;
+
+                height:
+                    38px;
+            }
+
+
+            main {
+
+                margin-top:
+                    30px;
+            }
+
+
+            .profile-card {
+
+                padding:
+                    30px 20px;
+            }
+
+
+            #profileName {
+
+                font-size:
+                    25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="brand">
+
+        <img
+            class="brand-logo"
+            src="W.png"
+            alt="Writejot logo"
+        >
+
+        <div class="brand-name">
+            Writejot
+        </div>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="back-button"
+    >
+        ← Dashboard
+    </a>
+
+</header>
+
+
+
+<!-- =========================
+     LOADING
+========================= -->
+
+<div id="loading">
+
+    <div class="spinner"></div>
+
+    <div>
+        Loading profile...
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     PROFILE
+========================= -->
+
+<main
+    id="profileContainer"
+    style="display:none;"
+>
+
+    <div class="profile-card">
+
+
+        <img
+            id="profilePicture"
+            src="W.png"
+            alt="Profile picture"
+        >
+
+
+        <h1
+            id="profileName"
+        >
+            Name
+        </h1>
+
+
+        <div
+            id="profileUsername"
+        >
+            @username
+        </div>
+
+
+        <p
+            id="profileBio"
+        >
+        </p>
+
+
+        <button
+            class="button primary"
+            onclick="messageUser()"
+        >
+            💬 Message
+        </button>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================
+     ERROR
+========================= -->
+
+<section
+    id="error"
+>
+
+    <div class="error-card">
+
+        <div class="error-icon">
+            🔍
+        </div>
+
+
+        <h1>
+            Profile not found
+        </h1>
+
+
+        <p>
+            We couldn't find that Writejot profile.
+        </p>
+
+
+        <a
+            href="index.html"
+            class="button secondary"
+        >
+            ← Return to Dashboard
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+
+/* =========================================
+   APPS SCRIPT
+========================================= */
+
+const APPS_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
+
+
+let viewedUsername = "";
+
+
+/* =========================================
+   LOAD PROFILE
+========================================= */
+
+window.onload = async function () {
+
+
+    /*
+     * Require a Writejot login.
+     */
+
+    const savedUser =
+        localStorage.getItem(
+            "writejotUser"
+        );
+
+
+    if (!savedUser) {
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    /*
+     * Get username from URL.
+     */
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    viewedUsername =
+        String(
+            params.get(
+                "username"
+            ) || ""
+        )
+        .trim()
+        .toLowerCase()
+        .replace(
+            /^@/,
+            ""
+        );
+
+
+    if (
+        !viewedUsername
+    ) {
+
+        showError();
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=profile&username=" +
+                encodeURIComponent(
+                    viewedUsername
+                )
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success ||
+            !result.profile
+        ) {
+
+            showError();
+
+            return;
+
+        }
+
+
+        showProfile(
+            result.profile
+        );
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Profile loading error:",
+            error
+        );
+
+        showError();
+
+    }
+
+};
+
+
+/* =========================================
+   SHOW PROFILE
+========================================= */
+
+function showProfile(
+    profile
+) {
+
+
+    const picture =
+        profile.profilePicture ||
+        "W.png";
+
+
+    document
+        .getElementById(
+            "profilePicture"
+        )
+        .src =
+        picture;
+
+
+    document
+        .getElementById(
+            "profilePicture"
+        )
+        .onerror =
+        function () {
+
+            this.src =
+                "W.png";
+
+        };
+
+
+    document
+        .getElementById(
+            "profileName"
+        )
+        .textContent =
+        profile.name ||
+        "Writejot User";
+
+
+    document
+        .getElementById(
+            "profileUsername"
+        )
+        .textContent =
+        "@" +
+        profile.username;
+
+
+    document
+        .getElementById(
+            "profileBio"
+        )
+        .textContent =
+        profile.bio ||
+        "";
+
+
+    document
+        .getElementById(
+            "loading"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "profileContainer"
+        )
+        .style.display =
+        "block";
+
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+function showError() {
+
+    document
+        .getElementById(
+            "loading"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "profileContainer"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "error"
+        )
+        .style.display =
+        "block";
+
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+function messageUser() {
+
+    alert(
+        "Messaging is coming soon."
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
