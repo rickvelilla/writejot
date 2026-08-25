@@ -5,18 +5,18 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Writejot - Notes Catalog</title>
-
+    <title>Writejot | Notes Catalog</title>
 
     <style>
 
         * {
             box-sizing: border-box;
         }
-
 
         body {
             margin: 0;
@@ -26,11 +26,10 @@
                 Helvetica,
                 sans-serif;
 
-            background: #f5f7fb;
+            background: #f6f8fc;
 
-            color: #222;
+            color: #1f2937;
         }
-
 
         /* =========================
            HEADER
@@ -41,40 +40,35 @@
             background: white;
 
             border-bottom:
-                1px solid #ddd;
+                1px solid #e5e7eb;
 
             padding:
-                15px 30px;
+                14px 6%;
 
             display: flex;
 
-            align-items: center;
-
             justify-content:
                 space-between;
-        }
 
+            align-items: center;
+        }
 
         .logo {
-
-            font-size: 24px;
-
-            font-weight: bold;
+            font-size: 23px;
+            font-weight: 700;
         }
-
 
         .back-button {
 
             text-decoration: none;
 
-            color: #4285F4;
+            color: #2563eb;
 
-            font-weight: bold;
+            font-weight: 600;
         }
 
-
         /* =========================
-           MAIN CONTAINER
+           MAIN
         ========================= */
 
         .container {
@@ -82,12 +76,11 @@
             max-width: 1100px;
 
             margin:
-                40px auto;
+                0 auto;
 
             padding:
-                0 20px;
+                60px 20px;
         }
-
 
         .title {
 
@@ -97,19 +90,19 @@
                 30px;
         }
 
-
         .title h1 {
+
+            font-size:
+                clamp(32px, 6vw, 44px);
 
             margin-bottom:
                 8px;
         }
 
-
         .title p {
 
-            color: #666;
+            color: #718096;
         }
-
 
         /* =========================
            SEARCH
@@ -120,45 +113,62 @@
             width: 100%;
 
             padding:
-                15px;
+                15px 16px;
 
             border:
-                1px solid #ccc;
+                1px solid #d8dee8;
 
             border-radius:
-                8px;
+                9px;
 
             font-size:
                 16px;
 
+            background: white;
+
+            outline: none;
+
             margin-bottom:
-                35px;
+                40px;
         }
 
+        .search-box:focus {
+
+            border-color:
+                #4285F4;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(66,133,244,0.10);
+        }
 
         /* =========================
-           SUBJECTS
+           SUBJECT
         ========================= */
 
         .subject {
 
             margin-bottom:
-                35px;
+                42px;
         }
-
 
         .subject h2 {
 
-            border-bottom:
-                2px solid #ddd;
+            font-size:
+                24px;
+
+            margin-bottom:
+                18px;
 
             padding-bottom:
-                8px;
+                9px;
+
+            border-bottom:
+                1px solid #dde3ec;
         }
 
-
         /* =========================
-           NOTES GRID
+           NOTES
         ========================= */
 
         .notes-grid {
@@ -172,54 +182,63 @@
                 );
 
             gap:
-                20px;
+                18px;
         }
-
 
         .note-card {
 
-            background:
-                white;
+            background: white;
 
             border:
-                1px solid #ddd;
+                1px solid #e1e6ee;
 
             border-radius:
-                10px;
+                12px;
 
             padding:
-                20px;
+                22px;
 
             box-shadow:
-                0 2px 6px
-                rgba(0,0,0,0.05);
+                0 3px 12px
+                rgba(0,0,0,0.035);
+
+            transition:
+                transform 0.15s ease,
+                box-shadow 0.15s ease;
         }
 
+        .note-card:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 7px 18px
+                rgba(0,0,0,0.06);
+        }
 
         .note-card h3 {
 
-            margin-top:
-                0;
+            margin:
+                0 0 8px;
         }
-
 
         .note-card p {
 
             color:
-                #666;
-        }
+                #718096;
 
+            margin-bottom:
+                12px;
+        }
 
         .note-button {
 
             display:
                 inline-block;
 
-            margin-top:
-                10px;
-
             padding:
-                9px 15px;
+                9px 14px;
 
             background:
                 #4285F4;
@@ -231,45 +250,26 @@
                 none;
 
             border-radius:
-                6px;
-        }
+                7px;
 
+            font-weight:
+                600;
+        }
 
         .note-button:hover {
 
             background:
-                #3367D6;
+                #3367d6;
         }
 
-
         /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-
-            text-align:
-                center;
-
-            padding:
-                30px;
-
-            margin-top:
-                50px;
-
-            color:
-                #777;
-        }
-
-
-        /* =========================
-           LOADING SCREEN
+           LOADING
         ========================= */
 
         #loadingScreen {
 
             min-height:
-                75vh;
+                78vh;
 
             display:
                 flex;
@@ -284,43 +284,68 @@
                 center;
         }
 
+        .loading-box {
+
+            background:
+                white;
+
+            padding:
+                30px;
+
+            border-radius:
+                14px;
+
+            border:
+                1px solid #e1e6ee;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0,0,0,0.04);
+        }
+
+        .loading-spinner {
+
+            width:
+                45px;
+
+            height:
+                45px;
+
+            border:
+                5px solid #e5e7eb;
+
+            border-top:
+                5px solid #4285F4;
+
+            border-radius:
+                50%;
+
+            animation:
+                spin 0.8s linear infinite;
+
+            margin:
+                0 auto 15px;
+        }
+
+        @keyframes spin {
+
+            from {
+                transform:
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+
+        }
 
         #loadingScreen p {
 
             color:
-                #666;
-
-            font-size:
-                17px;
+                #718096;
         }
-.loading-spinner {
-
-    width: 45px;
-    height: 45px;
-
-    border: 5px solid #e5e7eb;
-    border-top: 5px solid #4285F4;
-
-    border-radius: 50%;
-
-    animation:
-        spin 0.8s linear infinite;
-
-    margin: 0 auto 15px auto;
-}
-
-
-@keyframes spin {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
-}
 
         /* =========================
            ACCESS SCREEN
@@ -329,7 +354,7 @@
         #accessScreen {
 
             min-height:
-                75vh;
+                78vh;
 
             display:
                 flex;
@@ -343,7 +368,6 @@
             padding:
                 30px;
         }
-
 
         .access-card {
 
@@ -362,44 +386,40 @@
             padding:
                 40px 30px;
 
-            border-radius:
-                15px;
-
             border:
-                1px solid #ddd;
+                1px solid #e1e6ee;
+
+            border-radius:
+                14px;
 
             box-shadow:
                 0 5px 20px
-                rgba(0,0,0,0.06);
+                rgba(0,0,0,0.05);
         }
-
 
         .access-icon {
 
             font-size:
-                50px;
+                48px;
 
             margin-bottom:
-                15px;
+                12px;
         }
-
 
         .access-card h1 {
 
-            margin-top:
-                0;
+            margin:
+                0 0 10px;
         }
-
 
         .access-card p {
 
             color:
-                #666;
+                #718096;
 
             line-height:
-                1.6;
+                1.65;
         }
-
 
         .access-button {
 
@@ -407,10 +427,13 @@
                 inline-block;
 
             margin-top:
-                15px;
+                18px;
 
             padding:
-                12px 20px;
+                11px 18px;
+
+            border-radius:
+                8px;
 
             background:
                 #4285F4;
@@ -421,68 +444,96 @@
             text-decoration:
                 none;
 
-            border-radius:
-                7px;
-
             font-weight:
-                bold;
+                600;
         }
 
-
-        .access-button:hover {
-
-            background:
-                #3367D6;
-        }
-
-
-        /* Hide catalog until access is confirmed */
+        /* =========================
+           HIDDEN UNTIL APPROVED
+        ========================= */
 
         #catalogContent {
-
             display:
                 none;
         }
 
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align:
+                center;
+
+            padding:
+                28px 20px;
+
+            color:
+                #7b8494;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            background:
+                white;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            header {
+                padding:
+                    12px 18px;
+            }
+
+            .container {
+                padding-top:
+                    45px;
+            }
+
+            .note-card {
+                padding:
+                    20px;
+            }
+
+        }
 
     </style>
 
 </head>
 
 
-
 <body>
 
 
-    <!-- =========================
-         HEADER
-    ========================= -->
+<header>
 
-    <header>
+    <div class="logo">
+        Writejot
+    </div>
 
-        <div class="logo">
-            Writejot
-        </div>
+    <a
+        href="index.html"
+        class="back-button"
+    >
+        ← Back to Home
+    </a>
 
-
-        <a
-            class="back-button"
-            href="index.html"
-        >
-            ← Back to Home
-        </a>
-
-    </header>
+</header>
 
 
 
-    <!-- =========================
-         LOADING
-    ========================= -->
+<!-- =========================
+     LOADING
+========================= -->
 
-    <div id="loadingScreen">
+<div id="loadingScreen">
 
-    <div>
+    <div class="loading-box">
 
         <div class="loading-spinner"></div>
 
@@ -496,594 +547,542 @@
 
 
 
-    <!-- =========================
-         ACCESS SCREEN
-    ========================= -->
+<!-- =========================
+     ACCESS DENIED
+========================= -->
 
-    <div
-        id="accessScreen"
-        style="display:none;"
+<div
+    id="accessScreen"
+    style="display:none;"
+>
+
+    <div class="access-card">
+
+        <div
+            id="accessIcon"
+            class="access-icon"
+        >
+            🔐
+        </div>
+
+        <h1 id="accessTitle">
+            Checking access...
+        </h1>
+
+        <p id="accessMessage">
+            Please wait while we verify your account.
+        </p>
+
+        <a
+            href="index.html"
+            class="access-button"
+        >
+            Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     CATALOG
+========================= -->
+
+<main
+    id="catalogContent"
+    class="container"
+>
+
+    <div class="title">
+
+        <h1>
+            📚 Notes Catalog
+        </h1>
+
+        <p>
+            Study notes shared by Writejot students.
+        </p>
+
+    </div>
+
+
+    <input
+        id="search"
+        class="search-box"
+        type="text"
+        placeholder="Search notes..."
+        onkeyup="searchNotes()"
     >
 
-        <div class="access-card">
 
+    <!-- =================================================
+         ADD YOUR SUBJECTS AND NOTES BELOW
+    ================================================= -->
+
+    <section class="subject">
+
+        <h2>
+            Mathematics
+        </h2>
+
+        <div class="notes-grid">
+
+
+            <!-- COPY THIS CARD FOR EACH NOTE -->
 
             <div
-                class="access-icon"
-                id="accessIcon"
+                class="note-card"
+                data-name="algebra"
             >
-                🔐
+
+                <h3>
+                    Algebra Notes
+                </h3>
+
+                <p>
+                    Algebra formulas and study materials.
+                </p>
+
+                <a
+                    href="#"
+                    class="note-button"
+                >
+                    View Notes
+                </a>
+
             </div>
 
 
-            <h1
-                id="accessTitle"
-            >
-                Checking access...
-            </h1>
-
-
-            <p
-                id="accessMessage"
-            >
-                Please wait while we verify your account.
-            </p>
-
-
-            <a
-                id="accessButton"
-                class="access-button"
-                href="index.html"
-            >
-                Back to Home
-            </a>
+            <!-- ADD MORE NOTE CARDS HERE -->
 
 
         </div>
 
-    </div>
+    </section>
 
 
 
-    <!-- =========================
-         CATALOG
-    ========================= -->
+    <!-- =================================================
+         EXAMPLE OF ANOTHER SUBJECT
 
-    <main
-        id="catalogContent"
-        class="container"
-    >
+         COPY THIS ENTIRE SECTION WHEN YOU WANT
+         TO ADD ANOTHER SUBJECT.
 
+    <section class="subject">
 
-        <div class="title">
+        <h2>
+            Science
+        </h2>
 
-            <h1>
-                📚 Notes Catalog
-            </h1>
+        <div class="notes-grid">
 
-            <p>
-                Study notes shared by Writejot students.
-            </p>
-
-        </div>
-
-
-
-        <!-- SEARCH -->
-
-        <input
-            type="text"
-            id="search"
-            class="search-box"
-            placeholder="Search notes..."
-            onkeyup="searchNotes()"
-        >
-
-
-
-        <!-- =========================
-     ADD YOUR SUBJECTS HERE
-========================= -->
-
-<section class="subject">
-
-    <!-- CHANGE THIS TO YOUR SUBJECT -->
-    <h2>Mathematics</h2>
-
-    <div class="notes-grid">
-
-        <!-- COPY THIS NOTE CARD FOR EACH NOTE -->
-
-        <div class="note-card">
-
-            <!-- NOTE TITLE -->
-            <h3>Algebra Notes</h3>
-
-            <!-- NOTE DESCRIPTION -->
-            <p>
-                Algebra study notes and formulas.
-            </p>
-
-            <!-- NOTE LINK -->
-            <a
-                class="note-button"
-                href="notes/algebra.html"
+            <div
+                class="note-card"
+                data-name="biology"
             >
-                View Notes
-            </a>
+
+                <h3>
+                    Biology Notes
+                </h3>
+
+                <p>
+                    Biology study materials.
+                </p>
+
+                <a
+                    href="#"
+                    class="note-button"
+                >
+                    View Notes
+                </a>
+
+            </div>
 
         </div>
 
-        <!-- END NOTE CARD -->
+    </section>
 
-    </div>
+    ================================================= -->
 
-</section>
-    <!-- =========================
-         FOOTER
-    ========================= -->
 
-    <footer>
-
-        Founded by Rick Aldrei A. Velilla
-
-    </footer>
+</main>
 
 
 
-    <script>
+<footer>
 
+    Founded by Rick Aldrei A. Velilla
 
-        /* =========================================
-           GOOGLE APPS SCRIPT URL
-        ========================================= */
-
-        const APPS_SCRIPT_URL =
-            "https://script.google.com/macros/s/AKfycbwKK7HO-uWb_QmnPVqne1jhXYk5GlhfgqjiwwGGNYGqubJViyXywb8NUBIa6u2znP6F/exec";
+</footer>
 
 
 
-        /* =========================================
-           START ACCESS CHECK
-        ========================================= */
+<script>
 
-        window.addEventListener(
-            "DOMContentLoaded",
-            checkAccess
+
+/* =========================
+   APPS SCRIPT URL
+========================= */
+
+const APPS_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbwKK7HO-uWb_QmnPVqne1jhXYk5GlhfgqjiwwGGNYGqubJViyXywb8NUBIa6u2znP6F/exec";
+
+
+/* =========================
+   START ACCESS CHECK
+========================= */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    checkAccess
+);
+
+
+async function checkAccess() {
+
+    const savedUser =
+        localStorage.getItem(
+            "writejotUser"
         );
 
 
+    if (!savedUser) {
 
-        async function checkAccess() {
+        showAccessDenied(
 
+            "🔐",
 
-            /*
-             * Get the user who logged in
-             * on the main Writejot page.
-             */
+            "Login Required",
 
-            const savedUser =
-                localStorage.getItem(
-                    "writejotUser"
-                );
+            "You must sign in with your Google account before you can access the Notes Catalog."
 
+        );
 
-            /*
-             * No saved login.
-             */
+        return;
 
-            if (!savedUser) {
-
-                showAccessDenied(
-
-                    "🔐",
-
-                    "Login Required",
-
-                    "You must sign in with your Google account before you can access the Notes Catalog."
-
-                );
-
-                return;
-
-            }
+    }
 
 
-
-            /* =====================================
-               READ SAVED USER
-            ===================================== */
-
-            let user;
+    let user;
 
 
-            try {
+    try {
 
-                user =
-                    JSON.parse(
-                        savedUser
-                    );
+        user =
+            JSON.parse(
+                savedUser
+            );
 
-            }
+    }
 
-            catch (error) {
+    catch (error) {
 
-                localStorage.removeItem(
-                    "writejotUser"
-                );
+        localStorage.removeItem(
+            "writejotUser"
+        );
 
+        showAccessDenied(
 
-                showAccessDenied(
+            "🔐",
 
-                    "🔐",
+            "Login Required",
 
-                    "Login Required",
+            "Your login session could not be verified. Please sign in again."
 
-                    "Your login session could not be verified. Please sign in again."
+        );
 
-                );
+        return;
 
-                return;
-
-            }
-
+    }
 
 
-            /* =====================================
-               CHECK EMAIL
-            ===================================== */
+    if (!user.email) {
 
-            if (!user.email) {
+        showAccessDenied(
 
-                showAccessDenied(
+            "⚠️",
 
-                    "⚠️",
+            "Account Error",
 
-                    "Account Error",
+            "We could not find your Google account email."
 
-                    "We could not find your Google account email. Please sign in again."
+        );
 
-                );
+        return;
 
-                return;
-
-            }
+    }
 
 
+    try {
 
-            /*
-             * Normalize email.
-             */
+        const response =
+            await fetch(
 
-            const email =
-                String(
+                APPS_SCRIPT_URL +
+                "?email=" +
+                encodeURIComponent(
                     user.email
                 )
-                .trim()
-                .toLowerCase();
 
+            );
 
 
-            /* =====================================
-               ASK GOOGLE APPS SCRIPT
-               FOR ACCOUNT STATUS
-            ===================================== */
+        if (!response.ok) {
 
-            try {
-
-
-                const requestURL =
-                    APPS_SCRIPT_URL +
-                    "?email=" +
-                    encodeURIComponent(
-                        email
-                    );
-
-
-                console.log(
-                    "Checking account:",
-                    email
-                );
-
-
-                const response =
-                    await fetch(
-                        requestURL
-                    );
-
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        "Server request failed."
-                    );
-
-                }
-
-
-                const result =
-                    await response.json();
-
-
-                console.log(
-                    "Database result:",
-                    result
-                );
-
-
-
-                /* =================================
-                   ACCOUNT NOT FOUND
-                ================================= */
-
-                if (
-                    !result.success
-                ) {
-
-                    showAccessDenied(
-
-                        "🚫",
-
-                        "Access Not Found",
-
-                        "Your Google account is not registered in the Writejot system yet."
-
-                    );
-
-                    return;
-
-                }
-
-
-
-                /* =================================
-                   GET STATUS
-                ================================= */
-
-                const status =
-                    String(
-                        result.status || ""
-                    )
-                    .trim()
-                    .toLowerCase();
-
-
-
-                console.log(
-                    "Account status:",
-                    status
-                );
-
-
-
-                /* =================================
-                   ACCESS RULE
-
-                   ACTIVE = ALLOWED
-                   TRIAL  = ALLOWED
-
-                   PENDING = DENIED
-                   EXPIRED = DENIED
-                ================================= */
-
-                if (
-                    status !== "active" &&
-                    status !== "trial"
-                ) {
-
-                    showAccessDenied(
-
-                        "🔒",
-
-                        "Access Restricted",
-
-                        "Your account does not currently have permission to access the Notes Catalog. Your account must have an Active or trial status."
-
-                    );
-
-                    return;
-
-                }
-
-
-
-                /* =================================
-                   ACCESS GRANTED
-                ================================= */
-
-                showCatalog();
-
-
-            }
-
-
-            catch (error) {
-
-
-                console.error(
-                    "Access check failed:",
-                    error
-                );
-
-
-                showAccessDenied(
-
-                    "⚠️",
-
-                    "Unable to Verify Account",
-
-                    "Writejot could not verify your account right now. Please try again in a moment."
-
-                );
-
-            }
-
-        }
-
-
-
-        /* =========================================
-           SHOW CATALOG
-        ========================================= */
-
-        function showCatalog() {
-
-
-            document
-                .getElementById(
-                    "loadingScreen"
-                )
-                .style.display =
-                "none";
-
-
-            document
-                .getElementById(
-                    "accessScreen"
-                )
-                .style.display =
-                "none";
-
-
-            document
-                .getElementById(
-                    "catalogContent"
-                )
-                .style.display =
-                "block";
-
-        }
-
-
-
-        /* =========================================
-           SHOW ACCESS DENIED
-        ========================================= */
-
-        function showAccessDenied(
-            icon,
-            title,
-            message
-        ) {
-
-
-            document
-                .getElementById(
-                    "loadingScreen"
-                )
-                .style.display =
-                "none";
-
-
-            document
-                .getElementById(
-                    "catalogContent"
-                )
-                .style.display =
-                "none";
-
-
-            document
-                .getElementById(
-                    "accessScreen"
-                )
-                .style.display =
-                "flex";
-
-
-            document
-                .getElementById(
-                    "accessIcon"
-                )
-                .textContent =
-                icon;
-
-
-            document
-                .getElementById(
-                    "accessTitle"
-                )
-                .textContent =
-                title;
-
-
-            document
-                .getElementById(
-                    "accessMessage"
-                )
-                .textContent =
-                message;
-
-        }
-
-
-
-        /* =========================================
-           SEARCH NOTES
-        ========================================= */
-
-        function searchNotes() {
-
-
-            const search =
-                document
-                    .getElementById(
-                        "search"
-                    )
-                    .value
-                    .toLowerCase()
-                    .trim();
-
-
-            const notes =
-                document.querySelectorAll(
-                    ".note-card"
-                );
-
-
-            notes.forEach(
-                function(note) {
-
-
-                    const name =
-                        note
-                            .getAttribute(
-                                "data-name"
-                            )
-                            .toLowerCase();
-
-
-                    const text =
-                        note
-                            .textContent
-                            .toLowerCase();
-
-
-
-                    if (
-                        name.includes(search) ||
-                        text.includes(search)
-                    ) {
-
-                        note.style.display =
-                            "block";
-
-                    }
-
-                    else {
-
-                        note.style.display =
-                            "none";
-
-                    }
-
-                }
+            throw new Error(
+                "Server request failed."
             );
 
         }
 
 
-    </script>
+        const result =
+            await response.json();
+
+
+        console.log(
+            "Database access result:",
+            result
+        );
+
+
+        if (!result.success) {
+
+            showAccessDenied(
+
+                "🚫",
+
+                "Access Not Found",
+
+                "Your Google account is not registered in the Writejot system yet."
+
+            );
+
+            return;
+
+        }
+
+
+        const status =
+            String(
+                result.status || ""
+            )
+            .trim()
+            .toLowerCase();
+
+
+        /*
+         * TRIAL = ALLOWED
+         * ACTIVE = ALLOWED
+         *
+         * PENDING = DENIED
+         * EXPIRED = DENIED
+         */
+
+        if (
+            status !== "active" &&
+            status !== "trial"
+        ) {
+
+            showAccessDenied(
+
+                "🔒",
+
+                "Access Restricted",
+
+                "Your account does not currently have permission to access the Notes Catalog."
+
+            );
+
+            return;
+
+        }
+
+
+        showCatalog();
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Access check failed:",
+            error
+        );
+
+
+        showAccessDenied(
+
+            "⚠️",
+
+            "Unable to Verify Account",
+
+            "Writejot could not verify your account right now. Please try again."
+
+        );
+
+    }
+
+}
+
+
+/* =========================
+   SHOW CATALOG
+========================= */
+
+function showCatalog() {
+
+    document
+        .getElementById(
+            "loadingScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "accessScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "catalogContent"
+        )
+        .style.display =
+        "block";
+
+}
+
+
+/* =========================
+   SHOW ACCESS DENIED
+========================= */
+
+function showAccessDenied(
+    icon,
+    title,
+    message
+) {
+
+    document
+        .getElementById(
+            "loadingScreen"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "catalogContent"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "accessScreen"
+        )
+        .style.display =
+        "flex";
+
+
+    document
+        .getElementById(
+            "accessIcon"
+        )
+        .textContent =
+        icon;
+
+
+    document
+        .getElementById(
+            "accessTitle"
+        )
+        .textContent =
+        title;
+
+
+    document
+        .getElementById(
+            "accessMessage"
+        )
+        .textContent =
+        message;
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchNotes() {
+
+    const search =
+        document
+            .getElementById(
+                "search"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const notes =
+        document.querySelectorAll(
+            ".note-card"
+        );
+
+
+    notes.forEach(
+        function(note) {
+
+            const name =
+                note
+                    .getAttribute(
+                        "data-name"
+                    )
+                    .toLowerCase();
+
+
+            const text =
+                note
+                    .textContent
+                    .toLowerCase();
+
+
+            if (
+                name.includes(search) ||
+                text.includes(search)
+            ) {
+
+                note.style.display =
+                    "block";
+
+            }
+
+            else {
+
+                note.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+</script>
 
 
 </body>
