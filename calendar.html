@@ -43,8 +43,7 @@
 
         header {
 
-            background:
-                white;
+            background: white;
 
             border-bottom:
                 1px solid #e5e7eb;
@@ -160,6 +159,26 @@
 
             color:
                 #718096;
+        }
+
+
+        /* =================================================
+           UPDATE INDICATOR
+        ================================================= */
+
+        #updateIndicator {
+
+            display:
+                none;
+
+            margin-bottom:
+                12px;
+
+            color:
+                #8a94a6;
+
+            font-size:
+                12px;
         }
 
 
@@ -906,38 +925,6 @@
         }
 
 
-        .danger-button {
-
-            border:
-                none;
-
-            background:
-                #fee2e2;
-
-            color:
-                #b91c1c;
-
-            padding:
-                8px 10px;
-
-            border-radius:
-                7px;
-
-            cursor:
-                pointer;
-
-            font-size:
-                12px;
-
-            margin-top:
-                4px;
-        }
-
-
-        /* =================================================
-           LEGEND
-        ================================================= */
-
         .legend {
 
             display:
@@ -1158,20 +1145,19 @@
     </div>
 
 
+    <div
+        id="updateIndicator"
+    >
+        Updating calendar...
+    </div>
 
-    <!-- =================================================
-         REGISTRATION AREA
-    ================================================= -->
+
 
     <div
         id="registrationArea"
     ></div>
 
 
-
-    <!-- =================================================
-         CALENDAR CONTENT
-    ================================================= -->
 
     <div
         id="calendarContent"
@@ -1203,8 +1189,6 @@
             class="calendar-layout"
         >
 
-
-            <!-- CALENDAR -->
 
             <div
                 class="calendar-card"
@@ -1344,8 +1328,6 @@
 
 
 
-            <!-- SIDE -->
-
             <div
                 class="side-card"
             >
@@ -1451,6 +1433,10 @@ const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
+const CALENDAR_CACHE_PREFIX =
+    "writejot_calendar_";
+
+
 let currentUser =
     null;
 
@@ -1466,6 +1452,30 @@ let displayedMonth =
 displayedMonth.setDate(
     1
 );
+
+
+/* =========================================================
+   CACHE KEY
+========================================================= */
+
+function getCalendarCacheKey() {
+
+    return (
+        CALENDAR_CACHE_PREFIX +
+        (
+            currentUser
+                ? String(
+                    currentUser.email ||
+                    currentUser.username ||
+                    "unknown"
+                  )
+                  .trim()
+                  .toLowerCase()
+                : "unknown"
+        )
+    );
+
+}
 
 
 /* =========================================================
@@ -1523,17 +1533,187 @@ window.addEventListener(
             );
 
 
-        await loadCalendar();
+        /*
+         * 1. Load cached calendar immediately.
+         */
+
+        const hasCache =
+            loadCalendarCache();
+
+
+        if (
+            hasCache
+        ) {
+
+            renderCalendarState();
+
+        }
+
+
+        /*
+         * 2. Refresh from Apps Script.
+         *
+         * If there is cache, this runs
+         * silently in the background.
+         *
+         * If there is no cache, it acts
+         * as the initial load.
+         */
+
+        refreshCalendar(
+            !hasCache
+        );
 
     }
 );
 
 
 /* =========================================================
-   LOAD CALENDAR
+   LOAD CACHE
 ========================================================= */
 
-async function loadCalendar() {
+function loadCalendarCache() {
+
+    try {
+
+        const cached =
+            localStorage.getItem(
+                getCalendarCacheKey()
+            );
+
+
+        if (
+            !cached
+        ) {
+
+            return false;
+
+        }
+
+
+        const parsed =
+            JSON.parse(
+                cached
+            );
+
+
+        if (
+            !parsed ||
+            typeof parsed !==
+                "object"
+        ) {
+
+            return false;
+
+        }
+
+
+        /*
+         * Basic validation so a corrupted
+         * cache does not break the page.
+         */
+
+        if (
+            typeof parsed.success !==
+                "boolean" &&
+            parsed.success !==
+                undefined
+        ) {
+
+            return false;
+
+        }
+
+
+        calendarData =
+            parsed;
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Calendar cache error:",
+            error
+        );
+
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================================
+   SAVE CACHE
+========================================================= */
+
+function saveCalendarCache() {
+
+    try {
+
+        if (
+            !calendarData
+        ) {
+
+            return;
+
+        }
+
+
+        localStorage.setItem(
+
+            getCalendarCacheKey(),
+
+            JSON.stringify(
+                calendarData
+            )
+
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Could not save calendar cache:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   REFRESH CALENDAR
+========================================================= */
+
+async function refreshCalendar(
+    showInitialState
+) {
+
+    /*
+     * With cache:
+     * show a tiny background indicator.
+     *
+     * Without cache:
+     * keep the page usable while loading.
+     */
+
+    if (
+        !showInitialState &&
+        calendarData
+    ) {
+
+        showUpdateIndicator();
+
+    }
+
 
     try {
 
@@ -1586,16 +1766,50 @@ async function loadCalendar() {
             result;
 
 
+        /*
+         * Save the newest server state
+         * for the next visit.
+         */
+
+        saveCalendarCache();
+
+
+        /*
+         * Re-render with fresh data.
+         */
+
         renderCalendarState();
+
+
+        hideUpdateIndicator();
 
     }
 
     catch (error) {
 
         console.error(
-            "Calendar loading error:",
+            "Calendar refresh error:",
             error
         );
+
+
+        hideUpdateIndicator();
+
+
+        /*
+         * IMPORTANT:
+         * If cached data exists, keep showing it.
+         * Do NOT replace the calendar with an
+         * error just because the server is slow.
+         */
+
+        if (
+            calendarData
+        ) {
+
+            return;
+
+        }
 
 
         document
@@ -1624,10 +1838,47 @@ async function loadCalendar() {
 
 
 /* =========================================================
+   UPDATE INDICATOR
+========================================================= */
+
+function showUpdateIndicator() {
+
+    document
+        .getElementById(
+            "updateIndicator"
+        )
+        .style.display =
+        "block";
+
+}
+
+
+function hideUpdateIndicator() {
+
+    document
+        .getElementById(
+            "updateIndicator"
+        )
+        .style.display =
+        "none";
+
+}
+
+
+/* =========================================================
    RENDER STATE
 ========================================================= */
 
 function renderCalendarState() {
+
+    if (
+        !calendarData
+    ) {
+
+        return;
+
+    }
+
 
     const registrationArea =
         document.getElementById(
@@ -1640,6 +1891,10 @@ function renderCalendarState() {
             "calendarContent"
         );
 
+
+    /*
+     * No registration yet.
+     */
 
     if (
         !calendarData.registered
@@ -1728,7 +1983,7 @@ function renderCalendarState() {
 
 
     /*
-     * Registered but waiting for approval.
+     * Registered but pending.
      */
 
     if (
@@ -1780,11 +2035,6 @@ function renderCalendarState() {
             </div>
             `;
 
-
-        /*
-         * We still show the calendar so personal
-         * events can be used while waiting.
-         */
 
         renderCalendar();
 
@@ -1873,6 +2123,7 @@ function renderCalendar() {
             undefined,
 
             {
+
                 month:
                     "long",
 
@@ -2054,8 +2305,8 @@ function renderCalendar() {
 
 
         /*
-         * Only show class schedule when
-         * registration is approved.
+         * Official classes/tests.
+         * These only appear when approved.
          */
 
         if (
@@ -2117,12 +2368,14 @@ function renderCalendar() {
 
 
         /*
-         * Personal events are always visible.
+         * Personal events always appear.
          */
 
         const personalEvents =
-            (calendarData.personalEvents ||
-            [])
+            (
+                calendarData.personalEvents ||
+                []
+            )
             .filter(
                 function(event) {
 
@@ -2160,7 +2413,8 @@ function renderCalendar() {
 
 
         /*
-         * Clicking a date prepares the event form.
+         * Click a date to set
+         * the event form date.
          */
 
         dayElement.addEventListener(
@@ -2198,7 +2452,7 @@ function renderCalendar() {
 
 
 /* =========================================================
-   CLASS EVENTS FOR DATE
+   GET CLASSES FOR DATE
 ========================================================= */
 
 function getClassesForDate(
@@ -2275,7 +2529,7 @@ function getClassesForDate(
 
 
 /* =========================================================
-   TESTS
+   GET TESTS
 ========================================================= */
 
 function getTestsForDate(
@@ -2301,7 +2555,7 @@ function getTestsForDate(
 
 
 /* =========================================================
-   CREATE EVENT CHIP
+   EVENT CHIP
 ========================================================= */
 
 function createEventChip(
@@ -2348,8 +2602,7 @@ function createEventChip(
     chip.textContent =
         (
             event.time
-                ? event.time +
-                  " "
+                ? event.time + " "
                 : ""
         ) +
         event.title;
@@ -2381,10 +2634,6 @@ function renderUpcoming() {
             new Date()
         );
 
-
-    /*
-     * Official tests.
-     */
 
     if (
         calendarData.approved
@@ -2438,12 +2687,20 @@ function renderUpcoming() {
             }
         );
 
+
+        getNextClasses()
+            .forEach(
+                function(event) {
+
+                    events.push(
+                        event
+                    );
+
+                }
+            );
+
     }
 
-
-    /*
-     * Personal events.
-     */
 
     (
         calendarData.personalEvents ||
@@ -2458,10 +2715,6 @@ function renderUpcoming() {
             );
 
         }
-    )
-    .slice(
-        0,
-        8
     )
     .forEach(
         function(event) {
@@ -2491,32 +2744,6 @@ function renderUpcoming() {
 
         }
     );
-
-
-    /*
-     * A few next classes.
-     */
-
-    if (
-        calendarData.approved
-    ) {
-
-        const nextClasses =
-            getNextClasses();
-
-
-        nextClasses
-            .forEach(
-                function(event) {
-
-                    events.push(
-                        event
-                    );
-
-                }
-            );
-
-    }
 
 
     events.sort(
@@ -2608,6 +2835,7 @@ function renderUpcoming() {
             </div>
             `;
 
+
         return;
 
     }
@@ -2621,6 +2849,20 @@ function renderUpcoming() {
             )
             .map(
                 function(event) {
+
+                    const titleColor =
+                        event.type ===
+                            "test"
+
+                            ? "#dc2626"
+
+                            : event.type ===
+                                "personal"
+
+                                ? "#16834a"
+
+                                : "#2563eb";
+
 
                     return `
 
@@ -2642,16 +2884,7 @@ function renderUpcoming() {
                             <div
                                 class="upcoming-title"
                                 style="
-                                    color:
-                                    ${
-                                        event.type ===
-                                            "test"
-                                            ? "#dc2626"
-                                            : event.type ===
-                                                "personal"
-                                                ? "#16834a"
-                                                : "#2563eb"
-                                    };
+                                    color:${titleColor};
                                 "
                             >
                                 ${escapeHtml(
@@ -2686,7 +2919,7 @@ function renderUpcoming() {
 
 
 /* =========================================================
-   UPCOMING CLASSES
+   NEXT CLASSES
 ========================================================= */
 
 function getNextClasses() {
@@ -2723,37 +2956,36 @@ function getNextClasses() {
             );
 
 
-        classes
-            .forEach(
-                function(event) {
+        classes.forEach(
+            function(event) {
 
-                    result.push({
+                result.push({
 
-                        date:
-                            localDateString(
-                                date
-                            ),
+                    date:
+                        localDateString(
+                            date
+                        ),
 
-                        title:
-                            event.title,
+                    title:
+                        event.title,
 
-                        meta:
-                            [
-                                event.time,
-                                event.meta
-                            ]
-                            .filter(Boolean)
-                            .join(
-                                " • "
-                            ),
+                    meta:
+                        [
+                            event.time,
+                            event.meta
+                        ]
+                        .filter(Boolean)
+                        .join(
+                            " • "
+                        ),
 
-                        type:
-                            "class"
+                    type:
+                        "class"
 
-                    });
+                });
 
-                }
-            );
+            }
+        );
 
     }
 
@@ -2764,7 +2996,7 @@ function getNextClasses() {
 
 
 /* =========================================================
-   NAVIGATION
+   MONTH NAVIGATION
 ========================================================= */
 
 function changeMonth(
@@ -2799,7 +3031,7 @@ function goToToday() {
 
 
 /* =========================================================
-   REGISTER
+   CLASS REGISTRATION
 ========================================================= */
 
 async function submitRegistration() {
@@ -2915,7 +3147,15 @@ async function submitRegistration() {
         }
 
 
-        await loadCalendar();
+        /*
+         * Don't wait for another
+         * page reload. Just refresh
+         * the calendar data.
+         */
+
+        await refreshCalendar(
+            false
+        );
 
     }
 
@@ -2923,7 +3163,6 @@ async function submitRegistration() {
 
         message.textContent =
             error.message;
-
 
         message.style.color =
             "#dc2626";
@@ -3132,7 +3371,9 @@ async function addEvent() {
             "#16834a";
 
 
-        await loadCalendar();
+        await refreshCalendar(
+            false
+        );
 
     }
 
@@ -3160,7 +3401,7 @@ async function addEvent() {
 
 
 /* =========================================================
-   UTILITIES
+   DATE HELPERS
 ========================================================= */
 
 function localDateString(
@@ -3213,7 +3454,8 @@ function formatPrettyDate(
 
 
     if (
-        parts.length !== 3
+        parts.length !==
+        3
     ) {
 
         return dateString;
