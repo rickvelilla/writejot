@@ -2666,43 +2666,11 @@ function selectProfile(
     username
 ) {
 
-    /*
-     * Messaging/profile pages can use this
-     * later. For now we just keep the
-     * selected profile name in the search
-     * box and close the results.
-     */
-
-    const input =
-        document.getElementById(
-            "profileSearchInput"
+    window.location.href =
+        "profile.html?username=" +
+        encodeURIComponent(
+            username
         );
-
-
-    const resultsBox =
-        document.getElementById(
-            "profileSearchResults"
-        );
-
-
-    input.value =
-        "@" +
-        username;
-
-
-    resultsBox.style.display =
-        "none";
-
-
-    /*
-     * Future step:
-     * open public profile page.
-     */
-
-    alert(
-        "Profile selected: @" +
-        username
-    );
 
 }
 
