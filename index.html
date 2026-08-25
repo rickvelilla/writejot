@@ -3038,7 +3038,473 @@ function parseJwt(
     );
 
 }
+/* =========================================
+   OPEN PROFILE SETTINGS
+========================================= */
 
+async function openProfileSettings() {
+
+    const savedUser =
+        localStorage.getItem(
+            "writejotUser"
+        );
+
+    if (!savedUser) {
+        return;
+    }
+
+    const user =
+        JSON.parse(
+            savedUser
+        );
+
+
+    document
+        .getElementById(
+            "profileSettings"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "editProfilePicture"
+        )
+        .value =
+        user.profilePicture || "";
+
+
+    document
+        .getElementById(
+            "editDisplayName"
+        )
+        .value =
+        user.name || "";
+
+
+    document
+        .getElementById(
+            "editUsername"
+        )
+        .value =
+        user.username || "";
+
+
+    document
+        .getElementById(
+            "editBio"
+        )
+        .value =
+        user.bio || "";
+
+
+    document
+        .getElementById(
+            "profileSettings"
+        )
+        .scrollIntoView({
+            behavior:
+                "smooth"
+        });
+
+}
+
+
+/* =========================================
+   SAVE PROFILE
+========================================= */
+
+async function saveProfile() {
+
+    const savedUser =
+        localStorage.getItem(
+            "writejotUser"
+        );
+
+    if (!savedUser) {
+        return;
+    }
+
+
+    const user =
+        JSON.parse(
+            savedUser
+        );
+
+
+    const name =
+        document
+            .getElementById(
+                "editDisplayName"
+            )
+            .value
+            .trim();
+
+
+    const username =
+        document
+            .getElementById(
+                "editUsername"
+            )
+            .value
+            .trim()
+            .toLowerCase()
+            .replace(
+                /^@/,
+                ""
+            );
+
+
+    const bio =
+        document
+            .getElementById(
+                "editBio"
+            )
+            .value
+            .trim();
+
+
+    const profilePicture =
+        document
+            .getElementById(
+                "editProfilePicture"
+            )
+            .value
+            .trim();
+
+
+    const message =
+        document
+            .getElementById(
+                "profileSaveMessage"
+            );
+
+
+    if (
+        username.length < 3 ||
+        username.length > 20
+    ) {
+
+        message.textContent =
+            "Username must be 3–20 characters.";
+
+        message.style.color =
+            "#dc2626";
+
+        return;
+
+    }
+
+
+    if (
+        !/^[a-z0-9_]+$/i.test(
+            username
+        )
+    ) {
+
+        message.textContent =
+            "Username can only contain letters, numbers, and underscores.";
+
+        message.style.color =
+            "#dc2626";
+
+        return;
+
+    }
+
+
+    message.textContent =
+        "Saving...";
+
+    message.style.color =
+        "#667085";
+
+
+    try {
+
+        await fetch(
+
+            APPS_SCRIPT_URL,
+
+            {
+
+                method:
+                    "POST",
+
+                mode:
+                    "no-cors",
+
+                headers: {
+
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+
+                },
+
+                body:
+                    JSON.stringify({
+
+                        action:
+                            "updateProfile",
+
+                        email:
+                            user.email,
+
+                        name:
+                            name,
+
+                        username:
+                            username,
+
+                        bio:
+                            bio,
+
+                        profilePicture:
+                            profilePicture
+
+                    })
+
+            }
+
+        );
+
+
+        /*
+         * Give Apps Script a moment,
+         * then verify the profile.
+         */
+
+        await sleep(
+            700
+        );
+
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=account&email=" +
+                encodeURIComponent(
+                    user.email
+                )
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                "Profile update could not be verified."
+            );
+
+        }
+
+
+        const updatedUser = {
+
+            ...user,
+
+            name:
+                result.name || name,
+
+            username:
+                result.username ||
+                username,
+
+            bio:
+                result.bio || "",
+
+            profilePicture:
+                result.profilePicture ||
+                ""
+
+        };
+
+
+        localStorage.setItem(
+
+            "writejotUser",
+
+            JSON.stringify(
+                updatedUser
+            )
+
+        );
+
+
+        /*
+         * Update dashboard.
+         */
+
+        showDashboard(
+            updatedUser
+        );
+
+
+        message.textContent =
+            "Profile saved successfully.";
+
+        message.style.color =
+            "#15803d";
+
+
+        /*
+         * Close settings shortly after save.
+         */
+
+        setTimeout(
+            function() {
+
+                closeProfileSettings();
+
+            },
+            800
+        );
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Profile update error:",
+            error
+        );
+
+
+        message.textContent =
+            "Could not save your profile. Please try again.";
+
+        message.style.color =
+            "#dc2626";
+
+    }
+
+}
+
+
+/* =========================================
+   CLOSE PROFILE SETTINGS
+========================================= */
+
+function closeProfileSettings() {
+
+    document
+        .getElementById(
+            "profileSettings"
+        )
+        .style.display =
+        "none";
+
+}
+
+
+/* =========================================
+   SHOW PROFILE DATA
+========================================= */
+
+function showDashboard(user) {
+
+    document
+        .getElementById(
+            "homeSection"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "accountSetup"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "dashboard"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "profileArea"
+        )
+        .style.display =
+        "flex";
+
+
+    document
+        .getElementById(
+            "profileName"
+        )
+        .textContent =
+        user.name ||
+        user.email;
+
+
+    const picture =
+        user.profilePicture ||
+        user.picture ||
+        "";
+
+
+    document
+        .getElementById(
+            "profilePicture"
+        )
+        .src =
+        picture;
+
+
+    document
+        .getElementById(
+            "dashboardPicture"
+        )
+        .src =
+        picture;
+
+
+    document
+        .getElementById(
+            "dashboardName"
+        )
+        .textContent =
+        "Welcome, " +
+        (
+            user.name ||
+            "Student"
+        ) +
+        "!";
+
+
+    document
+        .getElementById(
+            "dashboardUsername"
+        )
+        .textContent =
+        "@" +
+        (
+            user.username ||
+            "username"
+        );
+
+
+    updateDashboardStatus(
+        user
+    );
+
+}
 </script>
 
 
