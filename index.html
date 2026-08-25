@@ -10,22 +10,37 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Writejot | Chat</title>
+    <meta
+        name="description"
+        content="Writejot - A student-powered platform for sharing and accessing study notes."
+    >
+
+    <title>Writejot | Student Notes</title>
+
+
+    <script
+        src="https://accounts.google.com/gsi/client"
+        async
+        defer>
+    </script>
+
 
     <style>
 
         * {
             box-sizing: border-box;
-        }
-
-        html,
-        body {
             margin: 0;
-            width: 100%;
-            height: 100%;
+            padding: 0;
         }
 
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
         body {
+
             font-family:
                 Arial,
                 Helvetica,
@@ -37,25 +52,780 @@
             color:
                 #1f2937;
 
-            display:
-                flex;
-
-            flex-direction:
-                column;
+            line-height:
+                1.6;
         }
+
+
+        a {
+            color: inherit;
+        }
+
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+        /* =========================
+           LOADING SCREEN
+        ========================= */
+
+        #appLoading {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                #f6f8fc;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 9999;
+        }
+
+
+        .app-spinner {
+
+            width: 38px;
+
+            height: 38px;
+
+            border:
+                4px solid #e5e7eb;
+
+            border-top-color:
+                #4285F4;
+
+            border-radius:
+                50%;
+
+            animation:
+                appSpin .7s linear infinite;
+        }
+
+
+        @keyframes appSpin {
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+
+        }
+
 
         /* =========================
            HEADER
         ========================= */
 
         header {
-            background: white;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .97
+                );
 
             border-bottom:
                 1px solid #e5e7eb;
 
+            position:
+                sticky;
+
+            top:
+                0;
+
+            z-index:
+                1000;
+
             padding:
-                11px 6%;
+                14px 6%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            backdrop-filter:
+                blur(10px);
+        }
+
+
+        .brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                11px;
+        }
+
+
+        .brand img {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            object-fit:
+                contain;
+        }
+
+
+        .brand-name {
+
+            font-size:
+                23px;
+
+            font-weight:
+                700;
+        }
+
+
+        #profileArea {
+
+            display:
+                none;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+        }
+
+
+        #profilePicture {
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            border-radius:
+                50%;
+
+            object-fit:
+                cover;
+
+            border:
+                2px solid #4285F4;
+        }
+
+
+        #profileName {
+
+            font-weight:
+                600;
+
+            font-size:
+                14px;
+        }
+
+
+        #logoutButton {
+
+            border:
+                none;
+
+            background:
+                #ef4444;
+
+            color:
+                white;
+
+            padding:
+                8px 13px;
+
+            border-radius:
+                7px;
+
+            cursor:
+                pointer;
+
+            font-weight:
+                600;
+        }
+
+
+        #logoutButton:hover {
+
+            background:
+                #dc2626;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .button {
+
+            display:
+                inline-flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            padding:
+                11px 17px;
+
+            border-radius:
+                8px;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                600;
+
+            border:
+                1px solid transparent;
+
+            cursor:
+                pointer;
+
+            font-size:
+                14px;
+
+            transition:
+                background .15s ease,
+                transform .15s ease;
+        }
+
+
+        .button:hover {
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .primary {
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+        }
+
+
+        .primary:hover {
+
+            background:
+                #3367d6;
+        }
+
+
+        .secondary {
+
+            background:
+                white;
+
+            color:
+                #2563eb;
+
+            border-color:
+                #d7e3fb;
+        }
+
+
+        .secondary:hover {
+
+            background:
+                #f7faff;
+        }
+
+
+        /* =========================
+           HOME
+        ========================= */
+
+        #homeSection {
+
+            display:
+                none;
+        }
+
+
+        .hero {
+
+            max-width:
+                900px;
+
+            margin:
+                0 auto;
+
+            padding:
+                90px 20px 65px;
+
+            text-align:
+                center;
+        }
+
+
+        .hero-badge {
+
+            display:
+                inline-block;
+
+            padding:
+                7px 13px;
+
+            border-radius:
+                999px;
+
+            background:
+                #eaf2ff;
+
+            color:
+                #2563eb;
+
+            font-size:
+                13px;
+
+            font-weight:
+                600;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        .hero h1 {
+
+            font-size:
+                clamp(
+                    38px,
+                    7vw,
+                    62px
+                );
+
+            line-height:
+                1.05;
+
+            letter-spacing:
+                -2px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .hero h1 span {
+
+            color:
+                #4285F4;
+        }
+
+
+        .hero-subtitle {
+
+            max-width:
+                680px;
+
+            margin:
+                0 auto 22px;
+
+            color:
+                #667085;
+
+            font-size:
+                18px;
+        }
+
+
+        .founder {
+
+            color:
+                #8a94a6;
+
+            font-size:
+                14px;
+
+            margin-bottom:
+                30px;
+        }
+
+
+        .button-row {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            gap:
+                12px;
+
+            flex-wrap:
+                wrap;
+        }
+
+
+        #loginSection {
+
+            margin:
+                45px auto 0;
+
+            padding-top:
+                30px;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+        }
+
+
+        #loginSection h3 {
+
+            margin-bottom:
+                5px;
+        }
+
+
+        #loginSection p {
+
+            color:
+                #718096;
+
+            font-size:
+                14px;
+        }
+
+
+        #googleLogin {
+
+            margin-top:
+                15px;
+        }
+
+
+        /* =========================
+           ACCOUNT SETUP
+        ========================= */
+
+        #accountSetup {
+
+            display:
+                none;
+
+            min-height:
+                75vh;
+
+            padding:
+                50px 20px;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+        }
+
+
+        .setup-card {
+
+            width:
+                100%;
+
+            max-width:
+                520px;
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                16px;
+
+            padding:
+                35px;
+
+            text-align:
+                center;
+        }
+
+
+        .setup-card p {
+
+            color:
+                #718096;
+
+            margin:
+                10px 0 25px;
+        }
+
+
+        .username-label {
+
+            display:
+                block;
+
+            text-align:
+                left;
+
+            font-weight:
+                600;
+
+            margin-bottom:
+                7px;
+        }
+
+
+        .username-wrapper {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            background:
+                #f8fafc;
+
+            border:
+                1px solid #d8dee8;
+
+            border-radius:
+                8px;
+        }
+
+
+        .username-prefix {
+
+            padding-left:
+                14px;
+
+            color:
+                #6b7280;
+
+            font-weight:
+                600;
+        }
+
+
+        #usernameInput {
+
+            width:
+                100%;
+
+            border:
+                none;
+
+            outline:
+                none;
+
+            background:
+                transparent;
+
+            padding:
+                13px 14px 13px 5px;
+
+            font-size:
+                16px;
+        }
+
+
+        #usernameMessage {
+
+            min-height:
+                24px;
+
+            margin:
+                10px 0 15px;
+
+            text-align:
+                left;
+        }
+
+
+        #setupLoading {
+
+            display:
+                none;
+
+            margin-top:
+                12px;
+
+            color:
+                #667085;
+        }
+
+
+        /* =========================
+           DASHBOARD
+        ========================= */
+
+        #dashboard {
+
+            display:
+                none;
+
+            max-width:
+                1050px;
+
+            margin:
+                0 auto 70px;
+
+            padding:
+                30px 20px;
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .profile-search {
+
+            position:
+                relative;
+
+            width:
+                100%;
+
+            max-width:
+                650px;
+
+            margin:
+                0 auto 22px;
+        }
+
+
+        #profileSearchInput {
+
+            width:
+                100%;
+
+            height:
+                48px;
+
+            padding:
+                0 16px;
+
+            border:
+                1px solid #d8dee8;
+
+            border-radius:
+                10px;
+
+            background:
+                white;
+
+            font-size:
+                15px;
+
+            outline:
+                none;
+
+            box-shadow:
+                0 2px 8px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .03
+                );
+        }
+
+
+        #profileSearchInput:focus {
+
+            border-color:
+                #4285F4;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    66,
+                    133,
+                    244,
+                    .08
+                );
+        }
+
+
+        #profileSearchResults {
+
+            display:
+                none;
+
+            position:
+                absolute;
+
+            top:
+                calc(
+                    100% + 6px
+                );
+
+            left:
+                0;
+
+            right:
+                0;
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                10px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .10
+                );
+
+            overflow:
+                hidden;
+
+            z-index:
+                20;
+        }
+
+
+        .search-result {
 
             display:
                 flex;
@@ -66,25 +836,94 @@
             gap:
                 12px;
 
-            flex-shrink:
-                0;
+            padding:
+                12px 15px;
+
+            cursor:
+                pointer;
+
+            border-bottom:
+                1px solid #f0f2f5;
         }
 
-        .back {
-            color:
-                #4285F4;
 
-            text-decoration:
-                none;
+        .search-result:hover {
+
+            background:
+                #f7faff;
+        }
+
+
+        .search-result img {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            border-radius:
+                50%;
+
+            object-fit:
+                cover;
+        }
+
+
+        .search-result-name {
 
             font-weight:
                 600;
+        }
+
+
+        .search-result-username {
+
+            color:
+                #4285F4;
+
+            font-size:
+                13px;
+        }
+
+
+        .search-result-bio {
+
+            color:
+                #7b8494;
+
+            font-size:
+                13px;
 
             white-space:
                 nowrap;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
         }
 
-        .recipient {
+
+        /* =========================
+           DASHBOARD HEADER
+        ========================= */
+
+        .dashboard-header {
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                16px;
+
+            padding:
+                28px;
+
             display:
                 flex;
 
@@ -92,18 +931,20 @@
                 center;
 
             gap:
-                10px;
+                18px;
 
-            min-width:
-                0;
+            margin-bottom:
+                20px;
         }
 
-        .recipient img {
+
+        .dashboard-pfp {
+
             width:
-                42px;
+                72px;
 
             height:
-                42px;
+                72px;
 
             border-radius:
                 50%;
@@ -118,633 +959,376 @@
                 0;
         }
 
-        .recipient-name {
-            font-weight:
-                700;
 
-            white-space:
-                nowrap;
+        .dashboard-username {
 
-            overflow:
-                hidden;
-
-            text-overflow:
-                ellipsis;
-        }
-
-        .recipient-username {
             color:
                 #4285F4;
 
-            font-size:
-                13px;
+            font-weight:
+                600;
         }
 
-        /* =========================
-           MESSAGE AREA
-        ========================= */
 
-        #messages {
-            flex:
-                1;
-
-            overflow-y:
-                auto;
-
-            width:
-                100%;
-
-            max-width:
-                850px;
-
-            margin:
-                0 auto;
-
-            padding:
-                25px 20px;
-
-            scroll-behavior:
-                smooth;
-        }
-
-        /* =========================
-           MESSAGE ROW
-        ========================= */
-
-        .message-row {
-            display:
-                flex;
-
-            width:
-                100%;
-
-            margin-bottom:
-                12px;
-        }
-
-        .message-row.mine {
-            justify-content:
-                flex-end;
-        }
-
-        .message-row.theirs {
-            justify-content:
-                flex-start;
-        }
-
-        /* =========================
-           ADAPTIVE MESSAGE BUBBLES
-        ========================= */
-
-        .message-row {
-            display: flex;
-            width: 100%;
-            margin-bottom: 12px;
-            align-items: flex-start;
-            height: fit-content;
-            min-height: 0;
-        }
-
-        .message-row.mine {
-            justify-content: flex-end;
-        }
-
-        .message-row.theirs {
-            justify-content: flex-start;
-        }
-
-        .bubble-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: fit-content;
-            max-width: 70%;
-            flex: 0 0 auto;
-            align-items: flex-start;
-            height: fit-content;
-            min-height: 0;
-        }
-
-        .bubble {
-            display: block;
-            width: fit-content;
-            max-width: 100%;
-            height: auto !important;
-            min-height: 0 !important;
-            max-height: none !important;
-            flex: 0 0 auto !important;
-
-            padding: 10px 14px;
-            margin: 0;
-
-            border-radius: 15px;
-            line-height: 1.45;
-
-            white-space: pre-wrap;
-            overflow-wrap: anywhere;
-            word-break: break-word;
-
-            text-align: left;
-            align-self: flex-start;
-            box-sizing: border-box;
-        }
-
-        .mine .bubble {
-            align-self: flex-end;
-            background: #4285F4;
-            color: white;
-            border-bottom-right-radius: 4px;
-        }
-
-        .theirs .bubble {
-            align-self: flex-start;
-            background: white;
-            color: #1f2937;
-            border: 1px solid #e1e6ee;
-            border-bottom-left-radius: 4px;
-        }
-
-        /* Never let a message bubble stretch vertically */
-        #messages .message-row,
-        #messages .bubble-wrapper,
-        #messages .bubble {
-            height: auto !important;
-            min-height: 0 !important;
-            max-height: none !important;
-        }
-
-        .message-text {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* =========================
-           IMAGE MESSAGES
-        ========================= */
-
-        .message-image {
-            display:
-                block;
-
-            max-width:
-                500px;
-
-            max-height:
-                500px;
-
-            width:
-                auto;
-
-            height:
-                auto;
-
-            border-radius:
-                12px;
-
-            object-fit:
-                contain;
-
-            cursor:
-                pointer;
-
-            margin:
-                0;
-        }
-
-        .image-message-bubble {
-            padding:
-                5px;
-
-            overflow:
-                hidden;
-        }
-
-        .image-message-bubble
-        .message-image {
-            border-radius:
-                10px;
-        }
-
-        /* =========================
-           MESSAGE TIME
-        ========================= */
-
-        .time {
-            font-size:
-                11px;
-
-            opacity:
-                0.65;
+        .dashboard-status {
 
             margin-top:
-                4px;
-        }
-
-        .mine .time {
-            text-align:
-                right;
-        }
-
-        /* =========================
-           EMPTY STATE
-        ========================= */
-
-        #empty {
-            text-align:
-                center;
+                5px;
 
             color:
                 #718096;
 
-            padding:
-                40px;
+            font-size:
+                14px;
         }
 
+
         /* =========================
-           COMPOSER
+           DASHBOARD GRID
         ========================= */
 
-        #composer {
-            width:
-                100%;
+        .dashboard-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(
+                        240px,
+                        1fr
+                    )
+                );
+
+            gap:
+                18px;
+        }
+
+
+        .dashboard-card {
 
             background:
                 white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                14px;
+
+            padding:
+                25px;
+
+            transition:
+                transform .15s ease,
+                box-shadow .15s ease;
+        }
+
+
+        .dashboard-card:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .05
+                );
+        }
+
+
+        .dashboard-icon {
+
+            font-size:
+                32px;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .dashboard-card h3 {
+
+            margin-bottom:
+                7px;
+        }
+
+
+        .dashboard-card p {
+
+            color:
+                #718096;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .trial-card {
+
+            margin-top:
+                18px;
+
+            background:
+                #f1f7ff;
+
+            border-color:
+                #cfe0ff;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .section-container {
+
+            max-width:
+                1050px;
+
+            margin:
+                0 auto 55px;
+
+            padding:
+                0 20px;
+        }
+
+
+        .section-card {
+
+            background:
+                white;
+
+            border:
+                1px solid #e3e7ee;
+
+            border-radius:
+                14px;
+
+            padding:
+                30px;
+        }
+
+
+        .section-card h2 {
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .section-card p {
+
+            color:
+                #687386;
+
+            margin:
+                12px 0;
+        }
+
+
+        .section-card ul {
+
+            padding-left:
+                22px;
+
+            color:
+                #596579;
+
+            line-height:
+                1.9;
+        }
+
+
+        /* =========================
+           PRICING
+        ========================= */
+
+        .pricing {
+
+            max-width:
+                640px;
+
+            margin:
+                0 auto 70px;
+
+            padding:
+                0 20px;
+        }
+
+
+        .pricing-card {
+
+            background:
+                white;
+
+            border:
+                1px solid #e3e7ee;
+
+            border-radius:
+                16px;
+
+            padding:
+                34px;
+
+            text-align:
+                center;
+        }
+
+
+        .price {
+
+            color:
+                #4285F4;
+
+            font-size:
+                48px;
+
+            font-weight:
+                700;
+
+            margin:
+                8px 0;
+        }
+
+
+        .pricing-card ul {
+
+            max-width:
+                430px;
+
+            margin:
+                0 auto 20px;
+
+            text-align:
+                left;
+
+            padding-left:
+                22px;
+
+            color:
+                #596579;
+
+            line-height:
+                1.9;
+        }
+
+
+        .payment-note {
+
+            color:
+                #687386;
+
+            font-size:
+                14px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
 
             border-top:
                 1px solid #e5e7eb;
 
-            padding:
-                10px 14px;
-
-            flex-shrink:
-                0;
-        }
-
-        /* =========================
-           IMAGE PREVIEW
-        ========================= */
-
-        #imagePreview {
-            display:
-                none;
-
-            width:
-                100%;
-
-            max-width:
-                850px;
-
-            margin:
-                0 auto 8px;
-
-            padding:
-                0 0 2px;
-        }
-
-        .preview-wrapper {
-            position:
-                relative;
-
-            display:
-                inline-block;
-        }
-
-        #previewImage {
-            display:
-                block;
-
-            width:
-                auto;
-
-            max-width:
-                180px;
-
-            max-height:
-                140px;
-
-            border-radius:
-                10px;
-
-            object-fit:
-                cover;
-
-            border:
-                1px solid #d8dee8;
-        }
-
-        #removeImageButton {
-            position:
-                absolute;
-
-            top:
-                -8px;
-
-            right:
-                -8px;
-
-            width:
-                24px;
-
-            height:
-                24px;
-
-            border:
-                none;
-
-            border-radius:
-                50%;
-
             background:
-                #ef4444;
+                white;
 
             color:
-                white;
+                #7b8494;
 
-            cursor:
-                pointer;
-
-            font-size:
-                16px;
-
-            line-height:
-                24px;
-
-            padding:
-                0;
-        }
-
-        /* =========================
-           COMPOSER INNER
-        ========================= */
-
-        .composer-inner {
-            width:
-                100%;
-
-            max-width:
-                850px;
-
-            margin:
-                0 auto;
-
-            display:
-                flex;
-
-            align-items:
-                flex-end;
-
-            gap:
-                8px;
-        }
-
-        /* =========================
-           PHOTO BUTTON
-        ========================= */
-
-        #photoButton {
-            width:
-                44px;
-
-            height:
-                44px;
-
-            flex-shrink:
-                0;
-
-            border:
-                1px solid #d8dee8;
-
-            border-radius:
-                9px;
-
-            background:
-                white;
-
-            font-size:
-                20px;
-
-            cursor:
-                pointer;
-
-            display:
-                flex;
-
-            align-items:
+            text-align:
                 center;
 
-            justify-content:
-                center;
-        }
-
-        #photoButton:hover {
-            background:
-                #f3f6fb;
-        }
-
-        #imageInput {
-            display:
-                none;
-        }
-
-        /* =========================
-           TEXT INPUT
-        ========================= */
-
-        #messageInput {
-            flex:
-                1;
-
-            min-width:
-                0;
-
-            width:
-                100%;
-
-            min-height:
-                44px;
-
-            max-height:
-                140px;
-
             padding:
-                11px 14px;
-
-            border:
-                1px solid #d8dee8;
-
-            border-radius:
-                9px;
-
-            background:
-                white;
-
-            font-family:
-                inherit;
-
-            font-size:
-                14px;
-
-            outline:
-                none;
-
-            resize:
-                none;
-
-            overflow-y:
-                auto;
+                28px 20px;
         }
 
-        #messageInput:focus {
-            border-color:
-                #4285F4;
 
-            box-shadow:
-                0 0 0 3px
-                rgba(
-                    66,
-                    133,
-                    244,
-                    0.08
-                );
-        }
-
-        /* =========================
-           SEND BUTTON
-        ========================= */
-
-        #sendButton {
-            flex-shrink:
-                0;
-
-            min-height:
-                44px;
-
-            padding:
-                0 18px;
-
-            border:
-                none;
-
-            border-radius:
-                9px;
-
-            background:
-                #4285F4;
+        footer strong {
 
             color:
-                white;
-
-            font-weight:
-                600;
-
-            cursor:
-                pointer;
-
-            white-space:
-                nowrap;
+                #404756;
         }
 
-        #sendButton:hover {
-            background:
-                #3367d6;
-        }
-
-        #sendButton:disabled {
-            opacity:
-                0.6;
-
-            cursor:
-                not-allowed;
-        }
 
         /* =========================
            MOBILE
         ========================= */
 
-        @media (max-width: 600px) {
+        @media (
+            max-width:
+            650px
+        ) {
 
             header {
+
                 padding:
-                    10px 12px;
+                    11px 18px;
             }
 
-            .back {
+
+            .brand-name {
+
                 font-size:
-                    13px;
+                    20px;
             }
 
-            .recipient img {
+
+            #profileName {
+
+                display:
+                    none;
+            }
+
+
+            .hero {
+
+                padding-top:
+                    60px;
+            }
+
+
+            .button {
+
                 width:
-                    38px;
-
-                height:
-                    38px;
-            }
-
-            .recipient-name {
-                max-width:
-                    170px;
-            }
-
-            #messages {
-                padding:
-                    18px 12px;
-            }
-
-            .bubble-wrapper {
-                width: fit-content;
-                max-width: 82%;
-            }
-
-            .message-image {
-                max-width:
                     100%;
 
-                max-height:
-                    360px;
+                max-width:
+                    300px;
             }
 
-            #composer {
-                padding:
-                    8px 10px;
-            }
 
-            #imagePreview {
-                padding:
-                    0 2px;
-            }
-
-            .composer-inner {
-                gap:
-                    6px;
-            }
-
-            #messageInput {
-                min-height:
-                    42px;
-
-                max-height:
-                    120px;
+            .setup-card {
 
                 padding:
-                    10px 12px;
+                    25px 20px;
             }
 
-            #photoButton {
+
+            .dashboard-header {
+
+                padding:
+                    22px;
+            }
+
+
+            .dashboard-pfp {
+
                 width:
-                    42px;
+                    62px;
 
                 height:
-                    42px;
+                    62px;
             }
 
-            #sendButton {
-                min-height:
-                    42px;
-
-                padding:
-                    0 13px;
-            }
         }
 
     </style>
@@ -755,47 +1339,68 @@
 <body>
 
 
-<!-- =========================
+<!-- =====================================================
+     LOADING
+===================================================== -->
+
+<div
+    id="appLoading"
+>
+
+    <div
+        class="app-spinner"
+    ></div>
+
+</div>
+
+
+
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
-    <a
-        href="messages.html"
-        class="back"
+    <div
+        class="brand"
     >
-        ← Messages
-    </a>
-
-
-    <div class="recipient">
 
         <img
-            id="recipientPicture"
+            src="W.png"
+            alt="Writejot logo"
+        >
+
+        <div
+            class="brand-name"
+        >
+            Writejot
+        </div>
+
+    </div>
+
+
+    <div
+        id="profileArea"
+    >
+
+        <img
+            id="profilePicture"
             src="W.png"
             alt="Profile picture"
         >
 
 
-        <div>
-
-            <div
-                id="recipientName"
-                class="recipient-name"
-            >
-                Loading...
-            </div>
+        <span
+            id="profileName"
+        ></span>
 
 
-            <div
-                id="recipientUsername"
-                class="recipient-username"
-            >
-                @username
-            </div>
-
-        </div>
+        <button
+            id="logoutButton"
+            onclick="logout()"
+        >
+            Log out
+        </button>
 
     </div>
 
@@ -803,57 +1408,267 @@
 
 
 
-<!-- =========================
-     MESSAGES
-========================= -->
+<!-- =====================================================
+     PUBLIC HOME
+===================================================== -->
 
-<div
-    id="messages"
+<section
+    id="homeSection"
+    class="hero"
 >
 
+
     <div
-        id="empty"
+        class="hero-badge"
     >
-        Loading messages...
+        📚 Student Notes Platform
     </div>
 
-</div>
+
+    <h1>
+
+        Learn more.
+        <span>
+            Share more.
+        </span>
+
+    </h1>
+
+
+    <p
+        class="hero-subtitle"
+    >
+
+        A student-powered place to discover,
+        organize, and share useful study notes.
+
+    </p>
+
+
+    <p
+        class="founder"
+    >
+
+        Founded by Rick Aldrei A. Velilla
+
+    </p>
+
+
+    <div
+        class="button-row"
+    >
+
+        <a
+            href="catalog.html"
+            class="button primary"
+        >
+            📚 Open Notes Catalog
+        </a>
+
+
+        <a
+            href="#about"
+            class="button secondary"
+        >
+            Learn More
+        </a>
+
+    </div>
 
 
 
-<!-- =========================
-     COMPOSER
-========================= -->
+    <div
+        id="loginSection"
+    >
 
-<div
-    id="composer"
+        <h3>
+            Sign in to Writejot
+        </h3>
+
+
+        <p>
+            Use your Google account to get started.
+        </p>
+
+
+        <div
+            id="googleLogin"
+        ></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ACCOUNT SETUP
+===================================================== -->
+
+<section
+    id="accountSetup"
 >
 
 
-    <!-- IMAGE PREVIEW -->
-
     <div
-        id="imagePreview"
+        class="setup-card"
     >
 
         <div
-            class="preview-wrapper"
+            style="font-size:45px;"
+        >
+            👋
+        </div>
+
+
+        <h1>
+            Welcome to Writejot!
+        </h1>
+
+
+        <p>
+
+            Choose a username for your
+            Writejot account.
+
+        </p>
+
+
+        <label
+            class="username-label"
+            for="usernameInput"
+        >
+            Username
+        </label>
+
+
+        <div
+            class="username-wrapper"
         >
 
-            <img
-                id="previewImage"
-                src=""
-                alt="Selected image"
+            <span
+                class="username-prefix"
             >
+                @
+            </span>
 
 
-            <button
-                id="removeImageButton"
-                type="button"
-                onclick="removeSelectedImage()"
+            <input
+                id="usernameInput"
+                type="text"
+                maxlength="20"
+                placeholder="yourusername"
+                autocomplete="off"
             >
-                ×
-            </button>
+
+        </div>
+
+
+        <div
+            id="usernameMessage"
+        ></div>
+
+
+        <button
+            id="createAccountButton"
+            class="button primary"
+            onclick="createWritejotAccount()"
+        >
+            Create Writejot Account
+        </button>
+
+
+        <div
+            id="setupLoading"
+        >
+            Creating your account...
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section
+    id="dashboard"
+>
+
+
+    <!-- PROFILE SEARCH -->
+
+    <div
+        class="profile-search"
+    >
+
+        <input
+            id="profileSearchInput"
+            type="text"
+            placeholder="🔎 Search Writejot profiles..."
+            autocomplete="off"
+        >
+
+
+        <div
+            id="profileSearchResults"
+        ></div>
+
+    </div>
+
+
+
+    <!-- USER HEADER -->
+
+    <div
+        class="dashboard-header"
+    >
+
+        <img
+            id="dashboardPicture"
+            class="dashboard-pfp"
+            src="W.png"
+            alt="Profile picture"
+        >
+
+
+        <div
+            style="flex:1;"
+        >
+
+            <h1
+                id="dashboardName"
+            >
+                Welcome!
+            </h1>
+
+
+            <div
+                id="dashboardUsername"
+                class="dashboard-username"
+            >
+                @username
+            </div>
+
+
+            <div
+                id="dashboardStatus"
+                class="dashboard-status"
+            >
+                Writejot account
+            </div>
+
+
+            <a
+                href="edit-profile.html"
+                class="button secondary"
+                style="margin-top:10px;"
+            >
+                ⚙️ Edit Profile
+            </a>
 
         </div>
 
@@ -861,56 +1676,388 @@
 
 
 
+    <!-- DASHBOARD FEATURES -->
+
     <div
-        class="composer-inner"
+        class="dashboard-grid"
     >
 
 
-        <!-- PHOTO BUTTON -->
+        <!-- CATALOG -->
 
-        <button
-            id="photoButton"
-            type="button"
-            onclick="openImagePicker()"
-            title="Send a photo"
-        >
-            📷
-        </button>
-
-
-        <input
-            id="imageInput"
-            type="file"
-            accept="image/*"
-            onchange="handleImageSelection(event)"
+        <div
+            class="dashboard-card"
         >
 
+            <div
+                class="dashboard-icon"
+            >
+                📚
+            </div>
 
 
-        <!-- TEXT INPUT -->
-
-        <textarea
-            id="messageInput"
-            maxlength="2000"
-            placeholder="Write a message..."
-            rows="1"
-        ></textarea>
+            <h3>
+                Notes Catalog
+            </h3>
 
 
+            <p>
+                Browse notes shared by
+                other students.
+            </p>
 
-        <!-- SEND -->
 
-        <button
-            id="sendButton"
-            type="button"
-            onclick="sendMessage()"
+            <a
+                href="catalog.html"
+                class="button primary"
+            >
+                Open Catalog
+            </a>
+
+        </div>
+
+
+
+        <!-- SHARE NOTES -->
+
+        <div
+            class="dashboard-card"
         >
-            Send
-        </button>
+
+            <div
+                class="dashboard-icon"
+            >
+                📝
+            </div>
+
+
+            <h3>
+                Share Notes
+            </h3>
+
+
+            <p>
+                Submit notes for review
+                and possible inclusion
+                in the catalog.
+            </p>
+
+
+            <button
+                class="button secondary"
+                onclick="featureComingSoon('Note sharing')"
+            >
+                Submit Notes
+            </button>
+
+        </div>
+
+
+
+        <!-- FLASHCARDS -->
+
+        <div
+            class="dashboard-card"
+        >
+
+            <div
+                class="dashboard-icon"
+            >
+                🧠
+            </div>
+
+
+            <h3>
+                Flashcards
+            </h3>
+
+
+            <p>
+                Create and study
+                flashcard sets.
+            </p>
+
+
+            <button
+                class="button secondary"
+                onclick="featureComingSoon('Flashcards')"
+            >
+                Coming Soon
+            </button>
+
+        </div>
+
+
+
+        <!-- CALENDAR -->
+
+        <div
+            class="dashboard-card"
+        >
+
+            <div
+                class="dashboard-icon"
+            >
+                📅
+            </div>
+
+
+            <h3>
+                Calendar
+            </h3>
+
+
+            <p>
+                View classes, tests,
+                and personal events.
+            </p>
+
+
+            <button
+                class="button secondary"
+                onclick="featureComingSoon('Calendar')"
+            >
+                Coming Soon
+            </button>
+
+        </div>
+
+
+
+        <!-- REMINDERS -->
+
+        <div
+            class="dashboard-card"
+        >
+
+            <div
+                class="dashboard-icon"
+            >
+                🔔
+            </div>
+
+
+            <h3>
+                Reminders
+            </h3>
+
+
+            <p>
+                Keep track of assignments,
+                projects, and reminders.
+            </p>
+
+
+            <button
+                class="button secondary"
+                onclick="featureComingSoon('Reminders')"
+            >
+                Coming Soon
+            </button>
+
+        </div>
+
+
+
+        <!-- MESSAGES -->
+
+        <div
+            class="dashboard-card"
+        >
+
+            <div
+                class="dashboard-icon"
+            >
+                💬
+            </div>
+
+
+            <h3>
+                Messages
+            </h3>
+
+
+            <p>
+                Connect with other
+                Writejot users.
+            </p>
+
+
+            <a
+                href="messages.html"
+                class="button primary"
+            >
+                Open Messages
+            </a>
+
+        </div>
 
     </div>
 
-</div>
+
+
+    <!-- ACCOUNT STATUS -->
+
+    <div
+        class="dashboard-card trial-card"
+    >
+
+        <div
+            class="dashboard-icon"
+        >
+            🎓
+        </div>
+
+
+        <h3>
+            Account Status
+        </h3>
+
+
+        <p
+            id="dashboardStatusMessage"
+        >
+            Checking your account...
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    class="section-container"
+    id="about"
+>
+
+
+    <div
+        class="section-card"
+    >
+
+        <h2>
+            About Writejot
+        </h2>
+
+
+        <p>
+            Writejot makes it easier for students
+            to discover and share useful study materials.
+        </p>
+
+
+        <ul>
+
+            <li>
+                Student-shared notes.
+            </li>
+
+            <li>
+                Flashcards and study tools.
+            </li>
+
+            <li>
+                Class schedules and tests.
+            </li>
+
+            <li>
+                Academic reminders.
+            </li>
+
+            <li>
+                Student profiles and messaging.
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRICING
+===================================================== -->
+
+<section
+    class="pricing"
+>
+
+    <div
+        class="pricing-card"
+    >
+
+        <h2>
+            Writejot Access
+        </h2>
+
+
+        <div
+            class="price"
+        >
+            ₱149
+        </div>
+
+
+        <p>
+            Subscription
+        </p>
+
+
+        <ul>
+
+            <li>
+                Notes catalog
+            </li>
+
+            <li>
+                7-day free trial
+            </li>
+
+            <li>
+                Student study tools
+            </li>
+
+            <li>
+                Student profile features
+            </li>
+
+        </ul>
+
+
+        <p
+            class="payment-note"
+        >
+            Payment is currently handled in person.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <strong>
+        Writejot
+    </strong>
+
+    <br>
+
+    Founded by Rick Aldrei A. Velilla
+
+</footer>
 
 
 
@@ -921,120 +2068,474 @@
    CONFIG
 ========================================================= */
 
+const GOOGLE_CLIENT_ID =
+    "148780152741-7bsouicsp37po7o79ov66pofji4ksvhc.apps.googleusercontent.com";
+
+
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-let currentUser =
+let pendingGoogleUser =
     null;
 
 
-let otherUsername =
-    "";
-
-
-let refreshTimer =
-    null;
-
-
-let selectedImage =
+let profileSearchTimer =
     null;
 
 
 /* =========================================================
-   START
+   PAGE START
 ========================================================= */
 
-window.onload =
-    async function () {
+window.addEventListener(
+    "load",
+    function () {
 
-        const savedUser =
-            localStorage.getItem(
-                "writejotUser"
-            );
+        initializeGoogleLogin();
 
+        loadSavedSession();
 
-        if (
-            !savedUser
-        ) {
+        setupProfileSearch();
 
-            window.location.href =
-                "index.html";
-
-            return;
-
-        }
-
-
-        try {
-
-            currentUser =
-                JSON.parse(
-                    savedUser
-                );
-
-        }
-
-        catch (error) {
-
-            window.location.href =
-                "index.html";
-
-            return;
-
-        }
-
-
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
-
-
-        otherUsername =
-            normalizeUsername(
-                params.get(
-                    "username"
-                )
-            );
-
-
-        if (
-            !otherUsername
-        ) {
-
-            window.location.href =
-                "messages.html";
-
-            return;
-
-        }
-
-
-        await loadRecipient();
-
-        await markConversationRead();
-
-        await loadMessages();
-
-
-        refreshTimer =
-            setInterval(
-                loadMessages,
-                3000
-            );
-
-
-        setupMessageInput();
-
-    };
+    }
+);
 
 
 /* =========================================================
-   RECIPIENT
+   GOOGLE LOGIN
 ========================================================= */
 
-async function loadRecipient() {
+function initializeGoogleLogin() {
+
+    if (
+        !window.google ||
+        !google.accounts ||
+        !google.accounts.id
+    ) {
+
+        setTimeout(
+            initializeGoogleLogin,
+            300
+        );
+
+        return;
+
+    }
+
+
+    google.accounts.id.initialize({
+
+        client_id:
+            GOOGLE_CLIENT_ID,
+
+        callback:
+            handleCredentialResponse
+
+    });
+
+
+    google.accounts.id.renderButton(
+
+        document.getElementById(
+            "googleLogin"
+        ),
+
+        {
+
+            theme:
+                "outline",
+
+            size:
+                "large",
+
+            text:
+                "signin_with",
+
+            shape:
+                "rectangular",
+
+            width:
+                250
+
+        }
+
+    );
+
+}
+
+
+/* =========================================================
+   LOAD SAVED SESSION
+========================================================= */
+
+function loadSavedSession() {
+
+    const savedUser =
+        localStorage.getItem(
+            "writejotUser"
+        );
+
+
+    if (!savedUser) {
+
+        showHome();
+
+        return;
+
+    }
+
+
+    try {
+
+        const user =
+            JSON.parse(
+                savedUser
+            );
+
+
+        /*
+         * Show the dashboard immediately.
+         * We do not wait for Apps Script.
+         */
+
+        showDashboard(
+            user
+        );
+
+
+        /*
+         * Verify the account in the
+         * background.
+         */
+
+        checkAccountInBackground(
+            user
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Saved session error:",
+            error
+        );
+
+
+        localStorage.removeItem(
+            "writejotUser"
+        );
+
+
+        showHome();
+
+    }
+
+}
+
+
+/* =========================================================
+   SHOW HOME
+========================================================= */
+
+function showHome() {
+
+    hideAppLoading();
+
+
+    document
+        .getElementById(
+            "homeSection"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "accountSetup"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "dashboard"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "profileArea"
+        )
+        .style.display =
+        "none";
+
+}
+
+
+/* =========================================================
+   SHOW ACCOUNT SETUP
+========================================================= */
+
+function showAccountSetup(
+    user
+) {
+
+    hideAppLoading();
+
+
+    document
+        .getElementById(
+            "homeSection"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "dashboard"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "accountSetup"
+        )
+        .style.display =
+        "flex";
+
+
+    document
+        .getElementById(
+            "profileArea"
+        )
+        .style.display =
+        "none";
+
+}
+
+
+/* =========================================================
+   SHOW DASHBOARD
+========================================================= */
+
+function showDashboard(
+    user
+) {
+
+    hideAppLoading();
+
+
+    document
+        .getElementById(
+            "homeSection"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "accountSetup"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "dashboard"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "profileArea"
+        )
+        .style.display =
+        "flex";
+
+
+    const picture =
+        user.profilePicture ||
+        user.picture ||
+        "W.png";
+
+
+    document
+        .getElementById(
+            "profilePicture"
+        )
+        .src =
+        picture;
+
+
+    document
+        .getElementById(
+            "profilePicture"
+        )
+        .onerror =
+        function () {
+
+            this.src =
+                "W.png";
+
+        };
+
+
+    document
+        .getElementById(
+            "dashboardPicture"
+        )
+        .src =
+        picture;
+
+
+    document
+        .getElementById(
+            "dashboardPicture"
+        )
+        .onerror =
+        function () {
+
+            this.src =
+                "W.png";
+
+        };
+
+
+    document
+        .getElementById(
+            "profileName"
+        )
+        .textContent =
+        user.name ||
+        user.email ||
+        "Writejot User";
+
+
+    document
+        .getElementById(
+            "dashboardName"
+        )
+        .textContent =
+        "Welcome, " +
+        (
+            user.name ||
+            "Student"
+        ) +
+        "!";
+
+
+    document
+        .getElementById(
+            "dashboardUsername"
+        )
+        .textContent =
+        "@" +
+        (
+            user.username ||
+            "username"
+        );
+
+
+    updateDashboardStatus(
+        user
+    );
+
+}
+
+
+/* =========================================================
+   GOOGLE CALLBACK
+========================================================= */
+
+async function handleCredentialResponse(
+    response
+) {
+
+    try {
+
+        const data =
+            parseJwt(
+                response.credential
+            );
+
+
+        const user = {
+
+            name:
+                data.name ||
+                "",
+
+            email:
+                data.email ||
+                "",
+
+            picture:
+                data.picture ||
+                "",
+
+            googleId:
+                data.sub ||
+                "",
+
+            username:
+                "",
+
+            bio:
+                "",
+
+            profilePicture:
+                ""
+
+        };
+
+
+        pendingGoogleUser =
+            user;
+
+
+        await checkAccount(
+            user
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Google login error:",
+            error
+        );
+
+
+        alert(
+            "There was a problem signing in. Please try again."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CHECK ACCOUNT
+========================================================= */
+
+async function checkAccount(
+    user
+) {
 
     try {
 
@@ -1042,9 +2543,147 @@ async function loadRecipient() {
             await fetch(
 
                 APPS_SCRIPT_URL +
-                "?action=profile&username=" +
+                "?action=account&email=" +
                 encodeURIComponent(
-                    otherUsername
+                    user.email
+                ),
+
+                {
+                    cache:
+                        "no-store"
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.success &&
+            result.existingUser
+        ) {
+
+            const accountUser = {
+
+                ...user,
+
+                username:
+                    result.username ||
+                    "",
+
+                bio:
+                    result.bio ||
+                    "",
+
+                profilePicture:
+                    result.profilePicture ||
+                    "",
+
+                status:
+                    result.status ||
+                    "",
+
+                payment:
+                    result.payment ||
+                    ""
+
+            };
+
+
+            if (
+                result.username
+            ) {
+
+                localStorage.setItem(
+
+                    "writejotUser",
+
+                    JSON.stringify(
+                        accountUser
+                    )
+
+                );
+
+
+                showDashboard(
+                    accountUser
+                );
+
+            }
+            else {
+
+                pendingGoogleUser =
+                    accountUser;
+
+
+                showAccountSetup(
+                    accountUser
+                );
+
+            }
+
+
+            return;
+
+        }
+
+
+        pendingGoogleUser =
+            user;
+
+
+        showAccountSetup(
+            user
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Account check error:",
+            error
+        );
+
+
+        alert(
+            "Writejot couldn't connect to the account database. Please try again."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   BACKGROUND ACCOUNT CHECK
+========================================================= */
+
+async function checkAccountInBackground(
+    user
+) {
+
+    if (
+        !user ||
+        !user.email
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=account&email=" +
+                encodeURIComponent(
+                    user.email
                 ),
 
                 {
@@ -1059,10 +2698,7 @@ async function loadRecipient() {
             !response.ok
         ) {
 
-            throw new Error(
-                "Server returned " +
-                response.status
-            );
+            return;
 
         }
 
@@ -1073,102 +2709,91 @@ async function loadRecipient() {
 
         if (
             !result.success ||
-            !result.profile
+            !result.existingUser
         ) {
-
-            document
-                .getElementById(
-                    "recipientName"
-                )
-                .textContent =
-                "User not found";
-
-
-            document
-                .getElementById(
-                    "recipientUsername"
-                )
-                .textContent =
-                "@" +
-                otherUsername;
-
 
             return;
 
         }
 
 
-        const profile =
-            result.profile;
+        const updatedUser = {
+
+            ...user,
+
+            name:
+                result.name ||
+                user.name,
+
+            username:
+                result.username ||
+                user.username,
+
+            bio:
+                result.bio ||
+                user.bio ||
+                "",
+
+            profilePicture:
+                result.profilePicture ||
+                user.profilePicture ||
+                user.picture ||
+                "",
+
+            status:
+                result.status ||
+                user.status,
+
+            payment:
+                result.payment ||
+                user.payment
+
+        };
 
 
-        document
-            .getElementById(
-                "recipientName"
+        localStorage.setItem(
+
+            "writejotUser",
+
+            JSON.stringify(
+                updatedUser
             )
-            .textContent =
-            profile.name ||
-            "Writejot User";
+
+        );
 
 
-        document
-            .getElementById(
-                "recipientUsername"
-            )
-            .textContent =
-            "@" +
-            (
-                profile.username ||
-                otherUsername
+        /*
+         * Update visible dashboard
+         * without changing pages.
+         */
+
+        if (
+            document
+                .getElementById(
+                    "dashboard"
+                )
+                .style.display !==
+            "none"
+        ) {
+
+            showDashboard(
+                updatedUser
             );
 
-
-        document
-            .getElementById(
-                "recipientPicture"
-            )
-            .src =
-            profile.profilePicture ||
-            "W.png";
-
-
-        document
-            .getElementById(
-                "recipientPicture"
-            )
-            .onerror =
-            function () {
-
-                this.src =
-                    "W.png";
-
-            };
+        }
 
     }
 
     catch (error) {
 
-        console.error(
-            "Recipient loading error:",
-            error
+        /*
+         * Do not kick the user out if
+         * the server happens to be slow.
+         */
+
+        console.log(
+            "Background account check failed."
         );
-
-
-        document
-            .getElementById(
-                "recipientName"
-            )
-            .textContent =
-            "Writejot User";
-
-
-        document
-            .getElementById(
-                "recipientUsername"
-            )
-            .textContent =
-            "@" +
-            otherUsername;
 
     }
 
@@ -1176,12 +2801,141 @@ async function loadRecipient() {
 
 
 /* =========================================================
-   MARK AS READ
+   CREATE WRITEJOT ACCOUNT
 ========================================================= */
 
-async function markConversationRead() {
+async function createWritejotAccount() {
+
+    if (
+        !pendingGoogleUser
+    ) {
+
+        alert(
+            "Please sign in with Google first."
+        );
+
+        return;
+
+    }
+
+
+    const input =
+        document.getElementById(
+            "usernameInput"
+        );
+
+
+    const message =
+        document.getElementById(
+            "usernameMessage"
+        );
+
+
+    const username =
+        input
+            .value
+            .trim()
+            .toLowerCase()
+            .replace(
+                /^@/,
+                ""
+            );
+
+
+    if (
+        username.length <
+            3 ||
+        username.length >
+            20
+    ) {
+
+        message.textContent =
+            "Username must be 3–20 characters.";
+
+        message.style.color =
+            "#dc2626";
+
+        return;
+
+    }
+
+
+    if (
+        !/^[a-z0-9_]+$/i.test(
+            username
+        )
+    ) {
+
+        message.textContent =
+            "Use only letters, numbers, and underscores.";
+
+        message.style.color =
+            "#dc2626";
+
+        return;
+
+    }
+
 
     try {
+
+        const availableResponse =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=usernameAvailable" +
+                "&username=" +
+                encodeURIComponent(
+                    username
+                ) +
+                "&email=" +
+                encodeURIComponent(
+                    pendingGoogleUser.email
+                ),
+
+                {
+                    cache:
+                        "no-store"
+                }
+
+            );
+
+
+        const availability =
+            await availableResponse.json();
+
+
+        if (
+            !availability.available
+        ) {
+
+            message.textContent =
+                availability.error ||
+                "Username is already taken.";
+
+            message.style.color =
+                "#dc2626";
+
+            return;
+
+        }
+
+
+        document
+            .getElementById(
+                "setupLoading"
+            )
+            .style.display =
+            "block";
+
+
+        document
+            .getElementById(
+                "createAccountButton"
+            )
+            .disabled =
+            true;
+
 
         await fetch(
 
@@ -1203,13 +2957,19 @@ async function markConversationRead() {
                     JSON.stringify({
 
                         action:
-                            "markConversationRead",
+                            "createAccount",
+
+                        name:
+                            pendingGoogleUser.name,
 
                         email:
-                            currentUser.email,
+                            pendingGoogleUser.email,
+
+                        googleId:
+                            pendingGoogleUser.googleId,
 
                         username:
-                            otherUsername
+                            username
 
                     })
 
@@ -1217,676 +2977,597 @@ async function markConversationRead() {
 
         );
 
-    }
 
-    catch (error) {
+        const verified =
+            await waitForAccount(
 
-        console.error(
-            "Read status error:",
-            error
-        );
+                pendingGoogleUser.email,
 
-    }
-
-}
-
-
-/* =========================================================
-   LOAD MESSAGES
-========================================================= */
-
-async function loadMessages() {
-
-    try {
-
-        const response =
-            await fetch(
-
-                APPS_SCRIPT_URL +
-                "?action=messages" +
-                "&email=" +
-                encodeURIComponent(
-                    currentUser.email
-                ) +
-                "&username=" +
-                encodeURIComponent(
-                    otherUsername
-                ),
-
-                {
-                    cache:
-                        "no-store"
-                }
+                username
 
             );
 
 
         if (
-            !response.ok
+            !verified
         ) {
 
             throw new Error(
-                "Server returned " +
-                response.status
+                "Account was not confirmed."
             );
 
         }
 
 
-        const result =
-            await response.json();
+        const finalUser = {
 
+            ...pendingGoogleUser,
 
-        if (
-            !result.success
-        ) {
+            username:
+                verified.username,
 
-            showMessageError(
-                result.error ||
-                "Could not load messages."
-            );
+            bio:
+                verified.bio ||
+                "",
 
+            profilePicture:
+                verified.profilePicture ||
+                "",
 
-            return;
+            status:
+                verified.status ||
+                "trial",
 
-        }
-
-
-        renderMessages(
-            result.messages ||
-            []
-        );
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Message loading error:",
-            error
-        );
-
-
-        showMessageError(
-            "Could not load messages."
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   RENDER MESSAGES
-========================================================= */
-
-function renderMessages(
-    messages
-) {
-
-    const container =
-        document.getElementById(
-            "messages"
-        );
-
-
-    if (
-        !messages.length
-    ) {
-
-        container.innerHTML =
-
-            `
-            <div
-                id="empty"
-            >
-                No messages yet.
-                Say hello!
-            </div>
-            `;
-
-
-        return;
-
-    }
-
-
-    const currentUsername =
-        normalizeUsername(
-            currentUser.username
-        );
-
-
-    container.innerHTML =
-        messages
-            .map(
-
-                function (
-                    message
-                ) {
-
-                    const mine =
-                        normalizeUsername(
-                            message.sender
-                        ) ===
-                        currentUsername;
-
-
-                    const time =
-                        message.timestamp
-                            ? new Date(
-                                message.timestamp
-                              )
-                              .toLocaleString()
-                            : "";
-
-
-                    let content =
-                        "";
-
-
-                    /* =========================
-                       IMAGE
-                    ========================= */
-
-                    if (
-                        message.attachmentType ===
-                            "image" &&
-                        message.attachmentUrl
-                    ) {
-
-                        content +=
-
-                            `
-                            <img
-                                class="message-image"
-                                src="${escapeHtml(
-                                    message.attachmentUrl
-                                )}"
-                                alt="Photo"
-                                loading="lazy"
-                                onclick="openImage(
-                                    '${escapeHtml(
-                                        message.attachmentUrl
-                                    )}'
-                                )"
-                                onerror="
-                                    this.style.display='none';
-                                "
-                            >
-                            `;
-
-                    }
-
-
-                    /* =========================
-                       TEXT
-                    ========================= */
-
-                    const messageText =
-                        String(message.message || "").trim();
-
-                    if (
-                        messageText
-                    ) {
-
-                        content +=
-
-                            `
-                            <div class="message-text">
-                                ${escapeHtml(
-                                    messageText
-                                )}
-                            </div>
-                            `;
-
-                    }
-
-
-                    const isImageOnly =
-                        (
-                            message.attachmentType ===
-                            "image"
-                        ) &&
-                        !messageText;
-
-
-                    return `
-
-                        <div
-                            class="message-row
-                            ${
-                                mine
-                                    ? "mine"
-                                    : "theirs"
-                            }"
-                        >
-
-                            <div
-                                class="bubble-wrapper"
-                            >
-
-                                <div
-                                    class="bubble
-                                    ${
-                                        isImageOnly
-                                            ? "image-message-bubble"
-                                            : ""
-                                    }"
-                                >
-
-                                    ${content}
-
-                                </div>
-
-
-                                <div
-                                    class="time"
-                                >
-                                    ${escapeHtml(
-                                        time
-                                    )}
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-                }
-
-            )
-            .join("");
-
-
-    container.scrollTop =
-        container.scrollHeight;
-
-}
-
-
-/* =========================================================
-   OPEN IMAGE
-========================================================= */
-
-function openImage(
-    url
-) {
-
-    window.open(
-        url,
-        "_blank"
-    );
-
-}
-
-
-/* =========================================================
-   OPEN FILE PICKER
-========================================================= */
-
-function openImagePicker() {
-
-    document
-        .getElementById(
-            "imageInput"
-        )
-        .click();
-
-}
-
-
-/* =========================================================
-   SELECT IMAGE
-========================================================= */
-
-function handleImageSelection(
-    event
-) {
-
-    const file =
-        event.target.files &&
-        event.target.files[0];
-
-
-    if (
-        !file
-    ) {
-
-        return;
-
-    }
-
-
-    if (
-        !file.type.startsWith(
-            "image/"
-        )
-    ) {
-
-        alert(
-            "Please choose an image file."
-        );
-
-
-        event.target.value =
-            "";
-
-
-        return;
-
-    }
-
-
-    /*
-     * Keep original file under 10 MB.
-     * The image will be compressed before upload.
-     */
-
-    if (
-        file.size >
-        10 * 1024 * 1024
-    ) {
-
-        alert(
-            "Please choose an image smaller than 10 MB."
-        );
-
-
-        event.target.value =
-            "";
-
-
-        return;
-
-    }
-
-
-    selectedImage =
-        file;
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload =
-        function () {
-
-            document
-                .getElementById(
-                    "previewImage"
-                )
-                .src =
-                reader.result;
-
-
-            document
-                .getElementById(
-                    "imagePreview"
-                )
-                .style.display =
-                "block";
+            payment:
+                verified.payment ||
+                "No"
 
         };
 
 
-    reader.readAsDataURL(
-        file
-    );
+        localStorage.setItem(
+
+            "writejotUser",
+
+            JSON.stringify(
+                finalUser
+            )
+
+        );
+
+
+        showDashboard(
+            finalUser
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Account creation error:",
+            error
+        );
+
+
+        message.textContent =
+            "Could not create your account.";
+
+        message.style.color =
+            "#dc2626";
+
+    }
+
+    finally {
+
+        document
+            .getElementById(
+                "setupLoading"
+            )
+            .style.display =
+            "none";
+
+
+        document
+            .getElementById(
+                "createAccountButton"
+            )
+            .disabled =
+            false;
+
+    }
 
 }
 
 
 /* =========================================================
-   REMOVE SELECTED IMAGE
+   WAIT FOR ACCOUNT
 ========================================================= */
 
-function removeSelectedImage() {
+async function waitForAccount(
+    email,
+    username
+) {
 
-    selectedImage =
+    for (
+        let i = 0;
+        i < 10;
+        i++
+    ) {
+
+        try {
+
+            const response =
+                await fetch(
+
+                    APPS_SCRIPT_URL +
+                    "?action=account&email=" +
+                    encodeURIComponent(
+                        email
+                    ),
+
+                    {
+                        cache:
+                            "no-store"
+                    }
+
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if (
+                result.success &&
+                result.username &&
+                result.username.toLowerCase() ===
+                    username.toLowerCase()
+            ) {
+
+                return result;
+
+            }
+
+        }
+
+        catch (error) {}
+
+
+        await sleep(
+            600
+        );
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================================
+   UPDATE DASHBOARD STATUS
+========================================================= */
+
+async function updateDashboardStatus(
+    user
+) {
+
+    const statusElement =
+        document.getElementById(
+            "dashboardStatus"
+        );
+
+
+    const statusMessage =
+        document.getElementById(
+            "dashboardStatusMessage"
+        );
+
+
+    const status =
+        String(
+            user.status ||
+            ""
+        )
+        .trim()
+        .toLowerCase();
+
+
+    if (
+        status ===
+        "trial"
+    ) {
+
+        statusElement.textContent =
+            "7-day free trial";
+
+
+        statusMessage.textContent =
+            "Your 7-day free trial is active.";
+
+    }
+
+    else if (
+        status ===
+        "active"
+    ) {
+
+        statusElement.textContent =
+            "Active account";
+
+
+        statusMessage.textContent =
+            "Your Writejot account is active.";
+
+    }
+
+    else if (
+        status
+    ) {
+
+        statusElement.textContent =
+            "Account status: " +
+            user.status;
+
+
+        statusMessage.textContent =
+            "Your current account status is: " +
+            user.status +
+            ".";
+
+    }
+
+    else {
+
+        statusElement.textContent =
+            "Writejot account";
+
+
+        statusMessage.textContent =
+            "Your account information is loading.";
+
+    }
+
+}
+
+
+/* =========================================================
+   PROFILE SEARCH
+========================================================= */
+
+function setupProfileSearch() {
+
+    const input =
+        document.getElementById(
+            "profileSearchInput"
+        );
+
+
+    if (!input) {
+        return;
+    }
+
+
+    input.addEventListener(
+        "input",
+        searchProfiles
+    );
+
+}
+
+
+async function searchProfiles() {
+
+    const input =
+        document.getElementById(
+            "profileSearchInput"
+        );
+
+
+    const resultsBox =
+        document.getElementById(
+            "profileSearchResults"
+        );
+
+
+    const query =
+        input.value.trim();
+
+
+    clearTimeout(
+        profileSearchTimer
+    );
+
+
+    if (
+        query.length <
+        2
+    ) {
+
+        resultsBox.style.display =
+            "none";
+
+
+        resultsBox.innerHTML =
+            "";
+
+
+        return;
+
+    }
+
+
+    profileSearchTimer =
+        setTimeout(
+
+            async function () {
+
+                try {
+
+                    const response =
+                        await fetch(
+
+                            APPS_SCRIPT_URL +
+                            "?action=searchProfiles&q=" +
+                            encodeURIComponent(
+                                query
+                            ),
+
+                            {
+                                cache:
+                                    "no-store"
+                            }
+
+                        );
+
+
+                    const result =
+                        await response.json();
+
+
+                    if (
+                        !result.success ||
+                        !result.profiles ||
+                        !result.profiles.length
+                    ) {
+
+                        resultsBox.innerHTML =
+
+                            `
+                            <div
+                                style="
+                                    padding:16px;
+                                    color:#718096;
+                                    text-align:center;
+                                "
+                            >
+                                No profiles found.
+                            </div>
+                            `;
+
+
+                        resultsBox.style.display =
+                            "block";
+
+
+                        return;
+
+                    }
+
+
+                    resultsBox.innerHTML =
+                        result.profiles
+                            .map(
+
+                                function (
+                                    profile
+                                ) {
+
+                                    const picture =
+                                        profile.profilePicture ||
+                                        "W.png";
+
+
+                                    return `
+
+                                        <div
+                                            class="search-result"
+                                            data-username="${escapeHtml(
+                                                profile.username
+                                            )}"
+                                        >
+
+                                            <img
+                                                src="${escapeHtml(
+                                                    picture
+                                                )}"
+                                                alt=""
+                                                onerror="
+                                                    this.src='W.png'
+                                                "
+                                            >
+
+
+                                            <div
+                                                style="min-width:0;"
+                                            >
+
+                                                <div
+                                                    class="search-result-name"
+                                                >
+                                                    ${escapeHtml(
+                                                        profile.name ||
+                                                        "Writejot User"
+                                                    )}
+                                                </div>
+
+
+                                                <div
+                                                    class="search-result-username"
+                                                >
+                                                    @${escapeHtml(
+                                                        profile.username
+                                                    )}
+                                                </div>
+
+
+                                                ${
+                                                    profile.bio
+                                                        ? `
+                                                            <div
+                                                                class="search-result-bio"
+                                                            >
+                                                                ${escapeHtml(
+                                                                    profile.bio
+                                                                )}
+                                                            </div>
+                                                          `
+                                                        : ""
+                                                }
+
+                                            </div>
+
+                                        </div>
+
+                                    `;
+
+                                }
+
+                            )
+                            .join("");
+
+
+                    resultsBox.style.display =
+                        "block";
+
+
+                    resultsBox
+                        .querySelectorAll(
+                            ".search-result"
+                        )
+                        .forEach(
+
+                            function (
+                                element
+                            ) {
+
+                                element.addEventListener(
+                                    "click",
+                                    function () {
+
+                                        const username =
+                                            element.dataset.username;
+
+
+                                        window.location.href =
+                                            "profile.html?username=" +
+                                            encodeURIComponent(
+                                                username
+                                            );
+
+                                    }
+                                );
+
+                            }
+                        );
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Profile search error:",
+                        error
+                    );
+
+                }
+
+            },
+
+            250
+
+        );
+
+}
+
+
+/* =========================================================
+   CLOSE SEARCH
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const search =
+            document.querySelector(
+                ".profile-search"
+            );
+
+
+        if (
+            search &&
+            !search.contains(
+                event.target
+            )
+        ) {
+
+            document
+                .getElementById(
+                    "profileSearchResults"
+                )
+                .style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout() {
+
+    localStorage.removeItem(
+        "writejotUser"
+    );
+
+
+    pendingGoogleUser =
         null;
 
 
     document
         .getElementById(
-            "imageInput"
-        )
-        .value =
-        "";
-
-
-    document
-        .getElementById(
-            "previewImage"
-        )
-        .src =
-        "";
-
-
-    document
-        .getElementById(
-            "imagePreview"
+            "dashboard"
         )
         .style.display =
         "none";
 
-}
+
+    document
+        .getElementById(
+            "profileArea"
+        )
+        .style.display =
+        "none";
 
 
-/* =========================================================
-   SEND MESSAGE
-========================================================= */
-
-async function sendMessage() {
-
-    const input =
-        document.getElementById(
-            "messageInput"
-        );
-
-
-    const button =
-        document.getElementById(
-            "sendButton"
-        );
-
-
-    const message =
-        input
-            .value
-            .trim();
+    showHome();
 
 
     if (
-        !message &&
-        !selectedImage
+        window.google &&
+        google.accounts &&
+        google.accounts.id
     ) {
 
-        return;
-
-    }
-
-
-    button.disabled =
-        true;
-
-
-    button.textContent =
-        "Sending...";
-
-
-    try {
-
-        let imageData =
-            "";
-
-
-        let imageType =
-            "";
-
-
-        let imageName =
-            "";
-
-
-        if (
-            selectedImage
-        ) {
-
-            const compressed =
-                await compressImage(
-                    selectedImage
-                );
-
-
-            imageData =
-                compressed.dataUrl;
-
-
-            imageType =
-                compressed.mimeType;
-
-
-            imageName =
-                compressed.fileName;
-
-        }
-
-
-        const response =
-            await fetch(
-
-                APPS_SCRIPT_URL,
-
-                {
-
-                    method:
-                        "POST",
-
-                    headers: {
-
-                        "Content-Type":
-                            "text/plain;charset=utf-8"
-
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            action:
-                                "sendMessage",
-
-                            email:
-                                currentUser.email,
-
-                            receiver:
-                                otherUsername,
-
-                            message:
-                                message,
-
-                            attachmentType:
-                                imageData
-                                    ? "image"
-                                    : "",
-
-                            attachmentData:
-                                imageData,
-
-                            attachmentMime:
-                                imageType,
-
-                            attachmentName:
-                                imageName
-
-                        })
-
-                }
-
-            );
-
-
-        if (
-            !response.ok
-        ) {
-
-            throw new Error(
-                "Server returned " +
-                response.status
-            );
-
-        }
-
-
-        const result =
-            await response.json();
-
-
-        if (
-            !result.success
-        ) {
-
-            throw new Error(
-                result.error ||
-                "Could not send the message."
-            );
-
-        }
-
-
-        input.value =
-            "";
-
-
-        resetTextareaHeight();
-
-
-        removeSelectedImage();
-
-
-        /*
-         * Give the server a moment
-         * and then load the message.
-         */
-
-        await sleep(
-            400
-        );
-
-
-        await loadMessages();
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Send message error:",
-            error
-        );
-
-
-        alert(
-            error.message ||
-            "Could not send the message."
-        );
-
-    }
-
-
-    finally {
-
-        button.disabled =
-            false;
-
-
-        button.textContent =
-            "Send";
-
-
-        input.focus();
+        google.accounts.id.disableAutoSelect();
 
     }
 
@@ -1894,291 +3575,48 @@ async function sendMessage() {
 
 
 /* =========================================================
-   COMPRESS IMAGE
+   FEATURE PLACEHOLDER
 ========================================================= */
 
-function compressImage(
-    file
+function featureComingSoon(
+    feature
 ) {
 
-    return new Promise(
-
-        function (
-            resolve,
-            reject
-        ) {
-
-            const reader =
-                new FileReader();
-
-
-            reader.onerror =
-                reject;
-
-
-            reader.onload =
-                function () {
-
-                    const image =
-                        new Image();
-
-
-                    image.onerror =
-                        reject;
-
-
-                    image.onload =
-                        function () {
-
-                            const maxSize =
-                                1600;
-
-
-                            let width =
-                                image.width;
-
-
-                            let height =
-                                image.height;
-
-
-                            if (
-                                width >
-                                maxSize ||
-                                height >
-                                maxSize
-                            ) {
-
-                                if (
-                                    width >
-                                    height
-                                ) {
-
-                                    height =
-                                        Math.round(
-                                            height *
-                                            (
-                                                maxSize /
-                                                width
-                                            )
-                                        );
-
-
-                                    width =
-                                        maxSize;
-
-                                }
-                                else {
-
-                                    width =
-                                        Math.round(
-                                            width *
-                                            (
-                                                maxSize /
-                                                height
-                                            )
-                                        );
-
-
-                                    height =
-                                        maxSize;
-
-                                }
-
-                            }
-
-
-                            const canvas =
-                                document
-                                    .createElement(
-                                        "canvas"
-                                    );
-
-
-                            canvas.width =
-                                width;
-
-
-                            canvas.height =
-                                height;
-
-
-                            const context =
-                                canvas
-                                    .getContext(
-                                        "2d"
-                                    );
-
-
-                            context.drawImage(
-
-                                image,
-
-                                0,
-                                0,
-
-                                width,
-                                height
-
-                            );
-
-
-                            const mimeType =
-                                "image/jpeg";
-
-
-                            const dataUrl =
-                                canvas.toDataURL(
-
-                                    mimeType,
-
-                                    0.82
-
-                                );
-
-
-                            resolve({
-
-                                dataUrl:
-                                    dataUrl,
-
-                                mimeType:
-                                    mimeType,
-
-                                fileName:
-                                    "photo-" +
-                                    Date.now() +
-                                    ".jpg"
-
-                            });
-
-                        };
-
-
-                    image.src =
-                        reader.result;
-
-                };
-
-
-            reader.readAsDataURL(
-                file
-            );
-
-        }
-
+    alert(
+        feature +
+        " is coming soon."
     );
 
 }
 
 
 /* =========================================================
-   ADAPTIVE TEXTBOX
+   LOADING
 ========================================================= */
 
-function setupMessageInput() {
+function hideAppLoading() {
 
-    const input =
+    const loading =
         document.getElementById(
-            "messageInput"
+            "appLoading"
         );
 
 
-    input.addEventListener(
-        "input",
-        function () {
+    if (
+        loading
+    ) {
 
-            input.style.height =
-                "auto";
+        loading.style.display =
+            "none";
 
-
-            const maxHeight =
-                window.innerWidth <=
-                    600
-                    ? 120
-                    : 140;
-
-
-            input.style.height =
-                Math.min(
-                    input.scrollHeight,
-                    maxHeight
-                ) +
-                "px";
-
-        }
-    );
-
-
-    /*
-     * Enter = send
-     * Shift + Enter = new line
-     */
-
-    input.addEventListener(
-        "keydown",
-        function (
-            event
-        ) {
-
-            if (
-                event.key ===
-                    "Enter" &&
-                !event.shiftKey
-            ) {
-
-                event.preventDefault();
-
-
-                sendMessage();
-
-            }
-
-        }
-    );
+    }
 
 }
 
 
 /* =========================================================
-   RESET TEXTBOX
+   ESCAPE HTML
 ========================================================= */
-
-function resetTextareaHeight() {
-
-    const input =
-        document.getElementById(
-            "messageInput"
-        );
-
-
-    input.style.height =
-        "44px";
-
-}
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function normalizeUsername(
-    username
-) {
-
-    return String(
-        username ||
-        ""
-    )
-    .trim()
-    .toLowerCase()
-    .replace(
-        /^@/,
-        ""
-    );
-
-}
-
 
 function escapeHtml(
     value
@@ -2212,14 +3650,16 @@ function escapeHtml(
 }
 
 
+/* =========================================================
+   SLEEP
+========================================================= */
+
 function sleep(
     milliseconds
 ) {
 
     return new Promise(
-        function (
-            resolve
-        ) {
+        function (resolve) {
 
             setTimeout(
                 resolve,
@@ -2231,9 +3671,67 @@ function sleep(
 
 }
 
+
+/* =========================================================
+   GOOGLE JWT
+========================================================= */
+
+function parseJwt(
+    token
+) {
+
+    const base64Url =
+        token.split(".")[1];
+
+
+    const base64 =
+        base64Url
+            .replace(
+                /-/g,
+                "+"
+            )
+            .replace(
+                /_/g,
+                "/"
+            );
+
+
+    const jsonPayload =
+        decodeURIComponent(
+
+            atob(
+                base64
+            )
+            .split("")
+            .map(
+                function (c) {
+
+                    return "%" +
+                        (
+                            "00" +
+                            c
+                                .charCodeAt(0)
+                                .toString(16)
+                        )
+                        .slice(-2);
+
+                }
+            )
+            .join("")
+
+        );
+
+
+    return JSON.parse(
+        jsonPayload
+    );
+
+}
+
 </script>
 
 
 </body>
 
 </html>
+
