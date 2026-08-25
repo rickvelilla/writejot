@@ -16,15 +16,13 @@
     <style>
 
         * {
-            box-sizing:
-                border-box;
+            box-sizing: border-box;
         }
 
 
         body {
 
-            margin:
-                0;
+            margin: 0;
 
             font-family:
                 Arial,
@@ -37,6 +35,8 @@
             color:
                 #1f2937;
 
+            min-height:
+                100vh;
         }
 
 
@@ -60,6 +60,14 @@
             align-items:
                 center;
 
+            position:
+                sticky;
+
+            top:
+                0;
+
+            z-index:
+                100;
         }
 
 
@@ -73,7 +81,6 @@
 
             gap:
                 10px;
-
         }
 
 
@@ -85,6 +92,8 @@
             height:
                 42px;
 
+            object-fit:
+                contain;
         }
 
 
@@ -95,7 +104,6 @@
 
             font-weight:
                 700;
-
         }
 
 
@@ -109,25 +117,26 @@
 
             font-weight:
                 600;
-
         }
 
 
         main {
 
+            width:
+                100%;
+
             max-width:
-                700px;
+                720px;
 
             margin:
-                40px auto;
+                30px auto;
 
             padding:
-                0 20px;
-
+                0 16px;
         }
 
 
-        .card {
+        .messages-card {
 
             background:
                 white;
@@ -141,25 +150,29 @@
             overflow:
                 hidden;
 
+            box-shadow:
+                0 6px 20px
+                rgba(0,0,0,0.04);
         }
 
 
         .title {
 
             padding:
-                25px;
+                22px;
 
             border-bottom:
                 1px solid #edf0f4;
-
         }
 
 
         .title h1 {
 
             margin:
-                0 0 4px;
+                0 0 3px;
 
+            font-size:
+                25px;
         }
 
 
@@ -170,7 +183,52 @@
 
             color:
                 #718096;
+        }
 
+
+        .search-wrap {
+
+            padding:
+                14px 16px;
+
+            border-bottom:
+                1px solid #edf0f4;
+        }
+
+
+        #conversationSearch {
+
+            width:
+                100%;
+
+            height:
+                44px;
+
+            padding:
+                0 14px;
+
+            border:
+                1px solid #d8dee8;
+
+            border-radius:
+                10px;
+
+            outline:
+                none;
+
+            font-size:
+                14px;
+        }
+
+
+        #conversationSearch:focus {
+
+            border-color:
+                #4285F4;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(66,133,244,0.08);
         }
 
 
@@ -183,10 +241,10 @@
                 center;
 
             gap:
-                14px;
+                13px;
 
             padding:
-                16px 20px;
+                14px 17px;
 
             text-decoration:
                 none;
@@ -197,6 +255,8 @@
             color:
                 inherit;
 
+            transition:
+                background .15s ease;
         }
 
 
@@ -204,17 +264,30 @@
 
             background:
                 #f7faff;
-
         }
 
 
-        .conversation img {
+        .conversation.unread {
+
+            background:
+                #f5f9ff;
+        }
+
+
+        .conversation.unread:hover {
+
+            background:
+                #eef5ff;
+        }
+
+
+        .conversation-picture {
 
             width:
-                50px;
+                54px;
 
             height:
-                50px;
+                54px;
 
             border-radius:
                 50%;
@@ -222,6 +295,37 @@
             object-fit:
                 cover;
 
+            border:
+                1px solid #dbe3ef;
+
+            flex-shrink:
+                0;
+        }
+
+
+        .conversation-content {
+
+            min-width:
+                0;
+
+            flex:
+                1;
+        }
+
+
+        .conversation-top {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                10px;
         }
 
 
@@ -230,6 +334,51 @@
             font-weight:
                 600;
 
+            white-space:
+                nowrap;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
+        }
+
+
+        .conversation.unread
+        .conversation-name {
+
+            font-weight:
+                700;
+        }
+
+
+        .conversation-time {
+
+            color:
+                #98a2b3;
+
+            font-size:
+                11px;
+
+            white-space:
+                nowrap;
+        }
+
+
+        .conversation-preview-row {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            margin-top:
+                3px;
         }
 
 
@@ -239,20 +388,67 @@
                 #718096;
 
             font-size:
-                14px;
+                13px;
+
+            white-space:
+                nowrap;
 
             overflow:
                 hidden;
 
             text-overflow:
                 ellipsis;
+        }
 
-            white-space:
-                nowrap;
 
-            max-width:
-                450px;
+        .conversation.unread
+        .conversation-preview {
 
+            color:
+                #334155;
+
+            font-weight:
+                600;
+        }
+
+
+        .unread-badge {
+
+            min-width:
+                20px;
+
+            height:
+                20px;
+
+            padding:
+                0 6px;
+
+            border-radius:
+                999px;
+
+            background:
+                #ef4444;
+
+            color:
+                white;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            font-size:
+                11px;
+
+            font-weight:
+                700;
+
+            flex-shrink:
+                0;
         }
 
 
@@ -262,11 +458,20 @@
                 center;
 
             padding:
-                45px 20px;
+                55px 20px;
 
             color:
                 #718096;
+        }
 
+
+        #empty-icon {
+
+            font-size:
+                42px;
+
+            margin-bottom:
+                8px;
         }
 
 
@@ -276,10 +481,73 @@
                 center;
 
             padding:
-                40px;
+                45px 20px;
 
             color:
                 #dc2626;
+        }
+
+
+        @media (
+            max-width: 600px
+        ) {
+
+            header {
+
+                padding:
+                    11px 17px;
+            }
+
+
+            .brand-name {
+
+                font-size:
+                    20px;
+            }
+
+
+            .brand img {
+
+                width:
+                    38px;
+
+                height:
+                    38px;
+            }
+
+
+            main {
+
+                margin-top:
+                    16px;
+
+                padding:
+                    0 9px;
+            }
+
+
+            .conversation {
+
+                padding:
+                    13px;
+            }
+
+
+            .conversation-picture {
+
+                width:
+                    49px;
+
+                height:
+                    49px;
+            }
+
+
+            .conversation-time {
+
+                display:
+                    none;
+            }
 
         }
 
@@ -320,7 +588,8 @@
 
 <main>
 
-    <div class="card">
+    <div class="messages-card">
+
 
         <div class="title">
 
@@ -335,12 +604,30 @@
         </div>
 
 
+        <div class="search-wrap">
+
+            <input
+                id="conversationSearch"
+                type="text"
+                placeholder="Search conversations..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
         <div
             id="conversationList"
         ></div>
 
 
-        <div id="empty">
+        <div
+            id="empty"
+        >
+
+            <div id="empty-icon">
+                💬
+            </div>
 
             You don't have any conversations yet.
 
@@ -352,6 +639,7 @@
             style="display:none;"
         ></div>
 
+
     </div>
 
 </main>
@@ -360,37 +648,84 @@
 
 <script>
 
-
 const APPS_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
+    "https://script.google.com/macros/s/AKfycbwKK7HO-uWb_QmnPVqne1jhXYk5GlhfgqjiwwGGNYGqubJViyXywb8NUBIa6u2znP6F/exec";
 
 
-window.onload = loadConversations;
+let currentUser =
+    null;
+
+let allConversations =
+    [];
+
+let profileCache =
+    {};
+
+let refreshTimer =
+    null;
+
+
+window.onload =
+    async function() {
+
+        const savedUser =
+            localStorage.getItem(
+                "writejotUser"
+            );
+
+
+        if (!savedUser) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
+
+
+        try {
+
+            currentUser =
+                JSON.parse(
+                    savedUser
+                );
+
+        }
+
+        catch (error) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
+
+
+        document
+            .getElementById(
+                "conversationSearch"
+            )
+            .addEventListener(
+                "input",
+                renderFilteredConversations
+            );
+
+
+        await loadConversations();
+
+
+        refreshTimer =
+            setInterval(
+                loadConversations,
+                4000
+            );
+
+    };
 
 
 async function loadConversations() {
-
-    const savedUser =
-        localStorage.getItem(
-            "writejotUser"
-        );
-
-
-    if (!savedUser) {
-
-        window.location.href =
-            "index.html";
-
-        return;
-
-    }
-
-
-    const user =
-        JSON.parse(
-            savedUser
-        );
-
 
     try {
 
@@ -400,7 +735,7 @@ async function loadConversations() {
                 APPS_SCRIPT_URL +
                 "?action=conversations&email=" +
                 encodeURIComponent(
-                    user.email
+                    currentUser.email
                 )
 
             );
@@ -410,12 +745,11 @@ async function loadConversations() {
             await response.json();
 
 
-        if (
-            !result.success
-        ) {
+        if (!result.success) {
 
             showError(
-                result.error
+                result.error ||
+                "Could not load messages."
             );
 
             return;
@@ -423,115 +757,25 @@ async function loadConversations() {
         }
 
 
-        if (
-            !result.conversations ||
-            !result.conversations.length
-        ) {
-
-            return;
-
-        }
+        allConversations =
+            result.conversations ||
+            [];
 
 
-        document
-            .getElementById(
-                "empty"
-            )
-            .style.display =
-            "none";
+        await loadProfilesForConversations();
 
 
-        const list =
-            document
-                .getElementById(
-                    "conversationList"
-                );
-
-
-        for (
-            const conversation
-            of result.conversations
-        ) {
-
-            const profile =
-                await getProfile(
-                    conversation.username
-                );
-
-
-            const name =
-                profile
-                    ? profile.name
-                    : "Writejot User";
-
-
-            const picture =
-                profile &&
-                profile.profilePicture
-                    ? profile.profilePicture
-                    : "W.png";
-
-
-            const link =
-                document.createElement(
-                    "a"
-                );
-
-
-            link.className =
-                "conversation";
-
-
-            link.href =
-                "chat.html?username=" +
-                encodeURIComponent(
-                    conversation.username
-                );
-
-
-            link.innerHTML = `
-
-                <img
-                    src="${escapeHtml(picture)}"
-                    alt=""
-                    onerror="this.src='W.png'"
-                >
-
-                <div style="min-width:0;">
-
-                    <div
-                        class="conversation-name"
-                    >
-                        ${escapeHtml(name)}
-                    </div>
-
-                    <div
-                        class="conversation-preview"
-                    >
-                        ${escapeHtml(
-                            conversation.lastMessage
-                        )}
-                    </div>
-
-                </div>
-
-            `;
-
-
-            list.appendChild(
-                link
-            );
-
-        }
+        renderFilteredConversations();
 
     }
-
 
     catch (error) {
 
         console.error(
+            "Conversation loading error:",
             error
         );
+
 
         showError(
             "Could not load your conversations."
@@ -542,49 +786,367 @@ async function loadConversations() {
 }
 
 
-async function getProfile(
-    username
-) {
+async function loadProfilesForConversations() {
 
-    try {
+    const requests =
+        allConversations.map(
 
-        const response =
-            await fetch(
+            async function(conversation) {
 
-                APPS_SCRIPT_URL +
-                "?action=profile&username=" +
-                encodeURIComponent(
-                    username
-                )
+                if (
+                    profileCache[
+                        conversation.username
+                    ]
+                ) {
 
-            );
+                    return;
 
-
-        const result =
-            await response.json();
+                }
 
 
-        if (
-            result.success
-        ) {
+                try {
 
-            return result.profile;
+                    const response =
+                        await fetch(
 
-        }
+                            APPS_SCRIPT_URL +
+                            "?action=profile&username=" +
+                            encodeURIComponent(
+                                conversation.username
+                            )
 
-    }
-
-    catch (error) {}
+                        );
 
 
-    return null;
+                    const result =
+                        await response.json();
+
+
+                    if (
+                        result.success
+                    ) {
+
+                        profileCache[
+                            conversation.username
+                        ] =
+                            result.profile;
+
+                    }
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        error
+                    );
+
+                }
+
+            }
+
+        );
+
+
+    await Promise.all(
+        requests
+    );
 
 }
 
 
-function showError(
-    message
-) {
+function renderFilteredConversations() {
+
+    const list =
+        document.getElementById(
+            "conversationList"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "empty"
+        );
+
+
+    const query =
+        document
+            .getElementById(
+                "conversationSearch"
+            )
+            .value
+            .trim()
+            .toLowerCase();
+
+
+    const filtered =
+        allConversations.filter(
+
+            function(conversation) {
+
+                const profile =
+                    profileCache[
+                        conversation.username
+                    ] ||
+                    {};
+
+
+                const text =
+                    (
+                        conversation.username +
+                        " " +
+                        (
+                            profile.name ||
+                            ""
+                        )
+                    )
+                    .toLowerCase();
+
+
+                return text.includes(
+                    query
+                );
+
+            }
+
+        );
+
+
+    list.innerHTML =
+        "";
+
+
+    if (!filtered.length) {
+
+        empty.style.display =
+            "block";
+
+
+        if (
+            allConversations.length
+        ) {
+
+            empty.innerHTML =
+
+                `
+                <div id="empty-icon">
+                    🔎
+                </div>
+
+                No conversations found.
+                `;
+
+        }
+
+        else {
+
+            empty.innerHTML =
+
+                `
+                <div id="empty-icon">
+                    💬
+                </div>
+
+                You don't have any conversations yet.
+                `;
+
+        }
+
+        return;
+
+    }
+
+
+    empty.style.display =
+        "none";
+
+
+    filtered.forEach(
+
+        function(conversation) {
+
+            const profile =
+                profileCache[
+                    conversation.username
+                ] ||
+                {};
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.className =
+                "conversation" +
+                (
+                    conversation.unread
+                        ? " unread"
+                        : ""
+                );
+
+
+            link.href =
+                "chat.html?username=" +
+                encodeURIComponent(
+                    conversation.username
+                );
+
+
+            const picture =
+                profile.profilePicture ||
+                "W.png";
+
+
+            const name =
+                profile.name ||
+                conversation.username;
+
+
+            const time =
+                formatTime(
+                    conversation.timestamp
+                );
+
+
+            link.innerHTML =
+
+                `
+                <img
+                    class="conversation-picture"
+                    src="${escapeHtml(picture)}"
+                    alt=""
+                    onerror="this.src='W.png'"
+                >
+
+
+                <div
+                    class="conversation-content"
+                >
+
+                    <div
+                        class="conversation-top"
+                    >
+
+                        <div
+                            class="conversation-name"
+                        >
+                            ${escapeHtml(name)}
+                        </div>
+
+
+                        <div
+                            class="conversation-time"
+                        >
+                            ${escapeHtml(time)}
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="conversation-preview-row"
+                    >
+
+                        <div
+                            class="conversation-preview"
+                        >
+                            ${escapeHtml(
+                                conversation.lastMessage
+                            )}
+                        </div>
+
+
+                        ${
+                            conversation.unread
+                                ? `
+                                    <span
+                                        class="unread-badge"
+                                    >
+                                        1
+                                    </span>
+                                  `
+                                : ""
+                        }
+
+                    </div>
+
+                </div>
+                `;
+
+
+            list.appendChild(
+                link
+            );
+
+        }
+
+    );
+
+}
+
+
+function formatTime(value) {
+
+    if (!value) {
+        return "";
+    }
+
+
+    const date =
+        new Date(value);
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return "";
+
+    }
+
+
+    const now =
+        new Date();
+
+
+    if (
+        date.toDateString() ===
+        now.toDateString()
+    ) {
+
+        return date.toLocaleTimeString(
+            [],
+            {
+                hour:
+                    "numeric",
+
+                minute:
+                    "2-digit"
+            }
+        );
+
+    }
+
+
+    return date.toLocaleDateString(
+        [],
+        {
+            month:
+                "short",
+
+            day:
+                "numeric"
+        }
+    );
+
+}
+
+
+function showError(message) {
 
     document
         .getElementById(
@@ -610,9 +1172,7 @@ function showError(
 }
 
 
-function escapeHtml(
-    value
-) {
+function escapeHtml(value) {
 
     return String(
         value || ""
