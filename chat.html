@@ -192,15 +192,14 @@
                 flex-start;
         }
 
-       /* =========================
-   ADAPTIVE BUBBLE
+      /* =========================
+   ADAPTIVE MESSAGE BUBBLES
 ========================= */
 
 .message-row {
     display: flex;
     width: 100%;
     margin-bottom: 12px;
-
     align-items: flex-start;
 }
 
@@ -216,24 +215,24 @@
     display: flex;
     flex-direction: column;
 
-    width: auto;
+    /* Bubble only takes as much width as it needs */
+    width: fit-content;
+
+    /* But never gets too wide */
     max-width: 70%;
 
-    flex: 0 0 auto;
+    /* Prevent stretching */
+    flex: 0 1 auto;
 
     align-items: flex-start;
-
-    height: auto;
 }
 
 .bubble {
-    display: block;
+    display: inline-block;
 
-    width: auto;
+    /* Let the bubble size itself based on its text */
+    width: fit-content;
     max-width: 100%;
-
-    height: auto;
-    min-height: 0;
 
     padding: 10px 14px;
 
@@ -241,14 +240,18 @@
 
     line-height: 1.45;
 
+    /* Allows normal wrapping and Shift+Enter new lines */
     white-space: pre-wrap;
 
+    /* Break very long words/URLs */
     overflow-wrap: anywhere;
     word-break: break-word;
 
     text-align: left;
 
-    align-self: flex-start;
+    /* IMPORTANT */
+    height: auto;
+    min-height: 0;
 }
 
 .mine .bubble {
@@ -264,10 +267,21 @@
     align-self: flex-start;
 
     background: white;
+    color: #1f2937;
 
     border: 1px solid #e1e6ee;
 
     border-bottom-left-radius: 4px;
+}
+
+.time {
+    font-size: 11px;
+    opacity: 0.65;
+    margin-top: 4px;
+}
+
+.mine .time {
+    text-align: right;
 }
         /* =========================
            IMAGE MESSAGES
