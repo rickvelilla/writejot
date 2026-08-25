@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Writejot | Chat</title>
+
+
+    <style>
+
+        * {
+            box-sizing:
+                border-box;
+        }
+
+
+        body {
+
+            margin:
+                0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                #f6f8fc;
+
+            color:
+                #1f2937;
+
+            height:
+                100vh;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+        }
+
+
+        header {
+
+            background:
+                white;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            padding:
+                11px 6%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
+        }
+
+
+        .back {
+
+            color:
+                #4285F4;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                600;
+
+        }
+
+
+        .recipient {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+        }
+
+
+        .recipient img {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            border-radius:
+                50%;
+
+            object-fit:
+                cover;
+
+        }
+
+
+        .recipient-name {
+
+            font-weight:
+                700;
+
+        }
+
+
+        .recipient-username {
+
+            color:
+                #4285F4;
+
+            font-size:
+                13px;
+
+        }
+
+
+        #messages {
+
+            flex:
+                1;
+
+            overflow-y:
+                auto;
+
+            max-width:
+                850px;
+
+            width:
+                100%;
+
+            margin:
+                0 auto;
+
+            padding:
+                25px 20px;
+
+        }
+
+
+        .message-row {
+
+            display:
+                flex;
+
+            margin-bottom:
+                10px;
+
+        }
+
+
+        .message-row.mine {
+
+            justify-content:
+                flex-end;
+
+        }
+
+
+        .bubble {
+
+            max-width:
+                70%;
+
+            padding:
+                10px 14px;
+
+            border-radius:
+                15px;
+
+            line-height:
+                1.4;
+
+            white-space:
+                pre-wrap;
+
+            word-break:
+                break-word;
+
+        }
+
+
+        .mine .bubble {
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+
+            border-bottom-right-radius:
+                4px;
+
+        }
+
+
+        .theirs .bubble {
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-bottom-left-radius:
+                4px;
+
+        }
+
+
+        .time {
+
+            font-size:
+                11px;
+
+            opacity:
+                .65;
+
+            margin-top:
+                4px;
+
+        }
+
+
+        #empty {
+
+            text-align:
+                center;
+
+            color:
+                #718096;
+
+            padding:
+                40px;
+
+        }
+
+
+        #composer {
+
+            background:
+                white;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            padding:
+                12px;
+
+        }
+
+
+        .composer-inner {
+
+            max-width:
+                850px;
+
+            margin:
+                0 auto;
+
+            display:
+                flex;
+
+            gap:
+                10px;
+
+        }
+
+
+        #messageInput {
+
+            flex:
+                1;
+
+            padding:
+                12px 14px;
+
+            border:
+                1px solid #d8dee8;
+
+            border-radius:
+                9px;
+
+            outline:
+                none;
+
+            resize:
+                none;
+
+            min-height:
+                44px;
+
+            max-height:
+                130px;
+
+            font-family:
+                inherit;
+
+        }
+
+
+        #sendButton {
+
+            border:
+                none;
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+
+            border-radius:
+                9px;
+
+            padding:
+                0 18px;
+
+            font-weight:
+                600;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        #sendButton:disabled {
+
+            opacity:
+                .6;
+
+            cursor:
+                not-allowed;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <a
+        href="messages.html"
+        class="back"
+    >
+        ← Messages
+    </a>
+
+
+    <div class="recipient">
+
+        <img
+            id="recipientPicture"
+            src="W.png"
+            alt=""
+        >
+
+
+        <div>
+
+            <div
+                id="recipientName"
+                class="recipient-name"
+            >
+                Loading...
+            </div>
+
+            <div
+                id="recipientUsername"
+                class="recipient-username"
+            >
+                @username
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<div id="messages">
+
+    <div id="empty">
+        Loading messages...
+    </div>
+
+</div>
+
+
+
+<div id="composer">
+
+    <div class="composer-inner">
+
+        <textarea
+            id="messageInput"
+            maxlength="2000"
+            placeholder="Write a message..."
+        ></textarea>
+
+
+        <button
+            id="sendButton"
+            onclick="sendMessage()"
+        >
+            Send
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+const APPS_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
+
+
+let currentUser =
+    null;
+
+let otherUsername =
+    "";
+
+let refreshTimer =
+    null;
+
+
+/* =========================================
+   START
+========================================= */
+
+window.onload = async function() {
+
+    const savedUser =
+        localStorage.getItem(
+            "writejotUser"
+        );
+
+
+    if (!savedUser) {
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    currentUser =
+        JSON.parse(
+            savedUser
+        );
+
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    otherUsername =
+        String(
+            params.get(
+                "username"
+            ) || ""
+        )
+        .trim()
+        .toLowerCase()
+        .replace(
+            /^@/,
+            ""
+        );
+
+
+    if (
+        !otherUsername
+    ) {
+
+        window.location.href =
+            "messages.html";
+
+        return;
+
+    }
+
+
+    await loadRecipient();
+
+    await loadMessages();
+
+
+    refreshTimer =
+        setInterval(
+            loadMessages,
+            3000
+        );
+
+};
+
+
+/* =========================================
+   LOAD RECIPIENT
+========================================= */
+
+async function loadRecipient() {
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=profile&username=" +
+                encodeURIComponent(
+                    otherUsername
+                )
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success
+        ) {
+
+            return;
+
+        }
+
+
+        const profile =
+            result.profile;
+
+
+        document
+            .getElementById(
+                "recipientName"
+            )
+            .textContent =
+            profile.name ||
+            "Writejot User";
+
+
+        document
+            .getElementById(
+                "recipientUsername"
+            )
+            .textContent =
+            "@" +
+            profile.username;
+
+
+        document
+            .getElementById(
+                "recipientPicture"
+            )
+            .src =
+            profile.profilePicture ||
+            "W.png";
+
+    }
+
+    catch (error) {
+
+        console.error(
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   LOAD MESSAGES
+========================================= */
+
+async function loadMessages() {
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=messages" +
+                "&email=" +
+                encodeURIComponent(
+                    currentUser.email
+                ) +
+                "&username=" +
+                encodeURIComponent(
+                    otherUsername
+                )
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success
+        ) {
+
+            return;
+
+        }
+
+
+        renderMessages(
+            result.messages || []
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   RENDER
+========================================= */
+
+function renderMessages(
+    messages
+) {
+
+    const container =
+        document.getElementById(
+            "messages"
+        );
+
+
+    if (
+        !messages.length
+    ) {
+
+        container.innerHTML =
+
+            `<div id="empty">
+                No messages yet. Say hello!
+            </div>`;
+
+        return;
+
+    }
+
+
+    const currentUsername =
+        getCurrentUsername();
+
+
+    container.innerHTML =
+        messages
+            .map(
+                function(message) {
+
+                    const mine =
+                        normalizeUsername(
+                            message.sender
+                        ) ===
+                        currentUsername;
+
+
+                    const time =
+                        message.timestamp
+                            ? new Date(
+                                message.timestamp
+                              )
+                              .toLocaleString()
+                            : "";
+
+
+                    return `
+
+                        <div
+                            class="message-row
+                            ${mine ? "mine" : "theirs"}"
+                        >
+
+                            <div>
+
+                                <div
+                                    class="bubble"
+                                >
+                                    ${escapeHtml(
+                                        message.message
+                                    )}
+                                </div>
+
+                                <div
+                                    class="time"
+                                >
+                                    ${escapeHtml(
+                                        time
+                                    )}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+
+    /*
+     * Only scroll to bottom if
+     * the user is already near bottom.
+     */
+
+    container.scrollTop =
+        container.scrollHeight;
+
+}
+
+
+/* =========================================
+   SEND MESSAGE
+========================================= */
+
+async function sendMessage() {
+
+    const input =
+        document.getElementById(
+            "messageInput"
+        );
+
+
+    const button =
+        document.getElementById(
+            "sendButton"
+        );
+
+
+    const message =
+        input
+            .value
+            .trim();
+
+
+    if (!message) {
+
+        return;
+
+    }
+
+
+    button.disabled =
+        true;
+
+
+    try {
+
+        await fetch(
+
+            APPS_SCRIPT_URL,
+
+            {
+
+                method:
+                    "POST",
+
+                mode:
+                    "no-cors",
+
+                headers: {
+
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+
+                },
+
+                body:
+                    JSON.stringify({
+
+                        action:
+                            "sendMessage",
+
+                        email:
+                            currentUser.email,
+
+                        receiver:
+                            otherUsername,
+
+                        message:
+                            message
+
+                    })
+
+            }
+
+        );
+
+
+        input.value =
+            "";
+
+
+        /*
+         * Reload immediately.
+         */
+
+        await sleep(
+            500
+        );
+
+
+        await loadMessages();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            error
+        );
+
+        alert(
+            "Could not send the message."
+        );
+
+    }
+
+
+    finally {
+
+        button.disabled =
+            false;
+
+        input.focus();
+
+    }
+
+}
+
+
+/* =========================================
+   CURRENT USERNAME
+========================================= */
+
+function getCurrentUsername() {
+
+    return normalizeUsername(
+
+        currentUser.username
+
+    );
+
+}
+
+
+function normalizeUsername(
+    username
+) {
+
+    return String(
+        username || ""
+    )
+    .trim()
+    .toLowerCase()
+    .replace(
+        /^@/,
+        ""
+    );
+
+}
+
+
+/* =========================================
+   ESCAPE
+========================================= */
+
+function escapeHtml(
+    value
+) {
+
+    return String(
+        value || ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+function sleep(
+    ms
+) {
+
+    return new Promise(
+        function(resolve) {
+
+            setTimeout(
+                resolve,
+                ms
+            );
+
+        }
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
