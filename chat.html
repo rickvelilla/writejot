@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,561 +13,265 @@
 
     <title>Writejot | Chat</title>
 
-
     <style>
 
         * {
-            box-sizing:
-                border-box;
+            box-sizing: border-box;
         }
 
-
         body {
-
-            margin:
-                0;
-
+            margin: 0;
             font-family:
                 Arial,
                 Helvetica,
                 sans-serif;
-
-            background:
-                #f6f8fc;
-
-            color:
-                #1f2937;
-
-            height:
-                100vh;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
+            background: #f6f8fc;
+            color: #1f2937;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-
 
         /* =========================
            HEADER
         ========================= */
 
         header {
-
-            background:
-                white;
-
-            border-bottom:
-                1px solid #e5e7eb;
-
-            padding:
-                11px 6%;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                12px;
-
-            flex-shrink:
-                0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 11px 6%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
         }
-
 
         .back {
-
-            color:
-                #4285F4;
-
-            text-decoration:
-                none;
-
-            font-weight:
-                600;
-
-            white-space:
-                nowrap;
+            color: #4285F4;
+            text-decoration: none;
+            font-weight: 600;
+            white-space: nowrap;
         }
-
 
         .recipient {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                10px;
-
-            min-width:
-                0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
         }
-
 
         .recipient img {
-
-            width:
-                42px;
-
-            height:
-                42px;
-
-            border-radius:
-                50%;
-
-            object-fit:
-                cover;
-
-            border:
-                2px solid #4285F4;
-
-            flex-shrink:
-                0;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #4285F4;
+            flex-shrink: 0;
         }
-
 
         .recipient-name {
-
-            font-weight:
-                700;
-
-            white-space:
-                nowrap;
-
-            overflow:
-                hidden;
-
-            text-overflow:
-                ellipsis;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-
 
         .recipient-username {
-
-            color:
-                #4285F4;
-
-            font-size:
-                13px;
+            color: #4285F4;
+            font-size: 13px;
         }
-
 
         /* =========================
            MESSAGES
         ========================= */
 
         #messages {
-
-            flex:
-                1;
-
-            overflow-y:
-                auto;
-
-            width:
-                100%;
-
-            max-width:
-                850px;
-
-            margin:
-                0 auto;
-
-            padding:
-                25px 20px;
-
-            scroll-behavior:
-                smooth;
+            flex: 1;
+            overflow-y: auto;
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 25px 20px;
+            scroll-behavior: smooth;
         }
-
 
         .message-row {
-
-            display:
-                flex;
-
-            width:
-                100%;
-
-            margin-bottom:
-                12px;
+            display: flex;
+            width: 100%;
+            margin-bottom: 12px;
         }
-
 
         .message-row.mine {
-
-            justify-content:
-                flex-end;
+            justify-content: flex-end;
         }
-
 
         .message-row.theirs {
-
-            justify-content:
-                flex-start;
+            justify-content: flex-start;
         }
 
-
-        /* =================================
-           FIXED: ADAPTIVE BUBBLES
-        ================================= */
+        /* ADAPTIVE MESSAGE BUBBLE */
 
         .bubble-wrapper {
-
-            width:
-                fit-content;
-
-            max-width:
-                min(
-                    70%,
-                    550px
-                );
+            width: fit-content;
+            max-width: min(70%, 550px);
         }
-
 
         .bubble {
-
-            width:
-                fit-content;
-
-            max-width:
-                100%;
-
-            padding:
-                10px 14px;
-
-            border-radius:
-                15px;
-
-            line-height:
-                1.45;
-
-            white-space:
-                pre-wrap;
-
-            word-break:
-                break-word;
-
-            overflow-wrap:
-                anywhere;
+            width: fit-content;
+            max-width: 100%;
+            padding: 10px 14px;
+            border-radius: 15px;
+            line-height: 1.45;
+            white-space: pre-wrap;
+            word-break: break-word;
+            overflow-wrap: anywhere;
         }
-
 
         .mine .bubble {
-
-            background:
-                #4285F4;
-
-            color:
-                white;
-
-            border-bottom-right-radius:
-                4px;
+            background: #4285F4;
+            color: white;
+            border-bottom-right-radius: 4px;
         }
-
 
         .theirs .bubble {
-
-            background:
-                white;
-
-            border:
-                1px solid #e1e6ee;
-
-            border-bottom-left-radius:
-                4px;
+            background: white;
+            border: 1px solid #e1e6ee;
+            border-bottom-left-radius: 4px;
         }
-
 
         .time {
-
-            font-size:
-                11px;
-
-            opacity:
-                .65;
-
-            margin-top:
-                4px;
+            font-size: 11px;
+            opacity: .65;
+            margin-top: 4px;
         }
-
 
         .mine .time {
-
-            text-align:
-                right;
+            text-align: right;
         }
-
 
         #empty {
-
-            text-align:
-                center;
-
-            color:
-                #718096;
-
-            padding:
-                40px;
+            text-align: center;
+            color: #718096;
+            padding: 40px;
         }
-
 
         /* =========================
            COMPOSER
         ========================= */
 
         #composer {
-
-            width:
-                100%;
-
-            background:
-                white;
-
-            border-top:
-                1px solid #e5e7eb;
-
-            padding:
-                10px 14px;
-
-            flex-shrink:
-                0;
+            width: 100%;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            padding: 10px 14px;
+            flex-shrink: 0;
         }
-
 
         .composer-inner {
-
-            width:
-                100%;
-
-            max-width:
-                850px;
-
-            margin:
-                0 auto;
-
-            display:
-                flex;
-
-            align-items:
-                flex-end;
-
-            gap:
-                10px;
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
         }
-
 
         #messageInput {
-
-            flex:
-                1;
-
-            min-width:
-                0;
-
-            width:
-                100%;
-
-            min-height:
-                44px;
-
-            max-height:
-                140px;
-
-            padding:
-                11px 14px;
-
-            border:
-                1px solid #d8dee8;
-
-            border-radius:
-                9px;
-
-            background:
-                white;
-
-            font-family:
-                inherit;
-
-            font-size:
-                14px;
-
-            outline:
-                none;
-
-            resize:
-                none;
-
-            overflow-y:
-                auto;
+            flex: 1;
+            min-width: 0;
+            width: 100%;
+            min-height: 44px;
+            max-height: 140px;
+            padding: 11px 14px;
+            border: 1px solid #d8dee8;
+            border-radius: 9px;
+            background: white;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            resize: none;
+            overflow-y: auto;
         }
-
 
         #messageInput:focus {
-
-            border-color:
-                #4285F4;
-
+            border-color: #4285F4;
             box-shadow:
                 0 0 0 3px
-                rgba(
-                    66,
-                    133,
-                    244,
-                    0.08
-                );
+                rgba(66,133,244,0.08);
         }
-
 
         #sendButton {
-
-            flex-shrink:
-                0;
-
-            min-height:
-                44px;
-
-            padding:
-                0 18px;
-
-            border:
-                none;
-
-            border-radius:
-                9px;
-
-            background:
-                #4285F4;
-
-            color:
-                white;
-
-            font-weight:
-                600;
-
-            cursor:
-                pointer;
-
-            white-space:
-                nowrap;
+            flex-shrink: 0;
+            min-height: 44px;
+            padding: 0 18px;
+            border: none;
+            border-radius: 9px;
+            background: #4285F4;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
         }
-
 
         #sendButton:hover {
-
-            background:
-                #3367d6;
+            background: #3367d6;
         }
-
 
         #sendButton:disabled {
-
-            opacity:
-                .6;
-
-            cursor:
-                not-allowed;
+            opacity: .6;
+            cursor: not-allowed;
         }
-
 
         /* =========================
            MOBILE
         ========================= */
 
-        @media (
-            max-width:600px
-        ) {
+        @media (max-width: 600px) {
 
             header {
-
-                padding:
-                    10px 12px;
+                padding: 10px 12px;
             }
-
 
             .back {
-
-                font-size:
-                    13px;
+                font-size: 13px;
             }
-
 
             .recipient img {
-
-                width:
-                    38px;
-
-                height:
-                    38px;
+                width: 38px;
+                height: 38px;
             }
-
 
             .recipient-name {
-
-                max-width:
-                    170px;
+                max-width: 170px;
             }
-
 
             #messages {
-
-                padding:
-                    18px 12px;
+                padding: 18px 12px;
             }
-
 
             .bubble-wrapper {
-
-                max-width:
-                    82%;
+                max-width: 82%;
             }
-
 
             #composer {
-
-                padding:
-                    8px 10px;
+                padding: 8px 10px;
             }
-
 
             .composer-inner {
-
-                gap:
-                    7px;
+                gap: 7px;
             }
-
 
             #messageInput {
-
-                min-height:
-                    42px;
-
-                max-height:
-                    120px;
-
-                padding:
-                    10px 12px;
-
-                font-size:
-                    14px;
+                min-height: 42px;
+                max-height: 120px;
+                padding: 10px 12px;
+                font-size: 14px;
             }
-
 
             #sendButton {
-
-                min-height:
-                    42px;
-
-                padding:
-                    0 13px;
+                min-height: 42px;
+                padding: 0 13px;
             }
-
         }
 
     </style>
@@ -621,9 +326,7 @@
 
 
 
-<div
-    id="messages"
->
+<div id="messages">
 
     <div id="empty">
         Loading messages...
@@ -633,13 +336,9 @@
 
 
 
-<div
-    id="composer"
->
+<div id="composer">
 
-    <div
-        class="composer-inner"
-    >
+    <div class="composer-inner">
 
         <textarea
             id="messageInput"
@@ -664,18 +363,20 @@
 
 <script>
 
+
+/* =========================================
+   IMPORTANT: THIS IS YOUR CURRENT URL
+========================================= */
+
 const APPS_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbwKK7HO-uWb_QmnPVqne1jhXYk5GlhfgqjiwwGGNYGqubJViyXywb8NUBIa6u2znP6F/exec";
+    "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-let currentUser =
-    null;
+let currentUser = null;
 
-let otherUsername =
-    "";
+let otherUsername = "";
 
-let refreshTimer =
-    null;
+let refreshTimer = null;
 
 
 /* =========================================
@@ -683,7 +384,7 @@ let refreshTimer =
 ========================================= */
 
 window.onload =
-    async function() {
+    async function () {
 
         const savedUser =
             localStorage.getItem(
@@ -777,16 +478,32 @@ async function loadRecipient() {
 
     try {
 
+        const url =
+            APPS_SCRIPT_URL +
+            "?action=profile&username=" +
+            encodeURIComponent(
+                otherUsername
+            );
+
+
         const response =
             await fetch(
-
-                APPS_SCRIPT_URL +
-                "?action=profile&username=" +
-                encodeURIComponent(
-                    otherUsername
-                )
-
+                url,
+                {
+                    cache:
+                        "no-store"
+                }
             );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Server returned " +
+                response.status
+            );
+
+        }
 
 
         const result =
@@ -797,6 +514,11 @@ async function loadRecipient() {
             !result.success ||
             !result.profile
         ) {
+
+            console.error(
+                "Profile error:",
+                result
+            );
 
             return;
 
@@ -822,7 +544,10 @@ async function loadRecipient() {
             )
             .textContent =
             "@" +
-            profile.username;
+            (
+                profile.username ||
+                otherUsername
+            );
 
 
         const picture =
@@ -843,7 +568,7 @@ async function loadRecipient() {
                 "recipientPicture"
             )
             .onerror =
-            function() {
+            function () {
 
                 this.src =
                     "W.png";
@@ -851,6 +576,7 @@ async function loadRecipient() {
             };
 
     }
+
 
     catch (error) {
 
@@ -865,7 +591,7 @@ async function loadRecipient() {
 
 
 /* =========================================
-   MARK AS READ
+   MARK CONVERSATION AS READ
 ========================================= */
 
 async function markConversationRead() {
@@ -931,21 +657,37 @@ async function loadMessages() {
 
     try {
 
+        const url =
+            APPS_SCRIPT_URL +
+            "?action=messages" +
+            "&email=" +
+            encodeURIComponent(
+                currentUser.email
+            ) +
+            "&username=" +
+            encodeURIComponent(
+                otherUsername
+            );
+
+
         const response =
             await fetch(
-
-                APPS_SCRIPT_URL +
-                "?action=messages" +
-                "&email=" +
-                encodeURIComponent(
-                    currentUser.email
-                ) +
-                "&username=" +
-                encodeURIComponent(
-                    otherUsername
-                )
-
+                url,
+                {
+                    cache:
+                        "no-store"
+                }
             );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Server returned " +
+                response.status
+            );
+
+        }
 
 
         const result =
@@ -971,6 +713,7 @@ async function loadMessages() {
 
     }
 
+
     catch (error) {
 
         console.error(
@@ -979,7 +722,7 @@ async function loadMessages() {
         );
 
         showMessageError(
-            "Could not load messages."
+            "Could not connect to Writejot."
         );
 
     }
@@ -988,7 +731,7 @@ async function loadMessages() {
 
 
 /* =========================================
-   RENDER
+   RENDER MESSAGES
 ========================================= */
 
 function renderMessages(
@@ -1026,7 +769,7 @@ function renderMessages(
         messages
             .map(
 
-                function(message) {
+                function (message) {
 
                     const mine =
                         normalizeUsername(
@@ -1113,9 +856,7 @@ async function sendMessage() {
 
 
     const message =
-        input
-            .value
-            .trim();
+        input.value.trim();
 
 
     if (!message) {
@@ -1128,48 +869,82 @@ async function sendMessage() {
     button.disabled =
         true;
 
+    button.textContent =
+        "Sending...";
+
 
     try {
 
-        await fetch(
+        /*
+         * IMPORTANT:
+         * We do NOT use no-cors here.
+         * We need to be able to see the
+         * Apps Script response and error.
+         */
 
-            APPS_SCRIPT_URL,
+        const response =
+            await fetch(
 
-            {
+                APPS_SCRIPT_URL,
 
-                method:
-                    "POST",
+                {
 
-                mode:
-                    "no-cors",
+                    method:
+                        "POST",
 
-                headers: {
+                    headers: {
 
-                    "Content-Type":
-                        "text/plain;charset=utf-8"
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
 
-                },
+                    },
 
-                body:
-                    JSON.stringify({
+                    body:
+                        JSON.stringify({
 
-                        action:
-                            "sendMessage",
+                            action:
+                                "sendMessage",
 
-                        email:
-                            currentUser.email,
+                            email:
+                                currentUser.email,
 
-                        receiver:
-                            otherUsername,
+                            receiver:
+                                otherUsername,
 
-                        message:
-                            message
+                            message:
+                                message
 
-                    })
+                        })
 
-            }
+                }
 
-        );
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Server returned " +
+                response.status
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error ||
+                "Message could not be sent."
+            );
+
+        }
 
 
         input.value =
@@ -1179,14 +954,10 @@ async function sendMessage() {
         resetTextareaHeight();
 
 
-        await sleep(
-            500
-        );
-
-
         await loadMessages();
 
     }
+
 
     catch (error) {
 
@@ -1197,6 +968,7 @@ async function sendMessage() {
 
 
         alert(
+            error.message ||
             "Could not send the message."
         );
 
@@ -1207,6 +979,9 @@ async function sendMessage() {
 
         button.disabled =
             false;
+
+        button.textContent =
+            "Send";
 
         input.focus();
 
@@ -1229,7 +1004,7 @@ function setupMessageInput() {
 
     input.addEventListener(
         "input",
-        function() {
+        function () {
 
             input.style.height =
                 "auto";
@@ -1255,11 +1030,10 @@ function setupMessageInput() {
 
     input.addEventListener(
         "keydown",
-        function(event) {
+        function (event) {
 
             if (
-                event.key ===
-                    "Enter" &&
+                event.key === "Enter" &&
                 !event.shiftKey
             ) {
 
@@ -1330,8 +1104,7 @@ function normalizeUsername(
 ) {
 
     return String(
-        username ||
-        ""
+        username || ""
     )
     .trim()
     .toLowerCase()
@@ -1348,8 +1121,7 @@ function escapeHtml(
 ) {
 
     return String(
-        value ||
-        ""
+        value || ""
     )
     .replace(
         /&/g,
@@ -1374,27 +1146,10 @@ function escapeHtml(
 
 }
 
-
-function sleep(
-    milliseconds
-) {
-
-    return new Promise(
-        function(resolve) {
-
-            setTimeout(
-                resolve,
-                milliseconds
-            );
-
-        }
-    );
-
-}
-
 </script>
 
 
 </body>
 
 </html>
+```
