@@ -10,15 +10,9 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <meta
-        name="description"
-        content="Writejot - A student-powered platform for sharing and accessing study notes."
-    >
-
     <title>Writejot | Student Notes</title>
 
 
-    <!-- Google Sign-In -->
     <script
         src="https://accounts.google.com/gsi/client"
         async
@@ -34,14 +28,7 @@
             padding: 0;
         }
 
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-
         body {
-
             font-family:
                 Arial,
                 Helvetica,
@@ -64,8 +51,7 @@
 
 
         button,
-        input,
-        textarea {
+        input {
             font-family: inherit;
         }
 
@@ -102,9 +88,6 @@
 
             justify-content:
                 space-between;
-
-            backdrop-filter:
-                blur(10px);
         }
 
 
@@ -128,9 +111,6 @@
 
             height:
                 42px;
-
-            object-fit:
-                contain;
         }
 
 
@@ -141,15 +121,8 @@
 
             font-weight:
                 700;
-
-            color:
-                #111827;
         }
 
-
-        /* =========================
-           HEADER PROFILE
-        ========================= */
 
         #profileArea {
 
@@ -218,15 +191,8 @@
         }
 
 
-        #logoutButton:hover {
-
-            background:
-                #dc2626;
-        }
-
-
         /* =========================
-           GENERAL BUTTONS
+           BUTTONS
         ========================= */
 
         .button {
@@ -234,14 +200,14 @@
             display:
                 inline-flex;
 
-            justify-content:
-                center;
-
             align-items:
                 center;
 
+            justify-content:
+                center;
+
             padding:
-                12px 18px;
+                11px 17px;
 
             border-radius:
                 8px;
@@ -259,31 +225,7 @@
                 pointer;
 
             font-size:
-                15px;
-
-            transition:
-                background .15s ease,
-                transform .15s ease;
-        }
-
-
-        .button:hover {
-
-            transform:
-                translateY(-1px);
-        }
-
-
-        .button:disabled {
-
-            opacity:
-                0.6;
-
-            cursor:
-                not-allowed;
-
-            transform:
-                none;
+                14px;
         }
 
 
@@ -317,15 +259,8 @@
         }
 
 
-        .secondary:hover {
-
-            background:
-                #f7faff;
-        }
-
-
         /* =========================
-           HOME HERO
+           HOME
         ========================= */
 
         .hero {
@@ -383,9 +318,6 @@
             letter-spacing:
                 -2px;
 
-            color:
-                #111827;
-
             margin-bottom:
                 20px;
         }
@@ -435,9 +367,6 @@
             justify-content:
                 center;
 
-            align-items:
-                center;
-
             gap:
                 12px;
 
@@ -445,10 +374,6 @@
                 wrap;
         }
 
-
-        /* =========================
-           LOGIN
-        ========================= */
 
         #loginSection {
 
@@ -469,29 +394,6 @@
 
             align-items:
                 center;
-        }
-
-
-        #loginSection h3 {
-
-            font-size:
-                18px;
-
-            margin-bottom:
-                5px;
-        }
-
-
-        #loginSection p {
-
-            color:
-                #7b8494;
-
-            margin-bottom:
-                16px;
-
-            font-size:
-                14px;
         }
 
 
@@ -545,38 +447,18 @@
             padding:
                 35px;
 
-            box-shadow:
-                0 8px 25px rgba(0,0,0,0.05);
-
             text-align:
                 center;
         }
 
 
-        .setup-icon {
-
-            font-size:
-                45px;
-
-            margin-bottom:
-                15px;
-        }
-
-
-        .setup-card h1 {
-
-            margin-bottom:
-                8px;
-        }
-
-
-        .setup-card > p {
+        .setup-card p {
 
             color:
                 #718096;
 
-            margin-bottom:
-                25px;
+            margin:
+                10px 0 25px;
         }
 
 
@@ -658,18 +540,8 @@
             margin:
                 10px 0 15px;
 
-            font-size:
-                14px;
-
             text-align:
                 left;
-        }
-
-
-        #createAccountButton {
-
-            width:
-                100%;
         }
 
 
@@ -679,13 +551,10 @@
                 none;
 
             margin-top:
-                15px;
+                12px;
 
             color:
                 #667085;
-
-            font-size:
-                14px;
         }
 
 
@@ -702,10 +571,194 @@
                 1050px;
 
             margin:
-                0 auto 40px;
+                0 auto 70px;
 
             padding:
-                40px 20px;
+                30px 20px;
+        }
+
+
+        /* SEARCH BAR */
+
+        .profile-search {
+
+            position:
+                relative;
+
+            margin-bottom:
+                22px;
+        }
+
+
+        #profileSearchInput {
+
+            width:
+                100%;
+
+            padding:
+                15px 17px;
+
+            border:
+                1px solid #d8dee8;
+
+            border-radius:
+                10px;
+
+            background:
+                white;
+
+            font-size:
+                16px;
+
+            outline:
+                none;
+
+            box-shadow:
+                0 2px 8px
+                rgba(0,0,0,0.03);
+        }
+
+
+        #profileSearchInput:focus {
+
+            border-color:
+                #4285F4;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(66,133,244,0.08);
+        }
+
+
+        #profileSearchResults {
+
+            display:
+                none;
+
+            position:
+                absolute;
+
+            top:
+                calc(100% + 6px);
+
+            left:
+                0;
+
+            right:
+                0;
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                10px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,0.10);
+
+            overflow:
+                hidden;
+
+            z-index:
+                20;
+        }
+
+
+        .search-result {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
+            padding:
+                12px 15px;
+
+            cursor:
+                pointer;
+
+            border-bottom:
+                1px solid #f0f2f5;
+        }
+
+
+        .search-result:hover {
+
+            background:
+                #f7faff;
+        }
+
+
+        .search-result:last-child {
+
+            border-bottom:
+                none;
+        }
+
+
+        .search-result img {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            border-radius:
+                50%;
+
+            object-fit:
+                cover;
+
+            border:
+                1px solid #dbe3ef;
+        }
+
+
+        .search-result-name {
+
+            font-weight:
+                600;
+        }
+
+
+        .search-result-username {
+
+            color:
+                #4285F4;
+
+            font-size:
+                13px;
+        }
+
+
+        .search-result-bio {
+
+            color:
+                #7b8494;
+
+            font-size:
+                13px;
+
+            white-space:
+                nowrap;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
+
+            max-width:
+                650px;
         }
 
 
@@ -753,13 +806,6 @@
 
             border:
                 2px solid #4285F4;
-        }
-
-
-        .dashboard-header h1 {
-
-            margin-bottom:
-                3px;
         }
 
 
@@ -815,20 +861,6 @@
 
             padding:
                 25px;
-
-            transition:
-                transform .15s ease,
-                box-shadow .15s ease;
-        }
-
-
-        .dashboard-card:hover {
-
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-                0 8px 20px rgba(0,0,0,0.05);
         }
 
 
@@ -859,13 +891,6 @@
         }
 
 
-        .dashboard-card .button {
-
-            margin-top:
-                3px;
-        }
-
-
         .trial-card {
 
             margin-top:
@@ -876,203 +901,6 @@
 
             border-color:
                 #cfe0ff;
-        }
-
-
-        /* =========================
-           PROFILE SETTINGS
-        ========================= */
-
-        #profileSettings {
-
-            display:
-                none;
-
-            max-width:
-                700px;
-
-            margin:
-                0 auto 60px;
-
-            padding:
-                0 20px;
-        }
-
-
-        .profile-settings-card {
-
-            background:
-                white;
-
-            border:
-                1px solid #e1e6ee;
-
-            border-radius:
-                16px;
-
-            padding:
-                30px;
-
-            box-shadow:
-                0 5px 18px rgba(0,0,0,0.04);
-        }
-
-
-        .profile-settings-card h2 {
-
-            margin-bottom:
-                6px;
-        }
-
-
-        .profile-settings-intro {
-
-            color:
-                #718096;
-
-            margin:
-                0 0 25px;
-        }
-
-
-        .profile-field {
-
-            margin-bottom:
-                20px;
-        }
-
-
-        .profile-field label {
-
-            display:
-                block;
-
-            font-weight:
-                600;
-
-            margin-bottom:
-                7px;
-        }
-
-
-        .profile-field input,
-        .profile-field textarea {
-
-            width:
-                100%;
-
-            padding:
-                13px;
-
-            border:
-                1px solid #d8dee8;
-
-            border-radius:
-                8px;
-
-            font-size:
-                15px;
-
-            outline:
-                none;
-
-            background:
-                white;
-        }
-
-
-        .profile-field input:focus,
-        .profile-field textarea:focus {
-
-            border-color:
-                #4285F4;
-
-            box-shadow:
-                0 0 0 3px rgba(66,133,244,0.08);
-        }
-
-
-        .profile-field textarea {
-
-            min-height:
-                110px;
-
-            resize:
-                vertical;
-        }
-
-
-        .profile-username-wrapper {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            background:
-                #f8fafc;
-
-            border:
-                1px solid #d8dee8;
-
-            border-radius:
-                8px;
-        }
-
-
-        .profile-username-prefix {
-
-            padding-left:
-                14px;
-
-            color:
-                #6b7280;
-
-            font-weight:
-                600;
-        }
-
-
-        #editUsername {
-
-            border:
-                none;
-
-            background:
-                transparent;
-
-            outline:
-                none;
-
-            padding:
-                13px 14px 13px 5px;
-        }
-
-
-        .profile-actions {
-
-            display:
-                flex;
-
-            gap:
-                10px;
-
-            flex-wrap:
-                wrap;
-        }
-
-
-        #profileSaveMessage {
-
-            min-height:
-                24px;
-
-            margin-top:
-                15px;
-
-            font-size:
-                14px;
         }
 
 
@@ -1109,20 +937,13 @@
         }
 
 
-        .section-card h2 {
-
-            margin-bottom:
-                12px;
-        }
-
-
         .section-card p {
 
             color:
                 #687386;
 
-            margin-bottom:
-                15px;
+            margin:
+                12px 0;
         }
 
 
@@ -1223,10 +1044,6 @@
         }
 
 
-        /* =========================
-           FOOTER
-        ========================= */
-
         footer {
 
             border-top:
@@ -1245,17 +1062,6 @@
                 28px 20px;
         }
 
-
-        footer strong {
-
-            color:
-                #404756;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
 
         @media (max-width:650px) {
 
@@ -1297,24 +1103,10 @@
             }
 
 
-            .setup-card {
-
-                padding:
-                    25px 20px;
-            }
-
-
             .dashboard-header {
 
                 padding:
                     22px;
-            }
-
-
-            .profile-settings-card {
-
-                padding:
-                    23px;
             }
 
         }
@@ -1326,10 +1118,6 @@
 
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header>
 
@@ -1385,25 +1173,19 @@
 
 
     <h1>
-
         Learn more.
         <span>Share more.</span>
-
     </h1>
 
 
     <p class="hero-subtitle">
-
         A student-powered place to discover,
         organize, and share useful study notes.
-
     </p>
 
 
     <p class="founder">
-
         Founded by Rick Aldrei A. Velilla
-
     </p>
 
 
@@ -1449,30 +1231,21 @@
      ACCOUNT SETUP
 ========================= -->
 
-<section
-    id="accountSetup"
->
+<section id="accountSetup">
 
     <div class="setup-card">
 
-
-        <div class="setup-icon">
+        <div style="font-size:45px;">
             👋
         </div>
-
 
         <h1>
             Welcome to Writejot!
         </h1>
 
-
         <p>
-
-            You're almost ready.
-
             Choose a username for your
             Writejot account.
-
         </p>
 
 
@@ -1517,11 +1290,8 @@
 
 
         <div id="setupLoading">
-
             Creating your account...
-
         </div>
-
 
     </div>
 
@@ -1533,12 +1303,34 @@
      DASHBOARD
 ========================= -->
 
-<section
-    id="dashboard"
->
+<section id="dashboard">
+
+
+    <!-- PROFILE SEARCH -->
+
+    <div class="profile-search">
+
+        <input
+            id="profileSearchInput"
+            type="text"
+            placeholder="🔎 Search Writejot profiles..."
+            autocomplete="off"
+            oninput="searchProfiles()"
+            onfocus="searchProfiles()"
+        >
+
+
+        <div
+            id="profileSearchResults"
+        ></div>
+
+    </div>
+
+
+
+    <!-- CURRENT PROFILE -->
 
     <div class="dashboard-header">
-
 
         <img
             id="dashboardPicture"
@@ -1548,7 +1340,7 @@
         >
 
 
-        <div>
+        <div style="flex:1;">
 
             <h1 id="dashboardName">
                 Welcome!
@@ -1571,13 +1363,13 @@
             </div>
 
 
-            <button
+            <a
+                href="edit-profile.html"
                 class="button secondary"
-                onclick="openProfileSettings()"
                 style="margin-top:10px;"
             >
                 ⚙️ Edit Profile
-            </button>
+            </a>
 
         </div>
 
@@ -1587,8 +1379,6 @@
 
     <div class="dashboard-grid">
 
-
-        <!-- CATALOG -->
 
         <div class="dashboard-card">
 
@@ -1616,8 +1406,6 @@
 
 
 
-        <!-- SHARE NOTES -->
-
         <div class="dashboard-card">
 
             <div class="dashboard-icon">
@@ -1634,8 +1422,7 @@
                 in the catalog.
             </p>
 
-
-            <!-- Replace this with your actual Google Form -->
+            <!-- Replace with your real Google Form -->
             <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSf7mE5VxEXAMPLE/viewform"
                 target="_blank"
@@ -1648,8 +1435,6 @@
         </div>
 
 
-
-        <!-- FLASHCARDS -->
 
         <div class="dashboard-card">
 
@@ -1675,8 +1460,6 @@
         </div>
 
 
-
-        <!-- CALENDAR -->
 
         <div class="dashboard-card">
 
@@ -1704,8 +1487,6 @@
 
 
 
-        <!-- REMINDERS -->
-
         <div class="dashboard-card">
 
             <div class="dashboard-icon">
@@ -1731,8 +1512,6 @@
         </div>
 
 
-
-        <!-- MESSAGES -->
 
         <div class="dashboard-card">
 
@@ -1762,9 +1541,9 @@
 
 
 
-    <!-- ACCOUNT STATUS -->
-
-    <div class="dashboard-card trial-card">
+    <div
+        class="dashboard-card trial-card"
+    >
 
         <div class="dashboard-icon">
             🎓
@@ -1777,159 +1556,6 @@
         <p id="dashboardStatusMessage">
             Checking your account...
         </p>
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =========================
-     PROFILE SETTINGS
-========================= -->
-
-<section
-    id="profileSettings"
->
-
-    <div class="profile-settings-card">
-
-
-        <h2>
-            Profile Settings
-        </h2>
-
-
-        <p class="profile-settings-intro">
-
-            Customize your Writejot profile.
-            Only your username is required.
-
-        </p>
-
-
-        <!-- PROFILE PICTURE -->
-
-        <div class="profile-field">
-
-            <label
-                for="editProfilePicture"
-            >
-                Profile Picture URL
-            </label>
-
-            <input
-                id="editProfilePicture"
-                type="url"
-                placeholder="Paste an image URL"
-            >
-
-        </div>
-
-
-
-        <!-- DISPLAY NAME -->
-
-        <div class="profile-field">
-
-            <label
-                for="editDisplayName"
-            >
-                Display Name
-            </label>
-
-            <input
-                id="editDisplayName"
-                type="text"
-                maxlength="50"
-                placeholder="Your display name"
-            >
-
-        </div>
-
-
-
-        <!-- USERNAME -->
-
-        <div class="profile-field">
-
-            <label
-                for="editUsername"
-            >
-                Username
-            </label>
-
-
-            <div class="profile-username-wrapper">
-
-                <span
-                    class="profile-username-prefix"
-                >
-                    @
-                </span>
-
-
-                <input
-                    id="editUsername"
-                    type="text"
-                    maxlength="20"
-                    placeholder="username"
-                >
-
-            </div>
-
-        </div>
-
-
-
-        <!-- BIO -->
-
-        <div class="profile-field">
-
-            <label
-                for="editBio"
-            >
-                Bio
-            </label>
-
-
-            <textarea
-                id="editBio"
-                maxlength="160"
-                placeholder="Tell people a little about yourself..."
-            ></textarea>
-
-        </div>
-
-
-
-        <!-- ACTIONS -->
-
-        <div class="profile-actions">
-
-            <button
-                class="button primary"
-                onclick="saveProfile()"
-            >
-                Save Changes
-            </button>
-
-
-            <button
-                class="button secondary"
-                onclick="closeProfileSettings()"
-            >
-                Cancel
-            </button>
-
-        </div>
-
-
-        <p
-            id="profileSaveMessage"
-        ></p>
-
 
     </div>
 
@@ -1954,8 +1580,7 @@
 
         <p>
             Writejot makes it easier for students
-            to discover and share useful study
-            materials.
+            to discover and share useful study materials.
         </p>
 
         <ul>
@@ -2000,16 +1625,13 @@
             Writejot Access
         </h2>
 
-
         <div class="price">
             ₱149
         </div>
 
-
         <p>
             Subscription
         </p>
-
 
         <ul>
 
@@ -2031,7 +1653,6 @@
 
         </ul>
 
-
         <p class="payment-note">
             Payment is currently handled in person.
         </p>
@@ -2041,10 +1662,6 @@
 </section>
 
 
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
@@ -2064,7 +1681,7 @@
 
 
 /* =========================================
-   CONFIGURATION
+   CONFIG
 ========================================= */
 
 const GOOGLE_CLIENT_ID =
@@ -2078,13 +1695,11 @@ const APPS_SCRIPT_URL =
 let pendingGoogleUser = null;
 
 
-
 /* =========================================
-   INITIALIZE GOOGLE LOGIN
+   START
 ========================================= */
 
-window.onload = function () {
-
+window.onload = function() {
 
     google.accounts.id.initialize({
 
@@ -2125,10 +1740,6 @@ window.onload = function () {
     );
 
 
-    /*
-     * Check existing local session.
-     */
-
     const savedUser =
         localStorage.getItem(
             "writejotUser"
@@ -2145,9 +1756,7 @@ window.onload = function () {
                 );
 
 
-            checkAccount(
-                user
-            );
+            checkAccount(user);
 
         }
 
@@ -2162,7 +1771,6 @@ window.onload = function () {
     }
 
 };
-
 
 
 /* =========================================
@@ -2211,9 +1819,7 @@ async function handleCredentialResponse(
             user;
 
 
-        await checkAccount(
-            user
-        );
+        await checkAccount(user);
 
     }
 
@@ -2225,7 +1831,6 @@ async function handleCredentialResponse(
             error
         );
 
-
         alert(
             "There was a problem signing in. Please try again."
         );
@@ -2233,7 +1838,6 @@ async function handleCredentialResponse(
     }
 
 }
-
 
 
 /* =========================================
@@ -2261,16 +1865,6 @@ async function checkAccount(
         const result =
             await response.json();
 
-
-        console.log(
-            "Account check:",
-            result
-        );
-
-
-        /*
-         * EXISTING ACCOUNT
-         */
 
         if (
             result.success &&
@@ -2300,10 +1894,6 @@ async function checkAccount(
             };
 
 
-            /*
-             * Has username
-             */
-
             if (
                 result.username
             ) {
@@ -2325,16 +1915,10 @@ async function checkAccount(
 
             }
 
-
-            /*
-             * No username yet
-             */
-
             else {
 
                 pendingGoogleUser =
                     accountUser;
-
 
                 showAccountSetup(
                     accountUser
@@ -2347,10 +1931,6 @@ async function checkAccount(
 
         }
 
-
-        /*
-         * BRAND-NEW ACCOUNT
-         */
 
         pendingGoogleUser =
             user;
@@ -2370,7 +1950,6 @@ async function checkAccount(
             error
         );
 
-
         alert(
             "Writejot couldn't check your account. Please try again."
         );
@@ -2380,9 +1959,8 @@ async function checkAccount(
 }
 
 
-
 /* =========================================
-   SHOW ACCOUNT SETUP
+   ACCOUNT SETUP
 ========================================= */
 
 function showAccountSetup(
@@ -2415,57 +1993,19 @@ function showAccountSetup(
 
     document
         .getElementById(
-            "profileSettings"
-        )
-        .style.display =
-        "none";
-
-
-    document
-        .getElementById(
             "profileArea"
         )
         .style.display =
         "none";
 
-
-    document
-        .getElementById(
-            "usernameInput"
-        )
-        .value =
-        "";
-
-
-    document
-        .getElementById(
-            "usernameMessage"
-        )
-        .textContent =
-        "";
-
 }
 
 
-
 /* =========================================
-   CREATE WRITEJOT ACCOUNT
+   CREATE ACCOUNT
 ========================================= */
 
 async function createWritejotAccount() {
-
-    if (
-        !pendingGoogleUser
-    ) {
-
-        alert(
-            "Please sign in with Google first."
-        );
-
-        return;
-
-    }
-
 
     const input =
         document.getElementById(
@@ -2474,14 +2014,10 @@ async function createWritejotAccount() {
 
 
     const username =
-        input
-            .value
+        input.value
             .trim()
             .toLowerCase()
-            .replace(
-                /^@/,
-                ""
-            );
+            .replace(/^@/, "");
 
 
     const message =
@@ -2490,43 +2026,13 @@ async function createWritejotAccount() {
         );
 
 
-    const button =
-        document.getElementById(
-            "createAccountButton"
-        );
-
-
-    const loading =
-        document.getElementById(
-            "setupLoading"
-        );
-
-
-    /*
-     * VALIDATE USERNAME
-     */
-
     if (
-        username.length < 3
-    ) {
-
-        message.textContent =
-            "Username must be at least 3 characters.";
-
-        message.style.color =
-            "#dc2626";
-
-        return;
-
-    }
-
-
-    if (
+        username.length < 3 ||
         username.length > 20
     ) {
 
         message.textContent =
-            "Username must be 20 characters or fewer.";
+            "Username must be 3–20 characters.";
 
         message.style.color =
             "#dc2626";
@@ -2553,35 +2059,15 @@ async function createWritejotAccount() {
     }
 
 
-    button.disabled =
-        true;
-
-    loading.style.display =
-        "block";
-
-
-    message.textContent =
-        "Checking username...";
-
-    message.style.color =
-        "#667085";
-
-
     try {
 
-        /*
-         * CHECK USERNAME AVAILABILITY
-         */
-
-        const availabilityResponse =
+        const availableResponse =
             await fetch(
 
                 APPS_SCRIPT_URL +
                 "?action=usernameAvailable" +
                 "&username=" +
-                encodeURIComponent(
-                    username
-                ) +
+                encodeURIComponent(username) +
                 "&email=" +
                 encodeURIComponent(
                     pendingGoogleUser.email
@@ -2591,7 +2077,7 @@ async function createWritejotAccount() {
 
 
         const availability =
-            await availabilityResponse.json();
+            await availableResponse.json();
 
 
         if (
@@ -2599,30 +2085,23 @@ async function createWritejotAccount() {
         ) {
 
             message.textContent =
-                availability.error ||
-                "That username is already taken.";
+                availability.error;
 
             message.style.color =
                 "#dc2626";
-
-            button.disabled =
-                false;
-
-            loading.style.display =
-                "none";
 
             return;
 
         }
 
 
-        message.textContent =
-            "Creating your Writejot account...";
+        document
+            .getElementById(
+                "setupLoading"
+            )
+            .style.display =
+            "block";
 
-
-        /*
-         * CREATE ACCOUNT
-         */
 
         await fetch(
 
@@ -2637,10 +2116,8 @@ async function createWritejotAccount() {
                     "no-cors",
 
                 headers: {
-
                     "Content-Type":
                         "text/plain;charset=utf-8"
-
                 },
 
                 body:
@@ -2668,23 +2145,17 @@ async function createWritejotAccount() {
         );
 
 
-        /*
-         * VERIFY ACCOUNT
-         */
-
-        const verifiedUser =
+        const verified =
             await waitForAccount(
                 pendingGoogleUser.email,
                 username
             );
 
 
-        if (
-            !verifiedUser
-        ) {
+        if (!verified) {
 
             throw new Error(
-                "The account was not confirmed by the database."
+                "Account was not confirmed."
             );
 
         }
@@ -2695,38 +2166,27 @@ async function createWritejotAccount() {
             ...pendingGoogleUser,
 
             username:
-                verifiedUser.username,
+                verified.username,
 
             bio:
-                verifiedUser.bio || "",
+                verified.bio || "",
 
             profilePicture:
-                verifiedUser.profilePicture || "",
+                verified.profilePicture || "",
 
             status:
-                verifiedUser.status ||
-                "trial",
+                verified.status || "trial",
 
             payment:
-                verifiedUser.payment ||
-                "No"
+                verified.payment || "No"
 
         };
 
 
         localStorage.setItem(
-
             "writejotUser",
-
-            JSON.stringify(
-                finalUser
-            )
-
+            JSON.stringify(finalUser)
         );
-
-
-        pendingGoogleUser =
-            finalUser;
 
 
         showDashboard(
@@ -2739,32 +2199,18 @@ async function createWritejotAccount() {
     catch (error) {
 
         console.error(
-            "Account creation failed:",
             error
         );
 
-
         message.textContent =
-            "We couldn't create the account. Please try again.";
+            "Could not create your account.";
 
         message.style.color =
             "#dc2626";
 
     }
 
-
-    finally {
-
-        button.disabled =
-            false;
-
-        loading.style.display =
-            "none";
-
-    }
-
 }
-
 
 
 /* =========================================
@@ -2777,9 +2223,9 @@ async function waitForAccount(
 ) {
 
     for (
-        let attempt = 0;
-        attempt < 10;
-        attempt++
+        let i = 0;
+        i < 10;
+        i++
     ) {
 
         try {
@@ -2789,9 +2235,7 @@ async function waitForAccount(
 
                     APPS_SCRIPT_URL +
                     "?action=account&email=" +
-                    encodeURIComponent(
-                        email
-                    )
+                    encodeURIComponent(email)
 
                 );
 
@@ -2804,7 +2248,7 @@ async function waitForAccount(
                 result.success &&
                 result.username &&
                 result.username.toLowerCase() ===
-                    username.toLowerCase()
+                username.toLowerCase()
             ) {
 
                 return result;
@@ -2813,13 +2257,7 @@ async function waitForAccount(
 
         }
 
-        catch (error) {
-
-            console.log(
-                "Waiting for account..."
-            );
-
-        }
+        catch (error) {}
 
 
         await sleep(600);
@@ -2830,7 +2268,6 @@ async function waitForAccount(
     return null;
 
 }
-
 
 
 /* =========================================
@@ -2859,14 +2296,6 @@ function showDashboard(
 
     document
         .getElementById(
-            "profileSettings"
-        )
-        .style.display =
-        "none";
-
-
-    document
-        .getElementById(
             "dashboard"
         )
         .style.display =
@@ -2880,21 +2309,6 @@ function showDashboard(
         .style.display =
         "flex";
 
-
-    document
-        .getElementById(
-            "profileName"
-        )
-        .textContent =
-        user.name ||
-        user.email;
-
-
-    /*
-     * Use custom profile picture
-     * if one exists, otherwise
-     * use Google's picture.
-     */
 
     const picture =
         user.profilePicture ||
@@ -2916,6 +2330,15 @@ function showDashboard(
         )
         .src =
         picture;
+
+
+    document
+        .getElementById(
+            "profileName"
+        )
+        .textContent =
+        user.name ||
+        user.email;
 
 
     document
@@ -2950,26 +2373,13 @@ function showDashboard(
 }
 
 
-
 /* =========================================
-   DASHBOARD STATUS
+   STATUS
 ========================================= */
 
 async function updateDashboardStatus(
     user
 ) {
-
-    const statusMessage =
-        document.getElementById(
-            "dashboardStatusMessage"
-        );
-
-
-    const headerStatus =
-        document.getElementById(
-            "dashboardStatus"
-        );
-
 
     try {
 
@@ -3001,6 +2411,18 @@ async function updateDashboardStatus(
                 .toLowerCase();
 
 
+            const headerStatus =
+                document.getElementById(
+                    "dashboardStatus"
+                );
+
+
+            const statusMessage =
+                document.getElementById(
+                    "dashboardStatusMessage"
+                );
+
+
             if (
                 status === "trial"
             ) {
@@ -3008,11 +2430,11 @@ async function updateDashboardStatus(
                 headerStatus.textContent =
                     "7-day free trial";
 
-
                 statusMessage.textContent =
                     "Your 7-day free trial is active.";
 
             }
+
 
             else if (
                 status === "active"
@@ -3021,18 +2443,17 @@ async function updateDashboardStatus(
                 headerStatus.textContent =
                     "Active account";
 
-
                 statusMessage.textContent =
                     "Your Writejot account is active.";
 
             }
+
 
             else {
 
                 headerStatus.textContent =
                     "Account status: " +
                     result.status;
-
 
                 statusMessage.textContent =
                     "Your current account status is: " +
@@ -3048,7 +2469,6 @@ async function updateDashboardStatus(
     catch (error) {
 
         console.error(
-            "Status check failed:",
             error
         );
 
@@ -3057,451 +2477,267 @@ async function updateDashboardStatus(
 }
 
 
-
 /* =========================================
-   OPEN PROFILE SETTINGS
+   PROFILE SEARCH
 ========================================= */
 
-function openProfileSettings() {
+let profileSearchTimer = null;
 
-    const savedUser =
-        localStorage.getItem(
-            "writejotUser"
+
+async function searchProfiles() {
+
+    const input =
+        document.getElementById(
+            "profileSearchInput"
         );
 
 
+    const resultsBox =
+        document.getElementById(
+            "profileSearchResults"
+        );
+
+
+    const query =
+        input.value
+            .trim();
+
+
+    clearTimeout(
+        profileSearchTimer
+    );
+
+
     if (
-        !savedUser
+        query.length < 2
     ) {
+
+        resultsBox.style.display =
+            "none";
+
+        resultsBox.innerHTML =
+            "";
 
         return;
 
     }
 
 
-    const user =
-        JSON.parse(
-            savedUser
+    profileSearchTimer =
+        setTimeout(
+            async function() {
+
+                try {
+
+                    const response =
+                        await fetch(
+
+                            APPS_SCRIPT_URL +
+                            "?action=searchProfiles&q=" +
+                            encodeURIComponent(
+                                query
+                            )
+
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (
+                        !data.success ||
+                        !data.profiles.length
+                    ) {
+
+                        resultsBox.innerHTML =
+
+                            `<div style="
+                                padding:16px;
+                                color:#718096;
+                                text-align:center;
+                            ">
+                                No profiles found.
+                            </div>`;
+
+                        resultsBox.style.display =
+                            "block";
+
+                        return;
+
+                    }
+
+
+                    resultsBox.innerHTML =
+                        data.profiles
+                            .map(
+                                function(profile) {
+
+                                    const picture =
+                                        profile.profilePicture ||
+                                        "W.png";
+
+
+                                    return `
+
+                                        <div
+                                            class="search-result"
+                                            onclick="selectProfile(
+                                                '${escapeHtml(profile.username)}'
+                                            )"
+                                        >
+
+                                            <img
+                                                src="${escapeHtml(picture)}"
+                                                alt=""
+                                            >
+
+                                            <div style="min-width:0;">
+
+                                                <div
+                                                    class="search-result-name"
+                                                >
+                                                    ${escapeHtml(
+                                                        profile.name ||
+                                                        "Writejot User"
+                                                    )}
+                                                </div>
+
+                                                <div
+                                                    class="search-result-username"
+                                                >
+                                                    @${escapeHtml(
+                                                        profile.username
+                                                    )}
+                                                </div>
+
+                                                ${
+                                                    profile.bio
+                                                        ? `
+                                                        <div
+                                                            class="search-result-bio"
+                                                        >
+                                                            ${escapeHtml(
+                                                                profile.bio
+                                                            )}
+                                                        </div>
+                                                        `
+                                                        : ""
+                                                }
+
+                                            </div>
+
+                                        </div>
+
+                                    `;
+
+                                }
+                            )
+                            .join("");
+
+
+                    resultsBox.style.display =
+                        "block";
+
+                }
+
+
+                catch (error) {
+
+                    console.error(
+                        "Profile search error:",
+                        error
+                    );
+
+                }
+
+            },
+            250
         );
-
-
-    document
-        .getElementById(
-            "profileSettings"
-        )
-        .style.display =
-        "block";
-
-
-    document
-        .getElementById(
-            "editProfilePicture"
-        )
-        .value =
-        user.profilePicture ||
-        "";
-
-
-    document
-        .getElementById(
-            "editDisplayName"
-        )
-        .value =
-        user.name ||
-        "";
-
-
-    document
-        .getElementById(
-            "editUsername"
-        )
-        .value =
-        user.username ||
-        "";
-
-
-    document
-        .getElementById(
-            "editBio"
-        )
-        .value =
-        user.bio ||
-        "";
-
-
-    document
-        .getElementById(
-            "profileSaveMessage"
-        )
-        .textContent =
-        "";
-
-
-    document
-        .getElementById(
-            "profileSettings"
-        )
-        .scrollIntoView({
-            behavior:
-                "smooth"
-        });
 
 }
 
 
-
 /* =========================================
-   CLOSE PROFILE SETTINGS
+   PROFILE SEARCH SELECT
 ========================================= */
 
-function closeProfileSettings() {
+function selectProfile(
+    username
+) {
 
-    document
-        .getElementById(
-            "profileSettings"
-        )
-        .style.display =
+    /*
+     * Messaging/profile pages can use this
+     * later. For now we just keep the
+     * selected profile name in the search
+     * box and close the results.
+     */
+
+    const input =
+        document.getElementById(
+            "profileSearchInput"
+        );
+
+
+    const resultsBox =
+        document.getElementById(
+            "profileSearchResults"
+        );
+
+
+    input.value =
+        "@" +
+        username;
+
+
+    resultsBox.style.display =
         "none";
-
-}
-
-
-
-/* =========================================
-   SAVE PROFILE
-========================================= */
-
-async function saveProfile() {
-
-    const savedUser =
-        localStorage.getItem(
-            "writejotUser"
-        );
-
-
-    if (
-        !savedUser
-    ) {
-
-        return;
-
-    }
-
-
-    const user =
-        JSON.parse(
-            savedUser
-        );
-
-
-    const name =
-        document
-            .getElementById(
-                "editDisplayName"
-            )
-            .value
-            .trim();
-
-
-    const username =
-        document
-            .getElementById(
-                "editUsername"
-            )
-            .value
-            .trim()
-            .toLowerCase()
-            .replace(
-                /^@/,
-                ""
-            );
-
-
-    const bio =
-        document
-            .getElementById(
-                "editBio"
-            )
-            .value
-            .trim();
-
-
-    const profilePicture =
-        document
-            .getElementById(
-                "editProfilePicture"
-            )
-            .value
-            .trim();
-
-
-    const message =
-        document
-            .getElementById(
-                "profileSaveMessage"
-            );
 
 
     /*
-     * USERNAME VALIDATION
+     * Future step:
+     * open public profile page.
      */
 
-    if (
-        username.length < 3 ||
-        username.length > 20
-    ) {
-
-        message.textContent =
-            "Username must be 3–20 characters.";
-
-        message.style.color =
-            "#dc2626";
-
-        return;
-
-    }
-
-
-    if (
-        !/^[a-z0-9_]+$/i.test(
-            username
-        )
-    ) {
-
-        message.textContent =
-            "Username can only contain letters, numbers, and underscores.";
-
-        message.style.color =
-            "#dc2626";
-
-        return;
-
-    }
-
-
-    message.textContent =
-        "Checking username...";
-
-    message.style.color =
-        "#667085";
-
-
-    try {
-
-        /*
-         * Check username availability.
-         */
-
-        const availabilityResponse =
-            await fetch(
-
-                APPS_SCRIPT_URL +
-                "?action=usernameAvailable" +
-                "&username=" +
-                encodeURIComponent(
-                    username
-                ) +
-                "&email=" +
-                encodeURIComponent(
-                    user.email
-                )
-
-            );
-
-
-        const availability =
-            await availabilityResponse.json();
-
-
-        if (
-            !availability.available
-        ) {
-
-            message.textContent =
-                availability.error ||
-                "That username is already taken.";
-
-            message.style.color =
-                "#dc2626";
-
-            return;
-
-        }
-
-
-        message.textContent =
-            "Saving profile...";
-
-
-        /*
-         * Send update to Apps Script.
-         */
-
-        await fetch(
-
-            APPS_SCRIPT_URL,
-
-            {
-
-                method:
-                    "POST",
-
-                mode:
-                    "no-cors",
-
-                headers: {
-
-                    "Content-Type":
-                        "text/plain;charset=utf-8"
-
-                },
-
-                body:
-                    JSON.stringify({
-
-                        action:
-                            "updateProfile",
-
-                        email:
-                            user.email,
-
-                        name:
-                            name,
-
-                        username:
-                            username,
-
-                        bio:
-                            bio,
-
-                        profilePicture:
-                            profilePicture
-
-                    })
-
-            }
-
-        );
-
-
-        /*
-         * Give Apps Script a moment.
-         */
-
-        await sleep(700);
-
-
-        /*
-         * Get the updated account.
-         */
-
-        const response =
-            await fetch(
-
-                APPS_SCRIPT_URL +
-                "?action=account&email=" +
-                encodeURIComponent(
-                    user.email
-                )
-
-            );
-
-
-        const result =
-            await response.json();
-
-
-        if (
-            !result.success
-        ) {
-
-            throw new Error(
-                "Profile update could not be verified."
-            );
-
-        }
-
-
-        const updatedUser = {
-
-            ...user,
-
-            name:
-                result.name ||
-                name,
-
-            username:
-                result.username ||
-                username,
-
-            bio:
-                result.bio ||
-                "",
-
-            profilePicture:
-                result.profilePicture ||
-                ""
-
-        };
-
-
-        localStorage.setItem(
-
-            "writejotUser",
-
-            JSON.stringify(
-                updatedUser
-            )
-
-        );
-
-
-        /*
-         * Update dashboard immediately.
-         */
-
-        showDashboard(
-            updatedUser
-        );
-
-
-        message.textContent =
-            "Profile saved successfully.";
-
-        message.style.color =
-            "#15803d";
-
-
-        setTimeout(
-            function() {
-
-                closeProfileSettings();
-
-            },
-            700
-        );
-
-    }
-
-
-    catch (error) {
-
-        console.error(
-            "Profile update error:",
-            error
-        );
-
-
-        message.textContent =
-            "Could not save your profile. Please try again.";
-
-        message.style.color =
-            "#dc2626";
-
-    }
+    alert(
+        "Profile selected: @" +
+        username
+    );
 
 }
 
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHtml(
+    value
+) {
+
+    return String(value || "")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
 
 
 /* =========================================
@@ -3537,14 +2773,6 @@ function logout() {
 
     document
         .getElementById(
-            "profileSettings"
-        )
-        .style.display =
-        "none";
-
-
-    document
-        .getElementById(
             "homeSection"
         )
         .style.display =
@@ -3559,22 +2787,6 @@ function logout() {
         "none";
 
 
-    document
-        .getElementById(
-            "profileName"
-        )
-        .textContent =
-        "";
-
-
-    document
-        .getElementById(
-            "profilePicture"
-        )
-        .src =
-        "";
-
-
     if (
         google.accounts &&
         google.accounts.id
@@ -3585,7 +2797,6 @@ function logout() {
     }
 
 }
-
 
 
 /* =========================================
@@ -3604,9 +2815,8 @@ function featureComingSoon(
 }
 
 
-
 /* =========================================
-   HELPER: SLEEP
+   HELPERS
 ========================================= */
 
 function sleep(
@@ -3626,11 +2836,6 @@ function sleep(
 
 }
 
-
-
-/* =========================================
-   HELPER: DECODE GOOGLE TOKEN
-========================================= */
 
 function parseJwt(
     token
