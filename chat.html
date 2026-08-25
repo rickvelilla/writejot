@@ -49,6 +49,10 @@
         }
 
 
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
 
             background:
@@ -69,6 +73,9 @@
             gap:
                 12px;
 
+            flex-shrink:
+                0;
+
         }
 
 
@@ -83,6 +90,9 @@
             font-weight:
                 600;
 
+            white-space:
+                nowrap;
+
         }
 
 
@@ -96,6 +106,9 @@
 
             gap:
                 10px;
+
+            min-width:
+                0;
 
         }
 
@@ -114,6 +127,12 @@
             object-fit:
                 cover;
 
+            border:
+                2px solid #4285F4;
+
+            flex-shrink:
+                0;
+
         }
 
 
@@ -121,6 +140,15 @@
 
             font-weight:
                 700;
+
+            white-space:
+                nowrap;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
 
         }
 
@@ -136,6 +164,10 @@
         }
 
 
+        /* =========================
+           MESSAGES
+        ========================= */
+
         #messages {
 
             flex:
@@ -144,17 +176,20 @@
             overflow-y:
                 auto;
 
-            max-width:
-                850px;
-
             width:
                 100%;
+
+            max-width:
+                850px;
 
             margin:
                 0 auto;
 
             padding:
                 25px 20px;
+
+            scroll-behavior:
+                smooth;
 
         }
 
@@ -164,8 +199,11 @@
             display:
                 flex;
 
+            width:
+                100%;
+
             margin-bottom:
-                10px;
+                12px;
 
         }
 
@@ -178,10 +216,23 @@
         }
 
 
-        .bubble {
+        .message-row.theirs {
+
+            justify-content:
+                flex-start;
+
+        }
+
+
+        .bubble-wrapper {
 
             max-width:
-                70%;
+                min(70%, 550px);
+
+        }
+
+
+        .bubble {
 
             padding:
                 10px 14px;
@@ -190,13 +241,16 @@
                 15px;
 
             line-height:
-                1.4;
+                1.45;
 
             white-space:
                 pre-wrap;
 
             word-break:
                 break-word;
+
+            overflow-wrap:
+                anywhere;
 
         }
 
@@ -243,6 +297,14 @@
         }
 
 
+        .mine .time {
+
+            text-align:
+                right;
+
+        }
+
+
         #empty {
 
             text-align:
@@ -257,7 +319,14 @@
         }
 
 
+        /* =========================
+           COMPOSER
+        ========================= */
+
         #composer {
+
+            width:
+                100%;
 
             background:
                 white;
@@ -266,12 +335,18 @@
                 1px solid #e5e7eb;
 
             padding:
-                12px;
+                10px 14px;
+
+            flex-shrink:
+                0;
 
         }
 
 
         .composer-inner {
+
+            width:
+                100%;
 
             max-width:
                 850px;
@@ -281,6 +356,9 @@
 
             display:
                 flex;
+
+            align-items:
+                flex-end;
 
             gap:
                 10px;
@@ -293,8 +371,20 @@
             flex:
                 1;
 
+            min-width:
+                0;
+
+            width:
+                100%;
+
+            min-height:
+                44px;
+
+            max-height:
+                140px;
+
             padding:
-                12px 14px;
+                11px 14px;
 
             border:
                 1px solid #d8dee8;
@@ -302,28 +392,63 @@
             border-radius:
                 9px;
 
+            background:
+                white;
+
+            font-family:
+                inherit;
+
+            font-size:
+                14px;
+
             outline:
                 none;
 
             resize:
                 none;
 
-            min-height:
-                44px;
+            overflow-y:
+                auto;
 
-            max-height:
-                130px;
+            box-sizing:
+                border-box;
 
-            font-family:
-                inherit;
+        }
+
+
+        #messageInput:focus {
+
+            border-color:
+                #4285F4;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    66,
+                    133,
+                    244,
+                    0.08
+                );
 
         }
 
 
         #sendButton {
 
+            flex-shrink:
+                0;
+
+            min-height:
+                44px;
+
+            padding:
+                0 18px;
+
             border:
                 none;
+
+            border-radius:
+                9px;
 
             background:
                 #4285F4;
@@ -331,17 +456,22 @@
             color:
                 white;
 
-            border-radius:
-                9px;
-
-            padding:
-                0 18px;
-
             font-weight:
                 600;
 
             cursor:
                 pointer;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        #sendButton:hover {
+
+            background:
+                #3367d6;
 
         }
 
@@ -356,6 +486,111 @@
 
         }
 
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (
+            max-width: 600px
+        ) {
+
+            header {
+
+                padding:
+                    10px 12px;
+
+            }
+
+
+            .back {
+
+                font-size:
+                    13px;
+
+            }
+
+
+            .recipient img {
+
+                width:
+                    38px;
+
+                height:
+                    38px;
+
+            }
+
+
+            .recipient-name {
+
+                max-width:
+                    170px;
+
+            }
+
+
+            #messages {
+
+                padding:
+                    18px 12px;
+
+            }
+
+
+            .bubble-wrapper {
+
+                max-width:
+                    82%;
+
+            }
+
+
+            #composer {
+
+                padding:
+                    8px 10px;
+
+            }
+
+
+            .composer-inner {
+
+                gap:
+                    7px;
+
+            }
+
+
+            #messageInput {
+
+                min-height:
+                    42px;
+
+                max-height:
+                    120px;
+
+                padding:
+                    10px 12px;
+
+                font-size:
+                    14px;
+
+            }
+
+
+            #sendButton {
+
+                min-height:
+                    42px;
+
+                padding:
+                    0 13px;
+
+            }
+
+        }
+
     </style>
 
 </head>
@@ -363,6 +598,10 @@
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -379,7 +618,7 @@
         <img
             id="recipientPicture"
             src="W.png"
-            alt=""
+            alt="Profile picture"
         >
 
 
@@ -391,6 +630,7 @@
             >
                 Loading...
             </div>
+
 
             <div
                 id="recipientUsername"
@@ -407,9 +647,17 @@
 
 
 
-<div id="messages">
+<!-- =========================
+     MESSAGES
+========================= -->
 
-    <div id="empty">
+<div
+    id="messages"
+>
+
+    <div
+        id="empty"
+    >
         Loading messages...
     </div>
 
@@ -417,14 +665,23 @@
 
 
 
-<div id="composer">
+<!-- =========================
+     COMPOSER
+========================= -->
 
-    <div class="composer-inner">
+<div
+    id="composer"
+>
+
+    <div
+        class="composer-inner"
+    >
 
         <textarea
             id="messageInput"
             maxlength="2000"
             placeholder="Write a message..."
+            rows="1"
         ></textarea>
 
 
@@ -444,6 +701,10 @@
 <script>
 
 
+/* =========================================
+   CONFIG
+========================================= */
+
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
@@ -451,8 +712,10 @@ const APPS_SCRIPT_URL =
 let currentUser =
     null;
 
+
 let otherUsername =
     "";
+
 
 let refreshTimer =
     null;
@@ -462,74 +725,115 @@ let refreshTimer =
    START
 ========================================= */
 
-window.onload = async function() {
+window.onload =
+    async function() {
 
-    const savedUser =
-        localStorage.getItem(
-            "writejotUser"
-        );
-
-
-    if (!savedUser) {
-
-        window.location.href =
-            "index.html";
-
-        return;
-
-    }
+        const savedUser =
+            localStorage.getItem(
+                "writejotUser"
+            );
 
 
-    currentUser =
-        JSON.parse(
-            savedUser
-        );
+        if (
+            !savedUser
+        ) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
 
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
+        try {
+
+            currentUser =
+                JSON.parse(
+                    savedUser
+                );
+
+        }
+
+        catch (error) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
 
 
-    otherUsername =
-        String(
-            params.get(
-                "username"
-            ) || ""
-        )
-        .trim()
-        .toLowerCase()
-        .replace(
-            /^@/,
-            ""
-        );
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
 
 
-    if (
-        !otherUsername
-    ) {
-
-        window.location.href =
-            "messages.html";
-
-        return;
-
-    }
-
-
-    await loadRecipient();
-
-    await loadMessages();
+        otherUsername =
+            String(
+                params.get(
+                    "username"
+                ) || ""
+            )
+            .trim()
+            .toLowerCase()
+            .replace(
+                /^@/,
+                ""
+            );
 
 
-    refreshTimer =
-        setInterval(
-            loadMessages,
-            3000
-        );
+        if (
+            !otherUsername
+        ) {
 
-};
+            window.location.href =
+                "messages.html";
+
+            return;
+
+        }
+
+
+        /*
+         * Load the person we're chatting with.
+         */
+
+        await loadRecipient();
+
+
+        /*
+         * Mark incoming messages as read
+         * BEFORE loading the conversation.
+         */
+
+        await markConversationRead();
+
+
+        /*
+         * Load the conversation.
+         */
+
+        await loadMessages();
+
+
+        /*
+         * Refresh every 3 seconds so
+         * newly received messages appear.
+         */
+
+        refreshTimer =
+            setInterval(
+                loadMessages,
+                3000
+            );
+
+
+        setupMessageInput();
+
+    };
 
 
 /* =========================================
@@ -557,7 +861,8 @@ async function loadRecipient() {
 
 
         if (
-            !result.success
+            !result.success ||
+            !result.profile
         ) {
 
             return;
@@ -587,19 +892,96 @@ async function loadRecipient() {
             profile.username;
 
 
+        const picture =
+            profile.profilePicture ||
+            "W.png";
+
+
         document
             .getElementById(
                 "recipientPicture"
             )
             .src =
-            profile.profilePicture ||
-            "W.png";
+            picture;
+
+
+        document
+            .getElementById(
+                "recipientPicture"
+            )
+            .onerror =
+            function() {
+
+                this.src =
+                    "W.png";
+
+            };
 
     }
 
     catch (error) {
 
         console.error(
+            "Could not load recipient:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   MARK CONVERSATION AS READ
+========================================= */
+
+async function markConversationRead() {
+
+    try {
+
+        await fetch(
+
+            APPS_SCRIPT_URL,
+
+            {
+
+                method:
+                    "POST",
+
+                mode:
+                    "no-cors",
+
+                headers: {
+
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+
+                },
+
+                body:
+                    JSON.stringify({
+
+                        action:
+                            "markConversationRead",
+
+                        email:
+                            currentUser.email,
+
+                        username:
+                            otherUsername
+
+                    })
+
+            }
+
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Could not mark conversation as read:",
             error
         );
 
@@ -641,13 +1023,19 @@ async function loadMessages() {
             !result.success
         ) {
 
+            showMessageError(
+                result.error ||
+                "Could not load messages."
+            );
+
             return;
 
         }
 
 
         renderMessages(
-            result.messages || []
+            result.messages ||
+            []
         );
 
     }
@@ -655,7 +1043,12 @@ async function loadMessages() {
     catch (error) {
 
         console.error(
+            "Message loading error:",
             error
+        );
+
+        showMessageError(
+            "Could not load messages."
         );
 
     }
@@ -664,7 +1057,7 @@ async function loadMessages() {
 
 
 /* =========================================
-   RENDER
+   RENDER MESSAGES
 ========================================= */
 
 function renderMessages(
@@ -683,9 +1076,11 @@ function renderMessages(
 
         container.innerHTML =
 
-            `<div id="empty">
+            `
+            <div id="empty">
                 No messages yet. Say hello!
-            </div>`;
+            </div>
+            `;
 
         return;
 
@@ -699,6 +1094,7 @@ function renderMessages(
     container.innerHTML =
         messages
             .map(
+
                 function(message) {
 
                     const mine =
@@ -721,10 +1117,16 @@ function renderMessages(
 
                         <div
                             class="message-row
-                            ${mine ? "mine" : "theirs"}"
+                            ${
+                                mine
+                                    ? "mine"
+                                    : "theirs"
+                            }"
                         >
 
-                            <div>
+                            <div
+                                class="bubble-wrapper"
+                            >
 
                                 <div
                                     class="bubble"
@@ -733,6 +1135,7 @@ function renderMessages(
                                         message.message
                                     )}
                                 </div>
+
 
                                 <div
                                     class="time"
@@ -749,13 +1152,13 @@ function renderMessages(
                     `;
 
                 }
+
             )
             .join("");
 
 
     /*
-     * Only scroll to bottom if
-     * the user is already near bottom.
+     * Always show the newest message.
      */
 
     container.scrollTop =
@@ -788,7 +1191,9 @@ async function sendMessage() {
             .trim();
 
 
-    if (!message) {
+    if (
+        !message
+    ) {
 
         return;
 
@@ -842,18 +1247,30 @@ async function sendMessage() {
         );
 
 
+        /*
+         * Clear the input.
+         */
+
         input.value =
             "";
 
 
+        resetTextareaHeight();
+
+
         /*
-         * Reload immediately.
+         * Give Apps Script time to
+         * write the row.
          */
 
         await sleep(
             500
         );
 
+
+        /*
+         * Reload immediately.
+         */
 
         await loadMessages();
 
@@ -862,8 +1279,10 @@ async function sendMessage() {
     catch (error) {
 
         console.error(
+            "Send message error:",
             error
         );
+
 
         alert(
             "Could not send the message."
@@ -885,15 +1304,97 @@ async function sendMessage() {
 
 
 /* =========================================
+   ADAPTIVE TEXTBOX
+========================================= */
+
+function setupMessageInput() {
+
+    const input =
+        document.getElementById(
+            "messageInput"
+        );
+
+
+    /*
+     * Automatically grow the textbox
+     * as the user types.
+     */
+
+    input.addEventListener(
+        "input",
+        function() {
+
+            input.style.height =
+                "auto";
+
+
+            input.style.height =
+                Math.min(
+                    input.scrollHeight,
+                    window.innerWidth <=
+                        600
+                        ? 120
+                        : 140
+                ) +
+                "px";
+
+        }
+    );
+
+
+    /*
+     * Enter sends.
+     * Shift + Enter creates a new line.
+     */
+
+    input.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key ===
+                    "Enter" &&
+                !event.shiftKey
+            ) {
+
+                event.preventDefault();
+
+                sendMessage();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   RESET TEXTBOX
+========================================= */
+
+function resetTextareaHeight() {
+
+    const input =
+        document.getElementById(
+            "messageInput"
+        );
+
+
+    input.style.height =
+        "44px";
+
+}
+
+
+/* =========================================
    CURRENT USERNAME
 ========================================= */
 
 function getCurrentUsername() {
 
     return normalizeUsername(
-
         currentUser.username
-
     );
 
 }
@@ -904,7 +1405,8 @@ function normalizeUsername(
 ) {
 
     return String(
-        username || ""
+        username ||
+        ""
     )
     .trim()
     .toLowerCase()
@@ -917,7 +1419,35 @@ function normalizeUsername(
 
 
 /* =========================================
-   ESCAPE
+   ERROR
+========================================= */
+
+function showMessageError(
+    message
+) {
+
+    const container =
+        document.getElementById(
+            "messages"
+        );
+
+
+    container.innerHTML =
+
+        `
+        <div
+            id="empty"
+            style="color:#dc2626;"
+        >
+            ${escapeHtml(message)}
+        </div>
+        `;
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
 ========================================= */
 
 function escapeHtml(
@@ -925,7 +1455,8 @@ function escapeHtml(
 ) {
 
     return String(
-        value || ""
+        value ||
+        ""
     )
     .replace(
         /&/g,
@@ -951,8 +1482,12 @@ function escapeHtml(
 }
 
 
+/* =========================================
+   SLEEP
+========================================= */
+
 function sleep(
-    ms
+    milliseconds
 ) {
 
     return new Promise(
@@ -960,13 +1495,14 @@ function sleep(
 
             setTimeout(
                 resolve,
-                ms
+                milliseconds
             );
 
         }
     );
 
 }
+
 
 </script>
 
