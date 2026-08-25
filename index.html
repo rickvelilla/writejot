@@ -2,8 +2,13 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
@@ -12,11 +17,13 @@
 
     <title>Writejot | Student Notes</title>
 
+
     <script
         src="https://accounts.google.com/gsi/client"
         async
         defer>
     </script>
+
 
     <style>
 
@@ -26,500 +33,1116 @@
             padding: 0;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
+
             font-family:
                 Arial,
                 Helvetica,
                 sans-serif;
 
-            background: #f6f8fc;
-            color: #1f2937;
-            line-height: 1.6;
+            background:
+                #f6f8fc;
+
+            color:
+                #1f2937;
+
+            line-height:
+                1.6;
+
         }
+
 
         a {
             color: inherit;
         }
+
 
         /* =========================
            HEADER
         ========================= */
 
         header {
-            background: rgba(255, 255, 255, 0.96);
-            border-bottom: 1px solid #e5e7eb;
 
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background:
+                rgba(255,255,255,0.97);
 
-            padding: 14px 6%;
+            border-bottom:
+                1px solid #e5e7eb;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            position:
+                sticky;
 
-            backdrop-filter: blur(10px);
+            top:
+                0;
+
+            z-index:
+                1000;
+
+            padding:
+                14px 6%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            backdrop-filter:
+                blur(10px);
+
         }
+
 
         .brand {
-            display: flex;
-            align-items: center;
-            gap: 11px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                11px;
+
         }
+
 
         .brand img {
-            width: 42px;
-            height: 42px;
-            object-fit: contain;
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            object-fit:
+                contain;
+
         }
+
 
         .brand-name {
-            font-size: 23px;
-            font-weight: 700;
-            color: #111827;
+
+            font-size:
+                23px;
+
+            font-weight:
+                700;
+
         }
 
-        #profileArea {
-            display: none;
-            align-items: center;
-            gap: 10px;
-        }
-
-        #profilePicture {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #4285F4;
-        }
-
-        #profileName {
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        #logoutButton {
-            border: 0;
-            background: #ef4444;
-            color: white;
-            padding: 8px 13px;
-            border-radius: 7px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        #logoutButton:hover {
-            background: #dc2626;
-        }
 
         /* =========================
-           BUTTONS
+           HEADER PROFILE
+        ========================= */
+
+        #profileArea {
+
+            display:
+                none;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+        }
+
+
+        #profilePicture {
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            border-radius:
+                50%;
+
+            object-fit:
+                cover;
+
+            border:
+                2px solid #4285F4;
+
+        }
+
+
+        #profileName {
+
+            font-weight:
+                600;
+
+            font-size:
+                14px;
+
+        }
+
+
+        #logoutButton {
+
+            border:
+                none;
+
+            background:
+                #ef4444;
+
+            color:
+                white;
+
+            padding:
+                8px 13px;
+
+            border-radius:
+                7px;
+
+            cursor:
+                pointer;
+
+            font-weight:
+                600;
+
+        }
+
+
+        #logoutButton:hover {
+
+            background:
+                #dc2626;
+
+        }
+
+
+        /* =========================
+           GENERAL BUTTON
         ========================= */
 
         .button {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
 
-            padding: 12px 18px;
+            display:
+                inline-flex;
 
-            border-radius: 8px;
+            justify-content:
+                center;
 
-            text-decoration: none;
+            align-items:
+                center;
 
-            font-weight: 600;
+            padding:
+                12px 18px;
 
-            border: 1px solid transparent;
+            border-radius:
+                8px;
 
-            cursor: pointer;
+            text-decoration:
+                none;
 
-            transition:
-                transform 0.15s ease,
-                box-shadow 0.15s ease,
-                background 0.15s ease;
+            font-weight:
+                600;
+
+            border:
+                1px solid transparent;
+
+            cursor:
+                pointer;
+
+            font-size:
+                15px;
+
         }
 
-        .button:hover {
-            transform: translateY(-1px);
-        }
 
         .primary {
-            background: #4285F4;
-            color: white;
 
-            box-shadow:
-                0 5px 14px rgba(66, 133, 244, 0.20);
+            background:
+                #4285F4;
+
+            color:
+                white;
+
         }
+
 
         .primary:hover {
-            background: #3367d6;
+
+            background:
+                #3367d6;
+
         }
+
 
         .secondary {
-            background: white;
-            color: #2563eb;
-            border-color: #d7e3fb;
+
+            background:
+                white;
+
+            color:
+                #2563eb;
+
+            border-color:
+                #d7e3fb;
+
         }
 
+
         .secondary:hover {
-            background: #f7faff;
+
+            background:
+                #f7faff;
+
         }
+
 
         /* =========================
            HERO
         ========================= */
 
         .hero {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 90px 20px 70px;
 
-            text-align: center;
+            max-width:
+                900px;
+
+            margin:
+                0 auto;
+
+            padding:
+                90px 20px 65px;
+
+            text-align:
+                center;
+
         }
+
 
         .hero-badge {
-            display: inline-block;
 
-            padding: 7px 13px;
+            display:
+                inline-block;
 
-            border-radius: 999px;
+            padding:
+                7px 13px;
 
-            background: #eaf2ff;
-            color: #2563eb;
+            border-radius:
+                999px;
 
-            font-size: 13px;
-            font-weight: 600;
+            background:
+                #eaf2ff;
 
-            margin-bottom: 18px;
+            color:
+                #2563eb;
+
+            font-size:
+                13px;
+
+            font-weight:
+                600;
+
+            margin-bottom:
+                18px;
+
         }
+
 
         .hero h1 {
-            font-size: clamp(38px, 7vw, 62px);
-            line-height: 1.05;
-            letter-spacing: -2px;
 
-            color: #111827;
+            font-size:
+                clamp(38px,7vw,62px);
 
-            margin-bottom: 20px;
+            line-height:
+                1.05;
+
+            letter-spacing:
+                -2px;
+
+            margin-bottom:
+                20px;
+
         }
+
 
         .hero h1 span {
-            color: #4285F4;
+
+            color:
+                #4285F4;
+
         }
+
 
         .hero-subtitle {
-            max-width: 680px;
-            margin: 0 auto 22px;
 
-            color: #667085;
+            max-width:
+                680px;
 
-            font-size: 18px;
-            line-height: 1.7;
+            margin:
+                0 auto 22px;
+
+            color:
+                #667085;
+
+            font-size:
+                18px;
+
         }
+
 
         .founder {
-            color: #8a94a6;
-            font-size: 14px;
-            margin-bottom: 30px;
+
+            color:
+                #8a94a6;
+
+            font-size:
+                14px;
+
+            margin-bottom:
+                30px;
+
         }
+
 
         .button-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
 
-            gap: 12px;
-            flex-wrap: wrap;
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            gap:
+                12px;
+
+            flex-wrap:
+                wrap;
+
         }
 
+
         /* =========================
-           LOGIN
+           GOOGLE LOGIN
         ========================= */
 
         #loginSection {
-            margin: 45px auto 0;
 
-            padding-top: 30px;
+            margin:
+                45px auto 0;
 
-            border-top: 1px solid #e5e7eb;
+            padding-top:
+                30px;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            border-top:
+                1px solid #e5e7eb;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
         }
+
 
         #loginSection h3 {
-            font-size: 18px;
-            margin-bottom: 5px;
+
+            font-size:
+                18px;
+
+            margin-bottom:
+                5px;
+
         }
+
 
         #loginSection p {
-            color: #7b8494;
-            margin-bottom: 16px;
-            font-size: 14px;
+
+            color:
+                #7b8494;
+
+            margin-bottom:
+                16px;
+
+            font-size:
+                14px;
+
         }
+
 
         #googleLogin {
-            min-height: 44px;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin-top:
+                15px;
+
         }
+
 
         /* =========================
-           MEMBER AREA
+           ACCOUNT SETUP
         ========================= */
 
-        #memberContent {
-            display: none;
+        #accountSetup {
 
-            max-width: 1050px;
+            display:
+                none;
 
-            margin: 0 auto 60px;
+            min-height:
+                75vh;
 
-            padding: 0 20px;
+            padding:
+                50px 20px;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
         }
 
-        .welcome-back {
-            text-align: center;
-            margin-bottom: 28px;
+
+        .setup-card {
+
+            width:
+                100%;
+
+            max-width:
+                520px;
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                16px;
+
+            padding:
+                35px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,0.05);
+
+            text-align:
+                center;
+
         }
 
-        .welcome-back h2 {
-            margin-bottom: 5px;
+
+        .setup-icon {
+
+            font-size:
+                45px;
+
+            margin-bottom:
+                15px;
+
         }
 
-        .welcome-back p {
-            color: #737b8b;
+
+        .setup-card h1 {
+
+            margin-bottom:
+                8px;
+
         }
 
-        .cards {
-            display: grid;
+
+        .setup-card > p {
+
+            color:
+                #718096;
+
+            margin-bottom:
+                25px;
+
+        }
+
+
+        .username-label {
+
+            display:
+                block;
+
+            text-align:
+                left;
+
+            font-weight:
+                600;
+
+            margin-bottom:
+                7px;
+
+        }
+
+
+        .username-wrapper {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            background:
+                #f8fafc;
+
+            border:
+                1px solid #d8dee8;
+
+            border-radius:
+                8px;
+
+        }
+
+
+        .username-prefix {
+
+            padding-left:
+                14px;
+
+            color:
+                #6b7280;
+
+            font-weight:
+                600;
+
+        }
+
+
+        #usernameInput {
+
+            width:
+                100%;
+
+            border:
+                none;
+
+            outline:
+                none;
+
+            background:
+                transparent;
+
+            padding:
+                13px 14px 13px 5px;
+
+            font-size:
+                16px;
+
+        }
+
+
+        #usernameMessage {
+
+            min-height:
+                24px;
+
+            margin:
+                10px 0 15px;
+
+            font-size:
+                14px;
+
+            text-align:
+                left;
+
+        }
+
+
+        #createAccountButton {
+
+            width:
+                100%;
+
+        }
+
+
+        #setupLoading {
+
+            display:
+                none;
+
+            margin-top:
+                15px;
+
+            color:
+                #667085;
+
+            font-size:
+                14px;
+
+        }
+
+
+        /* =========================
+           DASHBOARD
+        ========================= */
+
+        #dashboard {
+
+            display:
+                none;
+
+            max-width:
+                1050px;
+
+            margin:
+                0 auto 70px;
+
+            padding:
+                40px 20px;
+
+        }
+
+
+        .dashboard-header {
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                16px;
+
+            padding:
+                28px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                18px;
+
+            margin-bottom:
+                20px;
+
+        }
+
+
+        .dashboard-pfp {
+
+            width:
+                72px;
+
+            height:
+                72px;
+
+            border-radius:
+                50%;
+
+            object-fit:
+                cover;
+
+            border:
+                2px solid #4285F4;
+
+        }
+
+
+        .dashboard-header h1 {
+
+            margin-bottom:
+                3px;
+
+        }
+
+
+        .dashboard-username {
+
+            color:
+                #4285F4;
+
+            font-weight:
+                600;
+
+        }
+
+
+        .dashboard-status {
+
+            margin-top:
+                5px;
+
+            color:
+                #718096;
+
+            font-size:
+                14px;
+
+        }
+
+
+        .dashboard-grid {
+
+            display:
+                grid;
 
             grid-template-columns:
                 repeat(
                     auto-fit,
-                    minmax(270px, 1fr)
+                    minmax(240px,1fr)
                 );
 
-            gap: 18px;
+            gap:
+                18px;
+
         }
 
-        .card {
-            background: white;
 
-            border: 1px solid #e3e7ee;
+        .dashboard-card {
 
-            border-radius: 14px;
+            background:
+                white;
 
-            padding: 26px;
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                14px;
+
+            padding:
+                25px;
+
+            transition:
+                transform .15s ease,
+                box-shadow .15s ease;
+
+        }
+
+
+        .dashboard-card:hover {
+
+            transform:
+                translateY(-2px);
 
             box-shadow:
-                0 4px 14px rgba(0, 0, 0, 0.035);
+                0 8px 20px
+                rgba(0,0,0,0.05);
+
         }
 
-        .card-icon {
-            font-size: 29px;
-            margin-bottom: 10px;
+
+        .dashboard-icon {
+
+            font-size:
+                32px;
+
+            margin-bottom:
+                10px;
+
         }
 
-        .card h3 {
-            margin-bottom: 8px;
-            font-size: 20px;
+
+        .dashboard-card h3 {
+
+            margin-bottom:
+                7px;
+
         }
 
-        .card p {
-            color: #687386;
-            line-height: 1.65;
+
+        .dashboard-card p {
+
+            color:
+                #718096;
+
+            margin-bottom:
+                15px;
+
         }
 
-        .card .button {
-            margin-top: 15px;
+
+        /* =========================
+           TRIAL
+        ========================= */
+
+        .trial-card {
+
+            margin-top:
+                18px;
+
+            background:
+                #f1f7ff;
+
+            border-color:
+                #cfe0ff;
+
         }
 
-        .trial {
-            margin-top: 18px;
-
-            background: #f1f7ff;
-            border-color: #cfe0ff;
-        }
-
-        .trial h3 {
-            color: #2563eb;
-        }
-
-        #trialMessage {
-            margin-top: 3px;
-        }
 
         /* =========================
            ABOUT
         ========================= */
 
         .section-container {
-            max-width: 1050px;
-            margin: 0 auto 55px;
-            padding: 0 20px;
+
+            max-width:
+                1050px;
+
+            margin:
+                0 auto 55px;
+
+            padding:
+                0 20px;
+
         }
+
 
         .section-card {
-            background: white;
 
-            border: 1px solid #e3e7ee;
+            background:
+                white;
 
-            border-radius: 14px;
+            border:
+                1px solid #e3e7ee;
 
-            padding: 30px;
+            border-radius:
+                14px;
 
-            box-shadow:
-                0 4px 14px rgba(0, 0, 0, 0.035);
+            padding:
+                30px;
+
         }
+
 
         .section-card h2 {
-            margin-bottom: 12px;
+
+            margin-bottom:
+                12px;
+
         }
+
 
         .section-card p {
-            color: #687386;
-            margin-bottom: 16px;
+
+            color:
+                #687386;
+
+            margin-bottom:
+                15px;
+
         }
 
+
         .section-card ul {
-            padding-left: 22px;
-            color: #596579;
-            line-height: 1.9;
+
+            padding-left:
+                22px;
+
+            color:
+                #596579;
+
+            line-height:
+                1.9;
+
         }
+
 
         /* =========================
            PRICING
         ========================= */
 
         .pricing {
-            max-width: 640px;
-            margin: 0 auto 70px;
-            padding: 0 20px;
+
+            max-width:
+                640px;
+
+            margin:
+                0 auto 70px;
+
+            padding:
+                0 20px;
+
         }
+
 
         .pricing-card {
-            background: white;
 
-            border: 1px solid #e3e7ee;
+            background:
+                white;
 
-            border-radius: 16px;
+            border:
+                1px solid #e3e7ee;
 
-            padding: 34px;
+            border-radius:
+                16px;
 
-            text-align: center;
+            padding:
+                34px;
 
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.045);
+            text-align:
+                center;
+
         }
 
-        .pricing-card h2 {
-            margin-bottom: 8px;
-        }
 
         .price {
-            color: #4285F4;
 
-            font-size: 48px;
+            color:
+                #4285F4;
 
-            font-weight: 700;
+            font-size:
+                48px;
 
-            margin: 7px 0;
+            font-weight:
+                700;
+
+            margin:
+                8px 0;
+
         }
 
-        .price-label {
-            color: #8a94a6;
-            margin-bottom: 20px;
-        }
 
         .pricing-card ul {
-            max-width: 430px;
 
-            margin: 0 auto 20px;
+            max-width:
+                430px;
 
-            text-align: left;
+            margin:
+                0 auto 20px;
 
-            padding-left: 22px;
+            text-align:
+                left;
 
-            color: #596579;
+            padding-left:
+                22px;
 
-            line-height: 1.9;
+            color:
+                #596579;
+
+            line-height:
+                1.9;
+
         }
+
 
         .payment-note {
-            color: #687386;
-            font-size: 14px;
+
+            color:
+                #687386;
+
+            font-size:
+                14px;
+
         }
+
 
         /* =========================
            FOOTER
         ========================= */
 
         footer {
-            border-top: 1px solid #e5e7eb;
 
-            background: white;
+            border-top:
+                1px solid #e5e7eb;
 
-            color: #7b8494;
+            background:
+                white;
 
-            text-align: center;
+            color:
+                #7b8494;
 
-            padding: 28px 20px;
+            text-align:
+                center;
+
+            padding:
+                28px 20px;
+
         }
+
 
         footer strong {
-            color: #404756;
+
+            color:
+                #404756;
+
         }
+
 
         /* =========================
            MOBILE
         ========================= */
 
-        @media (max-width: 650px) {
+        @media (
+            max-width: 650px
+        ) {
 
             header {
-                padding: 11px 18px;
+
+                padding:
+                    11px 18px;
+
             }
+
 
             .brand-name {
-                font-size: 20px;
+
+                font-size:
+                    20px;
+
             }
 
-            .brand img {
-                width: 38px;
-                height: 38px;
-            }
 
             #profileName {
-                display: none;
+
+                display:
+                    none;
+
             }
+
 
             .hero {
-                padding-top: 60px;
+
+                padding-top:
+                    60px;
+
             }
 
-            .hero-subtitle {
-                font-size: 16px;
-            }
 
             .button {
-                width: 100%;
-                max-width: 300px;
+
+                width:
+                    100%;
+
+                max-width:
+                    300px;
+
             }
 
-            .section-card,
-            .pricing-card,
-            .card {
-                padding: 23px;
+
+            .setup-card {
+
+                padding:
+                    25px 20px;
+
             }
+
+
+            .dashboard-header {
+
+                padding:
+                    22px;
+
+            }
+
         }
 
     </style>
@@ -530,7 +1153,12 @@
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
+
 
     <div class="brand">
 
@@ -569,7 +1197,14 @@
 
 
 
-<section class="hero">
+<!-- =========================
+     HOME HERO
+========================= -->
+
+<section
+    class="hero"
+    id="homeSection"
+>
 
     <div class="hero-badge">
         📚 Student Notes Platform
@@ -577,8 +1212,10 @@
 
 
     <h1>
+
         Learn more.
         <span>Share more.</span>
+
     </h1>
 
 
@@ -591,7 +1228,9 @@
 
 
     <p class="founder">
+
         Founded by Rick Aldrei A. Velilla
+
     </p>
 
 
@@ -604,7 +1243,6 @@
             📚 Open Notes Catalog
         </a>
 
-
         <a
             href="#about"
             class="button secondary"
@@ -614,6 +1252,8 @@
 
     </div>
 
+
+    <!-- GOOGLE LOGIN -->
 
     <div id="loginSection">
 
@@ -633,27 +1273,140 @@
 
 
 
-<section id="memberContent">
+<!-- =========================
+     ACCOUNT SETUP
+========================= -->
 
-    <div class="welcome-back">
+<section
+    id="accountSetup"
+>
 
-        <h2>
-            Welcome back! 👋
-        </h2>
+    <div class="setup-card">
+
+
+        <div class="setup-icon">
+            👋
+        </div>
+
+
+        <h1>
+            Welcome to Writejot!
+        </h1>
+
 
         <p>
-            Your Writejot account is ready.
+
+            You're almost ready.
+
+            Choose a username for your
+            Writejot account.
+
         </p>
+
+
+        <label
+            class="username-label"
+            for="usernameInput"
+        >
+            Username
+        </label>
+
+
+        <div class="username-wrapper">
+
+            <span class="username-prefix">
+                @
+            </span>
+
+            <input
+                id="usernameInput"
+                type="text"
+                maxlength="20"
+                placeholder="yourusername"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div
+            id="usernameMessage"
+        ></div>
+
+
+        <button
+            id="createAccountButton"
+            class="button primary"
+            onclick="createWritejotAccount()"
+        >
+            Create Writejot Account
+        </button>
+
+
+        <div id="setupLoading">
+
+            Creating your account...
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<section
+    id="dashboard"
+>
+
+    <div class="dashboard-header">
+
+        <img
+            id="dashboardPicture"
+            class="dashboard-pfp"
+            src=""
+            alt="Profile picture"
+        >
+
+
+        <div>
+
+            <h1 id="dashboardName">
+                Welcome!
+            </h1>
+
+            <div
+                id="dashboardUsername"
+                class="dashboard-username"
+            >
+                @username
+            </div>
+
+            <div
+                id="dashboardStatus"
+                class="dashboard-status"
+            >
+                Writejot account
+            </div>
+
+        </div>
 
     </div>
 
 
-    <div class="cards">
+    <div class="dashboard-grid">
 
 
-        <div class="card">
+        <!-- CATALOG -->
 
-            <div class="card-icon">
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
                 📚
             </div>
 
@@ -662,7 +1415,7 @@
             </h3>
 
             <p>
-                Browse study notes shared by
+                Browse notes shared by
                 other students.
             </p>
 
@@ -677,23 +1430,24 @@
 
 
 
-        <div class="card">
+        <!-- SHARE -->
 
-            <div class="card-icon">
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
                 📝
             </div>
 
             <h3>
-                Share Your Notes
+                Share Notes
             </h3>
 
             <p>
-                Submit your own notes for review.
-                Approved notes can become part
-                of the catalog.
+                Submit notes for review
+                and possible inclusion
+                in the catalog.
             </p>
 
-            <!-- Replace with your real Google Form URL -->
             <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSf7mE5VxEXAMPLE/viewform"
                 target="_blank"
@@ -706,22 +1460,135 @@
         </div>
 
 
+
+        <!-- FLASHCARDS -->
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                🧠
+            </div>
+
+            <h3>
+                Flashcards
+            </h3>
+
+            <p>
+                Create and study flashcard sets.
+            </p>
+
+            <button
+                class="button secondary"
+                onclick="featureComingSoon('Flashcards')"
+            >
+                Coming Soon
+            </button>
+
+        </div>
+
+
+
+        <!-- CALENDAR -->
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📅
+            </div>
+
+            <h3>
+                Calendar
+            </h3>
+
+            <p>
+                View your classes, tests,
+                and personal events.
+            </p>
+
+            <button
+                class="button secondary"
+                onclick="featureComingSoon('Calendar')"
+            >
+                Coming Soon
+            </button>
+
+        </div>
+
+
+
+        <!-- REMINDERS -->
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                🔔
+            </div>
+
+            <h3>
+                Reminders
+            </h3>
+
+            <p>
+                Keep track of assignments,
+                projects, and personal reminders.
+            </p>
+
+            <button
+                class="button secondary"
+                onclick="featureComingSoon('Reminders')"
+            >
+                Coming Soon
+            </button>
+
+        </div>
+
+
+
+        <!-- MESSAGES -->
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                💬
+            </div>
+
+            <h3>
+                Messages
+            </h3>
+
+            <p>
+                Connect with other Writejot
+                users.
+            </p>
+
+            <button
+                class="button secondary"
+                onclick="featureComingSoon('Messages')"
+            >
+                Coming Soon
+            </button>
+
+        </div>
+
+
     </div>
 
 
-    <div class="card trial">
 
-        <div class="card-icon">
+    <!-- ACCOUNT STATUS -->
+
+    <div class="dashboard-card trial-card">
+
+        <div class="dashboard-icon">
             🎓
         </div>
 
         <h3>
-            7-Day Free Trial
+            Account Status
         </h3>
 
-        <p id="trialMessage">
-            Your Writejot account includes
-            a 7-day free trial.
+        <p id="dashboardStatusMessage">
+            Checking your account...
         </p>
 
     </div>
@@ -729,6 +1596,10 @@
 </section>
 
 
+
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section
     class="section-container"
@@ -750,25 +1621,23 @@
         <ul>
 
             <li>
-                Students can access the notes catalog.
+                Student-shared notes.
             </li>
 
             <li>
-                Students can submit their own notes
-                for review.
+                Flashcards and study tools.
             </li>
 
             <li>
-                Notes are manually reviewed before
-                being added to the catalog.
+                Class schedules and tests.
             </li>
 
             <li>
-                Catalog access depends on account status.
+                Automatic academic reminders.
             </li>
 
             <li>
-                Subscription payment is handled in person.
+                Student profiles and messaging.
             </li>
 
         </ul>
@@ -778,6 +1647,10 @@
 </section>
 
 
+
+<!-- =========================
+     PRICING
+========================= -->
 
 <section class="pricing">
 
@@ -791,9 +1664,9 @@
             ₱149
         </div>
 
-        <div class="price-label">
+        <p>
             Subscription
-        </div>
+        </p>
 
         <ul>
 
@@ -802,15 +1675,15 @@
             </li>
 
             <li>
-                Student-shared study materials
-            </li>
-
-            <li>
-                Ability to submit notes for review
-            </li>
-
-            <li>
                 7-day free trial for new users
+            </li>
+
+            <li>
+                Student study tools
+            </li>
+
+            <li>
+                Student profile features
             </li>
 
         </ul>
@@ -824,6 +1697,10 @@
 </section>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -842,22 +1719,28 @@
 <script>
 
 
-/* =========================
-   CONFIGURATION
-========================= */
+/* =========================================
+   CONFIG
+========================================= */
 
 const GOOGLE_CLIENT_ID =
     "148780152741-7bsouicsp37po7o79ov66pofji4ksvhc.apps.googleusercontent.com";
 
+
 const APPS_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbwKK7HO-uWb_QmnPVqne1jhXYk5GlhfgqjiwwGGNYGqubJViyXywb8NUBIa6u2znP6F/exec";
+    "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-/* =========================
-   GOOGLE LOGIN
-========================= */
+let pendingGoogleUser =
+    null;
+
+
+/* =========================================
+   INITIALIZE GOOGLE LOGIN
+========================================= */
 
 window.onload = function () {
+
 
     google.accounts.id.initialize({
 
@@ -877,15 +1760,31 @@ window.onload = function () {
         ),
 
         {
-            theme: "outline",
-            size: "large",
-            text: "signin_with",
-            shape: "rectangular",
-            width: 250
+
+            theme:
+                "outline",
+
+            size:
+                "large",
+
+            text:
+                "signin_with",
+
+            shape:
+                "rectangular",
+
+            width:
+                250
+
         }
 
     );
 
+
+    /*
+     * Check for an existing local session,
+     * but verify it against the server.
+     */
 
     const savedUser =
         localStorage.getItem(
@@ -898,9 +1797,14 @@ window.onload = function () {
         try {
 
             const user =
-                JSON.parse(savedUser);
+                JSON.parse(
+                    savedUser
+                );
 
-            showLoggedInUser(user);
+
+            checkAccount(
+                user
+            );
 
         }
 
@@ -917,9 +1821,9 @@ window.onload = function () {
 };
 
 
-/* =========================
-   HANDLE LOGIN
-========================= */
+/* =========================================
+   GOOGLE LOGIN
+========================================= */
 
 async function handleCredentialResponse(
     response
@@ -935,11 +1839,11 @@ async function handleCredentialResponse(
 
         const user = {
 
-            email:
-                data.email || "",
-
             name:
                 data.name || "",
+
+            email:
+                data.email || "",
 
             picture:
                 data.picture || "",
@@ -950,31 +1854,32 @@ async function handleCredentialResponse(
         };
 
 
-        localStorage.setItem(
+        pendingGoogleUser =
+            user;
 
-            "writejotUser",
 
-            JSON.stringify(user)
+        /*
+         * Check whether the Writejot account
+         * already exists.
+         */
 
+        await checkAccount(
+            user
         );
 
-
-        showLoggedInUser(user);
-
-
-        await saveUserToDatabase(user);
-
     }
+
 
     catch (error) {
 
         console.error(
-            "Login error:",
+            "Google login error:",
             error
         );
 
+
         alert(
-            "Something went wrong while signing in. Please try again."
+            "There was a problem signing in. Please try again."
         );
 
     }
@@ -982,67 +1887,136 @@ async function handleCredentialResponse(
 }
 
 
-/* =========================
-   SAVE USER TO DATABASE
-========================= */
+/* =========================================
+   CHECK ACCOUNT
+========================================= */
 
-async function saveUserToDatabase(user) {
+async function checkAccount(
+    user
+) {
 
     try {
 
-        await fetch(
+        const response =
+            await fetch(
 
-            APPS_SCRIPT_URL,
+                APPS_SCRIPT_URL +
+                "?action=account&email=" +
+                encodeURIComponent(
+                    user.email
+                )
 
-            {
+            );
 
-                method: "POST",
 
-                mode: "no-cors",
+        const result =
+            await response.json();
 
-                headers: {
-                    "Content-Type":
-                        "text/plain;charset=utf-8"
-                },
 
-                body:
-                    JSON.stringify({
+        console.log(
+            "Account check:",
+            result
+        );
 
-                        name:
-                            user.name,
 
-                        email:
-                            user.email,
+        /*
+         * Existing account
+         */
 
-                        googleId:
-                            user.googleId
+        if (
+            result.success &&
+            result.existingUser
+        ) {
 
-                    })
+
+            const accountUser = {
+
+                ...user,
+
+                username:
+                    result.username || "",
+
+                status:
+                    result.status || "",
+
+                payment:
+                    result.payment || ""
+
+            };
+
+
+            /*
+             * Existing account with username
+             */
+
+            if (
+                result.username
+            ) {
+
+                localStorage.setItem(
+
+                    "writejotUser",
+
+                    JSON.stringify(
+                        accountUser
+                    )
+
+                );
+
+
+                showDashboard(
+                    accountUser
+                );
 
             }
 
-        );
 
-        console.log(
-            "User sent to database."
-        );
+            /*
+             * Existing account without username
+             */
+
+            else {
+
+                pendingGoogleUser =
+                    accountUser;
+
+                showAccountSetup(
+                    accountUser
+                );
+
+            }
+
+
+            return;
+
+        }
+
 
         /*
-         * Refresh account status
-         * after database update.
+         * Brand-new account
          */
 
-        updateTrialMessage(
-            user.email
+        pendingGoogleUser =
+            user;
+
+
+        showAccountSetup(
+            user
         );
 
     }
 
+
     catch (error) {
 
         console.error(
-            "Database error:",
+            "Account check failed:",
             error
+        );
+
+
+        alert(
+            "Writejot couldn't check your account. Please try again."
         );
 
     }
@@ -1050,15 +2024,34 @@ async function saveUserToDatabase(user) {
 }
 
 
-/* =========================
-   SHOW LOGGED-IN USER
-========================= */
+/* =========================================
+   SHOW ACCOUNT SETUP
+========================================= */
 
-function showLoggedInUser(user) {
+function showAccountSetup(
+    user
+) {
+
 
     document
         .getElementById(
-            "loginSection"
+            "homeSection"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "accountSetup"
+        )
+        .style.display =
+        "flex";
+
+
+    document
+        .getElementById(
+            "dashboard"
         )
         .style.display =
         "none";
@@ -1069,21 +2062,451 @@ function showLoggedInUser(user) {
             "profileArea"
         )
         .style.display =
-        "flex";
+        "none";
 
 
-    const profilePicture =
-        document.getElementById(
-            "profilePicture"
+    document
+        .getElementById(
+            "usernameInput"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "usernameMessage"
+        )
+        .textContent =
+        "";
+
+}
+
+
+/* =========================================
+   CREATE WRITEJOT ACCOUNT
+========================================= */
+
+async function createWritejotAccount() {
+
+
+    if (
+        !pendingGoogleUser
+    ) {
+
+        alert(
+            "Please sign in with Google first."
+        );
+
+        return;
+
+    }
+
+
+    const input =
+        document
+            .getElementById(
+                "usernameInput"
+            );
+
+
+    const username =
+        input
+            .value
+            .trim()
+            .toLowerCase()
+            .replace(/^@/, "");
+
+
+    const message =
+        document
+            .getElementById(
+                "usernameMessage"
+            );
+
+
+    const button =
+        document
+            .getElementById(
+                "createAccountButton"
+            );
+
+
+    const loading =
+        document
+            .getElementById(
+                "setupLoading"
+            );
+
+
+    /*
+     * Validate username.
+     */
+
+    if (
+        username.length < 3
+    ) {
+
+        message.textContent =
+            "Username must be at least 3 characters.";
+
+        message.style.color =
+            "#dc2626";
+
+        return;
+
+    }
+
+
+    if (
+        username.length > 20
+    ) {
+
+        message.textContent =
+            "Username must be 20 characters or fewer.";
+
+        message.style.color =
+            "#dc2626";
+
+        return;
+
+    }
+
+
+    if (
+        !/^[a-z0-9_]+$/i.test(
+            username
+        )
+    ) {
+
+        message.textContent =
+            "Use only letters, numbers, and underscores.";
+
+        message.style.color =
+            "#dc2626";
+
+        return;
+
+    }
+
+
+    button.disabled =
+        true;
+
+    loading.style.display =
+        "block";
+
+
+    message.textContent =
+        "Checking username...";
+
+    message.style.color =
+        "#667085";
+
+
+    try {
+
+
+        /*
+         * Check username availability.
+         */
+
+        const availabilityResponse =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=usernameAvailable" +
+                "&username=" +
+                encodeURIComponent(
+                    username
+                ) +
+                "&email=" +
+                encodeURIComponent(
+                    pendingGoogleUser.email
+                )
+
+            );
+
+
+        const availability =
+            await availabilityResponse.json();
+
+
+        if (
+            !availability.available
+        ) {
+
+            message.textContent =
+                availability.error ||
+                "That username is already taken.";
+
+            message.style.color =
+                "#dc2626";
+
+            button.disabled =
+                false;
+
+            loading.style.display =
+                "none";
+
+            return;
+
+        }
+
+
+        message.textContent =
+            "Creating your Writejot account...";
+
+
+        /*
+         * Create the Writejot account.
+         */
+
+        await fetch(
+
+            APPS_SCRIPT_URL,
+
+            {
+
+                method:
+                    "POST",
+
+                mode:
+                    "no-cors",
+
+                headers: {
+
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+
+                },
+
+                body:
+                    JSON.stringify({
+
+                        action:
+                            "createAccount",
+
+                        name:
+                            pendingGoogleUser.name,
+
+                        email:
+                            pendingGoogleUser.email,
+
+                        googleId:
+                            pendingGoogleUser.googleId,
+
+                        username:
+                            username
+
+                    })
+
+            }
+
         );
 
 
-    if (user.picture) {
+        /*
+         * Confirm the account exists.
+         */
 
-        profilePicture.src =
-            user.picture;
+        const verifiedUser =
+            await waitForAccount(
+                pendingGoogleUser.email,
+                username
+            );
+
+
+        if (
+            !verifiedUser
+        ) {
+
+            throw new Error(
+                "The account was not confirmed by the database."
+            );
+
+        }
+
+
+        const finalUser = {
+
+            ...pendingGoogleUser,
+
+            username:
+                verifiedUser.username,
+
+            status:
+                verifiedUser.status ||
+                "trial",
+
+            payment:
+                verifiedUser.payment ||
+                "No"
+
+        };
+
+
+        localStorage.setItem(
+
+            "writejotUser",
+
+            JSON.stringify(
+                finalUser
+            )
+
+        );
+
+
+        pendingGoogleUser =
+            finalUser;
+
+
+        showDashboard(
+            finalUser
+        );
+
 
     }
+
+
+    catch (error) {
+
+        console.error(
+            "Account creation failed:",
+            error
+        );
+
+
+        message.textContent =
+            "We couldn't create the account. Please try again.";
+
+        message.style.color =
+            "#dc2626";
+
+    }
+
+
+    finally {
+
+        button.disabled =
+            false;
+
+        loading.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =========================================
+   WAIT FOR ACCOUNT
+========================================= */
+
+async function waitForAccount(
+    email,
+    username
+) {
+
+
+    for (
+        let attempt = 0;
+        attempt < 10;
+        attempt++
+    ) {
+
+        try {
+
+            const response =
+                await fetch(
+
+                    APPS_SCRIPT_URL +
+                    "?action=account&email=" +
+                    encodeURIComponent(
+                        email
+                    )
+
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if (
+                result.success &&
+                result.username &&
+                result.username
+                    .toLowerCase() ===
+                username.toLowerCase()
+            ) {
+
+                return result;
+
+            }
+
+        }
+
+        catch (error) {
+
+            console.log(
+                "Waiting for account..."
+            );
+
+        }
+
+
+        await sleep(
+            600
+        );
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================
+   SHOW DASHBOARD
+========================================= */
+
+function showDashboard(
+    user
+) {
+
+
+    document
+        .getElementById(
+            "homeSection"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "accountSetup"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "dashboard"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "profileArea"
+        )
+        .style.display =
+        "flex";
 
 
     document
@@ -1097,24 +2520,74 @@ function showLoggedInUser(user) {
 
     document
         .getElementById(
-            "memberContent"
+            "profilePicture"
         )
-        .style.display =
-        "block";
+        .src =
+        user.picture || "";
 
 
-    updateTrialMessage(
-        user.email
+    document
+        .getElementById(
+            "dashboardPicture"
+        )
+        .src =
+        user.picture || "";
+
+
+    document
+        .getElementById(
+            "dashboardName"
+        )
+        .textContent =
+        "Welcome, " +
+        (
+            user.name ||
+            "Student"
+        ) +
+        "!";
+
+
+    document
+        .getElementById(
+            "dashboardUsername"
+        )
+        .textContent =
+        "@" +
+        (
+            user.username ||
+            "username"
+        );
+
+
+    updateDashboardStatus(
+        user
     );
 
 }
 
 
-/* =========================
-   GET ACCOUNT STATUS
-========================= */
+/* =========================================
+   DASHBOARD STATUS
+========================================= */
 
-async function updateTrialMessage(email) {
+async function updateDashboardStatus(
+    user
+) {
+
+
+    const statusMessage =
+        document
+            .getElementById(
+                "dashboardStatusMessage"
+            );
+
+
+    const headerStatus =
+        document
+            .getElementById(
+                "dashboardStatus"
+            );
+
 
     try {
 
@@ -1122,9 +2595,9 @@ async function updateTrialMessage(email) {
             await fetch(
 
                 APPS_SCRIPT_URL +
-                "?email=" +
+                "?action=account&email=" +
                 encodeURIComponent(
-                    email
+                    user.email
                 )
 
             );
@@ -1134,61 +2607,52 @@ async function updateTrialMessage(email) {
             await response.json();
 
 
-        const message =
-            document.getElementById(
-                "trialMessage"
-            );
-
-
         if (
-            result.success &&
-            result.status
+            result.success
         ) {
 
             const status =
-                result.status
-                    .toLowerCase();
+                String(
+                    result.status || ""
+                )
+                .trim()
+                .toLowerCase();
 
 
             if (
-                status === "active"
-            ) {
-
-                message.textContent =
-                    "Your account is Active. You can access the Notes Catalog.";
-
-            }
-
-            else if (
                 status === "trial"
             ) {
 
-                message.textContent =
+                headerStatus.textContent =
+                    "7-day free trial";
+
+
+                statusMessage.textContent =
                     "Your 7-day free trial is active.";
 
             }
 
             else if (
-                status === "expired"
+                status === "active"
             ) {
 
-                message.textContent =
-                    "Your trial or subscription has expired. Please subscribe for ₱149.";
+                headerStatus.textContent =
+                    "Active account";
 
-            }
 
-            else if (
-                status === "pending"
-            ) {
-
-                message.textContent =
-                    "Your account is pending approval.";
+                statusMessage.textContent =
+                    "Your Writejot account is active.";
 
             }
 
             else {
 
-                message.textContent =
+                headerStatus.textContent =
+                    "Account status: " +
+                    result.status;
+
+
+                statusMessage.textContent =
                     "Your current account status is: " +
                     result.status +
                     ".";
@@ -1202,7 +2666,7 @@ async function updateTrialMessage(email) {
     catch (error) {
 
         console.error(
-            "Could not retrieve account status:",
+            "Status check failed:",
             error
         );
 
@@ -1211,20 +2675,25 @@ async function updateTrialMessage(email) {
 }
 
 
-/* =========================
+/* =========================================
    LOGOUT
-========================= */
+========================================= */
 
 function logout() {
+
 
     localStorage.removeItem(
         "writejotUser"
     );
 
 
+    pendingGoogleUser =
+        null;
+
+
     document
         .getElementById(
-            "profileArea"
+            "dashboard"
         )
         .style.display =
         "none";
@@ -1232,15 +2701,23 @@ function logout() {
 
     document
         .getElementById(
-            "loginSection"
+            "accountSetup"
         )
         .style.display =
-        "flex";
+        "none";
 
 
     document
         .getElementById(
-            "memberContent"
+            "homeSection"
+        )
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById(
+            "profileArea"
         )
         .style.display =
         "none";
@@ -1261,14 +2738,60 @@ function logout() {
         .src =
         "";
 
+
+    if (
+        google.accounts &&
+        google.accounts.id
+    ) {
+
+        google.accounts.id.disableAutoSelect();
+
+    }
+
 }
 
 
-/* =========================
-   DECODE GOOGLE TOKEN
-========================= */
+/* =========================================
+   FUTURE FEATURES
+========================================= */
 
-function parseJwt(token) {
+function featureComingSoon(
+    feature
+) {
+
+    alert(
+        feature +
+        " is coming soon."
+    );
+
+}
+
+
+/* =========================================
+   HELPERS
+========================================= */
+
+function sleep(
+    milliseconds
+) {
+
+    return new Promise(
+        function(resolve) {
+
+            setTimeout(
+                resolve,
+                milliseconds
+            );
+
+        }
+    );
+
+}
+
+
+function parseJwt(
+    token
+) {
 
     const base64Url =
         token.split(".")[1];
@@ -1286,7 +2809,7 @@ function parseJwt(token) {
             atob(base64)
                 .split("")
                 .map(
-                    function (c) {
+                    function(c) {
 
                         return "%" +
                             (
@@ -1294,7 +2817,8 @@ function parseJwt(token) {
                                 c
                                     .charCodeAt(0)
                                     .toString(16)
-                            ).slice(-2);
+                            )
+                            .slice(-2);
 
                     }
                 )
