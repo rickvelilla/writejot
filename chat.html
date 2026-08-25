@@ -12,11 +12,13 @@
 
     <title>Writejot | Chat</title>
 
+
     <style>
 
         * {
             box-sizing: border-box;
         }
+
 
         html,
         body {
@@ -25,37 +27,45 @@
             height: 100%;
         }
 
+
         body {
+
             font-family:
                 Arial,
                 Helvetica,
                 sans-serif;
 
             background:
-                #f6f8fc;
+                #f2f4f7;
 
             color:
-                #1f2937;
+                #202124;
 
             display:
                 flex;
 
             flex-direction:
                 column;
+
+            overflow: hidden;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
 
-        header {
-            background: white;
+        /* =================================================
+           HEADER
+        ================================================= */
+
+        .topbar {
+
+            height: 64px;
+
+            flex-shrink: 0;
+
+            background:
+                white;
 
             border-bottom:
-                1px solid #e5e7eb;
-
-            padding:
-                11px 6%;
+                1px solid #e1e5ea;
 
             display:
                 flex;
@@ -66,25 +76,32 @@
             gap:
                 12px;
 
-            flex-shrink:
-                0;
+            padding:
+                0 16px;
         }
 
-        .back {
-            color:
-                #4285F4;
+
+        .back-button {
 
             text-decoration:
                 none;
 
+            color:
+                #4285F4;
+
+            font-size:
+                14px;
+
             font-weight:
-                600;
+                700;
 
             white-space:
                 nowrap;
         }
 
-        .recipient {
+
+        .profile {
+
             display:
                 flex;
 
@@ -98,12 +115,14 @@
                 0;
         }
 
-        .recipient img {
+
+        .profile-picture {
+
             width:
-                42px;
+                40px;
 
             height:
-                42px;
+                40px;
 
             border-radius:
                 50%;
@@ -111,14 +130,26 @@
             object-fit:
                 cover;
 
-            border:
-                2px solid #4285F4;
+            background:
+                #e9eef5;
 
             flex-shrink:
                 0;
         }
 
-        .recipient-name {
+
+        .profile-info {
+
+            min-width:
+                0;
+        }
+
+
+        .profile-name {
+
+            font-size:
+                15px;
+
             font-weight:
                 700;
 
@@ -132,24 +163,41 @@
                 ellipsis;
         }
 
-        .recipient-username {
-            color:
-                #4285F4;
+
+        .profile-username {
 
             font-size:
-                13px;
+                12px;
+
+            color:
+                #6b7280;
+
+            white-space:
+                nowrap;
         }
 
-        /* =========================
-           MESSAGE AREA
-        ========================= */
 
-        #messages {
+        /* =================================================
+           CHAT AREA
+        ================================================= */
+
+        #chatArea {
+
             flex:
                 1;
 
             overflow-y:
                 auto;
+
+            padding:
+                18px 18px 20px;
+
+            scroll-behavior:
+                smooth;
+        }
+
+
+        .messages-inner {
 
             width:
                 100%;
@@ -160,92 +208,200 @@
             margin:
                 0 auto;
 
-            padding:
-                25px 20px;
+            display:
+                flex;
 
-            scroll-behavior:
-                smooth;
+            flex-direction:
+                column;
+
+            gap:
+                7px;
         }
 
-        /* =========================
-           MESSAGE BUBBLES
-        ========================= */
 
-        .message-row {
-            display: flex;
-            width: 100%;
-            margin-bottom: 12px;
-            align-items: flex-start;
-            height: fit-content;
-            min-height: 0;
+        /* =================================================
+           MESSAGE ROW
+        ================================================= */
+
+        .message {
+
+            display:
+                flex;
+
+            width:
+                100%;
         }
 
-        .message-row.mine {
-            justify-content: flex-end;
+
+        .message.mine {
+
+            justify-content:
+                flex-end;
         }
 
-        .message-row.theirs {
-            justify-content: flex-start;
+
+        .message.theirs {
+
+            justify-content:
+                flex-start;
         }
 
-        .bubble-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: fit-content;
-            max-width: 70%;
-            flex: 0 0 auto;
-            align-items: flex-start;
-            height: fit-content;
-            min-height: 0;
-        }
 
-        .bubble {
-            display: inline-block;
-            width: fit-content;
-            max-width: 100%;
-            height: fit-content !important;
-            min-height: 0 !important;
-            max-height: none !important;
-            flex: 0 0 auto;
-            padding: 10px 14px;
-            border-radius: 15px;
-            line-height: 1.45;
-            white-space: pre-wrap;
-            overflow-wrap: anywhere;
-            word-break: break-word;
-            text-align: left;
-            align-self: flex-start;
-            box-sizing: border-box;
-        }
+        /* =================================================
+           ROBLOX-STYLE MESSAGE
+        ================================================= */
 
-        .mine .bubble {
-            align-self: flex-end;
-            background: #4285F4;
-            color: white;
-            border-bottom-right-radius: 4px;
-        }
+        .message-content {
 
-        .theirs .bubble {
-            align-self: flex-start;
-            background: white;
-            color: #1f2937;
-            border: 1px solid #e1e6ee;
-            border-bottom-left-radius: 4px;
-        }
-
-        /* =========================
-           IMAGE MESSAGES
-        ========================= */
-
-        .message-image {
             display:
                 block;
 
             max-width:
-                500px;
+                min(
+                    72%,
+                    520px
+                );
 
-            max-height:
-                500px;
+            min-width:
+                0;
+        }
+
+
+        .bubble {
+
+            display:
+                inline-block;
+
+            box-sizing:
+                border-box;
+
+            max-width:
+                100%;
+
+            padding:
+                9px 13px;
+
+            border-radius:
+                14px;
+
+            font-size:
+                14px;
+
+            line-height:
+                1.4;
+
+            white-space:
+                pre-wrap;
+
+            overflow-wrap:
+                anywhere;
+
+            word-break:
+                break-word;
+
+            vertical-align:
+                top;
+
+            text-align:
+                left;
+
+            height:
+                auto;
+
+            min-height:
+                0;
+        }
+
+
+        /*
+         * Sent messages
+         */
+
+        .mine .bubble {
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+
+            border-bottom-right-radius:
+                4px;
+        }
+
+
+        /*
+         * Received messages
+         */
+
+        .theirs .bubble {
+
+            background:
+                white;
+
+            color:
+                #202124;
+
+            border:
+                1px solid #dfe3e8;
+
+            border-bottom-left-radius:
+                4px;
+        }
+
+
+        /* =================================================
+           TIME
+        ================================================= */
+
+        .time {
+
+            font-size:
+                10px;
+
+            color:
+                #8a919b;
+
+            margin-top:
+                2px;
+
+            padding:
+                0 3px;
+        }
+
+
+        .mine .time {
+
+            text-align:
+                right;
+        }
+
+
+        .theirs .time {
+
+            text-align:
+                left;
+        }
+
+
+        /* =================================================
+           IMAGE MESSAGE
+        ================================================= */
+
+        .image-bubble {
+
+            padding:
+                4px;
+
+            overflow:
+                hidden;
+        }
+
+
+        .message-image {
+
+            display:
+                block;
 
             width:
                 auto;
@@ -253,96 +409,310 @@
             height:
                 auto;
 
+            max-width:
+                100%;
+
+            max-height:
+                420px;
+
             border-radius:
-                12px;
+                11px;
 
             object-fit:
                 contain;
 
             cursor:
                 pointer;
-
-            margin:
-                0;
         }
 
-        .image-message-bubble {
+
+        .image-caption {
+
             padding:
-                5px;
+                6px 7px 4px;
 
-            overflow:
-                hidden;
-        }
-
-        .image-message-bubble
-        .message-image {
-            border-radius:
-                10px;
-        }
-
-        /* =========================
-           MESSAGE TIME
-        ========================= */
-
-        .time {
             font-size:
-                11px;
+                14px;
 
-            opacity:
-                0.65;
+            line-height:
+                1.4;
 
-            margin-top:
-                4px;
+            white-space:
+                pre-wrap;
+
+            overflow-wrap:
+                anywhere;
         }
 
-        .mine .time {
-            text-align:
-                right;
-        }
 
-        /* =========================
-           EMPTY STATE
-        ========================= */
+        /* =================================================
+           EMPTY
+        ================================================= */
 
-        #empty {
-            text-align:
+        .empty-state {
+
+            height:
+                100%;
+
+            min-height:
+                250px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
                 center;
 
             color:
-                #718096;
+                #89919d;
 
-            padding:
-                40px;
+            text-align:
+                center;
         }
 
-        /* =========================
-           COMPOSER
-        ========================= */
 
-        #composer {
-            width:
-                100%;
+        .empty-icon {
+
+            font-size:
+                38px;
+
+            margin-bottom:
+                8px;
+        }
+
+
+        /* =================================================
+           COMPOSER
+        ================================================= */
+
+        .composer-area {
+
+            flex-shrink:
+                0;
 
             background:
                 white;
 
             border-top:
-                1px solid #e5e7eb;
+                1px solid #e1e5ea;
 
             padding:
-                10px 14px;
-
-            flex-shrink:
-                0;
+                10px 12px 12px;
         }
 
-        /* =========================
-           IMAGE PREVIEW
-        ========================= */
 
-        #imagePreview {
+        .composer {
+
+            width:
+                100%;
+
+            max-width:
+                850px;
+
+            margin:
+                0 auto;
+
+            display:
+                flex;
+
+            align-items:
+                flex-end;
+
+            gap:
+                7px;
+        }
+
+
+        /* =================================================
+           PHOTO BUTTON
+        ================================================= */
+
+        #photoButton {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            flex:
+                0 0 42px;
+
+            border:
+                1px solid #d7dce3;
+
+            border-radius:
+                10px;
+
+            background:
+                white;
+
+            cursor:
+                pointer;
+
+            font-size:
+                19px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+        }
+
+
+        #photoButton:hover {
+
+            background:
+                #f4f6f8;
+        }
+
+
+        #imageInput {
+
             display:
                 none;
+        }
+
+
+        /* =================================================
+           TEXT INPUT
+        ================================================= */
+
+        #messageInput {
+
+            flex:
+                1 1 auto;
+
+            min-width:
+                0;
+
+            width:
+                100%;
+
+            min-height:
+                42px;
+
+            max-height:
+                125px;
+
+            padding:
+                10px 12px;
+
+            border:
+                1px solid #d7dce3;
+
+            border-radius:
+                10px;
+
+            background:
+                white;
+
+            font-family:
+                inherit;
+
+            font-size:
+                14px;
+
+            line-height:
+                20px;
+
+            resize:
+                none;
+
+            outline:
+                none;
+
+            overflow-y:
+                auto;
+        }
+
+
+        #messageInput:focus {
+
+            border-color:
+                #4285F4;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    66,
+                    133,
+                    244,
+                    .08
+                );
+        }
+
+
+        /* =================================================
+           SEND
+        ================================================= */
+
+        #sendButton {
+
+            height:
+                42px;
+
+            flex:
+                0 0 auto;
+
+            padding:
+                0 16px;
+
+            border:
+                none;
+
+            border-radius:
+                10px;
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+
+            font-size:
+                14px;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+        }
+
+
+        #sendButton:hover {
+
+            background:
+                #3367d6;
+        }
+
+
+        #sendButton:disabled {
+
+            opacity:
+                .6;
+
+            cursor:
+                not-allowed;
+        }
+
+
+        /* =================================================
+           IMAGE PREVIEW
+        ================================================= */
+
+        #imagePreview {
 
             width:
                 100%;
@@ -353,11 +723,13 @@
             margin:
                 0 auto 8px;
 
-            padding:
-                0 0 2px;
+            display:
+                none;
         }
 
-        .preview-wrapper {
+
+        .preview-box {
+
             position:
                 relative;
 
@@ -365,7 +737,9 @@
                 inline-block;
         }
 
+
         #previewImage {
+
             display:
                 block;
 
@@ -373,36 +747,38 @@
                 auto;
 
             max-width:
-                180px;
+                170px;
 
             max-height:
-                140px;
+                120px;
 
             border-radius:
                 10px;
 
+            border:
+                1px solid #d7dce3;
+
             object-fit:
                 cover;
-
-            border:
-                1px solid #d8dee8;
         }
 
+
         #removeImageButton {
+
             position:
                 absolute;
 
-            top:
-                -8px;
-
             right:
-                -8px;
+                -7px;
+
+            top:
+                -7px;
 
             width:
-                24px;
+                23px;
 
             height:
-                24px;
+                23px;
 
             border:
                 none;
@@ -420,288 +796,175 @@
                 pointer;
 
             font-size:
-                16px;
+                15px;
 
             line-height:
-                24px;
+                23px;
 
             padding:
                 0;
         }
 
-        /* =========================
-           COMPOSER INNER
-        ========================= */
 
-        .composer-inner {
-            width:
-                100%;
-
-            max-width:
-                850px;
-
-            margin:
-                0 auto;
-
-            display:
-                flex;
-
-            align-items:
-                flex-end;
-
-            gap:
-                8px;
-        }
-
-        /* =========================
-           PHOTO BUTTON
-        ========================= */
-
-        #photoButton {
-            width:
-                44px;
-
-            height:
-                44px;
-
-            flex-shrink:
-                0;
-
-            border:
-                1px solid #d8dee8;
-
-            border-radius:
-                9px;
-
-            background:
-                white;
-
-            font-size:
-                20px;
-
-            cursor:
-                pointer;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-        }
-
-        #photoButton:hover {
-            background:
-                #f3f6fb;
-        }
-
-        #imageInput {
-            display:
-                none;
-        }
-
-        /* =========================
-           TEXT INPUT
-        ========================= */
-
-        #messageInput {
-            flex:
-                1;
-
-            min-width:
-                0;
-
-            width:
-                100%;
-
-            min-height:
-                44px;
-
-            max-height:
-                140px;
-
-            padding:
-                11px 14px;
-
-            border:
-                1px solid #d8dee8;
-
-            border-radius:
-                9px;
-
-            background:
-                white;
-
-            font-family:
-                inherit;
-
-            font-size:
-                14px;
-
-            outline:
-                none;
-
-            resize:
-                none;
-
-            overflow-y:
-                auto;
-        }
-
-        #messageInput:focus {
-            border-color:
-                #4285F4;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(
-                    66,
-                    133,
-                    244,
-                    0.08
-                );
-        }
-
-        /* =========================
-           SEND BUTTON
-        ========================= */
-
-        #sendButton {
-            flex-shrink:
-                0;
-
-            min-height:
-                44px;
-
-            padding:
-                0 18px;
-
-            border:
-                none;
-
-            border-radius:
-                9px;
-
-            background:
-                #4285F4;
-
-            color:
-                white;
-
-            font-weight:
-                600;
-
-            cursor:
-                pointer;
-
-            white-space:
-                nowrap;
-        }
-
-        #sendButton:hover {
-            background:
-                #3367d6;
-        }
-
-        #sendButton:disabled {
-            opacity:
-                0.6;
-
-            cursor:
-                not-allowed;
-        }
-
-        /* =========================
+        /* =================================================
            MOBILE
-        ========================= */
+        ================================================= */
 
-        @media (max-width: 600px) {
+        @media (
+            max-width: 600px
+        ) {
 
-            header {
-                padding:
-                    10px 12px;
-            }
-
-            .back {
-                font-size:
-                    13px;
-            }
-
-            .recipient img {
-                width:
-                    38px;
+            .topbar {
 
                 height:
-                    38px;
-            }
+                    58px;
 
-            .recipient-name {
-                max-width:
-                    170px;
-            }
-
-            #messages {
                 padding:
-                    18px 12px;
+                    0 11px;
+
             }
 
-            .bubble-wrapper {
-                width: fit-content;
-                max-width: 82%;
-                height: fit-content;
+
+            .back-button {
+
+                font-size:
+                    12px;
+
             }
 
-            .message-image {
-                max-width:
-                    100%;
 
-                max-height:
-                    360px;
+            .profile-picture {
+
+                width:
+                    36px;
+
+                height:
+                    36px;
+
             }
 
-            #composer {
+
+            .profile-name {
+
+                font-size:
+                    14px;
+
+            }
+
+
+            .profile-username {
+
+                font-size:
+                    11px;
+
+            }
+
+
+            #chatArea {
+
                 padding:
-                    8px 10px;
+                    14px 11px 16px;
+
             }
 
-            #imagePreview {
-                padding:
-                    0 2px;
-            }
 
-            .composer-inner {
+            .messages-inner {
+
                 gap:
                     6px;
+
             }
 
-            #messageInput {
-                min-height:
-                    42px;
+
+            .message-content {
+
+                max-width:
+                    82%;
+
+            }
+
+
+            .bubble {
+
+                font-size:
+                    14px;
+
+                padding:
+                    8px 12px;
+
+                border-radius:
+                    13px;
+
+            }
+
+
+            .message-image {
 
                 max-height:
-                    120px;
+                    330px;
+
+            }
+
+
+            .composer-area {
 
                 padding:
-                    10px 12px;
+                    8px;
+
             }
+
+
+            .composer {
+
+                gap:
+                    5px;
+
+            }
+
 
             #photoButton {
+
                 width:
-                    42px;
+                    40px;
 
                 height:
-                    42px;
+                    40px;
+
+                flex-basis:
+                    40px;
+
             }
+
+
+            #messageInput {
+
+                min-height:
+                    40px;
+
+                max-height:
+                    110px;
+
+            }
+
 
             #sendButton {
-                min-height:
-                    42px;
+
+                height:
+                    40px;
 
                 padding:
-                    0 13px;
+                    0 12px;
+
             }
+
+
+            #imagePreview {
+
+                padding:
+                    0 2px;
+
+            }
+
         }
 
     </style>
@@ -712,34 +975,35 @@
 <body>
 
 
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
-<header>
+<header class="topbar">
 
     <a
         href="messages.html"
-        class="back"
+        class="back-button"
     >
         ← Messages
     </a>
 
 
-    <div class="recipient">
+    <div class="profile">
 
         <img
             id="recipientPicture"
+            class="profile-picture"
             src="W.png"
-            alt="Profile picture"
+            alt=""
         >
 
 
-        <div>
+        <div class="profile-info">
 
             <div
                 id="recipientName"
-                class="recipient-name"
+                class="profile-name"
             >
                 Loading...
             </div>
@@ -747,7 +1011,7 @@
 
             <div
                 id="recipientUsername"
-                class="recipient-username"
+                class="profile-username"
             >
                 @username
             </div>
@@ -760,31 +1024,38 @@
 
 
 
-<!-- =========================
-     MESSAGES
-========================= -->
+<!-- =====================================================
+     CHAT
+===================================================== -->
 
-<div
-    id="messages"
->
+<main id="chatArea">
 
     <div
-        id="empty"
+        id="messages"
+        class="messages-inner"
     >
-        Loading messages...
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                💬
+            </div>
+
+            Loading messages...
+
+        </div>
+
     </div>
 
-</div>
+</main>
 
 
 
-<!-- =========================
+<!-- =====================================================
      COMPOSER
-========================= -->
+===================================================== -->
 
-<div
-    id="composer"
->
+<footer class="composer-area">
 
 
     <!-- IMAGE PREVIEW -->
@@ -793,9 +1064,7 @@
         id="imagePreview"
     >
 
-        <div
-            class="preview-wrapper"
-        >
+        <div class="preview-box">
 
             <img
                 id="previewImage"
@@ -818,18 +1087,16 @@
 
 
 
-    <div
-        class="composer-inner"
-    >
+    <div class="composer">
 
 
-        <!-- PHOTO BUTTON -->
+        <!-- PHOTO -->
 
         <button
             id="photoButton"
             type="button"
             onclick="openImagePicker()"
-            title="Send a photo"
+            title="Send photo"
         >
             📷
         </button>
@@ -843,16 +1110,14 @@
         >
 
 
-
-        <!-- TEXT INPUT -->
+        <!-- TEXT -->
 
         <textarea
             id="messageInput"
+            placeholder="Type a message..."
             maxlength="2000"
-            placeholder="Write a message..."
             rows="1"
         ></textarea>
-
 
 
         <!-- SEND -->
@@ -867,7 +1132,7 @@
 
     </div>
 
-</div>
+</footer>
 
 
 
@@ -902,7 +1167,8 @@ let selectedImage =
    START
 ========================================================= */
 
-window.onload =
+window.addEventListener(
+    "load",
     async function () {
 
         const savedUser =
@@ -911,15 +1177,12 @@ window.onload =
             );
 
 
-        if (
-            !savedUser
-        ) {
+        if (!savedUser) {
 
             window.location.href =
                 "index.html";
 
             return;
-
         }
 
 
@@ -931,14 +1194,12 @@ window.onload =
                 );
 
         }
-
         catch (error) {
 
             window.location.href =
                 "index.html";
 
             return;
-
         }
 
 
@@ -956,17 +1217,21 @@ window.onload =
             );
 
 
-        if (
-            !otherUsername
-        ) {
+        if (!otherUsername) {
 
             window.location.href =
                 "messages.html";
 
             return;
-
         }
 
+
+        setupInput();
+
+
+        /*
+         * Load the recipient and messages.
+         */
 
         await loadRecipient();
 
@@ -975,20 +1240,22 @@ window.onload =
         await loadMessages();
 
 
+        /*
+         * Keep checking for new messages.
+         */
+
         refreshTimer =
             setInterval(
                 loadMessages,
-                3000
+                4000
             );
 
-
-        setupMessageInput();
-
-    };
+    }
+);
 
 
 /* =========================================================
-   RECIPIENT
+   LOAD RECIPIENT
 ========================================================= */
 
 async function loadRecipient() {
@@ -1012,18 +1279,6 @@ async function loadRecipient() {
             );
 
 
-        if (
-            !response.ok
-        ) {
-
-            throw new Error(
-                "Server returned " +
-                response.status
-            );
-
-        }
-
-
         const result =
             await response.json();
 
@@ -1038,7 +1293,7 @@ async function loadRecipient() {
                     "recipientName"
                 )
                 .textContent =
-                "User not found";
+                "Writejot User";
 
 
             document
@@ -1051,7 +1306,6 @@ async function loadRecipient() {
 
 
             return;
-
         }
 
 
@@ -1102,30 +1356,12 @@ async function loadRecipient() {
             };
 
     }
-
     catch (error) {
 
         console.error(
-            "Recipient loading error:",
+            "Recipient error:",
             error
         );
-
-
-        document
-            .getElementById(
-                "recipientName"
-            )
-            .textContent =
-            "Writejot User";
-
-
-        document
-            .getElementById(
-                "recipientUsername"
-            )
-            .textContent =
-            "@" +
-            otherUsername;
 
     }
 
@@ -1133,7 +1369,7 @@ async function loadRecipient() {
 
 
 /* =========================================================
-   MARK AS READ
+   MARK READ
 ========================================================= */
 
 async function markConversationRead() {
@@ -1175,7 +1411,6 @@ async function markConversationRead() {
         );
 
     }
-
     catch (error) {
 
         console.error(
@@ -1218,18 +1453,6 @@ async function loadMessages() {
             );
 
 
-        if (
-            !response.ok
-        ) {
-
-            throw new Error(
-                "Server returned " +
-                response.status
-            );
-
-        }
-
-
         const result =
             await response.json();
 
@@ -1238,14 +1461,12 @@ async function loadMessages() {
             !result.success
         ) {
 
-            showMessageError(
+            showError(
                 result.error ||
                 "Could not load messages."
             );
 
-
             return;
-
         }
 
 
@@ -1255,17 +1476,16 @@ async function loadMessages() {
         );
 
     }
-
     catch (error) {
 
         console.error(
-            "Message loading error:",
+            "Messages error:",
             error
         );
 
 
-        showMessageError(
-            "Could not load messages."
+        showError(
+            "Could not connect to Writejot."
         );
 
     }
@@ -1274,7 +1494,7 @@ async function loadMessages() {
 
 
 /* =========================================================
-   RENDER MESSAGES
+   RENDER
 ========================================================= */
 
 function renderMessages(
@@ -1294,17 +1514,19 @@ function renderMessages(
         container.innerHTML =
 
             `
-            <div
-                id="empty"
-            >
-                No messages yet.
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    💬
+                </div>
+
+                No messages yet.<br>
                 Say hello!
+
             </div>
             `;
 
-
         return;
-
     }
 
 
@@ -1318,9 +1540,7 @@ function renderMessages(
         messages
             .map(
 
-                function (
-                    message
-                ) {
+                function (message) {
 
                     const mine =
                         normalizeUsername(
@@ -1334,17 +1554,26 @@ function renderMessages(
                             ? new Date(
                                 message.timestamp
                               )
-                              .toLocaleString()
+                              .toLocaleTimeString(
+                                  [],
+                                  {
+                                      hour:
+                                          "numeric",
+
+                                      minute:
+                                          "2-digit"
+                                  }
+                              )
                             : "";
 
 
-                    let content =
+                    let inner =
                         "";
 
 
-                    /* =========================
-                       IMAGE
-                    ========================= */
+                    /*
+                     * IMAGE
+                     */
 
                     if (
                         message.attachmentType ===
@@ -1352,7 +1581,7 @@ function renderMessages(
                         message.attachmentUrl
                     ) {
 
-                        content +=
+                        inner +=
 
                             `
                             <img
@@ -1367,49 +1596,53 @@ function renderMessages(
                                         message.attachmentUrl
                                     )}'
                                 )"
-                                onerror="
-                                    this.style.display='none';
-                                "
                             >
                             `;
 
                     }
 
 
-                    /* =========================
-                       TEXT
-                    ========================= */
+                    /*
+                     * TEXT
+                     */
 
                     if (
                         message.message
                     ) {
 
-                        content +=
+                        inner +=
 
                             `
-                            <div>
-                                ${escapeHtml(
-                                    message.message
-                                )}
-                            </div>
+                            ${
+                                message.attachmentUrl
+                                    ? `
+                                        <div
+                                            class="image-caption"
+                                        >
+                                            ${escapeHtml(
+                                                message.message
+                                            )}
+                                        </div>
+                                      `
+                                    : escapeHtml(
+                                        message.message
+                                    )
+                            }
                             `;
 
                     }
 
 
-                    const isImageOnly =
-                        (
-                            message.attachmentType ===
-                            "image"
-                        ) &&
+                    const imageOnly =
+                        message.attachmentType ===
+                            "image" &&
                         !message.message;
 
 
                     return `
 
                         <div
-                            class="message-row
-                            ${
+                            class="message ${
                                 mine
                                     ? "mine"
                                     : "theirs"
@@ -1417,29 +1650,28 @@ function renderMessages(
                         >
 
                             <div
-                                class="bubble-wrapper"
+                                class="message-content"
                             >
 
                                 <div
-                                    class="bubble
-                                    ${
-                                        isImageOnly
-                                            ? "image-message-bubble"
+                                    class="bubble ${
+                                        imageOnly
+                                            ? "image-bubble"
                                             : ""
                                     }"
                                 >
 
-                                    ${content}
+                                    ${inner}
 
                                 </div>
 
 
-                                <div
-                                    class="time"
-                                >
+                                <div class="time">
+
                                     ${escapeHtml(
                                         time
                                     )}
+
                                 </div>
 
                             </div>
@@ -1454,30 +1686,76 @@ function renderMessages(
             .join("");
 
 
-    container.scrollTop =
-        container.scrollHeight;
+    /*
+     * Scroll to the newest message.
+     */
+
+    container.parentElement.scrollTop =
+        container.parentElement.scrollHeight;
 
 }
 
 
 /* =========================================================
-   OPEN IMAGE
+   SETUP INPUT
 ========================================================= */
 
-function openImage(
-    url
-) {
+function setupInput() {
 
-    window.open(
-        url,
-        "_blank"
+    const input =
+        document.getElementById(
+            "messageInput"
+        );
+
+
+    input.addEventListener(
+        "input",
+        function () {
+
+            input.style.height =
+                "auto";
+
+
+            input.style.height =
+                Math.min(
+                    input.scrollHeight,
+                    125
+                ) +
+                "px";
+
+        }
+    );
+
+
+    input.addEventListener(
+        "keydown",
+        function (event) {
+
+            /*
+             * Enter = send
+             * Shift + Enter = new line
+             */
+
+            if (
+                event.key ===
+                    "Enter" &&
+                !event.shiftKey
+            ) {
+
+                event.preventDefault();
+
+                sendMessage();
+
+            }
+
+        }
     );
 
 }
 
 
 /* =========================================================
-   OPEN FILE PICKER
+   IMAGE PICKER
 ========================================================= */
 
 function openImagePicker() {
@@ -1504,12 +1782,8 @@ function handleImageSelection(
         event.target.files[0];
 
 
-    if (
-        !file
-    ) {
-
+    if (!file) {
         return;
-
     }
 
 
@@ -1520,23 +1794,12 @@ function handleImageSelection(
     ) {
 
         alert(
-            "Please choose an image file."
+            "Please select an image."
         );
 
-
-        event.target.value =
-            "";
-
-
         return;
-
     }
 
-
-    /*
-     * Keep original file under 10 MB.
-     * The image will be compressed before upload.
-     */
 
     if (
         file.size >
@@ -1544,16 +1807,10 @@ function handleImageSelection(
     ) {
 
         alert(
-            "Please choose an image smaller than 10 MB."
+            "Please select an image smaller than 10 MB."
         );
 
-
-        event.target.value =
-            "";
-
-
         return;
-
     }
 
 
@@ -1594,7 +1851,7 @@ function handleImageSelection(
 
 
 /* =========================================================
-   REMOVE SELECTED IMAGE
+   REMOVE IMAGE
 ========================================================= */
 
 function removeSelectedImage() {
@@ -1647,19 +1904,16 @@ async function sendMessage() {
         );
 
 
-    const message =
-        input
-            .value
-            .trim();
+    const text =
+        input.value.trim();
 
 
     if (
-        !message &&
+        !text &&
         !selectedImage
     ) {
 
         return;
-
     }
 
 
@@ -1676,10 +1930,8 @@ async function sendMessage() {
         let imageData =
             "";
 
-
-        let imageType =
+        let imageMime =
             "";
-
 
         let imageName =
             "";
@@ -1698,10 +1950,8 @@ async function sendMessage() {
             imageData =
                 compressed.dataUrl;
 
-
-            imageType =
+            imageMime =
                 compressed.mimeType;
-
 
             imageName =
                 compressed.fileName;
@@ -1739,7 +1989,7 @@ async function sendMessage() {
                                 otherUsername,
 
                             message:
-                                message,
+                                text,
 
                             attachmentType:
                                 imageData
@@ -1750,7 +2000,7 @@ async function sendMessage() {
                                 imageData,
 
                             attachmentMime:
-                                imageType,
+                                imageMime,
 
                             attachmentName:
                                 imageName
@@ -1760,18 +2010,6 @@ async function sendMessage() {
                 }
 
             );
-
-
-        if (
-            !response.ok
-        ) {
-
-            throw new Error(
-                "Server returned " +
-                response.status
-            );
-
-        }
 
 
         const result =
@@ -1784,7 +2022,7 @@ async function sendMessage() {
 
             throw new Error(
                 result.error ||
-                "Could not send the message."
+                "Could not send message."
             );
 
         }
@@ -1794,51 +2032,41 @@ async function sendMessage() {
             "";
 
 
-        resetTextareaHeight();
+        input.style.height =
+            "42px";
 
 
         removeSelectedImage();
 
 
         /*
-         * Give the server a moment
-         * and then load the message.
+         * Reload the chat.
          */
-
-        await sleep(
-            400
-        );
-
 
         await loadMessages();
 
     }
-
     catch (error) {
 
         console.error(
-            "Send message error:",
+            "Send error:",
             error
         );
 
 
         alert(
             error.message ||
-            "Could not send the message."
+            "Could not send message."
         );
 
     }
-
-
     finally {
 
         button.disabled =
             false;
 
-
         button.textContent =
             "Send";
-
 
         input.focus();
 
@@ -1848,7 +2076,7 @@ async function sendMessage() {
 
 
 /* =========================================================
-   COMPRESS IMAGE
+   IMAGE COMPRESSION
 ========================================================= */
 
 function compressImage(
@@ -1856,7 +2084,6 @@ function compressImage(
 ) {
 
     return new Promise(
-
         function (
             resolve,
             reject
@@ -1873,15 +2100,15 @@ function compressImage(
             reader.onload =
                 function () {
 
-                    const image =
+                    const img =
                         new Image();
 
 
-                    image.onerror =
+                    img.onerror =
                         reject;
 
 
-                    image.onload =
+                    img.onload =
                         function () {
 
                             const maxSize =
@@ -1889,11 +2116,11 @@ function compressImage(
 
 
                             let width =
-                                image.width;
+                                img.width;
 
 
                             let height =
-                                image.height;
+                                img.height;
 
 
                             if (
@@ -1911,12 +2138,9 @@ function compressImage(
                                     height =
                                         Math.round(
                                             height *
-                                            (
-                                                maxSize /
-                                                width
-                                            )
+                                            maxSize /
+                                            width
                                         );
-
 
                                     width =
                                         maxSize;
@@ -1927,12 +2151,9 @@ function compressImage(
                                     width =
                                         Math.round(
                                             width *
-                                            (
-                                                maxSize /
-                                                height
-                                            )
+                                            maxSize /
+                                            height
                                         );
-
 
                                     height =
                                         maxSize;
@@ -1943,37 +2164,30 @@ function compressImage(
 
 
                             const canvas =
-                                document
-                                    .createElement(
-                                        "canvas"
-                                    );
+                                document.createElement(
+                                    "canvas"
+                                );
 
 
                             canvas.width =
                                 width;
 
-
                             canvas.height =
                                 height;
 
 
-                            const context =
-                                canvas
-                                    .getContext(
-                                        "2d"
-                                    );
+                            const ctx =
+                                canvas.getContext(
+                                    "2d"
+                                );
 
 
-                            context.drawImage(
-
-                                image,
-
+                            ctx.drawImage(
+                                img,
                                 0,
                                 0,
-
                                 width,
                                 height
-
                             );
 
 
@@ -1981,20 +2195,13 @@ function compressImage(
                                 "image/jpeg";
 
 
-                            const dataUrl =
-                                canvas.toDataURL(
-
-                                    mimeType,
-
-                                    0.82
-
-                                );
-
-
                             resolve({
 
                                 dataUrl:
-                                    dataUrl,
+                                    canvas.toDataURL(
+                                        mimeType,
+                                        0.82
+                                    ),
 
                                 mimeType:
                                     mimeType,
@@ -2009,7 +2216,7 @@ function compressImage(
                         };
 
 
-                    image.src =
+                    img.src =
                         reader.result;
 
                 };
@@ -2020,94 +2227,53 @@ function compressImage(
             );
 
         }
-
     );
 
 }
 
 
 /* =========================================================
-   ADAPTIVE TEXTBOX
+   OPEN IMAGE
 ========================================================= */
 
-function setupMessageInput() {
+function openImage(
+    url
+) {
 
-    const input =
-        document.getElementById(
-            "messageInput"
-        );
-
-
-    input.addEventListener(
-        "input",
-        function () {
-
-            input.style.height =
-                "auto";
-
-
-            const maxHeight =
-                window.innerWidth <=
-                    600
-                    ? 120
-                    : 140;
-
-
-            input.style.height =
-                Math.min(
-                    input.scrollHeight,
-                    maxHeight
-                ) +
-                "px";
-
-        }
-    );
-
-
-    /*
-     * Enter = send
-     * Shift + Enter = new line
-     */
-
-    input.addEventListener(
-        "keydown",
-        function (
-            event
-        ) {
-
-            if (
-                event.key ===
-                    "Enter" &&
-                !event.shiftKey
-            ) {
-
-                event.preventDefault();
-
-
-                sendMessage();
-
-            }
-
-        }
+    window.open(
+        url,
+        "_blank"
     );
 
 }
 
 
 /* =========================================================
-   RESET TEXTBOX
+   ERROR
 ========================================================= */
 
-function resetTextareaHeight() {
+function showError(
+    message
+) {
 
-    const input =
-        document.getElementById(
-            "messageInput"
-        );
+    document
+        .getElementById(
+            "messages"
+        )
+        .innerHTML =
 
+        `
+        <div
+            class="empty-state"
+            style="color:#dc2626;"
+        >
 
-    input.style.height =
-        "44px";
+            ${escapeHtml(
+                message
+            )}
+
+        </div>
+        `;
 
 }
 
@@ -2165,29 +2331,9 @@ function escapeHtml(
 
 }
 
-
-function sleep(
-    milliseconds
-) {
-
-    return new Promise(
-        function (
-            resolve
-        ) {
-
-            setTimeout(
-                resolve,
-                milliseconds
-            );
-
-        }
-    );
-
-}
-
 </script>
-
 
 </body>
 
 </html>
+
