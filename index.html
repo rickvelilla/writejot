@@ -18,6 +18,7 @@
     <title>Writejot | Student Notes</title>
 
 
+    <!-- Google Sign-In -->
     <script
         src="https://accounts.google.com/gsi/client"
         async
@@ -54,12 +55,18 @@
 
             line-height:
                 1.6;
-
         }
 
 
         a {
             color: inherit;
+        }
+
+
+        button,
+        input,
+        textarea {
+            font-family: inherit;
         }
 
 
@@ -98,7 +105,6 @@
 
             backdrop-filter:
                 blur(10px);
-
         }
 
 
@@ -112,7 +118,6 @@
 
             gap:
                 11px;
-
         }
 
 
@@ -126,7 +131,6 @@
 
             object-fit:
                 contain;
-
         }
 
 
@@ -138,6 +142,8 @@
             font-weight:
                 700;
 
+            color:
+                #111827;
         }
 
 
@@ -155,7 +161,6 @@
 
             gap:
                 10px;
-
         }
 
 
@@ -175,7 +180,6 @@
 
             border:
                 2px solid #4285F4;
-
         }
 
 
@@ -186,7 +190,6 @@
 
             font-size:
                 14px;
-
         }
 
 
@@ -212,7 +215,6 @@
 
             font-weight:
                 600;
-
         }
 
 
@@ -220,12 +222,11 @@
 
             background:
                 #dc2626;
-
         }
 
 
         /* =========================
-           GENERAL BUTTON
+           GENERAL BUTTONS
         ========================= */
 
         .button {
@@ -260,6 +261,29 @@
             font-size:
                 15px;
 
+            transition:
+                background .15s ease,
+                transform .15s ease;
+        }
+
+
+        .button:hover {
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .button:disabled {
+
+            opacity:
+                0.6;
+
+            cursor:
+                not-allowed;
+
+            transform:
+                none;
         }
 
 
@@ -270,7 +294,6 @@
 
             color:
                 white;
-
         }
 
 
@@ -278,7 +301,6 @@
 
             background:
                 #3367d6;
-
         }
 
 
@@ -292,7 +314,6 @@
 
             border-color:
                 #d7e3fb;
-
         }
 
 
@@ -300,12 +321,11 @@
 
             background:
                 #f7faff;
-
         }
 
 
         /* =========================
-           HERO
+           HOME HERO
         ========================= */
 
         .hero {
@@ -321,7 +341,6 @@
 
             text-align:
                 center;
-
         }
 
 
@@ -350,7 +369,6 @@
 
             margin-bottom:
                 18px;
-
         }
 
 
@@ -365,9 +383,11 @@
             letter-spacing:
                 -2px;
 
+            color:
+                #111827;
+
             margin-bottom:
                 20px;
-
         }
 
 
@@ -375,7 +395,6 @@
 
             color:
                 #4285F4;
-
         }
 
 
@@ -392,7 +411,6 @@
 
             font-size:
                 18px;
-
         }
 
 
@@ -406,7 +424,6 @@
 
             margin-bottom:
                 30px;
-
         }
 
 
@@ -418,17 +435,19 @@
             justify-content:
                 center;
 
+            align-items:
+                center;
+
             gap:
                 12px;
 
             flex-wrap:
                 wrap;
-
         }
 
 
         /* =========================
-           GOOGLE LOGIN
+           LOGIN
         ========================= */
 
         #loginSection {
@@ -450,7 +469,6 @@
 
             align-items:
                 center;
-
         }
 
 
@@ -461,7 +479,6 @@
 
             margin-bottom:
                 5px;
-
         }
 
 
@@ -475,7 +492,6 @@
 
             font-size:
                 14px;
-
         }
 
 
@@ -483,7 +499,6 @@
 
             margin-top:
                 15px;
-
         }
 
 
@@ -507,7 +522,6 @@
 
             justify-content:
                 center;
-
         }
 
 
@@ -532,12 +546,10 @@
                 35px;
 
             box-shadow:
-                0 8px 25px
-                rgba(0,0,0,0.05);
+                0 8px 25px rgba(0,0,0,0.05);
 
             text-align:
                 center;
-
         }
 
 
@@ -548,7 +560,6 @@
 
             margin-bottom:
                 15px;
-
         }
 
 
@@ -556,7 +567,6 @@
 
             margin-bottom:
                 8px;
-
         }
 
 
@@ -567,7 +577,6 @@
 
             margin-bottom:
                 25px;
-
         }
 
 
@@ -584,7 +593,6 @@
 
             margin-bottom:
                 7px;
-
         }
 
 
@@ -604,7 +612,6 @@
 
             border-radius:
                 8px;
-
         }
 
 
@@ -618,7 +625,6 @@
 
             font-weight:
                 600;
-
         }
 
 
@@ -641,7 +647,6 @@
 
             font-size:
                 16px;
-
         }
 
 
@@ -658,7 +663,6 @@
 
             text-align:
                 left;
-
         }
 
 
@@ -666,7 +670,6 @@
 
             width:
                 100%;
-
         }
 
 
@@ -683,7 +686,6 @@
 
             font-size:
                 14px;
-
         }
 
 
@@ -700,11 +702,10 @@
                 1050px;
 
             margin:
-                0 auto 70px;
+                0 auto 40px;
 
             padding:
                 40px 20px;
-
         }
 
 
@@ -733,7 +734,6 @@
 
             margin-bottom:
                 20px;
-
         }
 
 
@@ -753,7 +753,6 @@
 
             border:
                 2px solid #4285F4;
-
         }
 
 
@@ -761,7 +760,6 @@
 
             margin-bottom:
                 3px;
-
         }
 
 
@@ -772,7 +770,6 @@
 
             font-weight:
                 600;
-
         }
 
 
@@ -786,7 +783,6 @@
 
             font-size:
                 14px;
-
         }
 
 
@@ -803,7 +799,6 @@
 
             gap:
                 18px;
-
         }
 
 
@@ -824,7 +819,6 @@
             transition:
                 transform .15s ease,
                 box-shadow .15s ease;
-
         }
 
 
@@ -834,9 +828,7 @@
                 translateY(-2px);
 
             box-shadow:
-                0 8px 20px
-                rgba(0,0,0,0.05);
-
+                0 8px 20px rgba(0,0,0,0.05);
         }
 
 
@@ -847,7 +839,6 @@
 
             margin-bottom:
                 10px;
-
         }
 
 
@@ -855,7 +846,6 @@
 
             margin-bottom:
                 7px;
-
         }
 
 
@@ -866,219 +856,15 @@
 
             margin-bottom:
                 15px;
-
         }
-<!-- =========================
-     PROFILE SETTINGS
-========================= -->
-
-<section
-    id="profileSettings"
-    style="
-        display:none;
-        max-width:700px;
-        margin:0 auto 60px;
-        padding:0 20px;
-    "
->
-
-    <div
-        style="
-            background:white;
-            border:1px solid #e1e6ee;
-            border-radius:16px;
-            padding:30px;
-        "
-    >
-
-        <h2>
-            Profile Settings
-        </h2>
-
-        <p
-            style="
-                color:#718096;
-                margin:8px 0 25px;
-            "
-        >
-            Customize your Writejot profile.
-            Only your username is required.
-        </p>
 
 
-        <!-- PROFILE PICTURE -->
+        .dashboard-card .button {
 
-        <label
-            style="
-                display:block;
-                font-weight:600;
-                margin-bottom:7px;
-            "
-        >
-            Profile Picture URL
-        </label>
+            margin-top:
+                3px;
+        }
 
-        <input
-            id="editProfilePicture"
-            type="url"
-            placeholder="https://example.com/image.jpg"
-            style="
-                width:100%;
-                padding:13px;
-                border:1px solid #d8dee8;
-                border-radius:8px;
-                margin-bottom:20px;
-            "
-        >
-
-
-        <!-- DISPLAY NAME -->
-
-        <label
-            style="
-                display:block;
-                font-weight:600;
-                margin-bottom:7px;
-            "
-        >
-            Display Name
-        </label>
-
-        <input
-            id="editDisplayName"
-            type="text"
-            maxlength="50"
-            placeholder="Your display name"
-            style="
-                width:100%;
-                padding:13px;
-                border:1px solid #d8dee8;
-                border-radius:8px;
-                margin-bottom:20px;
-            "
-        >
-
-
-        <!-- USERNAME -->
-
-        <label
-            style="
-                display:block;
-                font-weight:600;
-                margin-bottom:7px;
-            "
-        >
-            Username
-        </label>
-
-        <div
-            style="
-                display:flex;
-                align-items:center;
-                background:#f8fafc;
-                border:1px solid #d8dee8;
-                border-radius:8px;
-                margin-bottom:20px;
-            "
-        >
-
-            <span
-                style="
-                    padding-left:14px;
-                    color:#6b7280;
-                    font-weight:600;
-                "
-            >
-                @
-            </span>
-
-            <input
-                id="editUsername"
-                type="text"
-                maxlength="20"
-                style="
-                    width:100%;
-                    border:none;
-                    outline:none;
-                    background:transparent;
-                    padding:13px 14px 13px 5px;
-                    font-size:16px;
-                "
-            >
-
-        </div>
-
-
-        <!-- BIO -->
-
-        <label
-            style="
-                display:block;
-                font-weight:600;
-                margin-bottom:7px;
-            "
-        >
-            Bio
-        </label>
-
-        <textarea
-            id="editBio"
-            maxlength="160"
-            placeholder="Tell people a little about yourself..."
-            style="
-                width:100%;
-                min-height:110px;
-                padding:13px;
-                border:1px solid #d8dee8;
-                border-radius:8px;
-                resize:vertical;
-                font-family:inherit;
-                margin-bottom:20px;
-            "
-        ></textarea>
-
-
-        <div
-            style="
-                display:flex;
-                gap:10px;
-                flex-wrap:wrap;
-            "
-        >
-
-            <button
-                class="button primary"
-                onclick="saveProfile()"
-            >
-                Save Changes
-            </button>
-
-            <button
-                class="button secondary"
-                onclick="closeProfileSettings()"
-            >
-                Cancel
-            </button>
-
-        </div>
-
-
-        <p
-            id="profileSaveMessage"
-            style="
-                margin-top:15px;
-                color:#667085;
-            "
-        ></p>
-
-
-    </div>
-
-</section>
-
-        /* =========================
-           TRIAL
-        ========================= */
 
         .trial-card {
 
@@ -1090,7 +876,203 @@
 
             border-color:
                 #cfe0ff;
+        }
 
+
+        /* =========================
+           PROFILE SETTINGS
+        ========================= */
+
+        #profileSettings {
+
+            display:
+                none;
+
+            max-width:
+                700px;
+
+            margin:
+                0 auto 60px;
+
+            padding:
+                0 20px;
+        }
+
+
+        .profile-settings-card {
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                16px;
+
+            padding:
+                30px;
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.04);
+        }
+
+
+        .profile-settings-card h2 {
+
+            margin-bottom:
+                6px;
+        }
+
+
+        .profile-settings-intro {
+
+            color:
+                #718096;
+
+            margin:
+                0 0 25px;
+        }
+
+
+        .profile-field {
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .profile-field label {
+
+            display:
+                block;
+
+            font-weight:
+                600;
+
+            margin-bottom:
+                7px;
+        }
+
+
+        .profile-field input,
+        .profile-field textarea {
+
+            width:
+                100%;
+
+            padding:
+                13px;
+
+            border:
+                1px solid #d8dee8;
+
+            border-radius:
+                8px;
+
+            font-size:
+                15px;
+
+            outline:
+                none;
+
+            background:
+                white;
+        }
+
+
+        .profile-field input:focus,
+        .profile-field textarea:focus {
+
+            border-color:
+                #4285F4;
+
+            box-shadow:
+                0 0 0 3px rgba(66,133,244,0.08);
+        }
+
+
+        .profile-field textarea {
+
+            min-height:
+                110px;
+
+            resize:
+                vertical;
+        }
+
+
+        .profile-username-wrapper {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            background:
+                #f8fafc;
+
+            border:
+                1px solid #d8dee8;
+
+            border-radius:
+                8px;
+        }
+
+
+        .profile-username-prefix {
+
+            padding-left:
+                14px;
+
+            color:
+                #6b7280;
+
+            font-weight:
+                600;
+        }
+
+
+        #editUsername {
+
+            border:
+                none;
+
+            background:
+                transparent;
+
+            outline:
+                none;
+
+            padding:
+                13px 14px 13px 5px;
+        }
+
+
+        .profile-actions {
+
+            display:
+                flex;
+
+            gap:
+                10px;
+
+            flex-wrap:
+                wrap;
+        }
+
+
+        #profileSaveMessage {
+
+            min-height:
+                24px;
+
+            margin-top:
+                15px;
+
+            font-size:
+                14px;
         }
 
 
@@ -1108,7 +1090,6 @@
 
             padding:
                 0 20px;
-
         }
 
 
@@ -1125,7 +1106,6 @@
 
             padding:
                 30px;
-
         }
 
 
@@ -1133,7 +1113,6 @@
 
             margin-bottom:
                 12px;
-
         }
 
 
@@ -1144,7 +1123,6 @@
 
             margin-bottom:
                 15px;
-
         }
 
 
@@ -1158,7 +1136,6 @@
 
             line-height:
                 1.9;
-
         }
 
 
@@ -1176,7 +1153,6 @@
 
             padding:
                 0 20px;
-
         }
 
 
@@ -1196,7 +1172,6 @@
 
             text-align:
                 center;
-
         }
 
 
@@ -1213,7 +1188,6 @@
 
             margin:
                 8px 0;
-
         }
 
 
@@ -1236,7 +1210,6 @@
 
             line-height:
                 1.9;
-
         }
 
 
@@ -1247,7 +1220,6 @@
 
             font-size:
                 14px;
-
         }
 
 
@@ -1271,7 +1243,6 @@
 
             padding:
                 28px 20px;
-
         }
 
 
@@ -1279,7 +1250,6 @@
 
             color:
                 #404756;
-
         }
 
 
@@ -1287,15 +1257,12 @@
            MOBILE
         ========================= */
 
-        @media (
-            max-width: 650px
-        ) {
+        @media (max-width:650px) {
 
             header {
 
                 padding:
                     11px 18px;
-
             }
 
 
@@ -1303,7 +1270,6 @@
 
                 font-size:
                     20px;
-
             }
 
 
@@ -1311,7 +1277,6 @@
 
                 display:
                     none;
-
             }
 
 
@@ -1319,7 +1284,6 @@
 
                 padding-top:
                     60px;
-
             }
 
 
@@ -1330,7 +1294,6 @@
 
                 max-width:
                     300px;
-
             }
 
 
@@ -1338,7 +1301,6 @@
 
                 padding:
                     25px 20px;
-
             }
 
 
@@ -1346,7 +1308,13 @@
 
                 padding:
                     22px;
+            }
 
+
+            .profile-settings-card {
+
+                padding:
+                    23px;
             }
 
         }
@@ -1364,7 +1332,6 @@
 ========================= -->
 
 <header>
-
 
     <div class="brand">
 
@@ -1404,7 +1371,7 @@
 
 
 <!-- =========================
-     HOME HERO
+     HOME
 ========================= -->
 
 <section
@@ -1449,6 +1416,7 @@
             📚 Open Notes Catalog
         </a>
 
+
         <a
             href="#about"
             class="button secondary"
@@ -1458,8 +1426,6 @@
 
     </div>
 
-
-    <!-- GOOGLE LOGIN -->
 
     <div id="loginSection">
 
@@ -1524,6 +1490,7 @@
                 @
             </span>
 
+
             <input
                 id="usernameInput"
                 type="text"
@@ -1572,6 +1539,7 @@
 
     <div class="dashboard-header">
 
+
         <img
             id="dashboardPicture"
             class="dashboard-pfp"
@@ -1586,12 +1554,14 @@
                 Welcome!
             </h1>
 
+
             <div
                 id="dashboardUsername"
                 class="dashboard-username"
             >
                 @username
             </div>
+
 
             <div
                 id="dashboardStatus"
@@ -1600,9 +1570,19 @@
                 Writejot account
             </div>
 
+
+            <button
+                class="button secondary"
+                onclick="openProfileSettings()"
+                style="margin-top:10px;"
+            >
+                ⚙️ Edit Profile
+            </button>
+
         </div>
 
     </div>
+
 
 
     <div class="dashboard-grid">
@@ -1636,7 +1616,7 @@
 
 
 
-        <!-- SHARE -->
+        <!-- SHARE NOTES -->
 
         <div class="dashboard-card">
 
@@ -1654,6 +1634,8 @@
                 in the catalog.
             </p>
 
+
+            <!-- Replace this with your actual Google Form -->
             <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSf7mE5VxEXAMPLE/viewform"
                 target="_blank"
@@ -1763,8 +1745,7 @@
             </h3>
 
             <p>
-                Connect with other Writejot
-                users.
+                Connect with other Writejot users.
             </p>
 
             <button
@@ -1796,6 +1777,159 @@
         <p id="dashboardStatusMessage">
             Checking your account...
         </p>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     PROFILE SETTINGS
+========================= -->
+
+<section
+    id="profileSettings"
+>
+
+    <div class="profile-settings-card">
+
+
+        <h2>
+            Profile Settings
+        </h2>
+
+
+        <p class="profile-settings-intro">
+
+            Customize your Writejot profile.
+            Only your username is required.
+
+        </p>
+
+
+        <!-- PROFILE PICTURE -->
+
+        <div class="profile-field">
+
+            <label
+                for="editProfilePicture"
+            >
+                Profile Picture URL
+            </label>
+
+            <input
+                id="editProfilePicture"
+                type="url"
+                placeholder="Paste an image URL"
+            >
+
+        </div>
+
+
+
+        <!-- DISPLAY NAME -->
+
+        <div class="profile-field">
+
+            <label
+                for="editDisplayName"
+            >
+                Display Name
+            </label>
+
+            <input
+                id="editDisplayName"
+                type="text"
+                maxlength="50"
+                placeholder="Your display name"
+            >
+
+        </div>
+
+
+
+        <!-- USERNAME -->
+
+        <div class="profile-field">
+
+            <label
+                for="editUsername"
+            >
+                Username
+            </label>
+
+
+            <div class="profile-username-wrapper">
+
+                <span
+                    class="profile-username-prefix"
+                >
+                    @
+                </span>
+
+
+                <input
+                    id="editUsername"
+                    type="text"
+                    maxlength="20"
+                    placeholder="username"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BIO -->
+
+        <div class="profile-field">
+
+            <label
+                for="editBio"
+            >
+                Bio
+            </label>
+
+
+            <textarea
+                id="editBio"
+                maxlength="160"
+                placeholder="Tell people a little about yourself..."
+            ></textarea>
+
+        </div>
+
+
+
+        <!-- ACTIONS -->
+
+        <div class="profile-actions">
+
+            <button
+                class="button primary"
+                onclick="saveProfile()"
+            >
+                Save Changes
+            </button>
+
+
+            <button
+                class="button secondary"
+                onclick="closeProfileSettings()"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+
+        <p
+            id="profileSaveMessage"
+        ></p>
+
 
     </div>
 
@@ -1866,13 +2000,16 @@
             Writejot Access
         </h2>
 
+
         <div class="price">
             ₱149
         </div>
 
+
         <p>
             Subscription
         </p>
+
 
         <ul>
 
@@ -1893,6 +2030,7 @@
             </li>
 
         </ul>
+
 
         <p class="payment-note">
             Payment is currently handled in person.
@@ -1926,7 +2064,7 @@
 
 
 /* =========================================
-   CONFIG
+   CONFIGURATION
 ========================================= */
 
 const GOOGLE_CLIENT_ID =
@@ -1937,8 +2075,8 @@ const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-let pendingGoogleUser =
-    null;
+let pendingGoogleUser = null;
+
 
 
 /* =========================================
@@ -1988,8 +2126,7 @@ window.onload = function () {
 
 
     /*
-     * Check for an existing local session,
-     * but verify it against the server.
+     * Check existing local session.
      */
 
     const savedUser =
@@ -2027,6 +2164,7 @@ window.onload = function () {
 };
 
 
+
 /* =========================================
    GOOGLE LOGIN
 ========================================= */
@@ -2055,7 +2193,16 @@ async function handleCredentialResponse(
                 data.picture || "",
 
             googleId:
-                data.sub || ""
+                data.sub || "",
+
+            username:
+                "",
+
+            bio:
+                "",
+
+            profilePicture:
+                ""
 
         };
 
@@ -2063,11 +2210,6 @@ async function handleCredentialResponse(
         pendingGoogleUser =
             user;
 
-
-        /*
-         * Check whether the Writejot account
-         * already exists.
-         */
 
         await checkAccount(
             user
@@ -2091,6 +2233,7 @@ async function handleCredentialResponse(
     }
 
 }
+
 
 
 /* =========================================
@@ -2126,7 +2269,7 @@ async function checkAccount(
 
 
         /*
-         * Existing account
+         * EXISTING ACCOUNT
          */
 
         if (
@@ -2142,6 +2285,12 @@ async function checkAccount(
                 username:
                     result.username || "",
 
+                bio:
+                    result.bio || "",
+
+                profilePicture:
+                    result.profilePicture || "",
+
                 status:
                     result.status || "",
 
@@ -2152,7 +2301,7 @@ async function checkAccount(
 
 
             /*
-             * Existing account with username
+             * Has username
              */
 
             if (
@@ -2178,13 +2327,14 @@ async function checkAccount(
 
 
             /*
-             * Existing account without username
+             * No username yet
              */
 
             else {
 
                 pendingGoogleUser =
                     accountUser;
+
 
                 showAccountSetup(
                     accountUser
@@ -2199,7 +2349,7 @@ async function checkAccount(
 
 
         /*
-         * Brand-new account
+         * BRAND-NEW ACCOUNT
          */
 
         pendingGoogleUser =
@@ -2230,6 +2380,7 @@ async function checkAccount(
 }
 
 
+
 /* =========================================
    SHOW ACCOUNT SETUP
 ========================================= */
@@ -2237,7 +2388,6 @@ async function checkAccount(
 function showAccountSetup(
     user
 ) {
-
 
     document
         .getElementById(
@@ -2258,6 +2408,14 @@ function showAccountSetup(
     document
         .getElementById(
             "dashboard"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "profileSettings"
         )
         .style.display =
         "none";
@@ -2289,12 +2447,12 @@ function showAccountSetup(
 }
 
 
+
 /* =========================================
    CREATE WRITEJOT ACCOUNT
 ========================================= */
 
 async function createWritejotAccount() {
-
 
     if (
         !pendingGoogleUser
@@ -2310,10 +2468,9 @@ async function createWritejotAccount() {
 
 
     const input =
-        document
-            .getElementById(
-                "usernameInput"
-            );
+        document.getElementById(
+            "usernameInput"
+        );
 
 
     const username =
@@ -2321,32 +2478,32 @@ async function createWritejotAccount() {
             .value
             .trim()
             .toLowerCase()
-            .replace(/^@/, "");
+            .replace(
+                /^@/,
+                ""
+            );
 
 
     const message =
-        document
-            .getElementById(
-                "usernameMessage"
-            );
+        document.getElementById(
+            "usernameMessage"
+        );
 
 
     const button =
-        document
-            .getElementById(
-                "createAccountButton"
-            );
+        document.getElementById(
+            "createAccountButton"
+        );
 
 
     const loading =
-        document
-            .getElementById(
-                "setupLoading"
-            );
+        document.getElementById(
+            "setupLoading"
+        );
 
 
     /*
-     * Validate username.
+     * VALIDATE USERNAME
      */
 
     if (
@@ -2412,9 +2569,8 @@ async function createWritejotAccount() {
 
     try {
 
-
         /*
-         * Check username availability.
+         * CHECK USERNAME AVAILABILITY
          */
 
         const availabilityResponse =
@@ -2465,7 +2621,7 @@ async function createWritejotAccount() {
 
 
         /*
-         * Create the Writejot account.
+         * CREATE ACCOUNT
          */
 
         await fetch(
@@ -2513,7 +2669,7 @@ async function createWritejotAccount() {
 
 
         /*
-         * Confirm the account exists.
+         * VERIFY ACCOUNT
          */
 
         const verifiedUser =
@@ -2540,6 +2696,12 @@ async function createWritejotAccount() {
 
             username:
                 verifiedUser.username,
+
+            bio:
+                verifiedUser.bio || "",
+
+            profilePicture:
+                verifiedUser.profilePicture || "",
 
             status:
                 verifiedUser.status ||
@@ -2570,7 +2732,6 @@ async function createWritejotAccount() {
         showDashboard(
             finalUser
         );
-
 
     }
 
@@ -2605,6 +2766,7 @@ async function createWritejotAccount() {
 }
 
 
+
 /* =========================================
    WAIT FOR ACCOUNT
 ========================================= */
@@ -2613,7 +2775,6 @@ async function waitForAccount(
     email,
     username
 ) {
-
 
     for (
         let attempt = 0;
@@ -2642,9 +2803,8 @@ async function waitForAccount(
             if (
                 result.success &&
                 result.username &&
-                result.username
-                    .toLowerCase() ===
-                username.toLowerCase()
+                result.username.toLowerCase() ===
+                    username.toLowerCase()
             ) {
 
                 return result;
@@ -2662,9 +2822,7 @@ async function waitForAccount(
         }
 
 
-        await sleep(
-            600
-        );
+        await sleep(600);
 
     }
 
@@ -2674,6 +2832,7 @@ async function waitForAccount(
 }
 
 
+
 /* =========================================
    SHOW DASHBOARD
 ========================================= */
@@ -2681,7 +2840,6 @@ async function waitForAccount(
 function showDashboard(
     user
 ) {
-
 
     document
         .getElementById(
@@ -2694,6 +2852,14 @@ function showDashboard(
     document
         .getElementById(
             "accountSetup"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "profileSettings"
         )
         .style.display =
         "none";
@@ -2724,12 +2890,24 @@ function showDashboard(
         user.email;
 
 
+    /*
+     * Use custom profile picture
+     * if one exists, otherwise
+     * use Google's picture.
+     */
+
+    const picture =
+        user.profilePicture ||
+        user.picture ||
+        "";
+
+
     document
         .getElementById(
             "profilePicture"
         )
         .src =
-        user.picture || "";
+        picture;
 
 
     document
@@ -2737,7 +2915,7 @@ function showDashboard(
             "dashboardPicture"
         )
         .src =
-        user.picture || "";
+        picture;
 
 
     document
@@ -2772,6 +2950,7 @@ function showDashboard(
 }
 
 
+
 /* =========================================
    DASHBOARD STATUS
 ========================================= */
@@ -2780,19 +2959,16 @@ async function updateDashboardStatus(
     user
 ) {
 
-
     const statusMessage =
-        document
-            .getElementById(
-                "dashboardStatusMessage"
-            );
+        document.getElementById(
+            "dashboardStatusMessage"
+        );
 
 
     const headerStatus =
-        document
-            .getElementById(
-                "dashboardStatus"
-            );
+        document.getElementById(
+            "dashboardStatus"
+        );
 
 
     try {
@@ -2881,177 +3057,27 @@ async function updateDashboardStatus(
 }
 
 
-/* =========================================
-   LOGOUT
-========================================= */
 
-function logout() {
-
-
-    localStorage.removeItem(
-        "writejotUser"
-    );
-
-
-    pendingGoogleUser =
-        null;
-
-
-    document
-        .getElementById(
-            "dashboard"
-        )
-        .style.display =
-        "none";
-
-
-    document
-        .getElementById(
-            "accountSetup"
-        )
-        .style.display =
-        "none";
-
-
-    document
-        .getElementById(
-            "homeSection"
-        )
-        .style.display =
-        "block";
-
-
-    document
-        .getElementById(
-            "profileArea"
-        )
-        .style.display =
-        "none";
-
-
-    document
-        .getElementById(
-            "profileName"
-        )
-        .textContent =
-        "";
-
-
-    document
-        .getElementById(
-            "profilePicture"
-        )
-        .src =
-        "";
-
-
-    if (
-        google.accounts &&
-        google.accounts.id
-    ) {
-
-        google.accounts.id.disableAutoSelect();
-
-    }
-
-}
-
-
-/* =========================================
-   FUTURE FEATURES
-========================================= */
-
-function featureComingSoon(
-    feature
-) {
-
-    alert(
-        feature +
-        " is coming soon."
-    );
-
-}
-
-
-/* =========================================
-   HELPERS
-========================================= */
-
-function sleep(
-    milliseconds
-) {
-
-    return new Promise(
-        function(resolve) {
-
-            setTimeout(
-                resolve,
-                milliseconds
-            );
-
-        }
-    );
-
-}
-
-
-function parseJwt(
-    token
-) {
-
-    const base64Url =
-        token.split(".")[1];
-
-
-    const base64 =
-        base64Url
-            .replace(/-/g, "+")
-            .replace(/_/g, "/");
-
-
-    const jsonPayload =
-        decodeURIComponent(
-
-            atob(base64)
-                .split("")
-                .map(
-                    function(c) {
-
-                        return "%" +
-                            (
-                                "00" +
-                                c
-                                    .charCodeAt(0)
-                                    .toString(16)
-                            )
-                            .slice(-2);
-
-                    }
-                )
-                .join("")
-
-        );
-
-
-    return JSON.parse(
-        jsonPayload
-    );
-
-}
 /* =========================================
    OPEN PROFILE SETTINGS
 ========================================= */
 
-async function openProfileSettings() {
+function openProfileSettings() {
 
     const savedUser =
         localStorage.getItem(
             "writejotUser"
         );
 
-    if (!savedUser) {
+
+    if (
+        !savedUser
+    ) {
+
         return;
+
     }
+
 
     const user =
         JSON.parse(
@@ -3072,7 +3098,8 @@ async function openProfileSettings() {
             "editProfilePicture"
         )
         .value =
-        user.profilePicture || "";
+        user.profilePicture ||
+        "";
 
 
     document
@@ -3080,7 +3107,8 @@ async function openProfileSettings() {
             "editDisplayName"
         )
         .value =
-        user.name || "";
+        user.name ||
+        "";
 
 
     document
@@ -3088,7 +3116,8 @@ async function openProfileSettings() {
             "editUsername"
         )
         .value =
-        user.username || "";
+        user.username ||
+        "";
 
 
     document
@@ -3096,7 +3125,16 @@ async function openProfileSettings() {
             "editBio"
         )
         .value =
-        user.bio || "";
+        user.bio ||
+        "";
+
+
+    document
+        .getElementById(
+            "profileSaveMessage"
+        )
+        .textContent =
+        "";
 
 
     document
@@ -3111,6 +3149,24 @@ async function openProfileSettings() {
 }
 
 
+
+/* =========================================
+   CLOSE PROFILE SETTINGS
+========================================= */
+
+function closeProfileSettings() {
+
+    document
+        .getElementById(
+            "profileSettings"
+        )
+        .style.display =
+        "none";
+
+}
+
+
+
 /* =========================================
    SAVE PROFILE
 ========================================= */
@@ -3122,8 +3178,13 @@ async function saveProfile() {
             "writejotUser"
         );
 
-    if (!savedUser) {
+
+    if (
+        !savedUser
+    ) {
+
         return;
+
     }
 
 
@@ -3181,6 +3242,10 @@ async function saveProfile() {
             );
 
 
+    /*
+     * USERNAME VALIDATION
+     */
+
     if (
         username.length < 3 ||
         username.length > 20
@@ -3215,13 +3280,62 @@ async function saveProfile() {
 
 
     message.textContent =
-        "Saving...";
+        "Checking username...";
 
     message.style.color =
         "#667085";
 
 
     try {
+
+        /*
+         * Check username availability.
+         */
+
+        const availabilityResponse =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=usernameAvailable" +
+                "&username=" +
+                encodeURIComponent(
+                    username
+                ) +
+                "&email=" +
+                encodeURIComponent(
+                    user.email
+                )
+
+            );
+
+
+        const availability =
+            await availabilityResponse.json();
+
+
+        if (
+            !availability.available
+        ) {
+
+            message.textContent =
+                availability.error ||
+                "That username is already taken.";
+
+            message.style.color =
+                "#dc2626";
+
+            return;
+
+        }
+
+
+        message.textContent =
+            "Saving profile...";
+
+
+        /*
+         * Send update to Apps Script.
+         */
 
         await fetch(
 
@@ -3271,14 +3385,15 @@ async function saveProfile() {
 
 
         /*
-         * Give Apps Script a moment,
-         * then verify the profile.
+         * Give Apps Script a moment.
          */
 
-        await sleep(
-            700
-        );
+        await sleep(700);
 
+
+        /*
+         * Get the updated account.
+         */
 
         const response =
             await fetch(
@@ -3312,14 +3427,16 @@ async function saveProfile() {
             ...user,
 
             name:
-                result.name || name,
+                result.name ||
+                name,
 
             username:
                 result.username ||
                 username,
 
             bio:
-                result.bio || "",
+                result.bio ||
+                "",
 
             profilePicture:
                 result.profilePicture ||
@@ -3340,7 +3457,7 @@ async function saveProfile() {
 
 
         /*
-         * Update dashboard.
+         * Update dashboard immediately.
          */
 
         showDashboard(
@@ -3355,17 +3472,13 @@ async function saveProfile() {
             "#15803d";
 
 
-        /*
-         * Close settings shortly after save.
-         */
-
         setTimeout(
             function() {
 
                 closeProfileSettings();
 
             },
-            800
+            700
         );
 
     }
@@ -3390,31 +3503,25 @@ async function saveProfile() {
 }
 
 
+
 /* =========================================
-   CLOSE PROFILE SETTINGS
+   LOGOUT
 ========================================= */
 
-function closeProfileSettings() {
+function logout() {
+
+    localStorage.removeItem(
+        "writejotUser"
+    );
+
+
+    pendingGoogleUser =
+        null;
+
 
     document
         .getElementById(
-            "profileSettings"
-        )
-        .style.display =
-        "none";
-
-}
-
-
-/* =========================================
-   SHOW PROFILE DATA
-========================================= */
-
-function showDashboard(user) {
-
-    document
-        .getElementById(
-            "homeSection"
+            "dashboard"
         )
         .style.display =
         "none";
@@ -3430,7 +3537,15 @@ function showDashboard(user) {
 
     document
         .getElementById(
-            "dashboard"
+            "profileSettings"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "homeSection"
         )
         .style.display =
         "block";
@@ -3441,7 +3556,7 @@ function showDashboard(user) {
             "profileArea"
         )
         .style.display =
-        "flex";
+        "none";
 
 
     document
@@ -3449,13 +3564,6 @@ function showDashboard(user) {
             "profileName"
         )
         .textContent =
-        user.name ||
-        user.email;
-
-
-    const picture =
-        user.profilePicture ||
-        user.picture ||
         "";
 
 
@@ -3464,47 +3572,110 @@ function showDashboard(user) {
             "profilePicture"
         )
         .src =
-        picture;
+        "";
 
 
-    document
-        .getElementById(
-            "dashboardPicture"
-        )
-        .src =
-        picture;
+    if (
+        google.accounts &&
+        google.accounts.id
+    ) {
+
+        google.accounts.id.disableAutoSelect();
+
+    }
+
+}
 
 
-    document
-        .getElementById(
-            "dashboardName"
-        )
-        .textContent =
-        "Welcome, " +
-        (
-            user.name ||
-            "Student"
-        ) +
-        "!";
 
+/* =========================================
+   FUTURE FEATURES
+========================================= */
 
-    document
-        .getElementById(
-            "dashboardUsername"
-        )
-        .textContent =
-        "@" +
-        (
-            user.username ||
-            "username"
-        );
+function featureComingSoon(
+    feature
+) {
 
-
-    updateDashboardStatus(
-        user
+    alert(
+        feature +
+        " is coming soon."
     );
 
 }
+
+
+
+/* =========================================
+   HELPER: SLEEP
+========================================= */
+
+function sleep(
+    milliseconds
+) {
+
+    return new Promise(
+        function(resolve) {
+
+            setTimeout(
+                resolve,
+                milliseconds
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================
+   HELPER: DECODE GOOGLE TOKEN
+========================================= */
+
+function parseJwt(
+    token
+) {
+
+    const base64Url =
+        token.split(".")[1];
+
+
+    const base64 =
+        base64Url
+            .replace(/-/g, "+")
+            .replace(/_/g, "/");
+
+
+    const jsonPayload =
+        decodeURIComponent(
+
+            atob(base64)
+                .split("")
+                .map(
+                    function(c) {
+
+                        return "%" +
+                            (
+                                "00" +
+                                c
+                                    .charCodeAt(0)
+                                    .toString(16)
+                            )
+                            .slice(-2);
+
+                    }
+                )
+                .join("")
+
+        );
+
+
+    return JSON.parse(
+        jsonPayload
+    );
+
+}
+
 </script>
 
 
