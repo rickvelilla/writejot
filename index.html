@@ -10,6 +10,11 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="description"
+        content="Writejot - A student-powered platform for sharing and accessing study notes."
+    >
+
     <title>Writejot | Student Notes</title>
 
 
@@ -28,7 +33,14 @@
             padding: 0;
         }
 
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
         body {
+
             font-family:
                 Arial,
                 Helvetica,
@@ -88,6 +100,9 @@
 
             justify-content:
                 space-between;
+
+            backdrop-filter:
+                blur(10px);
         }
 
 
@@ -111,6 +126,9 @@
 
             height:
                 42px;
+
+            object-fit:
+                contain;
         }
 
 
@@ -191,6 +209,13 @@
         }
 
 
+        #logoutButton:hover {
+
+            background:
+                #dc2626;
+        }
+
+
         /* =========================
            BUTTONS
         ========================= */
@@ -200,10 +225,10 @@
             display:
                 inline-flex;
 
-            align-items:
+            justify-content:
                 center;
 
-            justify-content:
+            align-items:
                 center;
 
             padding:
@@ -226,6 +251,17 @@
 
             font-size:
                 14px;
+
+            transition:
+                background .15s ease,
+                transform .15s ease;
+        }
+
+
+        .button:hover {
+
+            transform:
+                translateY(-1px);
         }
 
 
@@ -256,6 +292,13 @@
 
             border-color:
                 #d7e3fb;
+        }
+
+
+        .secondary:hover {
+
+            background:
+                #f7faff;
         }
 
 
@@ -394,6 +437,23 @@
 
             align-items:
                 center;
+        }
+
+
+        #loginSection h3 {
+
+            margin-bottom:
+                5px;
+        }
+
+
+        #loginSection p {
+
+            color:
+                #718096;
+
+            font-size:
+                14px;
         }
 
 
@@ -578,15 +638,21 @@
         }
 
 
-        /* SEARCH BAR */
+        /* PROFILE SEARCH */
 
         .profile-search {
 
             position:
                 relative;
 
-            margin-bottom:
-                22px;
+            width:
+                100%;
+
+            max-width:
+                650px;
+
+            margin:
+                0 auto 22px;
         }
 
 
@@ -595,8 +661,11 @@
             width:
                 100%;
 
+            height:
+                48px;
+
             padding:
-                15px 17px;
+                0 16px;
 
             border:
                 1px solid #d8dee8;
@@ -608,14 +677,13 @@
                 white;
 
             font-size:
-                16px;
+                15px;
 
             outline:
                 none;
 
             box-shadow:
-                0 2px 8px
-                rgba(0,0,0,0.03);
+                0 2px 8px rgba(0,0,0,0.03);
         }
 
 
@@ -625,8 +693,7 @@
                 #4285F4;
 
             box-shadow:
-                0 0 0 3px
-                rgba(66,133,244,0.08);
+                0 0 0 3px rgba(66,133,244,0.08);
         }
 
 
@@ -657,8 +724,7 @@
                 10px;
 
             box-shadow:
-                0 10px 30px
-                rgba(0,0,0,0.10);
+                0 10px 30px rgba(0,0,0,0.10);
 
             overflow:
                 hidden;
@@ -697,13 +763,6 @@
         }
 
 
-        .search-result:last-child {
-
-            border-bottom:
-                none;
-        }
-
-
         .search-result img {
 
             width:
@@ -717,9 +776,6 @@
 
             object-fit:
                 cover;
-
-            border:
-                1px solid #dbe3ef;
         }
 
 
@@ -756,11 +812,12 @@
 
             text-overflow:
                 ellipsis;
-
-            max-width:
-                650px;
         }
 
+
+        /* =========================
+           DASHBOARD HEADER
+        ========================= */
 
         .dashboard-header {
 
@@ -806,6 +863,9 @@
 
             border:
                 2px solid #4285F4;
+
+            flex-shrink:
+                0;
         }
 
 
@@ -831,6 +891,10 @@
                 14px;
         }
 
+
+        /* =========================
+           DASHBOARD CARDS
+        ========================= */
 
         .dashboard-grid {
 
@@ -861,6 +925,20 @@
 
             padding:
                 25px;
+
+            transition:
+                transform .15s ease,
+                box-shadow .15s ease;
+        }
+
+
+        .dashboard-card:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,0.05);
         }
 
 
@@ -934,6 +1012,13 @@
 
             padding:
                 30px;
+        }
+
+
+        .section-card h2 {
+
+            margin-bottom:
+                10px;
         }
 
 
@@ -1044,6 +1129,10 @@
         }
 
 
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
 
             border-top:
@@ -1063,7 +1152,18 @@
         }
 
 
-        @media (max-width:650px) {
+        footer strong {
+
+            color:
+                #404756;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
 
             header {
 
@@ -1103,10 +1203,27 @@
             }
 
 
+            .setup-card {
+
+                padding:
+                    25px 20px;
+            }
+
+
             .dashboard-header {
 
                 padding:
                     22px;
+            }
+
+
+            .dashboard-pfp {
+
+                width:
+                    62px;
+
+                height:
+                    62px;
             }
 
         }
@@ -1118,6 +1235,10 @@
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -1231,7 +1352,9 @@
      ACCOUNT SETUP
 ========================= -->
 
-<section id="accountSetup">
+<section
+    id="accountSetup"
+>
 
     <div class="setup-card">
 
@@ -1239,9 +1362,11 @@
             👋
         </div>
 
+
         <h1>
             Welcome to Writejot!
         </h1>
+
 
         <p>
             Choose a username for your
@@ -1303,7 +1428,9 @@
      DASHBOARD
 ========================= -->
 
-<section id="dashboard">
+<section
+    id="dashboard"
+>
 
 
     <!-- PROFILE SEARCH -->
@@ -1316,7 +1443,6 @@
             placeholder="🔎 Search Writejot profiles..."
             autocomplete="off"
             oninput="searchProfiles()"
-            onfocus="searchProfiles()"
         >
 
 
@@ -1342,7 +1468,9 @@
 
         <div style="flex:1;">
 
-            <h1 id="dashboardName">
+            <h1
+                id="dashboardName"
+            >
                 Welcome!
             </h1>
 
@@ -1377,8 +1505,12 @@
 
 
 
+    <!-- DASHBOARD GRID -->
+
     <div class="dashboard-grid">
 
+
+        <!-- CATALOG -->
 
         <div class="dashboard-card">
 
@@ -1386,14 +1518,17 @@
                 📚
             </div>
 
+
             <h3>
                 Notes Catalog
             </h3>
+
 
             <p>
                 Browse notes shared by
                 other students.
             </p>
+
 
             <a
                 href="catalog.html"
@@ -1406,15 +1541,19 @@
 
 
 
+        <!-- SHARE NOTES -->
+
         <div class="dashboard-card">
 
             <div class="dashboard-icon">
                 📝
             </div>
 
+
             <h3>
                 Share Notes
             </h3>
+
 
             <p>
                 Submit notes for review
@@ -1422,7 +1561,9 @@
                 in the catalog.
             </p>
 
+
             <!-- Replace with your real Google Form -->
+
             <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSf7mE5VxEXAMPLE/viewform"
                 target="_blank"
@@ -1436,19 +1577,24 @@
 
 
 
+        <!-- FLASHCARDS -->
+
         <div class="dashboard-card">
 
             <div class="dashboard-icon">
                 🧠
             </div>
 
+
             <h3>
                 Flashcards
             </h3>
 
+
             <p>
                 Create and study flashcard sets.
             </p>
+
 
             <button
                 class="button secondary"
@@ -1461,20 +1607,25 @@
 
 
 
+        <!-- CALENDAR -->
+
         <div class="dashboard-card">
 
             <div class="dashboard-icon">
                 📅
             </div>
 
+
             <h3>
                 Calendar
             </h3>
+
 
             <p>
                 View your classes, tests,
                 and personal events.
             </p>
+
 
             <button
                 class="button secondary"
@@ -1487,20 +1638,25 @@
 
 
 
+        <!-- REMINDERS -->
+
         <div class="dashboard-card">
 
             <div class="dashboard-icon">
                 🔔
             </div>
 
+
             <h3>
                 Reminders
             </h3>
+
 
             <p>
                 Keep track of assignments,
                 projects, and personal reminders.
             </p>
+
 
             <button
                 class="button secondary"
@@ -1513,33 +1669,39 @@
 
 
 
+        <!-- MESSAGES -->
+
         <div class="dashboard-card">
 
             <div class="dashboard-icon">
                 💬
             </div>
 
+
             <h3>
                 Messages
             </h3>
+
 
             <p>
                 Connect with other Writejot users.
             </p>
 
-            <button
-                class="button secondary"
-                onclick="featureComingSoon('Messages')"
+
+            <a
+                href="messages.html"
+                class="button primary"
             >
-                Coming Soon
-            </button>
+                Open Messages
+            </a>
 
         </div>
-
 
     </div>
 
 
+
+    <!-- ACCOUNT STATUS -->
 
     <div
         class="dashboard-card trial-card"
@@ -1549,11 +1711,15 @@
             🎓
         </div>
 
+
         <h3>
             Account Status
         </h3>
 
-        <p id="dashboardStatusMessage">
+
+        <p
+            id="dashboardStatusMessage"
+        >
             Checking your account...
         </p>
 
@@ -1578,10 +1744,12 @@
             About Writejot
         </h2>
 
+
         <p>
             Writejot makes it easier for students
             to discover and share useful study materials.
         </p>
+
 
         <ul>
 
@@ -1617,7 +1785,9 @@
      PRICING
 ========================= -->
 
-<section class="pricing">
+<section
+    class="pricing"
+>
 
     <div class="pricing-card">
 
@@ -1625,13 +1795,16 @@
             Writejot Access
         </h2>
 
+
         <div class="price">
             ₱149
         </div>
 
+
         <p>
             Subscription
         </p>
+
 
         <ul>
 
@@ -1653,6 +1826,7 @@
 
         </ul>
 
+
         <p class="payment-note">
             Payment is currently handled in person.
         </p>
@@ -1662,6 +1836,10 @@
 </section>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1692,85 +1870,94 @@ const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-let pendingGoogleUser = null;
+let pendingGoogleUser =
+    null;
+
 
 
 /* =========================================
    START
 ========================================= */
 
-window.onload = function() {
-
-    google.accounts.id.initialize({
-
-        client_id:
-            GOOGLE_CLIENT_ID,
-
-        callback:
-            handleCredentialResponse
-
-    });
+window.onload =
+    function() {
 
 
-    google.accounts.id.renderButton(
+        google.accounts.id.initialize({
 
-        document.getElementById(
-            "googleLogin"
-        ),
+            client_id:
+                GOOGLE_CLIENT_ID,
 
-        {
+            callback:
+                handleCredentialResponse
 
-            theme:
-                "outline",
-
-            size:
-                "large",
-
-            text:
-                "signin_with",
-
-            shape:
-                "rectangular",
-
-            width:
-                250
-
-        }
-
-    );
+        });
 
 
-    const savedUser =
-        localStorage.getItem(
-            "writejotUser"
+        google.accounts.id.renderButton(
+
+            document.getElementById(
+                "googleLogin"
+            ),
+
+            {
+
+                theme:
+                    "outline",
+
+                size:
+                    "large",
+
+                text:
+                    "signin_with",
+
+                shape:
+                    "rectangular",
+
+                width:
+                    250
+
+            }
+
         );
 
 
-    if (savedUser) {
-
-        try {
-
-            const user =
-                JSON.parse(
-                    savedUser
-                );
-
-
-            checkAccount(user);
-
-        }
-
-        catch (error) {
-
-            localStorage.removeItem(
+        const savedUser =
+            localStorage.getItem(
                 "writejotUser"
             );
 
+
+        if (
+            savedUser
+        ) {
+
+            try {
+
+                const user =
+                    JSON.parse(
+                        savedUser
+                    );
+
+
+                checkAccount(
+                    user
+                );
+
+            }
+
+            catch (error) {
+
+                localStorage.removeItem(
+                    "writejotUser"
+                );
+
+            }
+
         }
 
-    }
+    };
 
-};
 
 
 /* =========================================
@@ -1819,7 +2006,9 @@ async function handleCredentialResponse(
             user;
 
 
-        await checkAccount(user);
+        await checkAccount(
+            user
+        );
 
     }
 
@@ -1831,6 +2020,7 @@ async function handleCredentialResponse(
             error
         );
 
+
         alert(
             "There was a problem signing in. Please try again."
         );
@@ -1838,6 +2028,7 @@ async function handleCredentialResponse(
     }
 
 }
+
 
 
 /* =========================================
@@ -1877,19 +2068,24 @@ async function checkAccount(
                 ...user,
 
                 username:
-                    result.username || "",
+                    result.username ||
+                    "",
 
                 bio:
-                    result.bio || "",
+                    result.bio ||
+                    "",
 
                 profilePicture:
-                    result.profilePicture || "",
+                    result.profilePicture ||
+                    "",
 
                 status:
-                    result.status || "",
+                    result.status ||
+                    "",
 
                 payment:
-                    result.payment || ""
+                    result.payment ||
+                    ""
 
             };
 
@@ -1919,6 +2115,7 @@ async function checkAccount(
 
                 pendingGoogleUser =
                     accountUser;
+
 
                 showAccountSetup(
                     accountUser
@@ -1950,6 +2147,7 @@ async function checkAccount(
             error
         );
 
+
         alert(
             "Writejot couldn't check your account. Please try again."
         );
@@ -1957,6 +2155,7 @@ async function checkAccount(
     }
 
 }
+
 
 
 /* =========================================
@@ -2001,11 +2200,25 @@ function showAccountSetup(
 }
 
 
+
 /* =========================================
    CREATE ACCOUNT
 ========================================= */
 
 async function createWritejotAccount() {
+
+    if (
+        !pendingGoogleUser
+    ) {
+
+        alert(
+            "Please sign in with Google first."
+        );
+
+        return;
+
+    }
+
 
     const input =
         document.getElementById(
@@ -2067,7 +2280,9 @@ async function createWritejotAccount() {
                 APPS_SCRIPT_URL +
                 "?action=usernameAvailable" +
                 "&username=" +
-                encodeURIComponent(username) +
+                encodeURIComponent(
+                    username
+                ) +
                 "&email=" +
                 encodeURIComponent(
                     pendingGoogleUser.email
@@ -2085,7 +2300,8 @@ async function createWritejotAccount() {
         ) {
 
             message.textContent =
-                availability.error;
+                availability.error ||
+                "Username is already taken.";
 
             message.style.color =
                 "#dc2626";
@@ -2116,8 +2332,10 @@ async function createWritejotAccount() {
                     "no-cors",
 
                 headers: {
+
                     "Content-Type":
                         "text/plain;charset=utf-8"
+
                 },
 
                 body:
@@ -2147,12 +2365,17 @@ async function createWritejotAccount() {
 
         const verified =
             await waitForAccount(
+
                 pendingGoogleUser.email,
+
                 username
+
             );
 
 
-        if (!verified) {
+        if (
+            !verified
+        ) {
 
             throw new Error(
                 "Account was not confirmed."
@@ -2169,23 +2392,32 @@ async function createWritejotAccount() {
                 verified.username,
 
             bio:
-                verified.bio || "",
+                verified.bio ||
+                "",
 
             profilePicture:
-                verified.profilePicture || "",
+                verified.profilePicture ||
+                "",
 
             status:
-                verified.status || "trial",
+                verified.status ||
+                "trial",
 
             payment:
-                verified.payment || "No"
+                verified.payment ||
+                "No"
 
         };
 
 
         localStorage.setItem(
+
             "writejotUser",
-            JSON.stringify(finalUser)
+
+            JSON.stringify(
+                finalUser
+            )
+
         );
 
 
@@ -2202,6 +2434,7 @@ async function createWritejotAccount() {
             error
         );
 
+
         message.textContent =
             "Could not create your account.";
 
@@ -2211,6 +2444,7 @@ async function createWritejotAccount() {
     }
 
 }
+
 
 
 /* =========================================
@@ -2235,7 +2469,9 @@ async function waitForAccount(
 
                     APPS_SCRIPT_URL +
                     "?action=account&email=" +
-                    encodeURIComponent(email)
+                    encodeURIComponent(
+                        email
+                    )
 
                 );
 
@@ -2248,7 +2484,7 @@ async function waitForAccount(
                 result.success &&
                 result.username &&
                 result.username.toLowerCase() ===
-                username.toLowerCase()
+                    username.toLowerCase()
             ) {
 
                 return result;
@@ -2259,8 +2495,9 @@ async function waitForAccount(
 
         catch (error) {}
 
-
-        await sleep(600);
+        await sleep(
+            600
+        );
 
     }
 
@@ -2268,6 +2505,7 @@ async function waitForAccount(
     return null;
 
 }
+
 
 
 /* =========================================
@@ -2313,7 +2551,7 @@ function showDashboard(
     const picture =
         user.profilePicture ||
         user.picture ||
-        "";
+        "W.png";
 
 
     document
@@ -2326,10 +2564,36 @@ function showDashboard(
 
     document
         .getElementById(
+            "profilePicture"
+        )
+        .onerror =
+        function() {
+
+            this.src =
+                "W.png";
+
+        };
+
+
+    document
+        .getElementById(
             "dashboardPicture"
         )
         .src =
         picture;
+
+
+    document
+        .getElementById(
+            "dashboardPicture"
+        )
+        .onerror =
+        function() {
+
+            this.src =
+                "W.png";
+
+        };
 
 
     document
@@ -2373,6 +2637,7 @@ function showDashboard(
 }
 
 
+
 /* =========================================
    STATUS
 ========================================= */
@@ -2405,22 +2670,25 @@ async function updateDashboardStatus(
 
             const status =
                 String(
-                    result.status || ""
+                    result.status ||
+                    ""
                 )
                 .trim()
                 .toLowerCase();
 
 
             const headerStatus =
-                document.getElementById(
-                    "dashboardStatus"
-                );
+                document
+                    .getElementById(
+                        "dashboardStatus"
+                    );
 
 
             const statusMessage =
-                document.getElementById(
-                    "dashboardStatusMessage"
-                );
+                document
+                    .getElementById(
+                        "dashboardStatusMessage"
+                    );
 
 
             if (
@@ -2429,6 +2697,7 @@ async function updateDashboardStatus(
 
                 headerStatus.textContent =
                     "7-day free trial";
+
 
                 statusMessage.textContent =
                     "Your 7-day free trial is active.";
@@ -2443,6 +2712,7 @@ async function updateDashboardStatus(
                 headerStatus.textContent =
                     "Active account";
 
+
                 statusMessage.textContent =
                     "Your Writejot account is active.";
 
@@ -2454,6 +2724,7 @@ async function updateDashboardStatus(
                 headerStatus.textContent =
                     "Account status: " +
                     result.status;
+
 
                 statusMessage.textContent =
                     "Your current account status is: " +
@@ -2477,11 +2748,13 @@ async function updateDashboardStatus(
 }
 
 
+
 /* =========================================
    PROFILE SEARCH
 ========================================= */
 
-let profileSearchTimer = null;
+let profileSearchTimer =
+    null;
 
 
 async function searchProfiles() {
@@ -2499,8 +2772,7 @@ async function searchProfiles() {
 
 
     const query =
-        input.value
-            .trim();
+        input.value.trim();
 
 
     clearTimeout(
@@ -2525,6 +2797,7 @@ async function searchProfiles() {
 
     profileSearchTimer =
         setTimeout(
+
             async function() {
 
                 try {
@@ -2552,16 +2825,22 @@ async function searchProfiles() {
 
                         resultsBox.innerHTML =
 
-                            `<div style="
-                                padding:16px;
-                                color:#718096;
-                                text-align:center;
-                            ">
+                            `
+                            <div
+                                style="
+                                    padding:16px;
+                                    color:#718096;
+                                    text-align:center;
+                                "
+                            >
                                 No profiles found.
-                            </div>`;
+                            </div>
+                            `;
+
 
                         resultsBox.style.display =
                             "block";
+
 
                         return;
 
@@ -2571,6 +2850,7 @@ async function searchProfiles() {
                     resultsBox.innerHTML =
                         data.profiles
                             .map(
+
                                 function(profile) {
 
                                     const picture =
@@ -2582,17 +2862,19 @@ async function searchProfiles() {
 
                                         <div
                                             class="search-result"
-                                            onclick="selectProfile(
-                                                '${escapeHtml(profile.username)}'
-                                            )"
+                                            onclick="selectProfile('${escapeHtml(profile.username)}')"
                                         >
 
                                             <img
                                                 src="${escapeHtml(picture)}"
                                                 alt=""
+                                                onerror="this.src='W.png'"
                                             >
 
-                                            <div style="min-width:0;">
+
+                                            <div
+                                                style="min-width:0;"
+                                            >
 
                                                 <div
                                                     class="search-result-name"
@@ -2603,6 +2885,7 @@ async function searchProfiles() {
                                                     )}
                                                 </div>
 
+
                                                 <div
                                                     class="search-result-username"
                                                 >
@@ -2611,17 +2894,18 @@ async function searchProfiles() {
                                                     )}
                                                 </div>
 
+
                                                 ${
                                                     profile.bio
                                                         ? `
-                                                        <div
-                                                            class="search-result-bio"
-                                                        >
-                                                            ${escapeHtml(
-                                                                profile.bio
-                                                            )}
-                                                        </div>
-                                                        `
+                                                            <div
+                                                                class="search-result-bio"
+                                                            >
+                                                                ${escapeHtml(
+                                                                    profile.bio
+                                                                )}
+                                                            </div>
+                                                          `
                                                         : ""
                                                 }
 
@@ -2632,6 +2916,7 @@ async function searchProfiles() {
                                     `;
 
                                 }
+
                             )
                             .join("");
 
@@ -2652,14 +2937,17 @@ async function searchProfiles() {
                 }
 
             },
+
             250
+
         );
 
 }
 
 
+
 /* =========================================
-   PROFILE SEARCH SELECT
+   SELECT PROFILE
 ========================================= */
 
 function selectProfile(
@@ -2675,6 +2963,42 @@ function selectProfile(
 }
 
 
+
+/* =========================================
+   CLOSE SEARCH
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const search =
+            document.querySelector(
+                ".profile-search"
+            );
+
+
+        if (
+            search &&
+            !search.contains(
+                event.target
+            )
+        ) {
+
+            document
+                .getElementById(
+                    "profileSearchResults"
+                )
+                .style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+
 /* =========================================
    ESCAPE HTML
 ========================================= */
@@ -2683,29 +3007,33 @@ function escapeHtml(
     value
 ) {
 
-    return String(value || "")
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+    return String(
+        value ||
+        ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
+
 
 
 /* =========================================
@@ -2767,6 +3095,7 @@ function logout() {
 }
 
 
+
 /* =========================================
    FUTURE FEATURES
 ========================================= */
@@ -2783,8 +3112,9 @@ function featureComingSoon(
 }
 
 
+
 /* =========================================
-   HELPERS
+   SLEEP
 ========================================= */
 
 function sleep(
@@ -2805,40 +3135,55 @@ function sleep(
 }
 
 
+
+/* =========================================
+   PARSE GOOGLE JWT
+========================================= */
+
 function parseJwt(
     token
 ) {
 
     const base64Url =
-        token.split(".")[1];
+        token.split(
+            "."
+        )[1];
 
 
     const base64 =
         base64Url
-            .replace(/-/g, "+")
-            .replace(/_/g, "/");
+            .replace(
+                /-/g,
+                "+"
+            )
+            .replace(
+                /_/g,
+                "/"
+            );
 
 
     const jsonPayload =
         decodeURIComponent(
 
-            atob(base64)
-                .split("")
-                .map(
-                    function(c) {
+            atob(
+                base64
+            )
+            .split("")
+            .map(
+                function(c) {
 
-                        return "%" +
-                            (
-                                "00" +
-                                c
-                                    .charCodeAt(0)
-                                    .toString(16)
-                            )
-                            .slice(-2);
+                    return "%" +
+                        (
+                            "00" +
+                            c
+                                .charCodeAt(0)
+                                .toString(16)
+                        )
+                        .slice(-2);
 
-                    }
-                )
-                .join("")
+                }
+            )
+            .join("")
 
         );
 
