@@ -26,9 +26,11 @@
 
         html,
         body {
+
             margin: 0;
 
             width: 100%;
+
             height: 100%;
 
             overflow: hidden;
@@ -36,6 +38,7 @@
 
 
         body {
+
             font-family:
                 Arial,
                 Helvetica,
@@ -50,7 +53,7 @@
 
 
         /* =====================================================
-           CHAT APP CONTAINER
+           CHAT INTERFACE
         ===================================================== */
 
         #chatInterface {
@@ -64,6 +67,8 @@
             flex-direction: column;
 
             min-height: 0;
+
+            overflow: hidden;
         }
 
 
@@ -73,11 +78,11 @@
 
         header {
 
-            flex: 0 0 auto;
-
-            height: 64px;
+            flex: 0 0 64px;
 
             width: 100%;
+
+            height: 64px;
 
             background: white;
 
@@ -132,20 +137,15 @@
 
         .recipient img {
 
-            width:
-                40px;
+            width: 40px;
 
-            height:
-                40px;
+            height: 40px;
 
-            border-radius:
-                50%;
+            flex: 0 0 40px;
 
-            object-fit:
-                cover;
+            border-radius: 50%;
 
-            flex:
-                0 0 40px;
+            object-fit: cover;
 
             background:
                 #e9eef5;
@@ -157,8 +157,7 @@
 
         .recipient-info {
 
-            min-width:
-                0;
+            min-width: 0;
         }
 
 
@@ -192,28 +191,22 @@
 
 
         /* =====================================================
-           CHAT AREA
+           SCROLLABLE CHAT AREA
         ===================================================== */
 
         #chatArea {
 
-            flex:
-                1 1 auto;
+            flex: 1 1 0;
 
-            min-height:
-                0;
+            min-height: 0;
 
-            width:
-                100%;
+            width: 100%;
 
-            overflow-y:
-                auto;
+            overflow-y: auto;
 
-            overflow-x:
-                hidden;
+            overflow-x: hidden;
 
-            -webkit-overflow-scrolling:
-                touch;
+            -webkit-overflow-scrolling: touch;
 
             padding:
                 18px;
@@ -222,8 +215,7 @@
 
         #messages {
 
-            width:
-                100%;
+            width: 100%;
 
             max-width:
                 850px;
@@ -231,8 +223,7 @@
             margin:
                 0 auto;
 
-            min-height:
-                100%;
+            min-height: 0;
         }
 
 
@@ -242,11 +233,9 @@
 
         .message-row {
 
-            display:
-                flex;
+            display: flex;
 
-            width:
-                100%;
+            width: 100%;
 
             align-items:
                 flex-start;
@@ -276,20 +265,15 @@
 
         .message-content {
 
-            display:
-                flex;
+            display: flex;
 
-            flex-direction:
-                column;
+            flex-direction: column;
 
-            width:
-                auto;
+            width: fit-content;
 
-            max-width:
-                70%;
+            max-width: 70%;
 
-            min-width:
-                0;
+            min-width: 0;
 
             align-items:
                 flex-start;
@@ -309,29 +293,22 @@
 
         .bubble {
 
-            display:
-                block;
+            display: block;
 
-            width:
-                max-content;
+            width: fit-content;
 
-            max-width:
-                100%;
+            max-width: 100%;
 
-            min-width:
-                0;
+            min-width: 0;
 
-            height:
-                auto;
+            height: auto;
 
-            min-height:
-                0;
+            min-height: 0;
 
             padding:
                 9px 13px;
 
-            margin:
-                0;
+            margin: 0;
 
             border-radius:
                 14px;
@@ -386,7 +363,7 @@
 
 
         /* =====================================================
-           MESSAGE STATES
+           SEND STATUS
         ===================================================== */
 
         .bubble.pending {
@@ -407,13 +384,12 @@
 
 
         /* =====================================================
-           MESSAGE TIME
+           TIME
         ===================================================== */
 
         .time {
 
-            display:
-                block;
+            display: block;
 
             margin-top:
                 3px;
@@ -421,11 +397,11 @@
             font-size:
                 10px;
 
-            color:
-                #98a2b3;
-
             line-height:
                 1.2;
+
+            color:
+                #98a2b3;
         }
 
 
@@ -442,39 +418,33 @@
 
         .image-bubble {
 
-            display:
-                block;
+            display: block;
 
-            width:
-                auto;
+            width: fit-content;
 
-            max-width:
-                100%;
+            max-width: 100%;
 
             padding:
                 4px;
 
-            overflow:
-                hidden;
+            overflow: hidden;
         }
 
 
         .message-image {
 
-            display:
-                block;
+            display: block;
 
-            width:
-                auto;
+            width: auto;
 
-            max-width:
-                100%;
+            height: auto;
 
-            height:
-                auto;
+            max-width: min(
+                100%,
+                520px
+            );
 
-            max-height:
-                450px;
+            max-height: 450px;
 
             border-radius:
                 10px;
@@ -507,25 +477,21 @@
 
 
         /* =====================================================
-           EMPTY STATE
+           EMPTY
         ===================================================== */
 
         .empty {
 
             min-height:
-                250px;
+                240px;
 
-            display:
-                flex;
+            display: flex;
 
-            flex-direction:
-                column;
+            flex-direction: column;
 
-            align-items:
-                center;
+            align-items: center;
 
-            justify-content:
-                center;
+            justify-content: center;
 
             color:
                 #8a94a6;
@@ -541,11 +507,9 @@
 
         #composer {
 
-            flex:
-                0 0 auto;
+            flex: 0 0 auto;
 
-            width:
-                100%;
+            width: 100%;
 
             background:
                 white;
@@ -556,18 +520,15 @@
             padding:
                 10px 12px 12px;
 
-            position:
-                relative;
+            position: relative;
 
-            z-index:
-                30;
+            z-index: 30;
         }
 
 
         .composer-inner {
 
-            width:
-                100%;
+            width: 100%;
 
             max-width:
                 850px;
@@ -575,8 +536,7 @@
             margin:
                 0 auto;
 
-            display:
-                flex;
+            display: flex;
 
             align-items:
                 flex-end;
@@ -616,8 +576,7 @@
             font-size:
                 19px;
 
-            display:
-                flex;
+            display: flex;
 
             align-items:
                 center;
@@ -780,8 +739,7 @@
             display:
                 none;
 
-            width:
-                100%;
+            width: 100%;
 
             max-width:
                 850px;
@@ -807,6 +765,9 @@
                 block;
 
             width:
+                auto;
+
+            height:
                 auto;
 
             max-width:
@@ -959,20 +920,18 @@
            MOBILE
         ===================================================== */
 
-        @media (
-            max-width: 600px
-        ) {
+        @media (max-width: 600px) {
 
             header {
+
+                flex:
+                    0 0 58px;
 
                 height:
                     58px;
 
                 padding:
                     0 11px;
-
-                flex-shrink:
-                    0;
             }
 
 
@@ -1005,21 +964,17 @@
 
             #chatArea {
 
-                padding:
-                    14px 11px 16px;
+                flex:
+                    1 1 0;
 
                 min-height:
                     0;
 
+                padding:
+                    14px 11px 16px;
+
                 overflow-y:
                     auto;
-            }
-
-
-            #messages {
-
-                min-height:
-                    100%;
             }
 
 
@@ -1042,6 +997,9 @@
 
             .message-image {
 
+                max-width:
+                    100%;
+
                 max-height:
                     360px;
             }
@@ -1049,8 +1007,8 @@
 
             #composer {
 
-                flex-shrink:
-                    0;
+                flex:
+                    0 0 auto;
 
                 padding:
                     8px;
@@ -1109,6 +1067,7 @@
 </head>
 
 
+
 <body>
 
 
@@ -1122,7 +1081,9 @@
     style="display:none;"
 >
 
-    <div class="lock-card">
+    <div
+        class="lock-card"
+    >
 
         <div
             style="
@@ -1160,10 +1121,12 @@
 
 
 <!-- ========================================================
-     CHAT
+     CHAT INTERFACE
 ========================================================= -->
 
-<div id="chatInterface">
+<div
+    id="chatInterface"
+>
 
 
     <!-- ====================================================
@@ -1180,7 +1143,9 @@
         </a>
 
 
-        <div class="recipient">
+        <div
+            class="recipient"
+        >
 
             <img
                 id="recipientPicture"
@@ -1217,17 +1182,21 @@
 
 
     <!-- ====================================================
-         SCROLLABLE CHAT AREA
+         SCROLLABLE MESSAGE AREA
     ===================================================== -->
 
-    <main id="chatArea">
+    <main
+        id="chatArea"
+    >
 
-        <div id="messages">
+        <div
+            id="messages"
+        >
 
-            <div class="empty">
-
+            <div
+                class="empty"
+            >
                 Loading messages...
-
             </div>
 
         </div>
@@ -1237,10 +1206,12 @@
 
 
     <!-- ====================================================
-         COMPOSER
+         MESSAGE COMPOSER
     ===================================================== -->
 
-    <div id="composer">
+    <div
+        id="composer"
+    >
 
 
         <!-- IMAGE PREVIEW -->
@@ -1274,12 +1245,12 @@
 
 
 
+        <!-- COMPOSER -->
+
         <div
             class="composer-inner"
         >
 
-
-            <!-- PHOTO -->
 
             <button
                 id="photoButton"
@@ -1299,8 +1270,6 @@
             >
 
 
-            <!-- TEXT -->
-
             <textarea
                 id="messageInput"
                 maxlength="2000"
@@ -1308,8 +1277,6 @@
                 placeholder="Type a message..."
             ></textarea>
 
-
-            <!-- SEND -->
 
             <button
                 id="sendButton"
@@ -1342,28 +1309,18 @@ const ACCESS_CACHE_TIME =
     5 * 60 * 1000;
 
 
-let currentUser =
-    null;
+let currentUser = null;
 
+let otherUsername = "";
 
-let otherUsername =
-    "";
+let messages = [];
 
+let selectedImage = null;
 
-let messages =
-    [];
+let lastFingerprint = "";
 
+let refreshTimer = null;
 
-let selectedImage =
-    null;
-
-
-let lastFingerprint =
-    "";
-
-
-let refreshTimer =
-    null;
 
 
 /* =========================================================
@@ -1372,7 +1329,7 @@ let refreshTimer =
 
 window.addEventListener(
     "load",
-    async function() {
+    async function () {
 
         const saved =
             localStorage.getItem(
@@ -1434,22 +1391,21 @@ window.addEventListener(
 
 
         /*
-         * SHOW CACHE FIRST
+         * Cache first.
          */
 
         loadChatCache();
 
 
         /*
-         * Set up the textbox immediately.
+         * Prepare input immediately.
          */
 
         setupInput();
 
 
         /*
-         * Check whether we have a recent
-         * verified access result.
+         * Access check.
          */
 
         const cachedAccess =
@@ -1473,6 +1429,7 @@ window.addEventListener(
 
     }
 );
+
 
 
 /* =========================================================
@@ -1576,8 +1533,9 @@ function saveAccessCache(
 }
 
 
+
 /* =========================================================
-   BACKGROUND ACCESS CHECK
+   BACKGROUND ACCESS
 ========================================================= */
 
 async function verifyAccessInBackground() {
@@ -1628,11 +1586,6 @@ async function verifyAccessInBackground() {
 
     catch {
 
-        /*
-         * If there's no current valid
-         * access state, fail closed.
-         */
-
         if (
             !getCachedAccess()
         ) {
@@ -1646,34 +1599,19 @@ async function verifyAccessInBackground() {
 }
 
 
+
 /* =========================================================
    BACKGROUND WORK
 ========================================================= */
 
 function startBackgroundWork() {
 
-    /*
-     * Mark the conversation read
-     * without blocking the interface.
-     */
-
     markReadInBackground();
-
-
-    /*
-     * Refresh profile + messages.
-     */
 
     refreshChat();
 
 
-    /*
-     * Keep the conversation fresh.
-     */
-
-    if (
-        refreshTimer
-    ) {
+    if (refreshTimer) {
 
         clearInterval(
             refreshTimer
@@ -1689,6 +1627,7 @@ function startBackgroundWork() {
         );
 
 }
+
 
 
 /* =========================================================
@@ -1774,13 +1713,7 @@ function loadChatCache() {
 
     }
 
-    catch {
-
-        console.log(
-            "Chat cache unavailable."
-        );
-
-    }
+    catch {}
 
 }
 
@@ -1843,6 +1776,7 @@ function getCurrentProfile() {
 }
 
 
+
 /* =========================================================
    REFRESH CHAT
 ========================================================= */
@@ -1852,7 +1786,7 @@ async function refreshChat() {
     try {
 
         /*
-         * Load profile and messages
+         * Request profile and messages
          * at the same time.
          */
 
@@ -1920,7 +1854,7 @@ async function refreshChat() {
 
 
         /*
-         * Server says account is expired.
+         * Access was revoked.
          */
 
         if (
@@ -1930,8 +1864,7 @@ async function refreshChat() {
 
             saveAccessCache({
 
-                access:
-                    false,
+                access: false,
 
                 status:
                     messageResult.status ||
@@ -1949,7 +1882,7 @@ async function refreshChat() {
 
 
         /*
-         * Update recipient.
+         * Update profile.
          */
 
         if (
@@ -1963,10 +1896,6 @@ async function refreshChat() {
 
         }
 
-
-        /*
-         * No message result.
-         */
 
         if (
             !messageResult.success
@@ -1983,17 +1912,15 @@ async function refreshChat() {
 
 
         /*
-         * Keep optimistic messages that
-         * haven't reached the server yet.
+         * Preserve messages that are
+         * still being sent.
          */
 
         const pending =
             messages.filter(
-                function(message) {
+                function (message) {
 
-                    return (
-                        message.pending
-                    );
+                    return message.pending;
 
                 }
             );
@@ -2001,11 +1928,9 @@ async function refreshChat() {
 
         const failed =
             messages.filter(
-                function(message) {
+                function (message) {
 
-                    return (
-                        message.failed
-                    );
+                    return message.failed;
 
                 }
             );
@@ -2013,12 +1938,8 @@ async function refreshChat() {
 
         const merged =
             serverMessages
-                .concat(
-                    pending
-                )
-                .concat(
-                    failed
-                );
+                .concat(pending)
+                .concat(failed);
 
 
         const nextFingerprint =
@@ -2026,11 +1947,6 @@ async function refreshChat() {
                 merged
             );
 
-
-        /*
-         * Don't rebuild the DOM if
-         * absolutely nothing changed.
-         */
 
         if (
             nextFingerprint ===
@@ -2062,7 +1978,7 @@ async function refreshChat() {
 
     }
 
-    catch (error) {
+    catch {
 
         console.log(
             "Background refresh failed."
@@ -2071,6 +1987,7 @@ async function refreshChat() {
     }
 
 }
+
 
 
 /* =========================================================
@@ -2116,7 +2033,7 @@ function applyRecipient(
             "recipientPicture"
         )
         .onerror =
-        function() {
+        function () {
 
             this.src =
                 "W.png";
@@ -2124,6 +2041,7 @@ function applyRecipient(
         };
 
 }
+
 
 
 /* =========================================================
@@ -2173,6 +2091,7 @@ async function markReadInBackground() {
     catch {}
 
 }
+
 
 
 /* =========================================================
@@ -2232,7 +2151,7 @@ function renderMessages(
     container.innerHTML =
         list
             .map(
-                function(message) {
+                function (message) {
 
                     const mine =
                         normalizeUsername(
@@ -2268,7 +2187,7 @@ function renderMessages(
 
 
                     /*
-                     * IMAGE MESSAGE
+                     * IMAGE
                      */
 
                     if (
@@ -2282,12 +2201,18 @@ function renderMessages(
                             <div
                                 class="
                                     message-row
-                                    ${mine ? "mine" : "theirs"}
+                                    ${
+                                        mine
+                                            ? "mine"
+                                            : "theirs"
+                                    }
                                 "
                             >
 
                                 <div
-                                    class="message-content"
+                                    class="
+                                        message-content
+                                    "
                                 >
 
                                     <div
@@ -2299,7 +2224,9 @@ function renderMessages(
                                     >
 
                                         <img
-                                            class="message-image"
+                                            class="
+                                                message-image
+                                            "
                                             src="${escapeHtml(
                                                 message.attachmentUrl
                                             )}"
@@ -2317,7 +2244,9 @@ function renderMessages(
                                             message.message
                                                 ? `
                                                     <div
-                                                        class="image-caption"
+                                                        class="
+                                                            image-caption
+                                                        "
                                                     >
                                                         ${escapeHtml(
                                                             message.message
@@ -2330,7 +2259,9 @@ function renderMessages(
                                     </div>
 
 
-                                    <div class="time">
+                                    <div
+                                        class="time"
+                                    >
 
                                         ${
                                             message.pending
@@ -2354,7 +2285,7 @@ function renderMessages(
 
 
                     /*
-                     * TEXT MESSAGE
+                     * TEXT
                      */
 
                     return `
@@ -2362,12 +2293,18 @@ function renderMessages(
                         <div
                             class="
                                 message-row
-                                ${mine ? "mine" : "theirs"}
+                                ${
+                                    mine
+                                        ? "mine"
+                                        : "theirs"
+                                }
                             "
                         >
 
                             <div
-                                class="message-content"
+                                class="
+                                    message-content
+                                "
                             >
 
                                 <div
@@ -2376,10 +2313,12 @@ function renderMessages(
                                         ${stateClass}
                                     "
                                 >
+
                                     ${escapeHtml(
                                         message.message ||
                                         ""
                                     )}
+
                                 </div>
 
 
@@ -2411,7 +2350,7 @@ function renderMessages(
 
 
     /*
-     * Scroll only when necessary.
+     * Only scroll after a real update.
      */
 
     if (
@@ -2419,7 +2358,7 @@ function renderMessages(
     ) {
 
         requestAnimationFrame(
-            function() {
+            function () {
 
                 const area =
                     document.getElementById(
@@ -2436,6 +2375,7 @@ function renderMessages(
     }
 
 }
+
 
 
 /* =========================================================
@@ -2457,14 +2397,8 @@ async function sendMessage() {
 
 
     const text =
-        input
-            .value
-            .trim();
+        input.value.trim();
 
-
-    /*
-     * Nothing to send.
-     */
 
     if (
         !text &&
@@ -2489,12 +2423,8 @@ async function sendMessage() {
             Date.now() +
             "_" +
             Math.random()
-                .toString(
-                    36
-                )
-                .slice(
-                    2
-                );
+                .toString(36)
+                .slice(2);
 
 
         const optimisticMessage = {
@@ -2530,7 +2460,7 @@ async function sendMessage() {
 
 
         /*
-         * Add immediately.
+         * Show instantly.
          */
 
         messages.push(
@@ -2554,7 +2484,7 @@ async function sendMessage() {
 
 
         /*
-         * Clear textbox immediately.
+         * Clear input instantly.
          */
 
         input.value =
@@ -2638,14 +2568,12 @@ async function sendMessage() {
 
 
             /*
-             * Remove the temporary message.
-             * The real server message will arrive
-             * during refresh.
+             * Remove temporary message.
              */
 
             messages =
                 messages.filter(
-                    function(message) {
+                    function (message) {
 
                         return (
                             message.id !==
@@ -2660,26 +2588,15 @@ async function sendMessage() {
                 "";
 
 
-            saveChatCache();
-
-
-            /*
-             * Immediately fetch the real message.
-             */
-
             await refreshChat();
 
         }
 
         catch (error) {
 
-            /*
-             * Keep the message visible and mark it failed.
-             */
-
             messages =
                 messages.map(
-                    function(message) {
+                    function (message) {
 
                         if (
                             message.id ===
@@ -2721,9 +2638,7 @@ async function sendMessage() {
 
             saveChatCache();
 
-
             console.error(
-                "Send message error:",
                 error
             );
 
@@ -2863,12 +2778,6 @@ async function sendMessage() {
 
     catch (error) {
 
-        console.error(
-            "Photo send error:",
-            error
-        );
-
-
         alert(
             error.message ||
             "Could not send photo."
@@ -2891,8 +2800,9 @@ async function sendMessage() {
 }
 
 
+
 /* =========================================================
-   INPUT SETUP
+   INPUT
 ========================================================= */
 
 function setupInput() {
@@ -2905,7 +2815,7 @@ function setupInput() {
 
     input.addEventListener(
         "input",
-        function() {
+        function () {
 
             input.style.height =
                 "auto";
@@ -2924,12 +2834,7 @@ function setupInput() {
 
     input.addEventListener(
         "keydown",
-        function(event) {
-
-            /*
-             * Enter = send
-             * Shift + Enter = new line
-             */
+        function (event) {
 
             if (
                 event.key ===
@@ -2939,7 +2844,6 @@ function setupInput() {
 
                 event.preventDefault();
 
-
                 sendMessage();
 
             }
@@ -2948,6 +2852,7 @@ function setupInput() {
     );
 
 }
+
 
 
 /* =========================================================
@@ -3025,7 +2930,7 @@ function handleImageSelection(
 
 
     reader.onload =
-        function() {
+        function () {
 
             document
                 .getElementById(
@@ -3084,6 +2989,7 @@ function removeSelectedImage() {
 }
 
 
+
 /* =========================================================
    IMAGE COMPRESSION
 ========================================================= */
@@ -3093,7 +2999,7 @@ function compressImage(
 ) {
 
     return new Promise(
-        function(
+        function (
             resolve,
             reject
         ) {
@@ -3107,7 +3013,7 @@ function compressImage(
 
 
             reader.onload =
-                function() {
+                function () {
 
                     const image =
                         new Image();
@@ -3118,7 +3024,7 @@ function compressImage(
 
 
                     image.onload =
-                        function() {
+                        function () {
 
                             const maxSize =
                                 1600;
@@ -3251,6 +3157,7 @@ function compressImage(
 }
 
 
+
 /* =========================================================
    LOCK
 ========================================================= */
@@ -3284,6 +3191,7 @@ function showLocked() {
         "flex";
 
 }
+
 
 
 /* =========================================================
@@ -3357,3 +3265,4 @@ function openImage(
 </body>
 
 </html>
+
