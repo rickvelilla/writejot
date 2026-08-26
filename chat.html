@@ -3,708 +3,680 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>Writejot | Chat</title>
+<title>Writejot | Chat</title>
 
-    <style>
+<style>
 
-        * {
-            box-sizing:
-                border-box;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        html,
-        body {
-            margin:
-                0;
+html,
+body {
+    margin: 0;
 
-            width:
-                100%;
+    width: 100%;
+    height: 100%;
+}
 
-            height:
-                100%;
-        }
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-        body {
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+    background:
+        #f6f8fc;
 
-            background:
-                #f6f8fc;
+    color:
+        #1f2937;
 
-            color:
-                #1f2937;
+    display:
+        flex;
 
-            display:
-                flex;
+    flex-direction:
+        column;
 
-            flex-direction:
-                column;
+    overflow:
+        hidden;
+}
 
-            overflow:
-                hidden;
-        }
+header {
+    flex:
+        0 0 auto;
 
-        header {
-            flex: 0 0 auto;
+    height:
+        64px;
 
-            height:
-                64px;
+    background:
+        white;
 
-            background:
-                white;
+    border-bottom:
+        1px solid #e5e7eb;
 
-            border-bottom:
-                1px solid #e5e7eb;
+    display:
+        flex;
 
-            display:
-                flex;
+    align-items:
+        center;
 
-            align-items:
-                center;
+    gap:
+        12px;
 
-            gap:
-                12px;
+    padding:
+        0 16px;
+}
 
-            padding:
-                0 16px;
-        }
+.back {
+    color:
+        #4285F4;
 
-        .back {
-            color:
-                #4285F4;
+    text-decoration:
+        none;
 
-            text-decoration:
-                none;
+    font-weight:
+        700;
 
-            font-size:
-                14px;
+    font-size:
+        14px;
+}
 
-            font-weight:
-                700;
-        }
+.recipient {
+    display:
+        flex;
 
-        .recipient {
-            display:
-                flex;
+    align-items:
+        center;
 
-            align-items:
-                center;
+    gap:
+        10px;
 
-            gap:
-                10px;
+    min-width:
+        0;
+}
 
-            min-width:
-                0;
-        }
+.recipient img {
+    width:
+        40px;
 
-        .recipient img {
-            width:
-                40px;
+    height:
+        40px;
 
-            height:
-                40px;
+    border-radius:
+        50%;
 
-            border-radius:
-                50%;
+    object-fit:
+        cover;
 
-            object-fit:
-                cover;
+    flex:
+        0 0 40px;
 
-            flex:
-                0 0 40px;
-        }
+    background:
+        #e9eef5;
+}
 
-        .recipient-info {
-            min-width:
-                0;
-        }
+.recipient-info {
+    min-width:
+        0;
+}
 
-        .recipient-name {
-            font-weight:
-                700;
+.recipient-name {
+    font-size:
+        15px;
 
-            white-space:
-                nowrap;
+    font-weight:
+        700;
 
-            overflow:
-                hidden;
+    white-space:
+        nowrap;
 
-            text-overflow:
-                ellipsis;
-        }
+    overflow:
+        hidden;
 
-        .recipient-username {
-            color:
-                #6b7280;
+    text-overflow:
+        ellipsis;
+}
 
-            font-size:
-                12px;
-        }
+.recipient-username {
+    color:
+        #6b7280;
 
-        #chatArea {
-            flex:
-                1 1 auto;
+    font-size:
+        12px;
+}
 
-            min-height:
-                0;
+#chatArea {
+    flex:
+        1 1 auto;
 
-            overflow-y:
-                auto;
+    min-height:
+        0;
 
-            padding:
-                18px;
-        }
+    overflow-y:
+        auto;
 
-        #messages {
-            width:
-                100%;
+    padding:
+        18px;
+}
 
-            max-width:
-                850px;
+#messages {
+    width:
+        100%;
 
-            margin:
-                0 auto;
-        }
+    max-width:
+        850px;
 
-        .message-row {
-            display:
-                flex;
+    margin:
+        0 auto;
+}
 
-            width:
-                100%;
+.message-row {
+    display:
+        flex;
 
-            align-items:
-                flex-start;
+    width:
+        100%;
 
-            margin-bottom:
-                10px;
-        }
+    align-items:
+        flex-start;
 
-        .message-row.mine {
-            justify-content:
-                flex-end;
-        }
+    margin-bottom:
+        10px;
+}
 
-        .message-row.theirs {
-            justify-content:
-                flex-start;
-        }
+.message-row.mine {
+    justify-content:
+        flex-end;
+}
 
-        .message-content {
-            width:
-                fit-content;
+.message-row.theirs {
+    justify-content:
+        flex-start;
+}
 
-            max-width:
-                70%;
+.message-content {
+    width:
+        fit-content;
 
-            min-width:
-                0;
-        }
+    max-width:
+        70%;
 
-        .bubble {
-            display:
-                inline-block;
+    min-width:
+        0;
+}
 
-            width:
-                auto;
+.bubble {
+    display:
+        inline-block;
 
-            max-width:
-                100%;
+    width:
+        auto;
 
-            height:
-                auto;
+    max-width:
+        100%;
 
-            min-height:
-                0;
+    height:
+        auto;
 
-            padding:
-                9px 13px;
+    min-height:
+        0;
 
-            border-radius:
-                14px;
+    padding:
+        9px 13px;
 
-            font-size:
-                14px;
+    border-radius:
+        14px;
 
-            line-height:
-                1.45;
+    font-size:
+        14px;
 
-            white-space:
-                pre-wrap;
+    line-height:
+        1.45;
 
-            overflow-wrap:
-                anywhere;
+    white-space:
+        pre-wrap;
 
-            word-break:
-                break-word;
-        }
+    overflow-wrap:
+        anywhere;
 
-        .mine .bubble {
-            background:
-                #4285F4;
+    word-break:
+        break-word;
+}
 
-            color:
-                white;
+.mine .bubble {
+    background:
+        #4285F4;
 
-            border-bottom-right-radius:
-                4px;
-        }
+    color:
+        white;
 
-        .theirs .bubble {
-            background:
-                white;
+    border-bottom-right-radius:
+        4px;
+}
 
-            color:
-                #1f2937;
+.theirs .bubble {
+    background:
+        white;
 
-            border:
-                1px solid #dfe3e8;
+    color:
+        #1f2937;
 
-            border-bottom-left-radius:
-                4px;
-        }
+    border:
+        1px solid #dfe3e8;
 
-        .message-pending {
-            opacity:
-                .6;
-        }
+    border-bottom-left-radius:
+        4px;
+}
 
-        .message-failed {
-            opacity:
-                .7;
+.pending {
+    opacity:
+        .55;
+}
 
-            border:
-                1px solid #ef4444 !important;
-        }
+.failed {
+    opacity:
+        .75;
 
-        .retry-button {
-            border:
-                none;
+    border:
+        1px solid #ef4444 !important;
+}
 
-            background:
-                transparent;
+.time {
+    display:
+        block;
 
-            color:
-                #dc2626;
+    margin-top:
+        3px;
 
-            font-size:
-                10px;
+    font-size:
+        10px;
 
-            cursor:
-                pointer;
+    color:
+        #98a2b3;
+}
 
-            padding:
-                0 3px;
-        }
+.mine .time {
+    text-align:
+        right;
+}
 
-        .time {
-            display:
-                block;
+.message-image {
+    display:
+        block;
 
-            margin-top:
-                3px;
+    max-width:
+        100%;
 
-            font-size:
-                10px;
+    max-height:
+        450px;
 
-            color:
-                #98a2b3;
+    border-radius:
+        10px;
 
-            text-align:
-                left;
-        }
+    cursor:
+        pointer;
+}
 
-        .mine .time {
-            text-align:
-                right;
-        }
+.image-bubble {
+    padding:
+        4px;
 
-        .message-image {
-            display:
-                block;
+    overflow:
+        hidden;
+}
 
-            max-width:
-                100%;
+.image-caption {
+    padding:
+        6px;
 
-            max-height:
-                450px;
+    font-size:
+        14px;
 
-            border-radius:
-                10px;
+    line-height:
+        1.45;
 
-            cursor:
-                pointer;
-        }
+    white-space:
+        pre-wrap;
 
-        .image-bubble {
-            padding:
-                4px;
+    overflow-wrap:
+        anywhere;
+}
 
-            overflow:
-                hidden;
-        }
+.empty {
+    min-height:
+        250px;
 
-        .image-caption {
-            padding:
-                6px;
+    display:
+        flex;
 
-            font-size:
-                14px;
+    flex-direction:
+        column;
 
-            line-height:
-                1.45;
+    align-items:
+        center;
 
-            white-space:
-                pre-wrap;
+    justify-content:
+        center;
 
-            overflow-wrap:
-                anywhere;
-        }
+    color:
+        #8a94a6;
 
-        .empty {
-            min-height:
-                250px;
+    text-align:
+        center;
+}
 
-            display:
-                flex;
+#composer {
+    flex:
+        0 0 auto;
 
-            align-items:
-                center;
+    background:
+        white;
 
-            justify-content:
-                center;
+    border-top:
+        1px solid #e5e7eb;
 
-            flex-direction:
-                column;
+    padding:
+        10px 12px 12px;
+}
 
-            color:
-                #8a94a6;
+.composer-inner {
+    width:
+        100%;
 
-            text-align:
-                center;
-        }
+    max-width:
+        850px;
 
-        #composer {
-            flex:
-                0 0 auto;
+    margin:
+        0 auto;
 
-            width:
-                100%;
+    display:
+        flex;
 
-            background:
-                white;
+    align-items:
+        flex-end;
 
-            border-top:
-                1px solid #e5e7eb;
+    gap:
+        7px;
+}
 
-            padding:
-                10px 12px 12px;
-        }
+#photoButton {
+    width:
+        42px;
 
-        .composer-inner {
-            width:
-                100%;
+    height:
+        42px;
 
-            max-width:
-                850px;
+    flex:
+        0 0 42px;
 
-            margin:
-                0 auto;
+    border:
+        1px solid #d7dce3;
 
-            display:
-                flex;
+    border-radius:
+        10px;
 
-            align-items:
-                flex-end;
+    background:
+        white;
 
-            gap:
-                7px;
-        }
+    cursor:
+        pointer;
 
-        #photoButton {
-            width:
-                42px;
+    font-size:
+        19px;
+}
 
-            height:
-                42px;
+#imageInput {
+    display:
+        none;
+}
 
-            flex:
-                0 0 42px;
+#messageInput {
+    flex:
+        1;
 
-            border:
-                1px solid #d7dce3;
+    min-width:
+        0;
 
-            border-radius:
-                10px;
+    min-height:
+        42px;
 
-            background:
-                white;
+    max-height:
+        125px;
 
-            cursor:
-                pointer;
+    resize:
+        none;
 
-            font-size:
-                19px;
-        }
+    padding:
+        10px 12px;
 
-        #imageInput {
-            display:
-                none;
-        }
+    border:
+        1px solid #d7dce3;
 
-        #messageInput {
-            flex:
-                1;
+    border-radius:
+        10px;
 
-            min-width:
-                0;
+    outline:
+        none;
 
-            min-height:
-                42px;
+    font-family:
+        inherit;
 
-            max-height:
-                125px;
+    line-height:
+        20px;
+}
 
-            resize:
-                none;
+#sendButton {
+    height:
+        42px;
 
-            padding:
-                10px 12px;
+    padding:
+        0 16px;
 
-            border:
-                1px solid #d7dce3;
+    border:
+        none;
 
-            border-radius:
-                10px;
+    border-radius:
+        10px;
 
-            outline:
-                none;
+    background:
+        #4285F4;
 
-            font-family:
-                inherit;
+    color:
+        white;
 
-            line-height:
-                20px;
-        }
+    font-weight:
+        700;
 
-        #messageInput:focus {
-            border-color:
-                #4285F4;
-        }
+    cursor:
+        pointer;
+}
 
-        #sendButton {
-            height:
-                42px;
+#sendButton:disabled {
+    opacity:
+        .65;
+}
 
-            padding:
-                0 16px;
+#imagePreview {
+    display:
+        none;
 
-            border:
-                none;
+    max-width:
+        850px;
 
-            border-radius:
-                10px;
+    margin:
+        0 auto 8px;
+}
 
-            background:
-                #4285F4;
+.preview-box {
+    position:
+        relative;
 
-            color:
-                white;
+    display:
+        inline-block;
+}
 
-            font-weight:
-                700;
+#previewImage {
+    display:
+        block;
 
-            cursor:
-                pointer;
-        }
+    max-width:
+        170px;
 
-        #sendButton:disabled {
-            opacity:
-                .65;
-        }
+    max-height:
+        120px;
 
-        #imagePreview {
-            display:
-                none;
+    border-radius:
+        10px;
+}
 
-            max-width:
-                850px;
+#removeImageButton {
+    position:
+        absolute;
 
-            margin:
-                0 auto 8px;
-        }
+    top:
+        -7px;
 
-        .preview-box {
-            position:
-                relative;
+    right:
+        -7px;
 
-            display:
-                inline-block;
-        }
+    width:
+        23px;
 
-        #previewImage {
-            max-width:
-                170px;
+    height:
+        23px;
 
-            max-height:
-                120px;
+    border:
+        none;
 
-            border-radius:
-                10px;
-        }
+    border-radius:
+        50%;
 
-        #removeImageButton {
-            position:
-                absolute;
+    background:
+        #ef4444;
 
-            top:
-                -7px;
+    color:
+        white;
 
-            right:
-                -7px;
+    cursor:
+        pointer;
+}
 
-            width:
-                23px;
+.lock-screen {
+    min-height:
+        100vh;
 
-            height:
-                23px;
+    display:
+        flex;
 
-            border:
-                none;
+    align-items:
+        center;
 
-            border-radius:
-                50%;
+    justify-content:
+        center;
 
-            background:
-                #ef4444;
+    padding:
+        30px;
+}
 
-            color:
-                white;
+.lock-card {
+    max-width:
+        500px;
 
-            cursor:
-                pointer;
-        }
+    width:
+        100%;
 
-        .lock-screen {
-            height:
-                100%;
+    background:
+        white;
 
-            display:
-                flex;
+    border:
+        1px solid #e1e6ee;
 
-            align-items:
-                center;
+    border-radius:
+        16px;
 
-            justify-content:
-                center;
+    padding:
+        35px;
 
-            padding:
-                30px;
-        }
+    text-align:
+        center;
+}
 
-        .lock-card {
-            max-width:
-                500px;
+.lock-card p {
+    color:
+        #718096;
 
-            width:
-                100%;
+    line-height:
+        1.6;
+}
 
-            background:
-                white;
+.button {
+    display:
+        inline-block;
 
-            border:
-                1px solid #e1e6ee;
+    padding:
+        11px 17px;
 
-            border-radius:
-                16px;
+    background:
+        #4285F4;
 
-            padding:
-                35px;
+    color:
+        white;
 
-            text-align:
-                center;
-        }
+    text-decoration:
+        none;
 
-        .lock-card p {
-            color:
-                #718096;
+    border-radius:
+        9px;
 
-            line-height:
-                1.6;
-        }
+    font-weight:
+        600;
+}
 
-        .button {
-            display:
-                inline-block;
+@media (max-width: 600px) {
 
-            padding:
-                11px 17px;
+    header {
+        height:
+            58px;
 
-            background:
-                #4285F4;
+        padding:
+            0 11px;
+    }
 
-            color:
-                white;
+    #chatArea {
+        padding:
+            14px 11px 16px;
+    }
 
-            text-decoration:
-                none;
+    .message-content {
+        max-width:
+            82%;
+    }
 
-            border-radius:
-                9px;
+    .bubble {
+        font-size:
+            14px;
+    }
 
-            font-weight:
-                600;
-        }
+    #composer {
+        padding:
+            8px;
+    }
 
-        @media (
-            max-width: 600px
-        ) {
+    #sendButton {
+        padding:
+            0 12px;
+    }
 
-            header {
-                height:
-                    58px;
+}
 
-                padding:
-                    0 11px;
-            }
-
-            #chatArea {
-                padding:
-                    14px 11px 16px;
-            }
-
-            .message-content {
-                max-width:
-                    82%;
-            }
-
-            .bubble {
-                font-size:
-                    14px;
-            }
-
-            #composer {
-                padding:
-                    8px;
-            }
-
-            #sendButton {
-                padding:
-                    0 12px;
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
 
@@ -730,8 +702,6 @@
 
         <p>
             Your Writejot access has expired.
-            Renew your subscription to continue
-            messaging.
         </p>
 
         <a
@@ -746,131 +716,138 @@
 </div>
 
 
+
 <div id="chatInterface">
 
-    <header>
+<header>
 
-        <a
-            href="messages.html"
-            class="back"
-        >
-            ← Messages
-        </a>
-
-
-        <div class="recipient">
-
-            <img
-                id="recipientPicture"
-                src="W.png"
-                alt=""
-            >
+<a
+    href="messages.html"
+    class="back"
+>
+    ← Messages
+</a>
 
 
-            <div class="recipient-info">
+<div class="recipient">
 
-                <div
-                    id="recipientName"
-                    class="recipient-name"
-                >
-                    Loading...
-                </div>
-
-
-                <div
-                    id="recipientUsername"
-                    class="recipient-username"
-                >
-                    @username
-                </div>
-
-            </div>
-
-        </div>
-
-    </header>
+<img
+    id="recipientPicture"
+    src="W.png"
+    alt=""
+>
 
 
-    <main id="chatArea">
+<div class="recipient-info">
 
-        <div id="messages">
-
-            <div class="empty">
-                Loading...
-            </div>
-
-        </div>
-
-    </main>
+<div
+    id="recipientName"
+    class="recipient-name"
+>
+    Loading...
+</div>
 
 
-    <div id="composer">
-
-
-        <div id="imagePreview">
-
-            <div class="preview-box">
-
-                <img
-                    id="previewImage"
-                    src=""
-                    alt=""
-                >
-
-
-                <button
-                    id="removeImageButton"
-                    type="button"
-                    onclick="removeSelectedImage()"
-                >
-                    ×
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="composer-inner">
-
-            <button
-                id="photoButton"
-                type="button"
-                onclick="openImagePicker()"
-            >
-                📷
-            </button>
-
-
-            <input
-                id="imageInput"
-                type="file"
-                accept="image/*"
-                onchange="handleImageSelection(event)"
-            >
-
-
-            <textarea
-                id="messageInput"
-                maxlength="2000"
-                rows="1"
-                placeholder="Type a message..."
-            ></textarea>
-
-
-            <button
-                id="sendButton"
-                type="button"
-                onclick="sendMessage()"
-            >
-                Send
-            </button>
-
-        </div>
-
-    </div>
+<div
+    id="recipientUsername"
+    class="recipient-username"
+>
+    @username
+</div>
 
 </div>
+
+</div>
+
+</header>
+
+
+
+<main id="chatArea">
+
+<div id="messages">
+
+<div class="empty">
+
+Loading messages...
+
+</div>
+
+</div>
+
+</main>
+
+
+
+<div id="composer">
+
+
+<div id="imagePreview">
+
+<div class="preview-box">
+
+<img
+    id="previewImage"
+    src=""
+    alt=""
+>
+
+
+<button
+    id="removeImageButton"
+    type="button"
+    onclick="removeSelectedImage()"
+>
+    ×
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="composer-inner">
+
+<button
+    id="photoButton"
+    type="button"
+    onclick="openImagePicker()"
+>
+    📷
+</button>
+
+
+<input
+    id="imageInput"
+    type="file"
+    accept="image/*"
+    onchange="handleImageSelection(event)"
+>
+
+
+<textarea
+    id="messageInput"
+    maxlength="2000"
+    rows="1"
+    placeholder="Type a message..."
+></textarea>
+
+
+<button
+    id="sendButton"
+    type="button"
+    onclick="sendMessage()"
+>
+    Send
+</button>
+
+</div>
+
+</div>
+
+</div>
+
 
 
 <script>
@@ -879,17 +856,21 @@ const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
+const ACCESS_CACHE_TIME =
+    5 * 60 * 1000;
+
+
 let currentUser =
     null;
 
 let otherUsername =
     "";
 
-let selectedImage =
-    null;
-
 let messages =
     [];
+
+let selectedImage =
+    null;
 
 let lastFingerprint =
     "";
@@ -904,7 +885,7 @@ let refreshTimer =
 
 window.addEventListener(
     "load",
-    async function () {
+    async function() {
 
         const saved =
             localStorage.getItem(
@@ -914,7 +895,7 @@ window.addEventListener(
 
         if (!saved) {
 
-            window.location.href =
+            location.href =
                 "index.html";
 
             return;
@@ -929,9 +910,11 @@ window.addEventListener(
                     saved
                 );
 
-        } catch {
+        }
 
-            window.location.href =
+        catch {
+
+            location.href =
                 "index.html";
 
             return;
@@ -955,7 +938,7 @@ window.addEventListener(
 
         if (!otherUsername) {
 
-            window.location.href =
+            location.href =
                 "messages.html";
 
             return;
@@ -963,14 +946,9 @@ window.addEventListener(
         }
 
 
-        const access =
-            await verifyAccess();
-
-
-        if (!access) {
-            return;
-        }
-
+        /*
+         * Show cached chat immediately.
+         */
 
         loadChatCache();
 
@@ -978,21 +956,24 @@ window.addEventListener(
         setupInput();
 
 
-        /*
-         * Mark read without delaying UI.
-         */
-
-        markReadInBackground();
+        const cachedAccess =
+            getCachedAccess();
 
 
-        await refreshChat();
+        if (
+            cachedAccess &&
+            cachedAccess.access === true
+        ) {
 
+            startBackgroundWork();
 
-        refreshTimer =
-            setInterval(
-                refreshChat,
-                5000
-            );
+        }
+
+        else {
+
+            verifyAccessInBackground();
+
+        }
 
     }
 );
@@ -1002,7 +983,102 @@ window.addEventListener(
    ACCESS
 ========================================================= */
 
-async function verifyAccess() {
+function accessCacheKey() {
+
+    return (
+        "writejot_access_" +
+        String(
+            currentUser.email
+        )
+        .trim()
+        .toLowerCase()
+    );
+
+}
+
+
+function getCachedAccess() {
+
+    try {
+
+        const raw =
+            localStorage.getItem(
+                accessCacheKey()
+            );
+
+
+        if (!raw) {
+            return null;
+        }
+
+
+        const data =
+            JSON.parse(
+                raw
+            );
+
+
+        if (
+            Date.now() -
+            Number(
+                data.checkedAt || 0
+            )
+            >
+            ACCESS_CACHE_TIME
+        ) {
+
+            return null;
+
+        }
+
+
+        return data;
+
+    }
+
+    catch {
+
+        return null;
+
+    }
+
+}
+
+
+function saveAccessCache(
+    result
+) {
+
+    try {
+
+        localStorage.setItem(
+
+            accessCacheKey(),
+
+            JSON.stringify({
+
+                access:
+                    result.access === true,
+
+                status:
+                    result.status ||
+                    "",
+
+                checkedAt:
+                    Date.now()
+
+            })
+
+        );
+
+    }
+
+    catch {}
+
+}
+
+
+async function verifyAccessInBackground() {
 
     try {
 
@@ -1027,6 +1103,11 @@ async function verifyAccess() {
             await response.json();
 
 
+        saveAccessCache(
+            result
+        );
+
+
         if (
             !result.success ||
             !result.access
@@ -1034,37 +1115,58 @@ async function verifyAccess() {
 
             showLocked();
 
-            return false;
+            return;
 
         }
 
 
-        currentUser.status =
-            result.status;
+        startBackgroundWork();
+
+    }
+
+    catch {
+
+        if (
+            !getCachedAccess()
+        ) {
+
+            showLocked();
+
+        }
+
+    }
+
+}
 
 
-        localStorage.setItem(
+/* =========================================================
+   BACKGROUND WORK
+========================================================= */
 
-            "writejotUser",
+function startBackgroundWork() {
 
-            JSON.stringify(
-                currentUser
-            )
+    markReadInBackground();
 
+
+    refreshChat();
+
+
+    if (
+        refreshTimer
+    ) {
+
+        clearInterval(
+            refreshTimer
         );
 
-
-        return true;
-
     }
 
-    catch (error) {
 
-        showLocked();
-
-        return false;
-
-    }
+    refreshTimer =
+        setInterval(
+            refreshChat,
+            5000
+        );
 
 }
 
@@ -1073,7 +1175,7 @@ async function verifyAccess() {
    CACHE
 ========================================================= */
 
-function cacheKey() {
+function chatCacheKey() {
 
     return (
         "writejot_chat_" +
@@ -1095,7 +1197,7 @@ function loadChatCache() {
 
         const raw =
             localStorage.getItem(
-                cacheKey()
+                chatCacheKey()
             );
 
 
@@ -1104,41 +1206,39 @@ function loadChatCache() {
         }
 
 
-        const parsed =
+        const data =
             JSON.parse(
                 raw
             );
 
 
         if (
-            !parsed ||
             !Array.isArray(
-                parsed.messages
+                data.messages
             )
         ) {
 
             return;
-
         }
 
 
         messages =
-            parsed.messages;
+            data.messages;
 
 
         if (
-            parsed.profile
+            data.profile
         ) {
 
             applyRecipient(
-                parsed.profile
+                data.profile
             );
 
         }
 
 
         lastFingerprint =
-            fingerprint(
+            JSON.stringify(
                 messages
             );
 
@@ -1149,7 +1249,7 @@ function loadChatCache() {
 
     }
 
-    catch (error) {}
+    catch {}
 
 }
 
@@ -1162,7 +1262,7 @@ function saveChatCache(
 
         localStorage.setItem(
 
-            cacheKey(),
+            chatCacheKey(),
 
             JSON.stringify({
 
@@ -1181,7 +1281,7 @@ function saveChatCache(
 
     }
 
-    catch (error) {}
+    catch {}
 
 }
 
@@ -1220,7 +1320,7 @@ async function refreshChat() {
 
     try {
 
-        const profilePromise =
+        const profileRequest =
             fetch(
 
                 APPS_SCRIPT_URL +
@@ -1237,7 +1337,7 @@ async function refreshChat() {
             );
 
 
-        const messagesPromise =
+        const messagesRequest =
             fetch(
 
                 APPS_SCRIPT_URL +
@@ -1261,13 +1361,12 @@ async function refreshChat() {
 
         const [
             profileResponse,
-            messagesResponse
+            messageResponse
         ] =
             await Promise.all([
 
-                profilePromise,
-
-                messagesPromise
+                profileRequest,
+                messagesRequest
 
             ]);
 
@@ -1277,13 +1376,26 @@ async function refreshChat() {
 
 
         const messageResult =
-            await messagesResponse.json();
+            await messageResponse.json();
 
 
         if (
             profileResult.accessDenied ||
             messageResult.accessDenied
         ) {
+
+            saveAccessCache({
+
+                access:
+                    false,
+
+                status:
+                    messageResult.status ||
+                    profileResult.status ||
+                    "expired"
+
+            });
+
 
             showLocked();
 
@@ -1305,52 +1417,96 @@ async function refreshChat() {
 
 
         if (
-            messageResult.success
+            !messageResult.success
         ) {
 
-            const next =
-                messageResult.messages ||
-                [];
-
-
-            const nextFingerprint =
-                fingerprint(
-                    next
-                );
-
-
-            if (
-                nextFingerprint !==
-                lastFingerprint
-            ) {
-
-                messages =
-                    next;
-
-                lastFingerprint =
-                    nextFingerprint;
-
-
-                saveChatCache(
-                    profileResult.profile
-                );
-
-
-                renderMessages(
-                    messages
-                );
-
-            }
+            return;
 
         }
+
+
+        const next =
+            messageResult.messages ||
+            [];
+
+
+        /*
+         * Ignore a server response that contains
+         * fewer messages than our optimistic UI.
+         */
+
+        const pending =
+            messages.filter(
+                function(message) {
+
+                    return (
+                        message.pending
+                    );
+
+                }
+            );
+
+
+        const failed =
+            messages.filter(
+                function(message) {
+
+                    return (
+                        message.failed
+                    );
+
+                }
+            );
+
+
+        const merged =
+            next.concat(
+                pending
+            )
+            .concat(
+                failed
+            );
+
+
+        const nextFingerprint =
+            JSON.stringify(
+                merged
+            );
+
+
+        if (
+            nextFingerprint ===
+            lastFingerprint
+        ) {
+
+            return;
+
+        }
+
+
+        messages =
+            merged;
+
+
+        lastFingerprint =
+            nextFingerprint;
+
+
+        saveChatCache(
+            profileResult.profile
+        );
+
+
+        renderMessages(
+            messages
+        );
 
     }
 
     catch (error) {
 
-        console.error(
-            "Chat refresh error:",
-            error
+        console.log(
+            "Background chat refresh failed."
         );
 
     }
@@ -1395,11 +1551,24 @@ function applyRecipient(
         profile.profilePicture ||
         "W.png";
 
+
+    document
+        .getElementById(
+            "recipientPicture"
+        )
+        .onerror =
+        function() {
+
+            this.src =
+                "W.png";
+
+        };
+
 }
 
 
 /* =========================================================
-   READ
+   MARK READ
 ========================================================= */
 
 async function markReadInBackground() {
@@ -1442,7 +1611,7 @@ async function markReadInBackground() {
 
     }
 
-    catch (error) {}
+    catch {}
 
 }
 
@@ -1516,108 +1685,38 @@ function renderMessages(
                                 message.timestamp
                               )
                               .toLocaleTimeString(
-                                  [],
-                                  {
-                                      hour:
-                                          "numeric",
+                                [],
+                                {
+                                    hour:
+                                        "numeric",
 
-                                      minute:
-                                          "2-digit"
-                                  }
+                                    minute:
+                                        "2-digit"
+                                }
                               )
                             : "";
 
 
-                    const image =
+                    const stateClass =
+                        message.pending
+                            ? "pending"
+                            : message.failed
+                                ? "failed"
+                                : "";
+
+
+                    if (
                         message.attachmentType ===
                             "image" &&
-                        message.attachmentUrl;
-
-
-                    if (image) {
+                        message.attachmentUrl
+                    ) {
 
                         return `
-
-                            <div
-                                class="
-                                    message-row
-                                    ${
-                                        mine
-                                            ? "mine"
-                                            : "theirs"
-                                    }
-                                "
-                                data-message-id="${
-                                    message.id ||
-                                    ""
-                                }"
-                            >
-
-                                <div
-                                    class="message-content"
-                                >
-
-                                    <div
-                                        class="bubble image-bubble"
-                                    >
-
-                                        <img
-                                            class="message-image"
-                                            src="${escapeHtml(
-                                                message.attachmentUrl
-                                            )}"
-                                            alt="Photo"
-                                            loading="lazy"
-                                            onclick="openImage(
-                                                '${escapeHtml(
-                                                    message.attachmentUrl
-                                                )}'
-                                            )"
-                                        >
-
-
-                                        ${
-                                            message.message
-                                                ? `
-                                                    <div
-                                                        class="image-caption"
-                                                    >
-                                                        ${escapeHtml(
-                                                            message.message
-                                                        )}
-                                                    </div>
-                                                  `
-                                                : ""
-                                        }
-
-                                    </div>
-
-
-                                    <div class="time">
-                                        ${escapeHtml(
-                                            time
-                                        )}
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        `;
-
-                    }
-
-
-                    return `
 
                         <div
                             class="
                                 message-row
-                                ${
-                                    mine
-                                        ? "mine"
-                                        : "theirs"
-                                }
+                                ${mine ? "mine" : "theirs"}
                             "
                         >
 
@@ -1626,28 +1725,107 @@ function renderMessages(
                             >
 
                                 <div
-                                    class="bubble"
+                                    class="
+                                        bubble
+                                        image-bubble
+                                        ${stateClass}
+                                    "
                                 >
-                                    ${escapeHtml(
-                                        String(
-                                            message.message ||
-                                            ""
-                                        )
-                                    )}
+
+                                    <img
+                                        class="message-image"
+                                        src="${escapeHtml(
+                                            message.attachmentUrl
+                                        )}"
+                                        loading="lazy"
+                                        onclick="openImage(
+                                            '${escapeHtml(
+                                                message.attachmentUrl
+                                            )}'
+                                        )"
+                                        alt=""
+                                    >
+
+
+                                    ${
+                                        message.message
+                                            ? `
+                                                <div
+                                                    class="image-caption"
+                                                >
+                                                    ${escapeHtml(
+                                                        message.message
+                                                    )}
+                                                </div>
+                                              `
+                                            : ""
+                                    }
+
                                 </div>
 
 
-                                <div class="time">
-
+                                <div
+                                    class="time"
+                                >
                                     ${escapeHtml(
                                         time
                                     )}
-
                                 </div>
 
                             </div>
 
                         </div>
+
+                        `;
+
+                    }
+
+
+                    return `
+
+                    <div
+                        class="
+                            message-row
+                            ${mine ? "mine" : "theirs"}
+                        "
+                    >
+
+                        <div
+                            class="message-content"
+                        >
+
+                            <div
+                                class="
+                                    bubble
+                                    ${stateClass}
+                                "
+                            >
+
+                                ${escapeHtml(
+                                    message.message ||
+                                    ""
+                                )}
+
+                            </div>
+
+
+                            <div class="time">
+
+                                ${
+                                    message.pending
+                                        ? "Sending..."
+                                        : message.failed
+                                            ? "Failed to send"
+                                            : escapeHtml(
+                                                time
+                                            )
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                     `;
 
@@ -1675,7 +1853,7 @@ function renderMessages(
 
 
 /* =========================================================
-   OPTIMISTIC SEND
+   SEND
 ========================================================= */
 
 async function sendMessage() {
@@ -1707,8 +1885,8 @@ async function sendMessage() {
 
 
     /*
-     * TEXT ONLY:
-     * Show instantly.
+     * TEXT:
+     * instant UI
      */
 
     if (
@@ -1737,8 +1915,7 @@ async function sendMessage() {
                 text,
 
             timestamp:
-                new Date()
-                .toISOString(),
+                new Date().toISOString(),
 
             attachmentType:
                 "",
@@ -1767,6 +1944,7 @@ async function sendMessage() {
 
         input.value =
             "";
+
 
         input.style.height =
             "42px";
@@ -1827,15 +2005,33 @@ async function sendMessage() {
 
                 throw new Error(
                     result.error ||
-                    "Could not send message."
+                    "Message failed."
                 );
 
             }
 
 
             /*
-             * Don't wait before refreshing.
+             * Remove the temporary message.
+             * The next refresh gets the real message.
              */
+
+            messages =
+                messages.filter(
+                    function(message) {
+
+                        return (
+                            message.id !==
+                            tempId
+                        );
+
+                    }
+                );
+
+
+            lastFingerprint =
+                "";
+
 
             await refreshChat();
 
@@ -1845,16 +2041,16 @@ async function sendMessage() {
 
             messages =
                 messages.map(
-                    function(item) {
+                    function(message) {
 
                         if (
-                            item.id ===
+                            message.id ===
                             tempId
                         ) {
 
                             return {
 
-                                ...item,
+                                ...message,
 
                                 pending:
                                     false,
@@ -1867,19 +2063,20 @@ async function sendMessage() {
                         }
 
 
-                        return item;
+                        return message;
 
                     }
                 );
 
 
+            lastFingerprint =
+                JSON.stringify(
+                    messages
+                );
+
+
             renderMessages(
                 messages
-            );
-
-
-            alert(
-                error.message
             );
 
         }
@@ -1900,8 +2097,7 @@ async function sendMessage() {
 
 
     /*
-     * PHOTO:
-     * Upload normally.
+     * IMAGE
      */
 
     button.disabled =
@@ -1980,7 +2176,7 @@ async function sendMessage() {
 
             throw new Error(
                 result.error ||
-                "Could not upload photo."
+                "Photo failed."
             );
 
         }
@@ -1994,6 +2190,10 @@ async function sendMessage() {
 
 
         removeSelectedImage();
+
+
+        lastFingerprint =
+            "";
 
 
         await refreshChat();
@@ -2112,7 +2312,7 @@ function handleImageSelection(
     ) {
 
         alert(
-            "Please select an image."
+            "Please choose an image."
         );
 
         return;
@@ -2126,7 +2326,7 @@ function handleImageSelection(
     ) {
 
         alert(
-            "Please select an image smaller than 10 MB."
+            "Please choose an image smaller than 10 MB."
         );
 
         return;
@@ -2385,19 +2585,8 @@ function showLocked() {
 
 
 /* =========================================================
-   FINGERPRINT
+   HELPERS
 ========================================================= */
-
-function fingerprint(
-    value
-) {
-
-    return JSON.stringify(
-        value
-    );
-
-}
-
 
 function normalizeUsername(
     value
