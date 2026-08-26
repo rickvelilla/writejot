@@ -3,686 +3,1118 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Writejot | Chat</title>
+    <title>Writejot | Chat</title>
 
-<style>
 
-* {
-    box-sizing: border-box;
-}
+    <style>
 
-html,
-body {
-    margin: 0;
+        * {
+            box-sizing: border-box;
+        }
 
-    width: 100%;
-    height: 100%;
-}
 
-body {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+        /* =====================================================
+           PAGE
+        ===================================================== */
 
-    background:
-        #f6f8fc;
+        html,
+        body {
+            margin: 0;
 
-    color:
-        #1f2937;
+            width: 100%;
+            height: 100%;
 
-    display:
-        flex;
+            overflow: hidden;
+        }
 
-    flex-direction:
-        column;
 
-    overflow:
-        hidden;
-}
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-header {
-    flex:
-        0 0 auto;
+            background:
+                #f6f8fc;
 
-    height:
-        64px;
+            color:
+                #1f2937;
+        }
 
-    background:
-        white;
 
-    border-bottom:
-        1px solid #e5e7eb;
+        /* =====================================================
+           CHAT APP CONTAINER
+        ===================================================== */
 
-    display:
-        flex;
+        #chatInterface {
 
-    align-items:
-        center;
+            width: 100%;
 
-    gap:
-        12px;
+            height: 100dvh;
 
-    padding:
-        0 16px;
-}
+            display: flex;
 
-.back {
-    color:
-        #4285F4;
+            flex-direction: column;
 
-    text-decoration:
-        none;
+            min-height: 0;
+        }
 
-    font-weight:
-        700;
 
-    font-size:
-        14px;
-}
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
-.recipient {
-    display:
-        flex;
+        header {
 
-    align-items:
-        center;
+            flex: 0 0 auto;
 
-    gap:
-        10px;
+            height: 64px;
 
-    min-width:
-        0;
-}
+            width: 100%;
 
-.recipient img {
-    width:
-        40px;
+            background: white;
 
-    height:
-        40px;
+            border-bottom:
+                1px solid #e5e7eb;
 
-    border-radius:
-        50%;
+            display: flex;
 
-    object-fit:
-        cover;
+            align-items: center;
 
-    flex:
-        0 0 40px;
+            gap: 12px;
 
-    background:
-        #e9eef5;
-}
+            padding:
+                0 16px;
 
-.recipient-info {
-    min-width:
-        0;
-}
+            position: relative;
 
-.recipient-name {
-    font-size:
-        15px;
+            z-index: 20;
+        }
 
-    font-weight:
-        700;
 
-    white-space:
-        nowrap;
+        .back {
 
-    overflow:
-        hidden;
+            color:
+                #4285F4;
 
-    text-overflow:
-        ellipsis;
-}
+            text-decoration:
+                none;
 
-.recipient-username {
-    color:
-        #6b7280;
+            font-weight:
+                700;
 
-    font-size:
-        12px;
-}
+            font-size:
+                14px;
 
-#chatArea {
-    flex:
-        1 1 auto;
+            white-space:
+                nowrap;
+        }
 
-    min-height:
-        0;
 
-    overflow-y:
-        auto;
+        .recipient {
 
-    padding:
-        18px;
-}
+            display: flex;
 
-#messages {
-    width:
-        100%;
+            align-items: center;
 
-    max-width:
-        850px;
+            gap: 10px;
 
-    margin:
-        0 auto;
-}
+            min-width: 0;
+        }
 
-.message-row {
-    display:
-        flex;
 
-    width:
-        100%;
+        .recipient img {
 
-    align-items:
-        flex-start;
+            width:
+                40px;
 
-    margin-bottom:
-        10px;
-}
+            height:
+                40px;
 
-.message-row.mine {
-    justify-content:
-        flex-end;
-}
+            border-radius:
+                50%;
 
-.message-row.theirs {
-    justify-content:
-        flex-start;
-}
+            object-fit:
+                cover;
 
-.message-content {
-    width:
-        fit-content;
+            flex:
+                0 0 40px;
 
-    max-width:
-        70%;
+            background:
+                #e9eef5;
 
-    min-width:
-        0;
-}
+            border:
+                1px solid #dbe2ea;
+        }
 
-.bubble {
-    display:
-        inline-block;
 
-    width:
-        auto;
+        .recipient-info {
 
-    max-width:
-        100%;
+            min-width:
+                0;
+        }
 
-    height:
-        auto;
 
-    min-height:
-        0;
+        .recipient-name {
 
-    padding:
-        9px 13px;
+            font-size:
+                15px;
 
-    border-radius:
-        14px;
+            font-weight:
+                700;
 
-    font-size:
-        14px;
+            white-space:
+                nowrap;
 
-    line-height:
-        1.45;
+            overflow:
+                hidden;
 
-    white-space:
-        pre-wrap;
+            text-overflow:
+                ellipsis;
+        }
 
-    overflow-wrap:
-        anywhere;
 
-    word-break:
-        break-word;
-}
+        .recipient-username {
 
-.mine .bubble {
-    background:
-        #4285F4;
+            color:
+                #6b7280;
 
-    color:
-        white;
+            font-size:
+                12px;
+        }
 
-    border-bottom-right-radius:
-        4px;
-}
 
-.theirs .bubble {
-    background:
-        white;
+        /* =====================================================
+           CHAT AREA
+        ===================================================== */
 
-    color:
-        #1f2937;
+        #chatArea {
 
-    border:
-        1px solid #dfe3e8;
+            flex:
+                1 1 auto;
 
-    border-bottom-left-radius:
-        4px;
-}
+            min-height:
+                0;
 
-.pending {
-    opacity:
-        .55;
-}
+            width:
+                100%;
 
-.failed {
-    opacity:
-        .75;
+            overflow-y:
+                auto;
 
-    border:
-        1px solid #ef4444 !important;
-}
+            overflow-x:
+                hidden;
 
-.time {
-    display:
-        block;
+            -webkit-overflow-scrolling:
+                touch;
 
-    margin-top:
-        3px;
+            padding:
+                18px;
+        }
 
-    font-size:
-        10px;
 
-    color:
-        #98a2b3;
-}
+        #messages {
 
-.mine .time {
-    text-align:
-        right;
-}
+            width:
+                100%;
 
-.message-image {
-    display:
-        block;
+            max-width:
+                850px;
 
-    max-width:
-        100%;
+            margin:
+                0 auto;
 
-    max-height:
-        450px;
+            min-height:
+                100%;
+        }
 
-    border-radius:
-        10px;
 
-    cursor:
-        pointer;
-}
+        /* =====================================================
+           MESSAGE ROW
+        ===================================================== */
 
-.image-bubble {
-    padding:
-        4px;
+        .message-row {
 
-    overflow:
-        hidden;
-}
+            display:
+                flex;
 
-.image-caption {
-    padding:
-        6px;
+            width:
+                100%;
 
-    font-size:
-        14px;
+            align-items:
+                flex-start;
 
-    line-height:
-        1.45;
+            margin-bottom:
+                10px;
+        }
 
-    white-space:
-        pre-wrap;
 
-    overflow-wrap:
-        anywhere;
-}
+        .message-row.mine {
 
-.empty {
-    min-height:
-        250px;
+            justify-content:
+                flex-end;
+        }
 
-    display:
-        flex;
 
-    flex-direction:
-        column;
+        .message-row.theirs {
 
-    align-items:
-        center;
+            justify-content:
+                flex-start;
+        }
 
-    justify-content:
-        center;
 
-    color:
-        #8a94a6;
+        /* =====================================================
+           MESSAGE CONTENT
+        ===================================================== */
 
-    text-align:
-        center;
-}
+        .message-content {
 
-#composer {
-    flex:
-        0 0 auto;
+            display:
+                flex;
 
-    background:
-        white;
+            flex-direction:
+                column;
 
-    border-top:
-        1px solid #e5e7eb;
+            width:
+                auto;
 
-    padding:
-        10px 12px 12px;
-}
+            max-width:
+                70%;
 
-.composer-inner {
-    width:
-        100%;
+            min-width:
+                0;
 
-    max-width:
-        850px;
+            align-items:
+                flex-start;
+        }
 
-    margin:
-        0 auto;
 
-    display:
-        flex;
+        .mine .message-content {
 
-    align-items:
-        flex-end;
+            align-items:
+                flex-end;
+        }
 
-    gap:
-        7px;
-}
 
-#photoButton {
-    width:
-        42px;
+        /* =====================================================
+           TEXT BUBBLE
+        ===================================================== */
 
-    height:
-        42px;
+        .bubble {
 
-    flex:
-        0 0 42px;
+            display:
+                block;
 
-    border:
-        1px solid #d7dce3;
+            width:
+                max-content;
 
-    border-radius:
-        10px;
+            max-width:
+                100%;
 
-    background:
-        white;
+            min-width:
+                0;
 
-    cursor:
-        pointer;
+            height:
+                auto;
 
-    font-size:
-        19px;
-}
+            min-height:
+                0;
 
-#imageInput {
-    display:
-        none;
-}
+            padding:
+                9px 13px;
 
-#messageInput {
-    flex:
-        1;
+            margin:
+                0;
 
-    min-width:
-        0;
+            border-radius:
+                14px;
 
-    min-height:
-        42px;
+            font-size:
+                14px;
 
-    max-height:
-        125px;
+            line-height:
+                1.45;
 
-    resize:
-        none;
+            white-space:
+                pre-wrap;
 
-    padding:
-        10px 12px;
+            overflow-wrap:
+                anywhere;
 
-    border:
-        1px solid #d7dce3;
+            word-break:
+                break-word;
 
-    border-radius:
-        10px;
+            text-align:
+                left;
+        }
 
-    outline:
-        none;
 
-    font-family:
-        inherit;
+        .mine .bubble {
 
-    line-height:
-        20px;
-}
+            background:
+                #4285F4;
 
-#sendButton {
-    height:
-        42px;
+            color:
+                white;
 
-    padding:
-        0 16px;
+            border-bottom-right-radius:
+                4px;
+        }
 
-    border:
-        none;
 
-    border-radius:
-        10px;
+        .theirs .bubble {
 
-    background:
-        #4285F4;
+            background:
+                white;
 
-    color:
-        white;
+            color:
+                #1f2937;
 
-    font-weight:
-        700;
+            border:
+                1px solid #dfe3e8;
 
-    cursor:
-        pointer;
-}
+            border-bottom-left-radius:
+                4px;
+        }
 
-#sendButton:disabled {
-    opacity:
-        .65;
-}
 
-#imagePreview {
-    display:
-        none;
+        /* =====================================================
+           MESSAGE STATES
+        ===================================================== */
 
-    max-width:
-        850px;
+        .bubble.pending {
 
-    margin:
-        0 auto 8px;
-}
+            opacity:
+                0.55;
+        }
 
-.preview-box {
-    position:
-        relative;
 
-    display:
-        inline-block;
-}
+        .bubble.failed {
 
-#previewImage {
-    display:
-        block;
+            opacity:
+                0.75;
 
-    max-width:
-        170px;
+            border:
+                1px solid #ef4444 !important;
+        }
 
-    max-height:
-        120px;
 
-    border-radius:
-        10px;
-}
+        /* =====================================================
+           MESSAGE TIME
+        ===================================================== */
 
-#removeImageButton {
-    position:
-        absolute;
+        .time {
 
-    top:
-        -7px;
+            display:
+                block;
 
-    right:
-        -7px;
+            margin-top:
+                3px;
 
-    width:
-        23px;
+            font-size:
+                10px;
 
-    height:
-        23px;
+            color:
+                #98a2b3;
 
-    border:
-        none;
+            line-height:
+                1.2;
+        }
 
-    border-radius:
-        50%;
 
-    background:
-        #ef4444;
+        .mine .time {
 
-    color:
-        white;
+            text-align:
+                right;
+        }
 
-    cursor:
-        pointer;
-}
 
-.lock-screen {
-    min-height:
-        100vh;
+        /* =====================================================
+           IMAGE MESSAGE
+        ===================================================== */
 
-    display:
-        flex;
+        .image-bubble {
 
-    align-items:
-        center;
+            display:
+                block;
 
-    justify-content:
-        center;
+            width:
+                auto;
 
-    padding:
-        30px;
-}
+            max-width:
+                100%;
 
-.lock-card {
-    max-width:
-        500px;
+            padding:
+                4px;
 
-    width:
-        100%;
+            overflow:
+                hidden;
+        }
 
-    background:
-        white;
 
-    border:
-        1px solid #e1e6ee;
+        .message-image {
 
-    border-radius:
-        16px;
+            display:
+                block;
 
-    padding:
-        35px;
+            width:
+                auto;
 
-    text-align:
-        center;
-}
+            max-width:
+                100%;
 
-.lock-card p {
-    color:
-        #718096;
+            height:
+                auto;
 
-    line-height:
-        1.6;
-}
+            max-height:
+                450px;
 
-.button {
-    display:
-        inline-block;
+            border-radius:
+                10px;
 
-    padding:
-        11px 17px;
+            cursor:
+                pointer;
+        }
 
-    background:
-        #4285F4;
 
-    color:
-        white;
+        .image-caption {
 
-    text-decoration:
-        none;
+            padding:
+                7px 6px 4px;
 
-    border-radius:
-        9px;
+            font-size:
+                14px;
 
-    font-weight:
-        600;
-}
+            line-height:
+                1.45;
 
-@media (max-width: 600px) {
+            white-space:
+                pre-wrap;
 
-    header {
-        height:
-            58px;
+            overflow-wrap:
+                anywhere;
 
-        padding:
-            0 11px;
-    }
+            word-break:
+                break-word;
+        }
 
-    #chatArea {
-        padding:
-            14px 11px 16px;
-    }
 
-    .message-content {
-        max-width:
-            82%;
-    }
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
 
-    .bubble {
-        font-size:
-            14px;
-    }
+        .empty {
 
-    #composer {
-        padding:
-            8px;
-    }
+            min-height:
+                250px;
 
-    #sendButton {
-        padding:
-            0 12px;
-    }
+            display:
+                flex;
 
-}
+            flex-direction:
+                column;
 
-</style>
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            color:
+                #8a94a6;
+
+            text-align:
+                center;
+        }
+
+
+        /* =====================================================
+           COMPOSER
+        ===================================================== */
+
+        #composer {
+
+            flex:
+                0 0 auto;
+
+            width:
+                100%;
+
+            background:
+                white;
+
+            border-top:
+                1px solid #e5e7eb;
+
+            padding:
+                10px 12px 12px;
+
+            position:
+                relative;
+
+            z-index:
+                30;
+        }
+
+
+        .composer-inner {
+
+            width:
+                100%;
+
+            max-width:
+                850px;
+
+            margin:
+                0 auto;
+
+            display:
+                flex;
+
+            align-items:
+                flex-end;
+
+            gap:
+                7px;
+        }
+
+
+        /* =====================================================
+           PHOTO BUTTON
+        ===================================================== */
+
+        #photoButton {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            flex:
+                0 0 42px;
+
+            border:
+                1px solid #d7dce3;
+
+            border-radius:
+                10px;
+
+            background:
+                white;
+
+            cursor:
+                pointer;
+
+            font-size:
+                19px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+        }
+
+
+        #photoButton:hover {
+
+            background:
+                #f4f7fb;
+        }
+
+
+        #imageInput {
+
+            display:
+                none;
+        }
+
+
+        /* =====================================================
+           MESSAGE INPUT
+        ===================================================== */
+
+        #messageInput {
+
+            flex:
+                1 1 auto;
+
+            min-width:
+                0;
+
+            width:
+                100%;
+
+            min-height:
+                42px;
+
+            max-height:
+                125px;
+
+            resize:
+                none;
+
+            overflow-y:
+                auto;
+
+            padding:
+                10px 12px;
+
+            border:
+                1px solid #d7dce3;
+
+            border-radius:
+                10px;
+
+            outline:
+                none;
+
+            background:
+                white;
+
+            color:
+                #1f2937;
+
+            font-family:
+                inherit;
+
+            font-size:
+                14px;
+
+            line-height:
+                20px;
+        }
+
+
+        #messageInput:focus {
+
+            border-color:
+                #4285F4;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    66,
+                    133,
+                    244,
+                    0.08
+                );
+        }
+
+
+        /* =====================================================
+           SEND BUTTON
+        ===================================================== */
+
+        #sendButton {
+
+            flex:
+                0 0 auto;
+
+            height:
+                42px;
+
+            min-width:
+                62px;
+
+            padding:
+                0 16px;
+
+            border:
+                none;
+
+            border-radius:
+                10px;
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
+            white-space:
+                nowrap;
+        }
+
+
+        #sendButton:hover {
+
+            background:
+                #3367d6;
+        }
+
+
+        #sendButton:disabled {
+
+            opacity:
+                0.65;
+
+            cursor:
+                not-allowed;
+        }
+
+
+        /* =====================================================
+           IMAGE PREVIEW
+        ===================================================== */
+
+        #imagePreview {
+
+            display:
+                none;
+
+            width:
+                100%;
+
+            max-width:
+                850px;
+
+            margin:
+                0 auto 8px;
+        }
+
+
+        .preview-box {
+
+            position:
+                relative;
+
+            display:
+                inline-block;
+        }
+
+
+        #previewImage {
+
+            display:
+                block;
+
+            width:
+                auto;
+
+            max-width:
+                170px;
+
+            max-height:
+                120px;
+
+            border-radius:
+                10px;
+
+            border:
+                1px solid #d7dce3;
+        }
+
+
+        #removeImageButton {
+
+            position:
+                absolute;
+
+            top:
+                -7px;
+
+            right:
+                -7px;
+
+            width:
+                23px;
+
+            height:
+                23px;
+
+            border:
+                none;
+
+            border-radius:
+                50%;
+
+            background:
+                #ef4444;
+
+            color:
+                white;
+
+            cursor:
+                pointer;
+
+            font-size:
+                15px;
+
+            line-height:
+                23px;
+
+            padding:
+                0;
+        }
+
+
+        /* =====================================================
+           LOCK SCREEN
+        ===================================================== */
+
+        .lock-screen {
+
+            width:
+                100%;
+
+            height:
+                100dvh;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                30px;
+
+            background:
+                #f6f8fc;
+        }
+
+
+        .lock-card {
+
+            max-width:
+                500px;
+
+            width:
+                100%;
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                16px;
+
+            padding:
+                35px;
+
+            text-align:
+                center;
+        }
+
+
+        .lock-card p {
+
+            color:
+                #718096;
+
+            line-height:
+                1.6;
+        }
+
+
+        .button {
+
+            display:
+                inline-block;
+
+            padding:
+                11px 17px;
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+
+            text-decoration:
+                none;
+
+            border-radius:
+                9px;
+
+            font-weight:
+                600;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (
+            max-width: 600px
+        ) {
+
+            header {
+
+                height:
+                    58px;
+
+                padding:
+                    0 11px;
+
+                flex-shrink:
+                    0;
+            }
+
+
+            .back {
+
+                font-size:
+                    13px;
+            }
+
+
+            .recipient img {
+
+                width:
+                    38px;
+
+                height:
+                    38px;
+
+                flex-basis:
+                    38px;
+            }
+
+
+            .recipient-name {
+
+                max-width:
+                    180px;
+            }
+
+
+            #chatArea {
+
+                padding:
+                    14px 11px 16px;
+
+                min-height:
+                    0;
+
+                overflow-y:
+                    auto;
+            }
+
+
+            #messages {
+
+                min-height:
+                    100%;
+            }
+
+
+            .message-content {
+
+                max-width:
+                    82%;
+            }
+
+
+            .bubble {
+
+                font-size:
+                    14px;
+
+                padding:
+                    9px 12px;
+            }
+
+
+            .message-image {
+
+                max-height:
+                    360px;
+            }
+
+
+            #composer {
+
+                flex-shrink:
+                    0;
+
+                padding:
+                    8px;
+            }
+
+
+            .composer-inner {
+
+                gap:
+                    6px;
+            }
+
+
+            #photoButton {
+
+                width:
+                    42px;
+
+                height:
+                    42px;
+
+                flex-basis:
+                    42px;
+            }
+
+
+            #messageInput {
+
+                min-height:
+                    42px;
+
+                max-height:
+                    120px;
+
+                padding:
+                    10px 11px;
+            }
+
+
+            #sendButton {
+
+                height:
+                    42px;
+
+                min-width:
+                    56px;
+
+                padding:
+                    0 12px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
 
 <body>
 
+
+<!-- ========================================================
+     LOCK SCREEN
+========================================================= -->
 
 <div
     id="lockScreen"
@@ -692,17 +1124,27 @@ header {
 
     <div class="lock-card">
 
-        <div style="font-size:45px;">
+        <div
+            style="
+                font-size:45px;
+                margin-bottom:10px;
+            "
+        >
             🔒
         </div>
+
 
         <h1>
             Chat unavailable
         </h1>
 
+
         <p>
             Your Writejot access has expired.
+            Renew your subscription to continue
+            messaging.
         </p>
+
 
         <a
             class="button"
@@ -717,140 +1159,180 @@ header {
 
 
 
+<!-- ========================================================
+     CHAT
+========================================================= -->
+
 <div id="chatInterface">
 
-<header>
 
-<a
-    href="messages.html"
-    class="back"
->
-    ← Messages
-</a>
+    <!-- ====================================================
+         HEADER
+    ===================================================== -->
 
+    <header>
 
-<div class="recipient">
-
-<img
-    id="recipientPicture"
-    src="W.png"
-    alt=""
->
+        <a
+            href="messages.html"
+            class="back"
+        >
+            ← Messages
+        </a>
 
 
-<div class="recipient-info">
+        <div class="recipient">
 
-<div
-    id="recipientName"
-    class="recipient-name"
->
-    Loading...
-</div>
-
-
-<div
-    id="recipientUsername"
-    class="recipient-username"
->
-    @username
-</div>
-
-</div>
-
-</div>
-
-</header>
+            <img
+                id="recipientPicture"
+                src="W.png"
+                alt="Profile picture"
+            >
 
 
+            <div
+                class="recipient-info"
+            >
 
-<main id="chatArea">
+                <div
+                    id="recipientName"
+                    class="recipient-name"
+                >
+                    Loading...
+                </div>
 
-<div id="messages">
 
-<div class="empty">
+                <div
+                    id="recipientUsername"
+                    class="recipient-username"
+                >
+                    @username
+                </div>
 
-Loading messages...
+            </div>
 
-</div>
+        </div>
 
-</div>
-
-</main>
+    </header>
 
 
 
-<div id="composer">
+    <!-- ====================================================
+         SCROLLABLE CHAT AREA
+    ===================================================== -->
 
+    <main id="chatArea">
 
-<div id="imagePreview">
+        <div id="messages">
 
-<div class="preview-box">
+            <div class="empty">
 
-<img
-    id="previewImage"
-    src=""
-    alt=""
->
+                Loading messages...
 
+            </div>
 
-<button
-    id="removeImageButton"
-    type="button"
-    onclick="removeSelectedImage()"
->
-    ×
-</button>
+        </div>
 
-</div>
-
-</div>
+    </main>
 
 
 
-<div class="composer-inner">
+    <!-- ====================================================
+         COMPOSER
+    ===================================================== -->
 
-<button
-    id="photoButton"
-    type="button"
-    onclick="openImagePicker()"
->
-    📷
-</button>
+    <div id="composer">
 
 
-<input
-    id="imageInput"
-    type="file"
-    accept="image/*"
-    onchange="handleImageSelection(event)"
->
+        <!-- IMAGE PREVIEW -->
+
+        <div
+            id="imagePreview"
+        >
+
+            <div
+                class="preview-box"
+            >
+
+                <img
+                    id="previewImage"
+                    src=""
+                    alt="Selected image"
+                >
 
 
-<textarea
-    id="messageInput"
-    maxlength="2000"
-    rows="1"
-    placeholder="Type a message..."
-></textarea>
+                <button
+                    id="removeImageButton"
+                    type="button"
+                    onclick="removeSelectedImage()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+        </div>
 
 
-<button
-    id="sendButton"
-    type="button"
-    onclick="sendMessage()"
->
-    Send
-</button>
 
-</div>
+        <div
+            class="composer-inner"
+        >
 
-</div>
+
+            <!-- PHOTO -->
+
+            <button
+                id="photoButton"
+                type="button"
+                onclick="openImagePicker()"
+                title="Send photo"
+            >
+                📷
+            </button>
+
+
+            <input
+                id="imageInput"
+                type="file"
+                accept="image/*"
+                onchange="handleImageSelection(event)"
+            >
+
+
+            <!-- TEXT -->
+
+            <textarea
+                id="messageInput"
+                maxlength="2000"
+                rows="1"
+                placeholder="Type a message..."
+            ></textarea>
+
+
+            <!-- SEND -->
+
+            <button
+                id="sendButton"
+                type="button"
+                onclick="sendMessage()"
+            >
+                Send
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
 
 
 <script>
+
+
+/* =========================================================
+   CONFIG
+========================================================= */
 
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
@@ -863,17 +1345,22 @@ const ACCESS_CACHE_TIME =
 let currentUser =
     null;
 
+
 let otherUsername =
     "";
+
 
 let messages =
     [];
 
+
 let selectedImage =
     null;
 
+
 let lastFingerprint =
     "";
+
 
 let refreshTimer =
     null;
@@ -895,7 +1382,7 @@ window.addEventListener(
 
         if (!saved) {
 
-            location.href =
+            window.location.href =
                 "index.html";
 
             return;
@@ -914,7 +1401,7 @@ window.addEventListener(
 
         catch {
 
-            location.href =
+            window.location.href =
                 "index.html";
 
             return;
@@ -924,7 +1411,7 @@ window.addEventListener(
 
         const params =
             new URLSearchParams(
-                location.search
+                window.location.search
             );
 
 
@@ -938,7 +1425,7 @@ window.addEventListener(
 
         if (!otherUsername) {
 
-            location.href =
+            window.location.href =
                 "messages.html";
 
             return;
@@ -947,14 +1434,23 @@ window.addEventListener(
 
 
         /*
-         * Show cached chat immediately.
+         * SHOW CACHE FIRST
          */
 
         loadChatCache();
 
 
+        /*
+         * Set up the textbox immediately.
+         */
+
         setupInput();
 
+
+        /*
+         * Check whether we have a recent
+         * verified access result.
+         */
 
         const cachedAccess =
             getCachedAccess();
@@ -980,7 +1476,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   ACCESS
+   ACCESS CACHE
 ========================================================= */
 
 function accessCacheKey() {
@@ -1008,7 +1504,9 @@ function getCachedAccess() {
 
 
         if (!raw) {
+
             return null;
+
         }
 
 
@@ -1078,6 +1576,10 @@ function saveAccessCache(
 }
 
 
+/* =========================================================
+   BACKGROUND ACCESS CHECK
+========================================================= */
+
 async function verifyAccessInBackground() {
 
     try {
@@ -1126,6 +1628,11 @@ async function verifyAccessInBackground() {
 
     catch {
 
+        /*
+         * If there's no current valid
+         * access state, fail closed.
+         */
+
         if (
             !getCachedAccess()
         ) {
@@ -1145,11 +1652,24 @@ async function verifyAccessInBackground() {
 
 function startBackgroundWork() {
 
+    /*
+     * Mark the conversation read
+     * without blocking the interface.
+     */
+
     markReadInBackground();
 
 
+    /*
+     * Refresh profile + messages.
+     */
+
     refreshChat();
 
+
+    /*
+     * Keep the conversation fresh.
+     */
 
     if (
         refreshTimer
@@ -1172,7 +1692,7 @@ function startBackgroundWork() {
 
 
 /* =========================================================
-   CACHE
+   CHAT CACHE
 ========================================================= */
 
 function chatCacheKey() {
@@ -1202,7 +1722,9 @@ function loadChatCache() {
 
 
         if (!raw) {
+
             return;
+
         }
 
 
@@ -1213,12 +1735,14 @@ function loadChatCache() {
 
 
         if (
+            !data ||
             !Array.isArray(
                 data.messages
             )
         ) {
 
             return;
+
         }
 
 
@@ -1244,12 +1768,19 @@ function loadChatCache() {
 
 
         renderMessages(
-            messages
+            messages,
+            false
         );
 
     }
 
-    catch {}
+    catch {
+
+        console.log(
+            "Chat cache unavailable."
+        );
+
+    }
 
 }
 
@@ -1313,12 +1844,17 @@ function getCurrentProfile() {
 
 
 /* =========================================================
-   REFRESH
+   REFRESH CHAT
 ========================================================= */
 
 async function refreshChat() {
 
     try {
+
+        /*
+         * Load profile and messages
+         * at the same time.
+         */
 
         const profileRequest =
             fetch(
@@ -1360,12 +1896,16 @@ async function refreshChat() {
 
 
         const [
+
             profileResponse,
+
             messageResponse
+
         ] =
             await Promise.all([
 
                 profileRequest,
+
                 messagesRequest
 
             ]);
@@ -1378,6 +1918,10 @@ async function refreshChat() {
         const messageResult =
             await messageResponse.json();
 
+
+        /*
+         * Server says account is expired.
+         */
 
         if (
             profileResult.accessDenied ||
@@ -1404,6 +1948,10 @@ async function refreshChat() {
         }
 
 
+        /*
+         * Update recipient.
+         */
+
         if (
             profileResult.success &&
             profileResult.profile
@@ -1416,6 +1964,10 @@ async function refreshChat() {
         }
 
 
+        /*
+         * No message result.
+         */
+
         if (
             !messageResult.success
         ) {
@@ -1425,14 +1977,14 @@ async function refreshChat() {
         }
 
 
-        const next =
+        const serverMessages =
             messageResult.messages ||
             [];
 
 
         /*
-         * Ignore a server response that contains
-         * fewer messages than our optimistic UI.
+         * Keep optimistic messages that
+         * haven't reached the server yet.
          */
 
         const pending =
@@ -1460,12 +2012,13 @@ async function refreshChat() {
 
 
         const merged =
-            next.concat(
-                pending
-            )
-            .concat(
-                failed
-            );
+            serverMessages
+                .concat(
+                    pending
+                )
+                .concat(
+                    failed
+                );
 
 
         const nextFingerprint =
@@ -1473,6 +2026,11 @@ async function refreshChat() {
                 merged
             );
 
+
+        /*
+         * Don't rebuild the DOM if
+         * absolutely nothing changed.
+         */
 
         if (
             nextFingerprint ===
@@ -1498,7 +2056,8 @@ async function refreshChat() {
 
 
         renderMessages(
-            messages
+            messages,
+            true
         );
 
     }
@@ -1506,7 +2065,7 @@ async function refreshChat() {
     catch (error) {
 
         console.log(
-            "Background chat refresh failed."
+            "Background refresh failed."
         );
 
     }
@@ -1617,11 +2176,12 @@ async function markReadInBackground() {
 
 
 /* =========================================================
-   RENDER
+   RENDER MESSAGES
 ========================================================= */
 
 function renderMessages(
-    list
+    list,
+    scrollToBottom
 ) {
 
     const container =
@@ -1649,7 +2209,9 @@ function renderMessages(
                 </div>
 
                 No messages yet.
+
                 <br>
+
                 Say hello!
 
             </div>
@@ -1705,6 +2267,10 @@ function renderMessages(
                                 : "";
 
 
+                    /*
+                     * IMAGE MESSAGE
+                     */
+
                     if (
                         message.attachmentType ===
                             "image" &&
@@ -1712,6 +2278,86 @@ function renderMessages(
                     ) {
 
                         return `
+
+                            <div
+                                class="
+                                    message-row
+                                    ${mine ? "mine" : "theirs"}
+                                "
+                            >
+
+                                <div
+                                    class="message-content"
+                                >
+
+                                    <div
+                                        class="
+                                            bubble
+                                            image-bubble
+                                            ${stateClass}
+                                        "
+                                    >
+
+                                        <img
+                                            class="message-image"
+                                            src="${escapeHtml(
+                                                message.attachmentUrl
+                                            )}"
+                                            loading="lazy"
+                                            onclick="openImage(
+                                                '${escapeHtml(
+                                                    message.attachmentUrl
+                                                )}'
+                                            )"
+                                            alt="Photo"
+                                        >
+
+
+                                        ${
+                                            message.message
+                                                ? `
+                                                    <div
+                                                        class="image-caption"
+                                                    >
+                                                        ${escapeHtml(
+                                                            message.message
+                                                        )}
+                                                    </div>
+                                                  `
+                                                : ""
+                                        }
+
+                                    </div>
+
+
+                                    <div class="time">
+
+                                        ${
+                                            message.pending
+                                                ? "Sending..."
+                                                : message.failed
+                                                    ? "Failed to send"
+                                                    : escapeHtml(
+                                                        time
+                                                    )
+                                        }
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        `;
+
+                    }
+
+
+                    /*
+                     * TEXT MESSAGE
+                     */
+
+                    return `
 
                         <div
                             class="
@@ -1727,105 +2373,35 @@ function renderMessages(
                                 <div
                                     class="
                                         bubble
-                                        image-bubble
                                         ${stateClass}
                                     "
                                 >
-
-                                    <img
-                                        class="message-image"
-                                        src="${escapeHtml(
-                                            message.attachmentUrl
-                                        )}"
-                                        loading="lazy"
-                                        onclick="openImage(
-                                            '${escapeHtml(
-                                                message.attachmentUrl
-                                            )}'
-                                        )"
-                                        alt=""
-                                    >
-
-
-                                    ${
-                                        message.message
-                                            ? `
-                                                <div
-                                                    class="image-caption"
-                                                >
-                                                    ${escapeHtml(
-                                                        message.message
-                                                    )}
-                                                </div>
-                                              `
-                                            : ""
-                                    }
-
+                                    ${escapeHtml(
+                                        message.message ||
+                                        ""
+                                    )}
                                 </div>
 
 
                                 <div
                                     class="time"
                                 >
-                                    ${escapeHtml(
-                                        time
-                                    )}
+
+                                    ${
+                                        message.pending
+                                            ? "Sending..."
+                                            : message.failed
+                                                ? "Failed to send"
+                                                : escapeHtml(
+                                                    time
+                                                )
+                                    }
+
                                 </div>
 
                             </div>
 
                         </div>
-
-                        `;
-
-                    }
-
-
-                    return `
-
-                    <div
-                        class="
-                            message-row
-                            ${mine ? "mine" : "theirs"}
-                        "
-                    >
-
-                        <div
-                            class="message-content"
-                        >
-
-                            <div
-                                class="
-                                    bubble
-                                    ${stateClass}
-                                "
-                            >
-
-                                ${escapeHtml(
-                                    message.message ||
-                                    ""
-                                )}
-
-                            </div>
-
-
-                            <div class="time">
-
-                                ${
-                                    message.pending
-                                        ? "Sending..."
-                                        : message.failed
-                                            ? "Failed to send"
-                                            : escapeHtml(
-                                                time
-                                            )
-                                }
-
-                            </div>
-
-                        </div>
-
-                    </div>
 
                     `;
 
@@ -1834,26 +2410,36 @@ function renderMessages(
             .join("");
 
 
-    requestAnimationFrame(
-        function() {
+    /*
+     * Scroll only when necessary.
+     */
 
-            const area =
-                document.getElementById(
-                    "chatArea"
-                );
+    if (
+        scrollToBottom
+    ) {
+
+        requestAnimationFrame(
+            function() {
+
+                const area =
+                    document.getElementById(
+                        "chatArea"
+                    );
 
 
-            area.scrollTop =
-                area.scrollHeight;
+                area.scrollTop =
+                    area.scrollHeight;
 
-        }
-    );
+            }
+        );
+
+    }
 
 }
 
 
 /* =========================================================
-   SEND
+   SEND MESSAGE
 ========================================================= */
 
 async function sendMessage() {
@@ -1871,8 +2457,14 @@ async function sendMessage() {
 
 
     const text =
-        input.value.trim();
+        input
+            .value
+            .trim();
 
+
+    /*
+     * Nothing to send.
+     */
 
     if (
         !text &&
@@ -1884,24 +2476,31 @@ async function sendMessage() {
     }
 
 
-    /*
-     * TEXT:
-     * instant UI
-     */
+    /* =====================================================
+       TEXT MESSAGE
+    ===================================================== */
 
     if (
         !selectedImage
     ) {
 
-        const tempId =
+        const temporaryId =
             "temp_" +
-            Date.now();
+            Date.now() +
+            "_" +
+            Math.random()
+                .toString(
+                    36
+                )
+                .slice(
+                    2
+                );
 
 
-        const optimistic = {
+        const optimisticMessage = {
 
             id:
-                tempId,
+                temporaryId,
 
             sender:
                 normalizeUsername(
@@ -1915,7 +2514,8 @@ async function sendMessage() {
                 text,
 
             timestamp:
-                new Date().toISOString(),
+                new Date()
+                    .toISOString(),
 
             attachmentType:
                 "",
@@ -1929,18 +2529,33 @@ async function sendMessage() {
         };
 
 
+        /*
+         * Add immediately.
+         */
+
         messages.push(
-            optimistic
+            optimisticMessage
         );
 
 
+        lastFingerprint =
+            JSON.stringify(
+                messages
+            );
+
+
         renderMessages(
-            messages
+            messages,
+            true
         );
 
 
         saveChatCache();
 
+
+        /*
+         * Clear textbox immediately.
+         */
 
         input.value =
             "";
@@ -2000,12 +2615,23 @@ async function sendMessage() {
 
 
             if (
+                result.accessDenied
+            ) {
+
+                showLocked();
+
+                return;
+
+            }
+
+
+            if (
                 !result.success
             ) {
 
                 throw new Error(
                     result.error ||
-                    "Message failed."
+                    "Message failed to send."
                 );
 
             }
@@ -2013,7 +2639,8 @@ async function sendMessage() {
 
             /*
              * Remove the temporary message.
-             * The next refresh gets the real message.
+             * The real server message will arrive
+             * during refresh.
              */
 
             messages =
@@ -2022,7 +2649,7 @@ async function sendMessage() {
 
                         return (
                             message.id !==
-                            tempId
+                            temporaryId
                         );
 
                     }
@@ -2033,11 +2660,22 @@ async function sendMessage() {
                 "";
 
 
+            saveChatCache();
+
+
+            /*
+             * Immediately fetch the real message.
+             */
+
             await refreshChat();
 
         }
 
         catch (error) {
+
+            /*
+             * Keep the message visible and mark it failed.
+             */
 
             messages =
                 messages.map(
@@ -2045,7 +2683,7 @@ async function sendMessage() {
 
                         if (
                             message.id ===
-                            tempId
+                            temporaryId
                         ) {
 
                             return {
@@ -2076,7 +2714,17 @@ async function sendMessage() {
 
 
             renderMessages(
-                messages
+                messages,
+                false
+            );
+
+
+            saveChatCache();
+
+
+            console.error(
+                "Send message error:",
+                error
             );
 
         }
@@ -2096,12 +2744,13 @@ async function sendMessage() {
     }
 
 
-    /*
-     * IMAGE
-     */
+    /* =====================================================
+       IMAGE MESSAGE
+    ===================================================== */
 
     button.disabled =
         true;
+
 
     button.textContent =
         "Uploading...";
@@ -2171,12 +2820,23 @@ async function sendMessage() {
 
 
         if (
+            result.accessDenied
+        ) {
+
+            showLocked();
+
+            return;
+
+        }
+
+
+        if (
             !result.success
         ) {
 
             throw new Error(
                 result.error ||
-                "Photo failed."
+                "Photo failed to send."
             );
 
         }
@@ -2184,6 +2844,7 @@ async function sendMessage() {
 
         input.value =
             "";
+
 
         input.style.height =
             "42px";
@@ -2202,8 +2863,15 @@ async function sendMessage() {
 
     catch (error) {
 
+        console.error(
+            "Photo send error:",
+            error
+        );
+
+
         alert(
-            error.message
+            error.message ||
+            "Could not send photo."
         );
 
     }
@@ -2224,7 +2892,7 @@ async function sendMessage() {
 
 
 /* =========================================================
-   INPUT
+   INPUT SETUP
 ========================================================= */
 
 function setupInput() {
@@ -2258,6 +2926,11 @@ function setupInput() {
         "keydown",
         function(event) {
 
+            /*
+             * Enter = send
+             * Shift + Enter = new line
+             */
+
             if (
                 event.key ===
                     "Enter" &&
@@ -2265,6 +2938,7 @@ function setupInput() {
             ) {
 
                 event.preventDefault();
+
 
                 sendMessage();
 
@@ -2277,7 +2951,7 @@ function setupInput() {
 
 
 /* =========================================================
-   IMAGE
+   IMAGE PICKER
 ========================================================= */
 
 function openImagePicker() {
@@ -2301,7 +2975,9 @@ function handleImageSelection(
 
 
     if (!file) {
+
         return;
+
     }
 
 
@@ -2314,6 +2990,9 @@ function handleImageSelection(
         alert(
             "Please choose an image."
         );
+
+        event.target.value =
+            "";
 
         return;
 
@@ -2328,6 +3007,9 @@ function handleImageSelection(
         alert(
             "Please choose an image smaller than 10 MB."
         );
+
+        event.target.value =
+            "";
 
         return;
 
@@ -2402,6 +3084,10 @@ function removeSelectedImage() {
 }
 
 
+/* =========================================================
+   IMAGE COMPRESSION
+========================================================= */
+
 function compressImage(
     file
 ) {
@@ -2434,12 +3120,13 @@ function compressImage(
                     image.onload =
                         function() {
 
-                            const max =
+                            const maxSize =
                                 1600;
 
 
                             let width =
                                 image.width;
+
 
                             let height =
                                 image.height;
@@ -2447,9 +3134,9 @@ function compressImage(
 
                             if (
                                 width >
-                                max ||
+                                maxSize ||
                                 height >
-                                max
+                                maxSize
                             ) {
 
                                 if (
@@ -2460,12 +3147,15 @@ function compressImage(
                                     height =
                                         Math.round(
                                             height *
-                                            max /
-                                            width
+                                            (
+                                                maxSize /
+                                                width
+                                            )
                                         );
 
+
                                     width =
-                                        max;
+                                        maxSize;
 
                                 }
 
@@ -2474,12 +3164,15 @@ function compressImage(
                                     width =
                                         Math.round(
                                             width *
-                                            max /
-                                            height
+                                            (
+                                                maxSize /
+                                                height
+                                            )
                                         );
 
+
                                     height =
-                                        max;
+                                        maxSize;
 
                                 }
 
@@ -2487,29 +3180,38 @@ function compressImage(
 
 
                             const canvas =
-                                document.createElement(
-                                    "canvas"
-                                );
+                                document
+                                    .createElement(
+                                        "canvas"
+                                    );
 
 
                             canvas.width =
                                 width;
 
+
                             canvas.height =
                                 height;
 
 
-                            canvas
-                                .getContext(
-                                    "2d"
-                                )
-                                .drawImage(
-                                    image,
-                                    0,
-                                    0,
-                                    width,
-                                    height
-                                );
+                            const context =
+                                canvas
+                                    .getContext(
+                                        "2d"
+                                    );
+
+
+                            context.drawImage(
+
+                                image,
+
+                                0,
+                                0,
+
+                                width,
+                                height
+
+                            );
 
 
                             resolve({
@@ -2517,7 +3219,7 @@ function compressImage(
                                 dataUrl:
                                     canvas.toDataURL(
                                         "image/jpeg",
-                                        .82
+                                        0.82
                                     ),
 
                                 mimeType:
@@ -2650,6 +3352,7 @@ function openImage(
 }
 
 </script>
+
 
 </body>
 
