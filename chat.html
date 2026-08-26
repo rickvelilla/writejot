@@ -12,18 +12,23 @@
 
     <title>Writejot | Chat</title>
 
-
     <style>
 
         * {
-            box-sizing: border-box;
+            box-sizing:
+                border-box;
         }
 
         html,
         body {
-            margin: 0;
-            width: 100%;
-            height: 100%;
+            margin:
+                0;
+
+            width:
+                100%;
+
+            height:
+                100%;
         }
 
         body {
@@ -48,26 +53,26 @@
                 hidden;
         }
 
-
-        /* =================================================
-           HEADER
-        ================================================= */
-
         header {
             flex: 0 0 auto;
 
-            height: 64px;
+            height:
+                64px;
 
-            background: white;
+            background:
+                white;
 
             border-bottom:
                 1px solid #e5e7eb;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 12px;
+            gap:
+                12px;
 
             padding:
                 0 16px;
@@ -85,156 +90,144 @@
 
             font-weight:
                 700;
-
-            white-space:
-                nowrap;
         }
 
         .recipient {
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 10px;
+            gap:
+                10px;
 
-            min-width: 0;
+            min-width:
+                0;
         }
 
         .recipient img {
-            width: 40px;
-            height: 40px;
+            width:
+                40px;
 
-            border-radius: 50%;
+            height:
+                40px;
 
-            object-fit: cover;
+            border-radius:
+                50%;
 
-            background:
-                #e9eef5;
+            object-fit:
+                cover;
 
-            flex: 0 0 40px;
+            flex:
+                0 0 40px;
         }
 
         .recipient-info {
-            min-width: 0;
+            min-width:
+                0;
         }
 
         .recipient-name {
-            font-size: 15px;
+            font-weight:
+                700;
 
-            font-weight: 700;
+            white-space:
+                nowrap;
 
-            white-space: nowrap;
+            overflow:
+                hidden;
 
-            overflow: hidden;
-
-            text-overflow: ellipsis;
+            text-overflow:
+                ellipsis;
         }
 
         .recipient-username {
-            font-size: 12px;
-
             color:
                 #6b7280;
 
-            white-space: nowrap;
+            font-size:
+                12px;
         }
 
-
-        /* =================================================
-           CHAT AREA
-        ================================================= */
-
         #chatArea {
-            flex: 1 1 auto;
+            flex:
+                1 1 auto;
 
-            min-height: 0;
+            min-height:
+                0;
 
-            overflow-y: auto;
+            overflow-y:
+                auto;
 
             padding:
-                18px 18px 20px;
+                18px;
         }
 
         #messages {
-            width: 100%;
+            width:
+                100%;
 
-            max-width: 850px;
+            max-width:
+                850px;
 
-            margin: 0 auto;
+            margin:
+                0 auto;
         }
 
-
-        /* =================================================
-           MESSAGE ROW
-        ================================================= */
-
         .message-row {
-            display: flex;
+            display:
+                flex;
 
-            width: 100%;
+            width:
+                100%;
 
-            margin: 0 0 10px 0;
+            align-items:
+                flex-start;
 
-            padding: 0;
-
-            align-items: flex-start;
+            margin-bottom:
+                10px;
         }
 
         .message-row.mine {
-            justify-content: flex-end;
+            justify-content:
+                flex-end;
         }
 
         .message-row.theirs {
-            justify-content: flex-start;
+            justify-content:
+                flex-start;
         }
-
-
-        /* =================================================
-           MESSAGE CONTENT
-        ================================================= */
 
         .message-content {
-            display: block;
+            width:
+                fit-content;
 
-            width: fit-content;
+            max-width:
+                70%;
 
-            max-width: 70%;
-
-            min-width: 0;
-
-            height: auto;
-
-            margin: 0;
-
-            padding: 0;
+            min-width:
+                0;
         }
 
-
-        /* =================================================
-           TEXT BUBBLE
-
-           IMPORTANT:
-           - no flex
-           - no height: 100%
-           - no width: 100%
-           - no min-height
-        ================================================= */
-
         .bubble {
-            display: inline-block;
+            display:
+                inline-block;
 
-            width: auto;
+            width:
+                auto;
 
-            max-width: 100%;
+            max-width:
+                100%;
 
-            height: auto;
+            height:
+                auto;
 
-            min-height: 0;
+            min-height:
+                0;
 
             padding:
                 9px 13px;
-
-            margin: 0;
 
             border-radius:
                 14px;
@@ -253,14 +246,7 @@
 
             word-break:
                 break-word;
-
-            vertical-align:
-                top;
-
-            text-align:
-                left;
         }
-
 
         .mine .bubble {
             background:
@@ -272,7 +258,6 @@
             border-bottom-right-radius:
                 4px;
         }
-
 
         .theirs .bubble {
             background:
@@ -288,69 +273,89 @@
                 4px;
         }
 
+        .message-pending {
+            opacity:
+                .6;
+        }
 
-        /* =================================================
-           TIME
-        ================================================= */
+        .message-failed {
+            opacity:
+                .7;
+
+            border:
+                1px solid #ef4444 !important;
+        }
+
+        .retry-button {
+            border:
+                none;
+
+            background:
+                transparent;
+
+            color:
+                #dc2626;
+
+            font-size:
+                10px;
+
+            cursor:
+                pointer;
+
+            padding:
+                0 3px;
+        }
 
         .time {
-            display: block;
+            display:
+                block;
 
-            margin-top: 3px;
+            margin-top:
+                3px;
 
-            padding: 0 3px;
-
-            font-size: 10px;
-
-            line-height: 1.2;
+            font-size:
+                10px;
 
             color:
                 #98a2b3;
+
+            text-align:
+                left;
         }
 
         .mine .time {
-            text-align: right;
-        }
-
-        .theirs .time {
-            text-align: left;
-        }
-
-
-        /* =================================================
-           IMAGE MESSAGE
-        ================================================= */
-
-        .image-bubble {
-            padding: 4px;
-
-            overflow: hidden;
+            text-align:
+                right;
         }
 
         .message-image {
-            display: block;
+            display:
+                block;
 
-            width: auto;
+            max-width:
+                100%;
 
-            height: auto;
-
-            max-width: 100%;
-
-            max-height: 450px;
+            max-height:
+                450px;
 
             border-radius:
                 10px;
-
-            object-fit:
-                contain;
 
             cursor:
                 pointer;
         }
 
+        .image-bubble {
+            padding:
+                4px;
+
+            overflow:
+                hidden;
+        }
+
         .image-caption {
             padding:
-                6px 7px 3px;
+                6px;
 
             font-size:
                 14px;
@@ -363,48 +368,37 @@
 
             overflow-wrap:
                 anywhere;
-
-            word-break:
-                break-word;
         }
 
+        .empty {
+            min-height:
+                250px;
 
-        /* =================================================
-           EMPTY STATE
-        ================================================= */
+            display:
+                flex;
 
-        .empty-state {
-            min-height: 250px;
+            align-items:
+                center;
 
-            display: flex;
+            justify-content:
+                center;
 
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
+            flex-direction:
+                column;
 
             color:
-                #89919d;
+                #8a94a6;
+
+            text-align:
+                center;
         }
-
-        .empty-icon {
-            font-size: 38px;
-
-            margin-bottom: 8px;
-        }
-
-
-        /* =================================================
-           COMPOSER
-        ================================================= */
 
         #composer {
-            flex: 0 0 auto;
+            flex:
+                0 0 auto;
 
-            width: 100%;
+            width:
+                100%;
 
             background:
                 white;
@@ -417,72 +411,71 @@
         }
 
         .composer-inner {
-            width: 100%;
+            width:
+                100%;
 
-            max-width: 850px;
+            max-width:
+                850px;
 
-            margin: 0 auto;
+            margin:
+                0 auto;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: flex-end;
+            align-items:
+                flex-end;
 
-            gap: 7px;
+            gap:
+                7px;
         }
 
-
-        /* =================================================
-           PHOTO BUTTON
-        ================================================= */
-
         #photoButton {
-            width: 42px;
-            height: 42px;
+            width:
+                42px;
 
-            flex: 0 0 42px;
+            height:
+                42px;
+
+            flex:
+                0 0 42px;
 
             border:
                 1px solid #d7dce3;
 
-            border-radius: 10px;
+            border-radius:
+                10px;
 
-            background: white;
-
-            cursor: pointer;
-
-            font-size: 19px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-        }
-
-        #photoButton:hover {
             background:
-                #f4f6f8;
+                white;
+
+            cursor:
+                pointer;
+
+            font-size:
+                19px;
         }
 
         #imageInput {
-            display: none;
+            display:
+                none;
         }
 
-
-        /* =================================================
-           TEXT INPUT
-        ================================================= */
-
         #messageInput {
-            flex: 1 1 auto;
+            flex:
+                1;
 
-            min-width: 0;
+            min-width:
+                0;
 
-            width: 100%;
+            min-height:
+                42px;
 
-            min-height: 42px;
+            max-height:
+                125px;
 
-            max-height: 125px;
+            resize:
+                none;
 
             padding:
                 10px 12px;
@@ -490,177 +483,198 @@
             border:
                 1px solid #d7dce3;
 
-            border-radius: 10px;
+            border-radius:
+                10px;
 
-            background: white;
+            outline:
+                none;
 
-            font-family: inherit;
+            font-family:
+                inherit;
 
-            font-size: 14px;
-
-            line-height: 20px;
-
-            resize: none;
-
-            outline: none;
-
-            overflow-y: auto;
+            line-height:
+                20px;
         }
 
         #messageInput:focus {
             border-color:
                 #4285F4;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(
-                    66,
-                    133,
-                    244,
-                    .08
-                );
         }
 
-
-        /* =================================================
-           SEND BUTTON
-        ================================================= */
-
         #sendButton {
-            height: 42px;
-
-            flex: 0 0 auto;
+            height:
+                42px;
 
             padding:
                 0 16px;
 
-            border: none;
+            border:
+                none;
 
-            border-radius: 10px;
+            border-radius:
+                10px;
 
             background:
                 #4285F4;
 
-            color: white;
+            color:
+                white;
 
-            font-size: 14px;
+            font-weight:
+                700;
 
-            font-weight: 700;
-
-            cursor: pointer;
-        }
-
-        #sendButton:hover {
-            background:
-                #3367d6;
+            cursor:
+                pointer;
         }
 
         #sendButton:disabled {
-            opacity: .6;
-
-            cursor:
-                not-allowed;
+            opacity:
+                .65;
         }
 
-
-        /* =================================================
-           IMAGE PREVIEW
-        ================================================= */
-
         #imagePreview {
-            display: none;
+            display:
+                none;
 
-            width: 100%;
-
-            max-width: 850px;
+            max-width:
+                850px;
 
             margin:
                 0 auto 8px;
         }
 
         .preview-box {
-            position: relative;
+            position:
+                relative;
 
-            display: inline-block;
+            display:
+                inline-block;
         }
 
         #previewImage {
-            display: block;
+            max-width:
+                170px;
 
-            width: auto;
+            max-height:
+                120px;
 
-            max-width: 170px;
-
-            max-height: 120px;
-
-            border-radius: 10px;
-
-            border:
-                1px solid #d7dce3;
-
-            object-fit: cover;
+            border-radius:
+                10px;
         }
 
         #removeImageButton {
-            position: absolute;
+            position:
+                absolute;
 
-            right: -7px;
+            top:
+                -7px;
 
-            top: -7px;
+            right:
+                -7px;
 
-            width: 23px;
+            width:
+                23px;
 
-            height: 23px;
+            height:
+                23px;
 
-            border: none;
+            border:
+                none;
 
-            border-radius: 50%;
+            border-radius:
+                50%;
 
             background:
                 #ef4444;
 
-            color: white;
+            color:
+                white;
 
-            cursor: pointer;
-
-            font-size: 15px;
-
-            line-height: 23px;
-
-            padding: 0;
+            cursor:
+                pointer;
         }
 
+        .lock-screen {
+            height:
+                100%;
 
-        /* =================================================
-           MOBILE
-        ================================================= */
+            display:
+                flex;
 
-        @media (max-width: 600px) {
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                30px;
+        }
+
+        .lock-card {
+            max-width:
+                500px;
+
+            width:
+                100%;
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
+
+            border-radius:
+                16px;
+
+            padding:
+                35px;
+
+            text-align:
+                center;
+        }
+
+        .lock-card p {
+            color:
+                #718096;
+
+            line-height:
+                1.6;
+        }
+
+        .button {
+            display:
+                inline-block;
+
+            padding:
+                11px 17px;
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+
+            text-decoration:
+                none;
+
+            border-radius:
+                9px;
+
+            font-weight:
+                600;
+        }
+
+        @media (
+            max-width: 600px
+        ) {
 
             header {
-                height: 58px;
+                height:
+                    58px;
 
                 padding:
                     0 11px;
-            }
-
-            .back {
-                font-size: 12px;
-            }
-
-            .recipient img {
-                width: 36px;
-                height: 36px;
-
-                flex-basis: 36px;
-            }
-
-            .recipient-name {
-                font-size: 14px;
-            }
-
-            .recipient-username {
-                font-size: 11px;
             }
 
             #chatArea {
@@ -669,44 +683,21 @@
             }
 
             .message-content {
-                max-width: 82%;
+                max-width:
+                    82%;
             }
 
             .bubble {
-                font-size: 14px;
-
-                padding:
-                    8px 12px;
-            }
-
-            .message-image {
-                max-height: 330px;
+                font-size:
+                    14px;
             }
 
             #composer {
-                padding: 8px;
-            }
-
-            .composer-inner {
-                gap: 5px;
-            }
-
-            #photoButton {
-                width: 40px;
-                height: 40px;
-
-                flex-basis: 40px;
-            }
-
-            #messageInput {
-                min-height: 40px;
-
-                max-height: 110px;
+                padding:
+                    8px;
             }
 
             #sendButton {
-                height: 40px;
-
                 padding:
                     0 12px;
             }
@@ -721,180 +712,168 @@
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header>
-
-    <a
-        href="messages.html"
-        class="back"
-    >
-        ← Messages
-    </a>
-
-
-    <div
-        class="recipient"
-    >
-
-        <img
-            id="recipientPicture"
-            src="W.png"
-            alt="Profile picture"
-        >
-
-
-        <div
-            class="recipient-info"
-        >
-
-            <div
-                id="recipientName"
-                class="recipient-name"
-            >
-                Loading...
-            </div>
-
-
-            <div
-                id="recipientUsername"
-                class="recipient-username"
-            >
-                @username
-            </div>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     CHAT
-===================================================== -->
-
-<main
-    id="chatArea"
->
-
-    <div
-        id="messages"
-    >
-
-        <div
-            class="empty-state"
-        >
-
-            <div
-                class="empty-icon"
-            >
-                💬
-            </div>
-
-            Loading messages...
-
-        </div>
-
-    </div>
-
-</main>
-
-
-
-<!-- =====================================================
-     COMPOSER
-===================================================== -->
-
 <div
-    id="composer"
+    id="lockScreen"
+    class="lock-screen"
+    style="display:none;"
 >
 
+    <div class="lock-card">
 
-    <!-- IMAGE PREVIEW -->
-
-    <div
-        id="imagePreview"
-    >
-
-        <div
-            class="preview-box"
-        >
-
-            <img
-                id="previewImage"
-                src=""
-                alt="Selected image"
-            >
-
-
-            <button
-                id="removeImageButton"
-                type="button"
-                onclick="removeSelectedImage()"
-            >
-                ×
-            </button>
-
+        <div style="font-size:45px;">
+            🔒
         </div>
 
-    </div>
+        <h1>
+            Chat unavailable
+        </h1>
 
+        <p>
+            Your Writejot access has expired.
+            Renew your subscription to continue
+            messaging.
+        </p>
 
-
-    <div
-        class="composer-inner"
-    >
-
-        <button
-            id="photoButton"
-            type="button"
-            onclick="openImagePicker()"
-            title="Send photo"
+        <a
+            class="button"
+            href="index.html"
         >
-            📷
-        </button>
-
-
-        <input
-            id="imageInput"
-            type="file"
-            accept="image/*"
-            onchange="handleImageSelection(event)"
-        >
-
-
-        <textarea
-            id="messageInput"
-            placeholder="Type a message..."
-            maxlength="2000"
-            rows="1"
-        ></textarea>
-
-
-        <button
-            id="sendButton"
-            type="button"
-            onclick="sendMessage()"
-        >
-            Send
-        </button>
+            Back to Dashboard
+        </a>
 
     </div>
 
 </div>
 
 
+<div id="chatInterface">
+
+    <header>
+
+        <a
+            href="messages.html"
+            class="back"
+        >
+            ← Messages
+        </a>
+
+
+        <div class="recipient">
+
+            <img
+                id="recipientPicture"
+                src="W.png"
+                alt=""
+            >
+
+
+            <div class="recipient-info">
+
+                <div
+                    id="recipientName"
+                    class="recipient-name"
+                >
+                    Loading...
+                </div>
+
+
+                <div
+                    id="recipientUsername"
+                    class="recipient-username"
+                >
+                    @username
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main id="chatArea">
+
+        <div id="messages">
+
+            <div class="empty">
+                Loading...
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <div id="composer">
+
+
+        <div id="imagePreview">
+
+            <div class="preview-box">
+
+                <img
+                    id="previewImage"
+                    src=""
+                    alt=""
+                >
+
+
+                <button
+                    id="removeImageButton"
+                    type="button"
+                    onclick="removeSelectedImage()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="composer-inner">
+
+            <button
+                id="photoButton"
+                type="button"
+                onclick="openImagePicker()"
+            >
+                📷
+            </button>
+
+
+            <input
+                id="imageInput"
+                type="file"
+                accept="image/*"
+                onchange="handleImageSelection(event)"
+            >
+
+
+            <textarea
+                id="messageInput"
+                maxlength="2000"
+                rows="1"
+                placeholder="Type a message..."
+            ></textarea>
+
+
+            <button
+                id="sendButton"
+                type="button"
+                onclick="sendMessage()"
+            >
+                Send
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <script>
-
-
-/* =========================================================
-   CONFIG
-========================================================= */
 
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
@@ -906,10 +885,16 @@ let currentUser =
 let otherUsername =
     "";
 
-let refreshTimer =
+let selectedImage =
     null;
 
-let selectedImage =
+let messages =
+    [];
+
+let lastFingerprint =
+    "";
+
+let refreshTimer =
     null;
 
 
@@ -921,18 +906,19 @@ window.addEventListener(
     "load",
     async function () {
 
-        const savedUser =
+        const saved =
             localStorage.getItem(
                 "writejotUser"
             );
 
 
-        if (!savedUser) {
+        if (!saved) {
 
             window.location.href =
                 "index.html";
 
             return;
+
         }
 
 
@@ -940,12 +926,10 @@ window.addEventListener(
 
             currentUser =
                 JSON.parse(
-                    savedUser
+                    saved
                 );
 
-        }
-
-        catch (error) {
+        } catch {
 
             window.location.href =
                 "index.html";
@@ -957,7 +941,7 @@ window.addEventListener(
 
         const params =
             new URLSearchParams(
-                window.location.search
+                location.search
             );
 
 
@@ -979,20 +963,35 @@ window.addEventListener(
         }
 
 
-        setupMessageInput();
+        const access =
+            await verifyAccess();
 
 
-        await loadRecipient();
+        if (!access) {
+            return;
+        }
 
-        await markConversationRead();
 
-        await loadMessages();
+        loadChatCache();
+
+
+        setupInput();
+
+
+        /*
+         * Mark read without delaying UI.
+         */
+
+        markReadInBackground();
+
+
+        await refreshChat();
 
 
         refreshTimer =
             setInterval(
-                loadMessages,
-                4000
+                refreshChat,
+                5000
             );
 
     }
@@ -1000,10 +999,10 @@ window.addEventListener(
 
 
 /* =========================================================
-   LOAD RECIPIENT
+   ACCESS
 ========================================================= */
 
-async function loadRecipient() {
+async function verifyAccess() {
 
     try {
 
@@ -1011,9 +1010,9 @@ async function loadRecipient() {
             await fetch(
 
                 APPS_SCRIPT_URL +
-                "?action=profile&username=" +
+                "?action=access&email=" +
                 encodeURIComponent(
-                    otherUsername
+                    currentUser.email
                 ),
 
                 {
@@ -1030,82 +1029,327 @@ async function loadRecipient() {
 
         if (
             !result.success ||
-            !result.profile
+            !result.access
         ) {
 
-            document
-                .getElementById(
-                    "recipientName"
-                )
-                .textContent =
-                "Writejot User";
+            showLocked();
+
+            return false;
+
+        }
 
 
-            document
-                .getElementById(
-                    "recipientUsername"
-                )
-                .textContent =
-                "@" +
-                otherUsername;
+        currentUser.status =
+            result.status;
 
 
+        localStorage.setItem(
+
+            "writejotUser",
+
+            JSON.stringify(
+                currentUser
+            )
+
+        );
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        showLocked();
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================================
+   CACHE
+========================================================= */
+
+function cacheKey() {
+
+    return (
+        "writejot_chat_" +
+        String(
+            currentUser.email
+        )
+        .trim()
+        .toLowerCase() +
+        "_" +
+        otherUsername
+    );
+
+}
+
+
+function loadChatCache() {
+
+    try {
+
+        const raw =
+            localStorage.getItem(
+                cacheKey()
+            );
+
+
+        if (!raw) {
             return;
         }
 
 
-        const profile =
-            result.profile;
-
-
-        document
-            .getElementById(
-                "recipientName"
-            )
-            .textContent =
-            profile.name ||
-            "Writejot User";
-
-
-        document
-            .getElementById(
-                "recipientUsername"
-            )
-            .textContent =
-            "@" +
-            (
-                profile.username ||
-                otherUsername
+        const parsed =
+            JSON.parse(
+                raw
             );
 
 
-        document
-            .getElementById(
-                "recipientPicture"
+        if (
+            !parsed ||
+            !Array.isArray(
+                parsed.messages
             )
-            .src =
-            profile.profilePicture ||
-            "W.png";
+        ) {
+
+            return;
+
+        }
 
 
-        document
-            .getElementById(
-                "recipientPicture"
-            )
-            .onerror =
-            function () {
+        messages =
+            parsed.messages;
 
-                this.src =
-                    "W.png";
 
-            };
+        if (
+            parsed.profile
+        ) {
+
+            applyRecipient(
+                parsed.profile
+            );
+
+        }
+
+
+        lastFingerprint =
+            fingerprint(
+                messages
+            );
+
+
+        renderMessages(
+            messages
+        );
+
+    }
+
+    catch (error) {}
+
+}
+
+
+function saveChatCache(
+    profile
+) {
+
+    try {
+
+        localStorage.setItem(
+
+            cacheKey(),
+
+            JSON.stringify({
+
+                messages:
+                    messages.slice(
+                        -200
+                    ),
+
+                profile:
+                    profile ||
+                    getCurrentProfile()
+
+            })
+
+        );
+
+    }
+
+    catch (error) {}
+
+}
+
+
+function getCurrentProfile() {
+
+    return {
+
+        name:
+            document
+                .getElementById(
+                    "recipientName"
+                )
+                .textContent,
+
+        username:
+            otherUsername,
+
+        profilePicture:
+            document
+                .getElementById(
+                    "recipientPicture"
+                )
+                .src
+
+    };
+
+}
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+async function refreshChat() {
+
+    try {
+
+        const profilePromise =
+            fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=profile&username=" +
+                encodeURIComponent(
+                    otherUsername
+                ),
+
+                {
+                    cache:
+                        "no-store"
+                }
+
+            );
+
+
+        const messagesPromise =
+            fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=messages" +
+                "&email=" +
+                encodeURIComponent(
+                    currentUser.email
+                ) +
+                "&username=" +
+                encodeURIComponent(
+                    otherUsername
+                ),
+
+                {
+                    cache:
+                        "no-store"
+                }
+
+            );
+
+
+        const [
+            profileResponse,
+            messagesResponse
+        ] =
+            await Promise.all([
+
+                profilePromise,
+
+                messagesPromise
+
+            ]);
+
+
+        const profileResult =
+            await profileResponse.json();
+
+
+        const messageResult =
+            await messagesResponse.json();
+
+
+        if (
+            profileResult.accessDenied ||
+            messageResult.accessDenied
+        ) {
+
+            showLocked();
+
+            return;
+
+        }
+
+
+        if (
+            profileResult.success &&
+            profileResult.profile
+        ) {
+
+            applyRecipient(
+                profileResult.profile
+            );
+
+        }
+
+
+        if (
+            messageResult.success
+        ) {
+
+            const next =
+                messageResult.messages ||
+                [];
+
+
+            const nextFingerprint =
+                fingerprint(
+                    next
+                );
+
+
+            if (
+                nextFingerprint !==
+                lastFingerprint
+            ) {
+
+                messages =
+                    next;
+
+                lastFingerprint =
+                    nextFingerprint;
+
+
+                saveChatCache(
+                    profileResult.profile
+                );
+
+
+                renderMessages(
+                    messages
+                );
+
+            }
+
+        }
 
     }
 
     catch (error) {
 
         console.error(
-            "Recipient error:",
+            "Chat refresh error:",
             error
         );
 
@@ -1115,10 +1359,50 @@ async function loadRecipient() {
 
 
 /* =========================================================
-   MARK READ
+   RECIPIENT
 ========================================================= */
 
-async function markConversationRead() {
+function applyRecipient(
+    profile
+) {
+
+    document
+        .getElementById(
+            "recipientName"
+        )
+        .textContent =
+        profile.name ||
+        "Writejot User";
+
+
+    document
+        .getElementById(
+            "recipientUsername"
+        )
+        .textContent =
+        "@" +
+        (
+            profile.username ||
+            otherUsername
+        );
+
+
+    document
+        .getElementById(
+            "recipientPicture"
+        )
+        .src =
+        profile.profilePicture ||
+        "W.png";
+
+}
+
+
+/* =========================================================
+   READ
+========================================================= */
+
+async function markReadInBackground() {
 
     try {
 
@@ -1158,96 +1442,17 @@ async function markConversationRead() {
 
     }
 
-    catch (error) {
-
-        console.error(
-            "Read status error:",
-            error
-        );
-
-    }
+    catch (error) {}
 
 }
 
 
 /* =========================================================
-   LOAD MESSAGES
-========================================================= */
-
-async function loadMessages() {
-
-    try {
-
-        const response =
-            await fetch(
-
-                APPS_SCRIPT_URL +
-                "?action=messages" +
-                "&email=" +
-                encodeURIComponent(
-                    currentUser.email
-                ) +
-                "&username=" +
-                encodeURIComponent(
-                    otherUsername
-                ),
-
-                {
-                    cache:
-                        "no-store"
-                }
-
-            );
-
-
-        const result =
-            await response.json();
-
-
-        if (
-            !result.success
-        ) {
-
-            showError(
-                result.error ||
-                "Could not load messages."
-            );
-
-            return;
-
-        }
-
-
-        renderMessages(
-            result.messages ||
-            []
-        );
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Messages error:",
-            error
-        );
-
-
-        showError(
-            "Could not connect to Writejot."
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   RENDER MESSAGES
+   RENDER
 ========================================================= */
 
 function renderMessages(
-    messages
+    list
 ) {
 
     const container =
@@ -1256,17 +1461,20 @@ function renderMessages(
         );
 
 
-    if (!messages.length) {
+    if (
+        !list.length
+    ) {
 
         container.innerHTML =
 
             `
-            <div
-                class="empty-state"
-            >
+            <div class="empty">
 
                 <div
-                    class="empty-icon"
+                    style="
+                        font-size:38px;
+                        margin-bottom:8px;
+                    "
                 >
                     💬
                 </div>
@@ -1278,7 +1486,9 @@ function renderMessages(
             </div>
             `;
 
+
         return;
+
     }
 
 
@@ -1289,9 +1499,9 @@ function renderMessages(
 
 
     container.innerHTML =
-        messages
+        list
             .map(
-                function (message) {
+                function(message) {
 
                     const mine =
                         normalizeUsername(
@@ -1318,15 +1528,13 @@ function renderMessages(
                             : "";
 
 
-                    /*
-                     * IMAGE MESSAGE
-                     */
-
-                    if (
+                    const image =
                         message.attachmentType ===
                             "image" &&
-                        message.attachmentUrl
-                    ) {
+                        message.attachmentUrl;
+
+
+                    if (image) {
 
                         return `
 
@@ -1339,6 +1547,10 @@ function renderMessages(
                                             : "theirs"
                                     }
                                 "
+                                data-message-id="${
+                                    message.id ||
+                                    ""
+                                }"
                             >
 
                                 <div
@@ -1381,9 +1593,7 @@ function renderMessages(
                                     </div>
 
 
-                                    <div
-                                        class="time"
-                                    >
+                                    <div class="time">
                                         ${escapeHtml(
                                             time
                                         )}
@@ -1397,10 +1607,6 @@ function renderMessages(
 
                     }
 
-
-                    /*
-                     * NORMAL TEXT MESSAGE
-                     */
 
                     return `
 
@@ -1431,12 +1637,12 @@ function renderMessages(
                                 </div>
 
 
-                                <div
-                                    class="time"
-                                >
+                                <div class="time">
+
                                     ${escapeHtml(
                                         time
                                     )}
+
                                 </div>
 
                             </div>
@@ -1450,21 +1656,17 @@ function renderMessages(
             .join("");
 
 
-    /*
-     * Always show the newest message.
-     */
-
     requestAnimationFrame(
-        function () {
+        function() {
 
-            const chatArea =
+            const area =
                 document.getElementById(
                     "chatArea"
                 );
 
 
-            chatArea.scrollTop =
-                chatArea.scrollHeight;
+            area.scrollTop =
+                area.scrollHeight;
 
         }
     );
@@ -1473,209 +1675,7 @@ function renderMessages(
 
 
 /* =========================================================
-   TEXT INPUT
-========================================================= */
-
-function setupMessageInput() {
-
-    const input =
-        document.getElementById(
-            "messageInput"
-        );
-
-
-    input.addEventListener(
-        "input",
-        function () {
-
-            input.style.height =
-                "auto";
-
-
-            const maxHeight =
-                window.innerWidth <=
-                    600
-                    ? 110
-                    : 125;
-
-
-            input.style.height =
-                Math.min(
-                    input.scrollHeight,
-                    maxHeight
-                ) +
-                "px";
-
-        }
-    );
-
-
-    input.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key ===
-                    "Enter" &&
-                !event.shiftKey
-            ) {
-
-                event.preventDefault();
-
-                sendMessage();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   IMAGE PICKER
-========================================================= */
-
-function openImagePicker() {
-
-    document
-        .getElementById(
-            "imageInput"
-        )
-        .click();
-
-}
-
-
-/* =========================================================
-   SELECT IMAGE
-========================================================= */
-
-function handleImageSelection(
-    event
-) {
-
-    const file =
-        event.target.files &&
-        event.target.files[0];
-
-
-    if (!file) {
-
-        return;
-
-    }
-
-
-    if (
-        !file.type.startsWith(
-            "image/"
-        )
-    ) {
-
-        alert(
-            "Please select an image."
-        );
-
-        event.target.value =
-            "";
-
-        return;
-
-    }
-
-
-    if (
-        file.size >
-        10 * 1024 * 1024
-    ) {
-
-        alert(
-            "Please select an image smaller than 10 MB."
-        );
-
-        event.target.value =
-            "";
-
-        return;
-
-    }
-
-
-    selectedImage =
-        file;
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload =
-        function () {
-
-            document
-                .getElementById(
-                    "previewImage"
-                )
-                .src =
-                reader.result;
-
-
-            document
-                .getElementById(
-                    "imagePreview"
-                )
-                .style.display =
-                "block";
-
-        };
-
-
-    reader.readAsDataURL(
-        file
-    );
-
-}
-
-
-/* =========================================================
-   REMOVE IMAGE
-========================================================= */
-
-function removeSelectedImage() {
-
-    selectedImage =
-        null;
-
-
-    document
-        .getElementById(
-            "imageInput"
-        )
-        .value =
-        "";
-
-
-    document
-        .getElementById(
-            "previewImage"
-        )
-        .src =
-        "";
-
-
-    document
-        .getElementById(
-            "imagePreview"
-        )
-        .style.display =
-        "none";
-
-}
-
-
-/* =========================================================
-   SEND MESSAGE
+   OPTIMISTIC SEND
 ========================================================= */
 
 async function sendMessage() {
@@ -1706,45 +1706,217 @@ async function sendMessage() {
     }
 
 
+    /*
+     * TEXT ONLY:
+     * Show instantly.
+     */
+
+    if (
+        !selectedImage
+    ) {
+
+        const tempId =
+            "temp_" +
+            Date.now();
+
+
+        const optimistic = {
+
+            id:
+                tempId,
+
+            sender:
+                normalizeUsername(
+                    currentUser.username
+                ),
+
+            receiver:
+                otherUsername,
+
+            message:
+                text,
+
+            timestamp:
+                new Date()
+                .toISOString(),
+
+            attachmentType:
+                "",
+
+            attachmentUrl:
+                "",
+
+            pending:
+                true
+
+        };
+
+
+        messages.push(
+            optimistic
+        );
+
+
+        renderMessages(
+            messages
+        );
+
+
+        saveChatCache();
+
+
+        input.value =
+            "";
+
+        input.style.height =
+            "42px";
+
+
+        button.disabled =
+            true;
+
+
+        try {
+
+            const response =
+                await fetch(
+
+                    APPS_SCRIPT_URL,
+
+                    {
+
+                        method:
+                            "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "text/plain;charset=utf-8"
+
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                action:
+                                    "sendMessage",
+
+                                email:
+                                    currentUser.email,
+
+                                receiver:
+                                    otherUsername,
+
+                                message:
+                                    text
+
+                            })
+
+                    }
+
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if (
+                !result.success
+            ) {
+
+                throw new Error(
+                    result.error ||
+                    "Could not send message."
+                );
+
+            }
+
+
+            /*
+             * Don't wait before refreshing.
+             */
+
+            await refreshChat();
+
+        }
+
+        catch (error) {
+
+            messages =
+                messages.map(
+                    function(item) {
+
+                        if (
+                            item.id ===
+                            tempId
+                        ) {
+
+                            return {
+
+                                ...item,
+
+                                pending:
+                                    false,
+
+                                failed:
+                                    true
+
+                            };
+
+                        }
+
+
+                        return item;
+
+                    }
+                );
+
+
+            renderMessages(
+                messages
+            );
+
+
+            alert(
+                error.message
+            );
+
+        }
+
+        finally {
+
+            button.disabled =
+                false;
+
+            input.focus();
+
+        }
+
+
+        return;
+
+    }
+
+
+    /*
+     * PHOTO:
+     * Upload normally.
+     */
+
     button.disabled =
         true;
 
     button.textContent =
-        "Sending...";
+        "Uploading...";
 
 
     try {
 
-        let imageData =
-            "";
-
-        let imageMime =
-            "";
-
-        let imageName =
-            "";
-
-
-        if (
-            selectedImage
-        ) {
-
-            const compressed =
-                await compressImage(
-                    selectedImage
-                );
-
-
-            imageData =
-                compressed.dataUrl;
-
-            imageMime =
-                compressed.mimeType;
-
-            imageName =
-                compressed.fileName;
-
-        }
+        const compressed =
+            await compressImage(
+                selectedImage
+            );
 
 
         const response =
@@ -1780,18 +1952,16 @@ async function sendMessage() {
                                 text,
 
                             attachmentType:
-                                imageData
-                                    ? "image"
-                                    : "",
+                                "image",
 
                             attachmentData:
-                                imageData,
+                                compressed.dataUrl,
 
                             attachmentMime:
-                                imageMime,
+                                compressed.mimeType,
 
                             attachmentName:
-                                imageName
+                                compressed.fileName
 
                         })
 
@@ -1810,7 +1980,7 @@ async function sendMessage() {
 
             throw new Error(
                 result.error ||
-                "Could not send message."
+                "Could not upload photo."
             );
 
         }
@@ -1826,21 +1996,14 @@ async function sendMessage() {
         removeSelectedImage();
 
 
-        await loadMessages();
+        await refreshChat();
 
     }
 
     catch (error) {
 
-        console.error(
-            "Send error:",
-            error
-        );
-
-
         alert(
-            error.message ||
-            "Could not send message."
+            error.message
         );
 
     }
@@ -1861,15 +2024,190 @@ async function sendMessage() {
 
 
 /* =========================================================
-   COMPRESS IMAGE
+   INPUT
 ========================================================= */
+
+function setupInput() {
+
+    const input =
+        document.getElementById(
+            "messageInput"
+        );
+
+
+    input.addEventListener(
+        "input",
+        function() {
+
+            input.style.height =
+                "auto";
+
+
+            input.style.height =
+                Math.min(
+                    input.scrollHeight,
+                    125
+                ) +
+                "px";
+
+        }
+    );
+
+
+    input.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key ===
+                    "Enter" &&
+                !event.shiftKey
+            ) {
+
+                event.preventDefault();
+
+                sendMessage();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+function openImagePicker() {
+
+    document
+        .getElementById(
+            "imageInput"
+        )
+        .click();
+
+}
+
+
+function handleImageSelection(
+    event
+) {
+
+    const file =
+        event.target.files &&
+        event.target.files[0];
+
+
+    if (!file) {
+        return;
+    }
+
+
+    if (
+        !file.type.startsWith(
+            "image/"
+        )
+    ) {
+
+        alert(
+            "Please select an image."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        file.size >
+        10 * 1024 * 1024
+    ) {
+
+        alert(
+            "Please select an image smaller than 10 MB."
+        );
+
+        return;
+
+    }
+
+
+    selectedImage =
+        file;
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function() {
+
+            document
+                .getElementById(
+                    "previewImage"
+                )
+                .src =
+                reader.result;
+
+
+            document
+                .getElementById(
+                    "imagePreview"
+                )
+                .style.display =
+                "block";
+
+        };
+
+
+    reader.readAsDataURL(
+        file
+    );
+
+}
+
+
+function removeSelectedImage() {
+
+    selectedImage =
+        null;
+
+
+    document
+        .getElementById(
+            "imageInput"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "previewImage"
+        )
+        .src =
+        "";
+
+
+    document
+        .getElementById(
+            "imagePreview"
+        )
+        .style.display =
+        "none";
+
+}
+
 
 function compressImage(
     file
 ) {
 
     return new Promise(
-        function (
+        function(
             resolve,
             reject
         ) {
@@ -1883,7 +2221,7 @@ function compressImage(
 
 
             reader.onload =
-                function () {
+                function() {
 
                     const image =
                         new Image();
@@ -1894,9 +2232,9 @@ function compressImage(
 
 
                     image.onload =
-                        function () {
+                        function() {
 
-                            const maxSize =
+                            const max =
                                 1600;
 
 
@@ -1909,9 +2247,9 @@ function compressImage(
 
                             if (
                                 width >
-                                    maxSize ||
+                                max ||
                                 height >
-                                    maxSize
+                                max
                             ) {
 
                                 if (
@@ -1922,25 +2260,26 @@ function compressImage(
                                     height =
                                         Math.round(
                                             height *
-                                            maxSize /
+                                            max /
                                             width
                                         );
 
                                     width =
-                                        maxSize;
+                                        max;
 
                                 }
+
                                 else {
 
                                     width =
                                         Math.round(
                                             width *
-                                            maxSize /
+                                            max /
                                             height
                                         );
 
                                     height =
-                                        maxSize;
+                                        max;
 
                                 }
 
@@ -1960,35 +2299,29 @@ function compressImage(
                                 height;
 
 
-                            const context =
-                                canvas.getContext(
+                            canvas
+                                .getContext(
                                     "2d"
+                                )
+                                .drawImage(
+                                    image,
+                                    0,
+                                    0,
+                                    width,
+                                    height
                                 );
-
-
-                            context.drawImage(
-                                image,
-                                0,
-                                0,
-                                width,
-                                height
-                            );
-
-
-                            const mimeType =
-                                "image/jpeg";
 
 
                             resolve({
 
                                 dataUrl:
                                     canvas.toDataURL(
-                                        mimeType,
-                                        0.82
+                                        "image/jpeg",
+                                        .82
                                     ),
 
                                 mimeType:
-                                    mimeType,
+                                    "image/jpeg",
 
                                 fileName:
                                     "photo-" +
@@ -2017,59 +2350,61 @@ function compressImage(
 
 
 /* =========================================================
-   OPEN IMAGE
+   LOCK
 ========================================================= */
 
-function openImage(
-    url
+function showLocked() {
+
+    if (
+        refreshTimer
+    ) {
+
+        clearInterval(
+            refreshTimer
+        );
+
+    }
+
+
+    document
+        .getElementById(
+            "chatInterface"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "lockScreen"
+        )
+        .style.display =
+        "flex";
+
+}
+
+
+/* =========================================================
+   FINGERPRINT
+========================================================= */
+
+function fingerprint(
+    value
 ) {
 
-    window.open(
-        url,
-        "_blank"
+    return JSON.stringify(
+        value
     );
 
 }
 
 
-/* =========================================================
-   ERROR
-========================================================= */
-
-function showError(
-    message
-) {
-
-    document
-        .getElementById(
-            "messages"
-        )
-        .innerHTML =
-
-        `
-        <div
-            class="empty-state"
-            style="color:#dc2626;"
-        >
-            ${escapeHtml(
-                message
-            )}
-        </div>
-        `;
-
-}
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
 function normalizeUsername(
-    username
+    value
 ) {
 
     return String(
-        username ||
+        value ||
         ""
     )
     .trim()
@@ -2113,10 +2448,20 @@ function escapeHtml(
 
 }
 
-</script>
 
+function openImage(
+    url
+) {
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+</script>
 
 </body>
 
 </html>
-
