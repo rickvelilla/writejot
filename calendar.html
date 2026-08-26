@@ -12,16 +12,13 @@
 
     <title>Writejot | Calendar</title>
 
-
     <style>
 
         * {
             box-sizing: border-box;
         }
 
-
         body {
-
             margin: 0;
 
             font-family:
@@ -36,13 +33,7 @@
                 #1f2937;
         }
 
-
-        /* =================================================
-           HEADER
-        ================================================= */
-
         header {
-
             background: white;
 
             border-bottom:
@@ -51,39 +42,28 @@
             padding:
                 12px 6%;
 
-            display:
-                flex;
+            display: flex;
 
-            align-items:
-                center;
+            align-items: center;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
-            position:
-                sticky;
+            position: sticky;
 
             top: 0;
 
             z-index: 100;
         }
 
-
         .brand {
+            display: flex;
 
-            display:
-                flex;
+            align-items: center;
 
-            align-items:
-                center;
-
-            gap:
-                10px;
+            gap: 10px;
         }
 
-
         .brand img {
-
             width:
                 40px;
 
@@ -94,9 +74,7 @@
                 contain;
         }
 
-
         .brand-name {
-
             font-size:
                 22px;
 
@@ -104,9 +82,7 @@
                 700;
         }
 
-
         .back {
-
             color:
                 #4285F4;
 
@@ -117,13 +93,7 @@
                 600;
         }
 
-
-        /* =================================================
-           MAIN
-        ================================================= */
-
         main {
-
             max-width:
                 1150px;
 
@@ -134,66 +104,34 @@
                 0 18px;
         }
 
-
-        .page-header {
-
-            margin-bottom:
-                20px;
-        }
-
-
         .page-header h1 {
-
             margin:
                 0 0 5px;
-
-            font-size:
-                30px;
         }
 
-
         .page-header p {
-
-            margin:
-                0;
-
             color:
                 #718096;
         }
 
-
-        /* =================================================
-           UPDATE INDICATOR
-        ================================================= */
-
         #updateIndicator {
-
             display:
                 none;
-
-            margin-bottom:
-                12px;
 
             color:
                 #8a94a6;
 
             font-size:
                 12px;
+
+            margin-bottom:
+                10px;
         }
 
-
-        /* =================================================
-           REGISTRATION
-        ================================================= */
-
-        .registration-card {
-
-            max-width:
-                600px;
-
-            margin:
-                30px auto;
-
+        .registration-card,
+        .status-card,
+        .calendar-card,
+        .side-card {
             background:
                 white;
 
@@ -201,48 +139,26 @@
                 1px solid #e1e6ee;
 
             border-radius:
-                16px;
+                15px;
+        }
+
+        .registration-card {
+            max-width:
+                600px;
+
+            margin:
+                30px auto;
 
             padding:
                 30px;
-
-            box-shadow:
-                0 6px 20px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .04
-                );
         }
-
-
-        .registration-card h2 {
-
-            margin:
-                0 0 7px;
-        }
-
-
-        .registration-card p {
-
-            color:
-                #718096;
-
-            margin:
-                0 0 22px;
-        }
-
 
         .field {
-
             margin-bottom:
-                16px;
+                15px;
         }
 
-
         .field label {
-
             display:
                 block;
 
@@ -253,50 +169,34 @@
                 6px;
         }
 
-
-        .field input {
-
+        .field input,
+        .event-input,
+        .event-textarea {
             width:
                 100%;
 
-            height:
-                44px;
-
             padding:
-                0 12px;
+                11px;
 
             border:
                 1px solid #d8dee8;
 
             border-radius:
-                9px;
+                8px;
+
+            font-family:
+                inherit;
 
             outline:
                 none;
-
-            font-size:
-                14px;
         }
 
-
-        .field input:focus {
-
-            border-color:
-                #4285F4;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(
-                    66,
-                    133,
-                    244,
-                    .08
-                );
+        .event-textarea {
+            resize:
+                vertical;
         }
-
 
         .primary-button {
-
             border:
                 none;
 
@@ -319,52 +219,20 @@
                 600;
         }
 
-
-        .primary-button:hover {
-
-            background:
-                #3367d6;
-        }
-
-
         .primary-button:disabled {
-
             opacity:
                 .6;
-
-            cursor:
-                not-allowed;
         }
 
-
         .form-message {
-
             margin-top:
-                12px;
-
-            min-height:
-                20px;
+                10px;
 
             font-size:
                 13px;
         }
 
-
-        /* =================================================
-           STATUS
-        ================================================= */
-
         .status-card {
-
-            background:
-                white;
-
-            border:
-                1px solid #e1e6ee;
-
-            border-radius:
-                14px;
-
             padding:
                 20px;
 
@@ -372,57 +240,28 @@
                 20px;
         }
 
-
         .status-card.pending {
+            background:
+                #fffaf0;
 
             border-color:
                 #f2d38a;
-
-            background:
-                #fffaf0;
         }
 
-
         .status-card.approved {
+            background:
+                #f1fbf5;
 
             border-color:
                 #b7dfc5;
-
-            background:
-                #f1fbf5;
         }
-
-
-        .status-title {
-
-            font-weight:
-                700;
-
-            margin-bottom:
-                5px;
-        }
-
-
-        .status-text {
-
-            color:
-                #667085;
-        }
-
-
-        /* =================================================
-           CALENDAR LAYOUT
-        ================================================= */
 
         #calendarContent {
-
             display:
                 none;
         }
 
-
         .calendar-layout {
-
             display:
                 grid;
 
@@ -437,38 +276,20 @@
                 18px;
         }
 
-
-        .calendar-card,
-        .side-card {
-
-            background:
-                white;
-
-            border:
-                1px solid #e1e6ee;
-
-            border-radius:
-                15px;
-
+        .calendar-card {
             overflow:
                 hidden;
         }
 
-
-        /* =================================================
-           CALENDAR HEADER
-        ================================================= */
-
         .calendar-toolbar {
-
             display:
                 flex;
 
-            align-items:
-                center;
-
             justify-content:
                 space-between;
+
+            align-items:
+                center;
 
             padding:
                 15px 17px;
@@ -477,19 +298,7 @@
                 1px solid #edf0f4;
         }
 
-
-        .month-title {
-
-            font-weight:
-                700;
-
-            font-size:
-                18px;
-        }
-
-
         .month-buttons {
-
             display:
                 flex;
 
@@ -497,9 +306,7 @@
                 7px;
         }
 
-
         .month-button {
-
             width:
                 34px;
 
@@ -517,25 +324,10 @@
 
             cursor:
                 pointer;
-
-            font-size:
-                16px;
         }
 
-
-        .month-button:hover {
-
-            background:
-                #f4f7fb;
-        }
-
-
-        /* =================================================
-           WEEKDAYS
-        ================================================= */
-
-        .weekdays {
-
+        .weekdays,
+        .calendar-grid {
             display:
                 grid;
 
@@ -544,16 +336,16 @@
                     7,
                     1fr
                 );
+        }
 
+        .weekdays {
             border-bottom:
                 1px solid #edf0f4;
         }
 
-
         .weekday {
-
             padding:
-                10px 5px;
+                9px 3px;
 
             text-align:
                 center;
@@ -561,35 +353,19 @@
             font-size:
                 11px;
 
-            font-weight:
-                700;
-
             color:
                 #8a94a6;
+
+            font-weight:
+                700;
         }
-
-
-        /* =================================================
-           MONTH GRID
-        ================================================= */
-
-        .calendar-grid {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(
-                    7,
-                    1fr
-                );
-        }
-
 
         .day {
-
             min-height:
-                110px;
+                105px;
+
+            padding:
+                5px;
 
             border-right:
                 1px solid #edf0f4;
@@ -597,33 +373,19 @@
             border-bottom:
                 1px solid #edf0f4;
 
-            padding:
-                6px;
+            overflow:
+                hidden;
 
             cursor:
                 pointer;
-
-            overflow:
-                hidden;
         }
 
-
         .day:nth-child(7n) {
-
             border-right:
                 none;
         }
 
-
-        .day:hover {
-
-            background:
-                #f9fbff;
-        }
-
-
         .day.other-month {
-
             background:
                 #fafbfc;
 
@@ -631,21 +393,20 @@
                 #b3bbc7;
         }
 
-
         .day.today {
-
             background:
                 #f2f7ff;
         }
 
-
         .day-number {
-
             width:
                 25px;
 
             height:
                 25px;
+
+            border-radius:
+                50%;
 
             display:
                 flex;
@@ -656,9 +417,6 @@
             justify-content:
                 center;
 
-            border-radius:
-                50%;
-
             font-size:
                 12px;
 
@@ -666,9 +424,7 @@
                 4px;
         }
 
-
         .today .day-number {
-
             background:
                 #4285F4;
 
@@ -679,14 +435,21 @@
                 700;
         }
 
-
         .event-chip {
-
             display:
                 block;
 
             width:
                 100%;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
+
+            white-space:
+                nowrap;
 
             padding:
                 4px 5px;
@@ -698,27 +461,10 @@
                 5px;
 
             font-size:
-                10px;
-
-            line-height:
-                1.25;
-
-            white-space:
-                nowrap;
-
-            overflow:
-                hidden;
-
-            text-overflow:
-                ellipsis;
-
-            cursor:
-                pointer;
+                9px;
         }
 
-
         .event-class {
-
             background:
                 #eaf2ff;
 
@@ -726,9 +472,7 @@
                 #2563eb;
         }
 
-
         .event-test {
-
             background:
                 #fff0f0;
 
@@ -736,9 +480,7 @@
                 #dc2626;
         }
 
-
         .event-personal {
-
             background:
                 #eefbf2;
 
@@ -746,43 +488,12 @@
                 #16834a;
         }
 
-
-        /* =================================================
-           SIDE PANEL
-        ================================================= */
-
         .side-card {
-
             padding:
                 20px;
         }
 
-
-        .side-card h2 {
-
-            margin:
-                0 0 5px;
-
-            font-size:
-                19px;
-        }
-
-
-        .side-card > p {
-
-            margin:
-                0 0 18px;
-
-            color:
-                #718096;
-
-            font-size:
-                13px;
-        }
-
-
         .upcoming-event {
-
             padding:
                 11px 0;
 
@@ -790,59 +501,34 @@
                 1px solid #edf0f4;
         }
 
-
-        .upcoming-event:last-child {
-
-            border-bottom:
-                none;
-        }
-
-
         .upcoming-date {
+            font-size:
+                12px;
 
             color:
                 #4285F4;
 
-            font-size:
-                12px;
-
             font-weight:
                 700;
-
-            margin-bottom:
-                2px;
         }
 
-
         .upcoming-title {
+            font-size:
+                14px;
 
             font-weight:
                 600;
-
-            font-size:
-                14px;
         }
 
-
         .upcoming-meta {
-
-            color:
-                #7b8494;
-
             font-size:
                 12px;
 
-            margin-top:
-                2px;
+            color:
+                #7b8494;
         }
 
-
-        /* =================================================
-           ADD EVENT
-        ================================================= */
-
         .add-event {
-
             margin-top:
                 20px;
 
@@ -853,98 +539,20 @@
                 1px solid #edf0f4;
         }
 
-
-        .add-event h3 {
-
-            margin:
-                0 0 12px;
-
-            font-size:
-                16px;
-        }
-
-
-        .add-event input,
-        .add-event textarea {
-
-            width:
-                100%;
-
-            border:
-                1px solid #d8dee8;
-
-            border-radius:
-                8px;
-
-            padding:
-                9px 10px;
-
-            font-family:
-                inherit;
-
-            font-size:
-                13px;
-
-            margin-bottom:
-                9px;
-
-            outline:
-                none;
-        }
-
-
-        .add-event textarea {
-
-            resize:
-                vertical;
-
-            min-height:
-                65px;
-        }
-
-
-        .add-event input:focus,
-        .add-event textarea:focus {
-
-            border-color:
-                #4285F4;
-        }
-
-
         .event-row {
-
             display:
                 grid;
 
             grid-template-columns:
-                1fr
-                1fr;
+                1fr 1fr;
 
             gap:
                 8px;
         }
 
-
-        .legend {
-
-            display:
-                flex;
-
-            flex-wrap:
-                wrap;
-
-            gap:
-                10px;
-
-            margin-bottom:
-                15px;
-
-            padding:
-                0 17px;
-        }
-
-
-        .legend-item {
+        .lock-screen {
+            min-height:
+                70vh;
 
             display:
                 flex;
@@ -952,138 +560,90 @@
             align-items:
                 center;
 
-            gap:
-                5px;
+            justify-content:
+                center;
 
-            font-size:
-                11px;
-
-            color:
-                #718096;
+            padding:
+                30px;
         }
 
-
-        .legend-dot {
+        .lock-card {
+            max-width:
+                500px;
 
             width:
-                9px;
+                100%;
 
-            height:
-                9px;
+            background:
+                white;
+
+            border:
+                1px solid #e1e6ee;
 
             border-radius:
-                3px;
+                16px;
+
+            padding:
+                35px;
+
+            text-align:
+                center;
         }
 
+        .lock-card p {
+            color:
+                #718096;
 
-        /* =================================================
-           MOBILE
-        ================================================= */
+            line-height:
+                1.6;
+        }
+
+        .button {
+            display:
+                inline-block;
+
+            padding:
+                11px 17px;
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+
+            text-decoration:
+                none;
+
+            border-radius:
+                9px;
+
+            font-weight:
+                600;
+        }
 
         @media (
-            max-width:
-            850px
+            max-width: 850px
         ) {
 
             .calendar-layout {
-
                 grid-template-columns:
                     1fr;
-
-            }
-
-
-            .side-card {
-
-                order:
-                    -1;
-
             }
 
         }
 
-
         @media (
-            max-width:
-            600px
+            max-width: 600px
         ) {
 
-            header {
-
-                padding:
-                    10px 14px;
-
-            }
-
-
-            .brand-name {
-
-                font-size:
-                    20px;
-
-            }
-
-
-            main {
-
-                margin-top:
-                    17px;
-
-                padding:
-                    0 10px;
-
-            }
-
-
             .day {
-
                 min-height:
-                    78px;
-
-                padding:
-                    4px;
-
+                    75px;
             }
-
-
-            .weekday {
-
-                font-size:
-                    10px;
-
-                padding:
-                    8px 2px;
-
-            }
-
-
-            .day-number {
-
-                width:
-                    22px;
-
-                height:
-                    22px;
-
-            }
-
 
             .event-chip {
-
                 font-size:
                     8px;
-
-                padding:
-                    3px 4px;
-
-            }
-
-
-            .registration-card {
-
-                padding:
-                    23px 18px;
-
             }
 
         }
@@ -1092,24 +652,54 @@
 
 </head>
 
-
 <body>
 
+<div
+    id="lockScreen"
+    class="lock-screen"
+    style="display:none;"
+>
+
+    <div class="lock-card">
+
+        <div style="font-size:45px;">
+            🔒
+        </div>
+
+        <h1>
+            Calendar unavailable
+        </h1>
+
+        <p>
+            Your Writejot access has expired.
+            Renew your subscription to continue
+            using Calendar.
+        </p>
+
+        <a
+            class="button"
+            href="index.html"
+        >
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+
+<div id="calendarInterface">
 
 <header>
 
-    <div
-        class="brand"
-    >
+    <div class="brand">
 
         <img
             src="W.png"
-            alt="Writejot logo"
+            alt="Writejot"
         >
 
-        <div
-            class="brand-name"
-        >
+        <div class="brand-name">
             Writejot
         </div>
 
@@ -1126,87 +716,60 @@
 </header>
 
 
-
 <main>
 
-
-    <div
-        class="page-header"
-    >
+    <div class="page-header">
 
         <h1>
             📅 Calendar
         </h1>
 
         <p>
-            Your classes, tests, and personal events.
+            Classes, tests, and your own events.
         </p>
 
     </div>
 
 
-    <div
-        id="updateIndicator"
-    >
-        Updating calendar...
+    <div id="updateIndicator">
+        Updating...
     </div>
 
 
-
-    <div
-        id="registrationArea"
-    ></div>
+    <div id="registrationArea"></div>
 
 
-
-    <div
-        id="calendarContent"
-    >
+    <div id="calendarContent">
 
         <div
             id="statusCard"
             class="status-card approved"
         >
 
-            <div
-                class="status-title"
-                id="statusTitle"
-            >
+            <strong id="statusTitle">
                 Class Schedule Access
-            </div>
-
+            </strong>
 
             <div
-                class="status-text"
                 id="statusText"
+                style="color:#667085;margin-top:5px;"
             ></div>
 
         </div>
 
 
+        <div class="calendar-layout">
 
-        <div
-            class="calendar-layout"
-        >
+            <div class="calendar-card">
 
+                <div class="calendar-toolbar">
 
-            <div
-                class="calendar-card"
-            >
-
-                <div
-                    class="calendar-toolbar"
-                >
-
-                    <div
-                        class="month-title"
+                    <strong
                         id="monthTitle"
-                    ></div>
+                    ></strong>
 
 
-                    <div
-                        class="month-buttons"
-                    >
+                    <div class="month-buttons">
 
                         <button
                             class="month-button"
@@ -1215,14 +778,12 @@
                             ←
                         </button>
 
-
                         <button
                             class="month-button"
                             onclick="goToToday()"
                         >
                             •
                         </button>
-
 
                         <button
                             class="month-button"
@@ -1236,85 +797,15 @@
                 </div>
 
 
-                <div
-                    class="legend"
-                >
+                <div class="weekdays">
 
-                    <div
-                        class="legend-item"
-                    >
-
-                        <span
-                            class="legend-dot"
-                            style="background:#4285F4;"
-                        ></span>
-
-                        Class
-
-                    </div>
-
-
-                    <div
-                        class="legend-item"
-                    >
-
-                        <span
-                            class="legend-dot"
-                            style="background:#ef4444;"
-                        ></span>
-
-                        Test
-
-                    </div>
-
-
-                    <div
-                        class="legend-item"
-                    >
-
-                        <span
-                            class="legend-dot"
-                            style="background:#22c55e;"
-                        ></span>
-
-                        Personal
-
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="weekdays"
-                >
-
-                    <div class="weekday">
-                        Sun
-                    </div>
-
-                    <div class="weekday">
-                        Mon
-                    </div>
-
-                    <div class="weekday">
-                        Tue
-                    </div>
-
-                    <div class="weekday">
-                        Wed
-                    </div>
-
-                    <div class="weekday">
-                        Thu
-                    </div>
-
-                    <div class="weekday">
-                        Fri
-                    </div>
-
-                    <div class="weekday">
-                        Sat
-                    </div>
+                    <div class="weekday">Sun</div>
+                    <div class="weekday">Mon</div>
+                    <div class="weekday">Tue</div>
+                    <div class="weekday">Wed</div>
+                    <div class="weekday">Thu</div>
+                    <div class="weekday">Fri</div>
+                    <div class="weekday">Sat</div>
 
                 </div>
 
@@ -1327,29 +818,18 @@
             </div>
 
 
-
-            <div
-                class="side-card"
-            >
+            <div class="side-card">
 
                 <h2>
                     Upcoming
                 </h2>
-
-
-                <p>
-                    Your next classes, tests, and events.
-                </p>
-
 
                 <div
                     id="upcomingEvents"
                 ></div>
 
 
-                <div
-                    class="add-event"
-                >
+                <div class="add-event">
 
                     <h3>
                         Add Personal Event
@@ -1358,30 +838,30 @@
 
                     <input
                         id="eventTitle"
+                        class="event-input"
                         type="text"
                         placeholder="Event title"
-                        maxlength="100"
                     >
 
 
                     <input
                         id="eventDate"
+                        class="event-input"
                         type="date"
                     >
 
 
-                    <div
-                        class="event-row"
-                    >
+                    <div class="event-row">
 
                         <input
                             id="eventStart"
+                            class="event-input"
                             type="time"
                         >
 
-
                         <input
                             id="eventEnd"
+                            class="event-input"
                             type="time"
                         >
 
@@ -1390,14 +870,14 @@
 
                     <textarea
                         id="eventDescription"
-                        placeholder="Description (optional)"
-                        maxlength="500"
+                        class="event-textarea"
+                        placeholder="Description"
                     ></textarea>
 
 
                     <button
-                        class="primary-button"
                         id="addEventButton"
+                        class="primary-button"
                         onclick="addEvent()"
                     >
                         + Add Event
@@ -1413,37 +893,30 @@
 
             </div>
 
-
         </div>
 
     </div>
 
 </main>
 
+</div>
 
 
 <script>
-
-
-/* =========================================================
-   CONFIG
-========================================================= */
 
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-const CALENDAR_CACHE_PREFIX =
+const CACHE_PREFIX =
     "writejot_calendar_";
 
 
 let currentUser =
     null;
 
-
 let calendarData =
     null;
-
 
 let displayedMonth =
     new Date();
@@ -1455,48 +928,22 @@ displayedMonth.setDate(
 
 
 /* =========================================================
-   CACHE KEY
-========================================================= */
-
-function getCalendarCacheKey() {
-
-    return (
-        CALENDAR_CACHE_PREFIX +
-        (
-            currentUser
-                ? String(
-                    currentUser.email ||
-                    currentUser.username ||
-                    "unknown"
-                  )
-                  .trim()
-                  .toLowerCase()
-                : "unknown"
-        )
-    );
-
-}
-
-
-/* =========================================================
    START
 ========================================================= */
 
 window.addEventListener(
     "load",
-    async function () {
+    async function() {
 
-        const savedUser =
+        const saved =
             localStorage.getItem(
                 "writejotUser"
             );
 
 
-        if (
-            !savedUser
-        ) {
+        if (!saved) {
 
-            window.location.href =
+            location.href =
                 "index.html";
 
             return;
@@ -1508,14 +955,12 @@ window.addEventListener(
 
             currentUser =
                 JSON.parse(
-                    savedUser
+                    saved
                 );
 
-        }
+        } catch {
 
-        catch (error) {
-
-            window.location.href =
+            location.href =
                 "index.html";
 
             return;
@@ -1534,99 +979,76 @@ window.addEventListener(
 
 
         /*
-         * 1. Load cached calendar immediately.
+         * Access must be verified before
+         * cached calendar data is shown.
          */
 
-        const hasCache =
-            loadCalendarCache();
+        const access =
+            await verifyAccess();
+
+
+        if (!access) {
+            return;
+        }
+
+
+        loadCalendarCache();
 
 
         if (
-            hasCache
+            calendarData
         ) {
 
-            renderCalendarState();
+            renderState();
 
         }
 
 
-        /*
-         * 2. Refresh from Apps Script.
-         *
-         * If there is cache, this runs
-         * silently in the background.
-         *
-         * If there is no cache, it acts
-         * as the initial load.
-         */
-
-        refreshCalendar(
-            !hasCache
-        );
+        refreshCalendar();
 
     }
 );
 
 
 /* =========================================================
-   LOAD CACHE
+   ACCESS
 ========================================================= */
 
-function loadCalendarCache() {
+async function verifyAccess() {
 
     try {
 
-        const cached =
-            localStorage.getItem(
-                getCalendarCacheKey()
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=access&email=" +
+                encodeURIComponent(
+                    currentUser.email
+                ),
+
+                {
+                    cache:
+                        "no-store"
+                }
+
             );
 
 
+        const result =
+            await response.json();
+
+
         if (
-            !cached
+            !result.success ||
+            !result.access
         ) {
+
+            showLocked();
 
             return false;
 
         }
-
-
-        const parsed =
-            JSON.parse(
-                cached
-            );
-
-
-        if (
-            !parsed ||
-            typeof parsed !==
-                "object"
-        ) {
-
-            return false;
-
-        }
-
-
-        /*
-         * Basic validation so a corrupted
-         * cache does not break the page.
-         */
-
-        if (
-            typeof parsed.success !==
-                "boolean" &&
-            parsed.success !==
-                undefined
-        ) {
-
-            return false;
-
-        }
-
-
-        calendarData =
-            parsed;
 
 
         return true;
@@ -1635,11 +1057,7 @@ function loadCalendarCache() {
 
     catch (error) {
 
-        console.error(
-            "Calendar cache error:",
-            error
-        );
-
+        showLocked();
 
         return false;
 
@@ -1648,26 +1066,78 @@ function loadCalendarCache() {
 }
 
 
+function showLocked() {
+
+    document
+        .getElementById(
+            "calendarInterface"
+        )
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById(
+            "lockScreen"
+        )
+        .style.display =
+        "flex";
+
+}
+
+
 /* =========================================================
-   SAVE CACHE
+   CACHE
 ========================================================= */
+
+function cacheKey() {
+
+    return (
+        CACHE_PREFIX +
+        String(
+            currentUser.email
+        )
+        .trim()
+        .toLowerCase()
+    );
+
+}
+
+
+function loadCalendarCache() {
+
+    try {
+
+        const raw =
+            localStorage.getItem(
+                cacheKey()
+            );
+
+
+        if (!raw) {
+            return;
+        }
+
+
+        calendarData =
+            JSON.parse(
+                raw
+            );
+
+    }
+
+    catch (error) {}
+
+}
+
 
 function saveCalendarCache() {
 
     try {
 
-        if (
-            !calendarData
-        ) {
-
-            return;
-
-        }
-
-
         localStorage.setItem(
 
-            getCalendarCacheKey(),
+            cacheKey(),
 
             JSON.stringify(
                 calendarData
@@ -1677,45 +1147,32 @@ function saveCalendarCache() {
 
     }
 
-    catch (error) {
-
-        console.error(
-            "Could not save calendar cache:",
-            error
-        );
-
-    }
+    catch (error) {}
 
 }
 
 
 /* =========================================================
-   REFRESH CALENDAR
+   REFRESH
 ========================================================= */
 
-async function refreshCalendar(
-    showInitialState
-) {
-
-    /*
-     * With cache:
-     * show a tiny background indicator.
-     *
-     * Without cache:
-     * keep the page usable while loading.
-     */
-
-    if (
-        !showInitialState &&
-        calendarData
-    ) {
-
-        showUpdateIndicator();
-
-    }
-
+async function refreshCalendar() {
 
     try {
+
+        if (
+            calendarData
+        ) {
+
+            document
+                .getElementById(
+                    "updateIndicator"
+                )
+                .style.display =
+                "block";
+
+        }
+
 
         const response =
             await fetch(
@@ -1734,30 +1191,26 @@ async function refreshCalendar(
             );
 
 
-        if (
-            !response.ok
-        ) {
-
-            throw new Error(
-                "Server returned " +
-                response.status
-            );
-
-        }
-
-
         const result =
             await response.json();
+
+
+        if (
+            result.accessDenied
+        ) {
+
+            showLocked();
+
+            return;
+
+        }
 
 
         if (
             !result.success
         ) {
 
-            throw new Error(
-                result.error ||
-                "Could not load calendar."
-            );
+            return;
 
         }
 
@@ -1766,71 +1219,28 @@ async function refreshCalendar(
             result;
 
 
-        /*
-         * Save the newest server state
-         * for the next visit.
-         */
-
         saveCalendarCache();
 
-
-        /*
-         * Re-render with fresh data.
-         */
-
-        renderCalendarState();
-
-
-        hideUpdateIndicator();
+        renderState();
 
     }
 
     catch (error) {
 
         console.error(
-            "Calendar refresh error:",
             error
         );
 
+    }
 
-        hideUpdateIndicator();
-
-
-        /*
-         * IMPORTANT:
-         * If cached data exists, keep showing it.
-         * Do NOT replace the calendar with an
-         * error just because the server is slow.
-         */
-
-        if (
-            calendarData
-        ) {
-
-            return;
-
-        }
-
+    finally {
 
         document
             .getElementById(
-                "registrationArea"
+                "updateIndicator"
             )
-            .innerHTML =
-
-            `
-            <div
-                class="status-card"
-                style="
-                    border-color:#fecaca;
-                    background:#fff5f5;
-                    color:#b91c1c;
-                "
-            >
-                Could not load your calendar.
-                Please refresh and try again.
-            </div>
-            `;
+            .style.display =
+            "none";
 
     }
 
@@ -1838,38 +1248,10 @@ async function refreshCalendar(
 
 
 /* =========================================================
-   UPDATE INDICATOR
+   STATE
 ========================================================= */
 
-function showUpdateIndicator() {
-
-    document
-        .getElementById(
-            "updateIndicator"
-        )
-        .style.display =
-        "block";
-
-}
-
-
-function hideUpdateIndicator() {
-
-    document
-        .getElementById(
-            "updateIndicator"
-        )
-        .style.display =
-        "none";
-
-}
-
-
-/* =========================================================
-   RENDER STATE
-========================================================= */
-
-function renderCalendarState() {
+function renderState() {
 
     if (
         !calendarData
@@ -1886,39 +1268,37 @@ function renderCalendarState() {
         );
 
 
-    const calendarContent =
+    const content =
         document.getElementById(
             "calendarContent"
         );
 
 
-    /*
-     * No registration yet.
-     */
-
     if (
         !calendarData.registered
     ) {
 
-        calendarContent.style.display =
+        content.style.display =
             "none";
 
 
         registrationArea.innerHTML =
 
             `
-            <div
-                class="registration-card"
-            >
+            <div class="registration-card">
 
                 <h2>
                     Register for your class
                 </h2>
 
-                <p>
-                    Enter your name and section so
-                    Writejot can give you access to
-                    your class's official schedule
+                <p
+                    style="
+                        color:#718096;
+                        margin-bottom:20px;
+                    "
+                >
+                    Enter your name and section to
+                    access your official class schedule
                     and tests.
                 </p>
 
@@ -1937,7 +1317,6 @@ function renderCalendarState() {
                             ""
                         )}"
                         placeholder="Your full name"
-                        maxlength="100"
                     >
 
                 </div>
@@ -1952,16 +1331,15 @@ function renderCalendarState() {
                     <input
                         id="registrationSection"
                         type="text"
-                        placeholder="Example: Lavoisier"
-                        maxlength="50"
+                        placeholder="Example: 10-A"
                     >
 
                 </div>
 
 
                 <button
-                    class="primary-button"
                     id="registerButton"
+                    class="primary-button"
                     onclick="submitRegistration()"
                 >
                     Register Class
@@ -1982,110 +1360,86 @@ function renderCalendarState() {
     }
 
 
-    /*
-     * Registered but pending.
-     */
+    registrationArea.innerHTML =
+        "";
+
+
+    content.style.display =
+        "block";
+
 
     if (
         !calendarData.approved
     ) {
 
-        calendarContent.style.display =
-            "block";
+        document
+            .getElementById(
+                "statusCard"
+            )
+            .className =
+            "status-card pending";
 
 
-        registrationArea.innerHTML =
+        document
+            .getElementById(
+                "statusTitle"
+            )
+            .textContent =
+            "⏳ Registration pending";
+
+
+        document
+            .getElementById(
+                "statusText"
+            )
+            .innerHTML =
 
             `
-            <div
-                class="
-                    status-card
-                    pending
-                "
-            >
-
-                <div
-                    class="status-title"
-                >
-                    ⏳ Registration pending
-                </div>
-
-
-                <div
-                    class="status-text"
-                >
-
-                    Your registration for
-                    <strong>
-                        ${escapeHtml(
-                            calendarData.registration.section
-                        )}
-                    </strong>
-                    is waiting for approval.
-
-                    <br><br>
-
-                    You can still add personal events,
-                    but the official class schedule and
-                    tests will appear after your
-                    registration is approved.
-
-                </div>
-
-            </div>
+            Your registration for
+            <strong>
+                ${escapeHtml(
+                    calendarData.registration.section
+                )}
+            </strong>
+            is waiting for approval.
             `;
-
-
-        renderCalendar();
-
-        return;
 
     }
 
+    else {
 
-    /*
-     * Approved.
-     */
-
-    registrationArea.innerHTML =
-        "";
-
-
-    calendarContent.style.display =
-        "block";
+        document
+            .getElementById(
+                "statusCard"
+            )
+            .className =
+            "status-card approved";
 
 
-    document
-        .getElementById(
-            "statusCard"
-        )
-        .className =
-        "status-card approved";
+        document
+            .getElementById(
+                "statusTitle"
+            )
+            .textContent =
+            "✅ Class schedule unlocked";
 
 
-    document
-        .getElementById(
-            "statusTitle"
-        )
-        .textContent =
-        "✅ Class schedule unlocked";
+        document
+            .getElementById(
+                "statusText"
+            )
+            .innerHTML =
 
+            `
+            You are registered in
+            <strong>
+                ${escapeHtml(
+                    calendarData.registration.section
+                )}
+            </strong>.
+            `;
 
-    document
-        .getElementById(
-            "statusText"
-        )
-        .innerHTML =
-
-        `
-        You are registered in
-        <strong>
-            ${escapeHtml(
-                calendarData.registration.section
-            )}
-        </strong>.
-        Your official classes and tests are now available.
-        `;
+    }
 
 
     renderCalendar();
@@ -2094,7 +1448,7 @@ function renderCalendarState() {
 
 
 /* =========================================================
-   RENDER CALENDAR
+   CALENDAR
 ========================================================= */
 
 function renderCalendar() {
@@ -2119,19 +1473,13 @@ function renderCalendar() {
         )
         .textContent =
         displayedMonth.toLocaleDateString(
-
             undefined,
-
             {
-
                 month:
                     "long",
-
                 year:
                     "numeric"
-
             }
-
         );
 
 
@@ -2144,8 +1492,7 @@ function renderCalendar() {
             year,
             month,
             1
-        )
-        .getDay();
+        ).getDay();
 
 
     const daysInMonth =
@@ -2153,20 +1500,10 @@ function renderCalendar() {
             year,
             month + 1,
             0
-        )
-        .getDate();
+        ).getDate();
 
 
-    const previousMonthDays =
-        new Date(
-            year,
-            month,
-            0
-        )
-        .getDate();
-
-
-    const totalCells =
+    const total =
         Math.ceil(
             (
                 firstDay +
@@ -2176,84 +1513,21 @@ function renderCalendar() {
 
 
     for (
-        let cell = 0;
-        cell < totalCells;
-        cell++
+        let i = 0;
+        i < total;
+        i++
     ) {
-
-        const dayElement =
-            document.createElement(
-                "div"
-            );
-
-
-        dayElement.className =
-            "day";
-
 
         let date;
 
 
-        if (
-            cell <
-            firstDay
-        ) {
-
-            const day =
-                previousMonthDays -
-                firstDay +
-                cell +
-                1;
-
-
-            date =
-                new Date(
-                    year,
-                    month - 1,
-                    day
-                );
-
-
-            dayElement.classList.add(
-                "other-month"
-            );
-
-        }
-
-        else if (
-            cell >=
+        const day =
+            i -
             firstDay +
-            daysInMonth
-        ) {
-
-            const day =
-                cell -
-                firstDay -
-                daysInMonth +
-                1;
+            1;
 
 
-            date =
-                new Date(
-                    year,
-                    month + 1,
-                    day
-                );
-
-
-            dayElement.classList.add(
-                "other-month"
-            );
-
-        }
-
-        else {
-
-            const day =
-                cell -
-                firstDay +
-                1;
-
+        if (day < 1) {
 
             date =
                 new Date(
@@ -2261,6 +1535,53 @@ function renderCalendar() {
                     month,
                     day
                 );
+
+        }
+
+        else if (
+            day >
+            daysInMonth
+        ) {
+
+            date =
+                new Date(
+                    year,
+                    month,
+                    day
+                );
+
+        }
+
+        else {
+
+            date =
+                new Date(
+                    year,
+                    month,
+                    day
+                );
+
+        }
+
+
+        const cell =
+            document.createElement(
+                "div"
+            );
+
+
+        cell.className =
+            "day";
+
+
+        if (
+            date.getMonth() !==
+            month
+        ) {
+
+            cell.classList.add(
+                "other-month"
+            );
 
         }
 
@@ -2278,7 +1599,7 @@ function renderCalendar() {
             )
         ) {
 
-            dayElement.classList.add(
+            cell.classList.add(
                 "today"
             );
 
@@ -2299,31 +1620,23 @@ function renderCalendar() {
             date.getDate();
 
 
-        dayElement.appendChild(
+        cell.appendChild(
             number
         );
 
-
-        /*
-         * Official classes/tests.
-         * These only appear when approved.
-         */
 
         if (
             calendarData.approved
         ) {
 
-            const dayEvents =
-                getClassesForDate(
-                    date
-                );
-
-
-            dayEvents.forEach(
+            getClassesForDate(
+                date
+            )
+            .forEach(
                 function(event) {
 
-                    dayElement.appendChild(
-                        createEventChip(
+                    cell.appendChild(
+                        makeChip(
                             event
                         )
                     );
@@ -2332,33 +1645,25 @@ function renderCalendar() {
             );
 
 
-            const tests =
-                getTestsForDate(
-                    dateString
-                );
-
-
-            tests.forEach(
+            getTestsForDate(
+                dateString
+            )
+            .forEach(
                 function(test) {
 
-                    dayElement.appendChild(
-                        createEventChip(
-                            {
+                    cell.appendChild(
+                        makeChip({
 
-                                type:
-                                    "test",
+                            type:
+                                "test",
 
-                                title:
-                                    test.title,
+                            title:
+                                test.title,
 
-                                time:
-                                    test.startTime,
+                            time:
+                                test.startTime
 
-                                subject:
-                                    test.subject
-
-                            }
-                        )
+                        })
                     );
 
                 }
@@ -2367,57 +1672,43 @@ function renderCalendar() {
         }
 
 
-        /*
-         * Personal events always appear.
-         */
-
-        const personalEvents =
-            (
-                calendarData.personalEvents ||
-                []
-            )
-            .filter(
-                function(event) {
-
-                    return (
-                        event.date ===
-                        dateString
-                    );
-
-                }
-            );
-
-
-        personalEvents.forEach(
+        (
+            calendarData.personalEvents ||
+            []
+        )
+        .filter(
             function(event) {
 
-                dayElement.appendChild(
-                    createEventChip(
-                        {
+                return (
+                    event.date ===
+                    dateString
+                );
 
-                            type:
-                                "personal",
+            }
+        )
+        .forEach(
+            function(event) {
 
-                            title:
-                                event.title,
+                cell.appendChild(
+                    makeChip({
 
-                            time:
-                                event.startTime
+                        type:
+                            "personal",
 
-                        }
-                    )
+                        title:
+                            event.title,
+
+                        time:
+                            event.startTime
+
+                    })
                 );
 
             }
         );
 
 
-        /*
-         * Click a date to set
-         * the event form date.
-         */
-
-        dayElement.addEventListener(
+        cell.addEventListener(
             "click",
             function() {
 
@@ -2440,7 +1731,7 @@ function renderCalendar() {
 
 
         grid.appendChild(
-            dayElement
+            cell
         );
 
     }
@@ -2451,15 +1742,11 @@ function renderCalendar() {
 }
 
 
-/* =========================================================
-   GET CLASSES FOR DATE
-========================================================= */
-
 function getClassesForDate(
     date
 ) {
 
-    const dayNames = [
+    const names = [
 
         "Sunday",
         "Monday",
@@ -2472,8 +1759,8 @@ function getClassesForDate(
     ];
 
 
-    const weekday =
-        dayNames[
+    const day =
+        names[
             date.getDay()
         ];
 
@@ -2486,12 +1773,14 @@ function getClassesForDate(
         function(event) {
 
             return (
-                normalizeDay(
-                    event.day
-                ) ===
-                normalizeDay(
-                    weekday
+                String(
+                    event.day ||
+                    ""
                 )
+                .trim()
+                .toLowerCase()
+                ===
+                day.toLowerCase()
             );
 
         }
@@ -2508,17 +1797,7 @@ function getClassesForDate(
                     event.subject,
 
                 time:
-                    event.startTime,
-
-                meta:
-                    [
-                        event.room,
-                        event.teacher
-                    ]
-                    .filter(Boolean)
-                    .join(
-                        " • "
-                    )
+                    event.startTime
 
             };
 
@@ -2527,10 +1806,6 @@ function getClassesForDate(
 
 }
 
-
-/* =========================================================
-   GET TESTS
-========================================================= */
 
 function getTestsForDate(
     date
@@ -2554,11 +1829,7 @@ function getTestsForDate(
 }
 
 
-/* =========================================================
-   EVENT CHIP
-========================================================= */
-
-function createEventChip(
+function makeChip(
     event
 ) {
 
@@ -2573,29 +1844,11 @@ function createEventChip(
         (
             event.type ===
                 "test"
-
                 ? "event-test"
-
                 : event.type ===
                     "personal"
-
                     ? "event-personal"
-
                     : "event-class"
-        );
-
-
-    chip.title =
-        [
-            event.time,
-            event.title,
-            event.meta ||
-                event.subject ||
-                ""
-        ]
-        .filter(Boolean)
-        .join(
-            " • "
         );
 
 
@@ -2619,13 +1872,13 @@ function createEventChip(
 
 function renderUpcoming() {
 
-    const container =
+    const box =
         document.getElementById(
             "upcomingEvents"
         );
 
 
-    const events =
+    const items =
         [];
 
 
@@ -2655,12 +1908,12 @@ function renderUpcoming() {
         )
         .slice(
             0,
-            8
+            5
         )
         .forEach(
             function(test) {
 
-                events.push({
+                items.push({
 
                     date:
                         test.date,
@@ -2669,35 +1922,15 @@ function renderUpcoming() {
                         test.title,
 
                     meta:
-                        [
-                            test.subject,
-                            test.startTime,
-                            test.room
-                        ]
-                        .filter(Boolean)
-                        .join(
-                            " • "
-                        ),
+                        test.subject,
 
-                    type:
-                        "test"
+                    color:
+                        "#dc2626"
 
                 });
 
             }
         );
-
-
-        getNextClasses()
-            .forEach(
-                function(event) {
-
-                    events.push(
-                        event
-                    );
-
-                }
-            );
 
     }
 
@@ -2716,10 +1949,14 @@ function renderUpcoming() {
 
         }
     )
+    .slice(
+        0,
+        5
+    )
     .forEach(
         function(event) {
 
-            events.push({
+            items.push({
 
                 date:
                     event.date,
@@ -2728,17 +1965,10 @@ function renderUpcoming() {
                     event.title,
 
                 meta:
-                    [
-                        event.startTime,
-                        event.endTime
-                    ]
-                    .filter(Boolean)
-                    .join(
-                        " - "
-                    ),
+                    event.startTime,
 
-                type:
-                    "personal"
+                color:
+                    "#16834a"
 
             });
 
@@ -2746,25 +1976,12 @@ function renderUpcoming() {
     );
 
 
-    events.sort(
+    items.sort(
         function(a, b) {
 
             return (
-                (
-                    a.date +
-                    " " +
-                    (
-                        a.meta ||
-                        ""
-                    )
-                )
-                .localeCompare(
-                    b.date +
-                    " " +
-                    (
-                        b.meta ||
-                        ""
-                    )
+                a.date.localeCompare(
+                    b.date
                 )
             );
 
@@ -2772,140 +1989,59 @@ function renderUpcoming() {
     );
 
 
-    const unique =
-        [];
+    if (!items.length) {
 
-
-    const seen =
-        new Set();
-
-
-    events.forEach(
-        function(event) {
-
-            const key =
-                [
-                    event.date,
-                    event.title,
-                    event.type
-                ]
-                .join(
-                    "|"
-                );
-
-
-            if (
-                seen.has(
-                    key
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            seen.add(
-                key
-            );
-
-
-            unique.push(
-                event
-            );
-
-        }
-    );
-
-
-    if (
-        !unique.length
-    ) {
-
-        container.innerHTML =
-
+        box.innerHTML =
             `
             <div
-                style="
-                    color:#8a94a6;
-                    font-size:13px;
-                "
+                style="color:#8a94a6;font-size:13px;"
             >
-                No upcoming events.
+                Nothing upcoming.
             </div>
             `;
-
 
         return;
 
     }
 
 
-    container.innerHTML =
-        unique
+    box.innerHTML =
+        items
             .slice(
                 0,
                 8
             )
             .map(
-                function(event) {
-
-                    const titleColor =
-                        event.type ===
-                            "test"
-
-                            ? "#dc2626"
-
-                            : event.type ===
-                                "personal"
-
-                                ? "#16834a"
-
-                                : "#2563eb";
-
+                function(item) {
 
                     return `
 
-                        <div
-                            class="upcoming-event"
-                        >
+                        <div class="upcoming-event">
 
-                            <div
-                                class="upcoming-date"
-                            >
+                            <div class="upcoming-date">
                                 ${escapeHtml(
-                                    formatPrettyDate(
-                                        event.date
+                                    prettyDate(
+                                        item.date
                                     )
                                 )}
                             </div>
 
-
                             <div
                                 class="upcoming-title"
                                 style="
-                                    color:${titleColor};
+                                    color:${item.color};
                                 "
                             >
                                 ${escapeHtml(
-                                    event.title
+                                    item.title
                                 )}
                             </div>
 
-
-                            ${
-                                event.meta
-                                    ? `
-                                        <div
-                                            class="upcoming-meta"
-                                        >
-                                            ${escapeHtml(
-                                                event.meta
-                                            )}
-                                        </div>
-                                      `
-                                    : ""
-                            }
+                            <div class="upcoming-meta">
+                                ${escapeHtml(
+                                    item.meta || ""
+                                )}
+                            </div>
 
                         </div>
 
@@ -2919,119 +2055,7 @@ function renderUpcoming() {
 
 
 /* =========================================================
-   NEXT CLASSES
-========================================================= */
-
-function getNextClasses() {
-
-    const result =
-        [];
-
-
-    const today =
-        new Date();
-
-
-    for (
-        let i = 0;
-        i < 7;
-        i++
-    ) {
-
-        const date =
-            new Date(
-                today
-            );
-
-
-        date.setDate(
-            today.getDate() +
-            i
-        );
-
-
-        const classes =
-            getClassesForDate(
-                date
-            );
-
-
-        classes.forEach(
-            function(event) {
-
-                result.push({
-
-                    date:
-                        localDateString(
-                            date
-                        ),
-
-                    title:
-                        event.title,
-
-                    meta:
-                        [
-                            event.time,
-                            event.meta
-                        ]
-                        .filter(Boolean)
-                        .join(
-                            " • "
-                        ),
-
-                    type:
-                        "class"
-
-                });
-
-            }
-        );
-
-    }
-
-
-    return result;
-
-}
-
-
-/* =========================================================
-   MONTH NAVIGATION
-========================================================= */
-
-function changeMonth(
-    amount
-) {
-
-    displayedMonth.setMonth(
-        displayedMonth.getMonth() +
-        amount
-    );
-
-
-    renderCalendar();
-
-}
-
-
-function goToToday() {
-
-    displayedMonth =
-        new Date();
-
-
-    displayedMonth.setDate(
-        1
-    );
-
-
-    renderCalendar();
-
-}
-
-
-/* =========================================================
-   CLASS REGISTRATION
+   REGISTRATION
 ========================================================= */
 
 async function submitRegistration() {
@@ -3072,7 +2096,7 @@ async function submitRegistration() {
     ) {
 
         message.textContent =
-            "Please enter your name and section.";
+            "Enter your name and section.";
 
         message.style.color =
             "#dc2626";
@@ -3084,10 +2108,6 @@ async function submitRegistration() {
 
     button.disabled =
         true;
-
-
-    button.textContent =
-        "Registering...";
 
 
     try {
@@ -3136,6 +2156,17 @@ async function submitRegistration() {
 
 
         if (
+            result.accessDenied
+        ) {
+
+            showLocked();
+
+            return;
+
+        }
+
+
+        if (
             !result.success
         ) {
 
@@ -3147,15 +2178,7 @@ async function submitRegistration() {
         }
 
 
-        /*
-         * Don't wait for another
-         * page reload. Just refresh
-         * the calendar data.
-         */
-
-        await refreshCalendar(
-            false
-        );
+        await refreshCalendar();
 
     }
 
@@ -3174,16 +2197,13 @@ async function submitRegistration() {
         button.disabled =
             false;
 
-        button.textContent =
-            "Register Class";
-
     }
 
 }
 
 
 /* =========================================================
-   ADD PERSONAL EVENT
+   PERSONAL EVENT
 ========================================================= */
 
 async function addEvent() {
@@ -3205,7 +2225,7 @@ async function addEvent() {
             .value;
 
 
-    const startTime =
+    const start =
         document
             .getElementById(
                 "eventStart"
@@ -3213,7 +2233,7 @@ async function addEvent() {
             .value;
 
 
-    const endTime =
+    const end =
         document
             .getElementById(
                 "eventEnd"
@@ -3236,19 +2256,13 @@ async function addEvent() {
         );
 
 
-    const button =
-        document.getElementById(
-            "addEventButton"
-        );
-
-
     if (
         !title ||
         !date
     ) {
 
         message.textContent =
-            "Please enter a title and date.";
+            "Enter a title and date.";
 
         message.style.color =
             "#dc2626";
@@ -3256,14 +2270,6 @@ async function addEvent() {
         return;
 
     }
-
-
-    button.disabled =
-        true;
-
-
-    button.textContent =
-        "Adding...";
 
 
     try {
@@ -3301,10 +2307,10 @@ async function addEvent() {
                                 date,
 
                             startTime:
-                                startTime,
+                                start,
 
                             endTime:
-                                endTime,
+                                end,
 
                             description:
                                 description
@@ -3321,12 +2327,22 @@ async function addEvent() {
 
 
         if (
+            result.accessDenied
+        ) {
+
+            showLocked();
+
+            return;
+
+        }
+
+
+        if (
             !result.success
         ) {
 
             throw new Error(
-                result.error ||
-                "Could not add event."
+                result.error
             );
 
         }
@@ -3364,16 +2380,7 @@ async function addEvent() {
             "";
 
 
-        message.textContent =
-            "Event added.";
-
-        message.style.color =
-            "#16834a";
-
-
-        await refreshCalendar(
-            false
-        );
+        await refreshCalendar();
 
     }
 
@@ -3387,106 +2394,87 @@ async function addEvent() {
 
     }
 
-    finally {
+}
 
-        button.disabled =
-            false;
 
-        button.textContent =
-            "+ Add Event";
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-    }
+function changeMonth(
+    amount
+) {
+
+    displayedMonth.setMonth(
+        displayedMonth.getMonth() +
+        amount
+    );
+
+
+    renderCalendar();
+
+}
+
+
+function goToToday() {
+
+    displayedMonth =
+        new Date();
+
+
+    displayedMonth.setDate(
+        1
+    );
+
+
+    renderCalendar();
 
 }
 
 
 /* =========================================================
-   DATE HELPERS
+   HELPERS
 ========================================================= */
 
 function localDateString(
     date
 ) {
 
-    const year =
-        date.getFullYear();
+    return [
+        date.getFullYear(),
 
-
-    const month =
         String(
             date.getMonth() + 1
-        )
-        .padStart(
+        ).padStart(
             2,
             "0"
-        );
+        ),
 
-
-    const day =
         String(
             date.getDate()
-        )
-        .padStart(
+        ).padStart(
             2,
             "0"
-        );
+        )
 
-
-    return (
-        year +
-        "-" +
-        month +
-        "-" +
-        day
-    );
+    ].join("-");
 
 }
 
 
-function formatPrettyDate(
-    dateString
+function prettyDate(
+    value
 ) {
-
-    const parts =
-        dateString.split(
-            "-"
-        );
-
-
-    if (
-        parts.length !==
-        3
-    ) {
-
-        return dateString;
-
-    }
-
 
     const date =
         new Date(
-
-            Number(
-                parts[0]
-            ),
-
-            Number(
-                parts[1]
-            ) - 1,
-
-            Number(
-                parts[2]
-            )
-
+            value + "T00:00:00"
         );
 
 
     return date.toLocaleDateString(
-
         undefined,
-
         {
-
             weekday:
                 "short",
 
@@ -3495,24 +2483,8 @@ function formatPrettyDate(
 
             day:
                 "numeric"
-
         }
-
     );
-
-}
-
-
-function normalizeDay(
-    value
-) {
-
-    return String(
-        value ||
-        ""
-    )
-    .trim()
-    .toLowerCase();
 
 }
 
@@ -3549,7 +2521,6 @@ function escapeHtml(
 }
 
 </script>
-
 
 </body>
 
