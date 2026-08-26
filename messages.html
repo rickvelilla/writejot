@@ -3,452 +3,327 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Writejot | Messages</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<style>
 
-    <title>Writejot | Messages</title>
+* {
+    box-sizing: border-box;
+}
 
-    <style>
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
 
-        * {
-            box-sizing: border-box;
-        }
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-        html,
-        body {
-            margin: 0;
-            min-height: 100%;
-        }
+    background: #f6f8fc;
+    color: #1f2937;
+}
 
-        body {
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
 
-            background:
-                #f6f8fc;
+    padding: 13px 6%;
 
-            color:
-                #1f2937;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        header {
-            background: white;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
 
-            border-bottom:
-                1px solid #e5e7eb;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-            padding:
-                13px 6%;
+.brand img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
 
-            display: flex;
+.brand-name {
+    font-size: 22px;
+    font-weight: 700;
+}
 
-            align-items: center;
+.back {
+    color: #4285F4;
+    text-decoration: none;
+    font-weight: 600;
+}
 
-            justify-content: space-between;
+main {
+    max-width: 850px;
+    margin: 30px auto 60px;
+    padding: 0 16px;
+}
 
-            position: sticky;
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-            top: 0;
+    margin-bottom: 18px;
+}
 
-            z-index: 20;
-        }
+.title-row h1 {
+    margin: 0;
+}
 
-        .brand {
-            display: flex;
+.unread-total {
+    display: none;
 
-            align-items: center;
+    min-width: 24px;
+    height: 24px;
 
-            gap: 10px;
-        }
+    padding: 0 7px;
 
-        .brand img {
-            width: 40px;
-            height: 40px;
+    border-radius: 999px;
 
-            object-fit: contain;
-        }
+    background: #ef4444;
+    color: white;
 
-        .brand-name {
-            font-size: 22px;
-            font-weight: 700;
-        }
+    font-size: 12px;
+    font-weight: 700;
 
-        .back {
-            color: #4285F4;
+    align-items: center;
+    justify-content: center;
+}
 
-            text-decoration: none;
+.list {
+    background: white;
 
-            font-weight: 600;
-        }
+    border: 1px solid #e1e6ee;
+    border-radius: 15px;
 
-        main {
-            max-width: 850px;
+    overflow: hidden;
+}
 
-            margin:
-                30px auto 60px;
+.conversation {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-            padding:
-                0 16px;
-        }
+    padding: 14px 16px;
 
-        .title-row {
-            display: flex;
+    text-decoration: none;
+    color: inherit;
 
-            align-items: center;
+    border-bottom: 1px solid #edf0f4;
 
-            justify-content: space-between;
+    cursor: pointer;
 
-            gap: 15px;
+    transition: background .15s;
+}
 
-            margin-bottom:
-                18px;
-        }
+.conversation:last-child {
+    border-bottom: none;
+}
 
-        .title-row h1 {
-            margin: 0;
-        }
+.conversation:hover {
+    background: #f8faff;
+}
 
-        .unread-total {
-            display: none;
+.conversation.unread {
+    background: #f5f9ff;
+}
 
-            min-width: 24px;
-            height: 24px;
+.avatar {
+    width: 48px;
+    height: 48px;
 
-            padding: 0 7px;
+    border-radius: 50%;
 
-            border-radius: 999px;
+    object-fit: cover;
 
-            background: #ef4444;
+    flex: 0 0 48px;
 
-            color: white;
+    background: #e8edf4;
+}
 
-            font-size: 12px;
+.conversation-main {
+    flex: 1;
+    min-width: 0;
+}
 
-            font-weight: 700;
+.top-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
-            align-items: center;
+    margin-bottom: 2px;
+}
 
-            justify-content: center;
-        }
+.name {
+    font-weight: 700;
 
-        .list {
-            background: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
-            border:
-                1px solid #e1e6ee;
+.username {
+    color: #4285F4;
+    font-size: 12px;
+}
 
-            border-radius: 15px;
+.preview {
+    color: #7b8494;
 
-            overflow: hidden;
-        }
+    font-size: 13px;
 
-        .conversation {
-            display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-            align-items: center;
+.conversation.unread .preview {
+    color: #344054;
+    font-weight: 600;
+}
 
-            gap: 12px;
+.conversation-side {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
 
-            padding:
-                14px 16px;
+    gap: 5px;
 
-            text-decoration: none;
+    flex-shrink: 0;
+}
 
-            color: inherit;
+.time {
+    color: #98a2b3;
+    font-size: 10px;
+}
 
-            border-bottom:
-                1px solid #edf0f4;
+.unread {
+    min-width: 21px;
+    height: 21px;
 
-            cursor: pointer;
+    padding: 0 6px;
 
-            transition:
-                background .15s;
-        }
+    border-radius: 999px;
 
-        .conversation:last-child {
-            border-bottom: none;
-        }
+    background: #4285F4;
+    color: white;
 
-        .conversation:hover {
-            background:
-                #f8faff;
-        }
+    display: flex;
 
-        .conversation.unread {
-            background:
-                #f5f9ff;
-        }
+    align-items: center;
+    justify-content: center;
 
-        .avatar {
-            width: 48px;
-            height: 48px;
+    font-size: 11px;
+    font-weight: 700;
+}
 
-            border-radius: 50%;
+.empty {
+    padding: 60px 25px;
 
-            object-fit: cover;
+    text-align: center;
 
-            flex: 0 0 48px;
+    color: #8a94a6;
+}
 
-            background:
-                #e8edf4;
-        }
+.lock-screen {
+    min-height: 75vh;
 
-        .conversation-main {
-            flex: 1;
+    display: flex;
 
-            min-width: 0;
-        }
+    align-items: center;
+    justify-content: center;
 
-        .top-line {
-            display: flex;
+    padding: 30px;
+}
 
-            align-items: center;
+.lock-card {
+    max-width: 500px;
+    width: 100%;
 
-            gap: 8px;
+    background: white;
 
-            margin-bottom: 2px;
-        }
+    border: 1px solid #e1e6ee;
 
-        .name {
-            font-weight: 700;
+    border-radius: 16px;
 
-            overflow: hidden;
+    padding: 35px;
 
-            white-space: nowrap;
+    text-align: center;
+}
 
-            text-overflow: ellipsis;
-        }
+.lock-card p {
+    color: #718096;
+    line-height: 1.6;
+}
 
-        .username {
-            color: #4285F4;
+.button {
+    display: inline-block;
 
-            font-size: 12px;
-        }
+    padding: 11px 17px;
 
-        .preview {
-            color: #7b8494;
+    background: #4285F4;
 
-            font-size: 13px;
+    color: white;
 
-            white-space: nowrap;
+    text-decoration: none;
 
-            overflow: hidden;
+    border-radius: 9px;
 
-            text-overflow: ellipsis;
-        }
+    font-weight: 600;
+}
 
-        .conversation.unread .preview {
-            color: #344054;
+@media (max-width: 600px) {
 
-            font-weight: 600;
-        }
+    header {
+        padding: 10px 14px;
+    }
 
-        .conversation-side {
-            display: flex;
+    .brand-name {
+        font-size: 20px;
+    }
 
-            align-items: flex-end;
+    main {
+        margin-top: 18px;
+    }
 
-            flex-direction: column;
+    .conversation {
+        padding: 12px;
+    }
 
-            gap: 5px;
+    .avatar {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+    }
 
-            flex-shrink: 0;
-        }
+}
 
-        .time {
-            color: #98a2b3;
-
-            font-size: 10px;
-        }
-
-        .unread {
-            min-width: 21px;
-
-            height: 21px;
-
-            padding:
-                0 6px;
-
-            border-radius:
-                999px;
-
-            background:
-                #4285F4;
-
-            color:
-                white;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-size: 11px;
-
-            font-weight: 700;
-        }
-
-        .empty {
-            padding:
-                60px 25px;
-
-            text-align: center;
-
-            color:
-                #8a94a6;
-        }
-
-        .loading-small {
-            color:
-                #8a94a6;
-
-            font-size:
-                13px;
-        }
-
-        .lock-screen {
-            min-height: 65vh;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 30px;
-        }
-
-        .lock-card {
-            max-width: 500px;
-
-            width: 100%;
-
-            background: white;
-
-            border:
-                1px solid #e1e6ee;
-
-            border-radius: 16px;
-
-            padding: 35px;
-
-            text-align: center;
-        }
-
-        .lock-icon {
-            font-size: 45px;
-        }
-
-        .lock-card p {
-            color:
-                #718096;
-
-            line-height:
-                1.6;
-        }
-
-        .button {
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding:
-                11px 17px;
-
-            background:
-                #4285F4;
-
-            color:
-                white;
-
-            text-decoration:
-                none;
-
-            border-radius:
-                9px;
-
-            font-weight:
-                600;
-
-            margin-top:
-                8px;
-        }
-
-        @media (
-            max-width: 600px
-        ) {
-
-            header {
-                padding:
-                    10px 14px;
-            }
-
-            .brand-name {
-                font-size:
-                    20px;
-            }
-
-            main {
-                margin-top:
-                    18px;
-            }
-
-            .conversation {
-                padding:
-                    12px;
-            }
-
-            .avatar {
-                width:
-                    44px;
-
-                height:
-                    44px;
-
-                flex-basis:
-                    44px;
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
 
+
 <body>
-
-<header>
-
-    <div class="brand">
-
-        <img
-            src="W.png"
-            alt="Writejot"
-        >
-
-        <div class="brand-name">
-            Writejot
-        </div>
-
-    </div>
-
-    <a
-        class="back"
-        href="index.html"
-    >
-        ← Dashboard
-    </a>
-
-</header>
 
 
 <div
@@ -459,7 +334,7 @@
 
     <div class="lock-card">
 
-        <div class="lock-icon">
+        <div style="font-size:45px;">
             🔒
         </div>
 
@@ -485,9 +360,36 @@
 </div>
 
 
-<main
-    id="mainContent"
->
+
+<div id="mainContent">
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="W.png"
+            alt="Writejot"
+        >
+
+        <div class="brand-name">
+            Writejot
+        </div>
+
+    </div>
+
+
+    <a
+        class="back"
+        href="index.html"
+    >
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<main>
 
     <div class="title-row">
 
@@ -495,20 +397,11 @@
             Messages
         </h1>
 
+
         <div
             id="unreadTotal"
             class="unread-total"
         ></div>
-
-    </div>
-
-
-    <div
-        id="statusText"
-        class="loading-small"
-        style="margin-bottom:10px;"
-    >
-        Loading...
 
     </div>
 
@@ -526,11 +419,18 @@
 
 </main>
 
+</div>
+
+
 
 <script>
 
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
+
+
+const ACCESS_CACHE_TIME =
+    5 * 60 * 1000;
 
 
 let currentUser =
@@ -552,7 +452,7 @@ let lastFingerprint =
 
 window.addEventListener(
     "load",
-    async function () {
+    async function() {
 
         const saved =
             localStorage.getItem(
@@ -562,7 +462,7 @@ window.addEventListener(
 
         if (!saved) {
 
-            window.location.href =
+            location.href =
                 "index.html";
 
             return;
@@ -577,13 +477,11 @@ window.addEventListener(
                     saved
                 );
 
-        } catch {
+        }
 
-            localStorage.removeItem(
-                "writejotUser"
-            );
+        catch {
 
-            window.location.href =
+            location.href =
                 "index.html";
 
             return;
@@ -591,41 +489,151 @@ window.addEventListener(
         }
 
 
-        const access =
-            await verifyAccess();
-
-
-        if (!access) {
-            return;
-        }
-
-
         /*
-         * Cached data can now be shown
-         * because the server confirmed access.
+         * Show the cached conversations FIRST.
          */
 
         loadConversationCache();
 
 
-        await refreshConversations();
+        /*
+         * If we have a recent verified access state,
+         * don't make the user wait.
+         */
+
+        const cachedAccess =
+            getCachedAccess();
 
 
-        refreshTimer =
-            setInterval(
-                refreshConversations,
-                5000
-            );
+        if (
+            cachedAccess &&
+            cachedAccess.access === true
+        ) {
+
+            startBackgroundRefresh();
+
+        }
+
+        else {
+
+            /*
+             * No fresh access cache:
+             * verify, but do it while the page
+             * already has whatever cached data exists.
+             */
+
+            verifyAccessInBackground();
+
+        }
 
     }
 );
 
 
 /* =========================================================
-   ACCESS
+   ACCESS CACHE
 ========================================================= */
 
-async function verifyAccess() {
+function accessCacheKey() {
+
+    return (
+        "writejot_access_" +
+        String(
+            currentUser.email
+        )
+        .trim()
+        .toLowerCase()
+    );
+
+}
+
+
+function getCachedAccess() {
+
+    try {
+
+        const raw =
+            localStorage.getItem(
+                accessCacheKey()
+            );
+
+
+        if (!raw) {
+            return null;
+        }
+
+
+        const data =
+            JSON.parse(
+                raw
+            );
+
+
+        if (
+            Date.now() -
+            Number(
+                data.checkedAt || 0
+            )
+            >
+            ACCESS_CACHE_TIME
+        ) {
+
+            return null;
+
+        }
+
+
+        return data;
+
+    }
+
+    catch {
+
+        return null;
+
+    }
+
+}
+
+
+function saveAccessCache(
+    result
+) {
+
+    try {
+
+        localStorage.setItem(
+
+            accessCacheKey(),
+
+            JSON.stringify({
+
+                access:
+                    result.access === true,
+
+                status:
+                    result.status ||
+                    "",
+
+                checkedAt:
+                    Date.now()
+
+            })
+
+        );
+
+    }
+
+    catch {}
+
+}
+
+
+/* =========================================================
+   BACKGROUND ACCESS
+========================================================= */
+
+async function verifyAccessInBackground() {
 
     try {
 
@@ -655,131 +663,43 @@ async function verifyAccess() {
             !result.access
         ) {
 
+            saveAccessCache(
+                result
+            );
+
+
             showLocked();
 
-            return false;
+            return;
 
         }
 
 
-        currentUser.status =
-            result.status;
-
-
-        localStorage.setItem(
-            "writejotUser",
-            JSON.stringify(
-                currentUser
-            )
+        saveAccessCache(
+            result
         );
 
 
-        return true;
+        startBackgroundRefresh();
 
     }
 
     catch (error) {
 
         /*
-         * Don't use stale cache to grant
-         * access if the server cannot verify.
+         * If we don't have a valid fresh
+         * access state, don't grant access.
          */
 
-        showServerError();
-
-        return false;
-
-    }
-
-}
-
-
-/* =========================================================
-   CACHE
-========================================================= */
-
-function cacheKey() {
-
-    return (
-        "writejot_conversations_" +
-        String(
-            currentUser.email
-        )
-        .trim()
-        .toLowerCase()
-    );
-
-}
-
-
-function loadConversationCache() {
-
-    try {
-
-        const raw =
-            localStorage.getItem(
-                cacheKey()
-            );
-
-
-        if (!raw) {
-            return;
-        }
-
-
-        const parsed =
-            JSON.parse(
-                raw
-            );
-
-
         if (
-            !Array.isArray(
-                parsed
-            )
+            !getCachedAccess()
         ) {
 
-            return;
+            showLocked();
 
         }
 
-
-        conversations =
-            parsed;
-
-
-        renderConversations();
-
     }
-
-    catch (error) {
-
-        console.log(
-            "Conversation cache unavailable"
-        );
-
-    }
-
-}
-
-
-function saveConversationCache() {
-
-    try {
-
-        localStorage.setItem(
-
-            cacheKey(),
-
-            JSON.stringify(
-                conversations
-            )
-
-        );
-
-    }
-
-    catch (error) {}
 
 }
 
@@ -787,6 +707,31 @@ function saveConversationCache() {
 /* =========================================================
    REFRESH
 ========================================================= */
+
+function startBackgroundRefresh() {
+
+    refreshConversations();
+
+
+    if (
+        refreshTimer
+    ) {
+
+        clearInterval(
+            refreshTimer
+        );
+
+    }
+
+
+    refreshTimer =
+        setInterval(
+            refreshConversations,
+            5000
+        );
+
+}
+
 
 async function refreshConversations() {
 
@@ -817,6 +762,15 @@ async function refreshConversations() {
             result.accessDenied
         ) {
 
+            saveAccessCache(
+                {
+                    access: false,
+                    status:
+                        result.status
+                }
+            );
+
+
             showLocked();
 
             return;
@@ -844,36 +798,28 @@ async function refreshConversations() {
             );
 
 
-        /*
-         * Don't rebuild the DOM unless
-         * the conversation data changed.
-         */
-
         if (
-            nextFingerprint !==
+            nextFingerprint ===
             lastFingerprint
         ) {
 
-            conversations =
-                next;
-
-            lastFingerprint =
-                nextFingerprint;
-
-
-            saveConversationCache();
-
-            renderConversations();
+            return;
 
         }
 
 
-        document
-            .getElementById(
-                "statusText"
-            )
-            .textContent =
-            "";
+        conversations =
+            next;
+
+
+        lastFingerprint =
+            nextFingerprint;
+
+
+        saveConversationCache();
+
+
+        renderConversations();
 
     }
 
@@ -884,6 +830,98 @@ async function refreshConversations() {
         );
 
     }
+
+}
+
+
+/* =========================================================
+   CONVERSATION CACHE
+========================================================= */
+
+function conversationCacheKey() {
+
+    return (
+        "writejot_conversations_" +
+        String(
+            currentUser.email
+        )
+        .trim()
+        .toLowerCase()
+    );
+
+}
+
+
+function loadConversationCache() {
+
+    try {
+
+        const raw =
+            localStorage.getItem(
+                conversationCacheKey()
+            );
+
+
+        if (!raw) {
+
+            return;
+
+        }
+
+
+        const parsed =
+            JSON.parse(
+                raw
+            );
+
+
+        if (
+            !Array.isArray(
+                parsed
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        conversations =
+            parsed;
+
+
+        lastFingerprint =
+            JSON.stringify(
+                parsed
+            );
+
+
+        renderConversations();
+
+    }
+
+    catch {}
+
+}
+
+
+function saveConversationCache() {
+
+    try {
+
+        localStorage.setItem(
+
+            conversationCacheKey(),
+
+            JSON.stringify(
+                conversations
+            )
+
+        );
+
+    }
+
+    catch {}
 
 }
 
@@ -900,7 +938,7 @@ function renderConversations() {
         );
 
 
-    const unreadTotalElement =
+    const unreadTotal =
         document.getElementById(
             "unreadTotal"
         );
@@ -927,7 +965,7 @@ function renderConversations() {
             `;
 
 
-        unreadTotalElement.style.display =
+        unreadTotal.style.display =
             "none";
 
 
@@ -936,14 +974,14 @@ function renderConversations() {
     }
 
 
-    let totalUnread =
+    let total =
         0;
 
 
     conversations.forEach(
         function(conversation) {
 
-            totalUnread +=
+            total +=
                 Number(
                     conversation.unreadCount ||
                     0
@@ -954,22 +992,23 @@ function renderConversations() {
 
 
     if (
-        totalUnread >
-        0
+        total > 0
     ) {
 
-        unreadTotalElement.textContent =
-            totalUnread;
+        unreadTotal.textContent =
+            total > 99
+                ? "99+"
+                : total;
 
 
-        unreadTotalElement.style.display =
+        unreadTotal.style.display =
             "flex";
 
     }
 
     else {
 
-        unreadTotalElement.style.display =
+        unreadTotal.style.display =
             "none";
 
     }
@@ -989,91 +1028,106 @@ function renderConversations() {
 
                     return `
 
-                        <a
-                            class="
-                                conversation
-                                ${
-                                    unread > 0
-                                        ? "unread"
-                                        : ""
-                                }
-                            "
-                            href="chat.html?username=${encodeURIComponent(
-                                conversation.username
+                    <a
+                        class="
+                            conversation
+                            ${
+                                unread > 0
+                                    ? "unread"
+                                    : ""
+                            }
+                        "
+                        href="chat.html?username=${encodeURIComponent(
+                            conversation.username
+                        )}"
+                    >
+
+                        <img
+                            class="avatar"
+                            src="${escapeHtml(
+                                conversation.profilePicture ||
+                                "W.png"
                             )}"
+                            onerror="
+                                this.src='W.png'
+                            "
+                            alt=""
                         >
 
-                            <img
-                                class="avatar"
-                                src="${escapeHtml(
-                                    conversation.profilePicture ||
-                                    "W.png"
-                                )}"
-                                onerror="this.src='W.png'"
-                                alt=""
+
+                        <div
+                            class="conversation-main"
+                        >
+
+                            <div
+                                class="top-line"
                             >
 
-
-                            <div class="conversation-main">
-
-                                <div class="top-line">
-
-                                    <div class="name">
-                                        ${escapeHtml(
-                                            conversation.name ||
-                                            "Writejot User"
-                                        )}
-                                    </div>
-
-                                    <div class="username">
-                                        @${escapeHtml(
-                                            conversation.username
-                                        )}
-                                    </div>
-
+                                <div
+                                    class="name"
+                                >
+                                    ${escapeHtml(
+                                        conversation.name ||
+                                        "Writejot User"
+                                    )}
                                 </div>
 
 
-                                <div class="preview">
-
-                                    ${escapeHtml(
-                                        conversation.lastMessage ||
-                                        "No messages"
+                                <div
+                                    class="username"
+                                >
+                                    @${escapeHtml(
+                                        conversation.username
                                     )}
-
                                 </div>
 
                             </div>
 
 
-                            <div class="conversation-side">
+                            <div
+                                class="preview"
+                            >
+                                ${escapeHtml(
+                                    conversation.lastMessage ||
+                                    "No messages"
+                                )}
+                            </div>
 
-                                <div class="time">
-                                    ${escapeHtml(
-                                        formatTime(
-                                            conversation.timestamp
-                                        )
-                                    )}
-                                </div>
+                        </div>
 
 
-                                ${
-                                    unread > 0
-                                        ? `
-                                            <div class="unread">
-                                                ${
-                                                    unread > 99
-                                                        ? "99+"
-                                                        : unread
-                                                }
-                                            </div>
-                                          `
-                                        : ""
-                                }
+                        <div
+                            class="conversation-side"
+                        >
+
+                            <div class="time">
+
+                                ${escapeHtml(
+                                    formatTime(
+                                        conversation.timestamp
+                                    )
+                                )}
 
                             </div>
 
-                        </a>
+
+                            ${
+                                unread > 0
+                                    ? `
+                                        <div class="unread">
+                                            ${
+                                                unread > 99
+                                                    ? "99+"
+                                                    : unread
+                                            }
+                                        </div>
+                                      `
+                                    : ""
+                            }
+
+                        </div>
+
+                    </a>
 
                     `;
 
@@ -1119,18 +1173,6 @@ function showLocked() {
 }
 
 
-function showServerError() {
-
-    document
-        .getElementById(
-            "statusText"
-        )
-        .textContent =
-        "Unable to verify your account right now.";
-
-}
-
-
 /* =========================================================
    HELPERS
 ========================================================= */
@@ -1157,7 +1199,6 @@ function formatTime(
     ) {
 
         return "";
-
     }
 
 
@@ -1166,10 +1207,13 @@ function formatTime(
         {
             month:
                 "short",
+
             day:
                 "numeric",
+
             hour:
                 "numeric",
+
             minute:
                 "2-digit"
         }
