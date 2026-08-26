@@ -3,656 +3,661 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>Writejot | Calendar</title>
+<title>Writejot | Calendar</title>
 
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
+body {
+    margin: 0;
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-            background:
-                #f6f8fc;
+    background:
+        #f6f8fc;
 
-            color:
-                #1f2937;
-        }
+    color:
+        #1f2937;
+}
 
-        header {
-            background: white;
+header {
+    background:
+        white;
 
-            border-bottom:
-                1px solid #e5e7eb;
+    border-bottom:
+        1px solid #e5e7eb;
 
-            padding:
-                12px 6%;
+    padding:
+        12px 6%;
 
-            display: flex;
+    display:
+        flex;
 
-            align-items: center;
+    align-items:
+        center;
 
-            justify-content: space-between;
+    justify-content:
+        space-between;
 
-            position: sticky;
+    position:
+        sticky;
 
-            top: 0;
+    top:
+        0;
 
-            z-index: 100;
-        }
+    z-index:
+        100;
+}
 
-        .brand {
-            display: flex;
+.brand {
+    display:
+        flex;
 
-            align-items: center;
+    align-items:
+        center;
 
-            gap: 10px;
-        }
+    gap:
+        10px;
+}
 
-        .brand img {
-            width:
-                40px;
+.brand img {
+    width:
+        40px;
 
-            height:
-                40px;
+    height:
+        40px;
 
-            object-fit:
-                contain;
-        }
+    object-fit:
+        contain;
+}
 
-        .brand-name {
-            font-size:
-                22px;
+.brand-name {
+    font-size:
+        22px;
 
-            font-weight:
-                700;
-        }
+    font-weight:
+        700;
+}
 
-        .back {
-            color:
-                #4285F4;
+.back {
+    color:
+        #4285F4;
 
-            text-decoration:
-                none;
+    text-decoration:
+        none;
 
-            font-weight:
-                600;
-        }
+    font-weight:
+        600;
+}
 
-        main {
-            max-width:
-                1150px;
+main {
+    max-width:
+        1150px;
 
-            margin:
-                25px auto 60px;
+    margin:
+        25px auto 60px;
+
+    padding:
+        0 18px;
+}
 
-            padding:
-                0 18px;
-        }
+.page-header h1 {
+    margin:
+        0 0 5px;
+}
 
-        .page-header h1 {
-            margin:
-                0 0 5px;
-        }
+.page-header p {
+    color:
+        #718096;
+}
 
-        .page-header p {
-            color:
-                #718096;
-        }
+#updateIndicator {
+    display:
+        none;
 
-        #updateIndicator {
-            display:
-                none;
+    color:
+        #8a94a6;
 
-            color:
-                #8a94a6;
+    font-size:
+        12px;
 
-            font-size:
-                12px;
+    margin-bottom:
+        10px;
+}
 
-            margin-bottom:
-                10px;
-        }
+.registration-card,
+.status-card,
+.calendar-card,
+.side-card {
+    background:
+        white;
 
-        .registration-card,
-        .status-card,
-        .calendar-card,
-        .side-card {
-            background:
-                white;
+    border:
+        1px solid #e1e6ee;
 
-            border:
-                1px solid #e1e6ee;
+    border-radius:
+        15px;
+}
 
-            border-radius:
-                15px;
-        }
+.registration-card {
+    max-width:
+        600px;
 
-        .registration-card {
-            max-width:
-                600px;
+    margin:
+        30px auto;
 
-            margin:
-                30px auto;
+    padding:
+        30px;
+}
 
-            padding:
-                30px;
-        }
+.field {
+    margin-bottom:
+        15px;
+}
 
-        .field {
-            margin-bottom:
-                15px;
-        }
+.field label {
+    display:
+        block;
 
-        .field label {
-            display:
-                block;
+    font-weight:
+        600;
 
-            font-weight:
-                600;
+    margin-bottom:
+        6px;
+}
 
-            margin-bottom:
-                6px;
-        }
+.field input,
+.event-input,
+.event-textarea {
+    width:
+        100%;
 
-        .field input,
-        .event-input,
-        .event-textarea {
-            width:
-                100%;
+    padding:
+        11px;
 
-            padding:
-                11px;
+    border:
+        1px solid #d8dee8;
 
-            border:
-                1px solid #d8dee8;
-
-            border-radius:
-                8px;
+    border-radius:
+        8px;
 
-            font-family:
-                inherit;
+    font-family:
+        inherit;
 
-            outline:
-                none;
-        }
+    outline:
+        none;
+}
 
-        .event-textarea {
-            resize:
-                vertical;
-        }
+.event-textarea {
+    resize:
+        vertical;
+}
 
-        .primary-button {
-            border:
-                none;
+.primary-button {
+    border:
+        none;
 
-            background:
-                #4285F4;
+    background:
+        #4285F4;
 
-            color:
-                white;
+    color:
+        white;
 
-            padding:
-                11px 17px;
+    padding:
+        11px 17px;
 
-            border-radius:
-                9px;
+    border-radius:
+        9px;
 
-            cursor:
-                pointer;
+    cursor:
+        pointer;
 
-            font-weight:
-                600;
-        }
+    font-weight:
+        600;
+}
 
-        .primary-button:disabled {
-            opacity:
-                .6;
-        }
+.primary-button:disabled {
+    opacity:
+        .6;
+}
 
-        .form-message {
-            margin-top:
-                10px;
+.form-message {
+    margin-top:
+        10px;
 
-            font-size:
-                13px;
-        }
+    font-size:
+        13px;
+}
 
-        .status-card {
-            padding:
-                20px;
+.status-card {
+    padding:
+        20px;
 
-            margin-bottom:
-                20px;
-        }
+    margin-bottom:
+        20px;
+}
 
-        .status-card.pending {
-            background:
-                #fffaf0;
+.status-card.pending {
+    background:
+        #fffaf0;
 
-            border-color:
-                #f2d38a;
-        }
+    border-color:
+        #f2d38a;
+}
 
-        .status-card.approved {
-            background:
-                #f1fbf5;
+.status-card.approved {
+    background:
+        #f1fbf5;
 
-            border-color:
-                #b7dfc5;
-        }
+    border-color:
+        #b7dfc5;
+}
 
-        #calendarContent {
-            display:
-                none;
-        }
+#calendarContent {
+    display:
+        none;
+}
 
-        .calendar-layout {
-            display:
-                grid;
+.calendar-layout {
+    display:
+        grid;
 
-            grid-template-columns:
-                minmax(
-                    0,
-                    1fr
-                )
-                320px;
+    grid-template-columns:
+        minmax(0, 1fr)
+        320px;
 
-            gap:
-                18px;
-        }
+    gap:
+        18px;
+}
 
-        .calendar-card {
-            overflow:
-                hidden;
-        }
+.calendar-card {
+    overflow:
+        hidden;
+}
 
-        .calendar-toolbar {
-            display:
-                flex;
+.calendar-toolbar {
+    display:
+        flex;
 
-            justify-content:
-                space-between;
+    justify-content:
+        space-between;
 
-            align-items:
-                center;
+    align-items:
+        center;
 
-            padding:
-                15px 17px;
+    padding:
+        15px 17px;
 
-            border-bottom:
-                1px solid #edf0f4;
-        }
+    border-bottom:
+        1px solid #edf0f4;
+}
 
-        .month-buttons {
-            display:
-                flex;
+.month-buttons {
+    display:
+        flex;
 
-            gap:
-                7px;
-        }
+    gap:
+        7px;
+}
 
-        .month-button {
-            width:
-                34px;
+.month-button {
+    width:
+        34px;
 
-            height:
-                34px;
+    height:
+        34px;
 
-            border:
-                1px solid #d8dee8;
+    border:
+        1px solid #d8dee8;
 
-            background:
-                white;
+    background:
+        white;
 
-            border-radius:
-                8px;
+    border-radius:
+        8px;
 
-            cursor:
-                pointer;
-        }
+    cursor:
+        pointer;
+}
 
-        .weekdays,
-        .calendar-grid {
-            display:
-                grid;
+.weekdays,
+.calendar-grid {
+    display:
+        grid;
 
-            grid-template-columns:
-                repeat(
-                    7,
-                    1fr
-                );
-        }
+    grid-template-columns:
+        repeat(
+            7,
+            1fr
+        );
+}
 
-        .weekdays {
-            border-bottom:
-                1px solid #edf0f4;
-        }
+.weekdays {
+    border-bottom:
+        1px solid #edf0f4;
+}
 
-        .weekday {
-            padding:
-                9px 3px;
+.weekday {
+    padding:
+        9px 3px;
 
-            text-align:
-                center;
+    text-align:
+        center;
 
-            font-size:
-                11px;
+    font-size:
+        11px;
 
-            color:
-                #8a94a6;
+    color:
+        #8a94a6;
 
-            font-weight:
-                700;
-        }
+    font-weight:
+        700;
+}
 
-        .day {
-            min-height:
-                105px;
+.day {
+    min-height:
+        105px;
 
-            padding:
-                5px;
+    padding:
+        5px;
 
-            border-right:
-                1px solid #edf0f4;
+    border-right:
+        1px solid #edf0f4;
 
-            border-bottom:
-                1px solid #edf0f4;
+    border-bottom:
+        1px solid #edf0f4;
 
-            overflow:
-                hidden;
+    overflow:
+        hidden;
 
-            cursor:
-                pointer;
-        }
+    cursor:
+        pointer;
+}
 
-        .day:nth-child(7n) {
-            border-right:
-                none;
-        }
+.day:nth-child(7n) {
+    border-right:
+        none;
+}
 
-        .day.other-month {
-            background:
-                #fafbfc;
+.day.other-month {
+    background:
+        #fafbfc;
 
-            color:
-                #b3bbc7;
-        }
+    color:
+        #b3bbc7;
+}
 
-        .day.today {
-            background:
-                #f2f7ff;
-        }
+.day.today {
+    background:
+        #f2f7ff;
+}
 
-        .day-number {
-            width:
-                25px;
+.day-number {
+    width:
+        25px;
 
-            height:
-                25px;
+    height:
+        25px;
 
-            border-radius:
-                50%;
+    border-radius:
+        50%;
 
-            display:
-                flex;
+    display:
+        flex;
 
-            align-items:
-                center;
+    align-items:
+        center;
 
-            justify-content:
-                center;
+    justify-content:
+        center;
 
-            font-size:
-                12px;
+    font-size:
+        12px;
 
-            margin-bottom:
-                4px;
-        }
+    margin-bottom:
+        4px;
+}
 
-        .today .day-number {
-            background:
-                #4285F4;
+.today .day-number {
+    background:
+        #4285F4;
 
-            color:
-                white;
+    color:
+        white;
 
-            font-weight:
-                700;
-        }
+    font-weight:
+        700;
+}
 
-        .event-chip {
-            display:
-                block;
+.event-chip {
+    display:
+        block;
 
-            width:
-                100%;
+    width:
+        100%;
 
-            overflow:
-                hidden;
+    overflow:
+        hidden;
 
-            text-overflow:
-                ellipsis;
+    text-overflow:
+        ellipsis;
 
-            white-space:
-                nowrap;
+    white-space:
+        nowrap;
 
-            padding:
-                4px 5px;
+    padding:
+        4px 5px;
 
-            margin-bottom:
-                3px;
+    margin-bottom:
+        3px;
 
-            border-radius:
-                5px;
+    border-radius:
+        5px;
 
-            font-size:
-                9px;
-        }
+    font-size:
+        9px;
+}
 
-        .event-class {
-            background:
-                #eaf2ff;
+.event-class {
+    background:
+        #eaf2ff;
 
-            color:
-                #2563eb;
-        }
+    color:
+        #2563eb;
+}
 
-        .event-test {
-            background:
-                #fff0f0;
+.event-test {
+    background:
+        #fff0f0;
 
-            color:
-                #dc2626;
-        }
+    color:
+        #dc2626;
+}
 
-        .event-personal {
-            background:
-                #eefbf2;
+.event-personal {
+    background:
+        #eefbf2;
 
-            color:
-                #16834a;
-        }
+    color:
+        #16834a;
+}
 
-        .side-card {
-            padding:
-                20px;
-        }
+.side-card {
+    padding:
+        20px;
+}
 
-        .upcoming-event {
-            padding:
-                11px 0;
+.upcoming-event {
+    padding:
+        11px 0;
 
-            border-bottom:
-                1px solid #edf0f4;
-        }
+    border-bottom:
+        1px solid #edf0f4;
+}
 
-        .upcoming-date {
-            font-size:
-                12px;
+.upcoming-date {
+    font-size:
+        12px;
 
-            color:
-                #4285F4;
+    color:
+        #4285F4;
 
-            font-weight:
-                700;
-        }
+    font-weight:
+        700;
+}
 
-        .upcoming-title {
-            font-size:
-                14px;
+.upcoming-title {
+    font-size:
+        14px;
 
-            font-weight:
-                600;
-        }
+    font-weight:
+        600;
+}
 
-        .upcoming-meta {
-            font-size:
-                12px;
+.upcoming-meta {
+    font-size:
+        12px;
 
-            color:
-                #7b8494;
-        }
+    color:
+        #7b8494;
+}
 
-        .add-event {
-            margin-top:
-                20px;
+.add-event {
+    margin-top:
+        20px;
 
-            padding-top:
-                20px;
+    padding-top:
+        20px;
 
-            border-top:
-                1px solid #edf0f4;
-        }
+    border-top:
+        1px solid #edf0f4;
+}
 
-        .event-row {
-            display:
-                grid;
+.event-row {
+    display:
+        grid;
 
-            grid-template-columns:
-                1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
-            gap:
-                8px;
-        }
+    gap:
+        8px;
+}
 
-        .lock-screen {
-            min-height:
-                70vh;
+.lock-screen {
+    min-height:
+        100vh;
 
-            display:
-                flex;
+    display:
+        flex;
 
-            align-items:
-                center;
+    align-items:
+        center;
 
-            justify-content:
-                center;
+    justify-content:
+        center;
 
-            padding:
-                30px;
-        }
+    padding:
+        30px;
+}
 
-        .lock-card {
-            max-width:
-                500px;
+.lock-card {
+    max-width:
+        500px;
 
-            width:
-                100%;
+    width:
+        100%;
 
-            background:
-                white;
+    background:
+        white;
 
-            border:
-                1px solid #e1e6ee;
+    border:
+        1px solid #e1e6ee;
 
-            border-radius:
-                16px;
+    border-radius:
+        16px;
 
-            padding:
-                35px;
+    padding:
+        35px;
 
-            text-align:
-                center;
-        }
+    text-align:
+        center;
+}
 
-        .lock-card p {
-            color:
-                #718096;
+.lock-card p {
+    color:
+        #718096;
 
-            line-height:
-                1.6;
-        }
+    line-height:
+        1.6;
+}
 
-        .button {
-            display:
-                inline-block;
+.button {
+    display:
+        inline-block;
 
-            padding:
-                11px 17px;
+    padding:
+        11px 17px;
 
-            background:
-                #4285F4;
+    background:
+        #4285F4;
 
-            color:
-                white;
+    color:
+        white;
 
-            text-decoration:
-                none;
+    text-decoration:
+        none;
 
-            border-radius:
-                9px;
+    border-radius:
+        9px;
 
-            font-weight:
-                600;
-        }
+    font-weight:
+        600;
+}
 
-        @media (
-            max-width: 850px
-        ) {
+@media (max-width: 850px) {
 
-            .calendar-layout {
-                grid-template-columns:
-                    1fr;
-            }
+    .calendar-layout {
+        grid-template-columns:
+            1fr;
+    }
 
-        }
+}
 
-        @media (
-            max-width: 600px
-        ) {
+@media (max-width: 600px) {
 
-            .day {
-                min-height:
-                    75px;
-            }
+    .day {
+        min-height:
+            75px;
+    }
 
-            .event-chip {
-                font-size:
-                    8px;
-            }
+    .event-chip {
+        font-size:
+            8px;
+    }
 
-        }
+}
 
-    </style>
+</style>
 
 </head>
 
+
 <body>
+
 
 <div
     id="lockScreen"
@@ -660,246 +665,278 @@
     style="display:none;"
 >
 
-    <div class="lock-card">
+<div class="lock-card">
 
-        <div style="font-size:45px;">
-            🔒
-        </div>
+<div style="font-size:45px;">
+    🔒
+</div>
 
-        <h1>
-            Calendar unavailable
-        </h1>
+<h1>
+    Calendar unavailable
+</h1>
 
-        <p>
-            Your Writejot access has expired.
-            Renew your subscription to continue
-            using Calendar.
-        </p>
+<p>
+    Your Writejot access has expired.
+</p>
 
-        <a
-            class="button"
-            href="index.html"
-        >
-            Back to Dashboard
-        </a>
-
-    </div>
+<a
+    class="button"
+    href="index.html"
+>
+    Back to Dashboard
+</a>
 
 </div>
+
+</div>
+
 
 
 <div id="calendarInterface">
 
+
 <header>
 
-    <div class="brand">
+<div class="brand">
 
-        <img
-            src="W.png"
-            alt="Writejot"
-        >
+<img
+    src="W.png"
+    alt="Writejot"
+>
 
-        <div class="brand-name">
-            Writejot
-        </div>
+<div class="brand-name">
+    Writejot
+</div>
 
-    </div>
+</div>
 
 
-    <a
-        class="back"
-        href="index.html"
-    >
-        ← Dashboard
-    </a>
+<a
+    class="back"
+    href="index.html"
+>
+    ← Dashboard
+</a>
 
 </header>
 
 
+
 <main>
 
-    <div class="page-header">
+<div class="page-header">
 
-        <h1>
-            📅 Calendar
-        </h1>
+<h1>
+    📅 Calendar
+</h1>
 
-        <p>
-            Classes, tests, and your own events.
-        </p>
+<p>
+    Classes, tests, and your own events.
+</p>
 
-    </div>
-
-
-    <div id="updateIndicator">
-        Updating...
-    </div>
+</div>
 
 
-    <div id="registrationArea"></div>
+<div id="updateIndicator">
+    Updating...
+</div>
 
 
-    <div id="calendarContent">
-
-        <div
-            id="statusCard"
-            class="status-card approved"
-        >
-
-            <strong id="statusTitle">
-                Class Schedule Access
-            </strong>
-
-            <div
-                id="statusText"
-                style="color:#667085;margin-top:5px;"
-            ></div>
-
-        </div>
+<div id="registrationArea"></div>
 
 
-        <div class="calendar-layout">
+<div id="calendarContent">
 
-            <div class="calendar-card">
+<div
+    id="statusCard"
+    class="status-card approved"
+>
 
-                <div class="calendar-toolbar">
-
-                    <strong
-                        id="monthTitle"
-                    ></strong>
-
-
-                    <div class="month-buttons">
-
-                        <button
-                            class="month-button"
-                            onclick="changeMonth(-1)"
-                        >
-                            ←
-                        </button>
-
-                        <button
-                            class="month-button"
-                            onclick="goToToday()"
-                        >
-                            •
-                        </button>
-
-                        <button
-                            class="month-button"
-                            onclick="changeMonth(1)"
-                        >
-                            →
-                        </button>
-
-                    </div>
-
-                </div>
+<strong
+    id="statusTitle"
+>
+    Class Schedule Access
+</strong>
 
 
-                <div class="weekdays">
+<div
+    id="statusText"
+    style="
+        color:#667085;
+        margin-top:5px;
+    "
+></div>
 
-                    <div class="weekday">Sun</div>
-                    <div class="weekday">Mon</div>
-                    <div class="weekday">Tue</div>
-                    <div class="weekday">Wed</div>
-                    <div class="weekday">Thu</div>
-                    <div class="weekday">Fri</div>
-                    <div class="weekday">Sat</div>
-
-                </div>
+</div>
 
 
-                <div
-                    id="calendarGrid"
-                    class="calendar-grid"
-                ></div>
-
-            </div>
+<div class="calendar-layout">
 
 
-            <div class="side-card">
-
-                <h2>
-                    Upcoming
-                </h2>
-
-                <div
-                    id="upcomingEvents"
-                ></div>
+<div class="calendar-card">
 
 
-                <div class="add-event">
+<div class="calendar-toolbar">
 
-                    <h3>
-                        Add Personal Event
-                    </h3>
-
-
-                    <input
-                        id="eventTitle"
-                        class="event-input"
-                        type="text"
-                        placeholder="Event title"
-                    >
+<strong
+    id="monthTitle"
+></strong>
 
 
-                    <input
-                        id="eventDate"
-                        class="event-input"
-                        type="date"
-                    >
+<div class="month-buttons">
+
+<button
+    class="month-button"
+    onclick="changeMonth(-1)"
+>
+    ←
+</button>
+
+<button
+    class="month-button"
+    onclick="goToToday()"
+>
+    •
+</button>
+
+<button
+    class="month-button"
+    onclick="changeMonth(1)"
+>
+    →
+</button>
+
+</div>
+
+</div>
 
 
-                    <div class="event-row">
+<div class="weekdays">
 
-                        <input
-                            id="eventStart"
-                            class="event-input"
-                            type="time"
-                        >
+<div class="weekday">
+    Sun
+</div>
 
-                        <input
-                            id="eventEnd"
-                            class="event-input"
-                            type="time"
-                        >
+<div class="weekday">
+    Mon
+</div>
 
-                    </div>
+<div class="weekday">
+    Tue
+</div>
+
+<div class="weekday">
+    Wed
+</div>
+
+<div class="weekday">
+    Thu
+</div>
+
+<div class="weekday">
+    Fri
+</div>
+
+<div class="weekday">
+    Sat
+</div>
+
+</div>
 
 
-                    <textarea
-                        id="eventDescription"
-                        class="event-textarea"
-                        placeholder="Description"
-                    ></textarea>
+<div
+    id="calendarGrid"
+    class="calendar-grid"
+></div>
+
+</div>
 
 
-                    <button
-                        id="addEventButton"
-                        class="primary-button"
-                        onclick="addEvent()"
-                    >
-                        + Add Event
-                    </button>
+
+<div class="side-card">
+
+<h2>
+    Upcoming
+</h2>
 
 
-                    <div
-                        id="eventMessage"
-                        class="form-message"
-                    ></div>
+<div
+    id="upcomingEvents"
+></div>
 
-                </div>
 
-            </div>
+<div class="add-event">
 
-        </div>
+<h3>
+    Add Personal Event
+</h3>
 
-    </div>
+
+<input
+    id="eventTitle"
+    class="event-input"
+    type="text"
+    placeholder="Event title"
+>
+
+
+<input
+    id="eventDate"
+    class="event-input"
+    type="date"
+>
+
+
+<div class="event-row">
+
+<input
+    id="eventStart"
+    class="event-input"
+    type="time"
+>
+
+<input
+    id="eventEnd"
+    class="event-input"
+    type="time"
+>
+
+</div>
+
+
+<textarea
+    id="eventDescription"
+    class="event-textarea"
+    placeholder="Description"
+></textarea>
+
+
+<button
+    id="addEventButton"
+    class="primary-button"
+    onclick="addEvent()"
+>
+    + Add Event
+</button>
+
+
+<div
+    id="eventMessage"
+    class="form-message"
+></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </main>
 
 </div>
+
 
 
 <script>
@@ -908,8 +945,8 @@ const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-const CACHE_PREFIX =
-    "writejot_calendar_";
+const ACCESS_CACHE_TIME =
+    5 * 60 * 1000;
 
 
 let currentUser =
@@ -958,7 +995,9 @@ window.addEventListener(
                     saved
                 );
 
-        } catch {
+        }
+
+        catch {
 
             location.href =
                 "index.html";
@@ -979,42 +1018,154 @@ window.addEventListener(
 
 
         /*
-         * Access must be verified before
-         * cached calendar data is shown.
+         * Show cached calendar immediately
+         * when we have a recent access state.
          */
 
-        const access =
-            await verifyAccess();
-
-
-        if (!access) {
-            return;
-        }
-
-
-        loadCalendarCache();
+        const cachedAccess =
+            getCachedAccess();
 
 
         if (
-            calendarData
+            cachedAccess &&
+            cachedAccess.access === true
         ) {
 
-            renderState();
+            loadCalendarCache();
+
+
+            if (
+                calendarData
+            ) {
+
+                renderState();
+
+            }
+
+
+            startBackgroundRefresh();
 
         }
 
+        else {
 
-        refreshCalendar();
+            /*
+             * No verified recent access.
+             * Verify first.
+             */
+
+            await verifyAccessAndStart();
+
+        }
 
     }
 );
 
 
 /* =========================================================
-   ACCESS
+   ACCESS CACHE
 ========================================================= */
 
-async function verifyAccess() {
+function accessCacheKey() {
+
+    return (
+        "writejot_access_" +
+        String(
+            currentUser.email
+        )
+        .trim()
+        .toLowerCase()
+    );
+
+}
+
+
+function getCachedAccess() {
+
+    try {
+
+        const raw =
+            localStorage.getItem(
+                accessCacheKey()
+            );
+
+
+        if (!raw) {
+            return null;
+        }
+
+
+        const data =
+            JSON.parse(
+                raw
+            );
+
+
+        if (
+            Date.now() -
+            Number(
+                data.checkedAt || 0
+            )
+            >
+            ACCESS_CACHE_TIME
+        ) {
+
+            return null;
+
+        }
+
+
+        return data;
+
+    }
+
+    catch {
+
+        return null;
+
+    }
+
+}
+
+
+function saveAccessCache(
+    result
+) {
+
+    try {
+
+        localStorage.setItem(
+
+            accessCacheKey(),
+
+            JSON.stringify({
+
+                access:
+                    result.access === true,
+
+                status:
+                    result.status ||
+                    "",
+
+                checkedAt:
+                    Date.now()
+
+            })
+
+        );
+
+    }
+
+    catch {}
+
+}
+
+
+/* =========================================================
+   ACCESS + BACKGROUND
+========================================================= */
+
+async function verifyAccessAndStart() {
 
     try {
 
@@ -1039,6 +1190,11 @@ async function verifyAccess() {
             await response.json();
 
 
+        saveAccessCache(
+            result
+        );
+
+
         if (
             !result.success ||
             !result.access
@@ -1046,42 +1202,39 @@ async function verifyAccess() {
 
             showLocked();
 
-            return false;
+            return;
 
         }
 
 
-        return true;
+        loadCalendarCache();
+
+
+        if (
+            calendarData
+        ) {
+
+            renderState();
+
+        }
+
+
+        startBackgroundRefresh();
 
     }
 
-    catch (error) {
+    catch {
 
         showLocked();
-
-        return false;
 
     }
 
 }
 
 
-function showLocked() {
+function startBackgroundRefresh() {
 
-    document
-        .getElementById(
-            "calendarInterface"
-        )
-        .style.display =
-        "none";
-
-
-    document
-        .getElementById(
-            "lockScreen"
-        )
-        .style.display =
-        "flex";
+    refreshCalendar();
 
 }
 
@@ -1090,10 +1243,10 @@ function showLocked() {
    CACHE
 ========================================================= */
 
-function cacheKey() {
+function calendarCacheKey() {
 
     return (
-        CACHE_PREFIX +
+        "writejot_calendar_" +
         String(
             currentUser.email
         )
@@ -1110,7 +1263,7 @@ function loadCalendarCache() {
 
         const raw =
             localStorage.getItem(
-                cacheKey()
+                calendarCacheKey()
             );
 
 
@@ -1126,7 +1279,7 @@ function loadCalendarCache() {
 
     }
 
-    catch (error) {}
+    catch {}
 
 }
 
@@ -1137,7 +1290,7 @@ function saveCalendarCache() {
 
         localStorage.setItem(
 
-            cacheKey(),
+            calendarCacheKey(),
 
             JSON.stringify(
                 calendarData
@@ -1147,7 +1300,7 @@ function saveCalendarCache() {
 
     }
 
-    catch (error) {}
+    catch {}
 
 }
 
@@ -1221,17 +1374,12 @@ async function refreshCalendar() {
 
         saveCalendarCache();
 
+
         renderState();
 
     }
 
-    catch (error) {
-
-        console.error(
-            error
-        );
-
-    }
+    catch {}
 
     finally {
 
@@ -1284,75 +1432,76 @@ function renderState() {
 
         registrationArea.innerHTML =
 
-            `
-            <div class="registration-card">
+        `
+        <div class="registration-card">
 
-                <h2>
-                    Register for your class
-                </h2>
+            <h2>
+                Register for your class
+            </h2>
 
-                <p
-                    style="
-                        color:#718096;
-                        margin-bottom:20px;
-                    "
+
+            <p
+                style="
+                    color:#718096;
+                    margin-bottom:20px;
+                "
+            >
+                Enter your name and section to
+                access your official class schedule
+                and tests.
+            </p>
+
+
+            <div class="field">
+
+                <label>
+                    Name
+                </label>
+
+                <input
+                    id="registrationName"
+                    type="text"
+                    value="${escapeHtml(
+                        currentUser.name ||
+                        ""
+                    )}"
+                    placeholder="Your full name"
                 >
-                    Enter your name and section to
-                    access your official class schedule
-                    and tests.
-                </p>
-
-
-                <div class="field">
-
-                    <label>
-                        Name
-                    </label>
-
-                    <input
-                        id="registrationName"
-                        type="text"
-                        value="${escapeHtml(
-                            currentUser.name ||
-                            ""
-                        )}"
-                        placeholder="Your full name"
-                    >
-
-                </div>
-
-
-                <div class="field">
-
-                    <label>
-                        Section
-                    </label>
-
-                    <input
-                        id="registrationSection"
-                        type="text"
-                        placeholder="Example: 10-A"
-                    >
-
-                </div>
-
-
-                <button
-                    id="registerButton"
-                    class="primary-button"
-                    onclick="submitRegistration()"
-                >
-                    Register Class
-                </button>
-
-
-                <div
-                    id="registrationMessage"
-                    class="form-message"
-                ></div>
 
             </div>
-            `;
+
+
+            <div class="field">
+
+                <label>
+                    Section
+                </label>
+
+                <input
+                    id="registrationSection"
+                    type="text"
+                    placeholder="Example: 10-A"
+                >
+
+            </div>
+
+
+            <button
+                id="registerButton"
+                class="primary-button"
+                onclick="submitRegistration()"
+            >
+                Register Class
+            </button>
+
+
+            <div
+                id="registrationMessage"
+                class="form-message"
+            ></div>
+
+        </div>
+        `;
 
 
         return;
@@ -1477,6 +1626,7 @@ function renderCalendar() {
             {
                 month:
                     "long",
+
                 year:
                     "numeric"
             }
@@ -1509,7 +1659,8 @@ function renderCalendar() {
                 firstDay +
                 daysInMonth
             ) / 7
-        ) * 7;
+        ) *
+        7;
 
 
     for (
@@ -1518,50 +1669,18 @@ function renderCalendar() {
         i++
     ) {
 
-        let date;
-
-
         const day =
             i -
             firstDay +
             1;
 
 
-        if (day < 1) {
-
-            date =
-                new Date(
-                    year,
-                    month,
-                    day
-                );
-
-        }
-
-        else if (
-            day >
-            daysInMonth
-        ) {
-
-            date =
-                new Date(
-                    year,
-                    month,
-                    day
-                );
-
-        }
-
-        else {
-
-            date =
-                new Date(
-                    year,
-                    month,
-                    day
-                );
-
-        }
+        const date =
+            new Date(
+                year,
+                month,
+                day
+            );
 
 
         const cell =
@@ -1949,10 +2068,6 @@ function renderUpcoming() {
 
         }
     )
-    .slice(
-        0,
-        5
-    )
     .forEach(
         function(event) {
 
@@ -1977,28 +2092,32 @@ function renderUpcoming() {
 
 
     items.sort(
-        function(a, b) {
+        function(a,b) {
 
-            return (
-                a.date.localeCompare(
-                    b.date
-                )
+            return a.date.localeCompare(
+                b.date
             );
 
         }
     );
 
 
-    if (!items.length) {
+    if (
+        !items.length
+    ) {
 
         box.innerHTML =
-            `
-            <div
-                style="color:#8a94a6;font-size:13px;"
-            >
-                Nothing upcoming.
-            </div>
-            `;
+
+        `
+        <div
+            style="
+                color:#8a94a6;
+                font-size:13px;
+            "
+        >
+            Nothing upcoming.
+        </div>
+        `;
 
         return;
 
@@ -2016,34 +2135,42 @@ function renderUpcoming() {
 
                     return `
 
-                        <div class="upcoming-event">
+                    <div
+                        class="upcoming-event"
+                    >
 
-                            <div class="upcoming-date">
-                                ${escapeHtml(
-                                    prettyDate(
-                                        item.date
-                                    )
-                                )}
-                            </div>
-
-                            <div
-                                class="upcoming-title"
-                                style="
-                                    color:${item.color};
-                                "
-                            >
-                                ${escapeHtml(
-                                    item.title
-                                )}
-                            </div>
-
-                            <div class="upcoming-meta">
-                                ${escapeHtml(
-                                    item.meta || ""
-                                )}
-                            </div>
-
+                        <div
+                            class="upcoming-date"
+                        >
+                            ${escapeHtml(
+                                prettyDate(
+                                    item.date
+                                )
+                            )}
                         </div>
+
+
+                        <div
+                            class="upcoming-title"
+                            style="
+                                color:${item.color};
+                            "
+                        >
+                            ${escapeHtml(
+                                item.title
+                            )}
+                        </div>
+
+
+                        <div
+                            class="upcoming-meta"
+                        >
+                            ${escapeHtml(
+                                item.meta || ""
+                            )}
+                        </div>
+
+                    </div>
 
                     `;
 
@@ -2171,8 +2298,7 @@ async function submitRegistration() {
         ) {
 
             throw new Error(
-                result.error ||
-                "Registration failed."
+                result.error
             );
 
         }
@@ -2441,18 +2567,21 @@ function localDateString(
 ) {
 
     return [
+
         date.getFullYear(),
 
         String(
             date.getMonth() + 1
-        ).padStart(
+        )
+        .padStart(
             2,
             "0"
         ),
 
         String(
             date.getDate()
-        ).padStart(
+        )
+        .padStart(
             2,
             "0"
         )
@@ -2468,7 +2597,8 @@ function prettyDate(
 
     const date =
         new Date(
-            value + "T00:00:00"
+            value +
+            "T00:00:00"
         );
 
 
