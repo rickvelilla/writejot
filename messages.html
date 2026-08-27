@@ -3,724 +3,800 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>Writejot | Messages</title>
+<title>Writejot | Messages</title>
 
+<style>
 
-    <style>
+* {
+    box-sizing: border-box;
+}
 
-        /* =====================================================
-           RESET
-        ===================================================== */
+html,
+body {
+    margin: 0;
+    padding: 0;
 
-        * {
-            box-sizing: border-box;
-        }
+    min-height: 100%;
+}
 
+body {
 
-        html {
-            margin: 0;
-            padding: 0;
-            min-height: 100%;
-        }
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
+    background:
+        #f6f8fc;
 
-        body {
+    color:
+        #1f2937;
+}
 
-            margin: 0;
 
-            padding: 0;
+/* =========================================================
+   HEADER
+========================================================= */
 
-            min-height: 100vh;
+header {
 
-            width: 100%;
+    width: 100%;
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+    height: 66px;
 
-            background:
-                #f6f8fc;
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .97
+        );
 
-            color:
-                #1f2937;
-        }
+    border-bottom:
+        1px solid #e5e7eb;
 
+    position:
+        sticky;
 
+    top: 0;
 
-        /* =====================================================
-           PAGE
-        ===================================================== */
+    z-index: 100;
 
-        .messages-page {
+    padding:
+        10px 6%;
 
-            width: 100%;
+    display:
+        flex;
 
-            max-width: 820px;
+    align-items:
+        center;
 
-            margin:
-                0 auto;
+    justify-content:
+        space-between;
+}
 
-            padding:
-                28px 18px 60px;
-        }
+.brand {
 
+    display:
+        flex;
 
+    align-items:
+        center;
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+    gap:
+        10px;
+}
 
-        .messages-header {
+.brand img {
 
-            width: 100%;
+    width:
+        42px;
 
-            display: flex;
+    height:
+        42px;
 
-            align-items: center;
+    object-fit:
+        contain;
+}
 
-            justify-content:
-                space-between;
+.brand-name {
 
-            margin-bottom:
-                18px;
-        }
+    font-size:
+        22px;
 
+    font-weight:
+        700;
+}
 
-        .messages-header h1 {
+.dashboard-link {
 
-            margin: 0;
+    color:
+        #4285F4;
 
-            font-size:
-                34px;
+    text-decoration:
+        none;
 
-            line-height:
-                1.1;
-        }
+    font-weight:
+        600;
+}
 
 
-        .unread-total {
+/* =========================================================
+   PAGE
+========================================================= */
 
-            min-width: 26px;
+main {
 
-            height: 26px;
+    width:
+        100%;
 
-            padding:
-                0 8px;
+    max-width:
+        820px;
 
-            border-radius:
-                999px;
+    margin:
+        0 auto;
 
-            display: flex;
+    padding:
+        28px 18px 60px;
+}
 
-            align-items: center;
 
-            justify-content: center;
+/* =========================================================
+   PAGE TITLE
+========================================================= */
 
-            background:
-                #ef4444;
+.messages-header {
 
-            color:
-                white;
+    width:
+        100%;
 
-            font-size:
-                12px;
+    display:
+        flex;
 
-            font-weight:
-                700;
-        }
+    align-items:
+        center;
 
+    justify-content:
+        space-between;
 
-        .unread-total.hidden {
+    margin-bottom:
+        18px;
+}
 
-            display: none;
-        }
+.messages-header h1 {
 
+    margin:
+        0;
 
+    font-size:
+        34px;
 
-        /* =====================================================
-           CONVERSATION LIST
+    line-height:
+        1.1;
+}
 
-           IMPORTANT:
-           No fixed height.
-           No max-height.
-           No overflow:hidden.
-        ===================================================== */
 
-        #conversationList {
+/* =========================================================
+   TOTAL UNREAD
+========================================================= */
 
-            width: 100%;
+.unread-total {
 
-            height: auto;
+    min-width:
+        26px;
 
-            min-height: 0;
+    height:
+        26px;
 
-            max-height: none;
+    padding:
+        0 8px;
 
-            overflow: visible;
+    border-radius:
+        999px;
 
-            display: flex;
+    display:
+        flex;
 
-            flex-direction: column;
+    align-items:
+        center;
 
-            background:
-                white;
+    justify-content:
+        center;
 
-            border:
-                1px solid #e1e6ee;
+    background:
+        #ef4444;
 
-            border-radius:
-                16px;
+    color:
+        white;
 
-            box-shadow:
-                0 8px 30px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .04
-                );
-        }
+    font-size:
+        12px;
 
+    font-weight:
+        700;
+}
 
+.unread-total.hidden {
 
-        /* =====================================================
-           CONVERSATION
-        ===================================================== */
+    display:
+        none;
+}
 
-        .conversation {
 
-            width: 100%;
+/* =========================================================
+   CONVERSATION LIST
 
-            min-height:
-                78px;
+   IMPORTANT:
+   THERE IS NO FIXED HEIGHT.
+========================================================= */
 
-            padding:
-                14px 16px;
+#conversationList {
 
-            display: flex;
+    width:
+        100%;
 
-            align-items: center;
+    height:
+        auto !important;
 
-            border-bottom:
-                1px solid #edf0f4;
+    min-height:
+        0 !important;
 
-            background:
-                white;
+    max-height:
+        none !important;
 
-            cursor:
-                pointer;
+    overflow:
+        visible !important;
 
-            transition:
-                background .15s ease,
-                transform .08s ease;
-        }
+    display:
+        flex;
 
+    flex-direction:
+        column;
 
-        .conversation:last-child {
+    background:
+        white;
 
-            border-bottom:
-                none;
-        }
+    border:
+        1px solid #e1e6ee;
 
+    border-radius:
+        16px;
 
-        .conversation:hover {
+    box-shadow:
+        0 8px 30px
+        rgba(
+            0,
+            0,
+            0,
+            .04
+        );
+}
 
-            background:
-                #f8faff;
-        }
 
+/* =========================================================
+   CONVERSATION
+========================================================= */
 
-        .conversation:active {
+.conversation {
 
-            transform:
-                scale(.997);
-        }
+    width:
+        100%;
 
+    min-height:
+        78px;
 
+    padding:
+        14px 16px;
 
-        /* =====================================================
-           UNREAD CONVERSATION
-        ===================================================== */
+    display:
+        flex;
 
-        .conversation.unread {
+    align-items:
+        center;
 
-            background:
-                #f7faff;
-        }
+    gap:
+        0;
 
+    background:
+        white;
 
-        .conversation.unread:hover {
+    border-bottom:
+        1px solid #edf0f4;
 
-            background:
-                #f0f6ff;
-        }
+    cursor:
+        pointer;
 
+    transition:
+        background .15s ease;
+}
 
+.conversation:last-child {
 
-        /* =====================================================
-           PROFILE PICTURE
-        ===================================================== */
+    border-bottom:
+        none;
+}
 
-        .conversation-picture {
+.conversation:hover {
 
-            width:
-                50px;
+    background:
+        #f8faff;
+}
 
-            height:
-                50px;
+.conversation.unread {
 
-            min-width:
-                50px;
+    background:
+        #f7faff;
+}
 
-            border-radius:
-                50%;
 
-            object-fit:
-                cover;
+/* =========================================================
+   PROFILE
+========================================================= */
 
-            background:
-                #edf2f7;
+.conversation-picture {
 
-            border:
-                2px solid #4285F4;
-        }
+    width:
+        50px;
 
+    height:
+        50px;
 
+    min-width:
+        50px;
 
-        /* =====================================================
-           MIDDLE CONTENT
-        ===================================================== */
+    border-radius:
+        50%;
 
-        .conversation-content {
+    object-fit:
+        cover;
 
-            flex:
-                1;
+    background:
+        #edf2f7;
 
-            min-width:
-                0;
+    border:
+        2px solid #4285F4;
+}
 
-            padding:
-                0 13px;
-        }
 
+/* =========================================================
+   CONTENT
+========================================================= */
 
-        .conversation-top {
+.conversation-content {
 
-            display:
-                flex;
+    flex:
+        1;
 
-            align-items:
-                center;
+    min-width:
+        0;
 
-            min-width:
-                0;
+    padding:
+        0 13px;
+}
 
-            gap:
-                6px;
-        }
+.conversation-top {
 
+    display:
+        flex;
 
-        .conversation-name {
+    align-items:
+        center;
 
-            min-width:
-                0;
+    gap:
+        6px;
 
-            font-size:
-                15px;
+    min-width:
+        0;
+}
 
-            font-weight:
-                700;
+.conversation-name {
 
-            white-space:
-                nowrap;
+    min-width:
+        0;
 
-            overflow:
-                hidden;
+    font-size:
+        15px;
 
-            text-overflow:
-                ellipsis;
-        }
+    font-weight:
+        700;
 
+    white-space:
+        nowrap;
 
-        .conversation.unread
-        .conversation-name {
+    overflow:
+        hidden;
 
-            font-weight:
-                800;
-        }
+    text-overflow:
+        ellipsis;
+}
 
+.conversation.unread
+.conversation-name {
 
-        .conversation-username {
+    font-weight:
+        800;
+}
 
-            flex-shrink:
-                0;
+.conversation-username {
 
-            color:
-                #4285F4;
+    flex:
+        0 0 auto;
 
-            font-size:
-                12px;
+    color:
+        #4285F4;
 
-            white-space:
-                nowrap;
-        }
+    font-size:
+        12px;
 
+    white-space:
+        nowrap;
+}
 
-        .conversation-preview {
+.conversation-preview {
 
-            margin-top:
-                4px;
+    margin-top:
+        4px;
 
-            color:
-                #718096;
+    color:
+        #718096;
 
-            font-size:
-                13px;
+    font-size:
+        13px;
 
-            line-height:
-                1.3;
+    line-height:
+        1.3;
 
-            white-space:
-                nowrap;
+    white-space:
+        nowrap;
 
-            overflow:
-                hidden;
+    overflow:
+        hidden;
 
-            text-overflow:
-                ellipsis;
-        }
+    text-overflow:
+        ellipsis;
+}
 
+.conversation.unread
+.conversation-preview {
 
-        .conversation.unread
-        .conversation-preview {
+    color:
+        #374151;
 
-            color:
-                #374151;
+    font-weight:
+        600;
+}
 
-            font-weight:
-                600;
-        }
 
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
 
+.conversation-right {
 
-        /* =====================================================
-           RIGHT SIDE
-        ===================================================== */
+    flex:
+        0 0 auto;
 
-        .conversation-right {
+    display:
+        flex;
 
-            flex-shrink:
-                0;
+    flex-direction:
+        column;
 
-            display:
-                flex;
+    align-items:
+        flex-end;
 
-            flex-direction:
-                column;
+    gap:
+        7px;
+}
 
-            align-items:
-                flex-end;
+.conversation-time {
 
-            gap:
-                7px;
-        }
+    color:
+        #8a94a6;
 
+    font-size:
+        11px;
 
-        .conversation-time {
+    white-space:
+        nowrap;
+}
 
-            color:
-                #8a94a6;
 
-            font-size:
-                11px;
+/* =========================================================
+   UNREAD BADGE
+========================================================= */
 
-            white-space:
-                nowrap;
-        }
+.unread-badge {
 
+    min-width:
+        23px;
 
+    height:
+        23px;
 
-        /* =====================================================
-           UNREAD BADGE
-        ===================================================== */
+    padding:
+        0 7px;
 
-        .unread-badge {
+    border-radius:
+        999px;
 
-            min-width:
-                23px;
+    display:
+        flex;
 
-            height:
-                23px;
+    align-items:
+        center;
 
-            padding:
-                0 7px;
+    justify-content:
+        center;
 
-            border-radius:
-                999px;
+    background:
+        #4285F4;
 
-            display:
-                flex;
+    color:
+        white;
 
-            align-items:
-                center;
+    font-size:
+        11px;
 
-            justify-content:
-                center;
+    font-weight:
+        700;
+}
 
-            background:
-                #4285F4;
+.unread-badge.hidden {
 
-            color:
-                white;
+    display:
+        none;
+}
 
-            font-size:
-                11px;
 
-            font-weight:
-                700;
-        }
+/* =========================================================
+   LOADING
+========================================================= */
 
+.messages-loading {
 
-        .unread-badge.hidden {
+    padding:
+        45px 20px;
 
-            display:
-                none;
-        }
+    text-align:
+        center;
 
+    color:
+        #718096;
 
+    background:
+        white;
 
-        /* =====================================================
-           EMPTY / LOADING
-        ===================================================== */
+    border-radius:
+        16px;
+}
 
-        .messages-empty {
+.spinner {
 
-            padding:
-                60px 20px;
+    width:
+        26px;
 
-            text-align:
-                center;
+    height:
+        26px;
 
-            color:
-                #718096;
+    margin:
+        0 auto 10px;
 
-            background:
-                white;
+    border:
+        3px solid #e5e7eb;
 
-            border-radius:
-                16px;
-        }
+    border-top-color:
+        #4285F4;
 
+    border-radius:
+        50%;
 
-        .messages-loading {
+    animation:
+        spin .7s linear infinite;
+}
 
-            padding:
-                40px 20px;
+@keyframes spin {
 
-            text-align:
-                center;
+    to {
 
-            color:
-                #718096;
+        transform:
+            rotate(360deg);
+    }
+}
 
-            background:
-                white;
 
-            border-radius:
-                16px;
-        }
+/* =========================================================
+   EMPTY
+========================================================= */
 
+.messages-empty {
 
-        .spinner {
+    padding:
+        55px 20px;
 
-            width:
-                25px;
+    text-align:
+        center;
 
-            height:
-                25px;
+    color:
+        #718096;
 
-            margin:
-                0 auto 10px;
+    background:
+        white;
 
-            border:
-                3px solid #e5e7eb;
+    border-radius:
+        16px;
+}
 
-            border-top-color:
-                #4285F4;
 
-            border-radius:
-                50%;
+/* =========================================================
+   ERROR
+========================================================= */
 
-            animation:
-                spin .7s linear infinite;
-        }
+.messages-error {
 
+    padding:
+        35px 20px;
 
-        @keyframes spin {
+    text-align:
+        center;
 
-            to {
+    color:
+        #dc2626;
 
-                transform:
-                    rotate(360deg);
-            }
-        }
+    background:
+        white;
 
+    border-radius:
+        16px;
+}
 
 
-        /* =====================================================
-           ERROR
-        ===================================================== */
+/* =========================================================
+   MOBILE
+========================================================= */
 
-        .messages-error {
+@media (
+    max-width: 600px
+) {
 
-            padding:
-                30px 20px;
+    header {
 
-            text-align:
-                center;
+        height:
+            60px;
 
-            color:
-                #dc2626;
+        padding:
+            9px 12px;
+    }
 
-            background:
-                white;
+    .brand-name {
 
-            border-radius:
-                16px;
-        }
+        font-size:
+            20px;
+    }
 
+    .brand img {
 
+        width:
+            38px;
 
-        /* =====================================================
-           BACK BUTTON
-        ===================================================== */
+        height:
+            38px;
+    }
 
-        .dashboard-link {
+    main {
 
-            display:
-                inline-block;
+        padding:
+            20px 10px 40px;
+    }
 
-            margin-top:
-                15px;
+    .messages-header h1 {
 
-            color:
-                #4285F4;
+        font-size:
+            28px;
+    }
 
-            text-decoration:
-                none;
+    .conversation {
 
-            font-weight:
-                600;
-        }
+        min-height:
+            70px;
 
+        padding:
+            12px;
+    }
 
+    .conversation-picture {
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+        width:
+            45px;
 
-        @media (
-            max-width: 600px
-        ) {
+        height:
+            45px;
 
-            .messages-page {
+        min-width:
+            45px;
+    }
 
-                padding:
-                    20px 10px 40px;
-            }
+    .conversation-content {
 
+        padding:
+            0 9px;
+    }
 
-            .messages-header h1 {
+    .conversation-name {
 
-                font-size:
-                    28px;
-            }
+        font-size:
+            14px;
+    }
 
+    .conversation-username {
 
-            .conversation {
+        font-size:
+            11px;
+    }
 
-                min-height:
-                    70px;
+    .conversation-preview {
 
-                padding:
-                    12px;
-            }
+        font-size:
+            12px;
+    }
 
+    .conversation-time {
 
-            .conversation-picture {
+        font-size:
+            10px;
+    }
 
-                width:
-                    45px;
+}
 
-                height:
-                    45px;
-
-                min-width:
-                    45px;
-            }
-
-
-            .conversation-content {
-
-                padding:
-                    0 9px;
-            }
-
-
-            .conversation-name {
-
-                font-size:
-                    14px;
-            }
-
-
-            .conversation-username {
-
-                font-size:
-                    11px;
-            }
-
-
-            .conversation-preview {
-
-                font-size:
-                    12px;
-            }
-
-
-            .conversation-time {
-
-                font-size:
-                    10px;
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
-
 
 
 <body>
 
 
-<main
-    class="messages-page"
->
+<header>
+
+    <div
+        class="brand"
+    >
+
+        <img
+            src="W.png"
+            alt="Writejot"
+        >
 
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+        <div
+            class="brand-name"
+        >
+            Writejot
+        </div>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="dashboard-link"
+    >
+        ← Dashboard
+    </a>
+
+</header>
+
+
+
+<main>
+
 
     <div
         class="messages-header"
@@ -733,16 +809,15 @@
 
         <div
             id="unreadTotal"
-            class="unread-total hidden"
+            class="
+                unread-total
+                hidden
+            "
         ></div>
 
     </div>
 
 
-
-    <!-- =====================================================
-         CONVERSATIONS
-    ====================================================== -->
 
     <div
         id="conversationList"
@@ -778,8 +853,8 @@ const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-const CACHE_TIME =
-    5 * 60 * 1000;
+const CACHE_PREFIX =
+    "writejot_conversations_";
 
 
 const REFRESH_INTERVAL =
@@ -798,36 +873,26 @@ let refreshTimer =
     null;
 
 
-let firstServerLoad =
-    true;
-
-
-
 /* =========================================================
    START
 ========================================================= */
 
 window.addEventListener(
     "load",
-    function () {
-
-        initialize();
-
-    }
+    initialize
 );
-
 
 
 async function initialize() {
 
-    const saved =
+    const savedUser =
         localStorage.getItem(
             "writejotUser"
         );
 
 
     if (
-        !saved
+        !savedUser
     ) {
 
         showError(
@@ -843,14 +908,12 @@ async function initialize() {
 
         currentUser =
             JSON.parse(
-                saved
+                savedUser
             );
 
     }
 
-    catch (
-        error
-    ) {
+    catch {
 
         localStorage.removeItem(
             "writejotUser"
@@ -868,12 +931,10 @@ async function initialize() {
 
 
     /*
-     * =====================================================
-     * CACHE FIRST
+     * CACHE FIRST.
      *
-     * Render cached conversations immediately.
-     * Do NOT clear them while server loads.
-     * =====================================================
+     * This means conversations can appear
+     * immediately without waiting for Apps Script.
      */
 
     loadCache();
@@ -889,30 +950,25 @@ async function initialize() {
 
 
     /*
-     * Fetch current data in background.
+     * Fresh data in background.
      */
 
     await loadConversations();
 
 
-    /*
-     * Continue checking for new messages.
-     */
-
-    startRefreshTimer();
+    startRefresh();
 
 }
 
 
-
 /* =========================================================
-   CACHE KEY
+   CACHE
 ========================================================= */
 
 function getCacheKey() {
 
     return (
-        "writejot_conversations_" +
+        CACHE_PREFIX +
         normalizeEmail(
             currentUser.email
         )
@@ -920,11 +976,6 @@ function getCacheKey() {
 
 }
 
-
-
-/* =========================================================
-   LOAD CACHE
-========================================================= */
 
 function loadCache() {
 
@@ -962,35 +1013,20 @@ function loadCache() {
         }
 
 
-        /*
-         * We can display cached content
-         * immediately.
-         */
-
         conversations =
-            cached.conversations
-                .slice();
-
+            cached.conversations.slice();
 
     }
 
-    catch (
-        error
-    ) {
+    catch {
 
-        console.log(
-            "Conversation cache could not be read."
-        );
+        conversations =
+            [];
 
     }
 
 }
 
-
-
-/* =========================================================
-   SAVE CACHE
-========================================================= */
 
 function saveCache() {
 
@@ -1014,18 +1050,9 @@ function saveCache() {
 
     }
 
-    catch (
-        error
-    ) {
-
-        console.log(
-            "Conversation cache could not be saved."
-        );
-
-    }
+    catch {}
 
 }
-
 
 
 /* =========================================================
@@ -1070,20 +1097,15 @@ async function loadConversations() {
             await response.json();
 
 
-        /*
-         * Access expired.
-         */
-
         if (
-            result.accessDenied === true ||
-            result.access === false
+            result.accessDenied ===
+            true
         ) {
 
             showError(
                 result.error ||
                 "Your Writejot access has expired."
             );
-
 
             return;
 
@@ -1102,10 +1124,6 @@ async function loadConversations() {
         }
 
 
-        /*
-         * Update data.
-         */
-
         conversations =
             Array.isArray(
                 result.conversations
@@ -1114,28 +1132,14 @@ async function loadConversations() {
                 : [];
 
 
-        /*
-         * Store locally.
-         */
-
         saveCache();
 
 
-        /*
-         * Render normally.
-         */
-
         renderConversations();
-
-
-        firstServerLoad =
-            false;
 
     }
 
-    catch (
-        error
-    ) {
+    catch (error) {
 
         console.error(
             "Conversation loading error:",
@@ -1144,10 +1148,7 @@ async function loadConversations() {
 
 
         /*
-         * IMPORTANT:
-         *
-         * If cached data exists, DON'T replace it
-         * with an error message.
+         * If cache exists, KEEP IT.
          */
 
         if (
@@ -1161,27 +1162,20 @@ async function loadConversations() {
         }
 
 
-        if (
-            firstServerLoad
-        ) {
-
-            showError(
-                "Could not load your messages."
-            );
-
-        }
+        showError(
+            "Could not load your messages."
+        );
 
     }
 
 }
 
 
-
 /* =========================================================
-   START AUTO REFRESH
+   AUTO REFRESH
 ========================================================= */
 
-function startRefreshTimer() {
+function startRefresh() {
 
     if (
         refreshTimer
@@ -1196,12 +1190,7 @@ function startRefreshTimer() {
 
     refreshTimer =
         setInterval(
-            function () {
-
-                /*
-                 * Only refresh while the page
-                 * is visible.
-                 */
+            function() {
 
                 if (
                     document.visibilityState ===
@@ -1215,20 +1204,33 @@ function startRefreshTimer() {
             },
 
             REFRESH_INTERVAL
-
         );
 
 }
 
 
-
 /* =========================================================
-   VISIBILITY
+   PAGE RETURN
 ========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    function() {
+
+        /*
+         * Browser may restore messages.html
+         * from bfcache.
+         */
+
+        loadConversations();
+
+    }
+);
+
 
 document.addEventListener(
     "visibilitychange",
-    function () {
+    function() {
 
         if (
             document.visibilityState ===
@@ -1241,7 +1243,6 @@ document.addEventListener(
 
     }
 );
-
 
 
 /* =========================================================
@@ -1257,9 +1258,8 @@ function renderConversations() {
 
 
     /*
-     * IMPORTANT:
-     *
-     * Never give the list a fixed height.
+     * Explicitly remove any accidental
+     * height restriction.
      */
 
     list.style.height =
@@ -1273,10 +1273,6 @@ function renderConversations() {
     list.style.overflow =
         "visible";
 
-
-    /*
-     * No conversations.
-     */
 
     if (
         !conversations.length
@@ -1309,17 +1305,9 @@ function renderConversations() {
                         margin-top:6px;
                     "
                 >
-                    Search for a student to start
-                    a conversation.
+                    Search for a student to
+                    start a conversation.
                 </div>
-
-
-                <a
-                    href="index.html"
-                    class="dashboard-link"
-                >
-                    ← Back to Dashboard
-                </a>
 
             </div>
             `;
@@ -1336,11 +1324,11 @@ function renderConversations() {
     list.innerHTML =
         conversations
             .map(
-                function (
+                function(
                     conversation
                 ) {
 
-                    return renderConversation(
+                    return buildConversation(
                         conversation
                     );
 
@@ -1349,21 +1337,16 @@ function renderConversations() {
             .join("");
 
 
-    /*
-     * Update notification counter.
-     */
-
     updateUnreadTotal();
 
 }
 
 
-
 /* =========================================================
-   RENDER ONE CONVERSATION
+   BUILD CONVERSATION
 ========================================================= */
 
-function renderConversation(
+function buildConversation(
     conversation
 ) {
 
@@ -1385,7 +1368,7 @@ function renderConversation(
 
     const preview =
         conversation.lastMessage ||
-        "";
+        "No messages yet.";
 
 
     const unread =
@@ -1398,8 +1381,10 @@ function renderConversation(
         );
 
 
-    const isUnread =
-        unread > 0;
+    const unreadClass =
+        unread > 0
+            ? "unread"
+            : "";
 
 
     const time =
@@ -1413,17 +1398,11 @@ function renderConversation(
         <div
             class="
                 conversation
-                ${
-                    isUnread
-                        ? "unread"
-                        : ""
-                }
+                ${unreadClass}
             "
-            data-username="${escapeHtml(
-                username
-            )}"
             role="button"
             tabindex="0"
+
             onclick="
                 openConversation(
                     '${escapeJs(
@@ -1431,8 +1410,9 @@ function renderConversation(
                     )}'
                 )
             "
+
             onkeydown="
-                handleConversationKey(
+                conversationKey(
                     event,
                     '${escapeJs(
                         username
@@ -1449,11 +1429,11 @@ function renderConversation(
                 )}"
                 alt=""
                 loading="lazy"
+
                 onerror="
                     this.src='W.png';
                 "
             >
-
 
 
             <div
@@ -1492,25 +1472,19 @@ function renderConversation(
                     "
                 >
                     ${escapeHtml(
-                        preview ||
-                        "No messages yet."
+                        preview
                     )}
                 </div>
 
             </div>
 
 
-
             <div
-                class="
-                    conversation-right
-                "
+                class="conversation-right"
             >
 
                 <div
-                    class="
-                        conversation-time
-                    "
+                    class="conversation-time"
                 >
                     ${escapeHtml(
                         time
@@ -1522,7 +1496,7 @@ function renderConversation(
                     class="
                         unread-badge
                         ${
-                            isUnread
+                            unread > 0
                                 ? ""
                                 : "hidden"
                         }
@@ -1544,9 +1518,8 @@ function renderConversation(
 }
 
 
-
 /* =========================================================
-   OPEN CONVERSATION
+   OPEN CHAT
 ========================================================= */
 
 function openConversation(
@@ -1577,12 +1550,7 @@ function openConversation(
 }
 
 
-
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
-function handleConversationKey(
+function conversationKey(
     event,
     username
 ) {
@@ -1606,9 +1574,8 @@ function handleConversationKey(
 }
 
 
-
 /* =========================================================
-   UNREAD TOTAL
+   TOTAL UNREAD
 ========================================================= */
 
 function updateUnreadTotal() {
@@ -1619,24 +1586,16 @@ function updateUnreadTotal() {
         );
 
 
-    /*
-     * THIS IS IMPORTANT:
-     *
-     * Sum every conversation's unreadCount.
-     *
-     * Do NOT just use conversations.length.
-     */
-
     let total =
         0;
 
 
     conversations.forEach(
-        function (
+        function(
             conversation
         ) {
 
-            const unread =
+            const count =
                 Number(
                     conversation.unreadCount ||
                     0
@@ -1645,13 +1604,13 @@ function updateUnreadTotal() {
 
             if (
                 Number.isFinite(
-                    unread
+                    count
                 ) &&
-                unread > 0
+                count > 0
             ) {
 
                 total +=
-                    unread;
+                    count;
 
             }
 
@@ -1688,7 +1647,6 @@ function updateUnreadTotal() {
             );
 
 }
-
 
 
 /* =========================================================
@@ -1729,13 +1687,9 @@ function formatConversationTime(
         new Date();
 
 
-    const sameDay =
-        date.toDateString() ===
-        now.toDateString();
-
-
     if (
-        sameDay
+        date.toDateString() ===
+        now.toDateString()
     ) {
 
         return date.toLocaleTimeString(
@@ -1757,7 +1711,7 @@ function formatConversationTime(
         date.getTime();
 
 
-    const oneDay =
+    const day =
         24 *
         60 *
         60 *
@@ -1766,7 +1720,8 @@ function formatConversationTime(
 
     if (
         difference >= 0 &&
-        difference < 7 * oneDay
+        difference <
+            7 * day
     ) {
 
         return date.toLocaleDateString(
@@ -1794,9 +1749,8 @@ function formatConversationTime(
 }
 
 
-
 /* =========================================================
-   NORMALIZE
+   HELPERS
 ========================================================= */
 
 function normalizeUsername(
@@ -1831,11 +1785,6 @@ function normalizeEmail(
 }
 
 
-
-/* =========================================================
-   HTML ESCAPE
-========================================================= */
-
 function escapeHtml(
     value
 ) {
@@ -1867,11 +1816,6 @@ function escapeHtml(
 
 }
 
-
-
-/* =========================================================
-   JAVASCRIPT STRING ESCAPE
-========================================================= */
 
 function escapeJs(
     value
@@ -1905,7 +1849,6 @@ function escapeJs(
 }
 
 
-
 /* =========================================================
    ERROR
 ========================================================= */
@@ -1914,13 +1857,11 @@ function showError(
     message
 ) {
 
-    const list =
-        document.getElementById(
+    document
+        .getElementById(
             "conversationList"
-        );
-
-
-    list.innerHTML =
+        )
+        .innerHTML =
 
         `
         <div
@@ -1931,9 +1872,7 @@ function showError(
                 message
             )}
 
-
-            <br>
-
+            <br><br>
 
             <a
                 href="index.html"
@@ -1948,7 +1887,6 @@ function showError(
 }
 
 </script>
-
 
 </body>
 
