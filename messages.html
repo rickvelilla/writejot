@@ -3,395 +3,728 @@
 
 <head>
 
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>Writejot | Messages</title>
+    <meta charset="UTF-8">
 
-<style>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-* {
-    box-sizing: border-box;
-}
+    <title>Writejot | Messages</title>
 
-html,
-body {
-    margin: 0;
-    min-height: 100%;
-}
 
-body {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    <style>
 
-    background: #f6f8fc;
-    color: #1f2937;
-}
+        /* =====================================================
+           RESET
+        ===================================================== */
 
-header {
-    background: white;
-    border-bottom: 1px solid #e5e7eb;
+        * {
+            box-sizing: border-box;
+        }
 
-    padding: 13px 6%;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+        html {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
 
-    position: sticky;
-    top: 0;
-    z-index: 20;
-}
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        body {
 
-.brand img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-}
+            margin: 0;
 
-.brand-name {
-    font-size: 22px;
-    font-weight: 700;
-}
+            padding: 0;
 
-.back {
-    color: #4285F4;
-    text-decoration: none;
-    font-weight: 600;
-}
+            min-height: 100vh;
 
-main {
-    max-width: 850px;
-    margin: 30px auto 60px;
-    padding: 0 16px;
-}
+            width: 100%;
 
-.title-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-    margin-bottom: 18px;
-}
+            background:
+                #f6f8fc;
 
-.title-row h1 {
-    margin: 0;
-}
+            color:
+                #1f2937;
+        }
 
-.unread-total {
-    display: none;
 
-    min-width: 24px;
-    height: 24px;
 
-    padding: 0 7px;
+        /* =====================================================
+           PAGE
+        ===================================================== */
 
-    border-radius: 999px;
+        .messages-page {
 
-    background: #ef4444;
-    color: white;
+            width: 100%;
 
-    font-size: 12px;
-    font-weight: 700;
+            max-width: 820px;
 
-    align-items: center;
-    justify-content: center;
-}
+            margin:
+                0 auto;
 
-.list {
-    background: white;
+            padding:
+                28px 18px 60px;
+        }
 
-    border: 1px solid #e1e6ee;
-    border-radius: 15px;
 
-    overflow: hidden;
-}
 
-.conversation {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
-    padding: 14px 16px;
+        .messages-header {
 
-    text-decoration: none;
-    color: inherit;
+            width: 100%;
 
-    border-bottom: 1px solid #edf0f4;
+            display: flex;
 
-    cursor: pointer;
+            align-items: center;
 
-    transition: background .15s;
-}
+            justify-content:
+                space-between;
 
-.conversation:last-child {
-    border-bottom: none;
-}
+            margin-bottom:
+                18px;
+        }
 
-.conversation:hover {
-    background: #f8faff;
-}
 
-.conversation.unread {
-    background: #f5f9ff;
-}
+        .messages-header h1 {
 
-.avatar {
-    width: 48px;
-    height: 48px;
+            margin: 0;
 
-    border-radius: 50%;
+            font-size:
+                34px;
 
-    object-fit: cover;
+            line-height:
+                1.1;
+        }
 
-    flex: 0 0 48px;
 
-    background: #e8edf4;
-}
+        .unread-total {
 
-.conversation-main {
-    flex: 1;
-    min-width: 0;
-}
+            min-width: 26px;
 
-.top-line {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+            height: 26px;
 
-    margin-bottom: 2px;
-}
+            padding:
+                0 8px;
 
-.name {
-    font-weight: 700;
+            border-radius:
+                999px;
 
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
+            display: flex;
 
-.username {
-    color: #4285F4;
-    font-size: 12px;
-}
+            align-items: center;
 
-.preview {
-    color: #7b8494;
+            justify-content: center;
 
-    font-size: 13px;
+            background:
+                #ef4444;
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+            color:
+                white;
 
-.conversation.unread .preview {
-    color: #344054;
-    font-weight: 600;
-}
+            font-size:
+                12px;
 
-.conversation-side {
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
+            font-weight:
+                700;
+        }
 
-    gap: 5px;
 
-    flex-shrink: 0;
-}
+        .unread-total.hidden {
 
-.time {
-    color: #98a2b3;
-    font-size: 10px;
-}
+            display: none;
+        }
 
-.unread {
-    min-width: 21px;
-    height: 21px;
 
-    padding: 0 6px;
 
-    border-radius: 999px;
+        /* =====================================================
+           CONVERSATION LIST
 
-    background: #4285F4;
-    color: white;
+           IMPORTANT:
+           No fixed height.
+           No max-height.
+           No overflow:hidden.
+        ===================================================== */
 
-    display: flex;
+        #conversationList {
 
-    align-items: center;
-    justify-content: center;
+            width: 100%;
 
-    font-size: 11px;
-    font-weight: 700;
-}
+            height: auto;
 
-.empty {
-    padding: 60px 25px;
+            min-height: 0;
 
-    text-align: center;
+            max-height: none;
 
-    color: #8a94a6;
-}
+            overflow: visible;
 
-.lock-screen {
-    min-height: 75vh;
+            display: flex;
 
-    display: flex;
+            flex-direction: column;
 
-    align-items: center;
-    justify-content: center;
+            background:
+                white;
 
-    padding: 30px;
-}
+            border:
+                1px solid #e1e6ee;
 
-.lock-card {
-    max-width: 500px;
-    width: 100%;
+            border-radius:
+                16px;
 
-    background: white;
+            box-shadow:
+                0 8px 30px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .04
+                );
+        }
 
-    border: 1px solid #e1e6ee;
 
-    border-radius: 16px;
 
-    padding: 35px;
+        /* =====================================================
+           CONVERSATION
+        ===================================================== */
 
-    text-align: center;
-}
+        .conversation {
 
-.lock-card p {
-    color: #718096;
-    line-height: 1.6;
-}
+            width: 100%;
 
-.button {
-    display: inline-block;
+            min-height:
+                78px;
 
-    padding: 11px 17px;
+            padding:
+                14px 16px;
 
-    background: #4285F4;
+            display: flex;
 
-    color: white;
+            align-items: center;
 
-    text-decoration: none;
+            border-bottom:
+                1px solid #edf0f4;
 
-    border-radius: 9px;
+            background:
+                white;
 
-    font-weight: 600;
-}
+            cursor:
+                pointer;
 
-@media (max-width: 600px) {
+            transition:
+                background .15s ease,
+                transform .08s ease;
+        }
 
-    header {
-        padding: 10px 14px;
-    }
 
-    .brand-name {
-        font-size: 20px;
-    }
+        .conversation:last-child {
 
-    main {
-        margin-top: 18px;
-    }
+            border-bottom:
+                none;
+        }
 
-    .conversation {
-        padding: 12px;
-    }
 
-    .avatar {
-        width: 44px;
-        height: 44px;
-        flex-basis: 44px;
-    }
+        .conversation:hover {
 
-}
+            background:
+                #f8faff;
+        }
 
-</style>
+
+        .conversation:active {
+
+            transform:
+                scale(.997);
+        }
+
+
+
+        /* =====================================================
+           UNREAD CONVERSATION
+        ===================================================== */
+
+        .conversation.unread {
+
+            background:
+                #f7faff;
+        }
+
+
+        .conversation.unread:hover {
+
+            background:
+                #f0f6ff;
+        }
+
+
+
+        /* =====================================================
+           PROFILE PICTURE
+        ===================================================== */
+
+        .conversation-picture {
+
+            width:
+                50px;
+
+            height:
+                50px;
+
+            min-width:
+                50px;
+
+            border-radius:
+                50%;
+
+            object-fit:
+                cover;
+
+            background:
+                #edf2f7;
+
+            border:
+                2px solid #4285F4;
+        }
+
+
+
+        /* =====================================================
+           MIDDLE CONTENT
+        ===================================================== */
+
+        .conversation-content {
+
+            flex:
+                1;
+
+            min-width:
+                0;
+
+            padding:
+                0 13px;
+        }
+
+
+        .conversation-top {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            min-width:
+                0;
+
+            gap:
+                6px;
+        }
+
+
+        .conversation-name {
+
+            min-width:
+                0;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            white-space:
+                nowrap;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
+        }
+
+
+        .conversation.unread
+        .conversation-name {
+
+            font-weight:
+                800;
+        }
+
+
+        .conversation-username {
+
+            flex-shrink:
+                0;
+
+            color:
+                #4285F4;
+
+            font-size:
+                12px;
+
+            white-space:
+                nowrap;
+        }
+
+
+        .conversation-preview {
+
+            margin-top:
+                4px;
+
+            color:
+                #718096;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.3;
+
+            white-space:
+                nowrap;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
+        }
+
+
+        .conversation.unread
+        .conversation-preview {
+
+            color:
+                #374151;
+
+            font-weight:
+                600;
+        }
+
+
+
+        /* =====================================================
+           RIGHT SIDE
+        ===================================================== */
+
+        .conversation-right {
+
+            flex-shrink:
+                0;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                flex-end;
+
+            gap:
+                7px;
+        }
+
+
+        .conversation-time {
+
+            color:
+                #8a94a6;
+
+            font-size:
+                11px;
+
+            white-space:
+                nowrap;
+        }
+
+
+
+        /* =====================================================
+           UNREAD BADGE
+        ===================================================== */
+
+        .unread-badge {
+
+            min-width:
+                23px;
+
+            height:
+                23px;
+
+            padding:
+                0 7px;
+
+            border-radius:
+                999px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                #4285F4;
+
+            color:
+                white;
+
+            font-size:
+                11px;
+
+            font-weight:
+                700;
+        }
+
+
+        .unread-badge.hidden {
+
+            display:
+                none;
+        }
+
+
+
+        /* =====================================================
+           EMPTY / LOADING
+        ===================================================== */
+
+        .messages-empty {
+
+            padding:
+                60px 20px;
+
+            text-align:
+                center;
+
+            color:
+                #718096;
+
+            background:
+                white;
+
+            border-radius:
+                16px;
+        }
+
+
+        .messages-loading {
+
+            padding:
+                40px 20px;
+
+            text-align:
+                center;
+
+            color:
+                #718096;
+
+            background:
+                white;
+
+            border-radius:
+                16px;
+        }
+
+
+        .spinner {
+
+            width:
+                25px;
+
+            height:
+                25px;
+
+            margin:
+                0 auto 10px;
+
+            border:
+                3px solid #e5e7eb;
+
+            border-top-color:
+                #4285F4;
+
+            border-radius:
+                50%;
+
+            animation:
+                spin .7s linear infinite;
+        }
+
+
+        @keyframes spin {
+
+            to {
+
+                transform:
+                    rotate(360deg);
+            }
+        }
+
+
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        .messages-error {
+
+            padding:
+                30px 20px;
+
+            text-align:
+                center;
+
+            color:
+                #dc2626;
+
+            background:
+                white;
+
+            border-radius:
+                16px;
+        }
+
+
+
+        /* =====================================================
+           BACK BUTTON
+        ===================================================== */
+
+        .dashboard-link {
+
+            display:
+                inline-block;
+
+            margin-top:
+                15px;
+
+            color:
+                #4285F4;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                600;
+        }
+
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (
+            max-width: 600px
+        ) {
+
+            .messages-page {
+
+                padding:
+                    20px 10px 40px;
+            }
+
+
+            .messages-header h1 {
+
+                font-size:
+                    28px;
+            }
+
+
+            .conversation {
+
+                min-height:
+                    70px;
+
+                padding:
+                    12px;
+            }
+
+
+            .conversation-picture {
+
+                width:
+                    45px;
+
+                height:
+                    45px;
+
+                min-width:
+                    45px;
+            }
+
+
+            .conversation-content {
+
+                padding:
+                    0 9px;
+            }
+
+
+            .conversation-name {
+
+                font-size:
+                    14px;
+            }
+
+
+            .conversation-username {
+
+                font-size:
+                    11px;
+            }
+
+
+            .conversation-preview {
+
+                font-size:
+                    12px;
+            }
+
+
+            .conversation-time {
+
+                font-size:
+                    10px;
+            }
+
+        }
+
+    </style>
 
 </head>
+
 
 
 <body>
 
 
-<div
-    id="lockScreen"
-    class="lock-screen"
-    style="display:none;"
+<main
+    class="messages-page"
 >
 
-    <div class="lock-card">
 
-        <div style="font-size:45px;">
-            🔒
-        </div>
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-        <h1>
-            Messages unavailable
-        </h1>
-
-        <p>
-            Your Writejot access has expired.
-            Renew your subscription to continue
-            using Messages.
-        </p>
-
-        <a
-            class="button"
-            href="index.html"
-        >
-            Back to Dashboard
-        </a>
-
-    </div>
-
-</div>
-
-
-
-<div id="mainContent">
-
-<header>
-
-    <div class="brand">
-
-        <img
-            src="W.png"
-            alt="Writejot"
-        >
-
-        <div class="brand-name">
-            Writejot
-        </div>
-
-    </div>
-
-
-    <a
-        class="back"
-        href="index.html"
+    <div
+        class="messages-header"
     >
-        ← Dashboard
-    </a>
-
-</header>
-
-
-<main>
-
-    <div class="title-row">
 
         <h1>
             Messages
@@ -400,50 +733,74 @@ main {
 
         <div
             id="unreadTotal"
-            class="unread-total"
+            class="unread-total hidden"
         ></div>
 
     </div>
 
 
+
+    <!-- =====================================================
+         CONVERSATIONS
+    ====================================================== -->
+
     <div
         id="conversationList"
-        class="list"
     >
 
-        <div class="empty">
+        <div
+            class="messages-loading"
+        >
+
+            <div
+                class="spinner"
+            ></div>
+
             Loading conversations...
+
         </div>
 
     </div>
 
-</main>
 
-</div>
+</main>
 
 
 
 <script>
 
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-const ACCESS_CACHE_TIME =
+const CACHE_TIME =
     5 * 60 * 1000;
+
+
+const REFRESH_INTERVAL =
+    15000;
 
 
 let currentUser =
     null;
 
+
 let conversations =
     [];
+
 
 let refreshTimer =
     null;
 
-let lastFingerprint =
-    "";
+
+let firstServerLoad =
+    true;
+
 
 
 /* =========================================================
@@ -452,171 +809,204 @@ let lastFingerprint =
 
 window.addEventListener(
     "load",
-    async function() {
+    function () {
 
-        const saved =
-            localStorage.getItem(
-                "writejotUser"
-            );
-
-
-        if (!saved) {
-
-            location.href =
-                "index.html";
-
-            return;
-
-        }
-
-
-        try {
-
-            currentUser =
-                JSON.parse(
-                    saved
-                );
-
-        }
-
-        catch {
-
-            location.href =
-                "index.html";
-
-            return;
-
-        }
-
-
-        /*
-         * Show the cached conversations FIRST.
-         */
-
-        loadConversationCache();
-
-
-        /*
-         * If we have a recent verified access state,
-         * don't make the user wait.
-         */
-
-        const cachedAccess =
-            getCachedAccess();
-
-
-        if (
-            cachedAccess &&
-            cachedAccess.access === true
-        ) {
-
-            startBackgroundRefresh();
-
-        }
-
-        else {
-
-            /*
-             * No fresh access cache:
-             * verify, but do it while the page
-             * already has whatever cached data exists.
-             */
-
-            verifyAccessInBackground();
-
-        }
+        initialize();
 
     }
 );
 
 
+
+async function initialize() {
+
+    const saved =
+        localStorage.getItem(
+            "writejotUser"
+        );
+
+
+    if (
+        !saved
+    ) {
+
+        showError(
+            "Please sign in to Writejot first."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        currentUser =
+            JSON.parse(
+                saved
+            );
+
+    }
+
+    catch (
+        error
+    ) {
+
+        localStorage.removeItem(
+            "writejotUser"
+        );
+
+
+        showError(
+            "Your Writejot session could not be loaded."
+        );
+
+
+        return;
+
+    }
+
+
+    /*
+     * =====================================================
+     * CACHE FIRST
+     *
+     * Render cached conversations immediately.
+     * Do NOT clear them while server loads.
+     * =====================================================
+     */
+
+    loadCache();
+
+
+    if (
+        conversations.length
+    ) {
+
+        renderConversations();
+
+    }
+
+
+    /*
+     * Fetch current data in background.
+     */
+
+    await loadConversations();
+
+
+    /*
+     * Continue checking for new messages.
+     */
+
+    startRefreshTimer();
+
+}
+
+
+
 /* =========================================================
-   ACCESS CACHE
+   CACHE KEY
 ========================================================= */
 
-function accessCacheKey() {
+function getCacheKey() {
 
     return (
-        "writejot_access_" +
-        String(
+        "writejot_conversations_" +
+        normalizeEmail(
             currentUser.email
         )
-        .trim()
-        .toLowerCase()
     );
 
 }
 
 
-function getCachedAccess() {
+
+/* =========================================================
+   LOAD CACHE
+========================================================= */
+
+function loadCache() {
 
     try {
 
         const raw =
             localStorage.getItem(
-                accessCacheKey()
+                getCacheKey()
             );
 
 
-        if (!raw) {
-            return null;
+        if (
+            !raw
+        ) {
+
+            return;
+
         }
 
 
-        const data =
+        const cached =
             JSON.parse(
                 raw
             );
 
 
         if (
-            Date.now() -
-            Number(
-                data.checkedAt || 0
+            !Array.isArray(
+                cached.conversations
             )
-            >
-            ACCESS_CACHE_TIME
         ) {
 
-            return null;
+            return;
 
         }
 
 
-        return data;
+        /*
+         * We can display cached content
+         * immediately.
+         */
+
+        conversations =
+            cached.conversations
+                .slice();
+
 
     }
 
-    catch {
+    catch (
+        error
+    ) {
 
-        return null;
+        console.log(
+            "Conversation cache could not be read."
+        );
 
     }
 
 }
 
 
-function saveAccessCache(
-    result
-) {
+
+/* =========================================================
+   SAVE CACHE
+========================================================= */
+
+function saveCache() {
 
     try {
 
         localStorage.setItem(
 
-            accessCacheKey(),
+            getCacheKey(),
 
             JSON.stringify({
 
-                access:
-                    result.access === true,
+                savedAt:
+                    Date.now(),
 
-                status:
-                    result.status ||
-                    "",
-
-                checkedAt:
-                    Date.now()
+                conversations:
+                    conversations
 
             })
 
@@ -624,16 +1014,25 @@ function saveAccessCache(
 
     }
 
-    catch {}
+    catch (
+        error
+    ) {
+
+        console.log(
+            "Conversation cache could not be saved."
+        );
+
+    }
 
 }
 
 
+
 /* =========================================================
-   BACKGROUND ACCESS
+   LOAD CONVERSATIONS
 ========================================================= */
 
-async function verifyAccessInBackground() {
+async function loadConversations() {
 
     try {
 
@@ -641,7 +1040,8 @@ async function verifyAccessInBackground() {
             await fetch(
 
                 APPS_SCRIPT_URL +
-                "?action=access&email=" +
+                "?action=conversations" +
+                "&email=" +
                 encodeURIComponent(
                     currentUser.email
                 ),
@@ -654,48 +1054,120 @@ async function verifyAccessInBackground() {
             );
 
 
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+                "Server returned " +
+                response.status
+            );
+
+        }
+
+
         const result =
             await response.json();
 
 
+        /*
+         * Access expired.
+         */
+
         if (
-            !result.success ||
-            !result.access
+            result.accessDenied === true ||
+            result.access === false
         ) {
 
-            saveAccessCache(
-                result
+            showError(
+                result.error ||
+                "Your Writejot access has expired."
             );
 
-
-            showLocked();
 
             return;
 
         }
 
 
-        saveAccessCache(
-            result
-        );
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error ||
+                "Could not load conversations."
+            );
+
+        }
 
 
-        startBackgroundRefresh();
+        /*
+         * Update data.
+         */
+
+        conversations =
+            Array.isArray(
+                result.conversations
+            )
+                ? result.conversations
+                : [];
+
+
+        /*
+         * Store locally.
+         */
+
+        saveCache();
+
+
+        /*
+         * Render normally.
+         */
+
+        renderConversations();
+
+
+        firstServerLoad =
+            false;
 
     }
 
-    catch (error) {
+    catch (
+        error
+    ) {
+
+        console.error(
+            "Conversation loading error:",
+            error
+        );
+
 
         /*
-         * If we don't have a valid fresh
-         * access state, don't grant access.
+         * IMPORTANT:
+         *
+         * If cached data exists, DON'T replace it
+         * with an error message.
          */
 
         if (
-            !getCachedAccess()
+            conversations.length
         ) {
 
-            showLocked();
+            renderConversations();
+
+            return;
+
+        }
+
+
+        if (
+            firstServerLoad
+        ) {
+
+            showError(
+                "Could not load your messages."
+            );
 
         }
 
@@ -704,14 +1176,12 @@ async function verifyAccessInBackground() {
 }
 
 
+
 /* =========================================================
-   REFRESH
+   START AUTO REFRESH
 ========================================================= */
 
-function startBackgroundRefresh() {
-
-    refreshConversations();
-
+function startRefreshTimer() {
 
     if (
         refreshTimer
@@ -726,204 +1196,52 @@ function startBackgroundRefresh() {
 
     refreshTimer =
         setInterval(
-            refreshConversations,
-            5000
+            function () {
+
+                /*
+                 * Only refresh while the page
+                 * is visible.
+                 */
+
+                if (
+                    document.visibilityState ===
+                    "visible"
+                ) {
+
+                    loadConversations();
+
+                }
+
+            },
+
+            REFRESH_INTERVAL
+
         );
 
 }
 
-
-async function refreshConversations() {
-
-    try {
-
-        const response =
-            await fetch(
-
-                APPS_SCRIPT_URL +
-                "?action=conversations&email=" +
-                encodeURIComponent(
-                    currentUser.email
-                ),
-
-                {
-                    cache:
-                        "no-store"
-                }
-
-            );
-
-
-        const result =
-            await response.json();
-
-
-        if (
-            result.accessDenied
-        ) {
-
-            saveAccessCache(
-                {
-                    access: false,
-                    status:
-                        result.status
-                }
-            );
-
-
-            showLocked();
-
-            return;
-
-        }
-
-
-        if (
-            !result.success
-        ) {
-
-            return;
-
-        }
-
-
-        const next =
-            result.conversations ||
-            [];
-
-
-        const nextFingerprint =
-            JSON.stringify(
-                next
-            );
-
-
-        if (
-            nextFingerprint ===
-            lastFingerprint
-        ) {
-
-            return;
-
-        }
-
-
-        conversations =
-            next;
-
-
-        lastFingerprint =
-            nextFingerprint;
-
-
-        saveConversationCache();
-
-
-        renderConversations();
-
-    }
-
-    catch (error) {
-
-        console.error(
-            error
-        );
-
-    }
-
-}
 
 
 /* =========================================================
-   CONVERSATION CACHE
+   VISIBILITY
 ========================================================= */
 
-function conversationCacheKey() {
-
-    return (
-        "writejot_conversations_" +
-        String(
-            currentUser.email
-        )
-        .trim()
-        .toLowerCase()
-    );
-
-}
-
-
-function loadConversationCache() {
-
-    try {
-
-        const raw =
-            localStorage.getItem(
-                conversationCacheKey()
-            );
-
-
-        if (!raw) {
-
-            return;
-
-        }
-
-
-        const parsed =
-            JSON.parse(
-                raw
-            );
-
+document.addEventListener(
+    "visibilitychange",
+    function () {
 
         if (
-            !Array.isArray(
-                parsed
-            )
+            document.visibilityState ===
+            "visible"
         ) {
 
-            return;
+            loadConversations();
 
         }
 
-
-        conversations =
-            parsed;
-
-
-        lastFingerprint =
-            JSON.stringify(
-                parsed
-            );
-
-
-        renderConversations();
-
     }
+);
 
-    catch {}
-
-}
-
-
-function saveConversationCache() {
-
-    try {
-
-        localStorage.setItem(
-
-            conversationCacheKey(),
-
-            JSON.stringify(
-                conversations
-            )
-
-        );
-
-    }
-
-    catch {}
-
-}
 
 
 /* =========================================================
@@ -938,11 +1256,27 @@ function renderConversations() {
         );
 
 
-    const unreadTotal =
-        document.getElementById(
-            "unreadTotal"
-        );
+    /*
+     * IMPORTANT:
+     *
+     * Never give the list a fixed height.
+     */
 
+    list.style.height =
+        "auto";
+
+
+    list.style.maxHeight =
+        "none";
+
+
+    list.style.overflow =
+        "visible";
+
+
+    /*
+     * No conversations.
+     */
 
     if (
         !conversations.length
@@ -951,22 +1285,47 @@ function renderConversations() {
         list.innerHTML =
 
             `
-            <div class="empty">
+            <div
+                class="messages-empty"
+            >
 
-                No conversations yet.
+                <div
+                    style="
+                        font-size:42px;
+                        margin-bottom:12px;
+                    "
+                >
+                    💬
+                </div>
 
-                <br><br>
 
-                Search for a profile
-                from your dashboard to
-                start a conversation.
+                <strong>
+                    No conversations yet.
+                </strong>
+
+
+                <div
+                    style="
+                        margin-top:6px;
+                    "
+                >
+                    Search for a student to start
+                    a conversation.
+                </div>
+
+
+                <a
+                    href="index.html"
+                    class="dashboard-link"
+                >
+                    ← Back to Dashboard
+                </a>
 
             </div>
             `;
 
 
-        unreadTotal.style.display =
-            "none";
+        updateUnreadTotal();
 
 
         return;
@@ -974,221 +1333,384 @@ function renderConversations() {
     }
 
 
+    list.innerHTML =
+        conversations
+            .map(
+                function (
+                    conversation
+                ) {
+
+                    return renderConversation(
+                        conversation
+                    );
+
+                }
+            )
+            .join("");
+
+
+    /*
+     * Update notification counter.
+     */
+
+    updateUnreadTotal();
+
+}
+
+
+
+/* =========================================================
+   RENDER ONE CONVERSATION
+========================================================= */
+
+function renderConversation(
+    conversation
+) {
+
+    const username =
+        normalizeUsername(
+            conversation.username
+        );
+
+
+    const name =
+        conversation.name ||
+        "Writejot User";
+
+
+    const picture =
+        conversation.profilePicture ||
+        "W.png";
+
+
+    const preview =
+        conversation.lastMessage ||
+        "";
+
+
+    const unread =
+        Math.max(
+            0,
+            Number(
+                conversation.unreadCount ||
+                0
+            )
+        );
+
+
+    const isUnread =
+        unread > 0;
+
+
+    const time =
+        formatConversationTime(
+            conversation.timestamp
+        );
+
+
+    return `
+
+        <div
+            class="
+                conversation
+                ${
+                    isUnread
+                        ? "unread"
+                        : ""
+                }
+            "
+            data-username="${escapeHtml(
+                username
+            )}"
+            role="button"
+            tabindex="0"
+            onclick="
+                openConversation(
+                    '${escapeJs(
+                        username
+                    )}'
+                )
+            "
+            onkeydown="
+                handleConversationKey(
+                    event,
+                    '${escapeJs(
+                        username
+                    )}'
+                )
+            "
+        >
+
+
+            <img
+                class="conversation-picture"
+                src="${escapeHtml(
+                    picture
+                )}"
+                alt=""
+                loading="lazy"
+                onerror="
+                    this.src='W.png';
+                "
+            >
+
+
+
+            <div
+                class="conversation-content"
+            >
+
+                <div
+                    class="conversation-top"
+                >
+
+                    <div
+                        class="conversation-name"
+                    >
+                        ${escapeHtml(
+                            name
+                        )}
+                    </div>
+
+
+                    <div
+                        class="
+                            conversation-username
+                        "
+                    >
+                        @${escapeHtml(
+                            username
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="
+                        conversation-preview
+                    "
+                >
+                    ${escapeHtml(
+                        preview ||
+                        "No messages yet."
+                    )}
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="
+                    conversation-right
+                "
+            >
+
+                <div
+                    class="
+                        conversation-time
+                    "
+                >
+                    ${escapeHtml(
+                        time
+                    )}
+                </div>
+
+
+                <div
+                    class="
+                        unread-badge
+                        ${
+                            isUnread
+                                ? ""
+                                : "hidden"
+                        }
+                    "
+                >
+                    ${
+                        unread > 99
+                            ? "99+"
+                            : unread
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* =========================================================
+   OPEN CONVERSATION
+========================================================= */
+
+function openConversation(
+    username
+) {
+
+    const cleaned =
+        normalizeUsername(
+            username
+        );
+
+
+    if (
+        !cleaned
+    ) {
+
+        return;
+
+    }
+
+
+    window.location.href =
+        "chat.html?username=" +
+        encodeURIComponent(
+            cleaned
+        );
+
+}
+
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+function handleConversationKey(
+    event,
+    username
+) {
+
+    if (
+        event.key ===
+            "Enter" ||
+        event.key ===
+            " "
+    ) {
+
+        event.preventDefault();
+
+
+        openConversation(
+            username
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   UNREAD TOTAL
+========================================================= */
+
+function updateUnreadTotal() {
+
+    const badge =
+        document.getElementById(
+            "unreadTotal"
+        );
+
+
+    /*
+     * THIS IS IMPORTANT:
+     *
+     * Sum every conversation's unreadCount.
+     *
+     * Do NOT just use conversations.length.
+     */
+
     let total =
         0;
 
 
     conversations.forEach(
-        function(conversation) {
+        function (
+            conversation
+        ) {
 
-            total +=
+            const unread =
                 Number(
                     conversation.unreadCount ||
                     0
                 );
+
+
+            if (
+                Number.isFinite(
+                    unread
+                ) &&
+                unread > 0
+            ) {
+
+                total +=
+                    unread;
+
+            }
 
         }
     );
 
 
     if (
-        total > 0
+        total <= 0
     ) {
 
-        unreadTotal.textContent =
-            total > 99
-                ? "99+"
-                : total;
+        badge.textContent =
+            "";
 
-
-        unreadTotal.style.display =
-            "flex";
-
-    }
-
-    else {
-
-        unreadTotal.style.display =
-            "none";
-
-    }
-
-
-    list.innerHTML =
-        conversations
-            .map(
-                function(conversation) {
-
-                    const unread =
-                        Number(
-                            conversation.unreadCount ||
-                            0
-                        );
-
-
-                    return `
-
-                    <a
-                        class="
-                            conversation
-                            ${
-                                unread > 0
-                                    ? "unread"
-                                    : ""
-                            }
-                        "
-                        href="chat.html?username=${encodeURIComponent(
-                            conversation.username
-                        )}"
-                    >
-
-                        <img
-                            class="avatar"
-                            src="${escapeHtml(
-                                conversation.profilePicture ||
-                                "W.png"
-                            )}"
-                            onerror="
-                                this.src='W.png'
-                            "
-                            alt=""
-                        >
-
-
-                        <div
-                            class="conversation-main"
-                        >
-
-                            <div
-                                class="top-line"
-                            >
-
-                                <div
-                                    class="name"
-                                >
-                                    ${escapeHtml(
-                                        conversation.name ||
-                                        "Writejot User"
-                                    )}
-                                </div>
-
-
-                                <div
-                                    class="username"
-                                >
-                                    @${escapeHtml(
-                                        conversation.username
-                                    )}
-                                </div>
-
-                            </div>
-
-
-                            <div
-                                class="preview"
-                            >
-                                ${escapeHtml(
-                                    conversation.lastMessage ||
-                                    "No messages"
-                                )}
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="conversation-side"
-                        >
-
-                            <div class="time">
-
-                                ${escapeHtml(
-                                    formatTime(
-                                        conversation.timestamp
-                                    )
-                                )}
-
-                            </div>
-
-
-                            ${
-                                unread > 0
-                                    ? `
-                                        <div class="unread">
-                                            ${
-                                                unread > 99
-                                                    ? "99+"
-                                                    : unread
-                                            }
-                                        </div>
-                                      `
-                                    : ""
-                            }
-
-                        </div>
-
-                    </a>
-
-                    `;
-
-                }
-            )
-            .join("");
-
-}
-
-
-/* =========================================================
-   LOCK
-========================================================= */
-
-function showLocked() {
-
-    if (
-        refreshTimer
-    ) {
-
-        clearInterval(
-            refreshTimer
+        badge.classList.add(
+            "hidden"
         );
 
+        return;
+
     }
 
 
-    document
-        .getElementById(
-            "mainContent"
-        )
-        .style.display =
-        "none";
+    badge.classList.remove(
+        "hidden"
+    );
 
 
-    document
-        .getElementById(
-            "lockScreen"
-        )
-        .style.display =
-        "flex";
+    badge.textContent =
+        total > 99
+            ? "99+"
+            : String(
+                total
+            );
 
 }
 
 
+
 /* =========================================================
-   HELPERS
+   TIME
 ========================================================= */
 
-function formatTime(
-    value
+function formatConversationTime(
+    timestamp
 ) {
 
-    if (!value) {
+    if (
+        !timestamp
+    ) {
+
         return "";
+
     }
 
 
     const date =
         new Date(
-            value
+            timestamp
         );
 
 
@@ -1199,28 +1721,120 @@ function formatTime(
     ) {
 
         return "";
+
     }
 
 
-    return date.toLocaleString(
+    const now =
+        new Date();
+
+
+    const sameDay =
+        date.toDateString() ===
+        now.toDateString();
+
+
+    if (
+        sameDay
+    ) {
+
+        return date.toLocaleTimeString(
+            [],
+            {
+                hour:
+                    "numeric",
+
+                minute:
+                    "2-digit"
+            }
+        );
+
+    }
+
+
+    const difference =
+        now.getTime() -
+        date.getTime();
+
+
+    const oneDay =
+        24 *
+        60 *
+        60 *
+        1000;
+
+
+    if (
+        difference >= 0 &&
+        difference < 7 * oneDay
+    ) {
+
+        return date.toLocaleDateString(
+            [],
+            {
+                weekday:
+                    "short"
+            }
+        );
+
+    }
+
+
+    return date.toLocaleDateString(
         [],
         {
             month:
                 "short",
 
             day:
-                "numeric",
-
-            hour:
-                "numeric",
-
-            minute:
-                "2-digit"
+                "numeric"
         }
     );
 
 }
 
+
+
+/* =========================================================
+   NORMALIZE
+========================================================= */
+
+function normalizeUsername(
+    username
+) {
+
+    return String(
+        username ||
+        ""
+    )
+    .trim()
+    .toLowerCase()
+    .replace(
+        /^@/,
+        ""
+    );
+
+}
+
+
+function normalizeEmail(
+    email
+) {
+
+    return String(
+        email ||
+        ""
+    )
+    .trim()
+    .toLowerCase();
+
+}
+
+
+
+/* =========================================================
+   HTML ESCAPE
+========================================================= */
 
 function escapeHtml(
     value
@@ -1253,7 +1867,88 @@ function escapeHtml(
 
 }
 
+
+
+/* =========================================================
+   JAVASCRIPT STRING ESCAPE
+========================================================= */
+
+function escapeJs(
+    value
+) {
+
+    return String(
+        value ||
+        ""
+    )
+    .replace(
+        /\\/g,
+        "\\\\"
+    )
+    .replace(
+        /'/g,
+        "\\'"
+    )
+    .replace(
+        /"/g,
+        '\\"'
+    )
+    .replace(
+        /\r/g,
+        "\\r"
+    )
+    .replace(
+        /\n/g,
+        "\\n"
+    );
+
+}
+
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function showError(
+    message
+) {
+
+    const list =
+        document.getElementById(
+            "conversationList"
+        );
+
+
+    list.innerHTML =
+
+        `
+        <div
+            class="messages-error"
+        >
+
+            ${escapeHtml(
+                message
+            )}
+
+
+            <br>
+
+
+            <a
+                href="index.html"
+                class="dashboard-link"
+            >
+                ← Back to Dashboard
+            </a>
+
+        </div>
+        `;
+
+}
+
 </script>
+
 
 </body>
 
