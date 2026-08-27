@@ -15,14 +15,16 @@
 <style>
 
 * {
-    box-sizing:
-        border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
 }
 
 body {
-    margin:
-        0;
-
     font-family:
         Arial,
         Helvetica,
@@ -36,8 +38,7 @@ body {
 }
 
 header {
-    background:
-        white;
+    background: white;
 
     border-bottom:
         1px solid #e5e7eb;
@@ -53,14 +54,34 @@ header {
 
     justify-content:
         space-between;
+
+    position:
+        sticky;
+
+    top: 0;
+
+    z-index: 50;
 }
 
-.logo {
-    font-size:
-        22px;
+.brand {
+    display:
+        flex;
 
-    font-weight:
-        700;
+    align-items:
+        center;
+
+    gap: 10px;
+}
+
+.brand img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: 700;
 }
 
 .back {
@@ -74,29 +95,29 @@ header {
         600;
 }
 
-.container {
-    max-width:
-        600px;
+main {
+    width: 100%;
+
+    max-width: 700px;
 
     margin:
-        35px auto;
+        35px auto 60px;
 
     padding:
         0 16px;
 }
 
-.card {
-    background:
-        white;
+.profile-card {
+    background: white;
 
     border:
         1px solid #e1e6ee;
 
     border-radius:
-        16px;
+        18px;
 
     padding:
-        30px;
+        35px;
 
     box-shadow:
         0 8px 30px
@@ -106,38 +127,17 @@ header {
             0,
             .04
         );
-}
 
-h1 {
-    margin-top:
-        0;
-}
-
-.subtitle {
-    color:
-        #718096;
-}
-
-.profile-picture-container {
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
+    text-align:
         center;
-
-    margin:
-        25px 0;
 }
 
 .profile-picture {
     width:
-        110px;
+        120px;
 
     height:
-        110px;
+        120px;
 
     border-radius:
         50%;
@@ -150,97 +150,106 @@ h1 {
 
     background:
         #edf2f7;
+
+    margin-bottom:
+        15px;
 }
 
-.upload-button {
+.profile-name {
+    margin:
+        0;
+
+    font-size:
+        30px;
+
+    font-weight:
+        700;
+}
+
+.profile-username {
     margin-top:
-        12px;
-
-    border:
-        1px solid #d7dce3;
-
-    background:
-        white;
+        4px;
 
     color:
         #4285F4;
 
-    padding:
-        10px 15px;
-
-    border-radius:
-        9px;
-
-    cursor:
-        pointer;
+    font-size:
+        15px;
 
     font-weight:
         600;
 }
 
-#imageInput {
+.profile-bio {
+    max-width:
+        520px;
+
+    margin:
+        18px auto 0;
+
+    color:
+        #667085;
+
+    line-height:
+        1.7;
+
+    white-space:
+        pre-wrap;
+
+    word-break:
+        break-word;
+}
+
+.profile-actions {
     display:
-        none;
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    flex-wrap:
+        wrap;
+
+    margin-top:
+        25px;
 }
 
-.field {
-    margin-bottom:
-        17px;
-}
-
-.field label {
+.button {
     display:
-        block;
+        inline-flex;
 
-    font-weight:
-        700;
+    align-items:
+        center;
 
-    margin-bottom:
-        7px;
-}
-
-.field input,
-.field textarea {
-    width:
-        100%;
+    justify-content:
+        center;
 
     padding:
-        12px;
-
-    border:
-        1px solid #d8dee8;
+        11px 17px;
 
     border-radius:
         9px;
 
-    font-family:
-        inherit;
-
-    font-size:
-        14px;
-
-    outline:
+    text-decoration:
         none;
-}
 
-.field textarea {
-    min-height:
-        110px;
+    font-weight:
+        600;
 
-    resize:
-        vertical;
-}
+    border:
+        1px solid #d8dee8;
 
-.field input:focus,
-.field textarea:focus {
-    border-color:
+    background:
+        white;
+
+    color:
         #4285F4;
 }
 
-.save-button {
-    width:
-        100%;
-
+.primary {
     border:
         none;
 
@@ -249,176 +258,117 @@ h1 {
 
     color:
         white;
-
-    padding:
-        13px;
-
-    border-radius:
-        9px;
-
-    cursor:
-        pointer;
-
-    font-weight:
-        700;
 }
 
-.save-button:disabled {
-    opacity:
-        .65;
+.primary:hover {
+    background:
+        #3367d6;
 }
 
-.status {
-    margin-top:
-        12px;
+.button:hover {
+    transform:
+        translateY(-1px);
+}
 
+.loading {
     text-align:
         center;
 
-    font-size:
-        13px;
+    color:
+        #718096;
+
+    padding:
+        50px;
+}
+
+.error {
+    text-align:
+        center;
+
+    color:
+        #dc2626;
+
+    padding:
+        40px;
+}
+
+@media (
+    max-width: 600px
+) {
+
+    main {
+        margin-top:
+            20px;
+
+        padding:
+            0 10px;
+    }
+
+    .profile-card {
+        padding:
+            28px 18px;
+    }
+
+    .profile-picture {
+        width:
+            100px;
+
+        height:
+            100px;
+    }
+
+    .profile-name {
+        font-size:
+            25px;
+    }
+
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <header>
 
-<div class="logo">
-    Writejot
-</div>
+    <div class="brand">
 
-<a
-    class="back"
-    href="index.html"
->
-    ← Dashboard
-</a>
+        <img
+            src="W.png"
+            alt="Writejot"
+        >
+
+        <div class="brand-name">
+            Writejot
+        </div>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ← Dashboard
+    </a>
 
 </header>
 
 
+<main>
 
-<main class="container">
+    <div
+        id="profileContainer"
+    >
 
-<div class="card">
+        <div class="loading">
+            Loading profile...
+        </div>
 
-<h1>
-    Edit Profile
-</h1>
-
-<p class="subtitle">
-    Customize your Writejot profile.
-</p>
-
-
-
-<div
-    class="profile-picture-container"
->
-
-<img
-    id="profilePicture"
-    class="profile-picture"
-    src="W.png"
-    alt="Profile picture"
->
-
-
-<button
-    type="button"
-    class="upload-button"
-    onclick="openImagePicker()"
->
-    📷 Upload Photo
-</button>
-
-
-<input
-    id="imageInput"
-    type="file"
-    accept="image/*"
-    onchange="handleImage(event)"
->
-
-</div>
-
-
-
-<div class="field">
-
-<label>
-    Display Name
-</label>
-
-<input
-    id="nameInput"
-    type="text"
-    maxlength="80"
-    placeholder="Your display name"
->
-
-</div>
-
-
-
-<div class="field">
-
-<label>
-    Username
-</label>
-
-<input
-    id="usernameInput"
-    type="text"
-    maxlength="20"
-    placeholder="username"
->
-
-</div>
-
-
-
-<div class="field">
-
-<label>
-    Bio
-</label>
-
-<textarea
-    id="bioInput"
-    maxlength="500"
-    placeholder="Tell people a little about yourself..."
-></textarea>
-
-</div>
-
-
-
-<button
-    id="saveButton"
-    class="save-button"
-    type="button"
-    onclick="saveProfile()"
->
-    Save Changes
-</button>
-
-
-<div
-    id="statusMessage"
-    class="status"
-></div>
-
-</div>
+    </div>
 
 </main>
-
 
 
 <script>
@@ -427,126 +377,57 @@ const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-let currentUser =
-    null;
+let viewedUsername =
+    "";
 
-let originalProfile =
-    null;
-
-let selectedImage =
-    null;
-
-
-/* =========================================================
-   START
-========================================================= */
 
 window.addEventListener(
     "load",
-    async function() {
-
-        const saved =
-            localStorage.getItem(
-                "writejotUser"
-            );
-
-
-        if (!saved) {
-
-            location.href =
-                "index.html";
-
-            return;
-
-        }
-
-
-        try {
-
-            currentUser =
-                JSON.parse(
-                    saved
-                );
-
-        }
-
-        catch {
-
-            location.href =
-                "index.html";
-
-            return;
-
-        }
-
-
-        /*
-         * Show locally cached user immediately.
-         */
-
-        loadLocalUser();
-
-
-        /*
-         * Refresh from server in background.
-         */
-
-        loadServerProfile();
-
-    }
+    loadProfile
 );
 
 
+async function loadProfile() {
 
-/* =========================================================
-   LOCAL USER
-========================================================= */
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
 
-function loadLocalUser() {
 
-    document
-        .getElementById(
-            "nameInput"
+    viewedUsername =
+        String(
+            params.get(
+                "username"
+            ) ||
+            ""
         )
-        .value =
-        currentUser.name ||
-        "";
+        .trim()
+        .toLowerCase()
+        .replace(
+            /^@/,
+            ""
+        );
 
 
-    document
-        .getElementById(
-            "usernameInput"
-        )
-        .value =
-        currentUser.username ||
-        "";
+    const container =
+        document.getElementById(
+            "profileContainer"
+        );
 
 
-    document
-        .getElementById(
-            "bioInput"
-        )
-        .value =
-        currentUser.bio ||
-        "";
+    if (
+        !viewedUsername
+    ) {
 
+        showError(
+            "No username was provided."
+        );
 
-    document
-        .getElementById(
-            "profilePicture"
-        )
-        .src =
-        currentUser.profilePicture ||
-        "W.png";
+        return;
 
-}
+    }
 
-
-/* =========================================================
-   SERVER PROFILE
-========================================================= */
-
-async function loadServerProfile() {
 
     try {
 
@@ -556,7 +437,7 @@ async function loadServerProfile() {
                 APPS_SCRIPT_URL +
                 "?action=profile&username=" +
                 encodeURIComponent(
-                    currentUser.username
+                    viewedUsername
                 ),
 
                 {
@@ -565,6 +446,17 @@ async function loadServerProfile() {
                 }
 
             );
+
+
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+                "Server error"
+            );
+
+        }
 
 
         const result =
@@ -576,605 +468,268 @@ async function loadServerProfile() {
             !result.profile
         ) {
 
+            showError(
+                "Profile not found."
+            );
+
             return;
 
         }
 
 
-        originalProfile =
-            result.profile;
-
-
-        /*
-         * Only update the UI if the user
-         * isn't currently editing.
-         */
-
-        document
-            .getElementById(
-                "nameInput"
-            )
-            .value =
-            result.profile.name ||
-            "";
-
-
-        document
-            .getElementById(
-                "usernameInput"
-            )
-            .value =
-            result.profile.username ||
-            "";
-
-
-        document
-            .getElementById(
-                "bioInput"
-            )
-            .value =
-            result.profile.bio ||
-            "";
-
-
-        document
-            .getElementById(
-                "profilePicture"
-            )
-            .src =
-            result.profile.profilePicture ||
-            "W.png";
-
-    }
-
-    catch {
-
-        console.log(
-            "Profile refresh failed."
+        renderProfile(
+            result.profile
         );
-
-    }
-
-}
-
-
-/* =========================================================
-   IMAGE
-========================================================= */
-
-function openImagePicker() {
-
-    document
-        .getElementById(
-            "imageInput"
-        )
-        .click();
-
-}
-
-
-function handleImage(
-    event
-) {
-
-    const file =
-        event.target.files &&
-        event.target.files[0];
-
-
-    if (!file) {
-        return;
-    }
-
-
-    selectedImage =
-        file;
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload =
-        function() {
-
-            /*
-             * OPTIMISTIC:
-             * show the image immediately.
-             */
-
-            document
-                .getElementById(
-                    "profilePicture"
-                )
-                .src =
-                reader.result;
-
-        };
-
-
-    reader.readAsDataURL(
-        file
-    );
-
-}
-
-
-/* =========================================================
-   SAVE PROFILE
-========================================================= */
-
-async function saveProfile() {
-
-    const name =
-        document
-            .getElementById(
-                "nameInput"
-            )
-            .value
-            .trim();
-
-
-    const username =
-        document
-            .getElementById(
-                "usernameInput"
-            )
-            .value
-            .trim()
-            .replace(
-                /^@/,
-                ""
-            );
-
-
-    const bio =
-        document
-            .getElementById(
-                "bioInput"
-            )
-            .value
-            .trim();
-
-
-    const button =
-        document.getElementById(
-            "saveButton"
-        );
-
-
-    const status =
-        document.getElementById(
-            "statusMessage"
-        );
-
-
-    if (!name) {
-
-        status.textContent =
-            "Enter a display name.";
-
-        status.style.color =
-            "#dc2626";
-
-        return;
-
-    }
-
-
-    /*
-     * Save the old data so we can restore
-     * it if the server fails.
-     */
-
-    const oldUser =
-        {
-            ...currentUser
-        };
-
-
-    /*
-     * OPTIMISTIC UPDATE
-     */
-
-    currentUser.name =
-        name;
-
-
-    currentUser.username =
-        username;
-
-
-    currentUser.bio =
-        bio;
-
-
-    /*
-     * If an image was selected, use the
-     * preview immediately.
-     */
-
-    const optimisticPicture =
-        document
-            .getElementById(
-                "profilePicture"
-            )
-            .src;
-
-
-    currentUser.profilePicture =
-        optimisticPicture;
-
-
-    localStorage.setItem(
-
-        "writejotUser",
-
-        JSON.stringify(
-            currentUser
-        )
-
-    );
-
-
-    status.textContent =
-        "Saved";
-
-
-    status.style.color =
-        "#16834a";
-
-
-    button.disabled =
-        true;
-
-
-    button.textContent =
-        "Saving...";
-
-
-    try {
-
-        let imageData =
-            "";
-
-        let imageType =
-            "";
-
-        let imageName =
-            "";
-
-
-        if (
-            selectedImage
-        ) {
-
-            const compressed =
-                await compressImage(
-                    selectedImage
-                );
-
-
-            imageData =
-                compressed.dataUrl;
-
-            imageType =
-                compressed.mimeType;
-
-            imageName =
-                compressed.fileName;
-
-        }
-
-
-        const response =
-            await fetch(
-
-                APPS_SCRIPT_URL,
-
-                {
-
-                    method:
-                        "POST",
-
-                    headers: {
-
-                        "Content-Type":
-                            "text/plain;charset=utf-8"
-
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            action:
-                                "updateProfile",
-
-                            email:
-                                currentUser.email,
-
-                            name:
-                                name,
-
-                            username:
-                                username,
-
-                            bio:
-                                bio,
-
-                            profileImageData:
-                                imageData,
-
-                            profileImageType:
-                                imageType,
-
-                            profileImageName:
-                                imageName
-
-                        })
-
-                }
-
-            );
-
-
-        const result =
-            await response.json();
-
-
-        if (
-            !result.success
-        ) {
-
-            throw new Error(
-                result.error ||
-                "Could not update profile."
-            );
-
-        }
-
-
-        /*
-         * Replace optimistic image URL
-         * with the actual Drive URL.
-         */
-
-        currentUser.name =
-            result.name;
-
-        currentUser.username =
-            result.username;
-
-        currentUser.bio =
-            result.bio;
-
-        currentUser.profilePicture =
-            result.profilePicture;
-
-
-        localStorage.setItem(
-
-            "writejotUser",
-
-            JSON.stringify(
-                currentUser
-            )
-
-        );
-
-
-        /*
-         * Clear image selection.
-         */
-
-        selectedImage =
-            null;
-
-
-        status.textContent =
-            "Changes saved.";
-
-        status.style.color =
-            "#16834a";
-
 
     }
 
     catch (error) {
 
-        /*
-         * Restore previous profile
-         * if saving failed.
-         */
-
-        currentUser =
-            oldUser;
-
-
-        localStorage.setItem(
-
-            "writejotUser",
-
-            JSON.stringify(
-                currentUser
-            )
-
+        console.error(
+            error
         );
 
 
-        loadLocalUser();
-
-
-        status.textContent =
-            error.message ||
-            "Could not save changes.";
-
-        status.style.color =
-            "#dc2626";
-
-    }
-
-    finally {
-
-        button.disabled =
-            false;
-
-        button.textContent =
-            "Save Changes";
+        showError(
+            "Could not load this profile."
+        );
 
     }
 
 }
 
 
-/* =========================================================
-   COMPRESS IMAGE
-========================================================= */
-
-function compressImage(
-    file
+function renderProfile(
+    profile
 ) {
 
-    return new Promise(
-        function(
-            resolve,
-            reject
-        ) {
-
-            const reader =
-                new FileReader();
+    const container =
+        document.getElementById(
+            "profileContainer"
+        );
 
 
-            reader.onerror =
-                reject;
+    const picture =
+        profile.profilePicture ||
+        "W.png";
 
 
-            reader.onload =
-                function() {
-
-                    const image =
-                        new Image();
+    const currentUser =
+        getCurrentUser();
 
 
-                    image.onerror =
-                        reject;
+    const isOwnProfile =
+        currentUser &&
+        normalizeUsername(
+            currentUser.username
+        ) ===
+        normalizeUsername(
+            profile.username
+        );
 
 
-                    image.onload =
-                        function() {
+    container.innerHTML =
 
-                            const max =
-                                1200;
+    `
+    <div class="profile-card">
 
-
-                            let width =
-                                image.width;
-
-                            let height =
-                                image.height;
-
-
-                            if (
-                                width >
-                                max ||
-                                height >
-                                max
-                            ) {
-
-                                if (
-                                    width >
-                                    height
-                                ) {
-
-                                    height =
-                                        Math.round(
-                                            height *
-                                            max /
-                                            width
-                                        );
-
-                                    width =
-                                        max;
-
-                                }
-
-                                else {
-
-                                    width =
-                                        Math.round(
-                                            width *
-                                            max /
-                                            height
-                                        );
-
-                                    height =
-                                        max;
-
-                                }
-
-                            }
+        <img
+            class="profile-picture"
+            src="${escapeHtml(
+                picture
+            )}"
+            alt="Profile picture"
+            onerror="
+                this.src='W.png'
+            "
+        >
 
 
-                            const canvas =
-                                document
-                                    .createElement(
-                                        "canvas"
-                                    );
+        <h1
+            class="profile-name"
+        >
+            ${escapeHtml(
+                profile.name ||
+                "Writejot User"
+            )}
+        </h1>
 
 
-                            canvas.width =
-                                width;
-
-                            canvas.height =
-                                height;
-
-
-                            canvas
-                                .getContext(
-                                    "2d"
-                                )
-                                .drawImage(
-                                    image,
-                                    0,
-                                    0,
-                                    width,
-                                    height
-                                );
+        <div
+            class="profile-username"
+        >
+            @${escapeHtml(
+                profile.username ||
+                viewedUsername
+            )}
+        </div>
 
 
-                            resolve({
-
-                                dataUrl:
-                                    canvas.toDataURL(
-                                        "image/jpeg",
-                                        .82
-                                    ),
-
-                                mimeType:
-                                    "image/jpeg",
-
-                                fileName:
-                                    "profile-" +
-                                    Date.now() +
-                                    ".jpg"
-
-                            });
-
-                        };
+        ${
+            profile.bio
+                ? `
+                    <div
+                        class="profile-bio"
+                    >
+                        ${escapeHtml(
+                            profile.bio
+                        )}
+                    </div>
+                  `
+                : ""
+        }
 
 
-                    image.src =
-                        reader.result;
+        <div
+            class="profile-actions"
+        >
 
-                };
+            ${
+                isOwnProfile
+
+                    ? `
+                        <a
+                            href="edit-profile.html"
+                            class="button primary"
+                        >
+                            ⚙️ Edit Profile
+                        </a>
+                      `
+
+                    : `
+                        <a
+                            href="
+                                chat.html?username=${encodeURIComponent(
+                                    normalizeUsername(
+                                        profile.username
+                                    )
+                                )}
+                            "
+                            class="button primary"
+                        >
+                            💬 Message
+                        </a>
+                      `
+            }
+
+        </div>
+
+    </div>
+    `;
+
+}
 
 
-            reader.readAsDataURL(
-                file
+function getCurrentUser() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                "writejotUser"
             );
 
+
+        if (!saved) {
+
+            return null;
+
         }
+
+
+        return JSON.parse(
+            saved
+        );
+
+    }
+
+    catch {
+
+        return null;
+
+    }
+
+}
+
+
+function normalizeUsername(
+    username
+) {
+
+    return String(
+        username ||
+        ""
+    )
+    .trim()
+    .toLowerCase()
+    .replace(
+        /^@/,
+        ""
     );
+
+}
+
+
+function escapeHtml(
+    value
+) {
+
+    return String(
+        value ||
+        ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+function showError(
+    message
+) {
+
+    document
+        .getElementById(
+            "profileContainer"
+        )
+        .innerHTML =
+
+        `
+        <div class="profile-card">
+
+            <div class="error">
+                ${escapeHtml(
+                    message
+                )}
+            </div>
+
+            <a
+                href="index.html"
+                class="button primary"
+            >
+                Back to Dashboard
+            </a>
+
+        </div>
+        `;
 
 }
 
