@@ -3,1392 +3,1552 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <meta
-        name="description"
-        content="Writejot - A student-powered platform for sharing and accessing study notes."
-    >
+<meta
+    name="description"
+    content="Writejot - A student-powered platform for sharing and accessing study notes."
+>
 
-    <title>Writejot | Student Notes</title>
+<title>Writejot | Student Notes</title>
 
 
-    <script
-        src="https://accounts.google.com/gsi/client"
-        async
-        defer>
-    </script>
+<!-- GOOGLE LOGIN -->
 
+<script
+    src="https://accounts.google.com/gsi/client"
+    async
+    defer
+></script>
 
-    <style>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
 
+<style>
 
-        html {
-            scroll-behavior: smooth;
-        }
+/* =========================================================
+   RESET
+========================================================= */
 
+* {
+    box-sizing: border-box;
 
-        body {
+    margin: 0;
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+    padding: 0;
+}
 
-            background:
-                #f6f8fc;
 
-            color:
-                #1f2937;
+html {
+    scroll-behavior: smooth;
+}
 
-            line-height:
-                1.6;
-        }
 
+body {
 
-        a {
-            color: inherit;
-        }
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
+    background:
+        #f6f8fc;
 
-        button,
-        input {
-            font-family: inherit;
-        }
+    color:
+        #1f2937;
 
+    line-height:
+        1.6;
+}
 
-        /* =========================
-           LOADING SCREEN
-        ========================= */
 
-        #appLoading {
+a {
+    color:
+        inherit;
+}
 
-            position: fixed;
 
-            inset: 0;
+button,
+input {
+    font-family:
+        inherit;
+}
 
-            background:
-                #f6f8fc;
 
-            display: flex;
 
-            align-items: center;
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
 
-            justify-content: center;
+#appLoading {
 
-            z-index: 9999;
-        }
+    position:
+        fixed;
 
+    inset:
+        0;
 
-        .app-spinner {
+    background:
+        #f6f8fc;
 
-            width: 38px;
+    display:
+        flex;
 
-            height: 38px;
+    align-items:
+        center;
 
-            border:
-                4px solid #e5e7eb;
+    justify-content:
+        center;
 
-            border-top-color:
-                #4285F4;
+    z-index:
+        9999;
+}
 
-            border-radius:
-                50%;
 
-            animation:
-                appSpin .7s linear infinite;
-        }
+.app-spinner {
 
+    width:
+        38px;
 
-        @keyframes appSpin {
+    height:
+        38px;
 
-            to {
-                transform:
-                    rotate(360deg);
-            }
+    border:
+        4px solid #e5e7eb;
 
-        }
+    border-top-color:
+        #4285F4;
 
+    border-radius:
+        50%;
 
-        /* =========================
-           HEADER
-        ========================= */
+    animation:
+        appSpin
+        .7s linear infinite;
+}
 
-        header {
 
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    .97
-                );
+@keyframes appSpin {
 
-            border-bottom:
-                1px solid #e5e7eb;
+    to {
 
-            position:
-                sticky;
+        transform:
+            rotate(360deg);
 
-            top:
-                0;
+    }
 
-            z-index:
-                1000;
+}
 
-            padding:
-                14px 6%;
 
-            display:
-                flex;
 
-            align-items:
-                center;
+/* =========================================================
+   HEADER
+========================================================= */
 
-            justify-content:
-                space-between;
+header {
 
-            backdrop-filter:
-                blur(10px);
-        }
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .97
+        );
 
+    border-bottom:
+        1px solid #e5e7eb;
 
-        .brand {
+    position:
+        sticky;
 
-            display:
-                flex;
+    top:
+        0;
 
-            align-items:
-                center;
+    z-index:
+        1000;
 
-            gap:
-                11px;
-        }
+    padding:
+        14px 6%;
 
+    display:
+        flex;
 
-        .brand img {
+    align-items:
+        center;
 
-            width:
-                42px;
+    justify-content:
+        space-between;
 
-            height:
-                42px;
+    backdrop-filter:
+        blur(10px);
+}
 
-            object-fit:
-                contain;
-        }
 
+.brand {
 
-        .brand-name {
+    display:
+        flex;
 
-            font-size:
-                23px;
+    align-items:
+        center;
 
-            font-weight:
-                700;
-        }
+    gap:
+        11px;
+}
 
 
-        #profileArea {
+.brand img {
 
-            display:
-                none;
+    width:
+        42px;
 
-            align-items:
-                center;
+    height:
+        42px;
 
-            gap:
-                10px;
-        }
+    object-fit:
+        contain;
+}
 
 
-        #profilePicture {
+.brand-name {
 
-            width:
-                40px;
+    font-size:
+        23px;
 
-            height:
-                40px;
+    font-weight:
+        700;
+}
 
-            border-radius:
-                50%;
 
-            object-fit:
-                cover;
+#profileArea {
 
-            border:
-                2px solid #4285F4;
-        }
+    display:
+        none;
 
+    align-items:
+        center;
 
-        #profileName {
+    gap:
+        10px;
+}
 
-            font-weight:
-                600;
 
-            font-size:
-                14px;
-        }
+#profilePicture {
 
+    width:
+        40px;
 
-        #logoutButton {
+    height:
+        40px;
 
-            border:
-                none;
+    border-radius:
+        50%;
 
-            background:
-                #ef4444;
+    object-fit:
+        cover;
 
-            color:
-                white;
+    border:
+        2px solid #4285F4;
+}
 
-            padding:
-                8px 13px;
 
-            border-radius:
-                7px;
+#profileName {
 
-            cursor:
-                pointer;
+    font-weight:
+        600;
 
-            font-weight:
-                600;
-        }
+    font-size:
+        14px;
+}
 
 
-        #logoutButton:hover {
+#logoutButton {
 
-            background:
-                #dc2626;
-        }
+    border:
+        none;
 
+    background:
+        #ef4444;
 
-        /* =========================
-           BUTTONS
-        ========================= */
+    color:
+        white;
 
-        .button {
+    padding:
+        8px 13px;
 
-            display:
-                inline-flex;
+    border-radius:
+        7px;
 
-            justify-content:
-                center;
+    cursor:
+        pointer;
 
-            align-items:
-                center;
+    font-weight:
+        600;
+}
 
-            padding:
-                11px 17px;
 
-            border-radius:
-                8px;
+#logoutButton:hover {
 
-            text-decoration:
-                none;
+    background:
+        #dc2626;
+}
 
-            font-weight:
-                600;
 
-            border:
-                1px solid transparent;
 
-            cursor:
-                pointer;
+/* =========================================================
+   BUTTONS
+========================================================= */
 
-            font-size:
-                14px;
+.button {
 
-            transition:
-                background .15s ease,
-                transform .15s ease;
-        }
+    display:
+        inline-flex;
 
+    justify-content:
+        center;
 
-        .button:hover {
+    align-items:
+        center;
 
-            transform:
-                translateY(-1px);
-        }
+    padding:
+        11px 17px;
 
+    border-radius:
+        8px;
 
-        .primary {
+    text-decoration:
+        none;
 
-            background:
-                #4285F4;
+    font-weight:
+        600;
 
-            color:
-                white;
-        }
+    border:
+        1px solid transparent;
 
+    cursor:
+        pointer;
 
-        .primary:hover {
+    font-size:
+        14px;
 
-            background:
-                #3367d6;
-        }
+    transition:
+        background .15s ease,
+        transform .15s ease;
+}
 
 
-        .secondary {
+.button:hover {
 
-            background:
-                white;
+    transform:
+        translateY(-1px);
+}
 
-            color:
-                #2563eb;
 
-            border-color:
-                #d7e3fb;
-        }
+.primary {
 
+    background:
+        #4285F4;
 
-        .secondary:hover {
+    color:
+        white;
+}
 
-            background:
-                #f7faff;
-        }
 
+.primary:hover {
 
-        /* =========================
-           HOME
-        ========================= */
+    background:
+        #3367d6;
+}
 
-        #homeSection {
 
-            display:
-                none;
-        }
+.secondary {
 
+    background:
+        white;
 
-        .hero {
+    color:
+        #2563eb;
 
-            max-width:
-                900px;
+    border-color:
+        #d7e3fb;
+}
 
-            margin:
-                0 auto;
 
-            padding:
-                90px 20px 65px;
+.secondary:hover {
 
-            text-align:
-                center;
-        }
+    background:
+        #f7faff;
+}
 
 
-        .hero-badge {
 
-            display:
-                inline-block;
+/* =========================================================
+   HOME
+========================================================= */
 
-            padding:
-                7px 13px;
+#homeSection {
 
-            border-radius:
-                999px;
+    display:
+        none;
+}
 
-            background:
-                #eaf2ff;
 
-            color:
-                #2563eb;
+.hero {
 
-            font-size:
-                13px;
+    max-width:
+        900px;
 
-            font-weight:
-                600;
+    margin:
+        0 auto;
 
-            margin-bottom:
-                18px;
-        }
+    padding:
+        90px 20px 65px;
 
+    text-align:
+        center;
+}
 
-        .hero h1 {
 
-            font-size:
-                clamp(
-                    38px,
-                    7vw,
-                    62px
-                );
+.hero-badge {
 
-            line-height:
-                1.05;
+    display:
+        inline-block;
 
-            letter-spacing:
-                -2px;
+    padding:
+        7px 13px;
 
-            margin-bottom:
-                20px;
-        }
+    border-radius:
+        999px;
 
+    background:
+        #eaf2ff;
 
-        .hero h1 span {
+    color:
+        #2563eb;
 
-            color:
-                #4285F4;
-        }
+    font-size:
+        13px;
 
+    font-weight:
+        600;
 
-        .hero-subtitle {
+    margin-bottom:
+        18px;
+}
 
-            max-width:
-                680px;
 
-            margin:
-                0 auto 22px;
+.hero h1 {
 
-            color:
-                #667085;
+    font-size:
+        clamp(
+            38px,
+            7vw,
+            62px
+        );
 
-            font-size:
-                18px;
-        }
+    line-height:
+        1.05;
 
+    letter-spacing:
+        -2px;
 
-        .founder {
+    margin-bottom:
+        20px;
+}
 
-            color:
-                #8a94a6;
 
-            font-size:
-                14px;
+.hero h1 span {
 
-            margin-bottom:
-                30px;
-        }
+    color:
+        #4285F4;
+}
 
 
-        .button-row {
+.hero-subtitle {
 
-            display:
-                flex;
+    max-width:
+        680px;
 
-            justify-content:
-                center;
+    margin:
+        0 auto 22px;
 
-            gap:
-                12px;
+    color:
+        #667085;
 
-            flex-wrap:
-                wrap;
-        }
+    font-size:
+        18px;
+}
 
 
-        #loginSection {
+.founder {
 
-            margin:
-                45px auto 0;
+    color:
+        #8a94a6;
 
-            padding-top:
-                30px;
+    font-size:
+        14px;
 
-            border-top:
-                1px solid #e5e7eb;
+    margin-bottom:
+        30px;
+}
 
-            display:
-                flex;
 
-            flex-direction:
-                column;
+.button-row {
 
-            align-items:
-                center;
-        }
+    display:
+        flex;
 
+    justify-content:
+        center;
 
-        #loginSection h3 {
+    gap:
+        12px;
 
-            margin-bottom:
-                5px;
-        }
+    flex-wrap:
+        wrap;
+}
 
 
-        #loginSection p {
+#loginSection {
 
-            color:
-                #718096;
+    margin:
+        45px auto 0;
 
-            font-size:
-                14px;
-        }
+    padding-top:
+        30px;
 
+    border-top:
+        1px solid #e5e7eb;
 
-        #googleLogin {
+    display:
+        flex;
 
-            margin-top:
-                15px;
-        }
+    flex-direction:
+        column;
 
+    align-items:
+        center;
+}
 
-        /* =========================
-           ACCOUNT SETUP
-        ========================= */
 
-        #accountSetup {
+#loginSection h3 {
 
-            display:
-                none;
+    margin-bottom:
+        5px;
+}
 
-            min-height:
-                75vh;
 
-            padding:
-                50px 20px;
+#loginSection p {
 
-            align-items:
-                center;
+    color:
+        #718096;
 
-            justify-content:
-                center;
-        }
+    font-size:
+        14px;
+}
 
 
-        .setup-card {
+#googleLogin {
 
-            width:
-                100%;
+    margin-top:
+        15px;
+}
 
-            max-width:
-                520px;
 
-            background:
-                white;
 
-            border:
-                1px solid #e1e6ee;
+/* =========================================================
+   ACCOUNT SETUP
+========================================================= */
 
-            border-radius:
-                16px;
+#accountSetup {
 
-            padding:
-                35px;
+    display:
+        none;
 
-            text-align:
-                center;
-        }
+    min-height:
+        75vh;
 
+    padding:
+        50px 20px;
 
-        .setup-card p {
+    align-items:
+        center;
 
-            color:
-                #718096;
+    justify-content:
+        center;
+}
 
-            margin:
-                10px 0 25px;
-        }
 
+.setup-card {
 
-        .username-label {
+    width:
+        100%;
 
-            display:
-                block;
+    max-width:
+        520px;
 
-            text-align:
-                left;
+    background:
+        white;
 
-            font-weight:
-                600;
+    border:
+        1px solid #e1e6ee;
 
-            margin-bottom:
-                7px;
-        }
+    border-radius:
+        16px;
 
+    padding:
+        35px;
 
-        .username-wrapper {
+    text-align:
+        center;
+}
 
-            display:
-                flex;
 
-            align-items:
-                center;
+.setup-card p {
 
-            background:
-                #f8fafc;
+    color:
+        #718096;
 
-            border:
-                1px solid #d8dee8;
+    margin:
+        10px 0 25px;
+}
 
-            border-radius:
-                8px;
-        }
 
+.username-label {
 
-        .username-prefix {
+    display:
+        block;
 
-            padding-left:
-                14px;
+    text-align:
+        left;
 
-            color:
-                #6b7280;
+    font-weight:
+        600;
 
-            font-weight:
-                600;
-        }
+    margin-bottom:
+        7px;
+}
 
 
-        #usernameInput {
+.username-wrapper {
 
-            width:
-                100%;
+    display:
+        flex;
 
-            border:
-                none;
+    align-items:
+        center;
 
-            outline:
-                none;
+    background:
+        #f8fafc;
 
-            background:
-                transparent;
+    border:
+        1px solid #d8dee8;
 
-            padding:
-                13px 14px 13px 5px;
+    border-radius:
+        8px;
+}
 
-            font-size:
-                16px;
-        }
 
+.username-prefix {
 
-        #usernameMessage {
+    padding-left:
+        14px;
 
-            min-height:
-                24px;
+    color:
+        #6b7280;
 
-            margin:
-                10px 0 15px;
+    font-weight:
+        600;
+}
 
-            text-align:
-                left;
-        }
 
+#usernameInput {
 
-        #setupLoading {
+    width:
+        100%;
 
-            display:
-                none;
+    border:
+        none;
 
-            margin-top:
-                12px;
+    outline:
+        none;
 
-            color:
-                #667085;
-        }
+    background:
+        transparent;
 
+    padding:
+        13px 14px 13px 5px;
 
-        /* =========================
-           DASHBOARD
-        ========================= */
+    font-size:
+        16px;
+}
 
-        #dashboard {
 
-            display:
-                none;
+#usernameMessage {
 
-            max-width:
-                1050px;
+    min-height:
+        24px;
 
-            margin:
-                0 auto 70px;
+    margin:
+        10px 0 15px;
 
-            padding:
-                30px 20px;
-        }
+    text-align:
+        left;
+}
 
 
-        /* =========================
-           SEARCH
-        ========================= */
+#setupLoading {
 
-        .profile-search {
+    display:
+        none;
 
-            position:
-                relative;
+    margin-top:
+        12px;
 
-            width:
-                100%;
+    color:
+        #667085;
+}
 
-            max-width:
-                650px;
 
-            margin:
-                0 auto 22px;
-        }
 
+/* =========================================================
+   DASHBOARD
+========================================================= */
 
-        #profileSearchInput {
+#dashboard {
 
-            width:
-                100%;
+    display:
+        none;
 
-            height:
-                48px;
+    max-width:
+        1050px;
 
-            padding:
-                0 16px;
+    margin:
+        0 auto 70px;
 
-            border:
-                1px solid #d8dee8;
+    padding:
+        30px 20px;
+}
 
-            border-radius:
-                10px;
 
-            background:
-                white;
 
-            font-size:
-                15px;
+/* =========================================================
+   SEARCH
+========================================================= */
 
-            outline:
-                none;
+.profile-search {
 
-            box-shadow:
-                0 2px 8px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .03
-                );
-        }
+    position:
+        relative;
 
+    width:
+        100%;
 
-        #profileSearchInput:focus {
+    max-width:
+        650px;
 
-            border-color:
-                #4285F4;
+    margin:
+        0 auto 22px;
+}
 
-            box-shadow:
-                0 0 0 3px
-                rgba(
-                    66,
-                    133,
-                    244,
-                    .08
-                );
-        }
 
+#profileSearchInput {
 
-        #profileSearchResults {
+    width:
+        100%;
 
-            display:
-                none;
+    height:
+        48px;
 
-            position:
-                absolute;
+    padding:
+        0 16px;
 
-            top:
-                calc(
-                    100% + 6px
-                );
+    border:
+        1px solid #d8dee8;
 
-            left:
-                0;
+    border-radius:
+        10px;
 
-            right:
-                0;
+    background:
+        white;
 
-            background:
-                white;
+    font-size:
+        15px;
 
-            border:
-                1px solid #e1e6ee;
+    outline:
+        none;
 
-            border-radius:
-                10px;
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            .03
+        );
+}
 
-            box-shadow:
-                0 10px 30px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .10
-                );
 
-            overflow:
-                hidden;
+#profileSearchInput:focus {
 
-            z-index:
-                20;
-        }
+    border-color:
+        #4285F4;
 
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            66,
+            133,
+            244,
+            .08
+        );
+}
 
-        .search-result {
 
-            display:
-                flex;
+#profileSearchResults {
 
-            align-items:
-                center;
+    display:
+        none;
 
-            gap:
-                12px;
+    position:
+        absolute;
 
-            padding:
-                12px 15px;
+    top:
+        calc(
+            100% + 6px
+        );
 
-            cursor:
-                pointer;
+    left:
+        0;
 
-            border-bottom:
-                1px solid #f0f2f5;
-        }
+    right:
+        0;
 
+    background:
+        white;
 
-        .search-result:hover {
+    border:
+        1px solid #e1e6ee;
 
-            background:
-                #f7faff;
-        }
+    border-radius:
+        10px;
 
+    box-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            .10
+        );
 
-        .search-result img {
+    overflow:
+        hidden;
 
-            width:
-                42px;
+    z-index:
+        20;
 
-            height:
-                42px;
+    max-height:
+        420px;
 
-            border-radius:
-                50%;
+    overflow-y:
+        auto;
+}
 
-            object-fit:
-                cover;
-        }
 
+.search-result {
 
-        .search-result-name {
+    display:
+        flex;
 
-            font-weight:
-                600;
-        }
+    align-items:
+        center;
 
+    gap:
+        12px;
 
-        .search-result-username {
+    padding:
+        12px 15px;
 
-            color:
-                #4285F4;
+    cursor:
+        pointer;
 
-            font-size:
-                13px;
-        }
+    border-bottom:
+        1px solid #f0f2f5;
 
+    text-decoration:
+        none;
 
-        .search-result-bio {
+    color:
+        inherit;
+}
 
-            color:
-                #7b8494;
 
-            font-size:
-                13px;
+.search-result:last-child {
 
-            white-space:
-                nowrap;
+    border-bottom:
+        none;
+}
 
-            overflow:
-                hidden;
 
-            text-overflow:
-                ellipsis;
-        }
+.search-result:hover {
 
+    background:
+        #f7faff;
+}
 
-        /* =========================
-           DASHBOARD HEADER
-        ========================= */
 
-        .dashboard-header {
+.search-result img {
 
-            background:
-                white;
+    width:
+        42px;
 
-            border:
-                1px solid #e1e6ee;
+    height:
+        42px;
 
-            border-radius:
-                16px;
+    border-radius:
+        50%;
 
-            padding:
-                28px;
+    object-fit:
+        cover;
 
-            display:
-                flex;
+    flex:
+        0 0 42px;
 
-            align-items:
-                center;
+    background:
+        #edf2f7;
+}
 
-            gap:
-                18px;
 
-            margin-bottom:
-                20px;
-        }
+.search-result-name {
 
+    font-weight:
+        600;
+}
 
-        .dashboard-pfp {
 
-            width:
-                72px;
+.search-result-username {
 
-            height:
-                72px;
+    color:
+        #4285F4;
 
-            border-radius:
-                50%;
+    font-size:
+        13px;
+}
 
-            object-fit:
-                cover;
 
-            border:
-                2px solid #4285F4;
+.search-result-bio {
 
-            flex-shrink:
-                0;
-        }
+    color:
+        #7b8494;
 
+    font-size:
+        13px;
 
-        .dashboard-username {
+    white-space:
+        nowrap;
 
-            color:
-                #4285F4;
+    overflow:
+        hidden;
 
-            font-weight:
-                600;
-        }
+    text-overflow:
+        ellipsis;
+}
 
 
-        .dashboard-status {
+.search-loading {
 
-            margin-top:
-                5px;
+    padding:
+        15px;
 
-            color:
-                #718096;
+    text-align:
+        center;
 
-            font-size:
-                14px;
-        }
+    color:
+        #8a94a6;
 
+    font-size:
+        13px;
+}
 
-        /* =========================
-           DASHBOARD GRID
-        ========================= */
 
-        .dashboard-grid {
 
-            display:
-                grid;
+/* =========================================================
+   DASHBOARD HEADER
+========================================================= */
 
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(
-                        240px,
-                        1fr
-                    )
-                );
+.dashboard-header {
 
-            gap:
-                18px;
-        }
+    background:
+        white;
 
+    border:
+        1px solid #e1e6ee;
 
-        .dashboard-card {
+    border-radius:
+        16px;
 
-            background:
-                white;
+    padding:
+        28px;
 
-            border:
-                1px solid #e1e6ee;
+    display:
+        flex;
 
-            border-radius:
-                14px;
+    align-items:
+        center;
 
-            padding:
-                25px;
+    gap:
+        18px;
 
-            transition:
-                transform .15s ease,
-                box-shadow .15s ease;
-        }
+    margin-bottom:
+        20px;
+}
 
 
-        .dashboard-card:hover {
+.dashboard-pfp {
 
-            transform:
-                translateY(-2px);
+    width:
+        72px;
 
-            box-shadow:
-                0 8px 20px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .05
-                );
-        }
+    height:
+        72px;
 
+    border-radius:
+        50%;
 
-        .dashboard-icon {
+    object-fit:
+        cover;
 
-            font-size:
-                32px;
+    border:
+        2px solid #4285F4;
 
-            margin-bottom:
-                10px;
-        }
+    flex-shrink:
+        0;
+}
 
 
-        .dashboard-card h3 {
+.dashboard-username {
 
-            margin-bottom:
-                7px;
-        }
+    color:
+        #4285F4;
 
+    font-weight:
+        600;
+}
 
-        .dashboard-card p {
 
-            color:
-                #718096;
+.dashboard-status {
 
-            margin-bottom:
-                15px;
-        }
+    margin-top:
+        5px;
 
+    color:
+        #718096;
 
-        .trial-card {
+    font-size:
+        14px;
+}
 
-            margin-top:
-                18px;
 
-            background:
-                #f1f7ff;
 
-            border-color:
-                #cfe0ff;
-        }
+/* =========================================================
+   DASHBOARD GRID
+========================================================= */
 
+.dashboard-grid {
 
-        /* =========================
-           ABOUT
-        ========================= */
+    display:
+        grid;
 
-        .section-container {
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                240px,
+                1fr
+            )
+        );
 
-            max-width:
-                1050px;
+    gap:
+        18px;
+}
 
-            margin:
-                0 auto 55px;
 
-            padding:
-                0 20px;
-        }
+.dashboard-card {
 
+    background:
+        white;
 
-        .section-card {
+    border:
+        1px solid #e1e6ee;
 
-            background:
-                white;
+    border-radius:
+        14px;
 
-            border:
-                1px solid #e3e7ee;
+    padding:
+        25px;
 
-            border-radius:
-                14px;
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+}
 
-            padding:
-                30px;
-        }
 
+.dashboard-card:hover {
 
-        .section-card h2 {
+    transform:
+        translateY(-2px);
 
-            margin-bottom:
-                10px;
-        }
+    box-shadow:
+        0 8px 20px
+        rgba(
+            0,
+            0,
+            0,
+            .05
+        );
+}
 
 
-        .section-card p {
+.dashboard-icon {
 
-            color:
-                #687386;
+    font-size:
+        32px;
 
-            margin:
-                12px 0;
-        }
+    margin-bottom:
+        10px;
+}
 
 
-        .section-card ul {
+.dashboard-card h3 {
 
-            padding-left:
-                22px;
+    margin-bottom:
+        7px;
+}
 
-            color:
-                #596579;
 
-            line-height:
-                1.9;
-        }
+.dashboard-card p {
 
+    color:
+        #718096;
 
-        /* =========================
-           PRICING
-        ========================= */
+    margin-bottom:
+        15px;
+}
 
-        .pricing {
 
-            max-width:
-                640px;
+.trial-card {
 
-            margin:
-                0 auto 70px;
+    margin-top:
+        18px;
 
-            padding:
-                0 20px;
-        }
+    background:
+        #f1f7ff;
 
+    border-color:
+        #cfe0ff;
+}
 
-        .pricing-card {
 
-            background:
-                white;
 
-            border:
-                1px solid #e3e7ee;
+/* =========================================================
+   ABOUT
+========================================================= */
 
-            border-radius:
-                16px;
+.section-container {
 
-            padding:
-                34px;
+    max-width:
+        1050px;
 
-            text-align:
-                center;
-        }
+    margin:
+        0 auto 55px;
 
+    padding:
+        0 20px;
+}
 
-        .price {
 
-            color:
-                #4285F4;
+.section-card {
 
-            font-size:
-                48px;
+    background:
+        white;
 
-            font-weight:
-                700;
+    border:
+        1px solid #e3e7ee;
 
-            margin:
-                8px 0;
-        }
+    border-radius:
+        14px;
 
+    padding:
+        30px;
+}
 
-        .pricing-card ul {
 
-            max-width:
-                430px;
+.section-card h2 {
 
-            margin:
-                0 auto 20px;
+    margin-bottom:
+        10px;
+}
 
-            text-align:
-                left;
 
-            padding-left:
-                22px;
+.section-card p {
 
-            color:
-                #596579;
+    color:
+        #687386;
 
-            line-height:
-                1.9;
-        }
+    margin:
+        12px 0;
+}
 
 
-        .payment-note {
+.section-card ul {
 
-            color:
-                #687386;
+    padding-left:
+        22px;
 
-            font-size:
-                14px;
-        }
+    color:
+        #596579;
 
+    line-height:
+        1.9;
+}
 
-        /* =========================
-           FOOTER
-        ========================= */
 
-        footer {
 
-            border-top:
-                1px solid #e5e7eb;
+/* =========================================================
+   PRICING
+========================================================= */
 
-            background:
-                white;
+.pricing {
 
-            color:
-                #7b8494;
+    max-width:
+        640px;
 
-            text-align:
-                center;
+    margin:
+        0 auto 70px;
 
-            padding:
-                28px 20px;
-        }
+    padding:
+        0 20px;
+}
 
 
-        footer strong {
+.pricing-card {
 
-            color:
-                #404756;
-        }
+    background:
+        white;
 
+    border:
+        1px solid #e3e7ee;
 
-        /* =========================
-           MOBILE
-        ========================= */
+    border-radius:
+        16px;
 
-        @media (
-            max-width:
-            650px
-        ) {
+    padding:
+        34px;
 
-            header {
+    text-align:
+        center;
+}
 
-                padding:
-                    11px 18px;
-            }
 
+.price {
 
-            .brand-name {
+    color:
+        #4285F4;
 
-                font-size:
-                    20px;
-            }
+    font-size:
+        48px;
 
+    font-weight:
+        700;
 
-            #profileName {
+    margin:
+        8px 0;
+}
 
-                display:
-                    none;
-            }
 
+.old-price {
 
-            .hero {
+    color:
+        #9ca3af;
 
-                padding-top:
-                    60px;
-            }
+    font-size:
+        20px;
 
+    text-decoration:
+        line-through;
 
-            .button {
+    margin-right:
+        8px;
+}
 
-                width:
-                    100%;
 
-                max-width:
-                    300px;
-            }
+.discount-badge {
 
+    display:
+        inline-block;
 
-            .setup-card {
+    background:
+        #ef4444;
 
-                padding:
-                    25px 20px;
-            }
+    color:
+        white;
 
+    font-size:
+        12px;
 
-            .dashboard-header {
+    font-weight:
+        700;
 
-                padding:
-                    22px;
-            }
+    padding:
+        5px 9px;
 
+    border-radius:
+        999px;
 
-            .dashboard-pfp {
+    margin-bottom:
+        5px;
+}
 
-                width:
-                    62px;
 
-                height:
-                    62px;
-            }
+.price-line {
 
-        }
+    display:
+        flex;
 
-    </style>
+    align-items:
+        baseline;
+
+    justify-content:
+        center;
+
+    gap:
+        4px;
+
+    flex-wrap:
+        wrap;
+}
+
+
+.price-period {
+
+    color:
+        #667085;
+
+    font-size:
+        14px;
+}
+
+
+.pricing-card ul {
+
+    max-width:
+        430px;
+
+    margin:
+        0 auto 20px;
+
+    text-align:
+        left;
+
+    padding-left:
+        22px;
+
+    color:
+        #596579;
+
+    line-height:
+        1.9;
+}
+
+
+.payment-note {
+
+    color:
+        #687386;
+
+    font-size:
+        14px;
+}
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    border-top:
+        1px solid #e5e7eb;
+
+    background:
+        white;
+
+    color:
+        #7b8494;
+
+    text-align:
+        center;
+
+    padding:
+        28px 20px;
+}
+
+
+footer strong {
+
+    color:
+        #404756;
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (
+    max-width:
+    650px
+) {
+
+    header {
+
+        padding:
+            11px 18px;
+    }
+
+
+    .brand-name {
+
+        font-size:
+            20px;
+    }
+
+
+    #profileName {
+
+        display:
+            none;
+    }
+
+
+    .hero {
+
+        padding-top:
+            60px;
+    }
+
+
+    .button {
+
+        width:
+            100%;
+
+        max-width:
+            300px;
+    }
+
+
+    .setup-card {
+
+        padding:
+            25px 20px;
+    }
+
+
+    .dashboard-header {
+
+        padding:
+            22px;
+    }
+
+
+    .dashboard-pfp {
+
+        width:
+            62px;
+
+        height:
+            62px;
+    }
+
+
+    .dashboard-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .profile-search {
+
+        max-width:
+            100%;
+    }
+
+
+    #profileSearchResults {
+
+        max-height:
+            350px;
+    }
+
+}
+
+</style>
 
 </head>
+
 
 
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
      LOADING
-===================================================== -->
+========================================================= -->
 
-<div
-    id="appLoading"
->
+<div id="appLoading">
 
-    <div
-        class="app-spinner"
-    ></div>
+    <div class="app-spinner"></div>
 
 </div>
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      HEADER
-===================================================== -->
+========================================================= -->
 
 <header>
 
-    <div
-        class="brand"
-    >
+    <div class="brand">
 
         <img
             src="W.png"
             alt="Writejot logo"
         >
 
-        <div
-            class="brand-name"
-        >
+        <div class="brand-name">
             Writejot
         </div>
 
     </div>
 
 
-    <div
-        id="profileArea"
-    >
+    <div id="profileArea">
 
         <img
             id="profilePicture"
             src="W.png"
             alt="Profile picture"
         >
-
 
         <span
             id="profileName"
@@ -1397,6 +1557,7 @@
 
         <button
             id="logoutButton"
+            type="button"
             onclick="logout()"
         >
             Log out
@@ -1408,19 +1569,16 @@
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      PUBLIC HOME
-===================================================== -->
+========================================================= -->
 
 <section
     id="homeSection"
     class="hero"
 >
 
-
-    <div
-        class="hero-badge"
-    >
+    <div class="hero-badge">
         📚 Student Notes Platform
     </div>
 
@@ -1428,6 +1586,7 @@
     <h1>
 
         Learn more.
+
         <span>
             Share more.
         </span>
@@ -1435,9 +1594,7 @@
     </h1>
 
 
-    <p
-        class="hero-subtitle"
-    >
+    <p class="hero-subtitle">
 
         A student-powered place to discover,
         organize, and share useful study notes.
@@ -1445,18 +1602,14 @@
     </p>
 
 
-    <p
-        class="founder"
-    >
+    <p class="founder">
 
         Founded by Rick Aldrei A. Velilla
 
     </p>
 
 
-    <div
-        class="button-row"
-    >
+    <div class="button-row">
 
         <a
             href="catalog.html"
@@ -1477,9 +1630,7 @@
 
 
 
-    <div
-        id="loginSection"
-    >
+    <div id="loginSection">
 
         <h3>
             Sign in to Writejot
@@ -1491,9 +1642,7 @@
         </p>
 
 
-        <div
-            id="googleLogin"
-        ></div>
+        <div id="googleLogin"></div>
 
     </div>
 
@@ -1501,22 +1650,15 @@
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      ACCOUNT SETUP
-===================================================== -->
+========================================================= -->
 
-<section
-    id="accountSetup"
->
+<section id="accountSetup">
 
+    <div class="setup-card">
 
-    <div
-        class="setup-card"
-    >
-
-        <div
-            style="font-size:45px;"
-        >
+        <div style="font-size:45px;">
             👋
         </div>
 
@@ -1542,13 +1684,9 @@
         </label>
 
 
-        <div
-            class="username-wrapper"
-        >
+        <div class="username-wrapper">
 
-            <span
-                class="username-prefix"
-            >
+            <span class="username-prefix">
                 @
             </span>
 
@@ -1564,23 +1702,20 @@
         </div>
 
 
-        <div
-            id="usernameMessage"
-        ></div>
+        <div id="usernameMessage"></div>
 
 
         <button
             id="createAccountButton"
             class="button primary"
+            type="button"
             onclick="createWritejotAccount()"
         >
             Create Writejot Account
         </button>
 
 
-        <div
-            id="setupLoading"
-        >
+        <div id="setupLoading">
             Creating your account...
         </div>
 
@@ -1590,20 +1725,18 @@
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      DASHBOARD
-===================================================== -->
+========================================================= -->
 
-<section
-    id="dashboard"
->
+<section id="dashboard">
 
 
-    <!-- PROFILE SEARCH -->
+    <!-- =====================================================
+         PROFILE SEARCH
+    ====================================================== -->
 
-    <div
-        class="profile-search"
-    >
+    <div class="profile-search">
 
         <input
             id="profileSearchInput"
@@ -1613,19 +1746,17 @@
         >
 
 
-        <div
-            id="profileSearchResults"
-        ></div>
+        <div id="profileSearchResults"></div>
 
     </div>
 
 
 
-    <!-- USER HEADER -->
+    <!-- =====================================================
+         USER HEADER
+    ====================================================== -->
 
-    <div
-        class="dashboard-header"
-    >
+    <div class="dashboard-header">
 
         <img
             id="dashboardPicture"
@@ -1635,13 +1766,9 @@
         >
 
 
-        <div
-            style="flex:1;"
-        >
+        <div style="flex:1;">
 
-            <h1
-                id="dashboardName"
-            >
+            <h1 id="dashboardName">
                 Welcome!
             </h1>
 
@@ -1676,22 +1803,18 @@
 
 
 
-    <!-- DASHBOARD FEATURES -->
+    <!-- =====================================================
+         DASHBOARD GRID
+    ====================================================== -->
 
-    <div
-        class="dashboard-grid"
-    >
+    <div class="dashboard-grid">
 
 
         <!-- CATALOG -->
 
-        <div
-            class="dashboard-card"
-        >
+        <div class="dashboard-card">
 
-            <div
-                class="dashboard-icon"
-            >
+            <div class="dashboard-icon">
                 📚
             </div>
 
@@ -1720,13 +1843,9 @@
 
         <!-- SHARE NOTES -->
 
-        <div
-            class="dashboard-card"
-        >
+        <div class="dashboard-card">
 
-            <div
-                class="dashboard-icon"
-            >
+            <div class="dashboard-icon">
                 📝
             </div>
 
@@ -1745,6 +1864,7 @@
 
             <button
                 class="button secondary"
+                type="button"
                 onclick="featureComingSoon('Note sharing')"
             >
                 Submit Notes
@@ -1756,13 +1876,9 @@
 
         <!-- FLASHCARDS -->
 
-        <div
-            class="dashboard-card"
-        >
+        <div class="dashboard-card">
 
-            <div
-                class="dashboard-icon"
-            >
+            <div class="dashboard-icon">
                 🧠
             </div>
 
@@ -1780,6 +1896,7 @@
 
             <button
                 class="button secondary"
+                type="button"
                 onclick="featureComingSoon('Flashcards')"
             >
                 Coming Soon
@@ -1791,13 +1908,9 @@
 
         <!-- CALENDAR -->
 
-        <div
-            class="dashboard-card"
-        >
+        <div class="dashboard-card">
 
-            <div
-                class="dashboard-icon"
-            >
+            <div class="dashboard-icon">
                 📅
             </div>
 
@@ -1813,12 +1926,12 @@
             </p>
 
 
-           <a
-    href="calendar.html"
-    class="button primary"
->
-    Open Calendar
-</a>
+            <a
+                href="calendar.html"
+                class="button primary"
+            >
+                Open Calendar
+            </a>
 
         </div>
 
@@ -1826,13 +1939,9 @@
 
         <!-- REMINDERS -->
 
-        <div
-            class="dashboard-card"
-        >
+        <div class="dashboard-card">
 
-            <div
-                class="dashboard-icon"
-            >
+            <div class="dashboard-icon">
                 🔔
             </div>
 
@@ -1850,6 +1959,7 @@
 
             <button
                 class="button secondary"
+                type="button"
                 onclick="featureComingSoon('Reminders')"
             >
                 Coming Soon
@@ -1861,13 +1971,9 @@
 
         <!-- MESSAGES -->
 
-        <div
-            class="dashboard-card"
-        >
+        <div class="dashboard-card">
 
-            <div
-                class="dashboard-icon"
-            >
+            <div class="dashboard-icon">
                 💬
             </div>
 
@@ -1896,15 +2002,13 @@
 
 
 
-    <!-- ACCOUNT STATUS -->
+    <!-- =====================================================
+         ACCOUNT STATUS
+    ====================================================== -->
 
-    <div
-        class="dashboard-card trial-card"
-    >
+    <div class="dashboard-card trial-card">
 
-        <div
-            class="dashboard-icon"
-        >
+        <div class="dashboard-icon">
             🎓
         </div>
 
@@ -1914,9 +2018,7 @@
         </h3>
 
 
-        <p
-            id="dashboardStatusMessage"
-        >
+        <p id="dashboardStatusMessage">
             Checking your account...
         </p>
 
@@ -1926,19 +2028,16 @@
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      ABOUT
-===================================================== -->
+========================================================= -->
 
 <section
     class="section-container"
     id="about"
 >
 
-
-    <div
-        class="section-card"
-    >
+    <div class="section-card">
 
         <h2>
             About Writejot
@@ -1981,27 +2080,40 @@
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      PRICING
-===================================================== -->
+========================================================= -->
 
-<section
-    class="pricing"
->
+<section class="pricing">
 
-    <div
-        class="pricing-card"
-    >
+    <div class="pricing-card">
 
         <h2>
             Writejot Access
         </h2>
 
 
-        <div
-            class="price"
-        >
-            ₱149
+        <div class="discount-badge">
+            40% OFF
+        </div>
+
+
+        <div class="price-line">
+
+            <span class="old-price">
+                ₱249
+            </span>
+
+
+            <span class="price">
+                ₱149
+            </span>
+
+
+            <span class="price-period">
+                /week
+            </span>
+
         </div>
 
 
@@ -2031,9 +2143,7 @@
         </ul>
 
 
-        <p
-            class="payment-note"
-        >
+        <p class="payment-note">
             Payment is currently handled in person.
         </p>
 
@@ -2043,9 +2153,9 @@
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer>
 
@@ -2063,7 +2173,6 @@
 
 <script>
 
-
 /* =========================================================
    CONFIG
 ========================================================= */
@@ -2076,6 +2185,18 @@ const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
+/*
+ * Search cache stays in the browser for 5 minutes.
+ */
+
+const SEARCH_CACHE_TIME =
+    5 * 60 * 1000;
+
+
+const SEARCH_DELAY =
+    250;
+
+
 let pendingGoogleUser =
     null;
 
@@ -2084,13 +2205,17 @@ let profileSearchTimer =
     null;
 
 
+let searchRequestNumber =
+    0;
+
+
 /* =========================================================
    PAGE START
 ========================================================= */
 
 window.addEventListener(
     "load",
-    function () {
+    function() {
 
         initializeGoogleLogin();
 
@@ -2166,7 +2291,7 @@ function initializeGoogleLogin() {
 
 
 /* =========================================================
-   LOAD SAVED SESSION
+   SESSION
 ========================================================= */
 
 function loadSavedSession() {
@@ -2195,8 +2320,10 @@ function loadSavedSession() {
 
 
         /*
+         * IMPORTANT:
          * Show the dashboard immediately.
-         * We do not wait for Apps Script.
+         *
+         * Do NOT wait for Apps Script.
          */
 
         showDashboard(
@@ -2205,8 +2332,8 @@ function loadSavedSession() {
 
 
         /*
-         * Verify the account in the
-         * background.
+         * Update account information
+         * in the background.
          */
 
         checkAccountInBackground(
@@ -2236,7 +2363,7 @@ function loadSavedSession() {
 
 
 /* =========================================================
-   SHOW HOME
+   HOME
 ========================================================= */
 
 function showHome() {
@@ -2279,7 +2406,7 @@ function showHome() {
 
 
 /* =========================================================
-   SHOW ACCOUNT SETUP
+   ACCOUNT SETUP
 ========================================================= */
 
 function showAccountSetup(
@@ -2324,7 +2451,7 @@ function showAccountSetup(
 
 
 /* =========================================================
-   SHOW DASHBOARD
+   DASHBOARD
 ========================================================= */
 
 function showDashboard(
@@ -2385,7 +2512,7 @@ function showDashboard(
             "profilePicture"
         )
         .onerror =
-        function () {
+        function() {
 
             this.src =
                 "W.png";
@@ -2406,7 +2533,7 @@ function showDashboard(
             "dashboardPicture"
         )
         .onerror =
-        function () {
+        function() {
 
             this.src =
                 "W.png";
@@ -2569,6 +2696,10 @@ async function checkAccount(
 
                 ...user,
 
+                name:
+                    result.name ||
+                    user.name,
+
                 username:
                     result.username ||
                     "",
@@ -2612,6 +2743,7 @@ async function checkAccount(
                 );
 
             }
+
             else {
 
                 pendingGoogleUser =
@@ -2763,8 +2895,8 @@ async function checkAccountInBackground(
 
 
         /*
-         * Update visible dashboard
-         * without changing pages.
+         * Update the visible dashboard
+         * without navigating away.
          */
 
         if (
@@ -2787,8 +2919,8 @@ async function checkAccountInBackground(
     catch (error) {
 
         /*
-         * Do not kick the user out if
-         * the server happens to be slow.
+         * Do not kick the user out just
+         * because the server is slow.
          */
 
         console.log(
@@ -2801,7 +2933,7 @@ async function checkAccountInBackground(
 
 
 /* =========================================================
-   CREATE WRITEJOT ACCOUNT
+   CREATE ACCOUNT
 ========================================================= */
 
 async function createWritejotAccount() {
@@ -3147,7 +3279,7 @@ async function waitForAccount(
 
 
 /* =========================================================
-   UPDATE DASHBOARD STATUS
+   DASHBOARD STATUS
 ========================================================= */
 
 async function updateDashboardStatus(
@@ -3234,7 +3366,7 @@ async function updateDashboardStatus(
 
 
 /* =========================================================
-   PROFILE SEARCH
+   FAST PROFILE SEARCH
 ========================================================= */
 
 function setupProfileSearch() {
@@ -3252,7 +3384,11 @@ function setupProfileSearch() {
 
     input.addEventListener(
         "input",
-        searchProfiles
+        function() {
+
+            searchProfiles();
+
+        }
     );
 
 }
@@ -3272,8 +3408,20 @@ async function searchProfiles() {
         );
 
 
+    if (
+        !input ||
+        !resultsBox
+    ) {
+
+        return;
+
+    }
+
+
     const query =
-        input.value.trim();
+        input.value
+            .trim()
+            .toLowerCase();
 
 
     clearTimeout(
@@ -3286,23 +3434,71 @@ async function searchProfiles() {
         2
     ) {
 
-        resultsBox.style.display =
-            "none";
-
-
         resultsBox.innerHTML =
             "";
 
+        resultsBox.style.display =
+            "none";
 
         return;
 
     }
 
 
+    /*
+     * Give every search a unique request number.
+     *
+     * This prevents a slower old request from
+     * replacing newer results.
+     */
+
+    const requestId =
+        ++searchRequestNumber;
+
+
+    /*
+     * CACHE FIRST
+     */
+
+    const cached =
+        getSearchCache(
+            query
+        );
+
+
+    if (
+        cached
+    ) {
+
+        renderSearchResults(
+            cached
+        );
+
+    }
+
+    else {
+
+        resultsBox.innerHTML =
+
+            `
+            <div class="search-loading">
+                Searching...
+            </div>
+            `;
+
+        resultsBox.style.display =
+            "block";
+
+    }
+
+
+    /*
+     * WAIT 250ms AFTER TYPING STOPS
+     */
+
     profileSearchTimer =
         setTimeout(
-
-            async function () {
+            async function() {
 
                 try {
 
@@ -3310,7 +3506,8 @@ async function searchProfiles() {
                         await fetch(
 
                             APPS_SCRIPT_URL +
-                            "?action=searchProfiles&q=" +
+                            "?action=searchProfiles" +
+                            "&q=" +
                             encodeURIComponent(
                                 query
                             ),
@@ -3323,155 +3520,48 @@ async function searchProfiles() {
                         );
 
 
-                    const result =
-                        await response.json();
-
-
                     if (
-                        !result.success ||
-                        !result.profiles ||
-                        !result.profiles.length
+                        requestId !==
+                        searchRequestNumber
                     ) {
-
-                        resultsBox.innerHTML =
-
-                            `
-                            <div
-                                style="
-                                    padding:16px;
-                                    color:#718096;
-                                    text-align:center;
-                                "
-                            >
-                                No profiles found.
-                            </div>
-                            `;
-
-
-                        resultsBox.style.display =
-                            "block";
-
 
                         return;
 
                     }
 
 
-                    resultsBox.innerHTML =
-                        result.profiles
-                            .map(
-
-                                function (
-                                    profile
-                                ) {
-
-                                    const picture =
-                                        profile.profilePicture ||
-                                        "W.png";
+                    const result =
+                        await response.json();
 
 
-                                    return `
+                    if (
+                        !result.success
+                    ) {
 
-                                        <div
-                                            class="search-result"
-                                            data-username="${escapeHtml(
-                                                profile.username
-                                            )}"
-                                        >
+                        return;
 
-                                            <img
-                                                src="${escapeHtml(
-                                                    picture
-                                                )}"
-                                                alt=""
-                                                onerror="
-                                                    this.src='W.png'
-                                                "
-                                            >
+                    }
 
 
-                                            <div
-                                                style="min-width:0;"
-                                            >
-
-                                                <div
-                                                    class="search-result-name"
-                                                >
-                                                    ${escapeHtml(
-                                                        profile.name ||
-                                                        "Writejot User"
-                                                    )}
-                                                </div>
+                    const profiles =
+                        result.profiles ||
+                        [];
 
 
-                                                <div
-                                                    class="search-result-username"
-                                                >
-                                                    @${escapeHtml(
-                                                        profile.username
-                                                    )}
-                                                </div>
+                    /*
+                     * Save the server response
+                     * to browser cache.
+                     */
+
+                    saveSearchCache(
+                        query,
+                        profiles
+                    );
 
 
-                                                ${
-                                                    profile.bio
-                                                        ? `
-                                                            <div
-                                                                class="search-result-bio"
-                                                            >
-                                                                ${escapeHtml(
-                                                                    profile.bio
-                                                                )}
-                                                            </div>
-                                                          `
-                                                        : ""
-                                                }
-
-                                            </div>
-
-                                        </div>
-
-                                    `;
-
-                                }
-
-                            )
-                            .join("");
-
-
-                    resultsBox.style.display =
-                        "block";
-
-
-                    resultsBox
-                        .querySelectorAll(
-                            ".search-result"
-                        )
-                        .forEach(
-
-                            function (
-                                element
-                            ) {
-
-                                element.addEventListener(
-                                    "click",
-                                    function () {
-
-                                        const username =
-                                            element.dataset.username;
-
-
-                                        window.location.href =
-                                            "profile.html?username=" +
-                                            encodeURIComponent(
-                                                username
-                                            );
-
-                                    }
-                                );
-
-                            }
-                        );
+                    renderSearchResults(
+                        profiles
+                    );
 
                 }
 
@@ -3486,7 +3576,7 @@ async function searchProfiles() {
 
             },
 
-            250
+            SEARCH_DELAY
 
         );
 
@@ -3494,12 +3584,269 @@ async function searchProfiles() {
 
 
 /* =========================================================
-   CLOSE SEARCH
+   SEARCH CACHE
+========================================================= */
+
+function getSearchCache(
+    query
+) {
+
+    try {
+
+        const key =
+            getSearchCacheKey(
+                query
+            );
+
+
+        const raw =
+            localStorage.getItem(
+                key
+            );
+
+
+        if (!raw) {
+
+            return null;
+
+        }
+
+
+        const data =
+            JSON.parse(
+                raw
+            );
+
+
+        /*
+         * Delete expired cache.
+         */
+
+        if (
+            Date.now() -
+            Number(
+                data.time ||
+                0
+            )
+            >
+            SEARCH_CACHE_TIME
+        ) {
+
+            localStorage.removeItem(
+                key
+            );
+
+            return null;
+
+        }
+
+
+        return (
+            Array.isArray(
+                data.profiles
+            )
+                ? data.profiles
+                : null
+        );
+
+    }
+
+    catch {
+
+        return null;
+
+    }
+
+}
+
+
+function saveSearchCache(
+    query,
+    profiles
+) {
+
+    try {
+
+        localStorage.setItem(
+
+            getSearchCacheKey(
+                query
+            ),
+
+            JSON.stringify({
+
+                time:
+                    Date.now(),
+
+                profiles:
+                    profiles
+
+            })
+
+        );
+
+    }
+
+    catch {}
+
+}
+
+
+function getSearchCacheKey(
+    query
+) {
+
+    return (
+        "writejot_profile_search_" +
+        encodeURIComponent(
+            query
+        )
+    );
+
+}
+
+
+/* =========================================================
+   RENDER SEARCH RESULTS
+========================================================= */
+
+function renderSearchResults(
+    profiles
+) {
+
+    const resultsBox =
+        document.getElementById(
+            "profileSearchResults"
+        );
+
+
+    if (
+        !profiles.length
+    ) {
+
+        resultsBox.innerHTML =
+
+            `
+            <div
+                style="
+                    padding:16px;
+                    color:#718096;
+                    text-align:center;
+                "
+            >
+                No profiles found.
+            </div>
+            `;
+
+
+        resultsBox.style.display =
+            "block";
+
+
+        return;
+
+    }
+
+
+    resultsBox.innerHTML =
+        profiles
+            .map(
+                function(profile) {
+
+                    const picture =
+                        profile.profilePicture ||
+                        "W.png";
+
+
+                    return `
+
+                        <a
+                            class="search-result"
+                            href="
+                                profile.html?username=${encodeURIComponent(
+                                    profile.username
+                                )}
+                            "
+                        >
+
+                            <img
+                                src="${escapeHtml(
+                                    picture
+                                )}"
+                                alt=""
+                                onerror="
+                                    this.src='W.png'
+                                "
+                            >
+
+
+                            <div
+                                style="min-width:0;"
+                            >
+
+                                <div
+                                    class="
+                                        search-result-name
+                                    "
+                                >
+                                    ${escapeHtml(
+                                        profile.name ||
+                                        "Writejot User"
+                                    )}
+                                </div>
+
+
+                                <div
+                                    class="
+                                        search-result-username
+                                    "
+                                >
+                                    @${escapeHtml(
+                                        profile.username
+                                    )}
+                                </div>
+
+
+                                ${
+                                    profile.bio
+                                        ? `
+                                            <div
+                                                class="
+                                                    search-result-bio
+                                                "
+                                            >
+                                                ${escapeHtml(
+                                                    profile.bio
+                                                )}
+                                            </div>
+                                          `
+                                        : ""
+                                }
+
+                            </div>
+
+                        </a>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+
+    resultsBox.style.display =
+        "block";
+
+}
+
+
+/* =========================================================
+   CLOSE SEARCH WHEN CLICKING OUTSIDE
 ========================================================= */
 
 document.addEventListener(
     "click",
-    function (event) {
+    function(event) {
 
         const search =
             document.querySelector(
@@ -3525,6 +3872,7 @@ document.addEventListener(
 
     }
 );
+
 
 
 /* =========================================================
@@ -3574,8 +3922,9 @@ function logout() {
 }
 
 
+
 /* =========================================================
-   FEATURE PLACEHOLDER
+   COMING SOON
 ========================================================= */
 
 function featureComingSoon(
@@ -3588,6 +3937,7 @@ function featureComingSoon(
     );
 
 }
+
 
 
 /* =========================================================
@@ -3614,8 +3964,9 @@ function hideAppLoading() {
 }
 
 
+
 /* =========================================================
-   ESCAPE HTML
+   HTML ESCAPE
 ========================================================= */
 
 function escapeHtml(
@@ -3650,6 +4001,7 @@ function escapeHtml(
 }
 
 
+
 /* =========================================================
    SLEEP
 ========================================================= */
@@ -3659,7 +4011,7 @@ function sleep(
 ) {
 
     return new Promise(
-        function (resolve) {
+        function(resolve) {
 
             setTimeout(
                 resolve,
@@ -3670,6 +4022,7 @@ function sleep(
     );
 
 }
+
 
 
 /* =========================================================
@@ -3704,7 +4057,7 @@ function parseJwt(
             )
             .split("")
             .map(
-                function (c) {
+                function(c) {
 
                     return "%" +
                         (
@@ -3734,4 +4087,3 @@ function parseJwt(
 </body>
 
 </html>
-
