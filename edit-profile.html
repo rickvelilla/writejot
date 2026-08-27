@@ -3,588 +3,586 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Writejot | Edit Profile</title>
+    <title>Writejot | Edit Profile</title>
 
 
-<style>
+    <style>
 
-* {
-    box-sizing:
-        border-box;
-}
+        * {
+            box-sizing: border-box;
+        }
 
 
-html,
-body {
-    margin:
-        0;
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+        }
 
-    min-height:
-        100%;
-}
 
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-body {
+            background:
+                #f6f8fc;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+            color:
+                #1f2937;
+        }
 
-    background:
-        #f6f8fc;
 
-    color:
-        #1f2937;
-}
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
+        header {
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .97
+                );
 
-/* =========================================================
-   HEADER
-========================================================= */
+            border-bottom:
+                1px solid #e5e7eb;
 
-header {
+            padding:
+                12px 6%;
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            .97
-        );
+            display:
+                flex;
 
-    border-bottom:
-        1px solid #e5e7eb;
+            align-items:
+                center;
 
-    padding:
-        12px 6%;
+            justify-content:
+                space-between;
 
-    display:
-        flex;
+            position:
+                sticky;
 
-    align-items:
-        center;
+            top:
+                0;
 
-    justify-content:
-        space-between;
+            z-index:
+                20;
+        }
 
-    position:
-        sticky;
 
-    top:
-        0;
+        .brand {
+            display:
+                flex;
 
-    z-index:
-        20;
-}
+            align-items:
+                center;
 
+            gap:
+                10px;
+        }
 
-.brand {
 
-    display:
-        flex;
+        .brand img {
+            width:
+                40px;
 
-    align-items:
-        center;
+            height:
+                40px;
 
-    gap:
-        10px;
-}
+            object-fit:
+                contain;
+        }
 
 
-.brand img {
+        .brand-name {
+            font-size:
+                22px;
 
-    width:
-        40px;
+            font-weight:
+                700;
+        }
 
-    height:
-        40px;
 
-    object-fit:
-        contain;
-}
+        .back {
+            color:
+                #4285F4;
 
+            text-decoration:
+                none;
 
-.brand-name {
+            font-weight:
+                600;
+        }
 
-    font-size:
-        22px;
 
-    font-weight:
-        700;
-}
+        /* =====================================================
+           PAGE
+        ===================================================== */
 
+        main {
+            width:
+                100%;
 
-.back {
+            max-width:
+                650px;
 
-    color:
-        #4285F4;
+            margin:
+                35px auto 60px;
 
-    text-decoration:
-        none;
+            padding:
+                0 16px;
+        }
 
-    font-weight:
-        600;
-}
 
+        .card {
+            background:
+                white;
 
-/* =========================================================
-   PAGE
-========================================================= */
+            border:
+                1px solid #e1e6ee;
 
-main {
+            border-radius:
+                16px;
 
-    width:
-        100%;
+            padding:
+                30px;
 
-    max-width:
-        650px;
+            box-shadow:
+                0 8px 30px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .04
+                );
+        }
 
-    margin:
-        35px auto 60px;
 
-    padding:
-        0 16px;
-}
+        .card h1 {
+            margin:
+                0 0 6px;
+        }
 
 
-.card {
+        .subtitle {
+            color:
+                #718096;
 
-    background:
-        white;
+            margin:
+                0 0 25px;
+        }
 
-    border:
-        1px solid #e1e6ee;
 
-    border-radius:
-        16px;
+        /* =====================================================
+           LIVE PREVIEW
+        ===================================================== */
 
-    padding:
-        30px;
+        .preview {
+            display:
+                flex;
 
-    box-shadow:
-        0 8px 30px
-        rgba(
-            0,
-            0,
-            0,
-            .04
-        );
-}
+            align-items:
+                center;
 
+            gap:
+                15px;
 
-.card h1 {
+            padding:
+                15px;
 
-    margin:
-        0 0 6px;
-}
+            background:
+                #f8fafc;
 
+            border:
+                1px solid #edf0f4;
 
-.subtitle {
+            border-radius:
+                12px;
 
-    color:
-        #718096;
+            margin-bottom:
+                25px;
+        }
 
-    margin:
-        0 0 25px;
-}
 
+        .preview img {
+            width:
+                70px;
 
-/* =========================================================
-   PROFILE PREVIEW
-========================================================= */
+            height:
+                70px;
 
-.preview {
+            border-radius:
+                50%;
 
-    display:
-        flex;
+            object-fit:
+                cover;
 
-    align-items:
-        center;
+            border:
+                2px solid #4285F4;
 
-    gap:
-        15px;
+            background:
+                #edf2f7;
 
-    padding:
-        15px;
+            flex-shrink:
+                0;
+        }
 
-    background:
-        #f8fafc;
 
-    border:
-        1px solid #edf0f4;
+        .preview-info {
+            min-width:
+                0;
 
-    border-radius:
-        12px;
+            flex:
+                1;
+        }
 
-    margin-bottom:
-        25px;
-}
 
+        .preview-name {
+            font-weight:
+                700;
 
-.preview img {
+            font-size:
+                17px;
 
-    width:
-        70px;
+            white-space:
+                nowrap;
 
-    height:
-        70px;
+            overflow:
+                hidden;
 
-    border-radius:
-        50%;
+            text-overflow:
+                ellipsis;
+        }
 
-    object-fit:
-        cover;
 
-    border:
-        2px solid #4285F4;
+        .preview-username {
+            color:
+                #4285F4;
 
-    background:
-        #edf2f7;
-}
+            font-size:
+                13px;
+        }
 
 
-.preview-name {
+        .preview-bio {
+            color:
+                #718096;
 
-    font-weight:
-        700;
+            font-size:
+                13px;
 
-    font-size:
-        17px;
-}
+            margin-top:
+                3px;
 
+            word-break:
+                break-word;
+        }
 
-.preview-username {
 
-    color:
-        #4285F4;
+        /* =====================================================
+           PHOTO
+        ===================================================== */
 
-    font-size:
-        13px;
-}
+        .photo-area {
+            text-align:
+                center;
 
+            margin-bottom:
+                25px;
+        }
 
-.preview-bio {
 
-    color:
-        #718096;
+        .photo {
+            width:
+                110px;
 
-    font-size:
-        13px;
+            height:
+                110px;
 
-    margin-top:
-        3px;
+            border-radius:
+                50%;
 
-    word-break:
-        break-word;
-}
+            object-fit:
+                cover;
 
+            border:
+                3px solid #4285F4;
 
-/* =========================================================
-   PHOTO
-========================================================= */
+            background:
+                #edf2f7;
+        }
 
-.photo-area {
 
-    text-align:
-        center;
+        .upload-button {
+            display:
+                inline-block;
 
-    margin-bottom:
-        25px;
-}
+            margin-top:
+                12px;
 
+            padding:
+                10px 15px;
 
-.photo {
+            border:
+                1px solid #d7dce3;
 
-    width:
-        110px;
+            border-radius:
+                9px;
 
-    height:
-        110px;
+            background:
+                white;
 
-    border-radius:
-        50%;
+            color:
+                #4285F4;
 
-    object-fit:
-        cover;
+            font-weight:
+                600;
 
-    border:
-        3px solid #4285F4;
+            cursor:
+                pointer;
+        }
 
-    background:
-        #edf2f7;
-}
 
+        .upload-button:hover {
+            background:
+                #f6f9ff;
+        }
 
-.upload-button {
 
-    display:
-        inline-block;
+        #imageInput {
+            display:
+                none;
+        }
 
-    margin-top:
-        12px;
 
-    padding:
-        10px 15px;
+        /* =====================================================
+           FIELDS
+        ===================================================== */
 
-    border:
-        1px solid #d7dce3;
+        .field {
+            margin-bottom:
+                18px;
+        }
 
-    border-radius:
-        9px;
 
-    background:
-        white;
+        .field label {
+            display:
+                block;
 
-    color:
-        #4285F4;
+            margin-bottom:
+                7px;
 
-    font-weight:
-        600;
+            font-weight:
+                700;
+        }
 
-    cursor:
-        pointer;
-}
 
+        .field input,
+        .field textarea {
+            width:
+                100%;
 
-.upload-button:hover {
+            padding:
+                12px 13px;
 
-    background:
-        #f6f9ff;
-}
+            border:
+                1px solid #d8dee8;
 
+            border-radius:
+                9px;
 
-#imageInput {
+            background:
+                white;
 
-    display:
-        none;
-}
+            color:
+                #1f2937;
 
+            font-family:
+                inherit;
 
-/* =========================================================
-   FIELDS
-========================================================= */
+            font-size:
+                14px;
 
-.field {
+            outline:
+                none;
+        }
 
-    margin-bottom:
-        18px;
-}
 
+        .field input:focus,
+        .field textarea:focus {
+            border-color:
+                #4285F4;
 
-.field label {
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    66,
+                    133,
+                    244,
+                    .08
+                );
+        }
 
-    display:
-        block;
 
-    margin-bottom:
-        7px;
+        .field textarea {
+            min-height:
+                115px;
 
-    font-weight:
-        700;
-}
+            resize:
+                vertical;
+        }
 
 
-.field input,
-.field textarea {
+        /* =====================================================
+           USERNAME STATUS
+        ===================================================== */
 
-    width:
-        100%;
+        #usernameStatus {
+            min-height:
+                19px;
 
-    padding:
-        12px 13px;
+            margin-top:
+                6px;
 
-    border:
-        1px solid #d8dee8;
+            font-size:
+                12px;
+        }
 
-    border-radius:
-        9px;
 
-    background:
-        white;
+        /* =====================================================
+           SAVE
+        ===================================================== */
 
-    color:
-        #1f2937;
+        #saveButton {
+            width:
+                100%;
 
-    font-family:
-        inherit;
+            padding:
+                13px;
 
-    font-size:
-        14px;
+            border:
+                none;
 
-    outline:
-        none;
-}
+            border-radius:
+                9px;
 
+            background:
+                #4285F4;
 
-.field input:focus,
-.field textarea:focus {
+            color:
+                white;
 
-    border-color:
-        #4285F4;
+            font-weight:
+                700;
 
-    box-shadow:
-        0 0 0 3px
-        rgba(
-            66,
-            133,
-            244,
-            .08
-        );
-}
+            cursor:
+                pointer;
 
+            font-size:
+                14px;
+        }
 
-.field textarea {
 
-    min-height:
-        115px;
+        #saveButton:hover {
+            background:
+                #3367d6;
+        }
 
-    resize:
-        vertical;
-}
 
+        #saveButton:disabled {
+            opacity:
+                .65;
 
-/* =========================================================
-   SAVE
-========================================================= */
+            cursor:
+                not-allowed;
+        }
 
-#saveButton {
 
-    width:
-        100%;
+        /* =====================================================
+           STATUS
+        ===================================================== */
 
-    padding:
-        13px;
+        #statusMessage {
+            min-height:
+                22px;
 
-    border:
-        none;
+            margin-top:
+                12px;
 
-    border-radius:
-        9px;
+            text-align:
+                center;
 
-    background:
-        #4285F4;
+            font-size:
+                13px;
+        }
 
-    color:
-        white;
 
-    font-weight:
-        700;
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
-    cursor:
-        pointer;
+        @media (
+            max-width:
+            600px
+        ) {
 
-    font-size:
-        14px;
-}
+            header {
+                padding:
+                    10px 14px;
+            }
 
 
-#saveButton:hover {
+            .brand-name {
+                font-size:
+                    20px;
+            }
 
-    background:
-        #3367d6;
-}
 
+            main {
+                margin-top:
+                    20px;
 
-#saveButton:disabled {
+                padding:
+                    0 10px;
+            }
 
-    opacity:
-        .65;
 
-    cursor:
-        not-allowed;
-}
+            .card {
+                padding:
+                    22px 17px;
+            }
 
 
-/* =========================================================
-   STATUS
-========================================================= */
+            .preview img {
+                width:
+                    58px;
 
-#statusMessage {
+                height:
+                    58px;
+            }
 
-    min-height:
-        22px;
 
-    margin-top:
-        12px;
+            .photo {
+                width:
+                    95px;
 
-    text-align:
-        center;
+                height:
+                    95px;
+            }
 
-    font-size:
-        13px;
-}
+        }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (
-    max-width:
-    600px
-) {
-
-    header {
-
-        padding:
-            10px 14px;
-    }
-
-
-    .brand-name {
-
-        font-size:
-            20px;
-    }
-
-
-    main {
-
-        margin-top:
-            20px;
-
-        padding:
-            0 10px;
-    }
-
-
-    .card {
-
-        padding:
-            22px 17px;
-    }
-
-
-    .preview img {
-
-        width:
-            58px;
-
-        height:
-            58px;
-    }
-
-
-    .photo {
-
-        width:
-            95px;
-
-        height:
-            95px;
-    }
-
-}
-
-</style>
+    </style>
 
 </head>
 
@@ -592,6 +590,10 @@ main {
 
 <body>
 
+
+<!-- ========================================================
+     HEADER
+========================================================= -->
 
 <header>
 
@@ -621,194 +623,202 @@ main {
 
 
 
+<!-- ========================================================
+     PAGE
+========================================================= -->
+
 <main>
 
 <div class="card">
 
 
-<h1>
-    Edit Profile
-</h1>
+    <h1>
+        Edit Profile
+    </h1>
 
 
-<p class="subtitle">
-    Update your Writejot profile.
-</p>
+    <p class="subtitle">
+        Update your Writejot profile.
+    </p>
 
 
 
-<!-- =====================================================
-     LIVE PREVIEW
-====================================================== -->
+    <!-- =====================================================
+         LIVE PREVIEW
+    ====================================================== -->
 
-<div class="preview">
+    <div class="preview">
 
-    <img
-        id="previewPicture"
-        src="W.png"
-        alt="Profile picture"
-    >
-
-
-    <div
-        style="
-            min-width:0;
-        "
-    >
-
-        <div
-            id="previewName"
-            class="preview-name"
+        <img
+            id="previewPicture"
+            src="W.png"
+            alt="Profile picture"
         >
-            Your Name
-        </div>
 
 
         <div
-            id="previewUsername"
-            class="preview-username"
+            class="preview-info"
         >
-            @username
-        </div>
+
+            <div
+                id="previewName"
+                class="preview-name"
+            >
+                Your Name
+            </div>
 
 
-        <div
-            id="previewBio"
-            class="preview-bio"
-        >
-            Your bio
+            <div
+                id="previewUsername"
+                class="preview-username"
+            >
+                @username
+            </div>
+
+
+            <div
+                id="previewBio"
+                class="preview-bio"
+            >
+                Your bio
+            </div>
+
         </div>
 
     </div>
 
-</div>
+
+
+    <!-- =====================================================
+         PROFILE PICTURE
+    ====================================================== -->
+
+    <div class="photo-area">
+
+        <img
+            id="profilePicture"
+            class="photo"
+            src="W.png"
+            alt="Profile picture"
+        >
+
+
+        <br>
+
+
+        <button
+            type="button"
+            class="upload-button"
+            onclick="openImagePicker()"
+        >
+            📷 Upload Profile Picture
+        </button>
+
+
+        <input
+            id="imageInput"
+            type="file"
+            accept="image/*"
+            onchange="handleImageSelection(event)"
+        >
+
+    </div>
 
 
 
-<!-- =====================================================
-     PROFILE PICTURE
-====================================================== -->
+    <!-- =====================================================
+         DISPLAY NAME
+    ====================================================== -->
 
-<div class="photo-area">
+    <div class="field">
 
-    <img
-        id="profilePicture"
-        class="photo"
-        src="W.png"
-        alt="Profile picture"
-    >
+        <label
+            for="nameInput"
+        >
+            Display Name
+        </label>
 
 
-    <br>
+        <input
+            id="nameInput"
+            type="text"
+            maxlength="80"
+            placeholder="Your name"
+        >
 
+    </div>
+
+
+
+    <!-- =====================================================
+         USERNAME
+    ====================================================== -->
+
+    <div class="field">
+
+        <label
+            for="usernameInput"
+        >
+            Username
+        </label>
+
+
+        <input
+            id="usernameInput"
+            type="text"
+            maxlength="20"
+            placeholder="username"
+            autocomplete="off"
+        >
+
+
+        <div
+            id="usernameStatus"
+        ></div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         BIO
+    ====================================================== -->
+
+    <div class="field">
+
+        <label
+            for="bioInput"
+        >
+            Bio
+        </label>
+
+
+        <textarea
+            id="bioInput"
+            maxlength="500"
+            placeholder="Tell people a little about yourself..."
+        ></textarea>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SAVE
+    ====================================================== -->
 
     <button
+        id="saveButton"
         type="button"
-        class="upload-button"
-        onclick="openImagePicker()"
+        onclick="saveProfile()"
     >
-        📷 Upload Profile Picture
+        Save Changes
     </button>
 
 
-    <input
-        id="imageInput"
-        type="file"
-        accept="image/*"
-        onchange="handleImageSelection(event)"
-    >
-
-</div>
-
-
-
-<!-- =====================================================
-     NAME
-====================================================== -->
-
-<div class="field">
-
-    <label
-        for="nameInput"
-    >
-        Display Name
-    </label>
-
-
-    <input
-        id="nameInput"
-        type="text"
-        maxlength="80"
-        placeholder="Your name"
-    >
-
-</div>
-
-
-
-<!-- =====================================================
-     USERNAME
-====================================================== -->
-
-<div class="field">
-
-    <label
-        for="usernameInput"
-    >
-        Username
-    </label>
-
-
-    <input
-        id="usernameInput"
-        type="text"
-        maxlength="20"
-        placeholder="username"
-    >
-
-</div>
-
-
-
-<!-- =====================================================
-     BIO
-====================================================== -->
-
-<div class="field">
-
-    <label
-        for="bioInput"
-    >
-        Bio
-    </label>
-
-
-    <textarea
-        id="bioInput"
-        maxlength="500"
-        placeholder="Tell people a little about yourself..."
-    ></textarea>
-
-</div>
-
-
-
-<!-- =====================================================
-     SAVE
-====================================================== -->
-
-<button
-    id="saveButton"
-    type="button"
-    onclick="saveProfile()"
->
-    Save Changes
-</button>
-
-
-<div
-    id="statusMessage"
-></div>
+    <div
+        id="statusMessage"
+    ></div>
 
 
 </div>
@@ -828,7 +838,15 @@ const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
+const USERNAME_CHECK_DELAY =
+    300;
+
+
 let currentUser =
+    null;
+
+
+let originalProfile =
     null;
 
 
@@ -836,8 +854,20 @@ let selectedImage =
     null;
 
 
-let oldProfile =
+let usernameTimer =
     null;
+
+
+let usernameCheckNumber =
+    0;
+
+
+let usernameAvailable =
+    true;
+
+
+let lastCheckedUsername =
+    "";
 
 
 /* =========================================================
@@ -875,6 +905,10 @@ window.addEventListener(
 
         catch {
 
+            localStorage.removeItem(
+                "writejotUser"
+            );
+
             location.href =
                 "index.html";
 
@@ -884,15 +918,30 @@ window.addEventListener(
 
 
         /*
-         * Show cached/local information instantly.
+         * Show local information immediately.
          */
 
         loadLocalProfile();
 
 
         /*
-         * Refresh profile from server
-         * in the background.
+         * Check the current username so
+         * the save button starts in a
+         * known state.
+         */
+
+        checkUsernameAvailability(
+            document
+                .getElementById(
+                    "usernameInput"
+                )
+                .value
+                .trim()
+        );
+
+
+        /*
+         * Refresh from server in background.
          */
 
         refreshProfile();
@@ -963,12 +1012,33 @@ function loadLocalProfile() {
 
 
 /* =========================================================
-   BACKGROUND REFRESH
+   BACKGROUND PROFILE REFRESH
 ========================================================= */
 
 async function refreshProfile() {
 
     try {
+
+        /*
+         * We use the local username first.
+         */
+
+        const username =
+            String(
+                currentUser.username ||
+                ""
+            )
+            .trim()
+            .replace(
+                /^@/,
+                ""
+            );
+
+
+        if (!username) {
+            return;
+        }
+
 
         const response =
             await fetch(
@@ -976,7 +1046,7 @@ async function refreshProfile() {
                 APPS_SCRIPT_URL +
                 "?action=profile&username=" +
                 encodeURIComponent(
-                    currentUser.username
+                    username
                 ),
 
                 {
@@ -985,6 +1055,15 @@ async function refreshProfile() {
                 }
 
             );
+
+
+        if (
+            !response.ok
+        ) {
+
+            return;
+
+        }
 
 
         const result =
@@ -1001,77 +1080,67 @@ async function refreshProfile() {
         }
 
 
-        const profile =
-            result.profile;
-
-
-        oldProfile =
+        originalProfile =
             {
-                ...profile
+                ...result.profile
             };
 
 
         /*
-         * Only update the form with server data
-         * if the user hasn't started changing it.
+         * Refresh the saved user object
+         * with authoritative data.
+         */
+
+        currentUser.name =
+            result.profile.name ||
+            currentUser.name ||
+            "";
+
+
+        currentUser.username =
+            result.profile.username ||
+            currentUser.username ||
+            "";
+
+
+        currentUser.bio =
+            result.profile.bio ||
+            currentUser.bio ||
+            "";
+
+
+        currentUser.profilePicture =
+            result.profile.profilePicture ||
+            currentUser.profilePicture ||
+            "W.png";
+
+
+        localStorage.setItem(
+
+            "writejotUser",
+
+            JSON.stringify(
+                currentUser
+            )
+
+        );
+
+
+        /*
+         * Don't overwrite active edits.
          */
 
         if (
-            !selectedImage
+            !hasUnsavedChanges()
         ) {
 
-            document
-                .getElementById(
-                    "nameInput"
-                )
-                .value =
-                profile.name ||
-                "";
-
-
-            document
-                .getElementById(
-                    "usernameInput"
-                )
-                .value =
-                profile.username ||
-                "";
-
-
-            document
-                .getElementById(
-                    "bioInput"
-                )
-                .value =
-                profile.bio ||
-                "";
-
-
-            document
-                .getElementById(
-                    "profilePicture"
-                )
-                .src =
-                profile.profilePicture ||
-                "W.png";
-
-
-            document
-                .getElementById(
-                    "previewPicture"
-                )
-                .src =
-                profile.profilePicture ||
-                "W.png";
-
-
-            updatePreview();
+            loadLocalProfile();
 
         }
 
     }
 
-    catch {
+    catch (error) {
 
         console.log(
             "Profile refresh failed."
@@ -1094,13 +1163,25 @@ document.addEventListener(
         if (
             event.target.id ===
                 "nameInput" ||
+
             event.target.id ===
                 "usernameInput" ||
+
             event.target.id ===
                 "bioInput"
         ) {
 
             updatePreview();
+
+        }
+
+
+        if (
+            event.target.id ===
+            "usernameInput"
+        ) {
+
+            queueUsernameCheck();
 
         }
 
@@ -1169,6 +1250,415 @@ function updatePreview() {
         .textContent =
         bio ||
         "Your bio";
+
+}
+
+
+
+/* =========================================================
+   USERNAME CHECK
+========================================================= */
+
+function queueUsernameCheck() {
+
+    clearTimeout(
+        usernameTimer
+    );
+
+
+    const username =
+        document
+            .getElementById(
+                "usernameInput"
+            )
+            .value
+            .trim()
+            .toLowerCase()
+            .replace(
+                /^@/,
+                ""
+            );
+
+
+    /*
+     * Empty username.
+     */
+
+    if (!username) {
+
+        setUsernameStatus(
+            "Enter a username.",
+            "#dc2626"
+        );
+
+
+        usernameAvailable =
+            false;
+
+
+        lastCheckedUsername =
+            "";
+
+
+        return;
+
+    }
+
+
+    /*
+     * Basic validation before
+     * making a server request.
+     */
+
+    if (
+        username.length <
+            3 ||
+        username.length >
+            20
+    ) {
+
+        setUsernameStatus(
+            "Username must be 3–20 characters.",
+            "#dc2626"
+        );
+
+
+        usernameAvailable =
+            false;
+
+
+        lastCheckedUsername =
+            "";
+
+
+        return;
+
+    }
+
+
+    if (
+        !/^[a-z0-9_]+$/i.test(
+            username
+        )
+    ) {
+
+        setUsernameStatus(
+            "Use only letters, numbers, and underscores.",
+            "#dc2626"
+        );
+
+
+        usernameAvailable =
+            false;
+
+
+        lastCheckedUsername =
+            "";
+
+
+        return;
+
+    }
+
+
+    /*
+     * If the username hasn't changed from
+     * the saved username, it's automatically okay.
+     */
+
+    const originalUsername =
+        String(
+            currentUser.username ||
+            ""
+        )
+        .trim()
+        .toLowerCase()
+        .replace(
+            /^@/,
+            ""
+        );
+
+
+    if (
+        username ===
+        originalUsername
+    ) {
+
+        usernameAvailable =
+            true;
+
+
+        lastCheckedUsername =
+            username;
+
+
+        setUsernameStatus(
+            "✓ Current username",
+            "#16834a"
+        );
+
+
+        return;
+
+    }
+
+
+    usernameAvailable =
+        false;
+
+
+    lastCheckedUsername =
+        "";
+
+
+    setUsernameStatus(
+        "Checking username...",
+        "#718096"
+    );
+
+
+    usernameTimer =
+        setTimeout(
+            function() {
+
+                checkUsernameAvailability(
+                    username
+                );
+
+            },
+            USERNAME_CHECK_DELAY
+        );
+
+}
+
+
+async function checkUsernameAvailability(
+    username
+) {
+
+    const cleaned =
+        String(
+            username ||
+            ""
+        )
+        .trim()
+        .toLowerCase()
+        .replace(
+            /^@/,
+            ""
+        );
+
+
+    const requestId =
+        ++usernameCheckNumber;
+
+
+    if (!cleaned) {
+
+        usernameAvailable =
+            false;
+
+        return;
+
+    }
+
+
+    const originalUsername =
+        String(
+            currentUser.username ||
+            ""
+        )
+        .trim()
+        .toLowerCase()
+        .replace(
+            /^@/,
+            ""
+        );
+
+
+    if (
+        cleaned ===
+        originalUsername
+    ) {
+
+        usernameAvailable =
+            true;
+
+
+        lastCheckedUsername =
+            cleaned;
+
+
+        setUsernameStatus(
+            "✓ Current username",
+            "#16834a"
+        );
+
+
+        return;
+
+    }
+
+
+    setUsernameStatus(
+        "Checking username...",
+        "#718096"
+    );
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=usernameAvailable" +
+                "&username=" +
+                encodeURIComponent(
+                    cleaned
+                ) +
+                "&email=" +
+                encodeURIComponent(
+                    currentUser.email
+                ),
+
+                {
+                    cache:
+                        "no-store"
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        /*
+         * Ignore an old request.
+         */
+
+        if (
+            requestId !==
+            usernameCheckNumber
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Make sure the user hasn't changed
+         * the field while the request was running.
+         */
+
+        const currentValue =
+            document
+                .getElementById(
+                    "usernameInput"
+                )
+                .value
+                .trim()
+                .toLowerCase()
+                .replace(
+                    /^@/,
+                    ""
+                );
+
+
+        if (
+            currentValue !==
+            cleaned
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+            result.success &&
+            result.available === true
+        ) {
+
+            usernameAvailable =
+                true;
+
+
+            lastCheckedUsername =
+                cleaned;
+
+
+            setUsernameStatus(
+                "✓ Username available",
+                "#16834a"
+            );
+
+        }
+
+        else {
+
+            usernameAvailable =
+                false;
+
+
+            lastCheckedUsername =
+                cleaned;
+
+
+            setUsernameStatus(
+                result.error ||
+                "✗ Username is already taken",
+                "#dc2626"
+            );
+
+        }
+
+    }
+
+    catch {
+
+        /*
+         * Don't assume availability if
+         * the server couldn't be reached.
+         */
+
+        usernameAvailable =
+            false;
+
+
+        lastCheckedUsername =
+            "";
+
+
+        setUsernameStatus(
+            "Couldn't check username. Try again.",
+            "#dc2626"
+        );
+
+    }
+
+}
+
+
+function setUsernameStatus(
+    text,
+    color
+) {
+
+    const element =
+        document.getElementById(
+            "usernameStatus"
+        );
+
+
+    element.textContent =
+        text;
+
+
+    element.style.color =
+        color;
 
 }
 
@@ -1245,8 +1735,7 @@ function handleImageSelection(
 
 
     /*
-     * Show the selected picture
-     * immediately.
+     * Show photo immediately.
      */
 
     const reader =
@@ -1332,6 +1821,10 @@ async function saveProfile() {
         );
 
 
+    /*
+     * Basic validation.
+     */
+
     if (!name) {
 
         status.textContent =
@@ -1381,7 +1874,220 @@ async function saveProfile() {
 
 
     /*
-     * Store previous profile for rollback.
+     * =====================================================
+     * IMPORTANT:
+     *
+     * CHECK USERNAME BEFORE OPTIMISTIC UPDATE
+     * =====================================================
+     */
+
+    const originalUsername =
+        String(
+            currentUser.username ||
+            ""
+        )
+        .trim()
+        .toLowerCase()
+        .replace(
+            /^@/,
+            ""
+        );
+
+
+    if (
+        username !==
+        originalUsername
+    ) {
+
+        /*
+         * If this exact username hasn't
+         * been confirmed yet, check it now.
+         */
+
+        if (
+            !usernameAvailable ||
+            lastCheckedUsername !==
+                username
+        ) {
+
+            button.disabled =
+                true;
+
+
+            button.textContent =
+                "Checking...";
+
+
+            setUsernameStatus(
+                "Checking username...",
+                "#718096"
+            );
+
+
+            try {
+
+                const response =
+                    await fetch(
+
+                        APPS_SCRIPT_URL +
+                        "?action=usernameAvailable" +
+                        "&username=" +
+                        encodeURIComponent(
+                            username
+                        ) +
+                        "&email=" +
+                        encodeURIComponent(
+                            currentUser.email
+                        ),
+
+                        {
+                            cache:
+                                "no-store"
+                        }
+
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (
+                    !result.success ||
+                    result.available !== true
+                ) {
+
+                    usernameAvailable =
+                        false;
+
+
+                    lastCheckedUsername =
+                        username;
+
+
+                    setUsernameStatus(
+                        result.error ||
+                        "Username is already taken.",
+                        "#dc2626"
+                    );
+
+
+                    status.textContent =
+                        result.error ||
+                        "Username is already taken.";
+
+                    status.style.color =
+                        "#dc2626";
+
+
+                    button.disabled =
+                        false;
+
+                    button.textContent =
+                        "Save Changes";
+
+
+                    return;
+
+                }
+
+
+                usernameAvailable =
+                    true;
+
+
+                lastCheckedUsername =
+                    username;
+
+
+                setUsernameStatus(
+                    "✓ Username available",
+                    "#16834a"
+                );
+
+            }
+
+            catch {
+
+                usernameAvailable =
+                    false;
+
+
+                lastCheckedUsername =
+                    "";
+
+
+                setUsernameStatus(
+                    "Couldn't check username. Try again.",
+                    "#dc2626"
+                );
+
+
+                status.textContent =
+                    "Couldn't verify username.";
+
+                status.style.color =
+                    "#dc2626";
+
+
+                button.disabled =
+                    false;
+
+                button.textContent =
+                    "Save Changes";
+
+
+                return;
+
+            }
+
+            finally {
+
+                if (
+                    button.textContent ===
+                    "Checking..."
+                ) {
+
+                    button.disabled =
+                        false;
+
+                    button.textContent =
+                        "Save Changes";
+
+                }
+
+            }
+
+        }
+
+
+        /*
+         * Final local check.
+         */
+
+        if (
+            !usernameAvailable ||
+            lastCheckedUsername !==
+                username
+        ) {
+
+            status.textContent =
+                "Username is already taken or couldn't be verified.";
+
+            status.style.color =
+                "#dc2626";
+
+            return;
+
+        }
+
+    }
+
+
+    /*
+     * =====================================================
+     * STORE OLD PROFILE FOR ROLLBACK
+     * =====================================================
      */
 
     const previousUser =
@@ -1409,10 +2115,8 @@ async function saveProfile() {
 
 
     /*
-     * Keep the image preview instantly.
-     *
-     * It will be replaced with the real
-     * Google Drive URL after upload.
+     * Keep existing picture until
+     * new picture gets uploaded.
      */
 
     if (
@@ -1427,6 +2131,10 @@ async function saveProfile() {
     }
 
 
+    /*
+     * Update local storage immediately.
+     */
+
     localStorage.setItem(
 
         "writejotUser",
@@ -1439,7 +2147,7 @@ async function saveProfile() {
 
 
     /*
-     * Give instant feedback.
+     * Show immediate feedback.
      */
 
     status.textContent =
@@ -1469,8 +2177,8 @@ async function saveProfile() {
 
 
         /*
-         * Compress/upload picture only
-         * if a new picture was selected.
+         * Compress the selected photo
+         * before sending it to Drive.
          */
 
         if (
@@ -1496,6 +2204,10 @@ async function saveProfile() {
 
         }
 
+
+        /*
+         * Save profile.
+         */
 
         const response =
             await fetch(
@@ -1552,6 +2264,11 @@ async function saveProfile() {
             await response.json();
 
 
+        /*
+         * The server still gets the
+         * final say.
+         */
+
         if (
             !result.success
         ) {
@@ -1565,7 +2282,7 @@ async function saveProfile() {
 
 
         /*
-         * Server confirmed everything.
+         * Server confirmed the change.
          */
 
         currentUser.name =
@@ -1601,7 +2318,8 @@ async function saveProfile() {
 
 
         /*
-         * Update actual saved image.
+         * Replace local image preview
+         * with the real Drive image.
          */
 
         document
@@ -1627,10 +2345,6 @@ async function saveProfile() {
             null;
 
 
-        /*
-         * Clear file input.
-         */
-
         document
             .getElementById(
                 "imageInput"
@@ -1647,8 +2361,8 @@ async function saveProfile() {
 
 
         /*
-         * Small delay only before navigating,
-         * so the user gets visible confirmation.
+         * Go back to dashboard after
+         * confirmation.
          */
 
         setTimeout(
@@ -1666,7 +2380,9 @@ async function saveProfile() {
     catch (error) {
 
         /*
+         * =================================================
          * ROLLBACK
+         * =================================================
          */
 
         currentUser =
@@ -1723,7 +2439,7 @@ async function saveProfile() {
 
 
 /* =========================================================
-   IMAGE COMPRESSION
+   COMPRESS IMAGE
 ========================================================= */
 
 function compressImage(
@@ -1789,6 +2505,7 @@ function compressImage(
                                             width
                                         );
 
+
                                     width =
                                         maxSize;
 
@@ -1802,6 +2519,7 @@ function compressImage(
                                             maxSize /
                                             height
                                         );
+
 
                                     height =
                                         maxSize;
@@ -1878,6 +2596,84 @@ function compressImage(
             );
 
         }
+    );
+
+}
+
+
+
+/* =========================================================
+   UNSAVED CHANGE DETECTION
+========================================================= */
+
+function hasUnsavedChanges() {
+
+    const name =
+        document
+            .getElementById(
+                "nameInput"
+            )
+            .value
+            .trim();
+
+
+    const username =
+        document
+            .getElementById(
+                "usernameInput"
+            )
+            .value
+            .trim()
+            .toLowerCase()
+            .replace(
+                /^@/,
+                ""
+            );
+
+
+    const bio =
+        document
+            .getElementById(
+                "bioInput"
+            )
+            .value
+            .trim();
+
+
+    return (
+
+        name !==
+            String(
+                currentUser.name ||
+                ""
+            ).trim()
+
+        ||
+
+        username !==
+            String(
+                currentUser.username ||
+                ""
+            )
+            .trim()
+            .toLowerCase()
+            .replace(
+                /^@/,
+                ""
+            )
+
+        ||
+
+        bio !==
+            String(
+                currentUser.bio ||
+                ""
+            ).trim()
+
+        ||
+
+        !!selectedImage
+
     );
 
 }
