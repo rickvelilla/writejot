@@ -12,11 +12,17 @@
 
 <title>Writejot | Chat</title>
 
+
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     box-sizing: border-box;
 }
+
 
 html,
 body {
@@ -25,27 +31,45 @@ body {
     height: 100%;
 }
 
+
+/* =========================================================
+   BODY
+========================================================= */
+
 body {
+
     font-family:
         Arial,
         Helvetica,
         sans-serif;
 
-    background: #f6f8fc;
-    color: #1f2937;
+    background:
+        #f6f8fc;
 
-    display: flex;
-    flex-direction: column;
+    color:
+        #1f2937;
 
-    overflow: hidden;
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    overflow:
+        hidden;
 }
+
 
 /* =========================================================
    HEADER
 ========================================================= */
 
 header {
+
+    width: 100%;
+
     height: 66px;
+
     flex: 0 0 66px;
 
     background: white;
@@ -57,22 +81,34 @@ header {
         10px 6%;
 
     display: flex;
+
     align-items: center;
 
     gap: 14px;
+
+    z-index: 20;
 }
+
 
 .back {
-    color: #4285F4;
 
-    text-decoration: none;
+    color:
+        #4285F4;
 
-    font-weight: 600;
+    text-decoration:
+        none;
 
-    white-space: nowrap;
+    font-weight:
+        600;
+
+    white-space:
+        nowrap;
+
 }
 
+
 .recipient {
+
     display: flex;
 
     align-items: center;
@@ -82,145 +118,204 @@ header {
     min-width: 0;
 }
 
+
 .recipient img {
-    width: 42px;
-    height: 42px;
 
-    flex: 0 0 42px;
+    width:
+        42px;
 
-    border-radius: 50%;
+    height:
+        42px;
 
-    object-fit: cover;
+    flex:
+        0 0 42px;
+
+    border-radius:
+        50%;
+
+    object-fit:
+        cover;
 
     border:
         2px solid #4285F4;
 
-    background: #edf2f7;
+    background:
+        #edf2f7;
 }
+
 
 .recipient-info {
-    min-width: 0;
+
+    min-width:
+        0;
 }
+
 
 .recipient-name {
-    font-weight: 700;
 
-    white-space: nowrap;
+    font-weight:
+        700;
 
-    overflow: hidden;
+    white-space:
+        nowrap;
 
-    text-overflow: ellipsis;
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
 }
+
 
 .recipient-username {
-    color: #4285F4;
 
-    font-size: 13px;
+    color:
+        #4285F4;
 
-    white-space: nowrap;
+    font-size:
+        13px;
+
+    white-space:
+        nowrap;
 }
+
 
 /* =========================================================
    MESSAGE AREA
 ========================================================= */
 
 #messages {
-    flex: 1 1 auto;
 
-    min-height: 0;
+    flex:
+        1 1 auto;
 
-    width: 100%;
+    min-height:
+        0;
 
-    max-width: 900px;
+    width:
+        100%;
 
-    margin: 0 auto;
+    max-width:
+        900px;
+
+    margin:
+        0 auto;
 
     padding:
         24px 20px 24px;
 
-    overflow-y: auto;
+    overflow-y:
+        auto;
 
-    overflow-x: hidden;
+    overflow-x:
+        hidden;
 
-    scroll-behavior: smooth;
+    scroll-behavior:
+        smooth;
 
-    overscroll-behavior: contain;
+    overscroll-behavior:
+        contain;
 }
+
 
 /* =========================================================
    MESSAGE ROW
 ========================================================= */
 
 .message-row {
-    width: 100%;
 
-    display: flex;
+    width:
+        100%;
 
-    align-items: flex-start;
+    display:
+        flex;
 
-    margin-bottom: 12px;
+    align-items:
+        flex-end;
 
-    min-height: 0;
+    margin-bottom:
+        14px;
+
+    min-height:
+        0;
 }
+
 
 .message-row.mine {
-    justify-content: flex-end;
+
+    justify-content:
+        flex-end;
 }
+
 
 .message-row.theirs {
-    justify-content: flex-start;
+
+    justify-content:
+        flex-start;
 }
+
 
 /* =========================================================
-   ADAPTIVE BUBBLES
+   MESSAGE CONTENT
 ========================================================= */
 
-.bubble-wrapper {
-    display: flex;
+.message-content {
 
-    flex-direction: column;
+    display:
+        flex;
 
-    width: fit-content;
+    flex-direction:
+        column;
 
-    max-width: min(
-        70%,
-        620px
-    );
+    width:
+        fit-content;
 
-    min-width: 0;
+    max-width:
+        min(
+            70%,
+            620px
+        );
 
-    flex: 0 0 auto;
+    min-width:
+        0;
 
-    align-items: flex-start;
+    flex:
+        0 1 auto;
 }
 
-.mine .bubble-wrapper {
-    align-items: flex-end;
-}
 
-.bubble {
-    display: block;
+/* =========================================================
+   TEXT
+========================================================= */
 
-    width: fit-content;
+.message-text {
 
-    max-width: 100%;
+    width:
+        auto;
 
-    min-width: 0;
-
-    height: auto !important;
-
-    min-height: 0 !important;
-
-    max-height: none !important;
+    max-width:
+        100%;
 
     padding:
-        10px 14px;
+        0;
 
-    border-radius:
+    margin:
+        0;
+
+    background:
+        transparent;
+
+    border:
+        none;
+
+    color:
+        #1f2937;
+
+    font-size:
         15px;
 
     line-height:
-        1.45;
+        1.5;
 
     white-space:
         pre-wrap;
@@ -231,211 +326,285 @@ header {
     word-break:
         break-word;
 
-    text-align: left;
-
-    flex:
-        0 0 auto;
+    text-align:
+        left;
 }
 
-.mine .bubble {
-    align-self: flex-end;
 
-    background:
-        #4285F4;
+.mine .message-text {
+
+    text-align:
+        right;
+
+}
+
+
+.theirs .message-text {
+
+    text-align:
+        left;
+
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.message-image {
+
+    display:
+        block;
+
+    width:
+        auto;
+
+    max-width:
+        500px;
+
+    max-height:
+        500px;
+
+    height:
+        auto;
+
+    border-radius:
+        12px;
+
+    object-fit:
+        contain;
+
+    cursor:
+        pointer;
+}
+
+
+.mine .message-image {
+
+    margin-left:
+        auto;
+
+}
+
+
+.theirs .message-image {
+
+    margin-right:
+        auto;
+
+}
+
+
+/* =========================================================
+   MESSAGE META
+========================================================= */
+
+.message-meta {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        5px;
+
+    margin-top:
+        3px;
+
+    font-size:
+        10px;
 
     color:
-        white;
-
-    border-bottom-right-radius:
-        4px;
+        #8a94a6;
 }
 
-.theirs .bubble {
-    align-self: flex-start;
 
-    background:
-        white;
+.mine .message-meta {
 
-    color:
-        #1f2937;
+    justify-content:
+        flex-end;
 
-    border:
-        1px solid #e1e6ee;
-
-    border-bottom-left-radius:
-        4px;
 }
+
+
+.theirs .message-meta {
+
+    justify-content:
+        flex-start;
+
+}
+
 
 /* =========================================================
    SENDING MESSAGE
 ========================================================= */
 
 .sending-message {
-    opacity: .72;
+
+    opacity:
+        .6;
 }
 
-.sending-message .bubble {
-    background:
-        #8db6f8;
-}
 
-.sending-label {
-    margin-top: 4px;
-
-    font-size: 11px;
+.sending-message .message-text {
 
     color:
-        #7a8698;
-
-    text-align:
-        right;
+        #667085;
 }
 
-/* =========================================================
-   IMAGES
-========================================================= */
 
-.message-image {
-    display: block;
+.sending-message .message-meta {
 
-    width: auto;
-
-    max-width: 500px;
-
-    max-height: 500px;
-
-    height: auto;
-
-    border-radius: 12px;
-
-    object-fit: contain;
-
-    cursor: pointer;
+    color:
+        #8a94a6;
 }
 
-.image-message-bubble {
-    padding: 5px;
-
-    overflow: hidden;
-}
-
-.image-message-bubble
-.message-image {
-    border-radius: 10px;
-}
-
-/* =========================================================
-   MESSAGE TIME
-========================================================= */
-
-.time {
-    margin-top: 4px;
-
-    font-size: 11px;
-
-    opacity: .65;
-}
-
-.mine .time {
-    text-align: right;
-}
 
 /* =========================================================
    EMPTY
 ========================================================= */
 
 #empty {
-    text-align: center;
 
-    color: #718096;
+    width:
+        100%;
 
     padding:
         40px 20px;
+
+    text-align:
+        center;
+
+    color:
+        #718096;
 }
+
 
 /* =========================================================
    COMPOSER
 ========================================================= */
 
 #composer {
-    flex: 0 0 auto;
 
-    width: 100%;
+    width:
+        100%;
 
-    background: white;
+    flex:
+        0 0 auto;
+
+    background:
+        white;
 
     border-top:
         1px solid #e5e7eb;
 
     padding:
-        1px 2px;
+        10px 14px;
+
+    z-index:
+        30;
 }
+
 
 .composer-inner {
-    width: 100%;
 
-    max-width: 900px;
+    width:
+        100%;
 
-    margin: 0 auto;
+    max-width:
+        900px;
 
-    display: flex;
+    margin:
+        0 auto;
 
-    align-items: flex-end;
+    display:
+        flex;
 
-    gap: 8px;
+    align-items:
+        flex-end;
+
+    gap:
+        8px;
 }
 
+
 /* =========================================================
-   PHOTO
+   PHOTO BUTTON
 ========================================================= */
 
 #photoButton {
-    width: 44px;
-    height: 44px;
 
-    flex: 0 0 44px;
+    width:
+        44px;
+
+    height:
+        44px;
+
+    flex:
+        0 0 44px;
 
     border:
         1px solid #d8dee8;
 
-    border-radius: 9px;
+    border-radius:
+        9px;
 
-    background: white;
+    background:
+        white;
 
-    font-size: 20px;
+    font-size:
+        20px;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 }
 
+
 #photoButton:hover {
+
     background:
         #f3f6fb;
 }
 
+
 #imageInput {
-    display: none;
+
+    display:
+        none;
 }
 
+
 /* =========================================================
-   INPUT
+   TEXT INPUT
 ========================================================= */
 
 #messageInput {
-    flex: 1 1 auto;
 
-    min-width: 0;
+    flex:
+        1 1 auto;
 
-    width: 100%;
+    min-width:
+        0;
 
-    min-height: 44px;
+    width:
+        100%;
 
-    max-height: 140px;
+    min-height:
+        44px;
+
+    max-height:
+        140px;
 
     padding:
         11px 14px;
@@ -443,24 +612,34 @@ header {
     border:
         1px solid #d8dee8;
 
-    border-radius: 9px;
+    border-radius:
+        9px;
 
-    background: white;
+    background:
+        white;
 
-    font-family: inherit;
+    font-family:
+        inherit;
 
-    font-size: 14px;
+    font-size:
+        14px;
 
-    outline: none;
+    line-height:
+        1.4;
 
-    resize: none;
+    outline:
+        none;
 
-    overflow-y: auto;
+    resize:
+        none;
 
-    line-height: 1.4;
+    overflow-y:
+        auto;
 }
 
+
 #messageInput:focus {
+
     border-color:
         #4285F4;
 
@@ -474,109 +653,156 @@ header {
         );
 }
 
+
 /* =========================================================
-   SEND
+   SEND BUTTON
 ========================================================= */
 
 #sendButton {
-    flex: 0 0 auto;
 
-    min-height: 44px;
+    flex:
+        0 0 auto;
+
+    min-height:
+        44px;
 
     padding:
         0 18px;
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 9px;
+    border-radius:
+        9px;
 
     background:
         #4285F4;
 
-    color: white;
+    color:
+        white;
 
-    font-weight: 600;
+    font-weight:
+        600;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 }
 
+
 #sendButton:hover {
+
     background:
         #3367d6;
 }
 
-#sendButton:disabled {
-    opacity: .6;
 
-    cursor: not-allowed;
+#sendButton:disabled {
+
+    opacity:
+        .6;
+
+    cursor:
+        not-allowed;
 }
+
 
 /* =========================================================
    IMAGE PREVIEW
 ========================================================= */
 
 #imagePreview {
-    display: none;
 
-    width: 100%;
+    display:
+        none;
 
-    max-width: 900px;
+    width:
+        100%;
+
+    max-width:
+        900px;
 
     margin:
         0 auto 8px;
 }
 
-.preview-wrapper {
-    position: relative;
 
-    display: inline-block;
+.preview-wrapper {
+
+    position:
+        relative;
+
+    display:
+        inline-block;
 }
 
+
 #previewImage {
-    display: block;
 
-    max-width: 180px;
+    display:
+        block;
 
-    max-height: 140px;
+    max-width:
+        180px;
 
-    border-radius: 10px;
+    max-height:
+        140px;
 
-    object-fit: cover;
+    border-radius:
+        10px;
+
+    object-fit:
+        cover;
 
     border:
         1px solid #d8dee8;
 }
 
+
 #removeImageButton {
-    position: absolute;
 
-    top: -8px;
+    position:
+        absolute;
 
-    right: -8px;
+    top:
+        -8px;
 
-    width: 24px;
+    right:
+        -8px;
 
-    height: 24px;
+    width:
+        24px;
 
-    border: none;
+    height:
+        24px;
 
-    border-radius: 50%;
+    border:
+        none;
+
+    border-radius:
+        50%;
 
     background:
         #ef4444;
 
-    color: white;
+    color:
+        white;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    font-size: 16px;
+    font-size:
+        16px;
 
-    line-height: 24px;
+    line-height:
+        24px;
 
-    padding: 0;
+    padding:
+        0;
 }
+
 
 /* =========================================================
    MOBILE
@@ -585,108 +811,151 @@ header {
 @media (max-width: 600px) {
 
     header {
-        height: 60px;
-        flex-basis: 60px;
+
+        height:
+            60px;
+
+        flex-basis:
+            60px;
 
         padding:
             9px 12px;
+
     }
+
 
     .back {
-        font-size: 13px;
+
+        font-size:
+            13px;
+
     }
+
 
     .recipient img {
-        width: 38px;
-        height: 38px;
 
-        flex-basis: 38px;
+        width:
+            38px;
+
+        height:
+            38px;
+
+        flex-basis:
+            38px;
+
     }
+
 
     .recipient-name {
-        max-width: 190px;
+
+        max-width:
+            190px;
+
     }
+
 
     #messages {
+
         padding:
             18px 12px;
+
     }
 
-    .bubble-wrapper {
-        max-width: 82%;
+
+    .message-content {
+
+        max-width:
+            82%;
+
     }
+
+
+    .message-text {
+
+        font-size:
+            15px;
+
+    }
+
 
     .message-image {
-        max-width: 100%;
 
-        max-height: 360px;
+        max-width:
+            100%;
+
+        max-height:
+            360px;
+
     }
+
 
     #composer {
+
         padding:
             8px 10px;
+
     }
+
 
     .composer-inner {
-        gap: 6px;
+
+        gap:
+            6px;
+
     }
 
-    #messageInput {
-        min-height: 42px;
 
-        max-height: 120px;
+    #messageInput {
+
+        min-height:
+            42px;
+
+        max-height:
+            120px;
 
         padding:
             10px 12px;
+
     }
+
 
     #photoButton {
-        width: 42px;
-        height: 42px;
 
-        flex-basis: 42px;
+        width:
+            42px;
+
+        height:
+            42px;
+
+        flex-basis:
+            42px;
+
     }
 
+
     #sendButton {
-        min-height: 42px;
+
+        min-height:
+            42px;
 
         padding:
             0 13px;
+
     }
 
 }
 
 
 /* =========================================================
-   VERY LONG WORDS
+   PREVENT OLD BUBBLE STYLES
 ========================================================= */
 
 #messages .bubble,
-#messages .bubble * {
-    max-width: 100%;
-}
-
-
-/* =========================================================
-   PREVENT FLEX STRETCH
-========================================================= */
-
-#messages .message-row {
-    height: auto !important;
-
-    min-height: 0 !important;
-}
-
 #messages .bubble-wrapper {
-    height: auto !important;
 
-    min-height: 0 !important;
-}
+    all:
+        unset;
 
-#messages .bubble {
-    height: auto !important;
-
-    min-height: 0 !important;
 }
 
 </style>
@@ -696,6 +965,10 @@ header {
 
 <body>
 
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header>
 
@@ -744,19 +1017,37 @@ header {
 </header>
 
 
-<div id="messages">
 
-    <div id="empty">
+<!-- =========================================================
+     MESSAGES
+========================================================= -->
+
+<div
+    id="messages"
+>
+
+    <div
+        id="empty"
+    >
         Loading messages...
     </div>
 
 </div>
 
 
-<div id="composer">
+
+<!-- =========================================================
+     COMPOSER
+========================================================= -->
+
+<div
+    id="composer"
+>
 
 
-    <div id="imagePreview">
+    <div
+        id="imagePreview"
+    >
 
         <div
             class="preview-wrapper"
@@ -782,8 +1073,10 @@ header {
     </div>
 
 
-    <div class="composer-inner">
 
+    <div
+        class="composer-inner"
+    >
 
         <button
             id="photoButton"
@@ -817,21 +1110,20 @@ header {
             Send
         </button>
 
-
     </div>
 
 </div>
 
 
-<script>
 
+<script>
 
 /* =========================================================
    CONFIG
 ========================================================= */
 
 const APPS_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
+    "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVxf/exec";
 
 
 const CHAT_CACHE_PREFIX =
@@ -866,12 +1158,12 @@ let initialized =
     false;
 
 
-let loadRequestId =
+let refreshGeneration =
     0;
 
 
 /* =========================================================
-   INITIALIZATION
+   START
 ========================================================= */
 
 window.addEventListener(
@@ -888,7 +1180,9 @@ async function initializeChat() {
         );
 
 
-    if (!savedUser) {
+    if (
+        !savedUser
+    ) {
 
         window.location.href =
             "index.html";
@@ -907,11 +1201,12 @@ async function initializeChat() {
 
     }
 
-    catch (error) {
+    catch {
 
         localStorage.removeItem(
             "writejotUser"
         );
+
 
         window.location.href =
             "index.html";
@@ -935,7 +1230,9 @@ async function initializeChat() {
         );
 
 
-    if (!otherUsername) {
+    if (
+        !otherUsername
+    ) {
 
         window.location.href =
             "messages.html";
@@ -953,21 +1250,16 @@ async function initializeChat() {
 
 
     /*
-     * Show cached recipient immediately.
+     * CACHE FIRST
      */
 
     loadRecipientCache();
-
-
-    /*
-     * Show cached messages immediately.
-     */
 
     loadChatCache();
 
 
     /*
-     * Refresh server data in background.
+     * REAL DATA IN BACKGROUND
      */
 
     await refreshChat();
@@ -979,14 +1271,16 @@ async function initializeChat() {
 
 
 /* =========================================================
-   PAGE RESTORE FIX
+   BROWSER BACK/FORWARD RESTORE
 ========================================================= */
 
 window.addEventListener(
     "pageshow",
     async function() {
 
-        if (!initialized) {
+        if (
+            !initialized
+        ) {
 
             return;
 
@@ -994,11 +1288,10 @@ window.addEventListener(
 
 
         /*
-         * This handles browser back/forward cache.
+         * Browser may restore the old DOM
+         * including an old Sending... message.
          *
-         * The browser may restore an old DOM containing
-         * "Sending..." even after the server has saved
-         * the message.
+         * Fetch the authoritative server state.
          */
 
         await refreshChat();
@@ -1008,7 +1301,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   VISIBILITY FIX
+   TAB VISIBILITY
 ========================================================= */
 
 document.addEventListener(
@@ -1030,7 +1323,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   FOCUS FIX
+   FOCUS
 ========================================================= */
 
 window.addEventListener(
@@ -1050,189 +1343,13 @@ window.addEventListener(
 
 
 /* =========================================================
-   CHAT CACHE
-========================================================= */
-
-function getChatCacheKey() {
-
-    return (
-        CHAT_CACHE_PREFIX +
-        normalizeEmail(
-            currentUser.email
-        ) +
-        "_" +
-        otherUsername
-    );
-
-}
-
-
-function loadChatCache() {
-
-    try {
-
-        const raw =
-            localStorage.getItem(
-                getChatCacheKey()
-            );
-
-
-        if (!raw) {
-
-            return;
-
-        }
-
-
-        const cached =
-            JSON.parse(
-                raw
-            );
-
-
-        if (
-            !Array.isArray(
-                cached.messages
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        renderMessages(
-            cached.messages,
-            true
-        );
-
-    }
-
-    catch (error) {
-
-        console.log(
-            "Chat cache unavailable."
-        );
-
-    }
-
-}
-
-
-function saveChatCache(
-    messages
-) {
-
-    try {
-
-        localStorage.setItem(
-
-            getChatCacheKey(),
-
-            JSON.stringify({
-
-                savedAt:
-                    Date.now(),
-
-                messages:
-                    messages
-
-            })
-
-        );
-
-    }
-
-    catch (error) {
-
-        console.log(
-            "Could not save chat cache."
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   RECIPIENT CACHE
-========================================================= */
-
-function getRecipientCacheKey() {
-
-    return (
-        RECIPIENT_CACHE_PREFIX +
-        otherUsername
-    );
-
-}
-
-
-function loadRecipientCache() {
-
-    try {
-
-        const raw =
-            localStorage.getItem(
-                getRecipientCacheKey()
-            );
-
-
-        if (!raw) {
-
-            return;
-
-        }
-
-
-        const profile =
-            JSON.parse(
-                raw
-            );
-
-
-        applyRecipientProfile(
-            profile
-        );
-
-    }
-
-    catch {}
-
-}
-
-
-function saveRecipientCache(
-    profile
-) {
-
-    try {
-
-        localStorage.setItem(
-
-            getRecipientCacheKey(),
-
-            JSON.stringify(
-                profile
-            )
-
-        );
-
-    }
-
-    catch {}
-
-}
-
-
-/* =========================================================
    REFRESH CHAT
 ========================================================= */
 
 async function refreshChat() {
 
-    const requestId =
-        ++loadRequestId;
+    const generation =
+        ++refreshGeneration;
 
 
     try {
@@ -1244,8 +1361,8 @@ async function refreshChat() {
 
 
         if (
-            requestId !==
-            loadRequestId
+            generation !==
+            refreshGeneration
         ) {
 
             return;
@@ -1257,7 +1374,9 @@ async function refreshChat() {
 
     }
 
-    catch (error) {
+    catch (
+        error
+    ) {
 
         console.error(
             "Chat refresh error:",
@@ -1305,6 +1424,185 @@ function startRefreshTimer() {
             3000
 
         );
+
+}
+
+
+/* =========================================================
+   CHAT CACHE
+========================================================= */
+
+function getChatCacheKey() {
+
+    return (
+        CHAT_CACHE_PREFIX +
+        normalizeEmail(
+            currentUser.email
+        ) +
+        "_" +
+        otherUsername
+    );
+
+}
+
+
+function loadChatCache() {
+
+    try {
+
+        const raw =
+            localStorage.getItem(
+                getChatCacheKey()
+            );
+
+
+        if (
+            !raw
+        ) {
+
+            return;
+
+        }
+
+
+        const cached =
+            JSON.parse(
+                raw
+            );
+
+
+        if (
+            !Array.isArray(
+                cached.messages
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Render cached messages immediately.
+         */
+
+        renderMessages(
+            cached.messages
+        );
+
+    }
+
+    catch (
+        error
+    ) {
+
+        console.log(
+            "Chat cache unavailable."
+        );
+
+    }
+
+}
+
+
+function saveChatCache(
+    messages
+) {
+
+    try {
+
+        localStorage.setItem(
+
+            getChatCacheKey(),
+
+            JSON.stringify({
+
+                savedAt:
+                    Date.now(),
+
+                messages:
+                    messages
+
+            })
+
+        );
+
+    }
+
+    catch {}
+
+}
+
+
+/* =========================================================
+   RECIPIENT CACHE
+========================================================= */
+
+function getRecipientCacheKey() {
+
+    return (
+        RECIPIENT_CACHE_PREFIX +
+        otherUsername
+    );
+
+}
+
+
+function loadRecipientCache() {
+
+    try {
+
+        const raw =
+            localStorage.getItem(
+                getRecipientCacheKey()
+            );
+
+
+        if (
+            !raw
+        ) {
+
+            return;
+
+        }
+
+
+        const profile =
+            JSON.parse(
+                raw
+            );
+
+
+        applyRecipientProfile(
+            profile
+        );
+
+    }
+
+    catch {}
+
+}
+
+
+function saveRecipientCache(
+    profile
+) {
+
+    try {
+
+        localStorage.setItem(
+
+            getRecipientCacheKey(),
+
+            JSON.stringify(
+                profile
+            )
+
+        );
+
+    }
+
+    catch {}
 
 }
 
@@ -1388,7 +1686,9 @@ async function loadRecipient() {
 
     }
 
-    catch (error) {
+    catch (
+        error
+    ) {
 
         console.error(
             "Recipient loading error:",
@@ -1397,7 +1697,7 @@ async function loadRecipient() {
 
 
         /*
-         * Keep cached recipient information.
+         * Keep cached header.
          */
 
         const name =
@@ -1481,7 +1781,7 @@ function applyRecipientProfile(
 
 
 /* =========================================================
-   MARK READ
+   MARK AS READ
 ========================================================= */
 
 async function markConversationRead() {
@@ -1524,7 +1824,9 @@ async function markConversationRead() {
 
     }
 
-    catch (error) {
+    catch (
+        error
+    ) {
 
         console.error(
             "Mark read error:",
@@ -1600,7 +1902,7 @@ async function loadMessages() {
 
 
         /*
-         * Save the authoritative server state.
+         * Server is authoritative.
          */
 
         saveChatCache(
@@ -1608,19 +1910,15 @@ async function loadMessages() {
         );
 
 
-        /*
-         * Replace any stale optimistic
-         * "Sending..." DOM.
-         */
-
         renderMessages(
-            messages,
-            false
+            messages
         );
 
     }
 
-    catch (error) {
+    catch (
+        error
+    ) {
 
         console.error(
             "Message loading error:",
@@ -1628,8 +1926,7 @@ async function loadMessages() {
         );
 
         /*
-         * Keep cached messages on screen.
-         * Do not replace them with an error.
+         * Keep cache visible.
          */
 
     }
@@ -1638,12 +1935,11 @@ async function loadMessages() {
 
 
 /* =========================================================
-   RENDER
+   RENDER MESSAGES
 ========================================================= */
 
 function renderMessages(
-    messages,
-    fromCache
+    messages
 ) {
 
     const container =
@@ -1677,9 +1973,24 @@ function renderMessages(
 
 
     /*
-     * If these are real server messages,
-     * old Sending bubbles are gone because
-     * innerHTML is completely replaced.
+     * Remember scroll position.
+     */
+
+    const distanceFromBottom =
+        container.scrollHeight -
+        container.scrollTop -
+        container.clientHeight;
+
+
+    const nearBottom =
+        distanceFromBottom <
+        180;
+
+
+    /*
+     * Rebuild from server.
+     *
+     * Any stale Sending... DOM disappears here.
      */
 
     container.innerHTML =
@@ -1687,7 +1998,7 @@ function renderMessages(
             .map(
                 function(message) {
 
-                    return buildMessage(
+                    return buildMessageHtml(
                         message,
                         currentUsername
                     );
@@ -1697,25 +2008,12 @@ function renderMessages(
             .join("");
 
 
-    /*
-     * Chat opens at the newest message.
-     * Don't force-scroll repeatedly for cached
-     * and background refreshes if the user has
-     * manually scrolled upward.
-     */
-
     requestAnimationFrame(
         function() {
 
-            const distance =
-                container.scrollHeight -
-                container.scrollTop -
-                container.clientHeight;
-
-
             if (
-                !container.dataset.userScrolled ||
-                distance < 160
+                nearBottom ||
+                !container.dataset.userScrolled
             ) {
 
                 container.scrollTop =
@@ -1729,7 +2027,11 @@ function renderMessages(
 }
 
 
-function buildMessage(
+/* =========================================================
+   BUILD SERVER MESSAGE
+========================================================= */
+
+function buildMessageHtml(
     message,
     currentUsername
 ) {
@@ -1741,19 +2043,30 @@ function buildMessage(
         currentUsername;
 
 
-    const time =
+    const timestamp =
         message.timestamp
-
             ? new Date(
                 message.timestamp
-            ).toLocaleString()
+            ).toLocaleTimeString(
+                [],
+                {
+                    hour:
+                        "numeric",
 
+                    minute:
+                        "2-digit"
+                }
+            )
             : "";
 
 
     let content =
         "";
 
+
+    /*
+     * PHOTO
+     */
 
     if (
         message.attachmentType ===
@@ -1787,6 +2100,10 @@ function buildMessage(
     }
 
 
+    /*
+     * TEXT
+     */
+
     const text =
         String(
             message.message ||
@@ -1801,7 +2118,9 @@ function buildMessage(
         content +=
 
             `
-            <div>
+            <div
+                class="message-text"
+            >
                 ${escapeHtml(
                     text
                 )}
@@ -1811,11 +2130,9 @@ function buildMessage(
     }
 
 
-    const imageOnly =
-        message.attachmentType ===
-            "image" &&
-        !text;
-
+    /*
+     * Completely ordinary message row.
+     */
 
     return `
 
@@ -1831,28 +2148,17 @@ function buildMessage(
         >
 
             <div
-                class="bubble-wrapper"
+                class="message-content"
             >
 
-                <div
-                    class="
-                        bubble
-                        ${
-                            imageOnly
-                                ? "image-message-bubble"
-                                : ""
-                        }
-                    "
-                >
-                    ${content}
-                </div>
+                ${content}
 
 
                 <div
-                    class="time"
+                    class="message-meta"
                 >
                     ${escapeHtml(
-                        time
+                        timestamp
                     )}
                 </div>
 
@@ -1866,7 +2172,123 @@ function buildMessage(
 
 
 /* =========================================================
-   SEND
+   OPTIMISTIC MESSAGE
+========================================================= */
+
+function addOptimisticMessage(
+    text,
+    imageData
+) {
+
+    const container =
+        document.getElementById(
+            "messages"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "empty"
+        );
+
+
+    if (
+        empty
+    ) {
+
+        empty.remove();
+
+    }
+
+
+    let content =
+        "";
+
+
+    if (
+        imageData
+    ) {
+
+        content +=
+
+            `
+            <img
+                class="message-image"
+                src="${escapeHtml(
+                    imageData
+                )}"
+                alt="Photo"
+            >
+            `;
+
+    }
+
+
+    if (
+        text
+    ) {
+
+        content +=
+
+            `
+            <div
+                class="message-text"
+            >
+                ${escapeHtml(
+                    text
+                )}
+            </div>
+            `;
+
+    }
+
+
+    const row =
+        document.createElement(
+            "div"
+        );
+
+
+    row.className =
+        "message-row mine sending-message";
+
+
+    row.innerHTML =
+
+        `
+        <div
+            class="message-content"
+        >
+
+            ${content}
+
+
+            <div
+                class="message-meta"
+            >
+                Sending...
+            </div>
+
+        </div>
+        `;
+
+
+    container.appendChild(
+        row
+    );
+
+
+    container.scrollTop =
+        container.scrollHeight;
+
+
+    return row;
+
+}
+
+
+/* =========================================================
+   SEND MESSAGE
 ========================================================= */
 
 async function sendMessage() {
@@ -1918,6 +2340,10 @@ async function sendMessage() {
         "Sending...";
 
 
+    /*
+     * Save selected file before the async operations.
+     */
+
     const imageFile =
         selectedImage;
 
@@ -1926,7 +2352,7 @@ async function sendMessage() {
      * Generate temporary image preview.
      */
 
-    let previewImage =
+    let previewData =
         "";
 
 
@@ -1936,16 +2362,19 @@ async function sendMessage() {
 
         try {
 
-            previewImage =
+            previewData =
                 await fileToDataURL(
                     imageFile
                 );
 
         }
 
-        catch (error) {
+        catch (
+            error
+        ) {
 
             console.error(
+                "Preview creation failed:",
                 error
             );
 
@@ -1955,13 +2384,13 @@ async function sendMessage() {
 
 
     /*
-     * Add temporary message.
+     * Display immediately.
      */
 
     const optimisticElement =
         addOptimisticMessage(
             text,
-            previewImage
+            previewData
         );
 
 
@@ -1970,12 +2399,18 @@ async function sendMessage() {
         let imageData =
             "";
 
+
         let imageType =
             "";
+
 
         let imageName =
             "";
 
+
+        /*
+         * Compress photo.
+         */
 
         if (
             imageFile
@@ -1990,14 +2425,20 @@ async function sendMessage() {
             imageData =
                 compressed.dataUrl;
 
+
             imageType =
                 compressed.mimeType;
+
 
             imageName =
                 compressed.fileName;
 
         }
 
+
+        /*
+         * SEND.
+         */
 
         const response =
             await fetch(
@@ -2081,8 +2522,9 @@ async function sendMessage() {
 
 
         /*
-         * Server successfully saved it.
-         * Remove ONLY the temporary bubble.
+         * SERVER CONFIRMED IT.
+         *
+         * Remove temporary Sending... row.
          */
 
         if (
@@ -2106,14 +2548,17 @@ async function sendMessage() {
 
 
         /*
-         * Immediately load authoritative messages.
+         * Immediately replace with the
+         * authoritative server conversation.
          */
 
         await loadMessages();
 
     }
 
-    catch (error) {
+    catch (
+        error
+    ) {
 
         console.error(
             "Send message error:",
@@ -2122,7 +2567,7 @@ async function sendMessage() {
 
 
         /*
-         * Sending failed, so remove temporary bubble.
+         * Remove failed optimistic message.
          */
 
         if (
@@ -2159,132 +2604,6 @@ async function sendMessage() {
         input.focus();
 
     }
-
-}
-
-
-/* =========================================================
-   OPTIMISTIC MESSAGE
-========================================================= */
-
-function addOptimisticMessage(
-    text,
-    imageData
-) {
-
-    const container =
-        document.getElementById(
-            "messages"
-        );
-
-
-    const empty =
-        document.getElementById(
-            "empty"
-        );
-
-
-    if (
-        empty
-    ) {
-
-        empty.remove();
-
-    }
-
-
-    let content =
-        "";
-
-
-    if (
-        imageData
-    ) {
-
-        content +=
-
-            `
-            <img
-                class="message-image"
-                src="${escapeHtml(
-                    imageData
-                )}"
-                alt="Photo"
-            >
-            `;
-
-    }
-
-
-    if (
-        text
-    ) {
-
-        content +=
-
-            `
-            <div>
-                ${escapeHtml(
-                    text
-                )}
-            </div>
-            `;
-
-    }
-
-
-    const row =
-        document.createElement(
-            "div"
-        );
-
-
-    row.className =
-        "message-row mine sending-message";
-
-
-    row.innerHTML =
-
-        `
-        <div
-            class="bubble-wrapper"
-        >
-
-            <div
-                class="
-                    bubble
-                    ${
-                        imageData &&
-                        !text
-                            ? "image-message-bubble"
-                            : ""
-                    }
-                "
-            >
-                ${content}
-            </div>
-
-
-            <div
-                class="sending-label"
-            >
-                Sending...
-            </div>
-
-        </div>
-        `;
-
-
-    container.appendChild(
-        row
-    );
-
-
-    container.scrollTop =
-        container.scrollHeight;
-
-
-    return row;
 
 }
 
@@ -2408,7 +2727,7 @@ function handleImageSelection(
 
 
 /* =========================================================
-   REMOVE IMAGE
+   REMOVE SELECTED IMAGE
 ========================================================= */
 
 function removeSelectedImage() {
@@ -2452,6 +2771,7 @@ function compressImage(
 ) {
 
     return new Promise(
+
         function(
             resolve,
             reject
@@ -2512,6 +2832,7 @@ function compressImage(
                                             )
                                         );
 
+
                                     width =
                                         maxSize;
 
@@ -2528,6 +2849,7 @@ function compressImage(
                                             )
                                         );
 
+
                                     height =
                                         maxSize;
 
@@ -2537,9 +2859,10 @@ function compressImage(
 
 
                             const canvas =
-                                document.createElement(
-                                    "canvas"
-                                );
+                                document
+                                    .createElement(
+                                        "canvas"
+                                    );
 
 
                             canvas.width =
@@ -2575,8 +2898,11 @@ function compressImage(
 
                             const dataUrl =
                                 canvas.toDataURL(
+
                                     mimeType,
+
                                     .82
+
                                 );
 
 
@@ -2609,6 +2935,7 @@ function compressImage(
             );
 
         }
+
     );
 
 }
@@ -2619,6 +2946,7 @@ function fileToDataURL(
 ) {
 
     return new Promise(
+
         function(
             resolve,
             reject
@@ -2647,13 +2975,14 @@ function fileToDataURL(
             );
 
         }
+
     );
 
 }
 
 
 /* =========================================================
-   TEXTAREA
+   TEXTBOX
 ========================================================= */
 
 function setupMessageInput() {
@@ -2685,6 +3014,11 @@ function setupMessageInput() {
     input.addEventListener(
         "keydown",
         function(event) {
+
+            /*
+             * Enter = send
+             * Shift + Enter = new line
+             */
 
             if (
                 event.key ===
@@ -2753,7 +3087,7 @@ function resetTextareaHeight() {
 
 
 /* =========================================================
-   SCROLL TRACKING
+   USER SCROLL
 ========================================================= */
 
 document.addEventListener(
@@ -2778,7 +3112,7 @@ document.addEventListener(
 
                 if (
                     distance >
-                    160
+                    180
                 ) {
 
                     container.dataset.userScrolled =
@@ -2899,10 +3233,6 @@ function escapeJs(
 }
 
 
-/* =========================================================
-   OPEN IMAGE
-========================================================= */
-
 function openImage(
     url
 ) {
@@ -2915,7 +3245,6 @@ function openImage(
 }
 
 </script>
-
 
 </body>
 
