@@ -1181,6 +1181,76 @@
         }
 
 
+        /* =========================
+           DISCOUNT PRICE
+        ========================= */
+
+        .price-offer {
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                10px;
+
+            flex-wrap:
+                wrap;
+
+            margin:
+                8px 0 4px;
+        }
+
+
+        .old-price {
+            color:
+                #8a94a6;
+
+            font-size:
+                20px;
+
+            text-decoration:
+                line-through;
+
+            text-decoration-thickness:
+                2px;
+        }
+
+
+        .discount-badge {
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                5px 9px;
+
+            border-radius:
+                999px;
+
+            background:
+                #ecfdf3;
+
+            color:
+                #15803d;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+        }
+
+
         .price {
 
             color:
@@ -1744,8 +1814,8 @@
 
 
             <a
-                class="button primary"
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdp5M_YiW2cUsR2Sy-rPl6u2FGHeaLWzxhDl5zunMT6cq8y1w/viewform?usp=dialog"
+                class="button secondary"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -1782,9 +1852,9 @@
 
             <button
                 class="button secondary"
-                href="reminders.html"
+                onclick="featureComingSoon('Flashcards')"
             >
-                Check Reminders
+                Coming Soon
             </button>
 
         </div>
@@ -1850,12 +1920,12 @@
             </p>
 
 
-            <button
+            <a
+                href="reminders.html"
                 class="button primary"
-                onclick="featureComingSoon('Reminders')"
             >
-                Coming Soon
-            </button>
+                Open Reminders
+            </a>
 
         </div>
 
@@ -1999,6 +2069,24 @@
             Writejot Access
         </h2>
 
+
+        <div
+            class="price-offer"
+        >
+
+            <span
+                class="old-price"
+            >
+                ₱249
+            </span>
+
+            <span
+                class="discount-badge"
+            >
+                40% OFF
+            </span>
+
+        </div>
 
         <div
             class="price"
