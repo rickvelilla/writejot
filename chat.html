@@ -178,8 +178,23 @@
             width:
                 100%;
 
-            margin-bottom:
-                12px;
+            margin:
+                0 0 10px 0;
+
+            padding:
+                0;
+
+            align-items:
+                flex-start;
+
+            min-height:
+                0;
+
+            height:
+                auto !important;
+
+            flex:
+                0 0 auto;
         }
 
         .message-row.mine {
@@ -192,86 +207,175 @@
                 flex-start;
         }
 
+
         /* =========================
-           NO TEXT BUBBLES
-           WhatsApp-style left/right messages
+           MESSAGE CONTENT
         ========================= */
 
-        .bubble-wrapper {
-            display: flex;
+        .message-content {
+            display:
+                flex;
 
-            flex-direction: column;
+            flex-direction:
+                column;
 
-            width: fit-content;
+            width:
+                fit-content;
 
-            max-width: 70%;
+            max-width:
+                70%;
 
-            min-width: 0;
+            min-width:
+                0;
 
-            flex: 0 1 auto;
+            height:
+                auto !important;
 
-            align-items: flex-start;
+            min-height:
+                0 !important;
+
+            max-height:
+                none !important;
+
+            flex:
+                0 0 auto;
+
+            align-items:
+                flex-start;
         }
 
-        .mine .bubble-wrapper {
-            align-items: flex-end;
+        .message-row.mine
+        .message-content {
+            align-items:
+                flex-end;
         }
 
-        .bubble {
-            display: block;
-
-            width: auto;
-
-            max-width: 100%;
-
-            min-width: 0;
-
-            padding: 0;
-
-            margin: 0;
-
-            background: transparent !important;
-
-            border: none !important;
-
-            border-radius: 0 !important;
-
-            color: #1f2937;
-
-            line-height: 1.45;
-
-            white-space: pre-wrap;
-
-            overflow-wrap: anywhere;
-
-            word-break: break-word;
-
-            text-align: left;
+        .message-row.theirs
+        .message-content {
+            align-items:
+                flex-start;
         }
 
-        .mine .bubble {
-            background: transparent !important;
 
-            color: #1f2937;
+        /* =========================
+           TEXT - NO BUBBLE
+        ========================= */
 
-            border: none !important;
+        .message-text {
+            display:
+                block;
 
-            border-radius: 0 !important;
+            flex:
+                0 0 auto;
 
-            text-align: right;
+            width:
+                auto;
+
+            max-width:
+                100%;
+
+            height:
+                auto;
+
+            min-height:
+                0;
+
+            margin:
+                0;
+
+            padding:
+                0;
+
+            background:
+                transparent;
+
+            border:
+                none;
+
+            color:
+                #1f2937;
+
+            font-size:
+                15px;
+
+            line-height:
+                1.45;
+
+            white-space:
+                pre-wrap;
+
+            overflow-wrap:
+                anywhere;
+
+            word-break:
+                break-word;
         }
 
-        .theirs .bubble {
-            background: transparent !important;
 
-            color: #1f2937;
-
-            border: none !important;
-
-            border-radius: 0 !important;
-
-            text-align: left;
+        .message-row.mine
+        .message-text {
+            text-align:
+                right;
         }
+
+
+        .message-row.theirs
+        .message-text {
+            text-align:
+                left;
+        }
+
+
+        /* =========================
+           MESSAGE TIME
+        ========================= */
+
+        .time {
+            display:
+                block;
+
+            flex:
+                0 0 auto;
+
+            width:
+                auto;
+
+            height:
+                auto;
+
+            min-height:
+                0;
+
+            margin:
+                2px 0 0 0;
+
+            padding:
+                0;
+
+            font-size:
+                10px;
+
+            line-height:
+                1.2;
+
+            color:
+                #98a2b3;
+        }
+
+
+        .message-row.mine
+        .time {
+            text-align:
+                right;
+        }
+
+
+        .message-row.theirs
+        .time {
+            text-align:
+                left;
+        }
+
 
         /* =========================
            IMAGE MESSAGES
@@ -305,41 +409,6 @@
             margin:
                 0;
         }
-
-        .image-message-bubble {
-            padding:
-                0;
-
-            overflow:
-                visible;
-        }
-
-        .image-message-bubble
-        .message-image {
-            border-radius:
-                10px;
-        }
-
-        /* =========================
-           MESSAGE TIME
-        ========================= */
-
-        .time {
-            font-size:
-                11px;
-
-            opacity:
-                0.65;
-
-            margin-top:
-                4px;
-        }
-
-        .mine .time {
-            text-align:
-                right;
-        }
-
         /* =========================
            EMPTY STATE
         ========================= */
@@ -687,7 +756,7 @@
                     18px 12px;
             }
 
-            .bubble-wrapper {
+            .message-content {
                 max-width:
                     82%;
             }
@@ -937,348 +1006,93 @@ let selectedImage =
     null;
 
 
-let loadRequestId =
-    0;
-
-
-let pageInitialized =
-    false;
-
-
-let sendInProgress =
-    false;
-
-
-/* =========================================================
-   CHAT CACHE
-========================================================= */
-
-const CHAT_CACHE_TTL =
-    24 * 60 * 60 * 1000;
-
-
-function getChatCacheKey() {
-
-    if (!currentUser || !otherUsername) {
-        return "writejot_chat_cache_unknown";
-    }
-
-    return (
-        "writejot_chat_cache_" +
-        normalizeUsername(currentUser.username) +
-        "__" +
-        normalizeUsername(otherUsername)
-    );
-
-}
-
-
-function loadCachedMessages() {
-
-    try {
-
-        const raw =
-            localStorage.getItem(
-                getChatCacheKey()
-            );
-
-        if (!raw) {
-            return false;
-        }
-
-        const cached =
-            JSON.parse(raw);
-
-        if (
-            !cached ||
-            !Array.isArray(cached.messages)
-        ) {
-            return false;
-        }
-
-        if (
-            cached.savedAt &&
-            Date.now() - Number(cached.savedAt) >
-                CHAT_CACHE_TTL
-        ) {
-            localStorage.removeItem(
-                getChatCacheKey()
-            );
-            return false;
-        }
-
-        renderMessages(
-            cached.messages
-        );
-
-        return true;
-
-    }
-    catch (error) {
-
-        console.log(
-            "Chat cache could not be read."
-        );
-
-        return false;
-
-    }
-
-}
-
-
-function saveMessagesToCache(
-    messages
-) {
-
-    try {
-
-        localStorage.setItem(
-
-            getChatCacheKey(),
-
-            JSON.stringify({
-
-                savedAt:
-                    Date.now(),
-
-                messages:
-                    Array.isArray(messages)
-                        ? messages
-                        : []
-
-            })
-
-        );
-
-    }
-    catch (error) {
-
-        console.log(
-            "Chat cache could not be saved."
-        );
-
-    }
-
-}
-
-
 /* =========================================================
    START
 ========================================================= */
 
-async function initializeChat() {
-
-    const savedUser =
-        localStorage.getItem(
-            "writejotUser"
-        );
-
-
-    if (
-        !savedUser
-    ) {
-
-        window.location.href =
-            "index.html";
-
-        return;
-
-    }
-
-
-    try {
-
-        currentUser =
-            JSON.parse(
-                savedUser
-            );
-
-    }
-
-    catch (error) {
-
-        localStorage.removeItem(
-            "writejotUser"
-        );
-
-        window.location.href =
-            "index.html";
-
-        return;
-
-    }
-
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    otherUsername =
-        normalizeUsername(
-            params.get(
-                "username"
-            )
-        );
-
-
-    if (
-        !otherUsername
-    ) {
-
-        window.location.href =
-            "messages.html";
-
-        return;
-
-    }
-
-
-    pageInitialized =
-        true;
-
-
-    /*
-     * Show cached conversation immediately.
-     * The server refresh happens in the background.
-     */
-
-    loadCachedMessages();
-
-
-    loadRecipient();
-
-    markConversationRead();
-
-    loadMessages();
-
-
-    startRefreshTimer();
-
-
-    setupMessageInput();
-
-}
-
-
-window.addEventListener(
-    "load",
-    initializeChat
-);
-
-
-/* =========================================================
-   REFRESH / BFCACHE FIX
-========================================================= */
-
-window.addEventListener(
-    "pageshow",
+window.onload =
     async function () {
 
-        /*
-         * Chrome can restore chat.html from its back/forward
-         * cache. That restores the old DOM exactly as it was,
-         * including a stale "Sending..." message.
-         *
-         * Always rebuild the conversation from the server when
-         * the page becomes visible again.
-         */
+        const savedUser =
+            localStorage.getItem(
+                "writejotUser"
+            );
+
 
         if (
-            !pageInitialized
+            !savedUser
         ) {
+
+            window.location.href =
+                "index.html";
 
             return;
 
         }
 
 
-        startRefreshTimer();
+        try {
 
-
-        /* Keep the restored/cached conversation visible and refresh in background. */
-        loadCachedMessages();
-
-        loadRecipient();
-
-        markConversationRead();
-
-        loadMessages();
-
-    }
-);
-
-
-window.addEventListener(
-    "focus",
-    function () {
-
-        if (
-            pageInitialized
-        ) {
-
-            loadMessages();
+            currentUser =
+                JSON.parse(
+                    savedUser
+                );
 
         }
 
-    }
-);
+        catch (error) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
 
 
-window.addEventListener(
-    "pagehide",
-    function () {
-
-        if (
-            refreshTimer
-        ) {
-
-            clearInterval(
-                refreshTimer
+        const params =
+            new URLSearchParams(
+                window.location.search
             );
 
-            refreshTimer =
-                null;
+
+        otherUsername =
+            normalizeUsername(
+                params.get(
+                    "username"
+                )
+            );
+
+
+        if (
+            !otherUsername
+        ) {
+
+            window.location.href =
+                "messages.html";
+
+            return;
 
         }
 
-    }
-);
+
+        await loadRecipient();
+
+        await markConversationRead();
+
+        await loadMessages();
 
 
-function startRefreshTimer() {
-
-    if (
-        refreshTimer
-    ) {
-
-        clearInterval(
-            refreshTimer
-        );
-
-    }
+        refreshTimer =
+            setInterval(
+                loadMessages,
+                3000
+            );
 
 
-    refreshTimer =
-        setInterval(
-            function () {
+        setupMessageInput();
 
-                if (
-                    document.visibilityState ===
-                    "visible"
-                ) {
-
-                    loadMessages();
-
-                }
-
-            },
-            3000
-        );
-
-}
+    };
 
 
 /* =========================================================
@@ -1488,10 +1302,6 @@ async function markConversationRead() {
 
 async function loadMessages() {
 
-    const requestId =
-        ++loadRequestId;
-
-
     try {
 
         const response =
@@ -1532,18 +1342,6 @@ async function loadMessages() {
             await response.json();
 
 
-        /* Ignore an older request that finished late. */
-
-        if (
-            requestId !==
-            loadRequestId
-        ) {
-
-            return;
-
-        }
-
-
         if (
             !result.success
         ) {
@@ -1553,29 +1351,15 @@ async function loadMessages() {
                 "Could not load messages."
             );
 
+
             return;
 
         }
 
 
-        /*
-         * This is the source of truth. Re-rendering from the
-         * server removes any old optimistic "Sending..." DOM
-         * that the browser may have restored.
-         */
-
-        const serverMessages =
-            result.messages ||
-            [];
-
-
-        saveMessagesToCache(
-            serverMessages
-        );
-
-
         renderMessages(
-            serverMessages
+            result.messages ||
+            []
         );
 
     }
@@ -1588,33 +1372,14 @@ async function loadMessages() {
         );
 
 
-        if (
-            requestId ===
-            loadRequestId
-        ) {
-
-            /*
-             * Do not destroy a perfectly valid chat UI just
-             * because a background refresh failed.
-             */
-
-            if (
-                !document.querySelector(
-                    ".message-row"
-                )
-            ) {
-
-                showMessageError(
-                    "Could not load messages."
-                );
-
-            }
-
-        }
+        showMessageError(
+            "Could not load messages."
+        );
 
     }
 
 }
+
 
 /* =========================================================
    RENDER MESSAGES
@@ -1623,10 +1388,6 @@ async function loadMessages() {
 function renderMessages(
     messages
 ) {
-
-    /* Server data replaces any browser-restored pending DOM. */
-    removeAllPendingMessages();
-
 
     const container =
         document.getElementById(
@@ -1703,17 +1464,21 @@ function renderMessages(
 
                             `
                             <img
-                                class="message-image"
+                                class="
+                                    message-image
+                                "
                                 src="${escapeHtml(
                                     message.attachmentUrl
                                 )}"
                                 alt="Photo"
                                 loading="lazy"
-                                onclick="openImage(
-                                    '${escapeHtml(
-                                        message.attachmentUrl
-                                    )}'
-                                )"
+                                onclick="
+                                    openImage(
+                                        '${escapeJs(
+                                            message.attachmentUrl
+                                        )}'
+                                    )
+                                "
                                 onerror="
                                     this.style.display='none';
                                 "
@@ -1734,7 +1499,11 @@ function renderMessages(
                         content +=
 
                             `
-                            <div>
+                            <div
+                                class="
+                                    message-text
+                                "
+                            >
                                 ${escapeHtml(
                                     message.message
                                 )}
@@ -1744,45 +1513,32 @@ function renderMessages(
                     }
 
 
-                    const isImageOnly =
-                        (
-                            message.attachmentType ===
-                            "image"
-                        ) &&
-                        !message.message;
-
-
                     return `
 
                         <div
-                            class="message-row
-                            ${
-                                mine
-                                    ? "mine"
-                                    : "theirs"
-                            }"
+                            class="
+                                message-row
+                                ${
+                                    mine
+                                        ? "mine"
+                                        : "theirs"
+                                }
+                            "
                         >
 
                             <div
-                                class="bubble-wrapper"
+                                class="
+                                    message-content
+                                "
                             >
 
-                                <div
-                                    class="bubble
-                                    ${
-                                        isImageOnly
-                                            ? "image-message-bubble"
-                                            : ""
-                                    }"
-                                >
-
-                                    ${content}
-
-                                </div>
+                                ${content}
 
 
                                 <div
-                                    class="time"
+                                    class="
+                                        time
+                                    "
                                 >
                                     ${escapeHtml(
                                         time
@@ -1801,10 +1557,21 @@ function renderMessages(
             .join("");
 
 
-    container.scrollTop =
-        container.scrollHeight;
+    /*
+     * Always show newest messages after loading.
+     */
+
+    requestAnimationFrame(
+        function () {
+
+            container.scrollTop =
+                container.scrollHeight;
+
+        }
+    );
 
 }
+
 
 
 /* =========================================================
@@ -1982,15 +1749,6 @@ function removeSelectedImage() {
 
 async function sendMessage() {
 
-    if (
-        sendInProgress
-    ) {
-
-        return;
-
-    }
-
-
     const input =
         document.getElementById(
             "messageInput"
@@ -2019,38 +1777,12 @@ async function sendMessage() {
     }
 
 
-    sendInProgress =
-        true;
-
-
     button.disabled =
         true;
 
 
     button.textContent =
         "Sending...";
-
-
-    /*
-     * Add a temporary message only for immediate feedback.
-     * It has a unique class so it can be removed whenever the
-     * real server conversation is rendered.
-     */
-
-    const pendingId =
-        "sending-" +
-        Date.now() +
-        "-" +
-        Math.random()
-            .toString(36)
-            .slice(2);
-
-
-    appendPendingMessage(
-        message,
-        selectedImage,
-        pendingId
-    );
 
 
     try {
@@ -2183,18 +1915,14 @@ async function sendMessage() {
 
 
         /*
-         * Immediately remove the temporary bubble. The next
-         * render will contain the real database message.
+         * Give the server a moment
+         * and then load the message.
          */
 
-        removePendingMessage(
-            pendingId
+        await sleep(
+            400
         );
 
-
-        /*
-         * No artificial 400ms wait. Ask the server immediately.
-         */
 
         await loadMessages();
 
@@ -2208,11 +1936,6 @@ async function sendMessage() {
         );
 
 
-        removePendingMessage(
-            pendingId
-        );
-
-
         alert(
             error.message ||
             "Could not send the message."
@@ -2222,10 +1945,6 @@ async function sendMessage() {
 
 
     finally {
-
-        sendInProgress =
-            false;
-
 
         button.disabled =
             false;
@@ -2241,206 +1960,6 @@ async function sendMessage() {
 
 }
 
-
-/* =========================================================
-   OPTIMISTIC / PENDING MESSAGE
-========================================================= */
-
-function appendPendingMessage(
-    text,
-    imageFile,
-    pendingId
-) {
-
-    const container =
-        document.getElementById(
-            "messages"
-        );
-
-
-    const row =
-        document.createElement(
-            "div"
-        );
-
-
-    row.className =
-        "message-row mine sending-message";
-
-
-    row.dataset.pendingId =
-        pendingId;
-
-
-    const wrapper =
-        document.createElement(
-            "div"
-        );
-
-
-    wrapper.className =
-        "bubble-wrapper";
-
-
-    const bubble =
-        document.createElement(
-            "div"
-        );
-
-
-    bubble.className =
-        "bubble";
-
-
-    if (
-        imageFile
-    ) {
-
-        bubble.classList.add(
-            "image-message-bubble"
-        );
-
-
-        const image =
-            document.createElement(
-                "img"
-            );
-
-
-        image.className =
-            "message-image";
-
-
-        image.alt =
-            "Photo";
-
-
-        const reader =
-            new FileReader();
-
-
-        reader.onload =
-            function () {
-
-                image.src =
-                    reader.result;
-
-            };
-
-
-        reader.readAsDataURL(
-            imageFile
-        );
-
-
-        bubble.appendChild(
-            image
-        );
-
-    }
-
-
-    if (
-        text
-    ) {
-
-        const textNode =
-            document.createElement(
-                "div"
-            );
-
-
-        textNode.textContent =
-            text;
-
-
-        bubble.appendChild(
-            textNode
-        );
-
-    }
-
-
-    const time =
-        document.createElement(
-            "div"
-        );
-
-
-    time.className =
-        "time";
-
-
-    time.textContent =
-        "Sending...";
-
-
-    wrapper.appendChild(
-        bubble
-    );
-
-
-    wrapper.appendChild(
-        time
-    );
-
-
-    row.appendChild(
-        wrapper
-    );
-
-
-    container.appendChild(
-        row
-    );
-
-
-    container.scrollTop =
-        container.scrollHeight;
-
-}
-
-
-function removePendingMessage(
-    pendingId
-) {
-
-    const element =
-        document.querySelector(
-            '[data-pending-id="' +
-            pendingId +
-            '"]'
-        );
-
-
-    if (
-        element
-    ) {
-
-        element.remove();
-
-    }
-
-}
-
-
-function removeAllPendingMessages() {
-
-    document
-        .querySelectorAll(
-            ".sending-message"
-        )
-        .forEach(
-            function (
-                element
-            ) {
-
-                element.remove();
-
-            }
-        );
-
-}
 
 /* =========================================================
    COMPRESS IMAGE
@@ -2708,49 +2227,6 @@ function resetTextareaHeight() {
 
 
 /* =========================================================
-   MESSAGE ERROR
-========================================================= */
-
-function showMessageError(
-    message
-) {
-
-    const container =
-        document.getElementById(
-            "messages"
-        );
-
-
-    /* Keep existing messages visible during background failures. */
-
-    if (
-        container.querySelector(
-            ".message-row"
-        )
-    ) {
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-
-        `
-        <div
-            id="empty"
-        >
-            ${escapeHtml(
-                message ||
-                "Could not load messages."
-            )}
-        </div>
-        `;
-
-}
-
-
-/* =========================================================
    HELPERS
 ========================================================= */
 
@@ -2799,6 +2275,38 @@ function escapeHtml(
     .replace(
         /'/g,
         "&#039;"
+    );
+
+}
+
+
+function escapeJs(
+    value
+) {
+
+    return String(
+        value ||
+        ""
+    )
+    .replace(
+        /\\/g,
+        "\\\\"
+    )
+    .replace(
+        /'/g,
+        "\\'"
+    )
+    .replace(
+        /"/g,
+        '\\"'
+    )
+    .replace(
+        /\r/g,
+        "\\r"
+    )
+    .replace(
+        /\n/g,
+        "\\n"
     );
 
 }
