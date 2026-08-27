@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Writejot | Admin Reminders</title>
+
+
+<style>
+
+* {
+    box-sizing:
+        border-box;
+}
+
+
+body {
+
+    margin:
+        0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #f6f8fc;
+
+    color:
+        #1f2937;
+
+}
+
+
+header {
+
+    background:
+        white;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    padding:
+        12px 6%;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+}
+
+
+.brand {
+
+    font-size:
+        22px;
+
+    font-weight:
+        700;
+
+}
+
+
+.back {
+
+    color:
+        #4285F4;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        600;
+
+}
+
+
+main {
+
+    max-width:
+        800px;
+
+    margin:
+        30px auto;
+
+    padding:
+        0 16px;
+
+}
+
+
+.card {
+
+    background:
+        white;
+
+    border:
+        1px solid #e1e6ee;
+
+    border-radius:
+        16px;
+
+    padding:
+        28px;
+
+}
+
+
+.warning {
+
+    padding:
+        12px;
+
+    border-radius:
+        9px;
+
+    background:
+        #fff7ed;
+
+    color:
+        #9a3412;
+
+    margin-bottom:
+        18px;
+
+    font-size:
+        13px;
+
+}
+
+
+.field {
+
+    margin-bottom:
+        16px;
+
+}
+
+
+label {
+
+    display:
+        block;
+
+    margin-bottom:
+        6px;
+
+    font-weight:
+        700;
+
+    font-size:
+        13px;
+
+}
+
+
+input,
+textarea {
+
+    width:
+        100%;
+
+    padding:
+        11px 12px;
+
+    border:
+        1px solid #d8dee8;
+
+    border-radius:
+        8px;
+
+    font-family:
+        inherit;
+
+    outline:
+        none;
+
+}
+
+
+textarea {
+
+    min-height:
+        100px;
+
+    resize:
+        vertical;
+
+}
+
+
+button {
+
+    width:
+        100%;
+
+    padding:
+        12px;
+
+    border:
+        none;
+
+    border-radius:
+        9px;
+
+    background:
+        #4285F4;
+
+    color:
+        white;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+}
+
+
+button:hover {
+
+    background:
+        #3367d6;
+
+}
+
+
+button:disabled {
+
+    opacity:
+        .6;
+
+    cursor:
+        not-allowed;
+
+}
+
+
+#message {
+
+    min-height:
+        20px;
+
+    margin-top:
+        10px;
+
+    font-size:
+        13px;
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+    <div class="brand">
+        Writejot Admin
+    </div>
+
+
+    <a
+        class="back"
+        href="index.html"
+    >
+        ← Dashboard
+    </a>
+
+</header>
+
+
+
+<main>
+
+<div class="card">
+
+
+    <h1>
+        Create Class Reminder
+    </h1>
+
+
+    <div class="warning">
+
+        This reminder will be shown to
+        <strong>
+            every approved student
+        </strong>
+        in the selected section.
+
+    </div>
+
+
+
+    <div class="field">
+
+        <label for="section">
+            Section
+        </label>
+
+
+        <input
+            id="section"
+            type="text"
+            placeholder="Example: 10-A"
+        >
+
+    </div>
+
+
+
+    <div class="field">
+
+        <label for="title">
+            Title
+        </label>
+
+
+        <input
+            id="title"
+            type="text"
+            maxlength="100"
+            placeholder="e.g. Mathematics Test"
+        >
+
+    </div>
+
+
+
+    <div class="field">
+
+        <label for="date">
+            Date
+        </label>
+
+
+        <input
+            id="date"
+            type="date"
+        >
+
+    </div>
+
+
+
+    <div class="field">
+
+        <label for="time">
+            Time
+        </label>
+
+
+        <input
+            id="time"
+            type="time"
+        >
+
+    </div>
+
+
+
+    <div class="field">
+
+        <label for="description">
+            Description
+        </label>
+
+
+        <textarea
+            id="description"
+            maxlength="500"
+            placeholder="Information for students"
+        ></textarea>
+
+    </div>
+
+
+
+    <button
+        id="createButton"
+        type="button"
+        onclick="createClassReminder()"
+    >
+        Create Class Reminder
+    </button>
+
+
+    <div
+        id="message"
+    ></div>
+
+
+</div>
+
+</main>
+
+
+
+<script>
+
+const APPS_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
+
+
+let currentUser =
+    null;
+
+
+
+/* =========================================================
+   START
+========================================================= */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        const saved =
+            localStorage.getItem(
+                "writejotUser"
+            );
+
+
+        if (!saved) {
+
+            document
+                .getElementById(
+                    "message"
+                )
+                .textContent =
+                "Please sign in first.";
+
+            return;
+
+        }
+
+
+        try {
+
+            currentUser =
+                JSON.parse(
+                    saved
+                );
+
+        }
+
+        catch {
+
+            document
+                .getElementById(
+                    "message"
+                )
+                .textContent =
+                "Could not load your account.";
+
+            return;
+
+        }
+
+
+        /*
+         * Default date to today.
+         */
+
+        document
+            .getElementById(
+                "date"
+            )
+            .value =
+            getToday();
+
+    }
+);
+
+
+
+/* =========================================================
+   CREATE CLASS REMINDER
+========================================================= */
+
+async function createClassReminder() {
+
+    if (!currentUser) {
+
+        return;
+
+    }
+
+
+    const section =
+        document
+            .getElementById(
+                "section"
+            )
+            .value
+            .trim();
+
+
+    const title =
+        document
+            .getElementById(
+                "title"
+            )
+            .value
+            .trim();
+
+
+    const date =
+        document
+            .getElementById(
+                "date"
+            )
+            .value;
+
+
+    const time =
+        document
+            .getElementById(
+                "time"
+            )
+            .value;
+
+
+    const description =
+        document
+            .getElementById(
+                "description"
+            )
+            .value
+            .trim();
+
+
+    const button =
+        document.getElementById(
+            "createButton"
+        );
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    if (
+        !section ||
+        !title ||
+        !date
+    ) {
+
+        message.textContent =
+            "Section, title, and date are required.";
+
+        message.style.color =
+            "#dc2626";
+
+        return;
+
+    }
+
+
+    button.disabled =
+        true;
+
+
+    button.textContent =
+        "Creating...";
+
+
+    message.textContent =
+        "";
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL,
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            action:
+                                "addClassReminder",
+
+                            email:
+                                currentUser.email,
+
+                            section:
+                                section,
+
+                            title:
+                                title,
+
+                            date:
+                                date,
+
+                            time:
+                                time,
+
+                            description:
+                                description
+
+                        })
+
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error ||
+                "Could not create class reminder."
+            );
+
+        }
+
+
+        message.textContent =
+            "Class reminder created successfully.";
+
+        message.style.color =
+            "#16834a";
+
+
+        document
+            .getElementById(
+                "title"
+            )
+            .value =
+            "";
+
+
+        document
+            .getElementById(
+                "time"
+            )
+            .value =
+            "";
+
+
+        document
+            .getElementById(
+                "description"
+            )
+            .value =
+            "";
+
+    }
+
+    catch (error) {
+
+        message.textContent =
+            error.message ||
+            "Could not create reminder.";
+
+        message.style.color =
+            "#dc2626";
+
+    }
+
+    finally {
+
+        button.disabled =
+            false;
+
+        button.textContent =
+            "Create Class Reminder";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+function getToday() {
+
+    const date =
+        new Date();
+
+
+    return [
+
+        date.getFullYear(),
+
+        String(
+            date.getMonth() + 1
+        )
+        .padStart(
+            2,
+            "0"
+        ),
+
+        String(
+            date.getDate()
+        )
+        .padStart(
+            2,
+            "0"
+        )
+
+    ].join("-");
+
+}
+
+</script>
+
+
+</body>
+
+</html>
