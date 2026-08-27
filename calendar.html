@@ -3,673 +3,724 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>Writejot | Messages</title>
+<title>Writejot | Calendar</title>
 
+<style>
 
-    <style>
+* {
+    box-sizing:
+        border-box;
+}
 
-        * {
-            box-sizing:
-                border-box;
-        }
+body {
+    margin: 0;
 
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-        html,
-        body {
+    background:
+        #f6f8fc;
 
-            margin:
-                0;
+    color:
+        #1f2937;
+}
 
-            min-height:
-                100%;
-        }
+header {
+    background:
+        white;
 
+    border-bottom:
+        1px solid #e5e7eb;
 
-        body {
+    padding:
+        12px 6%;
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+    display:
+        flex;
 
-            background:
-                #f6f8fc;
+    align-items:
+        center;
 
-            color:
-                #1f2937;
-        }
+    justify-content:
+        space-between;
 
+    position:
+        sticky;
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+    top:
+        0;
 
-        header {
+    z-index:
+        100;
+}
 
-            background:
-                white;
+.brand {
+    display:
+        flex;
 
-            border-bottom:
-                1px solid #e5e7eb;
+    align-items:
+        center;
 
-            padding:
-                13px 6%;
+    gap:
+        10px;
+}
 
-            display:
-                flex;
+.brand img {
+    width:
+        40px;
 
-            align-items:
-                center;
+    height:
+        40px;
 
-            justify-content:
-                space-between;
+    object-fit:
+        contain;
+}
 
-            position:
-                sticky;
+.brand-name {
+    font-size:
+        22px;
 
-            top:
-                0;
+    font-weight:
+        700;
+}
 
-            z-index:
-                20;
-        }
+.back {
+    color:
+        #4285F4;
 
+    text-decoration:
+        none;
 
-        .brand {
+    font-weight:
+        600;
+}
 
-            display:
-                flex;
+main {
+    max-width:
+        1150px;
 
-            align-items:
-                center;
+    margin:
+        25px auto 60px;
 
-            gap:
-                10px;
-        }
+    padding:
+        0 18px;
+}
 
+.page-header h1 {
+    margin:
+        0 0 5px;
+}
 
-        .brand img {
+.page-header p {
+    color:
+        #718096;
+}
 
-            width:
-                40px;
+.update-indicator {
+    display:
+        none;
 
-            height:
-                40px;
+    color:
+        #8a94a6;
 
-            object-fit:
-                contain;
-        }
+    font-size:
+        12px;
 
+    margin-bottom:
+        10px;
+}
 
-        .brand-name {
+.registration-card,
+.status-card,
+.calendar-card,
+.side-card {
+    background:
+        white;
 
-            font-size:
-                22px;
+    border:
+        1px solid #e1e6ee;
 
-            font-weight:
-                700;
-        }
+    border-radius:
+        15px;
+}
 
+.registration-card {
+    max-width:
+        600px;
 
-        .back {
+    margin:
+        30px auto;
 
-            color:
-                #4285F4;
+    padding:
+        30px;
+}
 
-            text-decoration:
-                none;
+.field {
+    margin-bottom:
+        15px;
+}
 
-            font-weight:
-                600;
-        }
+.field label {
+    display:
+        block;
 
+    font-weight:
+        600;
 
-        /* =====================================================
-           MAIN
-        ===================================================== */
+    margin-bottom:
+        6px;
+}
 
-        main {
+.field input,
+.event-input,
+.event-textarea {
+    width:
+        100%;
 
-            width:
-                100%;
+    padding:
+        11px;
 
-            max-width:
-                850px;
+    border:
+        1px solid #d8dee8;
 
-            margin:
-                30px auto 60px;
+    border-radius:
+        8px;
 
-            padding:
-                0 16px;
+    font-family:
+        inherit;
 
-            height:
-                auto;
+    outline:
+        none;
+}
 
-            min-height:
-                0;
-        }
+.event-textarea {
+    resize:
+        vertical;
 
+    min-height:
+        80px;
+}
 
-        .title-row {
+.primary-button {
+    border:
+        none;
 
-            display:
-                flex;
+    background:
+        #4285F4;
 
-            align-items:
-                center;
+    color:
+        white;
 
-            justify-content:
-                space-between;
+    padding:
+        11px 17px;
 
-            gap:
-                15px;
+    border-radius:
+        9px;
 
-            margin-bottom:
-                18px;
-        }
+    cursor:
+        pointer;
 
+    font-weight:
+        600;
+}
 
-        .title-row h1 {
+.primary-button:hover {
+    background:
+        #3367d6;
+}
 
-            margin:
-                0;
-        }
+.primary-button:disabled {
+    opacity:
+        .6;
 
+    cursor:
+        not-allowed;
+}
 
-        .unread-total {
+.form-message {
+    margin-top:
+        10px;
 
-            display:
-                none;
+    font-size:
+        13px;
+}
 
-            min-width:
-                24px;
+.status-card {
+    padding:
+        20px;
 
-            height:
-                24px;
+    margin-bottom:
+        20px;
+}
 
-            padding:
-                0 7px;
+.status-card.pending {
+    background:
+        #fffaf0;
 
-            border-radius:
-                999px;
+    border-color:
+        #f2d38a;
+}
 
-            background:
-                #ef4444;
+.status-card.approved {
+    background:
+        #f1fbf5;
 
-            color:
-                white;
+    border-color:
+        #b7dfc5;
+}
 
-            font-size:
-                12px;
+#calendarContent {
+    display:
+        none;
+}
 
-            font-weight:
-                700;
+.calendar-layout {
+    display:
+        grid;
 
-            align-items:
-                center;
+    grid-template-columns:
+        minmax(
+            0,
+            1fr
+        )
+        320px;
 
-            justify-content:
-                center;
-        }
+    gap:
+        18px;
+}
 
+.calendar-card {
+    overflow:
+        hidden;
+}
 
-        /* =====================================================
-           CONVERSATION LIST
-        ===================================================== */
+.calendar-toolbar {
+    display:
+        flex;
 
-        .list {
+    justify-content:
+        space-between;
 
-            width:
-                100%;
+    align-items:
+        center;
 
-            background:
-                white;
+    padding:
+        15px 17px;
 
-            border:
-                1px solid #e1e6ee;
+    border-bottom:
+        1px solid #edf0f4;
+}
 
-            border-radius:
-                15px;
+.month-buttons {
+    display:
+        flex;
 
-            overflow:
-                visible;
+    gap:
+        7px;
+}
 
-            height:
-                auto;
+.month-button {
+    width:
+        34px;
 
-            max-height:
-                none;
-        }
+    height:
+        34px;
 
+    border:
+        1px solid #d8dee8;
 
-        .conversation {
+    background:
+        white;
 
-            display:
-                flex;
+    border-radius:
+        8px;
 
-            width:
-                100%;
+    cursor:
+        pointer;
+}
 
-            min-height:
-                76px;
+.weekdays,
+.calendar-grid {
+    display:
+        grid;
 
-            align-items:
-                center;
+    grid-template-columns:
+        repeat(
+            7,
+            1fr
+        );
+}
 
-            gap:
-                12px;
+.weekdays {
+    border-bottom:
+        1px solid #edf0f4;
+}
 
-            padding:
-                14px 16px;
+.weekday {
+    padding:
+        9px 3px;
 
-            text-decoration:
-                none;
+    text-align:
+        center;
 
-            color:
-                inherit;
+    font-size:
+        11px;
 
-            border-bottom:
-                1px solid #edf0f4;
+    color:
+        #8a94a6;
 
-            cursor:
-                pointer;
+    font-weight:
+        700;
+}
 
-            background:
-                white;
+.day {
+    min-height:
+        105px;
 
-            transition:
-                background .15s;
-        }
+    padding:
+        5px;
 
+    border-right:
+        1px solid #edf0f4;
 
-        .conversation:last-child {
+    border-bottom:
+        1px solid #edf0f4;
 
-            border-bottom:
-                none;
-        }
+    overflow:
+        hidden;
 
+    cursor:
+        pointer;
+}
 
-        .conversation:hover {
+.day:nth-child(7n) {
+    border-right:
+        none;
+}
 
-            background:
-                #f8faff;
-        }
+.day.other-month {
+    background:
+        #fafbfc;
 
+    color:
+        #b3bbc7;
+}
 
-        .conversation.unread {
+.day.today {
+    background:
+        #f2f7ff;
+}
 
-            background:
-                #f5f9ff;
-        }
+.day-number {
+    width:
+        25px;
 
+    height:
+        25px;
 
-        .avatar {
+    border-radius:
+        50%;
 
-            width:
-                48px;
+    display:
+        flex;
 
-            height:
-                48px;
+    align-items:
+        center;
 
-            border-radius:
-                50%;
+    justify-content:
+        center;
 
-            object-fit:
-                cover;
+    font-size:
+        12px;
 
-            flex:
-                0 0 48px;
+    margin-bottom:
+        4px;
+}
 
-            background:
-                #e8edf4;
-        }
+.today .day-number {
+    background:
+        #4285F4;
 
+    color:
+        white;
 
-        .conversation-main {
+    font-weight:
+        700;
+}
 
-            flex:
-                1;
+.event-chip {
+    display:
+        block;
 
-            min-width:
-                0;
-        }
+    width:
+        100%;
 
+    overflow:
+        hidden;
 
-        .top-line {
+    text-overflow:
+        ellipsis;
 
-            display:
-                flex;
+    white-space:
+        nowrap;
 
-            align-items:
-                center;
+    padding:
+        4px 5px;
 
-            gap:
-                8px;
+    margin-bottom:
+        3px;
 
-            margin-bottom:
-                2px;
+    border-radius:
+        5px;
 
-            min-width:
-                0;
-        }
+    font-size:
+        9px;
+}
 
+.event-class {
+    background:
+        #eaf2ff;
 
-        .name {
+    color:
+        #2563eb;
+}
 
-            font-weight:
-                700;
+.event-test {
+    background:
+        #fff0f0;
 
-            min-width:
-                0;
+    color:
+        #dc2626;
+}
 
-            overflow:
-                hidden;
+.event-personal {
+    background:
+        #eefbf2;
 
-            white-space:
-                nowrap;
+    color:
+        #16834a;
+}
 
-            text-overflow:
-                ellipsis;
-        }
+.event-saving {
+    opacity:
+        .55;
 
+    border:
+        1px dashed #16834a;
+}
 
-        .username {
+.event-failed {
+    background:
+        #fff0f0;
 
-            color:
-                #4285F4;
+    color:
+        #dc2626;
 
-            font-size:
-                12px;
+    text-decoration:
+        line-through;
+}
 
-            white-space:
-                nowrap;
+.side-card {
+    padding:
+        20px;
+}
 
-            overflow:
-                hidden;
+.upcoming-event {
+    padding:
+        11px 0;
 
-            text-overflow:
-                ellipsis;
-        }
+    border-bottom:
+        1px solid #edf0f4;
+}
 
+.upcoming-date {
+    font-size:
+        12px;
 
-        .preview {
+    color:
+        #4285F4;
 
-            color:
-                #7b8494;
+    font-weight:
+        700;
+}
 
-            font-size:
-                13px;
+.upcoming-title {
+    font-size:
+        14px;
 
-            white-space:
-                nowrap;
+    font-weight:
+        600;
+}
 
-            overflow:
-                hidden;
+.upcoming-meta {
+    font-size:
+        12px;
 
-            text-overflow:
-                ellipsis;
-        }
+    color:
+        #7b8494;
+}
 
+.personal-delete {
+    margin-top:
+        5px;
 
-        .conversation.unread .preview {
+    border:
+        none;
 
-            color:
-                #344054;
+    background:
+        transparent;
 
-            font-weight:
-                600;
-        }
+    color:
+        #dc2626;
 
+    padding:
+        0;
 
-        .conversation-side {
+    cursor:
+        pointer;
 
-            display:
-                flex;
+    font-size:
+        11px;
+}
 
-            align-items:
-                flex-end;
+.add-event {
+    margin-top:
+        20px;
 
-            flex-direction:
-                column;
+    padding-top:
+        20px;
 
-            gap:
-                5px;
+    border-top:
+        1px solid #edf0f4;
+}
 
-            flex-shrink:
-                0;
-        }
+.event-row {
+    display:
+        grid;
 
+    grid-template-columns:
+        1fr 1fr;
 
-        .time {
+    gap:
+        8px;
+}
 
-            color:
-                #98a2b3;
+.lock-screen {
+    width:
+        100%;
 
-            font-size:
-                10px;
+    min-height:
+        100vh;
 
-            white-space:
-                nowrap;
-        }
+    display:
+        flex;
 
+    align-items:
+        center;
 
-        .unread {
+    justify-content:
+        center;
 
-            min-width:
-                21px;
+    padding:
+        30px;
+}
 
-            height:
-                21px;
+.lock-card {
+    max-width:
+        500px;
 
-            padding:
-                0 6px;
+    width:
+        100%;
 
-            border-radius:
-                999px;
+    background:
+        white;
 
-            background:
-                #4285F4;
+    border:
+        1px solid #e1e6ee;
 
-            color:
-                white;
+    border-radius:
+        16px;
 
-            display:
-                flex;
+    padding:
+        35px;
 
-            align-items:
-                center;
+    text-align:
+        center;
+}
 
-            justify-content:
-                center;
+.lock-card p {
+    color:
+        #718096;
 
-            font-size:
-                11px;
+    line-height:
+        1.6;
+}
 
-            font-weight:
-                700;
-        }
+.button {
+    display:
+        inline-block;
 
+    padding:
+        11px 17px;
 
-        .empty {
+    background:
+        #4285F4;
 
-            padding:
-                60px 25px;
+    color:
+        white;
 
-            text-align:
-                center;
+    text-decoration:
+        none;
 
-            color:
-                #8a94a6;
-        }
+    border-radius:
+        9px;
 
+    font-weight:
+        600;
+}
 
-        /* =====================================================
-           LOCK SCREEN
-        ===================================================== */
+@media (
+    max-width: 850px
+) {
 
-        .lock-screen {
+    .calendar-layout {
+        grid-template-columns:
+            1fr;
+    }
 
-            width:
-                100%;
+}
 
-            min-height:
-                100vh;
+@media (
+    max-width: 600px
+) {
 
-            display:
-                flex;
+    main {
+        padding:
+            0 10px;
+    }
 
-            align-items:
-                center;
+    .day {
+        min-height:
+            75px;
+    }
 
-            justify-content:
-                center;
+    .event-chip {
+        font-size:
+            8px;
+    }
 
-            padding:
-                30px;
+}
 
-            background:
-                #f6f8fc;
-        }
-
-
-        .lock-card {
-
-            max-width:
-                500px;
-
-            width:
-                100%;
-
-            background:
-                white;
-
-            border:
-                1px solid #e1e6ee;
-
-            border-radius:
-                16px;
-
-            padding:
-                35px;
-
-            text-align:
-                center;
-
-            box-shadow:
-                0 8px 30px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    .05
-                );
-        }
-
-
-        .lock-card p {
-
-            color:
-                #718096;
-
-            line-height:
-                1.6;
-        }
-
-
-        .button {
-
-            display:
-                inline-block;
-
-            padding:
-                11px 17px;
-
-            background:
-                #4285F4;
-
-            color:
-                white;
-
-            text-decoration:
-                none;
-
-            border-radius:
-                9px;
-
-            font-weight:
-                600;
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
-        @media (
-            max-width:
-            600px
-        ) {
-
-            header {
-
-                padding:
-                    10px 14px;
-            }
-
-
-            .brand-name {
-
-                font-size:
-                    20px;
-            }
-
-
-            main {
-
-                margin-top:
-                    18px;
-
-                padding:
-                    0 10px;
-            }
-
-
-            .conversation {
-
-                padding:
-                    12px;
-            }
-
-
-            .avatar {
-
-                width:
-                    44px;
-
-                height:
-                    44px;
-
-                flex-basis:
-                    44px;
-            }
-
-
-            .username {
-
-                max-width:
-                    100px;
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
 
@@ -678,83 +729,64 @@
 <body>
 
 
-<!-- ========================================================
-     LOCK SCREEN
-========================================================= -->
-
 <div
     id="lockScreen"
     class="lock-screen"
     style="display:none;"
 >
 
-    <div class="lock-card">
+<div class="lock-card">
 
-        <div
-            style="
-                font-size:45px;
-                margin-bottom:10px;
-            "
-        >
-            🔒
-        </div>
+<div style="font-size:45px;">
+    🔒
+</div>
 
+<h1>
+    Calendar unavailable
+</h1>
 
-        <h1>
-            Messages unavailable
-        </h1>
+<p id="lockMessage">
+    Your Writejot access has expired.
+</p>
 
+<a
+    class="button"
+    href="index.html"
+>
+    Back to Dashboard
+</a>
 
-        <p id="lockMessage">
-            Your Writejot access has expired.
-            Renew your subscription to continue
-            using Messages.
-        </p>
-
-
-        <a
-            class="button"
-            href="index.html"
-        >
-            Back to Dashboard
-        </a>
-
-    </div>
+</div>
 
 </div>
 
 
 
-<!-- ========================================================
-     MESSAGES INTERFACE
-========================================================= -->
-
-<div id="mainContent">
+<div id="calendarInterface">
 
 
 <header>
 
-    <div class="brand">
+<div class="brand">
 
-        <img
-            src="W.png"
-            alt="Writejot"
-        >
+<img
+    src="W.png"
+    alt="Writejot"
+>
+
+<div class="brand-name">
+    Writejot
+</div>
+
+</div>
 
 
-        <div class="brand-name">
-            Writejot
-        </div>
-
-    </div>
-
-
-    <a
-        class="back"
-        href="index.html"
-    >
-        ← Dashboard
-    </a>
+<a
+    class="back"
+    href="index.html"
+>
+    ← Dashboard
+</a>
 
 </header>
 
@@ -762,32 +794,222 @@
 
 <main>
 
+<div class="page-header">
 
-    <div class="title-row">
+<h1>
+    📅 Calendar
+</h1>
 
-        <h1>
-            Messages
-        </h1>
+<p>
+    Classes, tests, and your own events.
+</p>
 
-
-        <div
-            id="unreadTotal"
-            class="unread-total"
-        ></div>
-
-    </div>
+</div>
 
 
-    <div
-        id="conversationList"
-        class="list"
-    >
+<div
+    id="updateIndicator"
+    class="update-indicator"
+>
+    Updating...
+</div>
 
-        <div class="empty">
-            Loading conversations...
-        </div>
 
-    </div>
+<div id="registrationArea"></div>
+
+
+<div id="calendarContent">
+
+
+<div
+    id="statusCard"
+    class="status-card approved"
+>
+
+<strong id="statusTitle">
+    Class Schedule Access
+</strong>
+
+
+<div
+    id="statusText"
+    style="
+        color:#667085;
+        margin-top:5px;
+    "
+></div>
+
+</div>
+
+
+
+<div class="calendar-layout">
+
+
+<div class="calendar-card">
+
+
+<div class="calendar-toolbar">
+
+<strong id="monthTitle"></strong>
+
+
+<div class="month-buttons">
+
+<button
+    class="month-button"
+    type="button"
+    onclick="changeMonth(-1)"
+>
+    ←
+</button>
+
+
+<button
+    class="month-button"
+    type="button"
+    onclick="goToToday()"
+>
+    •
+</button>
+
+
+<button
+    class="month-button"
+    type="button"
+    onclick="changeMonth(1)"
+>
+    →
+</button>
+
+</div>
+
+</div>
+
+
+<div class="weekdays">
+
+<div class="weekday">
+    Sun
+</div>
+
+<div class="weekday">
+    Mon
+</div>
+
+<div class="weekday">
+    Tue
+</div>
+
+<div class="weekday">
+    Wed
+</div>
+
+<div class="weekday">
+    Thu
+</div>
+
+<div class="weekday">
+    Fri
+</div>
+
+<div class="weekday">
+    Sat
+</div>
+
+</div>
+
+
+<div
+    id="calendarGrid"
+    class="calendar-grid"
+></div>
+
+</div>
+
+
+
+<div class="side-card">
+
+<h2>
+    Upcoming
+</h2>
+
+
+<div
+    id="upcomingEvents"
+></div>
+
+
+
+<div class="add-event">
+
+<h3>
+    Add Personal Event
+</h3>
+
+
+<input
+    id="eventTitle"
+    class="event-input"
+    type="text"
+    placeholder="Event title"
+>
+
+
+<input
+    id="eventDate"
+    class="event-input"
+    type="date"
+>
+
+
+<div class="event-row">
+
+<input
+    id="eventStart"
+    class="event-input"
+    type="time"
+>
+
+<input
+    id="eventEnd"
+    class="event-input"
+    type="time"
+>
+
+</div>
+
+
+<textarea
+    id="eventDescription"
+    class="event-textarea"
+    placeholder="Description"
+></textarea>
+
+
+<button
+    id="addEventButton"
+    class="primary-button"
+    type="button"
+    onclick="addEvent()"
+>
+    + Add Event
+</button>
+
+
+<div
+    id="eventMessage"
+    class="form-message"
+></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </main>
 
@@ -796,11 +1018,6 @@
 
 
 <script>
-
-
-/* =========================================================
-   CONFIG
-========================================================= */
 
 const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
@@ -814,16 +1031,17 @@ let currentUser =
     null;
 
 
-let conversations =
-    [];
-
-
-let refreshTimer =
+let calendarData =
     null;
 
 
-let lastFingerprint =
-    "";
+let displayedMonth =
+    new Date();
+
+
+displayedMonth.setDate(
+    1
+);
 
 
 
@@ -862,10 +1080,6 @@ window.addEventListener(
 
         catch {
 
-            localStorage.removeItem(
-                "writejotUser"
-            );
-
             location.href =
                 "index.html";
 
@@ -874,10 +1088,15 @@ window.addEventListener(
         }
 
 
-        /*
-         * Show cached conversations immediately
-         * when we have a recently verified access state.
-         */
+        document
+            .getElementById(
+                "eventDate"
+            )
+            .value =
+            localDateString(
+                new Date()
+            );
+
 
         const cachedAccess =
             getCachedAccess();
@@ -888,24 +1107,23 @@ window.addEventListener(
             cachedAccess.access === true
         ) {
 
-            loadConversationCache();
+            loadCalendarCache();
 
 
-            /*
-             * Refresh quietly in background.
-             */
+            if (
+                calendarData
+            ) {
 
-            startBackgroundRefresh();
+                renderState();
+
+            }
+
+
+            refreshCalendar();
 
         }
 
         else {
-
-            /*
-             * Access isn't recently verified,
-             * so verify before exposing cached
-             * protected conversation data.
-             */
 
             verifyAccessAndStart();
 
@@ -917,7 +1135,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   ACCESS CACHE
+   ACCESS
 ========================================================= */
 
 function accessCacheKey() {
@@ -945,9 +1163,7 @@ function getCachedAccess() {
 
 
         if (!raw) {
-
             return null;
-
         }
 
 
@@ -1017,11 +1233,6 @@ function saveAccessCache(
 }
 
 
-
-/* =========================================================
-   ACCESS VERIFICATION
-========================================================= */
-
 async function verifyAccessAndStart() {
 
     try {
@@ -1066,10 +1277,19 @@ async function verifyAccessAndStart() {
         }
 
 
-        loadConversationCache();
+        loadCalendarCache();
 
 
-        startBackgroundRefresh();
+        if (
+            calendarData
+        ) {
+
+            renderState();
+
+        }
+
+
+        refreshCalendar();
 
     }
 
@@ -1084,45 +1304,14 @@ async function verifyAccessAndStart() {
 }
 
 
-
 /* =========================================================
-   BACKGROUND REFRESH
+   CACHE
 ========================================================= */
 
-function startBackgroundRefresh() {
-
-    refreshConversations();
-
-
-    if (
-        refreshTimer
-    ) {
-
-        clearInterval(
-            refreshTimer
-        );
-
-    }
-
-
-    refreshTimer =
-        setInterval(
-            refreshConversations,
-            5000
-        );
-
-}
-
-
-
-/* =========================================================
-   CONVERSATION CACHE
-========================================================= */
-
-function conversationCacheKey() {
+function calendarCacheKey() {
 
     return (
-        "writejot_conversations_" +
+        "writejot_calendar_" +
         String(
             currentUser.email
         )
@@ -1133,13 +1322,13 @@ function conversationCacheKey() {
 }
 
 
-function loadConversationCache() {
+function loadCalendarCache() {
 
     try {
 
         const raw =
             localStorage.getItem(
-                conversationCacheKey()
+                calendarCacheKey()
             );
 
 
@@ -1150,34 +1339,10 @@ function loadConversationCache() {
         }
 
 
-        const parsed =
+        calendarData =
             JSON.parse(
                 raw
             );
-
-
-        if (
-            !Array.isArray(
-                parsed
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        conversations =
-            parsed;
-
-
-        lastFingerprint =
-            JSON.stringify(
-                parsed
-            );
-
-
-        renderConversations();
 
     }
 
@@ -1186,19 +1351,25 @@ function loadConversationCache() {
 }
 
 
-function saveConversationCache() {
+function saveCalendarCache() {
 
     try {
 
-        localStorage.setItem(
+        if (
+            calendarData
+        ) {
 
-            conversationCacheKey(),
+            localStorage.setItem(
 
-            JSON.stringify(
-                conversations
-            )
+                calendarCacheKey(),
 
-        );
+                JSON.stringify(
+                    calendarData
+                )
+
+            );
+
+        }
 
     }
 
@@ -1209,10 +1380,10 @@ function saveConversationCache() {
 
 
 /* =========================================================
-   REFRESH CONVERSATIONS
+   REFRESH
 ========================================================= */
 
-async function refreshConversations() {
+async function refreshCalendar() {
 
     try {
 
@@ -1220,7 +1391,7 @@ async function refreshConversations() {
             await fetch(
 
                 APPS_SCRIPT_URL +
-                "?action=conversations&email=" +
+                "?action=calendarStatus&email=" +
                 encodeURIComponent(
                     currentUser.email
                 ),
@@ -1238,9 +1409,7 @@ async function refreshConversations() {
 
 
         /*
-         * IMPORTANT:
-         * Server can revoke access while the
-         * page is already open.
+         * EXPIRED = LOCK CALENDAR
          */
 
         if (
@@ -1292,273 +1461,35 @@ async function refreshConversations() {
         });
 
 
-        const next =
-            result.conversations ||
-            [];
+        calendarData =
+            result;
 
 
-        const nextFingerprint =
-            JSON.stringify(
-                next
-            );
+        saveCalendarCache();
 
 
-        /*
-         * Don't rebuild the list
-         * if absolutely nothing changed.
-         */
-
-        if (
-            nextFingerprint ===
-            lastFingerprint
-        ) {
-
-            return;
-
-        }
-
-
-        conversations =
-            next;
-
-
-        lastFingerprint =
-            nextFingerprint;
-
-
-        saveConversationCache();
-
-
-        renderConversations();
+        renderState();
 
     }
 
-    catch (error) {
+    catch {
 
-        console.error(
-            "Conversation refresh failed:",
-            error
+        console.log(
+            "Calendar refresh failed."
         );
 
     }
 
-}
-
-
-
-/* =========================================================
-   RENDER
-========================================================= */
-
-function renderConversations() {
-
-    const list =
-        document.getElementById(
-            "conversationList"
-        );
-
-
-    const unreadTotal =
-        document.getElementById(
-            "unreadTotal"
-        );
-
-
-    if (
-        !conversations.length
-    ) {
-
-        list.innerHTML =
-
-            `
-            <div class="empty">
-
-                No conversations yet.
-
-                <br><br>
-
-                Search for a profile
-                from your dashboard to
-                start a conversation.
-
-            </div>
-            `;
-
-
-        unreadTotal.style.display =
-            "none";
-
-
-        return;
-
-    }
-
-
-    let total =
-        0;
-
-
-    conversations.forEach(
-        function(conversation) {
-
-            total +=
-                Number(
-                    conversation.unreadCount ||
-                    0
-                );
-
-        }
-    );
-
-
-    if (
-        total > 0
-    ) {
-
-        unreadTotal.textContent =
-            total > 99
-                ? "99+"
-                : total;
-
-
-        unreadTotal.style.display =
-            "flex";
-
-    }
-
-    else {
-
-        unreadTotal.style.display =
-            "none";
-
-    }
-
-
-    list.innerHTML =
-        conversations
-            .map(
-                function(conversation) {
-
-                    const unread =
-                        Number(
-                            conversation.unreadCount ||
-                            0
-                        );
-
-
-                    return `
-
-                    <a
-                        class="
-                            conversation
-                            ${
-                                unread > 0
-                                    ? "unread"
-                                    : ""
-                            }
-                        "
-                        href="chat.html?username=${encodeURIComponent(
-                            conversation.username
-                        )}"
-                    >
-
-                        <img
-                            class="avatar"
-                            src="${escapeHtml(
-                                conversation.profilePicture ||
-                                "W.png"
-                            )}"
-                            onerror="
-                                this.src='W.png'
-                            "
-                            alt=""
-                        >
-
-
-                        <div
-                            class="conversation-main"
-                        >
-
-                            <div
-                                class="top-line"
-                            >
-
-                                <div
-                                    class="name"
-                                >
-                                    ${escapeHtml(
-                                        conversation.name ||
-                                        "Writejot User"
-                                    )}
-                                </div>
-
-
-                                <div
-                                    class="username"
-                                >
-                                    @${escapeHtml(
-                                        conversation.username ||
-                                        ""
-                                    )}
-                                </div>
-
-                            </div>
-
-
-                            <div
-                                class="preview"
-                            >
-
-                                ${escapeHtml(
-                                    conversation.lastMessage ||
-                                    "No messages"
-                                )}
-
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="conversation-side"
-                        >
-
-                            <div
-                                class="time"
-                            >
-                                ${escapeHtml(
-                                    formatTime(
-                                        conversation.timestamp
-                                    )
-                                )}
-                            </div>
-
-
-                            ${
-                                unread > 0
-                                    ? `
-                                        <div class="unread">
-
-                                            ${
-                                                unread > 99
-                                                    ? "99+"
-                                                    : unread
-                                            }
-
-                                        </div>
-                                      `
-                                    : ""
-                            }
-
-                        </div>
-
-                    </a>
-
-                    `;
-
-                }
+    finally {
+
+        document
+            .getElementById(
+                "updateIndicator"
             )
-            .join("");
+            .style.display =
+            "none";
+
+    }
 
 }
 
@@ -1572,23 +1503,9 @@ function showLocked(
     message
 ) {
 
-    if (
-        refreshTimer
-    ) {
-
-        clearInterval(
-            refreshTimer
-        );
-
-        refreshTimer =
-            null;
-
-    }
-
-
     document
         .getElementById(
-            "mainContent"
+            "calendarInterface"
         )
         .style.display =
         "none";
@@ -1602,18 +1519,1556 @@ function showLocked(
         "flex";
 
 
+    document
+        .getElementById(
+            "lockMessage"
+        )
+        .textContent =
+        message ||
+        "Your Writejot access has expired.";
+
+}
+
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+function renderState() {
+
     if (
-        message
+        !calendarData
+    ) {
+
+        return;
+
+    }
+
+
+    const registrationArea =
+        document.getElementById(
+            "registrationArea"
+        );
+
+
+    const content =
+        document.getElementById(
+            "calendarContent"
+        );
+
+
+    if (
+        !calendarData.registered
+    ) {
+
+        content.style.display =
+            "none";
+
+
+        registrationArea.innerHTML =
+
+        `
+        <div class="registration-card">
+
+            <h2>
+                Register for your class
+            </h2>
+
+
+            <p
+                style="
+                    color:#718096;
+                    margin-bottom:20px;
+                "
+            >
+                Enter your name and section to
+                access your official class schedule
+                and tests.
+            </p>
+
+
+            <div class="field">
+
+                <label>
+                    Name
+                </label>
+
+                <input
+                    id="registrationName"
+                    type="text"
+                    value="${escapeHtml(
+                        currentUser.name ||
+                        ""
+                    )}"
+                    placeholder="Your full name"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Section
+                </label>
+
+                <input
+                    id="registrationSection"
+                    type="text"
+                    placeholder="Example: 10-A"
+                >
+
+            </div>
+
+
+            <button
+                id="registerButton"
+                class="primary-button"
+                type="button"
+                onclick="submitRegistration()"
+            >
+                Register Class
+            </button>
+
+
+            <div
+                id="registrationMessage"
+                class="form-message"
+            ></div>
+
+        </div>
+        `;
+
+
+        return;
+
+    }
+
+
+    registrationArea.innerHTML =
+        "";
+
+
+    content.style.display =
+        "block";
+
+
+    if (
+        !calendarData.approved
     ) {
 
         document
             .getElementById(
-                "lockMessage"
+                "statusCard"
+            )
+            .className =
+            "status-card pending";
+
+
+        document
+            .getElementById(
+                "statusTitle"
             )
             .textContent =
-            message;
+            "⏳ Registration pending";
+
+
+        document
+            .getElementById(
+                "statusText"
+            )
+            .innerHTML =
+
+            `
+            Your registration for
+            <strong>
+                ${escapeHtml(
+                    calendarData.registration.section
+                )}
+            </strong>
+            is waiting for approval.
+            `;
 
     }
+
+    else {
+
+        document
+            .getElementById(
+                "statusCard"
+            )
+            .className =
+            "status-card approved";
+
+
+        document
+            .getElementById(
+                "statusTitle"
+            )
+            .textContent =
+            "✅ Class schedule unlocked";
+
+
+        document
+            .getElementById(
+                "statusText"
+            )
+            .innerHTML =
+
+            `
+            You are registered in
+            <strong>
+                ${escapeHtml(
+                    calendarData.registration.section
+                )}
+            </strong>.
+            `;
+
+    }
+
+
+    renderCalendar();
+
+}
+
+
+
+/* =========================================================
+   CALENDAR RENDER
+========================================================= */
+
+function renderCalendar() {
+
+    const grid =
+        document.getElementById(
+            "calendarGrid"
+        );
+
+
+    const year =
+        displayedMonth.getFullYear();
+
+
+    const month =
+        displayedMonth.getMonth();
+
+
+    document
+        .getElementById(
+            "monthTitle"
+        )
+        .textContent =
+        displayedMonth.toLocaleDateString(
+            undefined,
+            {
+                month:
+                    "long",
+
+                year:
+                    "numeric"
+            }
+        );
+
+
+    grid.innerHTML =
+        "";
+
+
+    const firstDay =
+        new Date(
+            year,
+            month,
+            1
+        ).getDay();
+
+
+    const daysInMonth =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
+
+
+    const total =
+        Math.ceil(
+            (
+                firstDay +
+                daysInMonth
+            ) / 7
+        ) * 7;
+
+
+    for (
+        let i = 0;
+        i < total;
+        i++
+    ) {
+
+        const date =
+            new Date(
+                year,
+                month,
+                i -
+                firstDay +
+                1
+            );
+
+
+        const cell =
+            document.createElement(
+                "div"
+            );
+
+
+        cell.className =
+            "day";
+
+
+        if (
+            date.getMonth() !==
+            month
+        ) {
+
+            cell.classList.add(
+                "other-month"
+            );
+
+        }
+
+
+        const dateString =
+            localDateString(
+                date
+            );
+
+
+        if (
+            dateString ===
+            localDateString(
+                new Date()
+            )
+        ) {
+
+            cell.classList.add(
+                "today"
+            );
+
+        }
+
+
+        const number =
+            document.createElement(
+                "div"
+            );
+
+
+        number.className =
+            "day-number";
+
+
+        number.textContent =
+            date.getDate();
+
+
+        cell.appendChild(
+            number
+        );
+
+
+        if (
+            calendarData.approved
+        ) {
+
+            getClassesForDate(
+                date
+            )
+            .forEach(
+                function(event) {
+
+                    cell.appendChild(
+                        makeChip(
+                            event
+                        )
+                    );
+
+                }
+            );
+
+
+            getTestsForDate(
+                dateString
+            )
+            .forEach(
+                function(test) {
+
+                    cell.appendChild(
+                        makeChip({
+
+                            type:
+                                "test",
+
+                            title:
+                                test.title,
+
+                            time:
+                                test.startTime
+
+                        })
+                    );
+
+                }
+            );
+
+        }
+
+
+        (
+            calendarData.personalEvents ||
+            []
+        )
+        .filter(
+            function(event) {
+
+                return (
+                    event.date ===
+                    dateString
+                );
+
+            }
+        )
+        .forEach(
+            function(event) {
+
+                cell.appendChild(
+                    makeChip(
+                        {
+
+                            type:
+                                "personal",
+
+                            title:
+                                event.title,
+
+                            time:
+                                event.startTime,
+
+                            saving:
+                                event.saving,
+
+                            failed:
+                                event.failed
+
+                        }
+                    )
+                );
+
+            }
+        );
+
+
+        cell.addEventListener(
+            "click",
+            function() {
+
+                document
+                    .getElementById(
+                        "eventDate"
+                    )
+                    .value =
+                    dateString;
+
+
+                document
+                    .getElementById(
+                        "eventTitle"
+                    )
+                    .focus();
+
+            }
+        );
+
+
+        grid.appendChild(
+            cell
+        );
+
+    }
+
+
+    renderUpcoming();
+
+}
+
+
+
+/* =========================================================
+   CLASS EVENTS
+========================================================= */
+
+function getClassesForDate(
+    date
+) {
+
+    const days = [
+
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+
+    ];
+
+
+    const weekday =
+        days[
+            date.getDay()
+        ];
+
+
+    return (
+        calendarData.schedule ||
+        []
+    )
+    .filter(
+        function(event) {
+
+            return (
+                String(
+                    event.day ||
+                    ""
+                )
+                .trim()
+                .toLowerCase()
+                ===
+                weekday.toLowerCase()
+            );
+
+        }
+    )
+    .map(
+        function(event) {
+
+            return {
+
+                type:
+                    "class",
+
+                title:
+                    event.subject,
+
+                time:
+                    event.startTime
+
+            };
+
+        }
+    );
+
+}
+
+
+function getTestsForDate(
+    date
+) {
+
+    return (
+        calendarData.tests ||
+        []
+    )
+    .filter(
+        function(test) {
+
+            return (
+                test.date ===
+                date
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   EVENT CHIP
+========================================================= */
+
+function makeChip(
+    event
+) {
+
+    const chip =
+        document.createElement(
+            "div"
+        );
+
+
+    chip.className =
+        "event-chip " +
+        (
+            event.type ===
+                "test"
+
+                ? "event-test"
+
+                : event.type ===
+                    "personal"
+
+                    ? "event-personal"
+
+                    : "event-class"
+        );
+
+
+    if (
+        event.saving
+    ) {
+
+        chip.classList.add(
+            "event-saving"
+        );
+
+    }
+
+
+    if (
+        event.failed
+    ) {
+
+        chip.classList.add(
+            "event-failed"
+        );
+
+    }
+
+
+    chip.textContent =
+        (
+            event.time
+                ? event.time +
+                  " "
+                : ""
+        ) +
+        (
+            event.title ||
+            ""
+        );
+
+
+    return chip;
+
+}
+
+
+
+/* =========================================================
+   UPCOMING
+========================================================= */
+
+function renderUpcoming() {
+
+    const box =
+        document.getElementById(
+            "upcomingEvents"
+        );
+
+
+    const items =
+        [];
+
+
+    const today =
+        localDateString(
+            new Date()
+        );
+
+
+    if (
+        calendarData.approved
+    ) {
+
+        (
+            calendarData.tests ||
+            []
+        )
+        .filter(
+            function(test) {
+
+                return (
+                    test.date >=
+                    today
+                );
+
+            }
+        )
+        .slice(
+            0,
+            5
+        )
+        .forEach(
+            function(test) {
+
+                items.push({
+
+                    date:
+                        test.date,
+
+                    title:
+                        test.title,
+
+                    meta:
+                        test.subject,
+
+                    color:
+                        "#dc2626"
+
+                });
+
+            }
+        );
+
+    }
+
+
+    (
+        calendarData.personalEvents ||
+        []
+    )
+    .filter(
+        function(event) {
+
+            return (
+                event.date >=
+                today
+            );
+
+        }
+    )
+    .forEach(
+        function(event) {
+
+            items.push({
+
+                date:
+                    event.date,
+
+                title:
+                    event.title,
+
+                meta:
+                    event.startTime,
+
+                color:
+                    "#16834a",
+
+                eventId:
+                    event.eventId,
+
+                saving:
+                    event.saving
+
+            });
+
+        }
+    );
+
+
+    items.sort(
+        function(a,b) {
+
+            return (
+                a.date.localeCompare(
+                    b.date
+                )
+            );
+
+        }
+    );
+
+
+    if (
+        !items.length
+    ) {
+
+        box.innerHTML =
+
+            `
+            <div
+                style="
+                    color:#8a94a6;
+                    font-size:13px;
+                "
+            >
+                Nothing upcoming.
+            </div>
+            `;
+
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        items
+            .slice(
+                0,
+                10
+            )
+            .map(
+                function(item) {
+
+                    return `
+
+                    <div
+                        class="upcoming-event"
+                    >
+
+                        <div
+                            class="upcoming-date"
+                        >
+                            ${escapeHtml(
+                                prettyDate(
+                                    item.date
+                                )
+                            )}
+                        </div>
+
+
+                        <div
+                            class="upcoming-title"
+                            style="
+                                color:${item.color};
+                            "
+                        >
+                            ${escapeHtml(
+                                item.title
+                            )}
+                        </div>
+
+
+                        <div
+                            class="upcoming-meta"
+                        >
+                            ${escapeHtml(
+                                item.meta ||
+                                ""
+                            )}
+
+                            ${
+                                item.saving
+                                    ? " · Saving..."
+                                    : ""
+                            }
+
+                        </div>
+
+
+                        ${
+                            item.eventId
+                                ? `
+                                    <button
+                                        class="personal-delete"
+                                        type="button"
+                                        onclick="deleteEvent(
+                                            '${escapeHtml(
+                                                item.eventId
+                                            )}'
+                                        )"
+                                    >
+                                        Delete
+                                    </button>
+                                  `
+                                : ""
+                        }
+
+                    </div>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+}
+
+
+
+/* =========================================================
+   OPTIMISTIC ADD EVENT
+========================================================= */
+
+async function addEvent() {
+
+    const title =
+        document
+            .getElementById(
+                "eventTitle"
+            )
+            .value
+            .trim();
+
+
+    const date =
+        document
+            .getElementById(
+                "eventDate"
+            )
+            .value;
+
+
+    const startTime =
+        document
+            .getElementById(
+                "eventStart"
+            )
+            .value;
+
+
+    const endTime =
+        document
+            .getElementById(
+                "eventEnd"
+            )
+            .value;
+
+
+    const description =
+        document
+            .getElementById(
+                "eventDescription"
+            )
+            .value
+            .trim();
+
+
+    const message =
+        document.getElementById(
+            "eventMessage"
+        );
+
+
+    if (
+        !title ||
+        !date
+    ) {
+
+        message.textContent =
+            "Enter a title and date.";
+
+        message.style.color =
+            "#dc2626";
+
+        return;
+
+    }
+
+
+    /*
+     * Temporary event appears
+     * immediately.
+     */
+
+    const temporaryId =
+        "temp_" +
+        Date.now();
+
+
+    if (
+        !calendarData.personalEvents
+    ) {
+
+        calendarData.personalEvents =
+            [];
+
+    }
+
+
+    const temporaryEvent = {
+
+        eventId:
+            temporaryId,
+
+        title:
+            title,
+
+        date:
+            date,
+
+        startTime:
+            startTime,
+
+        endTime:
+            endTime,
+
+        description:
+            description,
+
+        saving:
+            true,
+
+        temporary:
+            true
+
+    };
+
+
+    calendarData.personalEvents.push(
+        temporaryEvent
+    );
+
+
+    /*
+     * Immediately update calendar.
+     */
+
+    renderCalendar();
+
+
+    saveCalendarCache();
+
+
+    /*
+     * Clear fields immediately.
+     */
+
+    document
+        .getElementById(
+            "eventTitle"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "eventStart"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "eventEnd"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "eventDescription"
+        )
+        .value =
+        "";
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL,
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            action:
+                                "addPersonalEvent",
+
+                            email:
+                                currentUser.email,
+
+                            title:
+                                title,
+
+                            date:
+                                date,
+
+                            startTime:
+                                startTime,
+
+                            endTime:
+                                endTime,
+
+                            description:
+                                description
+
+                        })
+
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.accessDenied ||
+            result.access === false
+        ) {
+
+            showLocked(
+                "Your Writejot access has expired."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error ||
+                "Could not save event."
+            );
+
+        }
+
+
+        /*
+         * Replace temporary event
+         * with server-confirmed event.
+         */
+
+        calendarData.personalEvents =
+            calendarData.personalEvents
+                .filter(
+                    function(event) {
+
+                        return (
+                            event.eventId !==
+                            temporaryId
+                        );
+
+                    }
+                );
+
+
+        calendarData.personalEvents.push({
+
+            eventId:
+                result.eventId,
+
+            title:
+                result.title,
+
+            date:
+                result.date,
+
+            startTime:
+                result.startTime,
+
+            endTime:
+                result.endTime,
+
+            description:
+                result.description
+
+        });
+
+
+        saveCalendarCache();
+
+
+        renderCalendar();
+
+    }
+
+    catch (error) {
+
+        /*
+         * Remove the optimistic event.
+         */
+
+        calendarData.personalEvents =
+            calendarData.personalEvents
+                .filter(
+                    function(event) {
+
+                        return (
+                            event.eventId !==
+                            temporaryId
+                        );
+
+                    }
+                );
+
+
+        saveCalendarCache();
+
+
+        renderCalendar();
+
+
+        message.textContent =
+            error.message ||
+            "Could not save event.";
+
+        message.style.color =
+            "#dc2626";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   OPTIMISTIC DELETE
+========================================================= */
+
+async function deleteEvent(
+    eventId
+) {
+
+    const existing =
+        calendarData.personalEvents
+            .find(
+                function(event) {
+
+                    return (
+                        event.eventId ===
+                        eventId
+                    );
+
+                }
+            );
+
+
+    if (!existing) {
+
+        return;
+
+    }
+
+
+    const originalEvents =
+        calendarData.personalEvents.slice();
+
+
+    /*
+     * Remove immediately.
+     */
+
+    calendarData.personalEvents =
+        calendarData.personalEvents
+            .filter(
+                function(event) {
+
+                    return (
+                        event.eventId !==
+                        eventId
+                    );
+
+                }
+            );
+
+
+    renderCalendar();
+
+
+    saveCalendarCache();
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL,
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            action:
+                                "deletePersonalEvent",
+
+                            email:
+                                currentUser.email,
+
+                            eventId:
+                                eventId
+
+                        })
+
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.accessDenied ||
+            result.access === false
+        ) {
+
+            showLocked(
+                "Your Writejot access has expired."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error ||
+                "Could not delete event."
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        /*
+         * Restore event if deletion failed.
+         */
+
+        calendarData.personalEvents =
+            originalEvents;
+
+
+        renderCalendar();
+
+
+        saveCalendarCache();
+
+
+        alert(
+            error.message ||
+            "Could not delete event."
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   REGISTRATION
+========================================================= */
+
+async function submitRegistration() {
+
+    const name =
+        document
+            .getElementById(
+                "registrationName"
+            )
+            .value
+            .trim();
+
+
+    const section =
+        document
+            .getElementById(
+                "registrationSection"
+            )
+            .value
+            .trim();
+
+
+    const message =
+        document.getElementById(
+            "registrationMessage"
+        );
+
+
+    if (
+        !name ||
+        !section
+    ) {
+
+        message.textContent =
+            "Enter your name and section.";
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "registerButton"
+        );
+
+
+    button.disabled =
+        true;
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL,
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            action:
+                                "registerClass",
+
+                            email:
+                                currentUser.email,
+
+                            name:
+                                name,
+
+                            section:
+                                section
+
+                        })
+
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.accessDenied
+        ) {
+
+            showLocked(
+                "Your Writejot access has expired."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error
+            );
+
+        }
+
+
+        await refreshCalendar();
+
+    }
+
+    catch (error) {
+
+        message.textContent =
+            error.message;
+
+        message.style.color =
+            "#dc2626";
+
+    }
+
+    finally {
+
+        button.disabled =
+            false;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function changeMonth(
+    amount
+) {
+
+    displayedMonth.setMonth(
+        displayedMonth.getMonth() +
+        amount
+    );
+
+
+    renderCalendar();
+
+}
+
+
+function goToToday() {
+
+    displayedMonth =
+        new Date();
+
+
+    displayedMonth.setDate(
+        1
+    );
+
+
+    renderCalendar();
 
 }
 
@@ -1623,20 +3078,43 @@ function showLocked(
    HELPERS
 ========================================================= */
 
-function formatTime(
+function localDateString(
+    date
+) {
+
+    return [
+
+        date.getFullYear(),
+
+        String(
+            date.getMonth() + 1
+        )
+        .padStart(
+            2,
+            "0"
+        ),
+
+        String(
+            date.getDate()
+        )
+        .padStart(
+            2,
+            "0"
+        )
+
+    ].join("-");
+
+}
+
+
+function prettyDate(
     value
 ) {
 
-    if (!value) {
-
-        return "";
-
-    }
-
-
     const date =
         new Date(
-            value
+            value +
+            "T00:00:00"
         );
 
 
@@ -1646,26 +3124,23 @@ function formatTime(
         )
     ) {
 
-        return "";
+        return value;
 
     }
 
 
-    return date.toLocaleString(
-        [],
+    return date.toLocaleDateString(
+        undefined,
         {
+
+            weekday:
+                "short",
 
             month:
                 "short",
 
             day:
-                "numeric",
-
-            hour:
-                "numeric",
-
-            minute:
-                "2-digit"
+                "numeric"
 
         }
     );
@@ -1705,7 +3180,6 @@ function escapeHtml(
 }
 
 </script>
-
 
 </body>
 
