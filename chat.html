@@ -3,1066 +3,977 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>Writejot | Chat</title>
+<title>Writejot | Chat</title>
 
 
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-        }
+/* =========================================================
+   RESET
+========================================================= */
 
+* {
+    box-sizing:
+        border-box;
+}
 
-        /* =====================================================
-           PAGE
-        ===================================================== */
 
-        html,
-        body {
+html,
+body {
+    margin:
+        0;
 
-            margin: 0;
+    width:
+        100%;
 
-            width: 100%;
+    height:
+        100%;
+}
 
-            height: 100%;
 
-            overflow: hidden;
-        }
+/* =========================================================
+   BODY
+========================================================= */
 
+body {
 
-        body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+    background:
+        #f6f8fc;
 
-            background:
-                #f6f8fc;
+    color:
+        #1f2937;
 
-            color:
-                #1f2937;
-        }
+    display:
+        flex;
 
+    flex-direction:
+        column;
 
-        /* =====================================================
-           CHAT INTERFACE
-        ===================================================== */
+    overflow:
+        hidden;
+}
 
-        #chatInterface {
 
-            width: 100%;
+/* =========================================================
+   HEADER
+========================================================= */
 
-            height: 100dvh;
+header {
 
-            display: flex;
+    background:
+        white;
 
-            flex-direction: column;
+    border-bottom:
+        1px solid #e5e7eb;
 
-            min-height: 0;
+    padding:
+        11px 6%;
 
-            overflow: hidden;
-        }
+    display:
+        flex;
 
+    align-items:
+        center;
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+    gap:
+        12px;
 
-        header {
+    flex:
+        0 0 auto;
 
-            flex: 0 0 64px;
+}
 
-            width: 100%;
 
-            height: 64px;
+.back {
 
-            background: white;
+    color:
+        #4285F4;
 
-            border-bottom:
-                1px solid #e5e7eb;
+    text-decoration:
+        none;
 
-            display: flex;
+    font-weight:
+        600;
 
-            align-items: center;
+    white-space:
+        nowrap;
 
-            gap: 12px;
+}
 
-            padding:
-                0 16px;
 
-            position: relative;
+.recipient {
 
-            z-index: 20;
-        }
+    display:
+        flex;
 
+    align-items:
+        center;
 
-        .back {
+    gap:
+        10px;
 
-            color:
-                #4285F4;
+    min-width:
+        0;
 
-            text-decoration:
-                none;
+}
 
-            font-weight:
-                700;
 
-            font-size:
-                14px;
+.recipient img {
 
-            white-space:
-                nowrap;
-        }
+    width:
+        42px;
 
+    height:
+        42px;
 
-        .recipient {
+    border-radius:
+        50%;
 
-            display: flex;
+    object-fit:
+        cover;
 
-            align-items: center;
+    border:
+        2px solid #4285F4;
 
-            gap: 10px;
+    flex:
+        0 0 42px;
 
-            min-width: 0;
-        }
+}
 
 
-        .recipient img {
+.recipient-name {
 
-            width: 40px;
+    font-weight:
+        700;
 
-            height: 40px;
+    white-space:
+        nowrap;
 
-            flex: 0 0 40px;
+    overflow:
+        hidden;
 
-            border-radius: 50%;
+    text-overflow:
+        ellipsis;
 
-            object-fit: cover;
+}
 
-            background:
-                #e9eef5;
 
-            border:
-                1px solid #dbe2ea;
-        }
+.recipient-username {
 
+    color:
+        #4285F4;
 
-        .recipient-info {
+    font-size:
+        13px;
 
-            min-width: 0;
-        }
+}
 
 
-        .recipient-name {
+/* =========================================================
+   MESSAGES
+========================================================= */
 
-            font-size:
-                15px;
+#messages {
 
-            font-weight:
-                700;
+    flex:
+        1 1 auto;
 
-            white-space:
-                nowrap;
+    min-height:
+        0;
 
-            overflow:
-                hidden;
+    overflow-y:
+        auto;
 
-            text-overflow:
-                ellipsis;
-        }
+    overflow-x:
+        hidden;
 
+    width:
+        100%;
 
-        .recipient-username {
+    max-width:
+        850px;
 
-            color:
-                #6b7280;
+    margin:
+        0 auto;
 
-            font-size:
-                12px;
-        }
+    padding:
+        25px 20px;
 
+    scroll-behavior:
+        smooth;
 
-        /* =====================================================
-           SCROLLABLE CHAT AREA
-        ===================================================== */
+    overscroll-behavior:
+        contain;
 
-        #chatArea {
+}
 
-            flex: 1 1 0;
 
-            min-height: 0;
+/* =========================================================
+   MESSAGE ROW
+========================================================= */
 
-            width: 100%;
+.message-row {
 
-            overflow-y: auto;
+    display:
+        flex;
 
-            overflow-x: hidden;
+    width:
+        100%;
 
-            -webkit-overflow-scrolling: touch;
+    margin-bottom:
+        12px;
 
-            padding:
-                18px;
-        }
+    align-items:
+        flex-start;
 
+}
 
-        #messages {
 
-            width: 100%;
+.message-row.mine {
 
-            max-width:
-                850px;
+    justify-content:
+        flex-end;
 
-            margin:
-                0 auto;
+}
 
-            min-height: 0;
-        }
 
+.message-row.theirs {
 
-        /* =====================================================
-           MESSAGE ROW
-        ===================================================== */
+    justify-content:
+        flex-start;
 
-        .message-row {
+}
 
-            display: flex;
 
-            width: 100%;
+/* =========================================================
+   BUBBLE
+========================================================= */
 
-            align-items:
-                flex-start;
+.bubble-wrapper {
 
-            margin-bottom:
-                10px;
-        }
+    display:
+        flex;
 
+    flex-direction:
+        column;
 
-        .message-row.mine {
+    width:
+        auto;
 
-            justify-content:
-                flex-end;
-        }
+    max-width:
+        70%;
 
+    min-width:
+        0;
 
-        .message-row.theirs {
+    flex:
+        0 0 auto;
 
-            justify-content:
-                flex-start;
-        }
+}
 
 
-        /* =====================================================
-           MESSAGE CONTENT
-        ===================================================== */
+.bubble {
 
-        .message-content {
+    display:
+        inline-block;
 
-            display: flex;
+    width:
+        fit-content;
 
-            flex-direction: column;
+    max-width:
+        100%;
 
-            width: fit-content;
+    height:
+        auto;
 
-            max-width: 70%;
+    min-height:
+        0;
 
-            min-width: 0;
+    margin:
+        0;
 
-            align-items:
-                flex-start;
-        }
+    padding:
+        10px 14px;
 
+    border-radius:
+        15px;
 
-        .mine .message-content {
+    line-height:
+        1.45;
 
-            align-items:
-                flex-end;
-        }
+    white-space:
+        pre-wrap;
 
+    overflow-wrap:
+        anywhere;
 
-        /* =====================================================
-           TEXT BUBBLE
-        ===================================================== */
+    word-break:
+        break-word;
 
-        .bubble {
+    text-align:
+        left;
 
-            display: block;
+}
 
-            width: fit-content;
 
-            max-width: 100%;
+.mine .bubble {
 
-            min-width: 0;
+    background:
+        #4285F4;
 
-            height: auto;
+    color:
+        white;
 
-            min-height: 0;
+    border-bottom-right-radius:
+        4px;
 
-            padding:
-                9px 13px;
+}
 
-            margin: 0;
 
-            border-radius:
-                14px;
+.theirs .bubble {
 
-            font-size:
-                14px;
+    background:
+        white;
 
-            line-height:
-                1.45;
+    color:
+        #1f2937;
 
-            white-space:
-                pre-wrap;
+    border:
+        1px solid #e1e6ee;
 
-            overflow-wrap:
-                anywhere;
+    border-bottom-left-radius:
+        4px;
 
-            word-break:
-                break-word;
+}
 
-            text-align:
-                left;
-        }
 
+/* =========================================================
+   OPTIMISTIC SENDING BUBBLE
+========================================================= */
 
-        .mine .bubble {
+.sending-message {
 
-            background:
-                #4285F4;
+    opacity:
+        .72;
 
-            color:
-                white;
+}
 
-            border-bottom-right-radius:
-                4px;
-        }
 
+.sending-message .bubble {
 
-        .theirs .bubble {
+    background:
+        #8db6f8;
 
-            background:
-                white;
+}
 
-            color:
-                #1f2937;
 
-            border:
-                1px solid #dfe3e8;
+.sending-label {
 
-            border-bottom-left-radius:
-                4px;
-        }
+    font-size:
+        11px;
 
+    color:
+        #8a94a6;
 
-        /* =====================================================
-           SEND STATUS
-        ===================================================== */
+    margin-top:
+        4px;
 
-        .bubble.pending {
+    text-align:
+        right;
 
-            opacity:
-                0.55;
-        }
+}
 
 
-        .bubble.failed {
+/* =========================================================
+   IMAGES
+========================================================= */
 
-            opacity:
-                0.75;
+.message-image {
 
-            border:
-                1px solid #ef4444 !important;
-        }
+    display:
+        block;
 
+    max-width:
+        500px;
 
-        /* =====================================================
-           TIME
-        ===================================================== */
+    max-height:
+        500px;
 
-        .time {
+    width:
+        auto;
 
-            display: block;
+    height:
+        auto;
 
-            margin-top:
-                3px;
+    border-radius:
+        12px;
 
-            font-size:
-                10px;
+    object-fit:
+        contain;
 
-            line-height:
-                1.2;
+    cursor:
+        pointer;
 
-            color:
-                #98a2b3;
-        }
+    margin:
+        0;
 
+}
 
-        .mine .time {
 
-            text-align:
-                right;
-        }
+.image-message-bubble {
 
+    padding:
+        5px;
 
-        /* =====================================================
-           IMAGE MESSAGE
-        ===================================================== */
+    overflow:
+        hidden;
 
-        .image-bubble {
+}
 
-            display: block;
 
-            width: fit-content;
+.image-message-bubble
+.message-image {
 
-            max-width: 100%;
+    border-radius:
+        10px;
 
-            padding:
-                4px;
+}
 
-            overflow: hidden;
-        }
 
+/* =========================================================
+   TIME
+========================================================= */
 
-        .message-image {
+.time {
 
-            display: block;
+    font-size:
+        11px;
 
-            width: auto;
+    opacity:
+        .65;
 
-            height: auto;
+    margin-top:
+        4px;
 
-            max-width: min(
-                100%,
-                520px
-            );
+}
 
-            max-height: 450px;
 
-            border-radius:
-                10px;
+.mine .time {
 
-            cursor:
-                pointer;
-        }
+    text-align:
+        right;
 
+}
 
-        .image-caption {
 
-            padding:
-                7px 6px 4px;
+/* =========================================================
+   EMPTY
+========================================================= */
 
-            font-size:
-                14px;
+#empty {
 
-            line-height:
-                1.45;
+    text-align:
+        center;
 
-            white-space:
-                pre-wrap;
+    color:
+        #718096;
 
-            overflow-wrap:
-                anywhere;
+    padding:
+        40px;
 
-            word-break:
-                break-word;
-        }
+}
 
 
-        /* =====================================================
-           EMPTY
-        ===================================================== */
+/* =========================================================
+   COMPOSER
+========================================================= */
 
-        .empty {
+#composer {
 
-            min-height:
-                240px;
+    width:
+        100%;
 
-            display: flex;
+    background:
+        white;
 
-            flex-direction: column;
+    border-top:
+        1px solid #e5e7eb;
 
-            align-items: center;
+    padding:
+        10px 14px;
 
-            justify-content: center;
+    flex:
+        0 0 auto;
 
-            color:
-                #8a94a6;
+}
 
-            text-align:
-                center;
-        }
 
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
 
-        /* =====================================================
-           COMPOSER
-        ===================================================== */
+#imagePreview {
 
-        #composer {
+    display:
+        none;
 
-            flex: 0 0 auto;
+    width:
+        100%;
 
-            width: 100%;
+    max-width:
+        850px;
 
-            background:
-                white;
+    margin:
+        0 auto 8px;
 
-            border-top:
-                1px solid #e5e7eb;
+    padding:
+        0 0 2px;
 
-            padding:
-                10px 12px 12px;
+}
 
-            position: relative;
 
-            z-index: 30;
-        }
+.preview-wrapper {
 
+    position:
+        relative;
 
-        .composer-inner {
+    display:
+        inline-block;
 
-            width: 100%;
+}
 
-            max-width:
-                850px;
 
-            margin:
-                0 auto;
+#previewImage {
 
-            display: flex;
+    display:
+        block;
 
-            align-items:
-                flex-end;
+    width:
+        auto;
 
-            gap:
-                7px;
-        }
+    max-width:
+        180px;
 
+    max-height:
+        140px;
 
-        /* =====================================================
-           PHOTO BUTTON
-        ===================================================== */
+    border-radius:
+        10px;
 
-        #photoButton {
+    object-fit:
+        cover;
 
-            width:
-                42px;
+    border:
+        1px solid #d8dee8;
 
-            height:
-                42px;
+}
 
-            flex:
-                0 0 42px;
 
-            border:
-                1px solid #d7dce3;
+#removeImageButton {
 
-            border-radius:
-                10px;
+    position:
+        absolute;
 
-            background:
-                white;
+    top:
+        -8px;
 
-            cursor:
-                pointer;
+    right:
+        -8px;
 
-            font-size:
-                19px;
+    width:
+        24px;
 
-            display: flex;
+    height:
+        24px;
 
-            align-items:
-                center;
+    border:
+        none;
 
-            justify-content:
-                center;
-        }
+    border-radius:
+        50%;
 
+    background:
+        #ef4444;
 
-        #photoButton:hover {
+    color:
+        white;
 
-            background:
-                #f4f7fb;
-        }
+    cursor:
+        pointer;
 
+    font-size:
+        16px;
 
-        #imageInput {
+    line-height:
+        24px;
 
-            display:
-                none;
-        }
+    padding:
+        0;
 
+}
 
-        /* =====================================================
-           MESSAGE INPUT
-        ===================================================== */
 
-        #messageInput {
+/* =========================================================
+   COMPOSER INNER
+========================================================= */
 
-            flex:
-                1 1 auto;
+.composer-inner {
 
-            min-width:
-                0;
+    width:
+        100%;
 
-            width:
-                100%;
+    max-width:
+        850px;
 
-            min-height:
-                42px;
+    margin:
+        0 auto;
 
-            max-height:
-                125px;
+    display:
+        flex;
 
-            resize:
-                none;
+    align-items:
+        flex-end;
 
-            overflow-y:
-                auto;
+    gap:
+        8px;
 
-            padding:
-                10px 12px;
+}
 
-            border:
-                1px solid #d7dce3;
 
-            border-radius:
-                10px;
+/* =========================================================
+   PHOTO BUTTON
+========================================================= */
 
-            outline:
-                none;
+#photoButton {
 
-            background:
-                white;
+    width:
+        44px;
 
-            color:
-                #1f2937;
+    height:
+        44px;
 
-            font-family:
-                inherit;
+    flex:
+        0 0 44px;
 
-            font-size:
-                14px;
+    border:
+        1px solid #d8dee8;
 
-            line-height:
-                20px;
-        }
+    border-radius:
+        9px;
 
+    background:
+        white;
 
-        #messageInput:focus {
+    font-size:
+        20px;
 
-            border-color:
-                #4285F4;
+    cursor:
+        pointer;
 
-            box-shadow:
-                0 0 0 3px
-                rgba(
-                    66,
-                    133,
-                    244,
-                    0.08
-                );
-        }
+    display:
+        flex;
 
+    align-items:
+        center;
 
-        /* =====================================================
-           SEND BUTTON
-        ===================================================== */
+    justify-content:
+        center;
 
-        #sendButton {
+}
 
-            flex:
-                0 0 auto;
 
-            height:
-                42px;
+#photoButton:hover {
 
-            min-width:
-                62px;
+    background:
+        #f3f6fb;
 
-            padding:
-                0 16px;
+}
 
-            border:
-                none;
 
-            border-radius:
-                10px;
+#imageInput {
 
-            background:
-                #4285F4;
+    display:
+        none;
 
-            color:
-                white;
+}
 
-            font-weight:
-                700;
 
-            cursor:
-                pointer;
+/* =========================================================
+   TEXT INPUT
+========================================================= */
 
-            white-space:
-                nowrap;
-        }
+#messageInput {
 
+    flex:
+        1 1 auto;
 
-        #sendButton:hover {
+    min-width:
+        0;
 
-            background:
-                #3367d6;
-        }
+    width:
+        100%;
 
+    min-height:
+        44px;
 
-        #sendButton:disabled {
+    max-height:
+        140px;
 
-            opacity:
-                0.65;
+    padding:
+        11px 14px;
 
-            cursor:
-                not-allowed;
-        }
+    border:
+        1px solid #d8dee8;
 
+    border-radius:
+        9px;
 
-        /* =====================================================
-           IMAGE PREVIEW
-        ===================================================== */
+    background:
+        white;
 
-        #imagePreview {
+    font-family:
+        inherit;
 
-            display:
-                none;
+    font-size:
+        14px;
 
-            width: 100%;
+    outline:
+        none;
 
-            max-width:
-                850px;
+    resize:
+        none;
 
-            margin:
-                0 auto 8px;
-        }
+    overflow-y:
+        auto;
 
+}
 
-        .preview-box {
 
-            position:
-                relative;
+#messageInput:focus {
 
-            display:
-                inline-block;
-        }
+    border-color:
+        #4285F4;
 
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            66,
+            133,
+            244,
+            .08
+        );
 
-        #previewImage {
+}
 
-            display:
-                block;
 
-            width:
-                auto;
+/* =========================================================
+   SEND BUTTON
+========================================================= */
 
-            height:
-                auto;
+#sendButton {
 
-            max-width:
-                170px;
+    flex:
+        0 0 auto;
 
-            max-height:
-                120px;
+    min-height:
+        44px;
 
-            border-radius:
-                10px;
+    padding:
+        0 18px;
 
-            border:
-                1px solid #d7dce3;
-        }
+    border:
+        none;
 
+    border-radius:
+        9px;
 
-        #removeImageButton {
+    background:
+        #4285F4;
 
-            position:
-                absolute;
+    color:
+        white;
 
-            top:
-                -7px;
+    font-weight:
+        600;
 
-            right:
-                -7px;
+    cursor:
+        pointer;
 
-            width:
-                23px;
+    white-space:
+        nowrap;
 
-            height:
-                23px;
+}
 
-            border:
-                none;
 
-            border-radius:
-                50%;
+#sendButton:hover {
 
-            background:
-                #ef4444;
+    background:
+        #3367d6;
 
-            color:
-                white;
+}
 
-            cursor:
-                pointer;
 
-            font-size:
-                15px;
+#sendButton:disabled {
 
-            line-height:
-                23px;
+    opacity:
+        .6;
 
-            padding:
-                0;
-        }
+    cursor:
+        not-allowed;
 
+}
 
-        /* =====================================================
-           LOCK SCREEN
-        ===================================================== */
 
-        .lock-screen {
+/* =========================================================
+   MOBILE
+========================================================= */
 
-            width:
-                100%;
+@media (
+    max-width: 600px
+) {
 
-            height:
-                100dvh;
+    header {
 
-            display:
-                flex;
+        padding:
+            10px 12px;
 
-            align-items:
-                center;
+    }
 
-            justify-content:
-                center;
 
-            padding:
-                30px;
+    .back {
 
-            background:
-                #f6f8fc;
-        }
+        font-size:
+            13px;
 
+    }
 
-        .lock-card {
 
-            max-width:
-                500px;
+    .recipient img {
 
-            width:
-                100%;
+        width:
+            38px;
 
-            background:
-                white;
+        height:
+            38px;
 
-            border:
-                1px solid #e1e6ee;
+        flex-basis:
+            38px;
 
-            border-radius:
-                16px;
+    }
 
-            padding:
-                35px;
 
-            text-align:
-                center;
-        }
+    .recipient-name {
 
+        max-width:
+            170px;
 
-        .lock-card p {
+    }
 
-            color:
-                #718096;
 
-            line-height:
-                1.6;
-        }
+    #messages {
 
+        padding:
+            18px 12px;
 
-        .button {
+    }
 
-            display:
-                inline-block;
 
-            padding:
-                11px 17px;
+    .bubble-wrapper {
 
-            background:
-                #4285F4;
+        max-width:
+            82%;
 
-            color:
-                white;
+    }
 
-            text-decoration:
-                none;
 
-            border-radius:
-                9px;
+    .message-image {
 
-            font-weight:
-                600;
-        }
+        max-width:
+            100%;
 
+        max-height:
+            360px;
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+    }
 
-        @media (max-width: 600px) {
 
-            header {
+    #composer {
 
-                flex:
-                    0 0 58px;
+        padding:
+            8px 10px;
 
-                height:
-                    58px;
+    }
 
-                padding:
-                    0 11px;
-            }
 
+    #imagePreview {
 
-            .back {
+        padding:
+            0 2px;
 
-                font-size:
-                    13px;
-            }
+    }
 
 
-            .recipient img {
+    .composer-inner {
 
-                width:
-                    38px;
+        gap:
+            6px;
 
-                height:
-                    38px;
+    }
 
-                flex-basis:
-                    38px;
-            }
 
+    #messageInput {
 
-            .recipient-name {
+        min-height:
+            42px;
 
-                max-width:
-                    180px;
-            }
+        max-height:
+            120px;
 
+        padding:
+            10px 12px;
 
-            #chatArea {
+    }
 
-                flex:
-                    1 1 0;
 
-                min-height:
-                    0;
+    #photoButton {
 
-                padding:
-                    14px 11px 16px;
+        width:
+            42px;
 
-                overflow-y:
-                    auto;
-            }
+        height:
+            42px;
 
+        flex-basis:
+            42px;
 
-            .message-content {
+    }
 
-                max-width:
-                    82%;
-            }
 
+    #sendButton {
 
-            .bubble {
+        min-height:
+            42px;
 
-                font-size:
-                    14px;
+        padding:
+            0 13px;
 
-                padding:
-                    9px 12px;
-            }
+    }
 
+}
 
-            .message-image {
-
-                max-width:
-                    100%;
-
-                max-height:
-                    360px;
-            }
-
-
-            #composer {
-
-                flex:
-                    0 0 auto;
-
-                padding:
-                    8px;
-            }
-
-
-            .composer-inner {
-
-                gap:
-                    6px;
-            }
-
-
-            #photoButton {
-
-                width:
-                    42px;
-
-                height:
-                    42px;
-
-                flex-basis:
-                    42px;
-            }
-
-
-            #messageInput {
-
-                min-height:
-                    42px;
-
-                max-height:
-                    120px;
-
-                padding:
-                    10px 11px;
-            }
-
-
-            #sendButton {
-
-                height:
-                    42px;
-
-                min-width:
-                    56px;
-
-                padding:
-                    0 12px;
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
 
@@ -1071,222 +982,148 @@
 <body>
 
 
-<!-- ========================================================
-     LOCK SCREEN
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+    <a
+        href="messages.html"
+        class="back"
+    >
+        ← Messages
+    </a>
+
+
+    <div
+        class="recipient"
+    >
+
+        <img
+            id="recipientPicture"
+            src="W.png"
+            alt="Profile picture"
+        >
+
+
+        <div>
+
+            <div
+                id="recipientName"
+                class="recipient-name"
+            >
+                Loading...
+            </div>
+
+
+            <div
+                id="recipientUsername"
+                class="recipient-username"
+            >
+                @username
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MESSAGE AREA
 ========================================================= -->
 
 <div
-    id="lockScreen"
-    class="lock-screen"
-    style="display:none;"
+    id="messages"
 >
 
     <div
-        class="lock-card"
+        id="empty"
     >
-
-        <div
-            style="
-                font-size:45px;
-                margin-bottom:10px;
-            "
-        >
-            🔒
-        </div>
-
-
-        <h1>
-            Chat unavailable
-        </h1>
-
-
-        <p>
-            Your Writejot access has expired.
-            Renew your subscription to continue
-            messaging.
-        </p>
-
-
-        <a
-            class="button"
-            href="index.html"
-        >
-            Back to Dashboard
-        </a>
-
+        Loading messages...
     </div>
 
 </div>
 
 
 
-<!-- ========================================================
-     CHAT INTERFACE
+<!-- =========================================================
+     COMPOSER
 ========================================================= -->
 
 <div
-    id="chatInterface"
+    id="composer"
 >
 
-
-    <!-- ====================================================
-         HEADER
-    ===================================================== -->
-
-    <header>
-
-        <a
-            href="messages.html"
-            class="back"
-        >
-            ← Messages
-        </a>
-
+    <div
+        id="imagePreview"
+    >
 
         <div
-            class="recipient"
+            class="preview-wrapper"
         >
 
             <img
-                id="recipientPicture"
-                src="W.png"
-                alt="Profile picture"
+                id="previewImage"
+                src=""
+                alt="Selected image"
             >
 
 
-            <div
-                class="recipient-info"
+            <button
+                id="removeImageButton"
+                type="button"
+                onclick="removeSelectedImage()"
             >
-
-                <div
-                    id="recipientName"
-                    class="recipient-name"
-                >
-                    Loading...
-                </div>
-
-
-                <div
-                    id="recipientUsername"
-                    class="recipient-username"
-                >
-                    @username
-                </div>
-
-            </div>
+                ×
+            </button>
 
         </div>
 
-    </header>
+    </div>
 
 
-
-    <!-- ====================================================
-         SCROLLABLE MESSAGE AREA
-    ===================================================== -->
-
-    <main
-        id="chatArea"
-    >
-
-        <div
-            id="messages"
-        >
-
-            <div
-                class="empty"
-            >
-                Loading messages...
-            </div>
-
-        </div>
-
-    </main>
-
-
-
-    <!-- ====================================================
-         MESSAGE COMPOSER
-    ===================================================== -->
 
     <div
-        id="composer"
+        class="composer-inner"
     >
 
-
-        <!-- IMAGE PREVIEW -->
-
-        <div
-            id="imagePreview"
+        <button
+            id="photoButton"
+            type="button"
+            onclick="openImagePicker()"
+            title="Send a photo"
         >
-
-            <div
-                class="preview-box"
-            >
-
-                <img
-                    id="previewImage"
-                    src=""
-                    alt="Selected image"
-                >
+            📷
+        </button>
 
 
-                <button
-                    id="removeImageButton"
-                    type="button"
-                    onclick="removeSelectedImage()"
-                >
-                    ×
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- COMPOSER -->
-
-        <div
-            class="composer-inner"
+        <input
+            id="imageInput"
+            type="file"
+            accept="image/*"
+            onchange="handleImageSelection(event)"
         >
 
 
-            <button
-                id="photoButton"
-                type="button"
-                onclick="openImagePicker()"
-                title="Send photo"
-            >
-                📷
-            </button>
+        <textarea
+            id="messageInput"
+            maxlength="2000"
+            placeholder="Write a message..."
+            rows="1"
+        ></textarea>
 
 
-            <input
-                id="imageInput"
-                type="file"
-                accept="image/*"
-                onchange="handleImageSelection(event)"
-            >
-
-
-            <textarea
-                id="messageInput"
-                maxlength="2000"
-                rows="1"
-                placeholder="Type a message..."
-            ></textarea>
-
-
-            <button
-                id="sendButton"
-                type="button"
-                onclick="sendMessage()"
-            >
-                Send
-            </button>
-
-        </div>
+        <button
+            id="sendButton"
+            type="button"
+            onclick="sendMessage()"
+        >
+            Send
+        </button>
 
     </div>
 
@@ -1305,125 +1142,197 @@ const APPS_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
 
 
-const ACCESS_CACHE_TIME =
-    5 * 60 * 1000;
+let currentUser =
+    null;
 
 
-let currentUser = null;
+let otherUsername =
+    "";
 
-let otherUsername = "";
 
-let messages = [];
+let refreshTimer =
+    null;
 
-let selectedImage = null;
 
-let lastFingerprint = "";
+let selectedImage =
+    null;
 
-let refreshTimer = null;
 
+let sendInProgress =
+    false;
+
+
+let loadRequestNumber =
+    0;
+
+
+let initialized =
+    false;
 
 
 /* =========================================================
-   START
+   INITIALIZE
 ========================================================= */
 
 window.addEventListener(
     "load",
-    async function () {
+    initializeChat
+);
 
-        const saved =
-            localStorage.getItem(
-                "writejotUser"
+
+async function initializeChat() {
+
+    const savedUser =
+        localStorage.getItem(
+            "writejotUser"
+        );
+
+
+    if (
+        !savedUser
+    ) {
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    try {
+
+        currentUser =
+            JSON.parse(
+                savedUser
             );
 
+    }
 
-        if (!saved) {
+    catch (
+        error
+    ) {
 
-            window.location.href =
-                "index.html";
+        window.location.href =
+            "index.html";
 
-            return;
+        return;
 
-        }
-
-
-        try {
-
-            currentUser =
-                JSON.parse(
-                    saved
-                );
-
-        }
-
-        catch {
-
-            window.location.href =
-                "index.html";
-
-            return;
-
-        }
+    }
 
 
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
 
 
-        otherUsername =
-            normalizeUsername(
-                params.get(
-                    "username"
-                )
-            );
+    otherUsername =
+        normalizeUsername(
+            params.get(
+                "username"
+            )
+        );
 
 
-        if (!otherUsername) {
+    if (
+        !otherUsername
+    ) {
 
-            window.location.href =
-                "messages.html";
+        window.location.href =
+            "messages.html";
 
-            return;
+        return;
 
-        }
-
-
-        /*
-         * Cache first.
-         */
-
-        loadChatCache();
+    }
 
 
-        /*
-         * Prepare input immediately.
-         */
-
-        setupInput();
+    initialized =
+        true;
 
 
-        /*
-         * Access check.
-         */
+    setupMessageInput();
 
-        const cachedAccess =
-            getCachedAccess();
 
+    /*
+     * Header can appear immediately
+     * from local cache.
+     */
+
+    loadRecipientCache();
+
+
+    /*
+     * Load real conversation.
+     */
+
+    await refreshChat(
+        true
+    );
+
+
+    startRefreshTimer();
+
+}
+
+
+/* =========================================================
+   IMPORTANT:
+   FIX BROWSER BACK/FORWARD CACHE
+========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    async function(
+        event
+    ) {
 
         if (
-            cachedAccess &&
-            cachedAccess.access === true
+            !initialized
         ) {
 
-            startBackgroundWork();
+            return;
 
         }
 
-        else {
 
-            verifyAccessInBackground();
+        /*
+         * A browser can restore the exact old DOM
+         * instead of rebuilding the page.
+         *
+         * This means an old "Sending..." bubble
+         * can appear even though the server already
+         * saved the message.
+         *
+         * Refreshing the real conversation here
+         * removes that stale DOM.
+         */
+
+        await refreshChat(
+            true
+        );
+
+    }
+);
+
+
+/* =========================================================
+   TAB VISIBILITY
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function() {
+
+        if (
+            document.visibilityState ===
+            "visible" &&
+            initialized
+        ) {
+
+            refreshChat(
+                true
+            );
 
         }
 
@@ -1431,187 +1340,102 @@ window.addEventListener(
 );
 
 
-
 /* =========================================================
-   ACCESS CACHE
+   WINDOW FOCUS
 ========================================================= */
 
-function accessCacheKey() {
-
-    return (
-        "writejot_access_" +
-        String(
-            currentUser.email
-        )
-        .trim()
-        .toLowerCase()
-    );
-
-}
-
-
-function getCachedAccess() {
-
-    try {
-
-        const raw =
-            localStorage.getItem(
-                accessCacheKey()
-            );
-
-
-        if (!raw) {
-
-            return null;
-
-        }
-
-
-        const data =
-            JSON.parse(
-                raw
-            );
-
+window.addEventListener(
+    "focus",
+    function() {
 
         if (
-            Date.now() -
-            Number(
-                data.checkedAt || 0
-            )
-            >
-            ACCESS_CACHE_TIME
+            initialized
         ) {
 
-            return null;
+            loadMessages();
 
         }
 
-
-        return data;
-
     }
-
-    catch {
-
-        return null;
-
-    }
-
-}
+);
 
 
-function saveAccessCache(
-    result
+/* =========================================================
+   REFRESH CHAT
+========================================================= */
+
+async function refreshChat(
+    markReadFirst
 ) {
 
-    try {
+    if (
+        !currentUser ||
+        !otherUsername
+    ) {
 
-        localStorage.setItem(
-
-            accessCacheKey(),
-
-            JSON.stringify({
-
-                access:
-                    result.access === true,
-
-                status:
-                    result.status ||
-                    "",
-
-                checkedAt:
-                    Date.now()
-
-            })
-
-        );
+        return;
 
     }
 
-    catch {}
 
-}
+    const requestId =
+        ++loadRequestNumber;
 
-
-
-/* =========================================================
-   BACKGROUND ACCESS
-========================================================= */
-
-async function verifyAccessInBackground() {
 
     try {
 
-        const response =
-            await fetch(
+        if (
+            markReadFirst
+        ) {
 
-                APPS_SCRIPT_URL +
-                "?action=access&email=" +
-                encodeURIComponent(
-                    currentUser.email
-                ),
+            await Promise.all([
 
-                {
-                    cache:
-                        "no-store"
-                }
+                loadRecipient(),
 
-            );
+                markConversationRead()
 
+            ]);
 
-        const result =
-            await response.json();
-
-
-        saveAccessCache(
-            result
-        );
+        }
 
 
         if (
-            !result.success ||
-            !result.access
+            requestId !==
+            loadRequestNumber
         ) {
-
-            showLocked();
 
             return;
 
         }
 
 
-        startBackgroundWork();
+        await loadMessages();
 
     }
 
-    catch {
+    catch (
+        error
+    ) {
 
-        if (
-            !getCachedAccess()
-        ) {
-
-            showLocked();
-
-        }
+        console.error(
+            "Chat refresh error:",
+            error
+        );
 
     }
 
 }
 
 
-
 /* =========================================================
-   BACKGROUND WORK
+   AUTO REFRESH
 ========================================================= */
 
-function startBackgroundWork() {
+function startRefreshTimer() {
 
-    markReadInBackground();
-
-    refreshChat();
-
-
-    if (refreshTimer) {
+    if (
+        refreshTimer
+    ) {
 
         clearInterval(
             refreshTimer
@@ -1622,103 +1446,86 @@ function startBackgroundWork() {
 
     refreshTimer =
         setInterval(
-            refreshChat,
-            5000
+
+            function() {
+
+                if (
+                    document.visibilityState ===
+                    "visible"
+                ) {
+
+                    loadMessages();
+
+                }
+
+            },
+
+            3000
+
         );
 
 }
 
 
-
 /* =========================================================
-   CHAT CACHE
+   RECIPIENT CACHE
 ========================================================= */
 
-function chatCacheKey() {
+function getRecipientCacheKey() {
 
     return (
-        "writejot_chat_" +
-        String(
-            currentUser.email
-        )
-        .trim()
-        .toLowerCase() +
-        "_" +
+        "writejot_chat_recipient_" +
         otherUsername
     );
 
 }
 
 
-function loadChatCache() {
+function loadRecipientCache() {
 
     try {
 
         const raw =
             localStorage.getItem(
-                chatCacheKey()
+                getRecipientCacheKey()
             );
 
 
-        if (!raw) {
+        if (
+            !raw
+        ) {
 
             return;
 
         }
 
 
-        const data =
+        const profile =
             JSON.parse(
                 raw
             );
 
 
-        if (
-            !data ||
-            !Array.isArray(
-                data.messages
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        messages =
-            data.messages;
-
-
-        if (
-            data.profile
-        ) {
-
-            applyRecipient(
-                data.profile
-            );
-
-        }
-
-
-        lastFingerprint =
-            JSON.stringify(
-                messages
-            );
-
-
-        renderMessages(
-            messages,
-            false
+        applyRecipientProfile(
+            profile
         );
 
     }
 
-    catch {}
+    catch (
+        error
+    ) {
+
+        console.log(
+            "Recipient cache unavailable."
+        );
+
+    }
 
 }
 
 
-function saveChatCache(
+function saveRecipientCache(
     profile
 ) {
 
@@ -1726,72 +1533,33 @@ function saveChatCache(
 
         localStorage.setItem(
 
-            chatCacheKey(),
+            getRecipientCacheKey(),
 
-            JSON.stringify({
-
-                messages:
-                    messages.slice(
-                        -200
-                    ),
-
-                profile:
-                    profile ||
-                    getCurrentProfile()
-
-            })
+            JSON.stringify(
+                profile
+            )
 
         );
 
     }
 
-    catch {}
+    catch (
+        error
+    ) {}
 
 }
-
-
-function getCurrentProfile() {
-
-    return {
-
-        name:
-            document
-                .getElementById(
-                    "recipientName"
-                )
-                .textContent,
-
-        username:
-            otherUsername,
-
-        profilePicture:
-            document
-                .getElementById(
-                    "recipientPicture"
-                )
-                .src
-
-    };
-
-}
-
 
 
 /* =========================================================
-   REFRESH CHAT
+   RECIPIENT
 ========================================================= */
 
-async function refreshChat() {
+async function loadRecipient() {
 
     try {
 
-        /*
-         * Request profile and messages
-         * at the same time.
-         */
-
-        const profileRequest =
-            fetch(
+        const response =
+            await fetch(
 
                 APPS_SCRIPT_URL +
                 "?action=profile&username=" +
@@ -1807,194 +1575,108 @@ async function refreshChat() {
             );
 
 
-        const messagesRequest =
-            fetch(
-
-                APPS_SCRIPT_URL +
-                "?action=messages" +
-                "&email=" +
-                encodeURIComponent(
-                    currentUser.email
-                ) +
-                "&username=" +
-                encodeURIComponent(
-                    otherUsername
-                ),
-
-                {
-                    cache:
-                        "no-store"
-                }
-
-            );
-
-
-        const [
-
-            profileResponse,
-
-            messageResponse
-
-        ] =
-            await Promise.all([
-
-                profileRequest,
-
-                messagesRequest
-
-            ]);
-
-
-        const profileResult =
-            await profileResponse.json();
-
-
-        const messageResult =
-            await messageResponse.json();
-
-
-        /*
-         * Access was revoked.
-         */
-
         if (
-            profileResult.accessDenied ||
-            messageResult.accessDenied
+            !response.ok
         ) {
 
-            saveAccessCache({
+            throw new Error(
+                "Server returned " +
+                response.status
+            );
 
-                access: false,
-
-                status:
-                    messageResult.status ||
-                    profileResult.status ||
-                    "expired"
-
-            });
+        }
 
 
-            showLocked();
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success ||
+            !result.profile
+        ) {
+
+            document
+                .getElementById(
+                    "recipientName"
+                )
+                .textContent =
+                "User not found";
+
+
+            document
+                .getElementById(
+                    "recipientUsername"
+                )
+                .textContent =
+                "@" +
+                otherUsername;
+
 
             return;
 
         }
 
 
-        /*
-         * Update profile.
-         */
-
-        if (
-            profileResult.success &&
-            profileResult.profile
-        ) {
-
-            applyRecipient(
-                profileResult.profile
-            );
-
-        }
-
-
-        if (
-            !messageResult.success
-        ) {
-
-            return;
-
-        }
-
-
-        const serverMessages =
-            messageResult.messages ||
-            [];
-
-
-        /*
-         * Preserve messages that are
-         * still being sent.
-         */
-
-        const pending =
-            messages.filter(
-                function (message) {
-
-                    return message.pending;
-
-                }
-            );
-
-
-        const failed =
-            messages.filter(
-                function (message) {
-
-                    return message.failed;
-
-                }
-            );
-
-
-        const merged =
-            serverMessages
-                .concat(pending)
-                .concat(failed);
-
-
-        const nextFingerprint =
-            JSON.stringify(
-                merged
-            );
-
-
-        if (
-            nextFingerprint ===
-            lastFingerprint
-        ) {
-
-            return;
-
-        }
-
-
-        messages =
-            merged;
-
-
-        lastFingerprint =
-            nextFingerprint;
-
-
-        saveChatCache(
-            profileResult.profile
+        applyRecipientProfile(
+            result.profile
         );
 
 
-        renderMessages(
-            messages,
-            true
+        saveRecipientCache(
+            result.profile
         );
 
     }
 
-    catch {
+    catch (
+        error
+    ) {
 
-        console.log(
-            "Background refresh failed."
+        console.error(
+            "Recipient loading error:",
+            error
         );
+
+
+        /*
+         * Do not destroy a cached name just
+         * because the server is temporarily slow.
+         */
+
+        const name =
+            document
+                .getElementById(
+                    "recipientName"
+                );
+
+
+        if (
+            !name.textContent ||
+            name.textContent ===
+                "Loading..."
+        ) {
+
+            name.textContent =
+                "Writejot User";
+
+        }
+
+
+        document
+            .getElementById(
+                "recipientUsername"
+            )
+            .textContent =
+            "@" +
+            otherUsername;
 
     }
 
 }
 
 
-
-/* =========================================================
-   RECIPIENT
-========================================================= */
-
-function applyRecipient(
+function applyRecipientProfile(
     profile
 ) {
 
@@ -2019,11 +1701,7 @@ function applyRecipient(
         );
 
 
-    document
-        .getElementById(
-            "recipientPicture"
-        )
-        .src =
+    const picture =
         profile.profilePicture ||
         "W.png";
 
@@ -2032,8 +1710,16 @@ function applyRecipient(
         .getElementById(
             "recipientPicture"
         )
+        .src =
+        picture;
+
+
+    document
+        .getElementById(
+            "recipientPicture"
+        )
         .onerror =
-        function () {
+        function() {
 
             this.src =
                 "W.png";
@@ -2043,12 +1729,11 @@ function applyRecipient(
 }
 
 
-
 /* =========================================================
-   MARK READ
+   MARK CONVERSATION READ
 ========================================================= */
 
-async function markReadInBackground() {
+async function markConversationRead() {
 
     try {
 
@@ -2088,10 +1773,114 @@ async function markReadInBackground() {
 
     }
 
-    catch {}
+    catch (
+        error
+    ) {
+
+        console.error(
+            "Read status error:",
+            error
+        );
+
+    }
 
 }
 
+
+/* =========================================================
+   LOAD MESSAGES
+========================================================= */
+
+async function loadMessages() {
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=messages" +
+                "&email=" +
+                encodeURIComponent(
+                    currentUser.email
+                ) +
+                "&username=" +
+                encodeURIComponent(
+                    otherUsername
+                ),
+
+                {
+                    cache:
+                        "no-store"
+                }
+
+            );
+
+
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+                "Server returned " +
+                response.status
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success
+        ) {
+
+            showMessageError(
+                result.error ||
+                "Could not load messages."
+            );
+
+
+            return;
+
+        }
+
+
+        /*
+         * This completely replaces the message
+         * DOM with the authoritative server data.
+         *
+         * Therefore an old "Sending..." bubble
+         * cannot survive a successful refresh.
+         */
+
+        renderMessages(
+            result.messages ||
+            []
+        );
+
+    }
+
+    catch (
+        error
+    ) {
+
+        console.error(
+            "Message loading error:",
+            error
+        );
+
+
+        /*
+         * Don't replace working messages with an
+         * error just because a background request failed.
+         */
+
+    }
+
+}
 
 
 /* =========================================================
@@ -2099,8 +1888,7 @@ async function markReadInBackground() {
 ========================================================= */
 
 function renderMessages(
-    list,
-    scrollToBottom
+    messages
 ) {
 
     const container =
@@ -2109,30 +1897,31 @@ function renderMessages(
         );
 
 
+    /*
+     * Determine whether user is near bottom
+     * before replacing the DOM.
+     */
+
+    const distanceFromBottom =
+        container.scrollHeight -
+        container.scrollTop -
+        container.clientHeight;
+
+
+    const wasNearBottom =
+        distanceFromBottom <
+        140;
+
+
     if (
-        !list.length
+        !messages.length
     ) {
 
         container.innerHTML =
 
             `
-            <div class="empty">
-
-                <div
-                    style="
-                        font-size:38px;
-                        margin-bottom:8px;
-                    "
-                >
-                    💬
-                </div>
-
-                No messages yet.
-
-                <br>
-
-                Say hello!
-
+            <div id="empty">
+                No messages yet. Say hello!
             </div>
             `;
 
@@ -2149,200 +1938,16 @@ function renderMessages(
 
 
     container.innerHTML =
-        list
+        messages
             .map(
-                function (message) {
+                function(
+                    message
+                ) {
 
-                    const mine =
-                        normalizeUsername(
-                            message.sender
-                        ) ===
-                        currentUsername;
-
-
-                    const time =
-                        message.timestamp
-                            ? new Date(
-                                message.timestamp
-                              )
-                              .toLocaleTimeString(
-                                [],
-                                {
-                                    hour:
-                                        "numeric",
-
-                                    minute:
-                                        "2-digit"
-                                }
-                              )
-                            : "";
-
-
-                    const stateClass =
-                        message.pending
-                            ? "pending"
-                            : message.failed
-                                ? "failed"
-                                : "";
-
-
-                    /*
-                     * IMAGE
-                     */
-
-                    if (
-                        message.attachmentType ===
-                            "image" &&
-                        message.attachmentUrl
-                    ) {
-
-                        return `
-
-                            <div
-                                class="
-                                    message-row
-                                    ${
-                                        mine
-                                            ? "mine"
-                                            : "theirs"
-                                    }
-                                "
-                            >
-
-                                <div
-                                    class="
-                                        message-content
-                                    "
-                                >
-
-                                    <div
-                                        class="
-                                            bubble
-                                            image-bubble
-                                            ${stateClass}
-                                        "
-                                    >
-
-                                        <img
-                                            class="
-                                                message-image
-                                            "
-                                            src="${escapeHtml(
-                                                message.attachmentUrl
-                                            )}"
-                                            loading="lazy"
-                                            onclick="openImage(
-                                                '${escapeHtml(
-                                                    message.attachmentUrl
-                                                )}'
-                                            )"
-                                            alt="Photo"
-                                        >
-
-
-                                        ${
-                                            message.message
-                                                ? `
-                                                    <div
-                                                        class="
-                                                            image-caption
-                                                        "
-                                                    >
-                                                        ${escapeHtml(
-                                                            message.message
-                                                        )}
-                                                    </div>
-                                                  `
-                                                : ""
-                                        }
-
-                                    </div>
-
-
-                                    <div
-                                        class="time"
-                                    >
-
-                                        ${
-                                            message.pending
-                                                ? "Sending..."
-                                                : message.failed
-                                                    ? "Failed to send"
-                                                    : escapeHtml(
-                                                        time
-                                                    )
-                                        }
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        `;
-
-                    }
-
-
-                    /*
-                     * TEXT
-                     */
-
-                    return `
-
-                        <div
-                            class="
-                                message-row
-                                ${
-                                    mine
-                                        ? "mine"
-                                        : "theirs"
-                                }
-                            "
-                        >
-
-                            <div
-                                class="
-                                    message-content
-                                "
-                            >
-
-                                <div
-                                    class="
-                                        bubble
-                                        ${stateClass}
-                                    "
-                                >
-
-                                    ${escapeHtml(
-                                        message.message ||
-                                        ""
-                                    )}
-
-                                </div>
-
-
-                                <div
-                                    class="time"
-                                >
-
-                                    ${
-                                        message.pending
-                                            ? "Sending..."
-                                            : message.failed
-                                                ? "Failed to send"
-                                                : escapeHtml(
-                                                    time
-                                                )
-                                    }
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    `;
+                    return buildMessageHtml(
+                        message,
+                        currentUsername
+                    );
 
                 }
             )
@@ -2350,509 +1955,333 @@ function renderMessages(
 
 
     /*
-     * Only scroll after a real update.
+     * After rendering the real server messages,
+     * move to the newest messages when appropriate.
+     */
+
+    requestAnimationFrame(
+        function() {
+
+            if (
+                wasNearBottom ||
+                !container.dataset.userScrolled
+            ) {
+
+                container.scrollTop =
+                    container.scrollHeight;
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   BUILD REAL MESSAGE
+========================================================= */
+
+function buildMessageHtml(
+    message,
+    currentUsername
+) {
+
+    const mine =
+        normalizeUsername(
+            message.sender
+        ) ===
+        currentUsername;
+
+
+    const time =
+        message.timestamp
+
+            ? new Date(
+                message.timestamp
+            ).toLocaleString()
+
+            : "";
+
+
+    let content =
+        "";
+
+
+    /*
+     * IMAGE
      */
 
     if (
-        scrollToBottom
+        message.attachmentType ===
+            "image" &&
+        message.attachmentUrl
     ) {
 
-        requestAnimationFrame(
-            function () {
+        content +=
 
-                const area =
-                    document.getElementById(
-                        "chatArea"
-                    );
-
-
-                area.scrollTop =
-                    area.scrollHeight;
-
-            }
-        );
+            `
+            <img
+                class="message-image"
+                src="${escapeHtml(
+                    message.attachmentUrl
+                )}"
+                alt="Photo"
+                loading="lazy"
+                onclick="
+                    openImage(
+                        '${escapeJs(
+                            message.attachmentUrl
+                        )}'
+                    )
+                "
+                onerror="
+                    this.style.display='none';
+                "
+            >
+            `;
 
     }
 
-}
 
-
-
-/* =========================================================
-   SEND MESSAGE
-========================================================= */
-
-async function sendMessage() {
-
-    const input =
-        document.getElementById(
-            "messageInput"
-        );
-
-
-    const button =
-        document.getElementById(
-            "sendButton"
-        );
-
+    /*
+     * TEXT
+     */
 
     const text =
-        input.value.trim();
+        String(
+            message.message ||
+            ""
+        );
 
 
     if (
-        !text &&
-        !selectedImage
+        text
     ) {
 
-        return;
+        content +=
+
+            `
+            <div>
+                ${escapeHtml(text)}
+            </div>
+            `;
 
     }
 
 
-    /* =====================================================
-       TEXT MESSAGE
-    ===================================================== */
-
-    if (
-        !selectedImage
-    ) {
-
-        const temporaryId =
-            "temp_" +
-            Date.now() +
-            "_" +
-            Math.random()
-                .toString(36)
-                .slice(2);
-
-
-        const optimisticMessage = {
-
-            id:
-                temporaryId,
-
-            sender:
-                normalizeUsername(
-                    currentUser.username
-                ),
-
-            receiver:
-                otherUsername,
-
-            message:
-                text,
-
-            timestamp:
-                new Date()
-                    .toISOString(),
-
-            attachmentType:
-                "",
-
-            attachmentUrl:
-                "",
-
-            pending:
-                true
-
-        };
-
-
-        /*
-         * Show instantly.
-         */
-
-        messages.push(
-            optimisticMessage
-        );
-
-
-        lastFingerprint =
-            JSON.stringify(
-                messages
-            );
-
-
-        renderMessages(
-            messages,
-            true
-        );
-
-
-        saveChatCache();
-
-
-        /*
-         * Clear input instantly.
-         */
-
-        input.value =
-            "";
-
-
-        input.style.height =
-            "42px";
-
-
-        button.disabled =
-            true;
-
-
-        try {
-
-            const response =
-                await fetch(
-
-                    APPS_SCRIPT_URL,
-
-                    {
-
-                        method:
-                            "POST",
-
-                        headers: {
-
-                            "Content-Type":
-                                "text/plain;charset=utf-8"
-
-                        },
-
-                        body:
-                            JSON.stringify({
-
-                                action:
-                                    "sendMessage",
-
-                                email:
-                                    currentUser.email,
-
-                                receiver:
-                                    otherUsername,
-
-                                message:
-                                    text
-
-                            })
-
-                    }
-
-                );
-
-
-            const result =
-                await response.json();
-
-
-            if (
-                result.accessDenied
-            ) {
-
-                showLocked();
-
-                return;
-
-            }
-
-
-            if (
-                !result.success
-            ) {
-
-                throw new Error(
-                    result.error ||
-                    "Message failed to send."
-                );
-
-            }
-
-
-            /*
-             * Remove temporary message.
-             */
-
-            messages =
-                messages.filter(
-                    function (message) {
-
-                        return (
-                            message.id !==
-                            temporaryId
-                        );
-
-                    }
-                );
-
-
-            lastFingerprint =
-                "";
-
-
-            await refreshChat();
-
-        }
-
-        catch (error) {
-
-            messages =
-                messages.map(
-                    function (message) {
-
-                        if (
-                            message.id ===
-                            temporaryId
-                        ) {
-
-                            return {
-
-                                ...message,
-
-                                pending:
-                                    false,
-
-                                failed:
-                                    true
-
-                            };
-
-                        }
-
-
-                        return message;
-
-                    }
-                );
-
-
-            lastFingerprint =
-                JSON.stringify(
-                    messages
-                );
-
-
-            renderMessages(
-                messages,
-                false
-            );
-
-
-            saveChatCache();
-
-            console.error(
-                error
-            );
-
-        }
-
-        finally {
-
-            button.disabled =
-                false;
-
-            input.focus();
-
-        }
-
-
-        return;
-
-    }
-
-
-    /* =====================================================
-       IMAGE MESSAGE
-    ===================================================== */
-
-    button.disabled =
-        true;
-
-
-    button.textContent =
-        "Uploading...";
-
-
-    try {
-
-        const compressed =
-            await compressImage(
-                selectedImage
-            );
-
-
-        const response =
-            await fetch(
-
-                APPS_SCRIPT_URL,
-
-                {
-
-                    method:
-                        "POST",
-
-                    headers: {
-
-                        "Content-Type":
-                            "text/plain;charset=utf-8"
-
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            action:
-                                "sendMessage",
-
-                            email:
-                                currentUser.email,
-
-                            receiver:
-                                otherUsername,
-
-                            message:
-                                text,
-
-                            attachmentType:
-                                "image",
-
-                            attachmentData:
-                                compressed.dataUrl,
-
-                            attachmentMime:
-                                compressed.mimeType,
-
-                            attachmentName:
-                                compressed.fileName
-
-                        })
-
+    const imageOnly =
+        message.attachmentType ===
+            "image" &&
+        !text;
+
+
+    return `
+
+        <div
+            class="
+                message-row
+                ${
+                    mine
+                        ? "mine"
+                        : "theirs"
                 }
+            "
+        >
 
-            );
+            <div
+                class="bubble-wrapper"
+            >
 
+                <div
+                    class="
+                        bubble
+                        ${
+                            imageOnly
+                                ? "image-message-bubble"
+                                : ""
+                        }
+                    "
+                >
 
-        const result =
-            await response.json();
+                    ${content}
 
-
-        if (
-            result.accessDenied
-        ) {
-
-            showLocked();
-
-            return;
-
-        }
-
-
-        if (
-            !result.success
-        ) {
-
-            throw new Error(
-                result.error ||
-                "Photo failed to send."
-            );
-
-        }
+                </div>
 
 
-        input.value =
-            "";
+                <div
+                    class="time"
+                >
+                    ${escapeHtml(time)}
+                </div>
 
+            </div>
 
-        input.style.height =
-            "42px";
+        </div>
 
-
-        removeSelectedImage();
-
-
-        lastFingerprint =
-            "";
-
-
-        await refreshChat();
-
-    }
-
-    catch (error) {
-
-        alert(
-            error.message ||
-            "Could not send photo."
-        );
-
-    }
-
-    finally {
-
-        button.disabled =
-            false;
-
-        button.textContent =
-            "Send";
-
-        input.focus();
-
-    }
+    `;
 
 }
-
 
 
 /* =========================================================
-   INPUT
+   OPTIMISTIC MESSAGE
 ========================================================= */
 
-function setupInput() {
+function addOptimisticMessage(
+    text,
+    imageData
+) {
 
-    const input =
+    const container =
         document.getElementById(
-            "messageInput"
+            "messages"
         );
 
 
-    input.addEventListener(
-        "input",
-        function () {
+    /*
+     * Remove empty state.
+     */
 
-            input.style.height =
-                "auto";
+    const empty =
+        document.getElementById(
+            "empty"
+        );
 
 
-            input.style.height =
-                Math.min(
-                    input.scrollHeight,
-                    125
-                ) +
-                "px";
+    if (
+        empty
+    ) {
 
-        }
+        empty.remove();
+
+    }
+
+
+    let content =
+        "";
+
+
+    /*
+     * Show photo immediately.
+     */
+
+    if (
+        imageData
+    ) {
+
+        content +=
+
+            `
+            <img
+                class="message-image"
+                src="${escapeHtml(
+                    imageData
+                )}"
+                alt="Photo"
+            >
+            `;
+
+    }
+
+
+    /*
+     * Show text immediately.
+     */
+
+    if (
+        text
+    ) {
+
+        content +=
+
+            `
+            <div>
+                ${escapeHtml(text)}
+            </div>
+            `;
+
+    }
+
+
+    const row =
+        document.createElement(
+            "div"
+        );
+
+
+    row.className =
+        "message-row mine sending-message";
+
+
+    row.dataset.sending =
+        "true";
+
+
+    row.innerHTML =
+
+        `
+        <div
+            class="bubble-wrapper"
+        >
+
+            <div
+                class="
+                    bubble
+                    ${
+                        imageData &&
+                        !text
+
+                            ? "image-message-bubble"
+
+                            : ""
+                    }
+                "
+            >
+
+                ${content}
+
+            </div>
+
+
+            <div
+                class="sending-label"
+            >
+                Sending...
+            </div>
+
+        </div>
+        `;
+
+
+    container.appendChild(
+        row
     );
 
 
-    input.addEventListener(
-        "keydown",
-        function (event) {
+    container.scrollTop =
+        container.scrollHeight;
 
-            if (
-                event.key ===
-                    "Enter" &&
-                !event.shiftKey
-            ) {
 
-                event.preventDefault();
-
-                sendMessage();
-
-            }
-
-        }
-    );
+    return row;
 
 }
 
+
+/* =========================================================
+   OPEN IMAGE
+========================================================= */
+
+function openImage(
+    url
+) {
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
 
 
 /* =========================================================
@@ -2870,6 +2299,10 @@ function openImagePicker() {
 }
 
 
+/* =========================================================
+   SELECT IMAGE
+========================================================= */
+
 function handleImageSelection(
     event
 ) {
@@ -2879,7 +2312,9 @@ function handleImageSelection(
         event.target.files[0];
 
 
-    if (!file) {
+    if (
+        !file
+    ) {
 
         return;
 
@@ -2893,11 +2328,13 @@ function handleImageSelection(
     ) {
 
         alert(
-            "Please choose an image."
+            "Please choose an image file."
         );
+
 
         event.target.value =
             "";
+
 
         return;
 
@@ -2913,8 +2350,10 @@ function handleImageSelection(
             "Please choose an image smaller than 10 MB."
         );
 
+
         event.target.value =
             "";
+
 
         return;
 
@@ -2930,7 +2369,7 @@ function handleImageSelection(
 
 
     reader.onload =
-        function () {
+        function() {
 
             document
                 .getElementById(
@@ -2956,6 +2395,10 @@ function handleImageSelection(
 
 }
 
+
+/* =========================================================
+   REMOVE SELECTED IMAGE
+========================================================= */
 
 function removeSelectedImage() {
 
@@ -2989,6 +2432,386 @@ function removeSelectedImage() {
 }
 
 
+/* =========================================================
+   SEND MESSAGE
+========================================================= */
+
+async function sendMessage() {
+
+    /*
+     * Prevent accidental double-sending.
+     */
+
+    if (
+        sendInProgress
+    ) {
+
+        return;
+
+    }
+
+
+    const input =
+        document.getElementById(
+            "messageInput"
+        );
+
+
+    const button =
+        document.getElementById(
+            "sendButton"
+        );
+
+
+    const message =
+        input.value.trim();
+
+
+    if (
+        !message &&
+        !selectedImage
+    ) {
+
+        return;
+
+    }
+
+
+    sendInProgress =
+        true;
+
+
+    button.disabled =
+        true;
+
+
+    button.textContent =
+        "Sending...";
+
+
+    /*
+     * Keep a reference to the exact file
+     * that was selected.
+     */
+
+    const imageToSend =
+        selectedImage;
+
+
+    let optimisticImage =
+        "";
+
+
+    /*
+     * Create a local preview first.
+     *
+     * This is only for the temporary bubble.
+     */
+
+    if (
+        imageToSend
+    ) {
+
+        try {
+
+            optimisticImage =
+                await fileToDataUrl(
+                    imageToSend
+                );
+
+        }
+
+        catch (
+            error
+        ) {
+
+            console.error(
+                "Preview error:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /*
+     * SHOW THE MESSAGE IMMEDIATELY.
+     */
+
+    const optimisticElement =
+        addOptimisticMessage(
+            message,
+            optimisticImage
+        );
+
+
+    try {
+
+        let imageData =
+            "";
+
+
+        let imageType =
+            "";
+
+
+        let imageName =
+            "";
+
+
+        /*
+         * Compress image before sending it.
+         */
+
+        if (
+            imageToSend
+        ) {
+
+            const compressed =
+                await compressImage(
+                    imageToSend
+                );
+
+
+            imageData =
+                compressed.dataUrl;
+
+
+            imageType =
+                compressed.mimeType;
+
+
+            imageName =
+                compressed.fileName;
+
+        }
+
+
+        /*
+         * SEND TO APPS SCRIPT
+         */
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL,
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            action:
+                                "sendMessage",
+
+                            email:
+                                currentUser.email,
+
+                            receiver:
+                                otherUsername,
+
+                            message:
+                                message,
+
+                            attachmentType:
+                                imageData
+                                    ? "image"
+                                    : "",
+
+                            attachmentData:
+                                imageData,
+
+                            attachmentMime:
+                                imageType,
+
+                            attachmentName:
+                                imageName
+
+                        })
+
+                }
+
+            );
+
+
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+                "Server returned " +
+                response.status
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error ||
+                "Could not send the message."
+            );
+
+        }
+
+
+        /*
+         * IMPORTANT:
+         *
+         * The server has confirmed the message.
+         *
+         * Remove the temporary bubble.
+         */
+
+        if (
+            optimisticElement &&
+            optimisticElement.isConnected
+        ) {
+
+            optimisticElement.remove();
+
+        }
+
+
+        /*
+         * Clear input.
+         */
+
+        input.value =
+            "";
+
+
+        resetTextareaHeight();
+
+
+        removeSelectedImage();
+
+
+        /*
+         * DO NOT wait 400ms.
+         *
+         * Immediately load the authoritative
+         * conversation from the server.
+         */
+
+        await loadMessages();
+
+    }
+
+    catch (
+        error
+    ) {
+
+        console.error(
+            "Send message error:",
+            error
+        );
+
+
+        /*
+         * If saving failed, remove the temporary
+         * "Sending..." message.
+         */
+
+        if (
+            optimisticElement &&
+            optimisticElement.isConnected
+        ) {
+
+            optimisticElement.remove();
+
+        }
+
+
+        alert(
+            error.message ||
+            "Could not send the message."
+        );
+
+    }
+
+    finally {
+
+        sendInProgress =
+            false;
+
+
+        button.disabled =
+            false;
+
+
+        button.textContent =
+            "Send";
+
+
+        input.focus();
+
+    }
+
+}
+
+
+/* =========================================================
+   FILE TO DATA URL
+========================================================= */
+
+function fileToDataUrl(
+    file
+) {
+
+    return new Promise(
+
+        function(
+            resolve,
+            reject
+        ) {
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function() {
+
+                    resolve(
+                        reader.result
+                    );
+
+                };
+
+
+            reader.onerror =
+                reject;
+
+
+            reader.readAsDataURL(
+                file
+            );
+
+        }
+
+    );
+
+}
+
 
 /* =========================================================
    IMAGE COMPRESSION
@@ -2999,7 +2822,8 @@ function compressImage(
 ) {
 
     return new Promise(
-        function (
+
+        function(
             resolve,
             reject
         ) {
@@ -3013,7 +2837,7 @@ function compressImage(
 
 
             reader.onload =
-                function () {
+                function() {
 
                     const image =
                         new Image();
@@ -3024,7 +2848,7 @@ function compressImage(
 
 
                     image.onload =
-                        function () {
+                        function() {
 
                             const maxSize =
                                 1600;
@@ -3040,14 +2864,14 @@ function compressImage(
 
                             if (
                                 width >
-                                maxSize ||
+                                    maxSize ||
                                 height >
-                                maxSize
+                                    maxSize
                             ) {
 
                                 if (
                                     width >
-                                    height
+                                        height
                                 ) {
 
                                     height =
@@ -3101,10 +2925,9 @@ function compressImage(
 
 
                             const context =
-                                canvas
-                                    .getContext(
-                                        "2d"
-                                    );
+                                canvas.getContext(
+                                    "2d"
+                                );
 
 
                             context.drawImage(
@@ -3120,16 +2943,27 @@ function compressImage(
                             );
 
 
+                            const mimeType =
+                                "image/jpeg";
+
+
+                            const dataUrl =
+                                canvas.toDataURL(
+
+                                    mimeType,
+
+                                    .82
+
+                                );
+
+
                             resolve({
 
                                 dataUrl:
-                                    canvas.toDataURL(
-                                        "image/jpeg",
-                                        0.82
-                                    ),
+                                    dataUrl,
 
                                 mimeType:
-                                    "image/jpeg",
+                                    mimeType,
 
                                 fileName:
                                     "photo-" +
@@ -3152,58 +2986,212 @@ function compressImage(
             );
 
         }
+
     );
 
 }
 
 
-
 /* =========================================================
-   LOCK
+   ADAPTIVE TEXTBOX
 ========================================================= */
 
-function showLocked() {
+function setupMessageInput() {
 
-    if (
-        refreshTimer
-    ) {
-
-        clearInterval(
-            refreshTimer
+    const input =
+        document.getElementById(
+            "messageInput"
         );
 
-    }
+
+    input.addEventListener(
+        "input",
+        function() {
+
+            autoResizeTextarea(
+                input
+            );
+
+        }
+    );
 
 
-    document
-        .getElementById(
-            "chatInterface"
-        )
-        .style.display =
-        "none";
+    input.addEventListener(
+        "keydown",
+        function(
+            event
+        ) {
+
+            /*
+             * Enter sends.
+             * Shift+Enter creates a new line.
+             */
+
+            if (
+                event.key ===
+                    "Enter" &&
+                !event.shiftKey
+            ) {
+
+                event.preventDefault();
 
 
-    document
-        .getElementById(
-            "lockScreen"
-        )
-        .style.display =
-        "flex";
+                sendMessage();
+
+            }
+
+        }
+    );
 
 }
 
 
+function autoResizeTextarea(
+    input
+) {
+
+    input.style.height =
+        "auto";
+
+
+    const maxHeight =
+        window.innerWidth <=
+            600
+
+            ? 120
+
+            : 140;
+
+
+    input.style.height =
+        Math.min(
+            input.scrollHeight,
+            maxHeight
+        ) +
+        "px";
+
+}
+
+
+function resetTextareaHeight() {
+
+    const input =
+        document.getElementById(
+            "messageInput"
+        );
+
+
+    input.style.height =
+        "44px";
+
+}
+
 
 /* =========================================================
-   HELPERS
+   TRACK USER SCROLL
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const container =
+            document.getElementById(
+                "messages"
+            );
+
+
+        container.addEventListener(
+            "scroll",
+            function() {
+
+                const distance =
+                    container.scrollHeight -
+                    container.scrollTop -
+                    container.clientHeight;
+
+
+                if (
+                    distance >
+                    140
+                ) {
+
+                    container.dataset.userScrolled =
+                        "true";
+
+                }
+
+                else {
+
+                    delete container.dataset.userScrolled;
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function showMessageError(
+    message
+) {
+
+    const container =
+        document.getElementById(
+            "messages"
+        );
+
+
+    /*
+     * Don't destroy a working conversation because
+     * one background refresh failed.
+     */
+
+    if (
+        container.querySelector(
+            ".message-row"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+
+        `
+        <div
+            id="empty"
+            style="
+                color:#dc2626;
+            "
+        >
+            ${escapeHtml(
+                message
+            )}
+        </div>
+        `;
+
+}
+
+
+/* =========================================================
+   NORMALIZE USERNAME
 ========================================================= */
 
 function normalizeUsername(
-    value
+    username
 ) {
 
     return String(
-        value ||
+        username ||
         ""
     )
     .trim()
@@ -3215,6 +3203,10 @@ function normalizeUsername(
 
 }
 
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
 
 function escapeHtml(
     value
@@ -3248,13 +3240,37 @@ function escapeHtml(
 }
 
 
-function openImage(
-    url
+/* =========================================================
+   ESCAPE JAVASCRIPT STRING
+========================================================= */
+
+function escapeJs(
+    value
 ) {
 
-    window.open(
-        url,
-        "_blank"
+    return String(
+        value ||
+        ""
+    )
+    .replace(
+        /\\/g,
+        "\\\\"
+    )
+    .replace(
+        /'/g,
+        "\\'"
+    )
+    .replace(
+        /"/g,
+        '\\"'
+    )
+    .replace(
+        /\r/g,
+        "\\r"
+    )
+    .replace(
+        /\n/g,
+        "\\n"
     );
 
 }
@@ -3265,4 +3281,3 @@ function openImage(
 </body>
 
 </html>
-
