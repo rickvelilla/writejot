@@ -1,0 +1,2465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Writejot | Reminders</title>
+
+
+<style>
+
+* {
+    box-sizing:
+        border-box;
+}
+
+
+html,
+body {
+    margin:
+        0;
+
+    min-height:
+        100%;
+}
+
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #f6f8fc;
+
+    color:
+        #1f2937;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    background:
+        white;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    padding:
+        12px 6%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    position:
+        sticky;
+
+    top:
+        0;
+
+    z-index:
+        50;
+}
+
+
+.brand {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+}
+
+
+.brand img {
+    width:
+        40px;
+
+    height:
+        40px;
+
+    object-fit:
+        contain;
+}
+
+
+.brand-name {
+    font-size:
+        22px;
+
+    font-weight:
+        700;
+}
+
+
+.back {
+    color:
+        #4285F4;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        600;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+main {
+    width:
+        100%;
+
+    max-width:
+        1000px;
+
+    margin:
+        30px auto 60px;
+
+    padding:
+        0 16px;
+}
+
+
+.page-header {
+    margin-bottom:
+        20px;
+}
+
+
+.page-header h1 {
+    margin:
+        0 0 5px;
+}
+
+
+.page-header p {
+    margin:
+        0;
+
+    color:
+        #718096;
+}
+
+
+/* =========================================================
+   CLASS
+========================================================= */
+
+.class-card {
+    background:
+        white;
+
+    border:
+        1px solid #e1e6ee;
+
+    border-radius:
+        14px;
+
+    padding:
+        18px 20px;
+
+    margin-bottom:
+        18px;
+}
+
+
+.class-label {
+    color:
+        #718096;
+
+    font-size:
+        12px;
+}
+
+
+.class-name {
+    margin-top:
+        3px;
+
+    font-size:
+        20px;
+
+    font-weight:
+        700;
+
+    color:
+        #4285F4;
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.layout {
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        330px;
+
+    gap:
+        18px;
+
+    align-items:
+        start;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+    background:
+        white;
+
+    border:
+        1px solid #e1e6ee;
+
+    border-radius:
+        14px;
+
+    overflow:
+        hidden;
+}
+
+
+/* =========================================================
+   LIST HEADER
+========================================================= */
+
+.list-header {
+    padding:
+        18px;
+
+    border-bottom:
+        1px solid #edf0f4;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+}
+
+
+/* =========================================================
+   REMINDER
+========================================================= */
+
+.reminder {
+    display:
+        flex;
+
+    gap:
+        12px;
+
+    align-items:
+        flex-start;
+
+    padding:
+        15px 18px;
+
+    border-bottom:
+        1px solid #edf0f4;
+}
+
+
+.reminder:last-child {
+    border-bottom:
+        none;
+}
+
+
+.reminder.saving {
+    opacity:
+        .55;
+}
+
+
+.date-box {
+    width:
+        50px;
+
+    flex:
+        0 0 50px;
+
+    background:
+        #eaf2ff;
+
+    color:
+        #2563eb;
+
+    border-radius:
+        10px;
+
+    text-align:
+        center;
+
+    padding:
+        6px 3px;
+}
+
+
+.date-month {
+    display:
+        block;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    text-transform:
+        uppercase;
+}
+
+
+.date-day {
+    display:
+        block;
+
+    font-size:
+        21px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.1;
+}
+
+
+.reminder-main {
+    flex:
+        1;
+
+    min-width:
+        0;
+}
+
+
+.reminder-title {
+    font-weight:
+        700;
+
+    word-break:
+        break-word;
+}
+
+
+.reminder-meta {
+    margin-top:
+        3px;
+
+    color:
+        #718096;
+
+    font-size:
+        12px;
+}
+
+
+.reminder-description {
+    margin-top:
+        4px;
+
+    color:
+        #667085;
+
+    font-size:
+        13px;
+
+    word-break:
+        break-word;
+}
+
+
+.tag {
+    display:
+        inline-block;
+
+    margin-top:
+        6px;
+
+    padding:
+        3px 7px;
+
+    border-radius:
+        999px;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+}
+
+
+.tag-class {
+    background:
+        #eaf2ff;
+
+    color:
+        #2563eb;
+}
+
+
+.tag-personal {
+    background:
+        #eefbf2;
+
+    color:
+        #16834a;
+}
+
+
+.delete-button {
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        #dc2626;
+
+    cursor:
+        pointer;
+
+    font-size:
+        11px;
+
+    padding:
+        0;
+}
+
+
+.empty {
+    padding:
+        50px 20px;
+
+    text-align:
+        center;
+
+    color:
+        #8a94a6;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-card {
+    padding:
+        20px;
+}
+
+
+.form-card h2 {
+    margin:
+        0 0 18px;
+}
+
+
+.field {
+    margin-bottom:
+        14px;
+}
+
+
+.field label {
+    display:
+        block;
+
+    margin-bottom:
+        6px;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+}
+
+
+.field input,
+.field textarea {
+    width:
+        100%;
+
+    padding:
+        11px 12px;
+
+    border:
+        1px solid #d8dee8;
+
+    border-radius:
+        8px;
+
+    font-family:
+        inherit;
+
+    font-size:
+        14px;
+
+    outline:
+        none;
+}
+
+
+.field textarea {
+    min-height:
+        90px;
+
+    resize:
+        vertical;
+}
+
+
+.field input:focus,
+.field textarea:focus {
+    border-color:
+        #4285F4;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            66,
+            133,
+            244,
+            .08
+        );
+}
+
+
+.primary-button {
+    width:
+        100%;
+
+    border:
+        none;
+
+    border-radius:
+        9px;
+
+    background:
+        #4285F4;
+
+    color:
+        white;
+
+    padding:
+        12px;
+
+    cursor:
+        pointer;
+
+    font-weight:
+        700;
+}
+
+
+.primary-button:hover {
+    background:
+        #3367d6;
+}
+
+
+.primary-button:disabled {
+    opacity:
+        .6;
+
+    cursor:
+        not-allowed;
+}
+
+
+.form-message {
+    min-height:
+        20px;
+
+    margin-top:
+        9px;
+
+    font-size:
+        12px;
+}
+
+
+/* =========================================================
+   CENTER / LOCK
+========================================================= */
+
+.center {
+    max-width:
+        600px;
+
+    margin:
+        50px auto;
+
+    padding:
+        35px;
+
+    text-align:
+        center;
+
+    background:
+        white;
+
+    border:
+        1px solid #e1e6ee;
+
+    border-radius:
+        16px;
+}
+
+
+.center p {
+    color:
+        #718096;
+
+    line-height:
+        1.6;
+}
+
+
+.center-button {
+    display:
+        inline-block;
+
+    margin-top:
+        10px;
+
+    background:
+        #4285F4;
+
+    color:
+        white;
+
+    text-decoration:
+        none;
+
+    padding:
+        11px 17px;
+
+    border-radius:
+        9px;
+
+    font-weight:
+        600;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (
+    max-width:
+    800px
+) {
+
+    .layout {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media (
+    max-width:
+    600px
+) {
+
+    header {
+        padding:
+            10px 14px;
+    }
+
+
+    .brand-name {
+        font-size:
+            20px;
+    }
+
+
+    main {
+        margin-top:
+            18px;
+
+        padding:
+            0 10px;
+    }
+
+
+    .reminder {
+        padding:
+            13px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="W.png"
+            alt="Writejot"
+        >
+
+        <div class="brand-name">
+            Writejot
+        </div>
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ← Dashboard
+    </a>
+
+</header>
+
+
+
+<main>
+
+
+    <div class="page-header">
+
+        <h1>
+            🔔 Reminders
+        </h1>
+
+
+        <p>
+            Class reminders and your personal reminders
+            in one place.
+        </p>
+
+    </div>
+
+
+
+    <div id="content"></div>
+
+
+</main>
+
+
+
+<script>
+
+const APPS_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzm5LpGtEla7cszMG0OIxZqf_pwuxJnOSmpEwUkqsiz886ql12hDFBHdxFBCWYyVYxf/exec";
+
+
+let currentUser =
+    null;
+
+let data =
+    null;
+
+let reminders =
+    [];
+
+let refreshTimer =
+    null;
+
+
+/* =========================================================
+   START
+========================================================= */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        const saved =
+            localStorage.getItem(
+                "writejotUser"
+            );
+
+
+        if (!saved) {
+
+            showMessage(
+                "Please sign in to Writejot first."
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            currentUser =
+                JSON.parse(
+                    saved
+                );
+
+        }
+
+        catch {
+
+            showMessage(
+                "Your Writejot session could not be loaded."
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * Load cached reminders instantly.
+         */
+
+        loadCache();
+
+
+        /*
+         * Render cached information immediately.
+         */
+
+        if (
+            data
+        ) {
+
+            render();
+
+        }
+
+
+        /*
+         * Refresh from server.
+         */
+
+        verifyAccess();
+
+    }
+);
+
+
+/* =========================================================
+   ACCESS CACHE
+========================================================= */
+
+function accessCacheKey() {
+
+    return (
+        "writejot_access_" +
+        currentUser.email
+            .trim()
+            .toLowerCase()
+    );
+
+}
+
+
+function getAccessCache() {
+
+    try {
+
+        const raw =
+            localStorage.getItem(
+                accessCacheKey()
+            );
+
+
+        if (!raw) {
+            return null;
+        }
+
+
+        const result =
+            JSON.parse(
+                raw
+            );
+
+
+        if (
+            Date.now() -
+            Number(
+                result.checkedAt ||
+                0
+            )
+            >
+            5 * 60 * 1000
+        ) {
+
+            return null;
+
+        }
+
+
+        return result;
+
+    }
+
+    catch {
+
+        return null;
+
+    }
+
+}
+
+
+function saveAccessCache(
+    result
+) {
+
+    try {
+
+        localStorage.setItem(
+
+            accessCacheKey(),
+
+            JSON.stringify({
+
+                access:
+                    result.access === true,
+
+                status:
+                    result.status ||
+                    "",
+
+                checkedAt:
+                    Date.now()
+
+            })
+
+        );
+
+    }
+
+    catch {}
+
+}
+
+
+/* =========================================================
+   ACCESS
+========================================================= */
+
+async function verifyAccess() {
+
+    const cached =
+        getAccessCache();
+
+
+    /*
+     * Don't blank a cached page while
+     * checking the server.
+     */
+
+    if (
+        cached &&
+        cached.access === true
+    ) {
+
+        if (
+            data
+        ) {
+
+            render();
+
+        }
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=access&email=" +
+                encodeURIComponent(
+                    currentUser.email
+                ),
+
+                {
+                    cache:
+                        "no-store"
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        saveAccessCache(
+            result
+        );
+
+
+        if (
+            !result.success ||
+            result.access !== true
+        ) {
+
+            showLock(
+                "Your Writejot trial or subscription has expired."
+            );
+
+            return;
+
+        }
+
+
+        await refreshReminders();
+
+    }
+
+    catch {
+
+        /*
+         * Keep cached content visible if
+         * the server is temporarily slow.
+         */
+
+        if (
+            !data
+        ) {
+
+            showMessage(
+                "Could not connect to Writejot."
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   REFRESH REMINDERS
+========================================================= */
+
+async function refreshReminders() {
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL +
+                "?action=reminders&email=" +
+                encodeURIComponent(
+                    currentUser.email
+                ),
+
+                {
+                    cache:
+                        "no-store"
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.accessDenied === true ||
+            result.access === false
+        ) {
+
+            saveAccessCache({
+
+                access:
+                    false,
+
+                status:
+                    result.status ||
+                    "expired"
+
+            });
+
+
+            showLock(
+                "Your Writejot trial or subscription has expired."
+            );
+
+
+            return;
+
+        }
+
+
+        if (
+            !result.success
+        ) {
+
+            return;
+
+        }
+
+
+        data =
+            result;
+
+
+        reminders =
+            Array.isArray(
+                result.reminders
+            )
+                ? result.reminders
+                : [];
+
+
+        saveCache();
+
+
+        render();
+
+        startRefreshTimer();
+
+    }
+
+    catch {
+
+        console.log(
+            "Reminder refresh failed."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   AUTO REFRESH
+========================================================= */
+
+function startRefreshTimer() {
+
+    if (
+        refreshTimer
+    ) {
+
+        clearInterval(
+            refreshTimer
+        );
+
+    }
+
+
+    refreshTimer =
+        setInterval(
+            refreshReminders,
+            30000
+        );
+
+}
+
+
+
+/* =========================================================
+   CACHE
+========================================================= */
+
+function cacheKey() {
+
+    return (
+        "writejot_reminders_" +
+        currentUser.email
+            .trim()
+            .toLowerCase()
+    );
+
+}
+
+
+function loadCache() {
+
+    try {
+
+        const raw =
+            localStorage.getItem(
+                cacheKey()
+            );
+
+
+        if (!raw) {
+            return;
+        }
+
+
+        const cached =
+            JSON.parse(
+                raw
+            );
+
+
+        if (
+            !cached
+        ) {
+
+            return;
+
+        }
+
+
+        data =
+            cached;
+
+
+        reminders =
+            Array.isArray(
+                cached.reminders
+            )
+                ? cached.reminders
+                : [];
+
+    }
+
+    catch {}
+
+}
+
+
+function saveCache() {
+
+    try {
+
+        if (
+            !data
+        ) {
+            return;
+        }
+
+
+        localStorage.setItem(
+
+            cacheKey(),
+
+            JSON.stringify({
+
+                ...data,
+
+                reminders:
+                    reminders
+
+            })
+
+        );
+
+    }
+
+    catch {}
+
+}
+
+
+/* =========================================================
+   RENDER
+========================================================= */
+
+function render() {
+
+    const content =
+        document.getElementById(
+            "content"
+        );
+
+
+    if (!data) {
+        return;
+    }
+
+
+    /*
+     * No class registration.
+     */
+
+    if (
+        !data.registered
+    ) {
+
+        content.innerHTML =
+
+        `
+        <div class="center">
+
+            <div
+                style="
+                    font-size:48px;
+                    margin-bottom:10px;
+                "
+            >
+                🎓
+            </div>
+
+
+            <h2>
+                Register your class first
+            </h2>
+
+
+            <p>
+                Reminders use the same class registration
+                as Calendar. You only need to register
+                your section once.
+            </p>
+
+
+            <a
+                href="calendar.html"
+                class="center-button"
+            >
+                Register on Calendar
+            </a>
+
+        </div>
+        `;
+
+
+        return;
+
+    }
+
+
+    /*
+     * Registration pending.
+     */
+
+    if (
+        !data.approved
+    ) {
+
+        content.innerHTML =
+
+        `
+        <div class="center">
+
+            <div
+                style="
+                    font-size:48px;
+                    margin-bottom:10px;
+                "
+            >
+                ⏳
+            </div>
+
+
+            <h2>
+                Class registration pending
+            </h2>
+
+
+            <p>
+                Your registered section is
+                <strong>
+                    ${escapeHtml(
+                        data.registration.section
+                    )}
+                </strong>.
+                Reminders will appear after your
+                registration is approved.
+            </p>
+
+
+            <a
+                href="calendar.html"
+                class="center-button"
+            >
+                Open Calendar
+            </a>
+
+        </div>
+        `;
+
+
+        return;
+
+    }
+
+
+    /*
+     * Main page.
+     */
+
+    content.innerHTML =
+
+    `
+    <div class="class-card">
+
+        <div class="class-label">
+            Your registered class
+        </div>
+
+
+        <div class="class-name">
+            ${escapeHtml(
+                data.registration.section
+            )}
+        </div>
+
+    </div>
+
+
+    <div class="layout">
+
+
+        <div class="card">
+
+            <div class="list-header">
+
+                <strong>
+                    🔔 Reminders
+                </strong>
+
+
+                <span
+                    style="
+                        color:#8a94a6;
+                        font-size:12px;
+                    "
+                >
+                    ${reminders.length}
+                </span>
+
+            </div>
+
+
+            <div
+                id="reminderList"
+            ></div>
+
+        </div>
+
+
+
+        <div class="card form-card">
+
+            <h2>
+                Add Personal Reminder
+            </h2>
+
+
+            <div class="field">
+
+                <label>
+                    Title
+                </label>
+
+
+                <input
+                    id="reminderTitle"
+                    type="text"
+                    maxlength="100"
+                    placeholder="e.g. Finish math homework"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Date
+                </label>
+
+
+                <input
+                    id="reminderDate"
+                    type="date"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Time
+                </label>
+
+
+                <input
+                    id="reminderTime"
+                    type="time"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Description
+                </label>
+
+
+                <textarea
+                    id="reminderDescription"
+                    maxlength="500"
+                    placeholder="Optional"
+                ></textarea>
+
+            </div>
+
+
+            <button
+                id="addReminderButton"
+                class="primary-button"
+                type="button"
+                onclick="addPersonalReminder()"
+            >
+                + Add Reminder
+            </button>
+
+
+            <div
+                id="formMessage"
+                class="form-message"
+            ></div>
+
+        </div>
+
+    </div>
+    `;
+
+
+    const dateInput =
+        document.getElementById(
+            "reminderDate"
+        );
+
+
+    if (
+        dateInput &&
+        !dateInput.value
+    ) {
+
+        dateInput.value =
+            getToday();
+
+    }
+
+
+    renderReminderList();
+
+}
+
+
+
+/* =========================================================
+   RENDER REMINDERS
+========================================================= */
+
+function renderReminderList() {
+
+    const list =
+        document.getElementById(
+            "reminderList"
+        );
+
+
+    if (!list) {
+        return;
+    }
+
+
+    if (
+        !reminders.length
+    ) {
+
+        list.innerHTML =
+
+        `
+        <div class="empty">
+            No reminders yet.
+        </div>
+        `;
+
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        reminders
+            .map(
+                function(reminder) {
+
+                    const parts =
+                        getDateParts(
+                            reminder.date
+                        );
+
+
+                    const isClass =
+                        String(
+                            reminder.type ||
+                            ""
+                        )
+                        .toLowerCase()
+                        ===
+                        "class";
+
+
+                    return `
+
+                    <div
+                        class="
+                            reminder
+                            ${
+                                reminder.optimistic
+                                    ? "saving"
+                                    : ""
+                            }
+                        "
+                    >
+
+                        <div class="date-box">
+
+                            <span
+                                class="date-month"
+                            >
+                                ${escapeHtml(
+                                    parts.month
+                                )}
+                            </span>
+
+
+                            <span
+                                class="date-day"
+                            >
+                                ${escapeHtml(
+                                    parts.day
+                                )}
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="reminder-main"
+                        >
+
+                            <div
+                                class="reminder-title"
+                            >
+                                ${escapeHtml(
+                                    reminder.title
+                                )}
+                            </div>
+
+
+                            <div
+                                class="reminder-meta"
+                            >
+                                ${
+                                    reminder.time
+                                        ? escapeHtml(
+                                            reminder.time
+                                        )
+                                        : "All day"
+                                }
+                            </div>
+
+
+                            ${
+                                reminder.description
+                                    ? `
+                                        <div
+                                            class="
+                                                reminder-description
+                                            "
+                                        >
+                                            ${escapeHtml(
+                                                reminder.description
+                                            )}
+                                        </div>
+                                      `
+                                    : ""
+                            }
+
+
+                            <span
+                                class="
+                                    tag
+                                    ${
+                                        isClass
+                                            ? "tag-class"
+                                            : "tag-personal"
+                                    }
+                                "
+                            >
+                                ${
+                                    isClass
+                                        ? "CLASS"
+                                        : "PERSONAL"
+                                }
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            ${
+                                reminder.optimistic
+
+                                    ? `
+                                        <span
+                                            style="
+                                                color:#8a94a6;
+                                                font-size:10px;
+                                            "
+                                        >
+                                            Saving...
+                                        </span>
+                                      `
+
+                                    : (
+                                        !isClass &&
+                                        reminder.reminderId
+                                    )
+
+                                        ? `
+                                            <button
+                                                type="button"
+                                                class="delete-button"
+                                                onclick="deletePersonalReminder(
+                                                    '${escapeHtml(
+                                                        reminder.reminderId
+                                                    )}'
+                                                )"
+                                            >
+                                                Delete
+                                            </button>
+                                          `
+
+                                        : ""
+                            }
+
+                        </div>
+
+                    </div>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+}
+
+
+
+/* =========================================================
+   ADD PERSONAL REMINDER
+========================================================= */
+
+async function addPersonalReminder() {
+
+    const title =
+        document
+            .getElementById(
+                "reminderTitle"
+            )
+            .value
+            .trim();
+
+
+    const date =
+        document
+            .getElementById(
+                "reminderDate"
+            )
+            .value;
+
+
+    const time =
+        document
+            .getElementById(
+                "reminderTime"
+            )
+            .value;
+
+
+    const description =
+        document
+            .getElementById(
+                "reminderDescription"
+            )
+            .value
+            .trim();
+
+
+    const button =
+        document.getElementById(
+            "addReminderButton"
+        );
+
+
+    const message =
+        document.getElementById(
+            "formMessage"
+        );
+
+
+    if (
+        !title ||
+        !date
+    ) {
+
+        message.textContent =
+            "Please enter a title and date.";
+
+        message.style.color =
+            "#dc2626";
+
+        return;
+
+    }
+
+
+    const temporaryId =
+        "temp_" +
+        Date.now();
+
+
+    /*
+     * OPTIMISTIC UI:
+     * show it immediately.
+     */
+
+    const optimisticReminder = {
+
+        reminderId:
+            temporaryId,
+
+        title:
+            title,
+
+        date:
+            date,
+
+        time:
+            time,
+
+        description:
+            description,
+
+        type:
+            "personal",
+
+        section:
+            data.registration.section,
+
+        optimistic:
+            true
+
+    };
+
+
+    reminders.push(
+        optimisticReminder
+    );
+
+
+    renderReminderList();
+
+
+    saveCache();
+
+
+    /*
+     * Clear the form immediately.
+     */
+
+    document
+        .getElementById(
+            "reminderTitle"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "reminderTime"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "reminderDescription"
+        )
+        .value =
+        "";
+
+
+    message.textContent =
+        "Reminder added.";
+
+    message.style.color =
+        "#16834a";
+
+
+    button.disabled =
+        true;
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL,
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            action:
+                                "addPersonalReminder",
+
+                            email:
+                                currentUser.email,
+
+                            title:
+                                title,
+
+                            date:
+                                date,
+
+                            time:
+                                time,
+
+                            description:
+                                description
+
+                        })
+
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.accessDenied ||
+            result.access === false
+        ) {
+
+            throw new Error(
+                "Your Writejot access has expired."
+            );
+
+        }
+
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error ||
+                "Could not save reminder."
+            );
+
+        }
+
+
+        reminders =
+            reminders.filter(
+                function(reminder) {
+
+                    return (
+                        reminder.reminderId !==
+                        temporaryId
+                    );
+
+                }
+            );
+
+
+        reminders.push(
+            result.reminder
+        );
+
+
+        saveCache();
+
+
+        renderReminderList();
+
+    }
+
+    catch (error) {
+
+        /*
+         * Remove optimistic reminder
+         * if save failed.
+         */
+
+        reminders =
+            reminders.filter(
+                function(reminder) {
+
+                    return (
+                        reminder.reminderId !==
+                        temporaryId
+                    );
+
+                }
+            );
+
+
+        saveCache();
+
+
+        renderReminderList();
+
+
+        message.textContent =
+            error.message ||
+            "Could not save reminder.";
+
+        message.style.color =
+            "#dc2626";
+
+    }
+
+    finally {
+
+        button.disabled =
+            false;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   DELETE PERSONAL REMINDER
+========================================================= */
+
+async function deletePersonalReminder(
+    reminderId
+) {
+
+    const previous =
+        reminders.slice();
+
+
+    /*
+     * Remove immediately.
+     */
+
+    reminders =
+        reminders.filter(
+            function(reminder) {
+
+                return (
+                    reminder.reminderId !==
+                    reminderId
+                );
+
+            }
+        );
+
+
+    renderReminderList();
+
+
+    saveCache();
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                APPS_SCRIPT_URL,
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            action:
+                                "deletePersonalReminder",
+
+                            email:
+                                currentUser.email,
+
+                            reminderId:
+                                reminderId
+
+                        })
+
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+                result.error ||
+                "Could not delete reminder."
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        reminders =
+            previous;
+
+
+        renderReminderList();
+
+
+        saveCache();
+
+
+        alert(
+            error.message ||
+            "Could not delete reminder."
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   LOCK
+========================================================= */
+
+function showLock(
+    message
+) {
+
+    if (
+        refreshTimer
+    ) {
+
+        clearInterval(
+            refreshTimer
+        );
+
+    }
+
+
+    document
+        .getElementById(
+            "content"
+        )
+        .innerHTML =
+
+        `
+        <div class="center">
+
+            <div
+                style="
+                    font-size:50px;
+                    margin-bottom:10px;
+                "
+            >
+                🔒
+            </div>
+
+
+            <h2>
+                Reminders unavailable
+            </h2>
+
+
+            <p>
+                ${escapeHtml(
+                    message
+                )}
+            </p>
+
+
+            <a
+                class="center-button"
+                href="index.html"
+            >
+                Back to Dashboard
+            </a>
+
+        </div>
+        `;
+
+}
+
+
+function showMessage(
+    message
+) {
+
+    document
+        .getElementById(
+            "content"
+        )
+        .innerHTML =
+
+        `
+        <div class="center">
+
+            <p>
+                ${escapeHtml(
+                    message
+                )}
+            </p>
+
+
+            <a
+                class="center-button"
+                href="index.html"
+            >
+                Back to Dashboard
+            </a>
+
+        </div>
+        `;
+
+}
+
+
+
+/* =========================================================
+   DATE HELPERS
+========================================================= */
+
+function getDateParts(
+    value
+) {
+
+    if (!value) {
+
+        return {
+
+            month:
+                "",
+
+            day:
+                ""
+
+        };
+
+    }
+
+
+    const date =
+        new Date(
+            value +
+            "T00:00:00"
+        );
+
+
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return {
+
+            month:
+                "",
+
+            day:
+                ""
+
+        };
+
+    }
+
+
+    return {
+
+        month:
+            date.toLocaleDateString(
+                undefined,
+                {
+                    month:
+                        "short"
+                }
+            ),
+
+        day:
+            date.toLocaleDateString(
+                undefined,
+                {
+                    day:
+                        "numeric"
+                }
+            )
+
+    };
+
+}
+
+
+function getToday() {
+
+    const date =
+        new Date();
+
+
+    return [
+
+        date.getFullYear(),
+
+        String(
+            date.getMonth() + 1
+        )
+        .padStart(
+            2,
+            "0"
+        ),
+
+        String(
+            date.getDate()
+        )
+        .padStart(
+            2,
+            "0"
+        )
+
+    ].join("-");
+
+}
+
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+function escapeHtml(
+    value
+) {
+
+    return String(
+        value ||
+        ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>
