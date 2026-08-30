@@ -28,6 +28,12 @@
 
 <title>Tuklass | Notes Catalog</title>
 
+<link
+    rel="prefetch"
+    href="index.html"
+>
+
+
 
 <style>
 
@@ -1796,6 +1802,97 @@ a {
 
 }
 
+</style>
+
+
+<style>
+/* =========================================================
+   TUKLASS CROSS-PAGE VIEW TRANSITIONS
+========================================================= */
+
+@view-transition {
+    navigation: auto;
+}
+
+/*
+ * Give the persistent app shell matching names on each page.
+ * This makes the sidebar appear to stay in place while the
+ * main workspace changes.
+ */
+.sidebar {
+    view-transition-name: tuklass-sidebar;
+}
+
+.dashboard-main,
+.main {
+    view-transition-name: tuklass-content;
+}
+
+/*
+ * Keep the whole-page transition subtle so there is no white
+ * flash between same-origin Tuklass pages.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 220ms;
+    animation-timing-function: ease;
+}
+
+/* Sidebar stays visually stable. */
+::view-transition-old(tuklass-sidebar),
+::view-transition-new(tuklass-sidebar) {
+    animation-duration: 180ms;
+    animation-timing-function: ease;
+}
+
+/* Old workspace fades/slides away slightly. */
+::view-transition-old(tuklass-content) {
+    animation:
+        tuklass-content-out
+        160ms
+        ease
+        both;
+}
+
+/* New workspace fades/slides in. */
+::view-transition-new(tuklass-content) {
+    animation:
+        tuklass-content-in
+        260ms
+        cubic-bezier(.2, .75, .25, 1)
+        both;
+}
+
+@keyframes tuklass-content-out {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes tuklass-content-in {
+    from {
+        opacity: 0;
+        transform: translateY(9px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+}
 </style>
 
 </head>
