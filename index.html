@@ -2662,6 +2662,100 @@ footer{
 }
 </style>
 
+
+<style>
+/* =========================================================
+   TRUE BUTTON CENTERING
+   Icon | centered label | invisible balancing space
+========================================================= */
+
+#dashboard .balanced-icon-button{
+    display:grid !important;
+    grid-template-columns:24px minmax(max-content, 1fr) 24px !important;
+    align-items:center !important;
+    justify-items:center !important;
+    column-gap:8px !important;
+
+    text-align:center !important;
+    line-height:1 !important;
+
+    min-height:48px !important;
+    box-sizing:border-box !important;
+}
+
+/* Invisible right-side space balances the real icon on the left. */
+#dashboard .balanced-icon-button::after{
+    content:"";
+    display:block;
+    width:24px;
+    height:24px;
+}
+
+/* The icon stays on the left without pushing the label off center. */
+#dashboard .balanced-icon-button > .button-icon{
+    display:block !important;
+    width:24px !important;
+    height:24px !important;
+    min-width:24px !important;
+    max-width:24px !important;
+    margin:0 !important;
+    object-fit:contain !important;
+    justify-self:center !important;
+}
+
+/* The text is centered in the middle track. */
+#dashboard .balanced-icon-button > span{
+    display:block;
+    margin:0;
+    padding:0;
+    text-align:center;
+    justify-self:center;
+    white-space:nowrap;
+}
+
+/* Welcome buttons have enough room for the balanced layout. */
+#dashboard .welcome-actions .balanced-icon-button{
+    min-width:154px !important;
+    padding:0 12px !important;
+}
+
+/* Feature-card buttons need a little extra width too. */
+#dashboard .dashboard-card .balanced-icon-button{
+    min-width:170px !important;
+    padding:0 12px !important;
+}
+
+/* Plain text buttons remain perfectly centered normally. */
+#dashboard .dashboard-card .button:not(.balanced-icon-button),
+#dashboard .info-card .button{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    line-height:1 !important;
+}
+
+/* Mobile */
+@media (max-width:560px){
+    #dashboard .balanced-icon-button{
+        grid-template-columns:21px minmax(max-content,1fr) 21px !important;
+        column-gap:6px !important;
+    }
+
+    #dashboard .balanced-icon-button::after{
+        width:21px;
+        height:21px;
+    }
+
+    #dashboard .balanced-icon-button > .button-icon{
+        width:21px !important;
+        height:21px !important;
+        min-width:21px !important;
+        max-width:21px !important;
+    }
+}
+</style>
+
 </head>
 
 <body>
@@ -3424,16 +3518,26 @@ setTimeout(
 
                         <a
                             href="catalog.html"
-                            class="button green"
+                            class="button green balanced-icon-button"
                         >
-                            <img class="button-icon" src="images/CatalogA.png" alt=""><img class="button-icon" src="images/CatalogA.png" alt="">Open Notes
+                            <img
+                                class="button-icon"
+                                src="images/CatalogA.png"
+                                alt=""
+                            >
+                            <span>Open Notes</span>
                         </a>
 
                         <a
                             href="calendar.html"
-                            class="button secondary"
+                            class="button secondary balanced-icon-button"
                         >
-                            <img class="button-icon" src="images/CalendarA.png" alt="">Calendar
+                            <img
+                                class="button-icon"
+                                src="images/CalendarA.png"
+                                alt=""
+                            >
+                            <span>Calendar</span>
                         </a>
 
                     </div>
@@ -3616,9 +3720,14 @@ setTimeout(
 
                     <a
                         href="calendar.html"
-                        class="button primary"
+                        class="button primary balanced-icon-button"
                     >
-                        <img class="button-icon" src="images/CalendarA.png" alt="">Open Calendar
+                        <img
+                            class="button-icon"
+                            src="images/CalendarA.png"
+                            alt=""
+                        >
+                        <span>Open Calendar</span>
                     </a>
 
                 </div>
@@ -3654,9 +3763,14 @@ setTimeout(
 
                     <a
                         href="reminders.html"
-                        class="button primary"
+                        class="button primary balanced-icon-button"
                     >
-                        <img class="button-icon" src="images/BelleA.png" alt="">Open Reminders
+                        <img
+                            class="button-icon"
+                            src="images/BelleA.png"
+                            alt=""
+                        >
+                        <span>Open Reminders</span>
                     </a>
 
                 </div>
@@ -3692,9 +3806,14 @@ setTimeout(
 
                     <a
                         href="messages.html"
-                        class="button primary"
+                        class="button primary balanced-icon-button"
                     >
-                        <img class="button-icon" src="images/MessageA.png" alt="">Open Messages
+                        <img
+                            class="button-icon"
+                            src="images/MessageA.png"
+                            alt=""
+                        >
+                        <span>Open Messages</span>
                     </a>
 
                 </div>
