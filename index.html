@@ -1661,6 +1661,121 @@ footer{
 }
 </style>
 
+
+<style>
+/* =========================================================
+   FINAL DASHBOARD POLISH
+========================================================= */
+
+/* The profile image in the welcome card is an avatar,
+   not a full-width content image. */
+#dashboard .welcome-card .dashboard-avatar{
+    width:56px !important;
+    height:56px !important;
+    min-width:56px;
+    max-width:56px !important;
+    min-height:56px;
+    max-height:56px !important;
+    flex:0 0 56px;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+    border-radius:50%;
+    border:3px solid var(--green-strong);
+    background:#eef2f5;
+    margin:0 0 17px 0;
+    box-shadow:0 5px 14px rgba(17,20,23,.10);
+}
+
+/* Make the real Tuklass logo much easier to see.
+   Scaling is useful because the supplied logo asset has
+   transparent space around the artwork. */
+#dashboard .sidebar-brand img{
+    width:42px !important;
+    height:42px !important;
+    flex:0 0 42px;
+    transform:scale(1.16);
+}
+
+.public-header .brand img{
+    width:44px !important;
+    height:44px !important;
+    flex:0 0 44px;
+    transform:scale(1.08);
+}
+
+/* Better logo sizing inside the dashboard preview. */
+#dashboard .preview-brand img{
+    width:27px !important;
+    height:27px !important;
+}
+
+/* More visible sidebar feature icons. */
+#dashboard .nav-icon{
+    width:29px !important;
+    height:29px !important;
+    flex-basis:29px;
+}
+
+#dashboard .nav-home-icon{
+    width:29px;
+    height:29px;
+    flex-basis:29px;
+}
+
+/* Slightly larger feature icons inside cards. */
+#dashboard .dashboard-icon{
+    width:49px;
+    height:49px;
+}
+
+#dashboard .dashboard-icon img{
+    width:31px;
+    height:31px;
+}
+
+/* Remove accidental duplicate icon in the Open Notes button. */
+#dashboard .welcome-actions .button.green .button-icon + .button-icon{
+    display:none;
+}
+
+/* Keep button contents visually centered. */
+#dashboard .button{
+    white-space:nowrap;
+    gap:0;
+}
+
+/* Cleaner top spacing and card rhythm. */
+#dashboard .dashboard-main{
+    padding-top:28px;
+}
+
+#dashboard .dashboard-topbar{
+    margin-bottom:21px;
+}
+
+#dashboard .dashboard-topbar h1{
+    font-size:30px;
+}
+
+#dashboard .dashboard-welcome{
+    margin-bottom:16px;
+}
+
+#dashboard .dashboard-card{
+    min-height:198px;
+}
+
+#dashboard .info-card{
+    min-height:140px;
+}
+
+/* Avoid the huge visual jump from an image error/fallback. */
+#dashboard img{
+    max-inline-size:100%;
+}
+</style>
+
 </head>
 
 <body>
