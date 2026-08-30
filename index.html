@@ -2529,6 +2529,81 @@ footer{
 }
 </style>
 
+
+<style>
+/* =========================================================
+   FINAL SMALL POLISH
+   Keep the current dashboard look; only fix logo scale
+   and button text/icon centering.
+========================================================= */
+
+/* Tuklass brand logo: smaller than the current version */
+#dashboard .sidebar-brand img{
+    width:54px !important;
+    height:54px !important;
+    flex:0 0 54px !important;
+    transform:scale(1.0) !important;
+}
+
+/* Keep the brand text balanced with the smaller logo */
+#dashboard .sidebar-brand{
+    gap:11px !important;
+}
+
+#dashboard .sidebar-brand span{
+    font-size:24px !important;
+}
+
+/* Buttons: true centered content */
+#dashboard .button{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    line-height:1 !important;
+    vertical-align:middle !important;
+    white-space:nowrap !important;
+    box-sizing:border-box !important;
+}
+
+/* Icon + text should be treated as one centered group */
+#dashboard .button .button-icon{
+    display:block !important;
+    width:20px !important;
+    height:20px !important;
+    min-width:20px !important;
+    max-width:20px !important;
+    flex:0 0 20px !important;
+    margin:0 8px 0 0 !important;
+    object-fit:contain !important;
+}
+
+/* Specific welcome buttons */
+#dashboard .welcome-actions .button{
+    min-height:50px !important;
+    padding:0 18px !important;
+}
+
+/* Specific dashboard action buttons */
+#dashboard .dashboard-card .button{
+    min-height:47px !important;
+    padding:0 17px !important;
+}
+
+/* Mobile brand size */
+@media (max-width:560px){
+    #dashboard .sidebar-brand img{
+        width:34px !important;
+        height:34px !important;
+        flex-basis:34px !important;
+    }
+
+    #dashboard .sidebar-brand span{
+        font-size:20px !important;
+    }
+}
+</style>
+
 </head>
 
 <body>
