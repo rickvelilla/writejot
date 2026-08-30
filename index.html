@@ -2756,6 +2756,34 @@ footer{
 }
 </style>
 
+
+<style>
+/* =========================================================
+   CARD BUTTONS MATCH OPEN CATALOG
+========================================================= */
+
+#dashboard .dashboard-card .button.primary{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    width:auto !important;
+    min-width:0 !important;
+    min-height:47px !important;
+
+    padding:0 18px !important;
+
+    text-align:center !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+}
+
+/* No balancing space or icon layout on the three card buttons. */
+#dashboard .dashboard-card .button.primary::after{
+    content:none !important;
+}
+</style>
+
 </head>
 
 <body>
@@ -3720,14 +3748,9 @@ setTimeout(
 
                     <a
                         href="calendar.html"
-                        class="button primary balanced-icon-button"
+                        class="button primary"
                     >
-                        <img
-                            class="button-icon"
-                            src="images/CalendarA.png"
-                            alt=""
-                        >
-                        <span>Open Calendar</span>
+                        Open Calendar
                     </a>
 
                 </div>
@@ -3763,14 +3786,9 @@ setTimeout(
 
                     <a
                         href="reminders.html"
-                        class="button primary balanced-icon-button"
+                        class="button primary"
                     >
-                        <img
-                            class="button-icon"
-                            src="images/BelleA.png"
-                            alt=""
-                        >
-                        <span>Open Reminders</span>
+                        Open Reminders
                     </a>
 
                 </div>
@@ -3806,14 +3824,9 @@ setTimeout(
 
                     <a
                         href="messages.html"
-                        class="button primary balanced-icon-button"
+                        class="button primary"
                     >
-                        <img
-                            class="button-icon"
-                            src="images/MessageA.png"
-                            alt=""
-                        >
-                        <span>Open Messages</span>
+                        Open Messages
                     </a>
 
                 </div>
