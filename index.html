@@ -2226,6 +2226,309 @@ footer{
 }
 </style>
 
+
+<style>
+/* =========================================================
+   TUKLASS FINAL POLISH — LARGE ICONS + BUTTON ALIGNMENT
+========================================================= */
+
+/* Sidebar brand */
+#dashboard .sidebar-brand{
+    gap:14px !important;
+    padding:4px 10px 24px !important;
+}
+
+#dashboard .sidebar-brand img{
+    width:76px !important;
+    height:76px !important;
+    flex:0 0 76px !important;
+    transform:scale(1.03) !important;
+}
+
+#dashboard .sidebar-brand span{
+    font-size:29px !important;
+    font-weight:800 !important;
+}
+
+/* Sidebar navigation */
+#dashboard .sidebar-link{
+    min-height:64px !important;
+    gap:17px !important;
+    padding:9px 13px !important;
+    border-radius:14px !important;
+    font-size:16px !important;
+}
+
+#dashboard .nav-icon{
+    width:48px !important;
+    height:48px !important;
+    flex:0 0 48px !important;
+}
+
+#dashboard .nav-home-icon{
+    width:48px !important;
+    height:48px !important;
+    flex:0 0 48px !important;
+}
+
+/* Search */
+#dashboard .sidebar-search input{
+    height:50px !important;
+    padding-left:39px !important;
+    font-size:14px !important;
+}
+
+/* Welcome avatar */
+#dashboard .welcome-card .dashboard-avatar{
+    width:82px !important;
+    height:82px !important;
+    min-width:82px !important;
+    max-width:82px !important;
+    min-height:82px !important;
+    max-height:82px !important;
+    flex:0 0 82px !important;
+    border-width:3px !important;
+    margin-bottom:20px !important;
+}
+
+/* Welcome heading */
+#dashboard .welcome-card h2{
+    font-size:37px !important;
+}
+
+/* Open Notes / Calendar buttons */
+#dashboard .welcome-actions{
+    gap:11px !important;
+    margin-top:21px !important;
+}
+
+#dashboard .welcome-actions .button{
+    min-height:50px !important;
+    min-width:145px !important;
+    padding:0 20px !important;
+    font-size:15px !important;
+    line-height:1 !important;
+}
+
+#dashboard .welcome-actions .button-icon{
+    width:29px !important;
+    height:29px !important;
+    flex:0 0 29px !important;
+    margin-right:9px !important;
+}
+
+/* Dashboard cards */
+#dashboard .dashboard-card{
+    min-height:230px !important;
+    padding:25px !important;
+}
+
+#dashboard .dashboard-icon{
+    width:76px !important;
+    height:76px !important;
+    flex:0 0 76px !important;
+    margin-bottom:20px !important;
+    border-radius:18px !important;
+}
+
+#dashboard .dashboard-icon img{
+    width:53px !important;
+    height:53px !important;
+    max-width:53px !important;
+    max-height:53px !important;
+}
+
+#dashboard .dashboard-card h3{
+    font-size:18px !important;
+}
+
+#dashboard .dashboard-card p{
+    font-size:13px !important;
+}
+
+/* Card action buttons */
+#dashboard .dashboard-card .button{
+    min-height:47px !important;
+    min-width:132px !important;
+    padding:0 18px !important;
+    font-size:14px !important;
+}
+
+/* Bottom profile/access cards */
+#dashboard .info-card{
+    min-height:165px !important;
+    padding:23px !important;
+}
+
+#dashboard .info-card h3{
+    font-size:18px !important;
+}
+
+#dashboard .current-price{
+    font-size:40px !important;
+}
+
+/* Sidebar account avatar */
+#dashboard .sidebar-profile img{
+    width:48px !important;
+    height:48px !important;
+}
+
+/* Prevent any image from stretching its parent */
+#dashboard img{
+    object-fit:contain;
+}
+
+/* Keep mobile usable rather than simply scaling the desktop UI */
+@media (max-width:1100px){
+    #dashboard .sidebar-brand img{
+        width:48px !important;
+        height:48px !important;
+        flex-basis:48px !important;
+    }
+
+    #dashboard .nav-icon{
+        width:40px !important;
+        height:40px !important;
+        flex-basis:40px !important;
+    }
+
+    #dashboard .nav-home-icon{
+        width:40px !important;
+        height:40px !important;
+        flex-basis:40px !important;
+    }
+}
+
+@media (max-width:560px){
+    #dashboard .sidebar-brand img{
+        width:34px !important;
+        height:34px !important;
+        flex-basis:34px !important;
+    }
+
+    #dashboard .nav-icon{
+        width:32px !important;
+        height:32px !important;
+        flex-basis:32px !important;
+    }
+
+    #dashboard .nav-home-icon{
+        width:32px !important;
+        height:32px !important;
+        flex-basis:32px !important;
+    }
+
+    #dashboard .dashboard-icon{
+        width:58px !important;
+        height:58px !important;
+        flex-basis:58px !important;
+    }
+
+    #dashboard .dashboard-icon img{
+        width:39px !important;
+        height:39px !important;
+        max-width:39px !important;
+        max-height:39px !important;
+    }
+
+    #dashboard .welcome-actions .button{
+        min-width:0 !important;
+        width:auto !important;
+    }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   USER-SUPPLIED HOME ICONS
+========================================================= */
+
+#dashboard .sidebar-link[data-page="home"] .nav-icon{
+    display:block;
+    width:48px !important;
+    height:48px !important;
+    flex:0 0 48px !important;
+    object-fit:contain;
+}
+
+#dashboard .sidebar-link[data-page="home"] .icon-b{
+    display:none;
+}
+
+#dashboard .sidebar-link[data-page="home"]:hover .icon-a,
+#dashboard .sidebar-link[data-page="home"].active .icon-a{
+    display:none;
+}
+
+#dashboard .sidebar-link[data-page="home"]:hover .icon-b,
+#dashboard .sidebar-link[data-page="home"].active .icon-b{
+    display:block;
+}
+
+/* The source artwork is 2500x2500, so keep the rendered image
+   large and crisp without stretching it. */
+#dashboard .sidebar-link .nav-icon,
+#dashboard .dashboard-icon img,
+#dashboard .button-icon,
+#dashboard .sidebar-brand img,
+#dashboard .welcome-card .dashboard-avatar{
+    object-fit:contain;
+    image-rendering:auto;
+}
+
+/* Home card/button can now use the supplied icon assets naturally. */
+#dashboard .sidebar-link[data-page="home"]{
+    align-items:center;
+}
+
+@media (max-width:560px){
+    #dashboard .sidebar-link[data-page="home"] .nav-icon{
+        width:32px !important;
+        height:32px !important;
+        flex-basis:32px !important;
+    }
+}
+</style>
+
+
+<style>
+/* Use the supplied HomeA/HomeB artwork exactly like the other icons. */
+#dashboard .sidebar-link[data-page="home"] .nav-icon{
+    width:48px !important;
+    height:48px !important;
+    flex:0 0 48px !important;
+    object-fit:contain;
+}
+
+#dashboard .sidebar-link[data-page="home"] .icon-a{
+    display:block;
+}
+
+#dashboard .sidebar-link[data-page="home"] .icon-b{
+    display:none;
+}
+
+#dashboard .sidebar-link[data-page="home"]:hover .icon-a,
+#dashboard .sidebar-link[data-page="home"].active .icon-a{
+    display:none;
+}
+
+#dashboard .sidebar-link[data-page="home"]:hover .icon-b,
+#dashboard .sidebar-link[data-page="home"].active .icon-b{
+    display:block;
+}
+
+@media (max-width:560px){
+    #dashboard .sidebar-link[data-page="home"] .nav-icon{
+        width:32px !important;
+        height:32px !important;
+        flex-basis:32px !important;
+    }
+}
+</style>
+
 </head>
 
 <body>
@@ -2696,11 +2999,17 @@ setTimeout(
                     title="Home"
                 >
 
-                    <span
-                        class="nav-home-icon"
+                    <img
+                        class="nav-icon icon-a"
+                        src="images/HomeA.png"
+                        alt=""
                     >
-                        ⌂
-                    </span>
+
+                    <img
+                        class="nav-icon icon-b"
+                        src="images/HomeB.png"
+                        alt=""
+                    >
 
                     <span>
                         Home
