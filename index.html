@@ -1434,6 +1434,233 @@ footer{
 
 </style>
 
+
+<style>
+/* =========================================================
+   DASHBOARD REFINEMENT
+   Logged-out landing page is intentionally untouched.
+========================================================= */
+
+#dashboard .dashboard-main{
+    max-width: 1380px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#dashboard .dashboard-topbar{
+    min-height: 58px;
+}
+
+#dashboard .dashboard-topbar h1{
+    font-size: 32px;
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -.045em;
+}
+
+#dashboard .dashboard-topbar p{
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+#dashboard .topbar-status{
+    padding: 8px 12px;
+    font-size: 11px;
+}
+
+/* Make the hero card cleaner and vertically balanced */
+#dashboard .dashboard-welcome{
+    grid-template-columns: minmax(0, 1fr) 270px;
+    gap: 16px;
+}
+
+#dashboard .welcome-card{
+    min-height: 220px;
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#dashboard .welcome-card > *{
+    max-width: 720px;
+}
+
+#dashboard .welcome-card h2{
+    font-size: 31px;
+    line-height: 1.06;
+}
+
+#dashboard .welcome-card p{
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Account card */
+#dashboard .status-card{
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Consistent cards */
+#dashboard .dashboard-grid{
+    align-items: stretch;
+}
+
+#dashboard .dashboard-card{
+    min-height: 204px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px;
+}
+
+#dashboard .dashboard-icon{
+    width: 46px;
+    height: 46px;
+    margin-bottom: 16px;
+    border-radius: 13px;
+}
+
+#dashboard .dashboard-icon img{
+    width: 27px;
+    height: 27px;
+}
+
+#dashboard .dashboard-card h3{
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+#dashboard .dashboard-card p{
+    font-size: 12px;
+    line-height: 1.55;
+    max-width: 330px;
+}
+
+#dashboard .dashboard-card .button,
+#dashboard .dashboard-card .feature-soon{
+    margin-top: auto;
+}
+
+/* Buttons: cleaner proportions */
+#dashboard .button{
+    min-height: 42px;
+    padding: 0 15px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+#dashboard .button-icon{
+    width: 17px;
+    height: 17px;
+    margin-right: 7px;
+}
+
+/* Pricing/profile row */
+#dashboard .member-lower{
+    align-items: stretch;
+}
+
+#dashboard .info-card{
+    min-height: 145px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 21px;
+}
+
+#dashboard .info-card h3{
+    font-size: 16px;
+}
+
+#dashboard .info-card p{
+    font-size: 12px;
+    max-width: 720px;
+}
+
+/* Sidebar: cleaner spacing and stronger hierarchy */
+#dashboard .sidebar{
+    padding: 20px 13px 16px;
+}
+
+#dashboard .sidebar-brand{
+    padding: 4px 10px 20px;
+}
+
+#dashboard .sidebar-brand img{
+    width: 34px;
+    height: 34px;
+}
+
+#dashboard .sidebar-brand span{
+    font-size: 21px;
+}
+
+#dashboard .sidebar-link{
+    min-height: 46px;
+    padding: 8px 11px;
+    font-size: 13px;
+}
+
+#dashboard .nav-icon{
+    width: 25px;
+    height: 25px;
+    flex-basis: 25px;
+}
+
+/* User icon should feel like a real app avatar, not oversized */
+#dashboard .sidebar-profile img{
+    width: 35px;
+    height: 35px;
+}
+
+/* Desktop spacing */
+@media (min-width:1101px){
+    #dashboard .dashboard-main{
+        padding: 30px 34px 54px;
+    }
+
+    #dashboard .dashboard-grid{
+        grid-template-columns: repeat(3, minmax(250px, 1fr));
+    }
+}
+
+/* Tablet */
+@media (max-width:1100px){
+    #dashboard .dashboard-main{
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    #dashboard .dashboard-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width:760px){
+    #dashboard .dashboard-main{
+        padding: 20px 15px 36px;
+    }
+
+    #dashboard .dashboard-welcome{
+        grid-template-columns: 1fr;
+    }
+
+    #dashboard .welcome-card,
+    #dashboard .status-card{
+        min-height: 0;
+    }
+
+    #dashboard .dashboard-grid{
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
 </head>
 
 <body>
