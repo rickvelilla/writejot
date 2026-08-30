@@ -1776,6 +1776,327 @@ footer{
 }
 </style>
 
+
+<style>
+/* =========================================================
+   DASHBOARD V3 — SCALE + ALIGNMENT
+========================================================= */
+
+#dashboard .dashboard-main{
+    max-width:none;
+    width:100%;
+    padding:30px 42px 56px;
+}
+
+/* ---------- Sidebar ---------- */
+
+#dashboard .sidebar{
+    padding:20px 12px 16px;
+}
+
+#dashboard .sidebar-brand{
+    gap:12px;
+    padding:4px 10px 22px;
+}
+
+#dashboard .sidebar-brand img{
+    width:46px !important;
+    height:46px !important;
+    flex:0 0 46px;
+    transform:scale(1.16);
+}
+
+#dashboard .sidebar-brand span{
+    font-size:24px;
+    letter-spacing:-.055em;
+}
+
+#dashboard .sidebar-link{
+    min-height:52px;
+    gap:13px;
+    padding:8px 12px;
+    font-size:14px;
+    border-radius:13px;
+}
+
+#dashboard .nav-icon{
+    width:33px !important;
+    height:33px !important;
+    flex:0 0 33px;
+}
+
+#dashboard .nav-home-icon{
+    width:33px;
+    height:33px;
+    flex:0 0 33px;
+}
+
+#dashboard .sidebar-label{
+    margin:8px 10px 8px;
+    font-size:10px;
+}
+
+#dashboard .sidebar-profile{
+    gap:10px;
+    padding:10px;
+}
+
+#dashboard .sidebar-profile img{
+    width:42px;
+    height:42px;
+}
+
+#dashboard .sidebar-profile-copy strong{
+    font-size:12px;
+}
+
+#dashboard .sidebar-profile-copy span{
+    font-size:10px;
+}
+
+
+/* ---------- Top area ---------- */
+
+#dashboard .dashboard-topbar{
+    min-height:64px;
+    margin-bottom:24px;
+}
+
+#dashboard .dashboard-topbar h1{
+    font-size:34px;
+    line-height:1.08;
+}
+
+#dashboard .dashboard-topbar p{
+    font-size:13px;
+    margin-top:6px;
+}
+
+
+/* ---------- Welcome + account ---------- */
+
+#dashboard .dashboard-welcome{
+    grid-template-columns:minmax(0,1fr) 300px;
+    gap:18px;
+    margin-bottom:18px;
+}
+
+#dashboard .welcome-card{
+    min-height:232px;
+    padding:30px;
+    justify-content:center;
+}
+
+#dashboard .welcome-card .dashboard-avatar{
+    width:64px !important;
+    height:64px !important;
+    min-width:64px;
+    max-width:64px !important;
+    min-height:64px;
+    max-height:64px !important;
+    flex:0 0 64px;
+    margin-bottom:18px;
+}
+
+#dashboard .welcome-card h2{
+    font-size:34px;
+}
+
+#dashboard .welcome-card p{
+    font-size:14px;
+    margin-top:8px;
+}
+
+#dashboard .status-card{
+    min-height:232px;
+    padding:27px;
+}
+
+#dashboard .status-card .status{
+    font-size:27px;
+    line-height:1.2;
+}
+
+
+/* ---------- Cards ---------- */
+
+#dashboard .dashboard-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+}
+
+#dashboard .dashboard-card{
+    min-height:214px;
+    padding:23px;
+}
+
+#dashboard .dashboard-icon{
+    width:54px;
+    height:54px;
+    margin-bottom:18px;
+    border-radius:14px;
+}
+
+#dashboard .dashboard-icon img{
+    width:35px !important;
+    height:35px !important;
+}
+
+#dashboard .dashboard-card h3{
+    font-size:17px;
+}
+
+#dashboard .dashboard-card p{
+    font-size:12px;
+    line-height:1.6;
+    max-width:390px;
+}
+
+#dashboard .dashboard-card .button{
+    min-width:124px;
+    margin-top:auto;
+}
+
+
+/* ---------- Button alignment ---------- */
+
+#dashboard .button{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    vertical-align:middle;
+    line-height:1 !important;
+    white-space:nowrap;
+    gap:0;
+}
+
+#dashboard .button-icon{
+    width:18px !important;
+    height:18px !important;
+    flex:0 0 18px !important;
+    margin-right:8px !important;
+    object-fit:contain;
+}
+
+
+/* ---------- Bottom cards ---------- */
+
+#dashboard .member-lower{
+    grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);
+    gap:14px;
+    margin-top:14px;
+}
+
+#dashboard .info-card{
+    min-height:150px;
+    padding:22px;
+}
+
+#dashboard .info-card h3{
+    font-size:17px;
+}
+
+#dashboard .info-card p{
+    font-size:12px;
+}
+
+#dashboard .current-price{
+    font-size:37px;
+}
+
+
+/* ---------- Search ---------- */
+
+#dashboard .sidebar-search input{
+    height:44px;
+    font-size:13px;
+}
+
+
+/* ---------- Desktop width balancing ---------- */
+
+@media (min-width:1400px){
+    #dashboard .dashboard-main{
+        padding-left:48px;
+        padding-right:48px;
+    }
+
+    #dashboard .dashboard-grid{
+        gap:16px;
+    }
+
+    #dashboard .dashboard-card{
+        min-height:220px;
+    }
+}
+
+
+/* ---------- Tablet ---------- */
+
+@media (max-width:1100px){
+    #dashboard .dashboard-main{
+        padding-left:28px;
+        padding-right:28px;
+    }
+
+    #dashboard .dashboard-welcome{
+        grid-template-columns:minmax(0,1fr) 270px;
+    }
+}
+
+
+/* ---------- Small screens ---------- */
+
+@media (max-width:760px){
+    #dashboard .dashboard-main{
+        padding:20px 15px 36px;
+    }
+
+    #dashboard .dashboard-topbar h1{
+        font-size:28px;
+    }
+
+    #dashboard .dashboard-welcome{
+        grid-template-columns:1fr;
+    }
+
+    #dashboard .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media (max-width:560px){
+    #dashboard .sidebar-brand img{
+        width:34px !important;
+        height:34px !important;
+        flex-basis:34px;
+    }
+
+    #dashboard .nav-icon{
+        width:29px !important;
+        height:29px !important;
+        flex-basis:29px;
+    }
+
+    #dashboard .nav-home-icon{
+        width:29px;
+        height:29px;
+        flex-basis:29px;
+    }
+
+    #dashboard .dashboard-icon{
+        width:50px;
+        height:50px;
+    }
+
+    #dashboard .dashboard-icon img{
+        width:32px !important;
+        height:32px !important;
+    }
+}
+</style>
+
 </head>
 
 <body>
