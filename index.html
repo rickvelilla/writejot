@@ -2604,6 +2604,64 @@ footer{
 }
 </style>
 
+
+<style>
+/* =========================================================
+   FINAL BUTTON CLEANUP
+========================================================= */
+
+#dashboard .welcome-actions{
+    align-items:center !important;
+}
+
+#dashboard .welcome-actions .button,
+#dashboard .dashboard-card .button{
+    display:inline-flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    line-height:1 !important;
+    white-space:nowrap !important;
+    vertical-align:middle !important;
+}
+
+#dashboard .welcome-actions .button{
+    min-height:50px !important;
+}
+
+#dashboard .dashboard-card .button{
+    min-height:47px !important;
+}
+
+/* One icon, one label. */
+#dashboard .button > .button-icon{
+    display:block !important;
+    width:20px !important;
+    height:20px !important;
+    min-width:20px !important;
+    max-width:20px !important;
+    flex:0 0 20px !important;
+    object-fit:contain !important;
+    margin:0 8px 0 0 !important;
+}
+
+/* Make the label itself behave like a normal inline item rather than
+   inheriting odd vertical spacing from surrounding elements. */
+#dashboard .button{
+    font-size:14px !important;
+}
+
+/* The welcome buttons are optically balanced as a group. */
+#dashboard .welcome-actions .button.green{
+    min-width:145px !important;
+}
+
+#dashboard .welcome-actions .button.secondary{
+    min-width:125px !important;
+}
+</style>
+
 </head>
 
 <body>
