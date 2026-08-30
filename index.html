@@ -2784,6 +2784,56 @@ footer{
 }
 </style>
 
+
+<style>
+/* =========================================================
+   PROFILE SHORTCUT ICON
+========================================================= */
+
+#dashboard .profile-shortcut{
+    width:42px !important;
+    height:42px !important;
+    flex:0 0 42px !important;
+
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    padding:0 !important;
+    border-radius:12px !important;
+    background:#fff !important;
+
+    overflow:hidden;
+}
+
+#dashboard .profile-shortcut::before{
+    content:none !important;
+}
+
+#dashboard .profile-shortcut-icon{
+    width:30px !important;
+    height:30px !important;
+    object-fit:contain !important;
+}
+
+#dashboard .profile-shortcut .profile-b{
+    display:none !important;
+}
+
+#dashboard .profile-shortcut:hover .profile-a{
+    display:none !important;
+}
+
+#dashboard .profile-shortcut:hover .profile-b{
+    display:block !important;
+}
+
+#dashboard .profile-shortcut:hover{
+    background:var(--green-soft) !important;
+    transform:none !important;
+}
+</style>
+
 </head>
 
 <body>
@@ -3455,11 +3505,20 @@ setTimeout(
 
 
                     <a
-                        href="edit-profile.html"
-                        class="sidebar-edit"
-                        title="Edit profile"
+                        href="profile.html"
+                        class="sidebar-edit profile-shortcut"
+                        title="Profile"
                     >
-                        ⚙
+                        <img
+                            class="profile-shortcut-icon profile-a"
+                            src="images/ProfileA.png"
+                            alt=""
+                        >
+                        <img
+                            class="profile-shortcut-icon profile-b"
+                            src="images/ProfileB.png"
+                            alt=""
+                        >
                     </a>
 
                 </div>
